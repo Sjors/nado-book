@@ -1,0 +1,14 @@
+\newpage
+## RBF bug in Bitcoin Core
+
+Listen to episode 38:
+
+\qrcode{https://bitcoinmagazine.com/technical/bitcoin-core-cve-2021-31876-bug}
+
+discuss CVE-2021-31876, a bug in the Bitcoin Core code that affects replace-by-fee (RBF) child transactions.
+
+The CVE (Common Vulnerabilities and Exposures) system offers an overview of publicly known software bugs. A newly discovered bug in the Bitcoin Core code was recently discovered and disclosed by Antoine Riard, and added to the CVE overview.
+
+Aaron and Sjors explain that the bug affects how RBF logic is handled by the Bitcoin Core software. When one unconfirmed transaction includes an RBF flag (which means it should be considered replaceable if a conflicting transaction with a higher fee is broadcast over the network) any following transaction that spends coins from the original transaction should also be considered replaceable — even if the second transaction doesn’t itself have an RBF flag. Bitcoin Core software would not do this, however, which means the second transaction would in fact not be considered replaceable.
+
+This is a fairly innocent bug; in most cases the second transaction will still confirm eventually, while there are also other solutions to speed confirmation up if the included fee is too low. But in very specific cases, like some fallback security mechanisms on the Lightning Network, the bug could in fact cause complications. Aaron and Sjors try to explain what such a scenario would look like — badly.

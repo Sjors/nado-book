@@ -1,0 +1,17 @@
+---
+comment: guest Ruben Somsen
+...
+\newpage
+## Statechains
+
+Listen to episode 8:
+
+\qrcode{https://nadobtc.libsyn.com/statechains-w-ruben-somsen-nado-8}
+
+discuss his proposals for Statechains on Bitcoin! Statechains allow you to send keys not UTXO and it offers quite a few scaling and functionality improvements!
+
+Helpful Links:
+
+Ruben's presentation on Bitcoin Magazine about Statechains: https://youtu.be/CKx6eULIC3A
+
+Aaron's Bitcoin Magazine article on Statechains: https://bitcoinmagazine.com/articles/statechains-sending-keys-not-coins-to-scale-bitcoin-off-chain

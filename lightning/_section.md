@@ -1,0 +1,4 @@
+\newpage
+# Lightning
+
+Fast, etc
