@@ -21,10 +21,10 @@ Aaron Van Wirdum:
 Shut up.
 
 Sjors Provoost:
-[inaudible 00:00:23]
+Schnorr was added.
 
 Aaron Van Wirdum:
-Okay yeah, so Snore, exactly. Thank you for actually making it clear for our listener. Oh, I misunderstood your question, yeah. Snore was added. So libsecp256k1 is a library.
+Okay yeah, so Schnorr, exactly. Thank you for actually making it clear for our listener. Oh, I misunderstood your question, yeah. Schnorr was added. So libsecp256k1 is a library.
 
 Sjors Provoost:
 That's right.
@@ -57,7 +57,7 @@ Aaron Van Wirdum:
 So just to be clear, when you say Bitcoin Core Satoshi used this library, the OpenSSL library, like how does a software program actually use a library?
 
 Sjors Provoost:
-You just Google on Stack Overflow how to use OpenSSL and then you just look at the examples [crosstalk 00:02:57]
+You just Google on Stack Overflow how to use OpenSSL and then you just look at the examples.
 
 Aaron Van Wirdum:
 Let me rephrase the question. Where is the library?
@@ -66,7 +66,7 @@ Sjors Provoost:
 Oh, the library is included in the software package when you download it. And the binary file contains some of the Bitcoin Core specific stuff, and then a whole bunch of libraries, and that's what makes it so big, around 20 megabytes.
 
 Aaron Van Wirdum:
-Right, so when you download Bitcoin Core, the software, Bitcoin 20 is the newest one I guess, then you actually download, when in this case now OpenSSL anymore, but for Bitcoin 19 you actually downloaded a whole OpenSSL library.
+Right, so when you download Bitcoin Core, the software, Bitcoin Core 20 is the newest one I guess, then you actually download, when in this case now OpenSSL anymore, but for Bitcoin 19 you actually downloaded a whole OpenSSL library.
 
 Sjors Provoost:
 Yeah, that's correct.
@@ -78,7 +78,7 @@ Sjors Provoost:
 Right. Now there is two ways to go about that. You can have a library sitting on your computer already, and then software can say, "Let me just see if I can find that library and I'll use that." Then your download gets smaller. But the problem is that libraries change and so you don't want to be surprised about what's on the computer, especially with cryptographic stuff. And even if you include in the download, you can be surprised by what happens to the library because somebody else is maintaining that library and if you're not paying attention to what that other person is doing, they might break something very bad.
 
 Aaron Van Wirdum:
-Right. So in the case of, let's stick to Bitcoin 19, Bitcoin Core 19.
+Right. So in the case of, let's stick to Bitcoin Core 19.
 
 Sjors Provoost:
 Well, in this case maybe take an older one because I think it was Bitcoin Core 0.8 or something.
@@ -105,16 +105,16 @@ Aaron Van Wirdum:
 They write something in the code, they use some part of the library, you download the library from the Bitcoin Core code, the part of the library is used, and then the Bitcoin Core developers may not have noticed some change that happened to the library and all of the sudden the stuff they wanted Bitcoin Core to do isn't actually doing what they wanted Bitcoin Core to do because the library wasn't doing what they thought it would do because someone else was maintaining the library. Is that a correct summary?
 
 Sjors Provoost:
-Yeah, that's right. And to clarify what specifically happened here, [crosstalk 00:05:05]
+Yeah, that's right. And to clarify what specifically happened here...
 
 Aaron Van Wirdum:
 You picked Bitcoin Core 8 because there was a specific example you wanted to go to.
 
 Sjors Provoost:
-Yeah, I might be wrong about the number because Bitcoin Core 8 had a different problem. But sort of around that time, there was another bug in OpenSSL that I believe was unrelated to the problem that happened. But they basically had to upgrade OpenSSL because the old version was simply not safe. But unbeknownst to the Core devs, there was another change in OpenSSL when they upgraded. And in particular, this was about when you see a signature, do you consider it valid or not? And the original version of OpenSSL was pretty relaxed, so it would accept signatures as valid even if they did not meet the exact spec. And they wouldn't be signed by somebody else, so it wasn't about stealing funds, but it was just you could be a little bit sloppy about maybe you add a byte to the signature or maybe not. So the notation could be a bit sloppy. And the new version was very picky. Now, if you use Bitcoin software to create a transaction, that was not a problem, because any Bitcoin transaction was signed very strictly according to the protocol. But if you are now validating these transactions, if you use old software and you would see a sloppy version that was made with some other piece of software, the old software would be fine, the new software would say it's invalid. So all of a sudden you have an [inaudible 00:06:19] soft fork.
+Yeah, I might be wrong about the number because Bitcoin Core 8 had a different problem. But sort of around that time, there was another bug in OpenSSL that I believe was unrelated to the problem that happened. But they basically had to upgrade OpenSSL because the old version was simply not safe. But unbeknownst to the Core devs, there was another change in OpenSSL when they upgraded. And in particular, this was about when you see a signature, do you consider it valid or not? And the original version of OpenSSL was pretty relaxed, so it would accept signatures as valid even if they did not meet the exact spec. And they wouldn't be signed by somebody else, so it wasn't about stealing funds, but it was just you could be a little bit sloppy about maybe you add a byte to the signature or maybe not. So the notation could be a bit sloppy. And the new version was very picky. Now, if you use Bitcoin software to create a transaction, that was not a problem, because any Bitcoin transaction was signed very strictly according to the protocol. But if you are now validating these transactions, if you use old software and you would see a sloppy version that was made with some other piece of software, the old software would be fine, the new software would say it's invalid. So all of a sudden you have an accidental soft fork.
 
 Aaron Van Wirdum:
-Right. And that's what actually happens.
+Right. And that's what actually happened.
 
 Sjors Provoost:
 Well, yes.
@@ -135,7 +135,7 @@ Aaron Van Wirdum:
 I don't think I knew that, okay.
 
 Sjors Provoost:
-Well, yeah. OpenSSL essentially improved itself by becoming more strict, but that made it a consensus change because what's consensus code it's also whatever your libraries are doing. So basically OpenSSL introduced a soft fork but without saying, "Oh, there's no deployment date in the OpenSSL update," it just randomly happened."
+Well, yeah. OpenSSL essentially improved itself by becoming more strict, but that made it a consensus change because what's consensus code it's also whatever your libraries are doing. So basically OpenSSL introduced a soft fork but without saying, "Oh, there's no deployment date in the OpenSSL update," it just randomly happened.
 
 Aaron Van Wirdum:
 Right, so that's a great example of why a dependency because that's the official term is a problem.
@@ -159,16 +159,16 @@ Aaron Van Wirdum:
 Effected everything.
 
 Sjors Provoost:
-Without a password. That's the sort of severity. And something like that in Bitcoin of course could mean, "Oh, now we have a problem, everybody can just steal all the money." At the same time, Peter [inaudible 00:08:41] was working on a library.
+Without a password. That's the sort of severity. And something like that in Bitcoin of course could mean, "Oh, now we have a problem, everybody can just steal all the money." At the same time, Pieter Wuille was working on a library.
 
 Aaron Van Wirdum:
-For our American and English listeners, that's Peter [Vuley 00:08:49] or however they want to pronounce it.
+For our American and English listeners, that's Peter Wuley or however they want to pronounce it.
 
 Sjors Provoost:
-Yeah, or [inaudible 00:08:51] or [inaudible 00:08:51].
+Yeah, or sipa or sippa.
 
 Aaron Van Wirdum:
-Peter Vuley, go on.
+Pieter Wuille, go on.
 
 Sjors Provoost:
 He was working on a library, so a piece of software, that was specifically designed to create and verify Bitcoin signatures. And his original motivation was just to do it faster than OpenSSL.
@@ -198,7 +198,7 @@ Sjors Provoost:
 Right. It's just the curve.
 
 Aaron Van Wirdum:
-Just a lift curve, just the thing that's used for signatures.
+Just eliptic curve, just the thing that's used for signatures.
 
 Sjors Provoost:
 Yeah, because there's other cryptographic code in the Bitcoin Core code base. For example, SHA-256 is in there and a few other curves. And I think those were originally also from OpenSSL. Those things are a little bit less scary, you can implement SHA-256 in a day if you're bored in any programming language.
@@ -222,10 +222,10 @@ Sjors Provoost:
 Absolutely, absolutely. So the fact that this thing was reviewed by a lot of people, a lot of good cryptographers before adding it, and I think it was also compared against OpenSSL in terms of using the same tests. But yeah, at some point you have to take that risk because the other one is just waiting for OpenSSL to explode.
 
 Aaron Van Wirdum:
-Plus it was Peter Vuley, so can't really go wrong with that.
+Plus it was Pieter Wuille, so can't really go wrong with that.
 
 Sjors Provoost:
-Well, you'll want to have proof of writer. But a lot of very smart people looked at it, probably the same people who would also look at OpenSSL. So that's good, but you don't want to make a habit of this, and in fact they do constantly make very small tweaks to that library to make it a little bit faster, but you want to be very careful with that.
+Well, you'll want to have proof of wuille. But a lot of very smart people looked at it, probably the same people who would also look at OpenSSL. So that's good, but you don't want to make a habit of this, and in fact they do constantly make very small tweaks to that library to make it a little bit faster, but you want to be very careful with that.
 
 Aaron Van Wirdum:
 Right. Okay, so that's the library. Bitcoin has its own library now. Is this used by any other programs?
@@ -243,13 +243,13 @@ Aaron Van Wirdum:
 I guess my first question would be, is this library used by anything other than Bitcoin?
 
 Sjors Provoost:
-Yes, so this library is, I just heard it on a podcast with Vitalik, it's also used by [inaudible 00:12:47] and a whole bunch of other cryptocurrencies. Basically any cryptocurrencies that uses the secp256k1 elliptic curve, which is just a nice mathematical object.
+Yes, so this library is, I just heard it on a podcast with Vitalik, it's also used by Ethereum and a whole bunch of other cryptocurrencies. Basically any cryptocurrencies that uses the secp256k1 elliptic curve, which is just a nice mathematical object.
 
 Aaron Van Wirdum:
 Right mostly cryptocurrencies though, only cryptocurrencies. It's pretty cryptocurrency specific, at least.
 
 Sjors Provoost:
-Yeah, I'm not aware of any non-cryptocurrency project that uses it. It could. It's just a library that allows you to sign stuff, sign messages and verify the signature on a message. So you could write an encrypted chat application that uses this curve if you wanted to, but I don't know, I guess the encrypted chat applications out there might have their own curve that they use for their thing, I don't know what Cigna uses, but they could.
+Yeah, I'm not aware of any non-cryptocurrency project that uses it. It could. It's just a library that allows you to sign stuff, sign messages and verify the signature on a message. So you could write an encrypted chat application that uses this curve if you wanted to, but I don't know, I guess the encrypted chat applications out there might have their own curve that they use for their thing, I don't know what Signal uses, but they could.
 
 Aaron Van Wirdum:
 Yeah. Okay, so that's libsecp256k1, I keep having to pronounce this.
