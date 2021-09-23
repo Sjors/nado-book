@@ -262,6 +262,7 @@ Libsecp, okay. So libsecp. Is that everything we need to know about libsecp?
 Sjors Provoost:
 I think so.
 
+
 Aaron Van Wirdum:
 Yeah, so BIP 340 was merged, which is Schnorr.
 
@@ -293,7 +294,7 @@ Sjors Provoost:
 Right, and which the libsecp library implements. But the thing is, you have the same elliptic curve but then in order to make a signature, you have to do slightly different calculations with it. So that also means that the change for Schnorr is not as complicated as, say the initial version of libsecp was. The initial version of libsecp had to implement the curve, all the operations you can do in a curve like addition and multiplication, and then implement the signature algorithm of ECDSA. But in order to do Schnorr, you just need to do the signature algorithm for Schnorr, you don't have to do all the math, the basic foundational math. So it's not a huge change, it's not like adding a whole new curve to it. It would be much more difficult to add, say, a different elliptical curve or even a completely different kind of curve than it is to change just from ECDSA to Schnorr, it's a different way of signing, and in fact a simpler way of signing.
 
 Aaron Van Wirdum:
-Okay. So this was implemented, again, by Peter Vuley, I assume, well I know, right?
+Okay. So this was implemented, again, by Pieter Wuille, I assume, well I know, right?
 
 Sjors Provoost:
 The spec was written by him, I think he also wrote most of the implementation, but there's a lot of people on top of that.
@@ -314,7 +315,7 @@ Aaron Van Wirdum:
 Yeah, the next Bitcoin Core release is not going to use Schnorr yet, is your prediction here. That's your bold prediction?
 
 Sjors Provoost:
-I would say it would be extremely reckless if it did. But there are projects that use it, certain [inaudible 00:17:12] coin uses Schnorr, I believe.
+I would say it would be extremely reckless if it did. But there are projects that use it, certain Bcash coin uses Schnorr, I believe.
 
 Aaron Van Wirdum:
 Oh yeah, I think so.
@@ -332,7 +333,7 @@ Aaron Van Wirdum:
 That's the plan, right?
 
 Sjors Provoost:
-So the idea here, of course, is to have Schnorr as part of taproot. So the entire taproot thing, there are already pole requests that describe what it's supposed to do, not completely finished but pretty far along. So maybe they'll go in the next version, so not in the upcoming one but the next one. What I would imagine happens is that it get added not to Mainnet, probably not even to Testnet, but to this new thing called Signet, which is a whole new type of way to do Testnet, which we can do another episode about. But basically, it'll go in as some innocent ways, so maybe there's just tests for it, tests for everything taproot related, and then anybody who knows how to compile code can just flip a switch and try it on their own machine, but it won't be on Mainnet or probably not even on Testnet. And then maybe next version, this stuff takes time.
+So the idea here, of course, is to have Schnorr as part of taproot. So the entire taproot thing, there are already pull requests that describe what it's supposed to do, not completely finished but pretty far along. So maybe they'll go in the next version, so not in the upcoming one but the next one. What I would imagine happens is that it get added not to Mainnet, probably not even to Testnet, but to this new thing called Signet, which is a whole new type of way to do Testnet, which we can do another episode about. But basically, it'll go in as some innocent ways, so maybe there's just tests for it, tests for everything taproot related, and then anybody who knows how to compile code can just flip a switch and try it on their own machine, but it won't be on Mainnet or probably not even on Testnet. And then maybe next version, this stuff takes time.
 
 Aaron Van Wirdum:
 Isn't that exciting our audience? Got to pump it, got to pump this coin Sjors.

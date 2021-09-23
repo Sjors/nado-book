@@ -15,6 +15,7 @@ pandoc -o $1 --table-of-contents --toc-depth=2 --number-sections\
         basics/dns_and_tor.md\
         basics/mempool_and_package_relay.md\
         basics/segwit.md\
+        basics/libsecp256k1.md\
         blockchain/_section.md\
         blockchain/assume-utxo.md\
         blockchain/utreexo.md\
@@ -36,7 +37,7 @@ pandoc -o $1 --table-of-contents --toc-depth=2 --number-sections\
         wallets/hardware_jade.md\
         taproot/_section.md\
         taproot/basics.md\
-        taproot/schnorr-libsecp256k1.md\
+        taproot/schnorr.md\
         taproot/payment_pools.md\
         taproot/activation_options.md\
         taproot/activation_options_2.md\
