@@ -1,3 +1,6 @@
+---
+comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-03-12-taproot-activation-speedy-trial/
+...
 \newpage
 ## Speedy Trial
 
@@ -16,6 +19,23 @@ discuss Speedy Trial, the proposed Taproot activation mechanism that has been ga
 Aaron and Sjors explain that Speedy Trial would give miners three months to signal support for the Taproot upgrade with their hash power. If a supermajority of miners signal support for the upgrade within these thee months, Taproot will activate a couple of months later: six months since the release of the software client that includes the activation logic. If miners don’t signal support within three months, the upgrade will expire, and a new upgrade path can be considered. (It is as of yet not defined what the potential alternative upgrade path would look like.)
 
 Aaron explains that Speedy Trial was born out of a compromise between developers and users who preferred different upgrade mechanisms for the Taproot soft fork, while Sjors details what some of the more technical implementation considerations of Speedy Trial are, like the benefits of using block heights instead of time stamps, and the extended delay between signaling and enforcement. Finally, Aaron and Sjors discuss some of the downsides and risks of Speedy Trial.
+
+00:00 - 4:20 Intro and brief explanation of taproot activation
+4:20 - 10:02 How Bitcoin core is going to upgrade to taproot/speedy trial
+10:02 - 12:58 LOT=True Client
+12:59 - 15:10 Differences between speedy trial and LOT=True
+15:10 - 16:20 The naming of the clients
+16:20 - 17:44 Potential incompatability with the two clients
+17:44 - 23:01 If miners signal readiness after the speedy trial fails
+23:01 - 25:06 More potential risks with a soft fork
+25:13 - 27:03 Recap of the clients and previous topics
+27:03 - 32:02 Potential incompatability (cont.)
+32:05 - 34:35 If the majority of miners don't signal when the 18 months are up for LOT=True and the collective wisdom of the market
+34:36 - 38:44 Concerns about development process of LOT=True client
+38:48 - 43:23 Different activation methods
+43:25 - 47:28 Block height vs. block time
+42:28 - 51:03 The time warp attack/consensus amongst developers
+51:03 - 51:53 Wrapping up
 
 ### Intro
 

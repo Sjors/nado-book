@@ -1,3 +1,6 @@
+---
+comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-04-23-taproot-activation-update/
+...
 \newpage
 ## LOT=true
 
