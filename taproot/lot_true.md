@@ -14,6 +14,23 @@ discussed the final implementation details of Speedy Trial, the Taproot activati
 
 After more than a year of deliberation, the Bitcoin Core project has merged Speedy Trial as the (first) activation mechanism for the Taproot protocol upgrade. Although van Wirdum and Provoost had already covered Taproot, the different possible activation mechanisms and Speedy Trial specifically in previous episodes, in this episode they laid out the final implementation details of Speedy Trial.
 
+00:00 - 4:20 Intro and brief explanation of taproot activation
+4:20 - 10:02 How Bitcoin core is going to upgrade to taproot/speedy trial
+10:02 - 12:58 LOT=True Client
+12:59 - 15:10 Differences between speedy trial and LOT=True
+15:10 - 16:20 The naming of the clients
+16:20 - 17:44 Potential incompatability with the two clients
+17:44 - 23:01 If miners signal readiness after the speedy trial fails
+23:01 - 25:06 More potential risks with a soft fork
+25:13 - 27:03 Recap of the clients and previous topics
+27:03 - 32:02 Potential incompatability (cont.)
+32:05 - 34:35 If the majority of miners don't signal when the 18 months are up for LOT=True and the collective wisdom of the market
+34:36 - 38:44 Concerns about development process of LOT=True client
+38:48 - 43:23 Different activation methods
+43:25 - 47:28 Block height vs. block time
+42:28 - 51:03 The time warp attack/consensus amongst developers
+51:03 - 51:53 Wrapping up
+
 ### Intro
 
 Aaron van Wirdum (AvW): Live from Utrecht this is the van Wirdum Sjorsnado.
