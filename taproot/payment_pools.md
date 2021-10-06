@@ -1,9 +1,7 @@
 \newpage
 ## Payment pools
 
-Listen to episode 6:
-
-\qrcode{https://nadobtc.libsyn.com/payment-pools-and-taproot-nado-6}
+![Bitcoin, Explained ep. 6](qr/06.png)
 
 What are payment pools?
 

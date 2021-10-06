@@ -4,9 +4,7 @@ comment: guest Ruben
 \newpage
 ## RGB
 
-Listen to episode 33:
-
-\qrcode{https://bitcoinmagazine.com/technical/a-discussion-on-rgb-tokens}
+![Bitcoin, Explained ep. 33](qr/33.png)
 
 The trio discusses RGB tokens, a Layer Two protocol for Bitcoin to support alternative currency and token schemes (like the currently popular non-fungible tokens, or NFTs).
 

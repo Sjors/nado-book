@@ -1,9 +1,7 @@
 \newpage
 ## Schnorr Signatures and Libsec256k1
 
-Listen to episode 9 (second half):
-
-\qrcode{https://nadobtc.libsyn.com/schnorr-signatures-and-libsec256k1-nado-9}
+![Bitcoin, Explained ep. 9](qr/09.png)
 
 (continues from basics/libsecp256k1)
 

@@ -1,9 +1,7 @@
 \newpage
 ## Miniscript
 
-Listen to episode 4:
-
-\qrcode{https://nadobtc.libsyn.com/what-is-miniscript-nado-4}
+![Bitcoin, Explained ep. 4](qr/04.png)
 
 dive into Miniscript and how it makes using Bitcoin Script much easier.
 

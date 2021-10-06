@@ -1,9 +1,7 @@
 \newpage
 ## Headers First, Assume Valid and Assume UTXO
 
-Listen to episode 14:
-
-\qrcode{https://bitcoinmagazine.com/technical/video-sync-bitcoin-faster-assume-utxo}
+![Bitcoin, Explained ep. 14](qr/14.png)
 
  discuss “Assume UTXO”, a proposal and project by Chaincode Labs alumni James O’Beirne.
 

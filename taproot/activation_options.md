@@ -1,9 +1,7 @@
 \newpage
 ## Taproot activation options
 
-Listen to episode 3:
-
-\qrcode{https://nadobtc.libsyn.com/explaining-taproot-nado-3}
+![Bitcoin, Explained ep. 3](qr/03.png)
 
 break down and explain the different opinions and options available for activating Taproot and potentially future softfork upgrades.
 

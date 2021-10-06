@@ -1,9 +1,7 @@
 \newpage
 ## Libsec256k1 (software libraries)
 
-Listen to episode 9 (first half):
-
-\qrcode{https://nadobtc.libsyn.com/schnorr-signatures-and-libsec256k1-nado-9}
+![Bitcoin, Explained ep. 9](qr/09.png)
 
 Aaron Van Wirdum:
 We're going to discuss libsecp25, it's a long name.
@@ -255,4 +253,4 @@ Helpful Links:
 
 Pieter Wuille interview on Chaincode podcast:
 
-\qrcode{https://podcastaddict.com/episode/94276066}
+https://podcastaddict.com/episode/94276066

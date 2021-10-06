@@ -1,9 +1,7 @@
 \newpage
 ## Bitcoin Core 22.0
 
-Listen to episode 45:
-
-\qrcode{https://bitcoinmagazine.com/technical/bitcoin-core-22-0-explained}
+![Bitcoin, Explained ep. 45](qr/45.png)
 
 discuss Bitcoin Core 22.0, the latest major release of the Bitcoin Core software client, currently the de facto reference implementation of the Bitcoin protocol. Aaron and Sjors highlight several improvements to the Bitcoin Core software.
 

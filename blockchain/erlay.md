@@ -1,9 +1,7 @@
 \newpage
 ## Transaction relay with Erlay
 
-Listen to episode 34:
-
-\qrcode{https://bitcoinmagazine.com/technical/scaling-bitcoin-with-the-erlay-protocol}
+![Bitcoin, Explained ep. 34](qr/34.png)
 
 discuss the Erlay protocol. Erlay is a proposal to reduce the bandwidth required to run a Bitcoin node, which has been proposed and developed by University of British Columbia researchers Gleb Naumenko, Alexandra Fedorova and Ivan Beschastnikh; Blockstream engineer Pieter Wuille; and independent Bitcoin Core contributor Gregory Maxwell.
 

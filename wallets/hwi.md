@@ -1,9 +1,7 @@
 \newpage
 ## Hardware Wallet Integration in Bitcoin Core
 
-Listen to episode 30:
-
-\qrcode{https://bitcoinmagazine.com/technical/hwi-and-hardware-wallet-integration-in-bitcoin-core}
+![Bitcoin, Explained ep. 30](qr/30.png)
 
 discuss hardware wallet integration into Bitcoin Core, one of the ongoing projects that Sjors regularly contributes to himself.
 

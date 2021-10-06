@@ -4,9 +4,7 @@ comment: guest Ruben Somsen
 \newpage
 ## Perpetual One-Way Peg
 
-Listen to episode 12:
-
-\qrcode{https://nadobtc.libsyn.com/the-perpetual-one-way-peg-nado-12}
+![Bitcoin, Explained ep. 12](qr/12.png)
 
 to explain his proposal to combine blind merged mining and perpetual one-way pegs in order to create a new type of sidechain. The bad news: it won't make you rich but it could help scale Bitcoin!
 

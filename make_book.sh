@@ -8,6 +8,13 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
+# Process QR codes:
+pushd qr
+    for f in *.txt; do
+        qrencode -o ${f%.txt}.png -r $f --level=M
+    done
+popd
+
 # Process figures:
 dot -Tsvg taproot/speedy_trial.dot > taproot/speedy_trial.svg
 

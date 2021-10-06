@@ -1,9 +1,7 @@
 \newpage
 ## Locked in
 
-Listen to episode 40:
-
-\qrcode{https://bitcoinmagazine.com/technical/discussing-taproots-lock-in}
+![Bitcoin, Explained ep. 40](qr/40.png)
 
 discuss the lock-in of the Taproot soft fork upgrade.
 

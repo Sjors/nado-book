@@ -4,11 +4,7 @@ comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-04-
 \newpage
 ## LOT=true
 
-Listen to episode 36:
-
-\qrcode{
-https://bitcoinmagazine.com/technical/speedy-trial-and-the-lot-true-client
-}
+![Bitcoin, Explained ep. 36](qr/36.png)
 
 discussed the final implementation details of Speedy Trial, the Taproot activation mechanism included in Bitcoin Core 0.21.1. Van Wirdum and Provoost also compared Speedy Trial to the alternative BIP 8 LOT=true activation client.
 

@@ -4,11 +4,7 @@ comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-03-
 \newpage
 ## Speedy Trial
 
-Listen to episode 31:
-
-\qrcode{
-https://nadobtc.libsyn.com/taproot-activation-with-speedy-trial-nado-31
-}
+![Bitcoin, Explained ep. 31](qr/31.png)
 
 TODO: refer to figure in text
 

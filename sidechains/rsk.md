@@ -1,9 +1,7 @@
 \newpage
 ## RSK, federated sidechains and Powpeg
 
-Listen to episode 20:
-
-\qrcode{https://nadobtc.libsyn.com/rsk-federated-sidechains-and-powpeg-nado-20}
+![Bitcoin, Explained ep. 20](qr/20.png)
 
 discuss RSK’s shift from a federated sidechain model to the project’s new Powpeg solution.
 

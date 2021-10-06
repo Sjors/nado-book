@@ -4,9 +4,7 @@ comment: guest Ruben
 \newpage
 ## Utreexo
 
-Listen to episode 15:
-
-\qrcode{https://bitcoinmagazine.com/technical/video-what-is-utreexo-and-what-could-it-mean-for-bitcoin}
+![Bitcoin, Explained ep. 15](qr/15.png)
 
 they dive into a concept by Tadge Dryja called Utreexo.
 

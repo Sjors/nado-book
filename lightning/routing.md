@@ -1,9 +1,7 @@
 \newpage
 ## Routing
 
-Listen to episode 41:
-
-\qrcode{https://nadobtc.libsyn.com/lightning-network-routing-nado-41}
+![Bitcoin, Explained ep. 41](qr/41.png)
 
 are joined by Lightning developer Joost Jager to discuss everything about Lightning Network routing.
 

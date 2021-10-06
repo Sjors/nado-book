@@ -1,5 +1,6 @@
 ---
-header-includes: |
-  \usepackage{qrcode}
+header-includes:
+- \usepackage{caption}
+- \captionsetup[figure]{labelformat=empty}
 lang: en
 ...

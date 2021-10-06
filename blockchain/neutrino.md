@@ -1,9 +1,7 @@
 \newpage
 ## Compact Client Side Filtering (Neutrino)
 
-Listen to episode 25:
-
-\qrcode{https://bitcoinmagazine.com/technical/discussing-compact-client-side-filtering-neutrino}
+![Bitcoin, Explained ep. 25](qr/25.png)
 
 discuss Compact Client Side Filtering, also known as Neutrino. Compact Client Side Filtering is a solution to use Bitcoin without needing to download and validate the entire blockchain, and without sacrificing your privacy to someone who operates a full node (and therefore did download and validate the entire blockchain).
 

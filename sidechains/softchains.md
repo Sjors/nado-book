@@ -4,9 +4,7 @@ comment: guest Ruben Somsen
 \newpage
 ## Softchains
 
-Listen to episode 27:
-
-\qrcode{https://bitcoinmagazine.com/technical/discussing-bitcoin-softchains-sidechains-using-pow-fraud-proofs}
+![Bitcoin, Explained ep. 27](qr/27.png)
 
 This time, they discuss one of Ruben’s own proposals, called Softchains.
 

@@ -1,9 +1,7 @@
 \newpage
 ## Replace by Fee (RBF)
 
-Listen to episode 26:
-
-\qrcode{https://bitcoinmagazine.com/technical/the-advantages-and-drawbacks-of-replace-by-fee}
+![Bitcoin, Explained ep. 26](qr/26.png)
 
 discuss Replace By Fee (RBF). RBF is a trick that lets unconfirmed transactions be replaced by conflicting transactions that include a higher fee.
 

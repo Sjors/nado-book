@@ -1,9 +1,7 @@
 \newpage
 ## Accounts with Easypaysy
 
-Listen to episode 11:
-
-\qrcode{https://nadobtc.libsyn.com/accounts-for-bitcoin-easypaysy-nado-11}
+![Bitcoin, Explained ep. 11](qr/11.png)
 
 discuss Jose Femenias' Easypaysy proposal, an account system for Bitcoin, on Bitcoin. They also announce groundbreaking news: The Van Wirdum Sjorsnado now has its own RSS-feed!
 

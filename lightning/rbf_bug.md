@@ -1,9 +1,7 @@
 \newpage
 ## RBF bug in Bitcoin Core
 
-Listen to episode 38:
-
-\qrcode{https://bitcoinmagazine.com/technical/bitcoin-core-cve-2021-31876-bug}
+![Bitcoin, Explained ep. 38](qr/38.png)
 
 discuss CVE-2021-31876, a bug in the Bitcoin Core code that affects replace-by-fee (RBF) child transactions.
 
