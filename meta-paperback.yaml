@@ -4,3 +4,5 @@ documentclass: memoir
 geometry:
 - "paperheight=9in"
 - "paperwidth=6in"
+title: "Bitcoin: a Work in Progress"
+author: Sjors Provoost
