@@ -1,4 +1,5 @@
 ---
 header-includes: |
   \usepackage{qrcode}
+lang: en
 ...
