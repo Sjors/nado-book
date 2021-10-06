@@ -20,7 +20,6 @@ dot -Tsvg taproot/speedy_trial.dot > taproot/speedy_trial.svg
 
 # Generate document
 pandoc $FORMAT --table-of-contents --toc-depth=2 --number-sections\
-        --filter pandoc-latex-barcode\
         --metadata-file meta.yaml\
         header-includes.yaml\
         intro.md\
