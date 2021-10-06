@@ -17,7 +17,7 @@ In this episode of "The Van Wirdum Sjorsnado," hosts Aaron van Wirdum and Sjors 
 
 Van Wirdum and Provoost explained that Bitcoin addresses are not part of the Bitcoin protocol. Instead, they are conventions used by Bitcoin (wallet) software to communicate where coins must be spent to: either a public key (P2PK), a public key hash (P2PKH), a script hash (P2SH), a witness public key hash (P2WPKH) or a witness script hash (P2WSH). Addresses also include some meta data about the address type itself.
 
-Bitcoin addresses communicate these payment options using their own “numeric systems," the hosts explained. The first version of this was base58, which uses 58 different symbols to represent numbers. Newer address types, bech32 addresses, instead use base32 which uses 32 different symbols to represent numbers.
+Bitcoin addresses communicate these payment options using their own “numeric systems," the hosts explained. The first version of this was base58, which uses 58 different symbols to represent numbers. Newer address types, bech32^[BIP 173 is the spec for bech32: <https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki>] addresses, instead use base32 which uses 32 different symbols to represent numbers.
 
 Van Wirdum and Provoost discussed some of the benefits of using Bitcoin addresses in general and bech32 addresses in specific. In addition, Provoost explained that the first version of bech32 addresses included a (relatively harmless) bug, and how a newer standard for bech32 addresses has fixed this bug.
 
@@ -409,7 +409,7 @@ Sjors Provoost:
 If there is a human interpretation that depends on it, then you don't want to do anything confusing. But if your only goal is to make it easy to copy paste things, and if your other goal is for every address to start with bc1q, because bc1 sounds cool, then maybe there's a reason why you want to do them out of order. I haven't read what what the rationale is in the order.
 
 Aaron Van Wirdum:
-Okay. Now bech32^[BIP 173 is the spec for bech32: <https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki>].
+Okay. Now bech32.
 
 Sjors Provoost:
 Yeah. So there's a set of 32 characters. But it's doing the same thing, right? It's again saying, 'Okay, here's a Pay-to-Public-Key, yeah, a Pay-to-Public-Key address. In this case, a pay to witness public key because it's using SegWit, but it's the same idea. Public key hash." So it says, "Hello," and then followed by the hash of the public key.
