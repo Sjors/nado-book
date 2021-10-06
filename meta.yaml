@@ -1,9 +1,6 @@
 title: "Bitcoin: a Work in Progress"
-subtitle: "Lorum Ipsum technical innovations from the trenches"
+subtitle: "Technical innovations from the trenches. Based on the podcast Bitcoin, Explained"
 author: Sjors Provoost
 language: en-US
-titlepage: true
-output:
-    pdf_document
 include-before:
   - '`\newpage{}`{=latex}'
