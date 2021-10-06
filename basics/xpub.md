@@ -5,6 +5,8 @@
 
 explain what an xpub is and how it is used by Bitcoin wallets.
 
+<!--
+
 Transcript (computer generated):
 
 Aaron:
@@ -312,3 +314,5 @@ Helpful Links:
 
 http://rosenbaum.se/book/grokking-bitcoin-4.html#_hierarchical_deterministic_wallets
 https://walletsrecovery.org
+
+-->

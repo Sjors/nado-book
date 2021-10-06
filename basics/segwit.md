@@ -15,6 +15,8 @@ Third, SegWit’s script versioning allows for easier upgrades to new transactio
 
 And fourth, input signing resolved some edge case problems where wallets needed to make sure they don’t overpay in transaction fees.. Hardware wallets benefit from this solution in particular.
 
+<!--
+
 Transcript (computer generated):
 
 Aaron:
@@ -319,3 +321,5 @@ It right? I think so. It's yours. All
 
 Sjors:
 Right, then. Thank you for listening to the fan. Weird. I'm sure as NATO, there you go.
+
+-->

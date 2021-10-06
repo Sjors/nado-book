@@ -33,6 +33,8 @@ Aaron explains that Speedy Trial was born out of a compromise between developers
 42:28 - 51:03 The time warp attack/consensus amongst developers
 51:03 - 51:53 Wrapping up
 
+<!--
+
 ### Intro
 
 Aaron van Wirdum (AvW): Live from Utrecht this is the van Wirdum Sjorsnado. Sjors, what is your pun of the week?
@@ -296,3 +298,5 @@ AvW: Sure. Any final thoughts? What are your expectations? What is going to happ
 SP: I don’t know, I’’m happy to see progress on the code. At least we’ve got actual code and then we’ll decide what to do with it. Thank you for listening to the van Wirdum Sjorsnado.
 
 AvW: There you go.
+
+-->

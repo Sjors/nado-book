@@ -27,6 +27,8 @@ After more than a year of deliberation, the Bitcoin Core project has merged Spee
 42:28 - 51:03 The time warp attack/consensus amongst developers
 51:03 - 51:53 Wrapping up
 
+<!--
+
 ### Intro
 
 Aaron van Wirdum (AvW): Live from Utrecht this is the van Wirdum Sjorsnado.
@@ -412,3 +414,5 @@ SP: But he cannot say there was consensus on something. If people disagree by de
 AvW: It was my impression that there was no consensus because people disagree. Let’s wrap up. For our listeners that are confused and worried I am going to emphasize the next 3 months Speedy Trial is going to run on both clients. If miners activate through Speedy Trial we are going to have Taproot in November and everyone is going to be happy. We will continue the soft fork discussion with the next soft fork.
 
 SP: We’ll have the same arguments all over again because we’ve learnt absolutely nothing.
+
+-->

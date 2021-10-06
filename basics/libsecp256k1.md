@@ -3,6 +3,8 @@
 
 ![Bitcoin, Explained ep. 9](qr/09.png)
 
+<!--
+
 Aaron Van Wirdum:
 We're going to discuss libsecp25, it's a long name.
 
@@ -254,3 +256,5 @@ Helpful Links:
 Pieter Wuille interview on Chaincode podcast:
 
 https://podcastaddict.com/episode/94276066
+
+-->

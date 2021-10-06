@@ -11,6 +11,7 @@ The main disadvantage of RBF is that it makes it slightly easier to double spend
 
 Finally, Sjors explains in detail how opt-in RBF works in Bitcoin Core, and which conditions must be met before a transaction is considered replaceable. He also notes some complications with this version of RBF, for example in the context of the Lightning Network.
 
+<!--
 Transcript (computer generated):
 
 Aaron:
@@ -303,3 +304,4 @@ That's probably what happened. They stance that was one fee. And then there was 
 
 Sjors:
 If I remember correctly, this particular transaction also had an opportune script. So it was probably some sort of protocol like that's doing some sort of token thing and the opportunity scape was also changing. So that's why it was marked as a double spend and not as a fee bump because I brought the detection code for that. And one of the rules was like, if the fee changes by a little bit, I'll consider it a few bump with, or without the RBF flag, because maybe people use it or they don't. But if something weird changes, then it just says, just manually investigate. This might be double spend and that crashed the market. Right. But yeah, there was nothing going on. Yeah. It was resolved exactly. Like you would expect it to resolve exactly like how Bitcoin is designed. Alrighty. Anything else then? Nope. All right. Thank you for listening to the event. Weird. I'm sure as NATO, there you go.
+-->

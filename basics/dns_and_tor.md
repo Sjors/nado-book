@@ -19,6 +19,8 @@ Timestamps:
 
 12:30 - 13:30: DNS is storing list of bitcoin nodes.
 
+<!--
+
 Transcript (computer generated):
 
 Aaron:
@@ -218,3 +220,5 @@ Helpful Links:
 * the ADDRv2 message added in BIP155 that allows nodes to gossip those new Tor addresses: https://github.com/bitcoin/bips/blob/master/bip-0155.mediawiki#Specification
 
 * DNS seeds and the bootstrap problem: https://stackoverflow.com/questions/41673073/how-does-the-bitcoin-client-determine-the-first-ip-address-to-connect
+
+-->

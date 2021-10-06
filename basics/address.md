@@ -20,6 +20,9 @@ Bitcoin addresses communicate these payment options using their own “numeric s
 
 Van Wirdum and Provoost discussed some of the benefits of using Bitcoin addresses in general and bech32 addresses in specific. In addition, Provoost explained that the first version of bech32 addresses included a (relatively harmless) bug, and how a newer standard for bech32 addresses has fixed this bug.
 
+<!---
+(^ comment marker should be removed during the first editing round)
+
 Aaron Van Wirdum:
 Live from Utrecht, this is the Van Wirdum Sjorsnado.
 
@@ -640,3 +643,4 @@ There you go.
 
 Aaron Van Wirdum:
 (music).
+-->

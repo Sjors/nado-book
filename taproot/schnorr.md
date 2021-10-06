@@ -5,6 +5,8 @@
 
 (continues from basics/libsecp256k1)
 
+<!--
+
 Aaron Van Wirdum:
 BIP 340 support was merged into libsecp256k1 this week.
 
@@ -133,6 +135,8 @@ Right. Yeah, so for the layman listener, performing math on it just means you ca
 
 Sjors Provoost:
 Yeah, which in the end translates to more privacy and less block space usage, so it's all good.
+
+-->
 
 Helpful Links:
 
