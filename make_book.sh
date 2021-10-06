@@ -2,7 +2,7 @@
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         -p|--pdf) FORMAT="-o nado-book.pdf"; shift ;;
-        -e|--epub) FORMAT="-t epub3 -o nado-book.epub" ;;
+        -e|--epub) FORMAT="-t epub3 -o nado-book.epub --css epub.css" ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
     esac
     shift
