@@ -21,6 +21,7 @@ dot -Tsvg taproot/speedy_trial.dot > taproot/speedy_trial.svg
 # Generate document
 pandoc $FORMAT --table-of-contents --toc-depth=2 --number-sections\
         --metadata-file meta.yaml\
+        --strip-comments\
         header-includes.yaml\
         intro.md\
         basics/_section.md\
