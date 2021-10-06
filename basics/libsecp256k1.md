@@ -2,7 +2,7 @@
 ## Libsec256k1 (software libraries)
 
 Listen to Bitcoin, Explained episode 9:\
-![](qr/09.png)
+![](qr/09.png){ width=25% }
 
 <!--
 

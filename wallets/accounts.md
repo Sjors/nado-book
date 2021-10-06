@@ -2,7 +2,7 @@
 ## Accounts with Easypaysy
 
 Listen to Bitcoin, Explained episode 11:\
-![](qr/11.png)
+![](qr/11.png){ width=25% }
 
 discuss Jose Femenias' Easypaysy proposal, an account system for Bitcoin, on Bitcoin. They also announce groundbreaking news: The Van Wirdum Sjorsnado now has its own RSS-feed!
 

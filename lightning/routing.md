@@ -2,7 +2,7 @@
 ## Routing
 
 Listen to Bitcoin, Explained episode 41:\
-![](qr/41.png)
+![](qr/41.png){ width=25% }
 
 are joined by Lightning developer Joost Jager to discuss everything about Lightning Network routing.
 

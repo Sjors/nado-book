@@ -2,7 +2,7 @@
 ## Taproot activation options
 
 Listen to Bitcoin, Explained episode 3:\
-![](qr/03.png)
+![](qr/03.png){ width=25% }
 
 break down and explain the different opinions and options available for activating Taproot and potentially future softfork upgrades.
 

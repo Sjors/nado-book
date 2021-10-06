@@ -2,7 +2,7 @@
 ## Payment pools
 
 Listen to Bitcoin, Explained episode 6:\
-![](qr/06.png)
+![](qr/06.png){ width=25% }
 
 What are payment pools?
 

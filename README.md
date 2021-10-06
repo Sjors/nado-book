@@ -10,7 +10,10 @@ In addition you need [Graphviz](https://www.graphviz.org).
 ```sh
 ./make_book.sh --epub
 ./make_book.sh --pdf
+./make_book.sh --paperback
 ```
+
+The paperback uses PDF, the Kindle version uses epub.
 
 ## Preview
 

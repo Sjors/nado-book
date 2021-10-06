@@ -5,7 +5,7 @@ comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-03-
 ## Speedy Trial
 
 Listen to Bitcoin, Explained episode 31:\
-![](qr/31.png)
+![](qr/31.png){ width=25% }
 
 TODO: refer to figure in text
 

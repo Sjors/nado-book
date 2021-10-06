@@ -2,7 +2,7 @@
 ## Basics
 
 Listen to Bitcoin, Explained episode 22:\
-![](qr/22.png)
+![](qr/22.png){ width=25% }
 
 discuss the basics of the Lightning Network, Bitcoin’s Layer 2 protocol for cheaper, faster and potentially more private transactions.
 

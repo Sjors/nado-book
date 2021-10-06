@@ -2,7 +2,7 @@
 ## Schnorr Signatures and Libsec256k1
 
 Listen to Bitcoin, Explained episode 9:\
-![](qr/09.png)
+![](qr/09.png){ width=25% }
 
 (continues from basics/libsecp256k1)
 

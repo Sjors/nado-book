@@ -2,7 +2,7 @@
 ## The basics of Taproot
 
 Listen to Bitcoin, Explained episode 2:\
-![](qr/02.png)
+![](qr/02.png){ width=25% }
 
 break down and explain Taproot, the building blocks that make Taproot possible, and what it enables Bitcoin to do.
 

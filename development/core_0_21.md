@@ -2,7 +2,7 @@
 ## Bitcoin Core 0.21
 
 Listen to Bitcoin, Explained episode 24:\
-![](qr/24.png)
+![](qr/24.png){ width=25% }
 
 discuss the newly released Bitcoin Core 0.21.0. Bitcoin Core 0.21.0 is the 21st and latest major release of the Bitcoin Core software, the oldest and most important Bitcoin node implementation, which is often also regarded as the reference implementation for the Bitcoin protocol.
 

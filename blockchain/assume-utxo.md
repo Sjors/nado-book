@@ -2,7 +2,7 @@
 ## Headers First, Assume Valid and Assume UTXO
 
 Listen to Bitcoin, Explained episode 14:\
-![](qr/14.png)
+![](qr/14.png){ width=25% }
 
  discuss “Assume UTXO”, a proposal and project by Chaincode Labs alumni James O’Beirne.
 
@@ -15,7 +15,7 @@ Finally, they explain how the security assumptions underpinning Assume Valid cou
 Helpful Links:
 
 Chaincode podcast about the same:
-https://www.youtube.com/watch?v=knBHvzKsIOY
+<https://www.youtube.com/watch?v=knBHvzKsIOY>
 
 Pull request:
-https://github.com/bitcoin/bitcoin/issues/15605
+<https://github.com/bitcoin/bitcoin/issues/15605>

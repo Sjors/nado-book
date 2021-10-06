@@ -5,7 +5,7 @@ comment: guest Ruben Somsen
 ## Softchains
 
 Listen to Bitcoin, Explained episode 27:\
-![](qr/27.png)
+![](qr/27.png){ width=25% }
 
 This time, they discuss one of Ruben’s own proposals, called Softchains.
 

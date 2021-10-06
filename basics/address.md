@@ -11,7 +11,7 @@
 ## Bitcoin addresses
 
 Listen to Bitcoin, Explained episode 28:\
-![](qr/28.png)
+![](qr/28.png){ width=25% }
 
 In this episode of "The Van Wirdum Sjorsnado," hosts Aaron van Wirdum and Sjors Provoost discussed Bitcoin addresses. Every Bitcoin user has probably at one point used Bitcoin addresses, but what are they, exactly?
 

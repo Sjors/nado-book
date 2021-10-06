@@ -6,7 +6,7 @@ comment: Does not cover the Bitcoin Cash part of the episode
 ## Timewarp attack
 
 Listen to Bitcoin, Explained episode 5:\
-![](qr/05.png)
+![](qr/05.png){ width=25% }
 
 explains the "time-warp attack" on Bitcoin
 

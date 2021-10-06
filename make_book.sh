@@ -1,8 +1,9 @@
 #!/bin/bash
 while [[ "$#" -gt 0 ]]; do
     case $1 in
-        -p|--pdf) FORMAT="-o nado-book.pdf"; shift ;;
-        -e|--epub) FORMAT="-t epub3 -o nado-book.epub --css epub.css --template templates/epub3.xml" ;;
+        -p|--pdf) EXTRA_OPTIONS="-o nado-book.pdf --metadata-file meta-ebook.yaml"; shift ;;
+        -e|--epub) EXTRA_OPTIONS="-t epub3 -o nado-book.epub --css epub.css --metadata-file meta-ebook.yaml --epub-chapter-level 2" ;;
+        -b|--paperback) EXTRA_OPTIONS="-o nado-paperback.pdf --metadata-file meta-paperback.yaml" ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
     esac
     shift
@@ -11,7 +12,7 @@ done
 # Process QR codes:
 pushd qr
     for f in *.txt; do
-        qrencode -o ${f%.txt}.png -r $f --level=M
+        qrencode -o ${f%.txt}.png -r $f --level=M -d 300
     done
 popd
 
@@ -19,9 +20,10 @@ popd
 dot -Tsvg taproot/speedy_trial.dot > taproot/speedy_trial.svg
 
 # Generate document
-pandoc $FORMAT --table-of-contents --toc-depth=2 --number-sections\
+pandoc --table-of-contents --toc-depth=2 --number-sections\
         --metadata-file meta.yaml\
         --strip-comments\
+        $EXTRA_OPTIONS\
         header-includes.yaml\
         intro.md\
         basics/_section.md\

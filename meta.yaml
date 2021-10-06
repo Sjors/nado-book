@@ -1,6 +1,3 @@
-title: "Bitcoin: a Work in Progress"
-subtitle: "Technical innovations from the trenches. Based on the podcast Bitcoin, Explained"
-author: Sjors Provoost
 language: en-US
 include-before:
   - '`\newpage{}`{=latex}'

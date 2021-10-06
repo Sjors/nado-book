@@ -2,7 +2,7 @@
 ## Eclipse attacks
 
 Listen to Bitcoin, Explained episode 17:\
-![](qr/17.png)
+![](qr/17.png){ width=25% }
 
 discuss Eclipse attacks. More specifically, they discuss the 2015 paper “Eclipse Attacks on Bitcoin’s Peer-to-Peer Network,” written by Ethan Heilman, Alison Kendler, Aviv Zohar and Sharon Goldberg, from Boston University and Hebrew University/MSR Israel.
 
