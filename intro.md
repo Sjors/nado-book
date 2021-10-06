@@ -1,6 +1,6 @@
 \newpage
 
-# Introduction
+# Introduction {epub:type=preface}
 
 Lorem ipsum
 
