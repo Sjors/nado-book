@@ -1,9 +1,18 @@
 #!/bin/bash
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -p|--pdf) FORMAT="-o nado-book.pdf"; shift ;;
+        -e|--epub) FORMAT="-t epub3 -o nado-book.epub" ;;
+        *) echo "Unknown parameter passed: $1"; exit 1 ;;
+    esac
+    shift
+done
+
 # Process figures:
 dot -Tsvg taproot/speedy_trial.dot > taproot/speedy_trial.svg
 
 # Generate document
-pandoc -o $1 --table-of-contents --toc-depth=2 --number-sections\
+pandoc $FORMAT --table-of-contents --toc-depth=2 --number-sections\
         --filter pandoc-latex-barcode\
         --metadata-file meta.yaml\
         header-includes.yaml\

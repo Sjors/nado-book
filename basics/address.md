@@ -407,7 +407,7 @@ Sjors Provoost:
 If there is a human interpretation that depends on it, then you don't want to do anything confusing. But if your only goal is to make it easy to copy paste things, and if your other goal is for every address to start with bc1q, because bc1 sounds cool, then maybe there's a reason why you want to do them out of order. I haven't read what what the rationale is in the order.
 
 Aaron Van Wirdum:
-Okay. Now bech32.
+Okay. Now bech32^[BIP 173 is the spec for bech32: <https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki>].
 
 Sjors Provoost:
 Yeah. So there's a set of 32 characters. But it's doing the same thing, right? It's again saying, 'Okay, here's a Pay-to-Public-Key, yeah, a Pay-to-Public-Key address. In this case, a pay to witness public key because it's using SegWit, but it's the same idea. Public key hash." So it says, "Hello," and then followed by the hash of the public key.
@@ -500,7 +500,7 @@ Aaron Van Wirdum:
 Mm-hmm (affirmative). You'd probably have to make several typos.
 
 Sjors Provoost:
-Well, yeah, you'd have to have the unlucky typo. I don't know if the odds are one in 10,000 or a 100,000 or something. But there's a lot of Bitcoin users. But in bech32 it's actually better, because it will not just tell you that there's a typo, it'll tell you where the typo is. And that's done differently. So where we talked about in the base58 system there is a check sum, which just takes all the bytes, basically takes all the bytes from the address and then hashes it, here there is very sophisticated mathematical magic. I don't think it's super sophisticated, but I can't explain what the actual magic is. But the magic makes it so that you can actually make a typo and it'll actually tell you where the typo is. And you can make about four typos and it'll still know where the typo is and what the real value is. If you do more than that, it won't.
+Well, yeah, you'd have to have the unlucky typo. I don't know if the odds are one in 10,000 or a 100,000 or something. But there's a lot of Bitcoin users. But in bech32 it's actually better, because it will not just tell you that there's a typo, it'll tell you where the typo is. And that's done differently. So where we talked about in the base58 system there is a check sum, which just takes all the bytes, basically takes all the bytes from the address and then hashes it, here there is very sophisticated mathematical magic ^[Math behind bech32 addresses: <https://medium.com/@MeshCollider/some-of-the-math-behind-bech32-addresses-cf03c7496285>]. I don't think it's super sophisticated, but I can't explain what the actual magic is. But the magic makes it so that you can actually make a typo and it'll actually tell you where the typo is. And you can make about four typos and it'll still know where the typo is and what the real value is. If you do more than that, it won't.
 
 Sjors Provoost:
 And the analogy I like to make with that, someone once told me, is it's like if you have a wall and you draw a bunch of circles on it, and each circle represents a correct value, and you're throwing a dart at it. And you might hit the bullseye then you have the right value, or you might just slightly miss the bullseye but you're still within that big circle, then you know exactly where it should have been.
@@ -587,7 +587,7 @@ Aaron Van Wirdum:
 That's pretty unlikely to happen.
 
 Sjors Provoost:
-Yeah. Because I might be confusing bytes and characters. But exactly, that's very unlikely to happen for SegWit version zero. But now we would say, "Okay, we're going to have a new ... We're going to have future versions of SegWit, such as Taproot," which would be bc1p, because P is the version one. And I believe for Taproot there's also a constraint in how long these addresses are supposed to be. So it's still not an acute problem, but in the future maybe we want to have addresses that are somewhat more arbitrary in length, because maybe you want to add some weird conditions to it. Or you want to communicate other information, not just the address. Maybe you want to put the amount inside the address. So this is why there's a new standard proposed BIP 350, which is called bech32m. And it's actually a very simple change. Think it adds to all the math, it adds one extra number to that math. And then it fixes that particular bug. And everybody's happy.
+Yeah. Because I might be confusing bytes and characters. But exactly, that's very unlikely to happen for SegWit version zero. But now we would say, "Okay, we're going to have a new ... We're going to have future versions of SegWit, such as Taproot," which would be bc1p, because P is the version one. And I believe for Taproot there's also a constraint in how long these addresses are supposed to be. So it's still not an acute problem, but in the future maybe we want to have addresses that are somewhat more arbitrary in length, because maybe you want to add some weird conditions to it. Or you want to communicate other information, not just the address. Maybe you want to put the amount inside the address. So this is why there's a new standard proposed BIP 350, which is called bech32m^[BIP 350 is the spec for bech32m: <https://github.com/bitcoin/bips/blob/master/bip-0350.mediawiki>]. And it's actually a very simple change. Think it adds to all the math, it adds one extra number to that math. And then it fixes that particular bug. And everybody's happy.
 
 Aaron Van Wirdum:
 So it fixes the bug that the qs don't matter anymore.
@@ -642,9 +642,3 @@ There you go.
 
 Aaron Van Wirdum:
 (music).
-
-Useful links:
-
-* math behind bech32 addresses: https://medium.com/@MeshCollider/some-of-the-math-behind-bech32-addresses-cf03c7496285
-* bech32: https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki
-* bech32m: https://github.com/bitcoin/bips/blob/master/bip-0350.mediawiki
