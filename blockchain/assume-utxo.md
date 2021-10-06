@@ -1,7 +1,8 @@
 \newpage
 ## Headers First, Assume Valid and Assume UTXO
 
-![Bitcoin, Explained ep. 14](qr/14.png)
+Listen to Bitcoin, Explained episode 14:\
+![](qr/14.png)
 
  discuss “Assume UTXO”, a proposal and project by Chaincode Labs alumni James O’Beirne.
 

@@ -1,7 +1,8 @@
 \newpage
 ## Mempools, Child Pays for Parent, and Package Relay
 
-![Bitcoin, Explained ep. 19](qr/19.png)
+Listen to Bitcoin, Explained episode 19:\
+![](qr/19.png)
 
 discussed Bitcoin mempools, Child Pays For Parent (CPFP) and package relay.
 

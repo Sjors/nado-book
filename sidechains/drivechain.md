@@ -4,7 +4,8 @@ comment: guest Ruben Somsen
 \newpage
 ## Drivechains
 
-![Bitcoin, Explained ep. 23](qr/23.png)
+Listen to Bitcoin, Explained episode 23:\
+![](qr/23.png)
 
 discusses Drivechain, a sidechain project spearheaded by Paul Sztorc.Sidechains are alternative blockchains, where coins are pegged to bitcoin.
 

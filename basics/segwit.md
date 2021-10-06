@@ -1,7 +1,8 @@
 \newpage
 ## SegWit
 
-![Bitcoin, Explained ep. 32](qr/32.png)
+Listen to Bitcoin, Explained episode 32:\
+![](qr/32.png)
 
 discuss Segregated Witness, also known as SegWit. SegWit was the last soft fork to have been activated on the Bitcoin network in the summer of 2017, and the biggest Bitcoin protocol upgrade to date.
 

@@ -4,7 +4,8 @@ comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-02-
 \newpage
 ## Taproot activation LOT=true vs FALSE
 
-![Bitcoin, Explained ep. 29](qr/29.png)
+Listen to Bitcoin, Explained episode 29:\
+![](qr/29.png)
 
 discuss activation of the Taproot soft fork upgrade, and more specifically, the lock-in on timeout (LOT) parameter. The LOT parameter can be set to either “true” (LOT=true) or “false” (LOT=false).
 

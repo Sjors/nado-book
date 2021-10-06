@@ -1,7 +1,8 @@
 \newpage
 ## Why open source matters (guix)
 
-![Bitcoin, Explained ep. 21](qr/21.png)
+Listen to Bitcoin, Explained episode 21:\
+![](qr/21.png)
 
 discuss why it matters that Bitcoin software is open source… and why even open source software doesn't necessarily solve all software-specific trust issues.
 

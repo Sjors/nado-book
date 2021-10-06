@@ -1,7 +1,8 @@
 \newpage
 ## PSBT and RBF attack
 
-![Bitcoin, Explained ep. 1](qr/01.png)
+Listen to Bitcoin, Explained episode 1:\
+![](qr/01.png)
 
 break down and explain Partially Signed Bitcoin Transactions (PSBT) and Replace By Fee (RBF) and some really tricky attacks that where recently discovered in Bitcoin.
 

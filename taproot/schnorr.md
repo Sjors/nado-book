@@ -1,7 +1,8 @@
 \newpage
 ## Schnorr Signatures and Libsec256k1
 
-![Bitcoin, Explained ep. 9](qr/09.png)
+Listen to Bitcoin, Explained episode 9:\
+![](qr/09.png)
 
 (continues from basics/libsecp256k1)
 

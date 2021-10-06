@@ -4,7 +4,8 @@ comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-03-
 \newpage
 ## Speedy Trial
 
-![Bitcoin, Explained ep. 31](qr/31.png)
+Listen to Bitcoin, Explained episode 31:\
+![](qr/31.png)
 
 TODO: refer to figure in text
 

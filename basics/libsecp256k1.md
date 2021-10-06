@@ -1,7 +1,8 @@
 \newpage
 ## Libsec256k1 (software libraries)
 
-![Bitcoin, Explained ep. 9](qr/09.png)
+Listen to Bitcoin, Explained episode 9:\
+![](qr/09.png)
 
 <!--
 

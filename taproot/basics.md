@@ -1,7 +1,8 @@
 \newpage
 ## The basics of Taproot
 
-![Bitcoin, Explained ep. 2](qr/02.png)
+Listen to Bitcoin, Explained episode 2:\
+![](qr/02.png)
 
 break down and explain Taproot, the building blocks that make Taproot possible, and what it enables Bitcoin to do.
 

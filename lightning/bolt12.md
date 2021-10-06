@@ -1,7 +1,8 @@
 \newpage
 ## Recurring payments, etc (bolt 12)
 
-![Bitcoin, Explained ep. 44](qr/44.png)
+Listen to Bitcoin, Explained episode 44:\
+![](qr/44.png)
 
 discuss BOLT 12 (Basis of Lightning Technology 12), a newly proposed Lightning Network specification for “offers”, a type of “meta invoices” designed by c-lightning developer Rusty Russell.
 

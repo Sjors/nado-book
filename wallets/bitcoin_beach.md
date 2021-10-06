@@ -1,7 +1,8 @@
 \newpage
 ## Bitcoin Beach wallet
 
-![Bitcoin, Explained ep. 42](qr/42.png)
+Listen to Bitcoin, Explained episode 42:\
+![](qr/42.png)
 
 speaks with Bitcoin Beach Wallet developer Nicolas Burtey — without cohost Sjors Provoost this time. Aaron and Nicolas met up in El Zonte, El Salvador — which has been dubbed Bitcoin Beach — to discuss the Bitcoin Beach Wallet, a Bitcoin and Lightning wallet specifically designed for use in the small Central American coastal town frequented by surfers and, now, bitcoiners.
 

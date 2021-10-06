@@ -1,7 +1,8 @@
 \newpage
 ## Taproot activation options
 
-![Bitcoin, Explained ep. 3](qr/03.png)
+Listen to Bitcoin, Explained episode 3:\
+![](qr/03.png)
 
 break down and explain the different opinions and options available for activating Taproot and potentially future softfork upgrades.
 
