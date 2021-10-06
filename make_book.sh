@@ -78,3 +78,4 @@ pandoc $FORMAT --table-of-contents --toc-depth=2 --number-sections\
         lightning/bolt12.md\
         lightning/eltoo.md\
         lightning/rbf_bug.md\
+        filler.md\
