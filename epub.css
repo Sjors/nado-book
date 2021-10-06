@@ -2,7 +2,12 @@
 body { margin: 5%; text-align: justify; font-size: medium; }
 code { font-family: monospace; }
 h1 { text-align: left; }
-h2 { text-align: left; }
+h2 {
+     text-align: left;
+     display: block;
+     page-break-before: always; /* CSS 2 */
+     break-before: page;   /* CSS 3+ */
+}
 h3 { text-align: left; }
 h4 { text-align: left; }
 h5 { text-align: left; }
