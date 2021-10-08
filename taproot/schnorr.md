@@ -1,5 +1,5 @@
 \newpage
-## Schnorr Signatures and Libsec256k1
+## Schnorr Signatures and Libsec256k1 {#sec:schnorr}
 
 Listen to Bitcoin, Explained episode 9:\
 ![](qr/09.png){ width=25% }

@@ -23,6 +23,7 @@ dot -Tsvg taproot/speedy_trial.dot > taproot/speedy_trial.svg
 pandoc --table-of-contents --toc-depth=2 --number-sections\
         --metadata-file meta.yaml\
         --strip-comments\
+        --filter pandoc-secnos\
         $EXTRA_OPTIONS\
         header-includes.yaml\
         intro.md\

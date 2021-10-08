@@ -5,6 +5,9 @@
 Install [Pandoc](https://pandoc.org) to generate an epub file.
 For PDF a LaTeX engine is required, see Pandoc documentation.
 
+The following Pandoc filters are used:
+* [pandoc-xnos](https://github.com/tomduck/pandoc-xnos)
+
 In addition you need [Graphviz](https://www.graphviz.org).
 
 ```sh
