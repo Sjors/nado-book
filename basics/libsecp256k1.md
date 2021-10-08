@@ -44,7 +44,7 @@ cURL^[<https://github.com/curl/curl>] is another example of this. It's a library
 
 In the case of OpenSSL, there have been plenty of bugs — and to add to that, it's easy to make mistakes with cryptographic code. What's more is OpenSSL is in C, so if you forget a semicolon, whoops, now you're skipping a line, and perhaps that line was actually checking the password. A famous example of this is the Heartbleed^[<https://gizmodo.com/how-heartbleed-works-the-code-behind-the-internets-se-1561341209>] bug from 2014, in which a small mistake made it so anyone with the know-how could log into any computer on the internet without a password.
 
-The equivalent of something like that in Bitcoin could mean, "Oh, now we have a problem: Anyone can trigger a sudden network split."
+The equivalent of something like that in Bitcoin could mean, "Oh, now we have a problem: Anyone can trigger a sudden network split." Chain splits can be triggered by all sorts of programming mistakes, not just changes in libraries. There have been a few close calls^[<https://blog.bitmex.com/bitcoins-consensus-forks/>].
 
 While all this was happening, Pieter Wuille^[<https://github.com/sipa>] was working on a library that was specifically designed to create and verify Bitcoin signatures. His original motivation had nothing to do with security; he just wanted it to work faster than OpenSSL.
 
