@@ -52,10 +52,3 @@
 \newpage
 ## Lorum ipsum
 \newpage
-## Lorum ipsum
-\newpage
-## Lorum ipsum
-\newpage
-## Lorum ipsum
-
-Dolor
