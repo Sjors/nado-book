@@ -55,6 +55,7 @@ Instead, he decided to basically write it from scratch, specifically for the sec
 This happened to coincide with the aforementioned security vulnerability, and the general reaction was that because there was a near miss which could have been a serious problem, moving away from OpenSSL for critical matters would be a good idea. In turn, developers made the decision to get rid of that particular dependency over time by copying or rewriting the various parts of the library that Bitcoin Core needs. This process was completed^[<https://github.com/bitcoin/bitcoin/pull/17265>] in 2019.
 
 So Wuille's libsecp256k1 — initially designed to be a performance improvement — pivoted to be a new library for Bitcoin that would remove the risks that came with OpenSSL. However, this came with two risks of its own:
+
  - Writing your own cryptographic library (this is dangerous outside of cryptocurrency, too).
  - Swapping out one critical library for another, because even the slightest difference in behavior could cause a chain split.
 
