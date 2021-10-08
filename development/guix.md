@@ -1,5 +1,5 @@
 \newpage
-## Why open source matters (guix)
+## Why open source matters (guix) {#sec:guix}
 
 Listen to Bitcoin, Explained episode 21:\
 ![](qr/21.png){ width=25% }
