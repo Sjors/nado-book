@@ -78,19 +78,19 @@ This was all well and good, until something new showed up.
 
 In March of 2017, Pieter Wuille spoke about a new address format^[<https://www.youtube.com/watch?v=NqiN9VFE4CU>], bech32, and it's been used since SegWit arrived on the scene. It isn't something that exists on the blockchain, rather it's a convention wallets can use. As the name suggests, it's a base 32 system, which means you have almost all the letters, and almost all the numbers, minus some ambiguous characters that you don't want to have because they look too much like numbers or letters.
 
-One of the biggest differences between bech32 and base58 is that there isn't a mixture of uppercase and lowercase letters. Instead, each letter is only in there once, which makes reading things out loud much easier. The other difference is it doesn't start with a specific number, making it appear arbitrary. It begins with bc1 or bc1q, but after that it could be anything. So the value zero is written as a Q, the value one is written as a P, the value two is written as a Z, etc.
+One of the biggest differences between bech32 and base58 is that there isn't a mixture of uppercase and lowercase letters. Instead, each letter is only in there once, which makes reading things out loud much easier. The precise mapping which letter or number corresponds to which value is, like in base58, arbitrary: the fact that P means 0 and Q means 1 has no deeper meaning.
 
-If there is a human interpretation that depends on it, then you don't want to do anything confusing. But if your only goal is to make it easy to copy paste things, and if your other goal is for every address to start with bc1q, because bc1 sounds cool, then maybe there's a reason why you want to do them out of order.
+A bech32 address consists of two parts seperated by `1`.
 
-Moving on, so there's a set of 32 characters. But it's doing the same thing, right? It's again saying, "OK, here's a P2Pk address. In this case, a Pay-to-Witness-Public-Key-Hash (P2WPKH) because it's using SegWit, but it's the same idea. Public key hash." So it says, "Hello," followed by the hash of the public key.
-
-There's something called the human-readable part, and that doesn't really have any meaning, other than that humans can recognize, "OK, if the address starts with bc, then it refers to Bitcoin as the currency." And the software of course can see this too, but both humans and software can understand this.
+The first part is intentionally human readable, e.g. "bc" (Bitcoin) or "lnbc" (Bitcoin lightning). The values represented by "b", "c", etc here have no meaning. It's there so that humans can recognize, "OK, if the address starts with bc, then it refers to Bitcoin as the currency." . However, wallets will check for their presence as a sanity check, and it's included in the checksum.
 
 The 1 is just a separator with no value. And if you look at the 32 numbers, 1 isn't included — it means "skip this."
 
-Next it starts with the SegWit version, zero, which translates to q in bech32. This is followed by 20 bytes or 32 bytes, which means it's either the public key hash or the script hash, respectively. And they're different lengths now, because SegWit uses the SHA256 hash of the script, rather than in the RIPEMD160 hash of the script.
+The second part starts with the SegWit version number. Version zero is represented with Q (bc1q...), see Chapter @sec:segwit. Version 1 is what we call Taproot, see Section @sec:taproot, as is represented with "P" (bc1p...). For version 0 SegWit the version number is followed by either 20 bytes or 32 bytes, which means it's either the public key hash or the script hash, respectively. And they're different lengths now, because SegWit uses the SHA256 hash (32 bytes) of the script, rather than in the RIPEMD160 hash (20 bytes) of the script.
 
-In base58, the script hash is the same length as the public key hash. But in SegWit, they're not the same length. So by looking at how long the address is, you immediately know whether you're paying to a script or you're paying to a public key hash.
+In base58, the script hash is the same length as the public key hash. But in SegWit, they're not the same length. So by looking at how long the address is, you immediately know whether you're paying to a script or you're paying to a public key hash. As an aside, Taproot removes this length distinction, thereby slightly improving privacy.
+
+So the new part is that there's a set of 32 characters, but otherwise things are very similar to base58. It's again saying, "OK, here's a P2Pk address. In this case, a Pay-to-Witness-Public-Key-Hash (P2WPKH) because it's using SegWit, but it's the same idea. There's a short prefix that tells both humans and the computer what the address is about, and then the hash of the public key or script.
 
 However, conciseness isn't the only benefit here. Another is error correction. In base58, there's a check sum, which means you add something to the address at the end. And that way, if you make a typo, the check sum at the end of the address won't work. There is of course a very low chance of having an unlucky typo in which it has a correct check sum, but it has happened.
 
