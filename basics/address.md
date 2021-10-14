@@ -25,17 +25,17 @@ In the past, it was possible to send Bitcoin to people’s IP addresses, [althou
 
 With Bitcoin, you connect to other peers, but nowadays you just connect to random peers. Perhaps in the beginning the idea might have been to connect to peers you know, and then you might as well do transactions with them. But right now, you don't really do transactions with the peers you're directly connected to. At least not on Bitcoin on-chain.
 
-Another way of doing transactions was by mining bitcoins, which means sending the block rewards to your public key. In the beginning, Bitcoin had a piece of mining software built into the software, so if you downloaded the Bitcoin software, it would just start mining. 
- 
+Another way of doing transactions was by mining bitcoins, which means sending the block rewards to your public key. In the beginning, Bitcoin had a piece of mining software built into the software, so if you downloaded the Bitcoin software, it would just start mining.
+
 Later on, there were mining pools, and it all became more professional. For example, the payout would likely go to a multi-signature address, from which it would be paid back to the individual pool participants. Or it could be paid directly to the pool participants, although that's a bit inefficient, because you'd need a long list of addresses in a coinbase.
 
-The P2PK way of paying someone was only ever really used for paying to IP address and for the miner, the block reward. Otherwise what was used was Pay-to-Public-Key-Hash (P2PKH). In this scenario, you're not sending money to a public key, but rather to the hash of that public key. 
+The P2PK way of paying someone was only ever really used for paying to IP address and for the miner, the block reward. Otherwise what was used was Pay-to-Public-Key-Hash (P2PKH). In this scenario, you're not sending money to a public key, but rather to the hash of that public key.
 
 And this is where addresses come in, because this type of payment actually used addresses for the first time. Not for the first time, this was always there. Also something I learned while doing a little bit of research. This was there since day one. There were Bitcoin addresses since day one, but they were only there for Pay-to-Public-Key-Hash.
 
 The script on the Bitcoin blockchain required that the person spending it had the public key belonging to the hash.
 
-There were a couple of benefits to the P2PKH. The first was that it was thought to be safer against quantum attacks, because you didn't have to say which public key you had. The second was that it's a little bit shorter, so it saves a bit on block space, although of course that wasn't an issue back then. 
+There were a couple of benefits to the P2PKH. The first was that it was thought to be safer against quantum attacks, because you didn't have to say which public key you had. The second was that it's a little bit shorter, so it saves a bit on block space, although of course that wasn't an issue back then.
 
 What you see on the blockchain itself, what's recorded on the blockchain is the actual hash of a public key. However, when you're getting paid on a public P2PKH, what you're sharing with someone is the hash, but it's done using an address. And this type of address is essentially the number one, followed by the hash of the public key. But it's encoded using something called base58.
 
@@ -73,11 +73,11 @@ This was all well and good, until something new showed up.
 
 ### Along Came Bech32
 
-In March of 2017, [Pieter Wuille spoke about a new address format](https://www.youtube.com/watch?v=NqiN9VFE4CU), bech32, and it's been used since SegWit arrived on the scene. It isn't something that exists on the blockchain, rather it's a convention wallets can use. As the name suggests, it's a base 32 system, which means you have almost all the letters, and almost all the numbers, minus some ambiguous characters that you don't want to have because they look too much like numbers or letters. 
+In March of 2017, [Pieter Wuille spoke about a new address format](https://www.youtube.com/watch?v=NqiN9VFE4CU), bech32, and it's been used since SegWit arrived on the scene. It isn't something that exists on the blockchain, rather it's a convention wallets can use. As the name suggests, it's a base 32 system, which means you have almost all the letters, and almost all the numbers, minus some ambiguous characters that you don't want to have because they look too much like numbers or letters.
 
 One of the biggest differences between bech32 and base58 is that there isn't a mixture of uppercase and lowercase letters. Instead, each letter is only in there once, which makes reading things out loud much easier. The other difference is it doesn't start with a specific number, making it appear arbitrary. It begins with bc1 or bc1q, but after that it could be anything. So the value zero is written as a Q, the value one is written as a P, the value two is written as a Z, etc.
 
-If there is a human interpretation that depends on it, then you don't want to do anything confusing. But if your only goal is to make it easy to copy paste things, and if your other goal is for every address to start with bc1q, because bc1 sounds cool, then maybe there's a reason why you want to do them out of order. 
+If there is a human interpretation that depends on it, then you don't want to do anything confusing. But if your only goal is to make it easy to copy paste things, and if your other goal is for every address to start with bc1q, because bc1 sounds cool, then maybe there's a reason why you want to do them out of order.
 
 Moving on, so there's a set of 32 characters. But it's doing the same thing, right? It's again saying, "OK, here's a P2Pk address. In this case, a Pay-to-Witness-Public-Key-Hash (P2WPKH) because it's using SegWit, but it's the same idea. Public key hash." So it says, "Hello," followed by the hash of the public key.
 
@@ -85,7 +85,7 @@ There's something called the human-readable part, and that doesn't really have a
 
 The 1 is just a separator with no value. And if you look at the 32 numbers, 1 isn't included — it means "skip this."
 
-Next it starts with the SegWit version, zero, which translates to q in bech32. This is followed by 20 bytes or 32 bytes, which means it's either the public key hash or the script hash, respectively. And they're different lengths now, because SegWit uses the SHA256 hash of the script, rather than in the RIPEMD160 hash of the script. 
+Next it starts with the SegWit version, zero, which translates to q in bech32. This is followed by 20 bytes or 32 bytes, which means it's either the public key hash or the script hash, respectively. And they're different lengths now, because SegWit uses the SHA256 hash of the script, rather than in the RIPEMD160 hash of the script.
 
 In base58, the script hash is the same length as the public key hash. But in SegWit, they're not the same length. So by looking at how long the address is, you immediately know whether you're paying to a script or you're paying to a public key hash.
 
@@ -97,15 +97,15 @@ To illustrate this better, it's like if you have a wall and you draw a bunch of 
 
 The idea there is you want the circles to be as big as possible obviously, but you don't want to waste any space. So that's an optimization problem in general. And of course, in the example of a two-dimensional wall with two-dimensional circles, it's pretty simple to visualize. Right? You throw the dart and you see, "OK, it's still within the big circle, so it should belong to this dot." So that is like saying, "OK, here's your typo and this is how you fix it." And then in the case of bech32, instead of a two-dimensional wall you have a 32-dimensional wall, and the circles are also probably 32-dimensional hyperspheres
 
-So now with bech32, you're hitting your keyboard, and somewhere in that 32-dimensional space you're slightly off, but you're still inside this sphere, whatever that might look like. And so it knows where the mistake is. 
+So now with bech32, you're hitting your keyboard, and somewhere in that 32-dimensional space you're slightly off, but you're still inside this sphere, whatever that might look like. And so it knows where the mistake is.
 
 ### But... There's a Problem
 
 If your bech32 address ends with a P, then you can add an arbitrary number of qs to it, and it still will match the check sum, and you won't be told there's a typo. In turn, your software would think it's correct, you'd be sending money to the wrong address, and it would be unspendable.
 
-The good news is that there's another constraint for the original version of SegWit, SegWit version zero, which is that an address is either 20 bytes or 32 bytes. And because it's constrained, if you add another q to it, then it's too long. So you still know it's wrong. 
+The good news is that there's another constraint for the original version of SegWit, SegWit version zero, which is that an address is either 20 bytes or 32 bytes. And because it's constrained, if you add another q to it, then it's too long. So you still know it's wrong.
 
-All in all, this kind of mistake is unlikely to happen with SegWit version zero. Of course, with future versions of SegWit, such as Taproot, the prefix would be bc1p, because P is the version one. And I believe for Taproot there's also a constraint in how long these addresses are supposed to be. 
+All in all, this kind of mistake is unlikely to happen with SegWit version zero. Of course, with future versions of SegWit, such as Taproot, the prefix would be bc1p, because P is the version one. And I believe for Taproot there's also a constraint in how long these addresses are supposed to be.
 
 So it's still not an acute problem, but in the future, maybe there will be a need to have addresses that are somewhat more arbitrary in length, because maybe you'll want to add some weird conditions to it. Or you'll want to communicate other information, and not just the address. Maybe you'll want to put the amount inside the address.
 
@@ -117,6 +117,6 @@ This fix comes with a minor annoyance, which is that if your wallet wants to sup
 
 But it does mean that, moving forward, when you see a bech32 address, you have to parse it, then see if it's the version zero or the version one, and then do things slightly differently. In turn, it means that, especially for hardware wallets with firmware updates, it could take a while.
 
-With all these changes, and the shift from base58 to bech32, there's the question of if a new address format could come to replace bech32. However, it seems unlikely to happen — at least for a long while. 
+With all these changes, and the shift from base58 to bech32, there's the question of if a new address format could come to replace bech32. However, it seems unlikely to happen — at least for a long while.
 
-Of course, there could actually be more information inside an address, such as is the case with Lightning invoices, which is discussed in Chapter TODO. Lightning invoices use bech32, but they're much longer because they contain a lot more information. They contain the public key, the amount, the deadline, and a bunch of secrets. They contain all sorts of stuff, all sorts of routing hints even. It's like a whole book you're sending over. 
+Of course, there could actually be more information inside an address, such as is the case with Lightning invoices, which is discussed in Chapter TODO. Lightning invoices use bech32, but they're much longer because they contain a lot more information. They contain the public key, the amount, the deadline, and a bunch of secrets. They contain all sorts of stuff, all sorts of routing hints even. It's like a whole book you're sending over.
