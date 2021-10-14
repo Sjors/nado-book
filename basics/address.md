@@ -60,9 +60,9 @@ Have you ever seen email source code for an attachment or similar? There are a l
 
 So how does this relate to P2PKH?  Well, the address is expressed as a one, followed by the public key hash, which is expressed in base58.
 
-That's the information you send to somebody else when you want them to send you Bitcoin. You could also just send them 0x00 ^[a pair of hexadecimal digits, prefixed by 0x, is often used to denote bytes, which contain 16 x 16 = 256 bits, so this represents one byte with the value zero], and then the public key. And maybe they would be able to interpret that, but probably not. In theory, you could send somebody the Bitcoin script in hexadecimal, or anything else you want.
+That's the information you send to somebody else when you want them to send you Bitcoin. You could also just send them 0x00 ^[a pair of hexadecimal digits, prefixed by 0x, is often used to denote bytes, which contain 16 x 16 = 256 bits, so this represents one byte with the value zero], and then the public key. And maybe they would be able to interpret that, but probably not.
 
-You could also send them the actual script used on the blockchain, because that's just binary information. The blockchain has this script that says, "If the person has the right public key hash and the public key belonging to this public key hash, then you can spend it." To learn more about how Bitcoin scripts work, refer to Chapter X.
+In theory, you could send somebody the Bitcoin script in hexadecimal, the format used on the blockchain, because that's just binary information. The blockchain has this script that says, "If the person has the right public key hash and the public key belonging to this public key hash, then you can spend it." To learn more about how Bitcoin scripts work, refer to Chapter @sec:miniscript.
 
 But even with all these options, the convention is that you use this standardized address format, which explains why all traditional Bitcoin addresses start with a one, and why they're all roughly the same length.
 

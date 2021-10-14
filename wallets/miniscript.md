@@ -1,5 +1,5 @@
 \newpage
-## Miniscript
+## Script and Miniscript {#sec:miniscript}
 
 Listen to Bitcoin, Explained episode 4:\
 ![](qr/04.png){ width=25% }
