@@ -70,7 +70,7 @@ In addition to using base58 for sending a Bitcoin address, you can also use it t
 
 This is because, in the past, users had paper wallets they could print. And if they were generated securely without a back door, then on one side of the piece of paper would be something starting with a five, and on the other side of the paper would be something starting with a one. And then it would say something like, "Show this to other people. And don't show this to other people."
 
-There are also addresses that begin with a three. Usually they're multi-signature addresses, but they could also be single-signature addresses, or even SegWit addresses (see Chapter X for more on this). This signifies a Pay-to-Script-Hash (P2SH), which means the person needs to not only have the script belonging to the hash, but also be able to solve the scripts.
+There are also addresses that begin with a three. Usually they're multi-signature addresses, but they could also be single-signature addresses, or even SegWit addresses^[As explained below, SegWit typically uses bech32 addresses. But it took a long time for all wallets and exchanges to support sending to bech32 addresses. In order to still take advantage of some of SegWit's benefits (see Chapter @sec:segwit) an address type was introduced that looks like regular P2SH to the sender, but contains SegWit magic under the hood. This is called a P2SH-P2WPKH address: <https://bitcoincore.org/en/segwit_wallet_dev/>]. This signifies a Pay-to-Script-Hash (P2SH), which means the person needs to not only have the script belonging to the hash, but also be able to solve the scripts.
 
 This was all well and good, until something new showed up.
 
