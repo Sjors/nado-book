@@ -80,7 +80,7 @@ In March of 2017, Pieter Wuille spoke about a new address format^[<https://www.y
 
 One of the biggest differences between bech32 and base58 is that there isn't a mixture of uppercase and lowercase letters. Instead, each letter is only in there once, which makes reading things out loud much easier. The precise mapping which letter or number corresponds to which value is, like in base58, arbitrary: the fact that P means 0 and Q means 1 has no deeper meaning.
 
-A bech32 address consists of two parts seperated by `1`.
+A bech32^[BIP 173 is the spec for bech32: <https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki>] address consists of two parts seperated by `1`.
 
 The first part is intentionally human readable, e.g. "bc" (Bitcoin) or "lnbc" (Bitcoin lightning). The values represented by "b", "c", etc here have no meaning. It's there so that humans can recognize, "OK, if the address starts with bc, then it refers to Bitcoin as the currency." . However, wallets will check for their presence as a sanity check, and it's included in the checksum.
 
