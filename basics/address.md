@@ -54,7 +54,7 @@ However, there have been — and still are — different bases. For example, the
 
 Satoshi introduced^[<https://tools.ietf.org/id/draft-msporny-base58-01.html>] base58, which uses 58 different symbols: zero through nine, and then most of the alphabet in both lowercase and uppercase. But there are some letters and numbers that are skipped because they're ambiguous and users could easily mistake them for the wrong one — for example, the number zero, the uppercase letter O, capital I, and lowercase l.
 
-Have you ever seen email source code for an attachment or similar? There are a lot of weird characters. That's base64, and base58 is based on that. But base64 includes characters like underscores, plus, equals, and slash. These are omitted in base58 so that additional encoding schemes aren't necessary to make it work for everyone.
+Have you ever seen email source code for an attachment or similar? There are a lot of weird characters. That's base64, and base58 is based on that. But base64 includes characters like underscores, plus, equals, and slash. These are omitted in base58 to make visual inspection easier and behave nicely as part of a URL.
 
 ### Base58 and the Pay-to-Public-Key-Hash
 
