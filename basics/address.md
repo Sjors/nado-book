@@ -106,9 +106,9 @@ So now with bech32, you're hitting your keyboard, and somewhere in that 32-dimen
 
 If your bech32 address ends with a P, then you can add an arbitrary number of qs to it, and it still will match the check sum, and you won't be told there's a typo. In turn, your software would think it's correct, you'd be sending money to the wrong address, and it would be unspendable.
 
-The good news is that there's another constraint for the original version of SegWit, SegWit version zero, which is that an address is either 20 bytes or 32 bytes. And because it's constrained, if you add another q to it, then it's too long. So you still know it's wrong.
+The good news is that there's another constraint for the original version of SegWit, SegWit version zero, which is that an address is either 20 bytes or 32 bytes. And because it's constrained, if you add another q to it, then it's too long. So you still know it's wrong. A similar size constraint was considered for Taproot, but thanks to the solution below this was not needed. A flexible length makes future improvements to Taproot easier.
 
-All in all, this kind of mistake is unlikely to happen with SegWit version zero. Of course, with future versions of SegWit, such as Taproot, the prefix would be bc1p, because P is the version one. And I believe for Taproot there's also a constraint in how long these addresses are supposed to be.
+All in all, this kind of mistake is unlikely to happen with SegWit version zero. Of course, with future versions of SegWit, such as Taproot, the prefix would be bc1p, because P is the version one.
 
 So it's still not an acute problem, but in the future, maybe there will be a need to have addresses that are somewhat more arbitrary in length, because maybe you'll want to add some weird conditions to it. Or you'll want to communicate other information, and not just the address. Maybe you'll want to put the amount inside the address.
 
