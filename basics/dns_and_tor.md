@@ -1,5 +1,5 @@
 \newpage
-## DNS boostrapping and Tor v3
+## DNS boostrapping and Tor v3 {#sec:dns}
 
 Listen to Bitcoin, Explained episode 13:\
 ![](qr/13.png){ width=25% }
