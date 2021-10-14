@@ -2,7 +2,6 @@
 
 <!---
 (these comments won't appear in the PDF)
-* send to IP address indeed existed: https://en.bitcoin.it/wiki/IP_transaction
 * SegWit (version 0) is explained in another chapter
 * bech32m is used in the Taproot softfork (segwit version 1), which will be explained in another chapter
 * lightning is mentioned at the end, also covered in other chapters
@@ -21,7 +20,7 @@ Bitcoin addresses communicate these payment options using their own numeric syst
 
 When you send Bitcoin to someone, you're creating a transaction that has a lot of inputs and an output, and the output specifies who can spend it. In theory, you could say anybody could spend it, but that's not a good idea. So what you do is put a constraint on it. And the very first version of that constraint was that whoever had the public key could spend the coins. This is called a Pay-to-Public-Key (P2PK).
 
-In the past, it was possible to send Bitcoin to people’s IP addresses, [although it hasn’t been a feature since 2012](https://en.bitcoin.it/wiki/IP_transaction). When this was possible, you could connect to someone's IP address and ask for a public key, and the person would give you the public key, which is where you sent the bitcoins. The specifics of it aren't entirely clear, but it makes sense, because before that, you had all these peer-to-peer applications, and they were generally very direct. So with Napster or Kazaa, you'd connect to other people and download things from them. 
+In the past, it was possible to send Bitcoin to people’s IP addresses, although it hasn’t been a feature^[<https://en.bitcoin.it/wiki/IP_transaction>] since 2012. When this was possible, you could connect to someone's IP address and ask for a public key, and the person would give you the public key, which is where you sent the bitcoins. The specifics of it aren't entirely clear, but it makes sense, because before that, you had all these peer-to-peer applications, and they were generally very direct. So with Napster or Kazaa, you'd connect to other people and download things from them.
 
 With Bitcoin, you connect to other peers, but nowadays you just connect to random peers. Perhaps in the beginning the idea might have been to connect to peers you know, and then you might as well do transactions with them. But right now, you don't really do transactions with the peers you're directly connected to. At least not on Bitcoin on-chain.
 
@@ -47,7 +46,7 @@ With base10, think about your hand. You have 10 fingers. So if you want to, for 
 
 There are 10 symbols, which means that once you get to the 11th number, you have to start reusing symbols you're already used, and this is done with different combinations.
 
-However, there have been — and still are — different bases. For example, [the Babylonians used base 60](https://blogs.scientificamerican.com/roots-of-unity/ancient-babylonian-number-system-had-no-zero/). And to read machine code, typically you’d use [hexadecimal, which is base16](https://en.wikipedia.org/wiki/Hexadecimal) — zero to nine, and then A to F. Meanwhile, computers tend to use base 2 internally — a binary number system — because chips are either on or off. This translates to using two digits, either zero or one, to do everything, and you can express any number with that.
+However, there have been — and still are — different bases. For example, the Babylonians^[<https://blogs.scientificamerican.com/roots-of-unity/ancient-babylonian-number-system-had-no-zero/>] used base 60. And to read machine code, typically you’d use hexadecimal^[<https://en.wikipedia.org/wiki/Hexadecimal>], which is base16 — zero to nine, and then A to F. Meanwhile, computers tend to use base 2 internally — a binary number system — because chips are either on or off. This translates to using two digits, either zero or one, to do everything, and you can express any number with that.
 
 And then there's base58, which uses 58 different symbols: zero through nine, and then most of the alphabet in both lowercase and uppercase. But there are some letters and numbers that are skipped because they're ambiguous and users could easily mistake them for the wrong one — for example, the number zero, the uppercase letter O, capital I, and lowercase l.
 
@@ -73,7 +72,7 @@ This was all well and good, until something new showed up.
 
 ### Along Came Bech32
 
-In March of 2017, [Pieter Wuille spoke about a new address format](https://www.youtube.com/watch?v=NqiN9VFE4CU), bech32, and it's been used since SegWit arrived on the scene. It isn't something that exists on the blockchain, rather it's a convention wallets can use. As the name suggests, it's a base 32 system, which means you have almost all the letters, and almost all the numbers, minus some ambiguous characters that you don't want to have because they look too much like numbers or letters.
+In March of 2017, Pieter Wuille spoke about a new address format^[<https://www.youtube.com/watch?v=NqiN9VFE4CU>], bech32, and it's been used since SegWit arrived on the scene. It isn't something that exists on the blockchain, rather it's a convention wallets can use. As the name suggests, it's a base 32 system, which means you have almost all the letters, and almost all the numbers, minus some ambiguous characters that you don't want to have because they look too much like numbers or letters.
 
 One of the biggest differences between bech32 and base58 is that there isn't a mixture of uppercase and lowercase letters. Instead, each letter is only in there once, which makes reading things out loud much easier. The other difference is it doesn't start with a specific number, making it appear arbitrary. It begins with bc1 or bc1q, but after that it could be anything. So the value zero is written as a Q, the value one is written as a P, the value two is written as a Z, etc.
 
