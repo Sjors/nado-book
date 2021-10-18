@@ -1,12 +1,5 @@
 \newpage
 
-<!---
-(these comments won't appear in the PDF)
-* SegWit (version 0) is explained in another chapter
-* bech32m is used in the Taproot softfork (segwit version 1), which will be explained in another chapter
-* lightning is mentioned at the end, also covered in other chapters
--->
-
 ## Bitcoin Addresses
 
 Listen to Bitcoin, Explained episode 28:\
