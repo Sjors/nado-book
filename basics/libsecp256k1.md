@@ -1,5 +1,5 @@
 \newpage
-## libsec256k1 (Software Libraries)
+## libsecp256k1 (Software Libraries)
 
 Listen to Bitcoin, Explained episode 9:\
 ![](qr/09.png){ width=25% }
