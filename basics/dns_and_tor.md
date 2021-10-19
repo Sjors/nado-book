@@ -89,7 +89,7 @@ Sjors Provoost:
 Well, that's defense in depth, right? So ideally your node behaves in a way that it looks indistinguishable from all of the nodes. So, you node downloads all the blocks and it downloads all the Mempool transactions and you can't tell which wallet is running inside, which node, but there's all these sneaky companies that try anyway and then they might know that you sent a specific transaction. Well then they might know which Bitcoins belong to you and since your IP address is quite easy to figure out who you are. It could be nice to have Tor in theory. But regardless, I mean, that's just how it works.
 
 Aaron Van Wirdum:
-Okay. So you can use Bitcoin from behind Tor and I think the thing was that there's a new type of onion addresses. There was an update in the Tor protocol.
+Okay. So you can use Bitcoin from behind Tor^[<https://github.com/bitcoin/bitcoin/blob/master/doc/tor.md>] and I think the thing was that there's a new type of onion addresses. There was an update in the Tor protocol.
 
 Sjors Provoost:
 That's right.
@@ -245,10 +245,10 @@ Aaron Van Wirdum:
 Which, nodes are these? Or why are these embedded in the source code?
 
 Sjors Provoost:
-Okay. So what happens every six months or so is we ask all the DNS seed maintainers to provide a list of the most reliable node, just all the nodes sorted by how frequently they're online, because your DNS seed tends to track. I've pulled this node once and it was online. So basically what a DNS seed does on its side is it is just a crawler. So the DNS seed goes to a couple of Bitcoin nodes, ask it for all the nodes it knows, keeps a list and just goes to the list, pings them all and then once it's done pinging them all, it's just going to be them all again.
+Okay. So what happens every six months or so is we ask all the DNS seed maintainers to provide a list of the most reliable node, just all the nodes sorted by how frequently they're online, because your DNS seed tends to track. I've pulled this node once and it was online. So basically what a DNS seed does on its side is it is just a crawler^[<https://github.com/sipa/bitcoin-seeder>]. So the DNS seed goes to a couple of Bitcoin nodes, ask it for all the nodes it knows, keeps a list and just goes to the list, pings them all and then once it's done pinging them all, it's just going to be them all again.
 
 Sjors Provoost:
-And it keeps track of how often they're online and so you make a list of that sorted by reliability. You take that from all the contributors and that goes into the source code. So that's the fallback. But it's only the first time you start your node, at least in theory. So only the very first time you start your node, you need this. After that, you'd keep track of the nodes you know about you store all these gossip nodes in a file and you start opening the file and you just try the nodes, you know about and only if you run out, if it doesn't work, you ask the seed it again.
+And it keeps track of how often they're online and so you make a list of that sorted by reliability. You take that from all the contributors and that goes into the source code^[<https://github.com/bitcoin/bitcoin/blob/v22.0/contrib/seeds/nodes_main.txt>]. So that's the fallback. But it's only the first time you start your node, at least in theory. So only the very first time you start your node, you need this. After that, you'd keep track of the nodes you know about you store all these gossip nodes in a file and you start opening the file and you just try the nodes, you know about and only if you run out, if it doesn't work, you ask the seed it again.
 
 Aaron Van Wirdum:
 And then you keep syncing your list of IP addresses with the new nodes.
