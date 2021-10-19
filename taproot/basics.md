@@ -1,5 +1,5 @@
 \newpage
-## The basics of Taproot
+## The basics of Taproot {#sec:taproot_basics}
 
 Listen to Bitcoin, Explained episode 2:\
 ![](qr/02.png){ width=25% }
