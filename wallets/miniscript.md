@@ -14,8 +14,6 @@ dive into Miniscript and how it makes using Bitcoin Script much easier.
 * Miniscript definition and playground: http://bitcoin.sipa.be/miniscript/
   * 33 fragments (words in my analogy)
   * Bitcoin script has
-* Blog explaining The DAO smart contract bug, hack and subsequent fork: https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-smart-contracts-2bd8c8db3562
-*
 -->
 
 <!-- Fragment from episode 2 that explains script:
@@ -298,6 +296,8 @@ Yeah. And we've seen in other projects how bad things can go if you have a very 
 
 Aaron:
 Are you referring to a project that rhymes on methereum? I think we're on the same page. Yes. Okay, so solutions we're getting to the solution part of the story.
+
+(This refers to The DAO, no need to be vague. Blog explaining The DAO smart contract bug, hack and subsequent Ethereum hard fork: https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-smart-contracts-2bd8c8db3562)
 
 Sjors:
 So what you're basically doing, what Miniscript is doing is it's taking certain example scripts, so sequence of op codes, and it lists, I think about 20 of them, 20 templates.
