@@ -158,7 +158,7 @@ Aaron Van Wirdum:
 Right. So, that has been upgraded.
 
 Sjors Provoost:
-Exactly. So, this is not rocket science to solve, but somebody actually needs to do it and somebody Wladimir van der Laan wrote a standard a while ago. I think in 2019, that has a new way of communicating, of gossiping addresses and the major change is that each message says, "Okay, this is the type of address I'm going to communicate and that can be various types, including the new Tor one, but also future ones and then it can have different lengths". So, in the future, if a new address format comes along, that's too long, that's not going to be a problem. So, that address format is going to-
+Exactly. So, this is not rocket science to solve, but somebody actually needs to do it and somebody Wladimir van der Laan wrote a standard a while ago. I think in 2019, that has a new way of communicating, of gossiping addresses and the major change is that each message says, "Okay, this is the type of address I'm going to communicate and that can be various types, including the new Tor one, but also future ones and then it can have different lengths". So, in the future, if a new address format^[For example, I2P (Invisible Internet Project, an alternative to Tor) support was added in 2021: <https://github.com/bitcoin/bitcoin/blob/7740ebcb023089d03cd2373da16305a4e501cfad/doc/i2p.md>] comes along, that's too long, that's not going to be a problem. So, that address format is going to-
 
 Aaron Van Wirdum:
 Yeah, so that sounds like a pretty straightforward upgrade from my layman's perspective as a non programmer, but a very important one because we do want to keep using Tor potentially.
