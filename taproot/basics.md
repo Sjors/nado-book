@@ -8,4 +8,4 @@ break down and explain Taproot, the building blocks that make Taproot possible, 
 
 Helpful Links:
 
-Taproot Explainer: https://bitcoinmagazine.com/articles/taproot-coming-what-it-and-how-it-will-benefit-bitcoin
+Taproot Explainer: <https://bitcoinmagazine.com/articles/taproot-coming-what-it-and-how-it-will-benefit-bitcoin>
