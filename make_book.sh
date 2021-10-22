@@ -82,4 +82,3 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         lightning/eltoo.md\
         lightning/rbf_bug.md\
         acknowledgments.md\
-        filler.md\
