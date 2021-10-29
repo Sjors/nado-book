@@ -72,7 +72,7 @@ Similar to workflow with regular P2PKH addresses, what you communicate to the se
 
 ### Miniscript and Script
 
-[Miniscript <https://medium.com/blockstream/miniscript-bitcoin-scripting-3aeff3853620>] is a project that was designed by a few Blockstream engineers: Pieter Wuille, Andrew Poelstra, and Sanket Kanjalkar. [It's <http://bitcoin.sipa.be/miniscript>] "a language for writing (a subset of) Bitcoin Scripts in a structured way, enabling analysis, composition, generic signing and more."
+Miniscript^[<https://medium.com/blockstream/miniscript-bitcoin-scripting-3aeff3853620>] is a project that was designed by a few Blockstream engineers: Pieter Wuille, Andrew Poelstra, and Sanket Kanjalkar. It's "a language for writing (a subset of) Bitcoin Scripts in a structured way, enabling analysis, composition, generic signing and more."^[<http://bitcoin.sipa.be/miniscript>]
 
 Script is a programming language that was introduced in Bitcoin, though it resembles a preexisting language known as Forth. Script seems to have been cobbled together as an afterthought, but it was only later that people realized that you can only change Bitcoin through very carefully grafted soft forks.
 
