@@ -6,7 +6,6 @@ Listen to Bitcoin, Explained episode 4:\
 
 <!-- Helpful Links:
 * Andrew Poelstra on script and miniscript (mentioned at the end of the episode) https://www.youtube.com/watch?v=_v1lECxNDiM
-* list of Bitcoin script op codes: https://en.bitcoin.it/wiki/Script
   * also shows a table of the "OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG" flow I describe
 -->
 
@@ -22,18 +21,20 @@ However, although this a common type of constraint, there are all sorts of other
 
 ### How Script Works
 
-Script is a stack-based language, so think of it like a stack of plates. You can put plates on it, and you can take the top plate off, but generally you don't want to just take a plate out of the middle.
+Script^[<https://en.bitcoin.it/wiki/Script>] is a stack-based language, so think of it like a stack of plates. You can put plates on it, and you can take the top plate off, but can't manipulate plates in the middle.
 
 This is just easy to implement as a programming language in general, e.g. when people made early computer processors, it was easier to have a memory where you could only put things on top of it and take the top element off. You didn't have addresses — like with memory, you have to say which part of the memory you want.
 
-With a stack, you put something on it and take something away from it. So the standard Bitcoin Script reads as follows:
+With a stack, you put something on it and take something away from it. The most commonly used (before SegWit, see chapter @sec:segwit) Bitcoin Script reads as follows:
 
-- OP_DUP (as in double or duplicate)
-- Op_Hash160 (as in take the 160 SHA hash, and then the RIPEMD-160 hash)
-- pubKeyHash (the public key hash)
-- OP_EQUAL_VERIFY
+- `OP_DUP` (as in double or duplicate)
+- `OP_HASH160` (which takes the SHA-256 hash twice, and then the RIPEMD-160 hash)
+- `pubKeyHash` (the public key hash)
+- `OP_EQUAL_VERIFY`
 
 These things tell your computer what to do and check, such as if things match or not, etc.
+
+As we explained in chapter @sec:address a Bitcoin address only contains the `pubKeyHash`, the rest is implied and the sender wallets includes it automatically before putting the script on the blockchain.
 
 When the blockchain encounters this script, it's in the output of a transaction. The output of a transaction shows the script that it's locked with and the amount. Now, if you want to spend that, you need to publish what you want to put on the stack, and that probably includes a signature.
 
@@ -41,13 +42,13 @@ What that actually looks like is a couple of things that you're putting on the s
 
 So we start with a stack that has two plates. Plate 1 at the bottom is your signature, and on top of that is a plate with your public key. And then the script says OP_DUP. It takes the top element of the stacks, takes the top plate, the public key and duplicates it. So now you have two plates with a public key at the top of the stack. And your signature's still at the bottom.
 
-The next instruction is Op_Hash160. This takes what's on top of the stack — one of the public keys — and hashes it, and then puts the hash back on the stack.
+The next instruction is `OP_HASH160`. This takes what's on top of the stack — one of the public keys — and hashes it, and then puts the hash back on the stack.
 
-At the bottom is the six, still the signature, then there's a public key and then there's the hash of the public key, that's what's on the stack.
+At the bottom is still the signature, then there's a public key and then there's the hash of the public key, that's what's on the stack.
 
 The next operation is pubKeyHash, which is the hash of your public key again. So now, the top of the stack is the hash of your public key twice.
 
-The next operation is OP_EQUAL_VERIFY, which takes the two things off the top of the stack and checks to see if they're the same.
+The next operation is `OP_EQUAL_VERIFY`, which takes the two things off the top of the stack and checks to see if they're the same.
 
 What's left on the stack is your signature and your public key, and it calls object six. So it checks the signature using your public key. And then, the stack is empty.
 

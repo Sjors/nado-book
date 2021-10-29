@@ -1,5 +1,5 @@
 \newpage
-## SegWit
+## SegWit {#sec:segwit}
 
 Listen to Bitcoin, Explained episode 32:\
 ![](qr/32.png){ width=25% }
