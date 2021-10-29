@@ -1,5 +1,5 @@
 \newpage
-## Script and Miniscript {#sec:miniscript}
+## Script, P2SH and Miniscript {#sec:miniscript}
 
 Listen to Bitcoin, Explained episode 4:\
 ![](qr/04.png){ width=25% }
@@ -54,17 +54,21 @@ What's left on the stack is your signature and your public key, and it calls obj
 
 That's how the Bitcoin program is run. And you can do arbitrarily complicated things. However, during this entire process, the signature isn't checked.
 
-### Script Hash
+### Script Hash and P2SH
 
-Now if I want to receive coins from someone, I have to specify exactly what script to use. This is strange, because I'd be telling them how I want to spend my coins. And if this was put in an address, then the above example would be a very long address, due to all these different possible constraints.
+In the general case, whenever I want to receive coins from someone, I have to specify exactly what script to use. In the above example we provide the hash of the public key in a standardized address format, and the sender wallet creates the correct script.
 
-We already explained in chapter @sec:address how addresses typically use the hash of the public key rather than the public itself. Similarly, instead of giving my counterparty (the sender) the full script — I give them the hash of the script, which is always the same length and happens to be the same length of a normal address.
+But in the earlier more complicated example, with alternative conditions such as my mom signing after a few years, communicating this becomes awkward. Even if there was an address standard for it, it would be a very long address indeed, due to all these different possible constraints.
 
-In 2012, the Pay-to-Script-Hash (P2SH) was standardized. These kinds of transactions let you send to a script hash, which is an address beginning with 3, in place of sending to a public key hash, which is an address beginning with 1. Otherwise, they'll look kind of the same.
+Fortunately there is an alternative to giving my counterparty (the sender) the full script — I can give them the hash of the script, which is always the same length and happens to be the same length of a normal address.
+
+In 2012, the Pay-to-Script-Hash (P2SH) was standardized^[<https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki>]. These kinds of transactions let you send to a script hash, which is an address beginning with 3, in place of sending to a public key hash, which is an address beginning with 1. Otherwise, they'll look kind of the same.
 
 The person on the other end has to copy-paste it, put it in their Bitcoin wallet, and send money to it. And it works. Now, when I want to spend that money, I need to reveal the actual script to the blockchain, which my wallet will handle automatically. So I don't have to bother anyone else with the complexity of remembering what the script was and correctly sending to it.
 
 In other words, if you receive money, you only have to share a hash. The person that's sending you money doesn't need to care what this hash actually hides. And then only when you spend the coins do you need to reveal the constraints. From a privacy point of view, this is much better than immediately putting the script on the chain. Chapter @sec:taproot_basics will explain how Taproot takes this even further.
+
+Similar to workflow with regular P2PKH addresses, what you communicate to the sender is just the hash of the script. Before the senders wallet puts that on the blockchain, it prepends `OP_HASH160` and appends `OP_EQUAL`. So this is essentially a script within a script. The outer script, which the wallet puts on the blockchain, tells the blockchain there is an inner script that must be revealed and satisfied by the recipient in order to spend from it.
 
 ### Miniscript and Script
 
