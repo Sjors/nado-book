@@ -4,11 +4,6 @@
 Listen to Bitcoin, Explained episode 4:\
 ![](qr/04.png){ width=25% }
 
-<!-- Helpful Links:
-* Andrew Poelstra on script and miniscript (mentioned at the end of the episode) https://www.youtube.com/watch?v=_v1lECxNDiM
-  * also shows a table of the "OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG" flow I describe
--->
-
 This chapter will talk about Miniscript and how it makes using Bitcoin Script much easier. TODO
 
 ### Constraints
@@ -98,7 +93,7 @@ This quote exemplifies the complexity of potential ways to mess around with scri
 
 To continue with the plate analogy, you'd take a hammer and smash one, and then you'd confuse two and paint one red and then it still works, if you do it correctly. It's completely absurd.
 
-So that's the long and short of the problem with scripts: It's easy to make mistakes or hide bugs and make all sorts of complex arrangements that people might or might not notice. And then your money goes places you don't want it to go. We've already seen in other projects, famously with the Ethereum DAO hack and resulting hard fork^[<https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-smart-contracts-2bd8c8db3562>], how bad things can get if you have a very complicated language that does things you're not completely expecting. But Bitcoin dodged many bullets in the early days, and despite its relative simplicity^[Pun intended: <https://blockstream.com/2018/11/28/en-simplicity-github/>], still requires vigilance.
+So that's the long^[If you can't get enough of this, watch Andrew Poelstra's two hour presentation at London Bitcoin Devs where he goes on and on and on about the problems in script: <https://www.youtube.com/watch?v=_v1lECxNDiM>] and short of the problem with scripts: It's easy to make mistakes or hide bugs and make all sorts of complex arrangements that people might or might not notice. And then your money goes places you don't want it to go. We've already seen in other projects, famously with the Ethereum DAO hack and resulting hard fork^[<https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-smart-contracts-2bd8c8db3562>], how bad things can get if you have a very complicated language that does things you're not completely expecting. But Bitcoin dodged many bullets in the early days, and despite its relative simplicity^[Pun intended: <https://blockstream.com/2018/11/28/en-simplicity-github/>], still requires vigilance.
 
 ### Enter Miniscript
 
