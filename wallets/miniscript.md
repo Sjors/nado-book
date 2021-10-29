@@ -12,7 +12,7 @@ Listen to Bitcoin, Explained episode 4:\
 
 This chapter will talk about Miniscript and how it makes using Bitcoin Script much easier. TODO
 
-## Constraints
+### Constraints
 
 Constraints are a way of specifying limitations: When you want to receive bitcoin, you tell the person sending it what rules apply to the transaction. For example, everybody can touch whatever's in your wallet, but then people can add a constraint such as "Only I can spend these coins." Or to be more precise, "These coins can only be spent if the transaction includes a signature that's made with a specific public key."
 
@@ -20,7 +20,7 @@ So you'd tell the other person your public key or the hash of it. Then, you'd pu
 
 However, although this a common type of constraint, there are all sorts of other types of constraints, and you can even specify multiple constraints, such as "I can spend this, but my mom also needs to sign it. But after 35 years, maybe I can sign it alone." In such a scenario, if you want to spend the money, you only need to fulfill one of the criterium to override the constraint.
 
-## Script Hash and Not Script
+### Script Hash and Not Script
 
 In 2012, the Pay-to-Script-Hash (P2SH) was standardized. These kinds of transactions let you send to a script hash, which is an address beginning with 3, in place of sending to a public key hash, which is an address beginning with 1.
 
@@ -32,7 +32,7 @@ The person on the other end has to copy-paste it, put it in their Bitcoin wallet
 
 In other words, if you receive money, you only have to share a hash. The person that's sending you money doesn't need to care what this hash actually hides. And then only when you spend the coins do you need to reveal the constraints. From a privacy point of view, this is much better than immediately putting the script on the chain. To learn more about privacy, specifically as it pertains to Taproot, refer the chapter @sec:taproot_basics.
 
-## Miniscript and Script
+### Miniscript and Script
 
 [Miniscript <https://medium.com/blockstream/miniscript-bitcoin-scripting-3aeff3853620>] is a project that was designed by a few Blockstream engineers: Pieter Wuille, Andrew Poelstra, and Sanket Kanjalkar. [It's <http://bitcoin.sipa.be/miniscript>] "a language for writing (a subset of) Bitcoin Scripts in a structured way, enabling analysis, composition, generic signing and more."
 
@@ -42,7 +42,7 @@ So you can't just say, "Oh, let's just start with a draft language," and then cl
 
 Ethereum had a similar experience in 2015, where complex programs could do all sorts of unexpected things. But Bitcoin had that in the beginning too.
 
-## How Script Works
+### How Script Works
 
 Script is a stack-based language, so think of it like a stack of plates. You can put plates on it, and you can take the top plate off, but generally you don't want to just take a plate out of the middle.
 
@@ -75,7 +75,7 @@ What's left on the stack is your signature and your public key, and it calls obj
 
 That's how the Bitcoin program is run. And you can do arbitrarily complicated things. However, during this entire process, the signature isn't checked.
 
-## Really Absurd Things
+### Really Absurd Things
 
 The script's language is diverse enough to allow for weird stuff. So if you're sending money to yourself, you only need this very simple standard script that everybody's seen a million times.
 
@@ -95,7 +95,7 @@ To continue with the plate analogy, you'd take a hammer and smash one, and then 
 
 So that's the long and short of the problem with scripts: It's easy to make mistakes or hide bugs and make all sorts of complex arrangements that people might or might not notice. And then your money goes places you don't want it to go. We've already seen [in other projects <https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-smart-contracts-2bd8c8db3562>] how bad things can get if you have a very complicated language that does things you're not completely expecting.
 
-## How Miniscript Works
+### How Miniscript Works
 
 Now with Miniscript, it takes certain example scripts, i.e. a sequence of op codes, and it lists a few dozen templates. And whereas Bitcoin Script uses an alphabet essentially, Miniscript has a set of words. So it's not a subset of the alphabet, but it's a subset of words. There are certain patterns of op codes you're allowed to use, and they need to be used in a specific way.
 
@@ -115,7 +115,7 @@ Miniscript allows you to check that, as long as the script you're getting is com
 
 With Bitcoin Script, it's challenging to draw out what a contract would look like, but with Miniscript, it's actually fairly simple. For example, every wallet out there could have a Miniscript interpreter, and the interpreter could show you a little pie chart, saying "You're this one piece of the pie, and there's this other piece of the pie that's really complicated, but you don't have to worry about it. It's not going to do anything sneaky."
 
-## Policy Language
+### Policy Language
 
 A policy language is a way to express your intentions. You could just write a script or the Miniscript directly, but when writing the policy language, you can have a compiler that can be very smart. A simple policy language might be just give me two of two signatures. And the policy language would probably convert that to Op_Multisig or we'll convert that to Multisig in Miniscript and Multisig in Miniscript is just Op_Multisig.
 
@@ -137,7 +137,7 @@ As mentioned above, Bitcoin Script is essentially an alphabet, just different le
 
 Miniscript has to be set in stone, because you want to do all the safety checks on it, but then just like you can have different programming language, you can have different policy languages.
 
-## Limitations and Policy Languages
+### Limitations and Policy Languages
 
 All this said, there are some limitations when you're using policy language or Miniscript in general.
 
