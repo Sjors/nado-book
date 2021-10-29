@@ -1,6 +1,6 @@
 \newpage
 
-## Bitcoin Addresses
+## Bitcoin Addresses {#sec:address}
 
 Listen to Bitcoin, Explained episode 28:\
 ![](qr/28.png){ width=25% }

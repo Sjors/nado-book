@@ -20,15 +20,15 @@ So you'd tell the other person your public key or the hash of it. Then, you'd pu
 
 However, although this a common type of constraint, there are all sorts of other types of constraints, and you can even specify multiple constraints, such as "I can spend this, but my mom also needs to sign it. But after 35 years, maybe I can sign it alone." In such a scenario, if you want to spend the money, you only need to fulfill one of the criterium to override the constraint.
 
-### Script Hash and Not Script
+### Script Hash
 
-In 2012, the Pay-to-Script-Hash (P2SH) was standardized. These kinds of transactions let you send to a script hash, which is an address beginning with 3, in place of sending to a public key hash, which is an address beginning with 1.
+Now if I want to receive coins from someone, I have to specify exactly what script to use. This is strange, because I'd be telling them how I want to spend my coins. And if this was put in an address, then the above example would be a very long address, due to all these different possible constraints.
 
-Now, if I want to receive coins from someone, I have to specify exactly what script to use. This is strange, because I'd be telling them how I want to spend my coins. And if this was put in an address, it'd be very long address, because it'd also include constraints.
+We already explained in chapter @sec:address how addresses typically use the hash of the public key rather than the public itself. Similarly, instead of giving my counterparty (the sender) the full script — I give them the hash of the script, which is always the same length and happens to be the same length of a normal address.
 
-So the idea is now — instead of sending to the script — I send to the hash of the script, which is always the same length and happens to be the same length of a normal address. This means the address will start with a 3 rather than a 1, but otherwise, they'll look kind of the same.
+In 2012, the Pay-to-Script-Hash (P2SH) was standardized. These kinds of transactions let you send to a script hash, which is an address beginning with 3, in place of sending to a public key hash, which is an address beginning with 1. Otherwise, they'll look kind of the same.
 
-The person on the other end has to copy-paste it, put it in their Bitcoin wallet, and send money to it. And it works. Now, when I want to spend that money, I need to reveal the actual script, but my wallet has to do that. So I don't have to bother anyone else with the complexity of remembering what the script was and correctly sending to it.
+The person on the other end has to copy-paste it, put it in their Bitcoin wallet, and send money to it. And it works. Now, when I want to spend that money, I need to reveal the actual script to the blockchain, which my wallet will handle automatically. So I don't have to bother anyone else with the complexity of remembering what the script was and correctly sending to it.
 
 In other words, if you receive money, you only have to share a hash. The person that's sending you money doesn't need to care what this hash actually hides. And then only when you spend the coins do you need to reveal the constraints. From a privacy point of view, this is much better than immediately putting the script on the chain. To learn more about privacy, specifically as it pertains to Taproot, refer the chapter @sec:taproot_basics.
 
