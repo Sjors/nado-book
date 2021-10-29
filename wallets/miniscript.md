@@ -148,14 +148,12 @@ As mentioned above, Bitcoin Script is essentially an alphabet, just different le
 
 Miniscript has to be set in stone, because you want to do all the safety checks on it, but then just like you can have different programming language, you can have different policy languages.
 
-### Limitations and Policy Languages
+### Limitations
 
 All this said, there are some limitations when you're using policy language or Miniscript in general.
 
-In practice, some policies might be very complicated and there would be infinite ways to execute these in Bitcoin Scripts. And because of all these weird double comma foot guns in Bitcoin Script, sometimes that's an advantage. Sometimes you can write something really efficiently in Bitcoin Script, that's just really horrible if you look at it objectively, but it's really fast or really fee-efficient.
+In order to ensure Miniscript, and its corresponding Bitcoin script, can be safely reasoned about, it does provide access to the full power of script. Sometimes however doing things safely results in a script that is unacceptably long and expensive to execute. In that case a human may be able to construct a better solution. The example Poelstra mentioned in the context of how Lightning deals with time locks, hashes or nonces. There are some optimizations, as he put it: "Oh, you do some weird switching of the stack and you interpret things, not the way they were," you put a public key on it, but you interpret it as a number, those kind of weird tricks.
 
-Lightning uses that the way they sometimes deal with time locks or hashes or nonces. So there are some optimizations where like what Poelstra said, "Oh, you do some weird switching of the stack and you interpret things, not the way they were," you put a public key on it, but you interpret it as a number, those kind of weird tricks.
+Those might be very hard to reason about, and a human might be able to do it, but the Miniscript compiler wouldn't, which means the compiler would end up with potentially longer Lightning scripts. Perhaps one day Miniscript can be expanded so it can also find these shortcuts. But the Miniscript developers have to be careful, because they really want to make sure there's nothing in Miniscript that brings back the scary properties of the underlying language.
 
-Those might be very hard to reason about, and a human might be able to do it, but the Miniscript compiler wouldn't, which means you end up with longer, potentially longer Lightning scripts, if you don't have all the whistles and bells in it. So it's possible Miniscript would be expanded if there were some other optimal way to do it. But you have to be careful, because you really want to make sure there's nothing in Miniscript that brings back the scary properties of the underlying language.
-
-With policy language, you're still steps away from having a practical tool for setting up a very complicated multisig wallet. There are all sorts of questions to answer, such as: How exactly do you do this setup? What are you emailing to each other? Are you emailing your keys or are you emailing something a little bit more abstract that you agree on first and then you exchange keys? These are practical things that aren't solved inside a Miniscript.
+Another limitation is policy language is just one of several tools that are needed to make very complicated multisig wallets a practical reality. There are still questions left to answer, such as: How exactly do you do this setup? What are you emailing to each other? Are you emailing your keys or are you emailing something a little bit more abstract that you agree on first and then you exchange keys? These are practical things that aren't solved inside a Miniscript.
