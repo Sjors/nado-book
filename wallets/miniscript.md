@@ -30,7 +30,7 @@ In 2012, the Pay-to-Script-Hash (P2SH) was standardized. These kinds of transact
 
 The person on the other end has to copy-paste it, put it in their Bitcoin wallet, and send money to it. And it works. Now, when I want to spend that money, I need to reveal the actual script to the blockchain, which my wallet will handle automatically. So I don't have to bother anyone else with the complexity of remembering what the script was and correctly sending to it.
 
-In other words, if you receive money, you only have to share a hash. The person that's sending you money doesn't need to care what this hash actually hides. And then only when you spend the coins do you need to reveal the constraints. From a privacy point of view, this is much better than immediately putting the script on the chain. To learn more about privacy, specifically as it pertains to Taproot, refer the chapter @sec:taproot_basics.
+In other words, if you receive money, you only have to share a hash. The person that's sending you money doesn't need to care what this hash actually hides. And then only when you spend the coins do you need to reveal the constraints. From a privacy point of view, this is much better than immediately putting the script on the chain. Chapter @sec:taproot_basics will explain how Taproot takes this even further.
 
 ### Miniscript and Script
 
