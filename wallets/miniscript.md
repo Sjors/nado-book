@@ -126,7 +126,9 @@ With Bitcoin Script, it's challenging to draw out what a contract would look lik
 
 ### Policy Language
 
-A policy language is a way to express your intentions. You could just write a script or the Miniscript directly, but when writing the policy language, you can have a compiler that can be very smart. A simple policy language might be just give me two of two signatures. And the policy language would probably convert that to Op_Multisig or we'll convert that to Multisig in Miniscript and Multisig in Miniscript is just Op_Multisig.
+A policy language is a way to express your intentions. It is easier than writing a Miniscript directly, let alone writing Bitcoin script directly. A compiler then does the hard work.
+
+Our earlier example of a poor man's multisig was actually found this way. Starting with a policy `and(pk(KEY_A),pk(KEY_B))` the compiler produced `and_v(v:pk(KEY_A),pk(KEY_B))` which is equivalent to the script `<KEY_A> OP_CHECKSIGVERIFY <KEY_B> OP_CHECKSIG`. It turns out this actually produces a lower fee transaction than `<KEY_A> <KEY_B> 2 OP_CHECKMULTISIG`. This is the kind of optimization a human might overlook, which is what compilers are good for.
 
 Basically, you write a policy language, which is like a higher-level programming language. What happens is usually when you see a programmer looking at a screen, you see something that looks like English, with words like four and next etc., but eventually, the machine is just reading bits and bytes.
 
@@ -138,9 +140,9 @@ In the case of multisig, I might say, "I just want two out of two signatures. I 
 
 However, you can also tell the compiler, "OK, I think most of the time it's condition A, but only 10 percent of the time it's condition B." The compiler can then try condition A nine times, and condition B one time, and then figure out what the expected fee is. It can optimize for typical use cases, worst case scenarios, all these things, and it can then spit out either a Bitcoin Script or a Miniscript that then becomes a Bitcoin Script.
 
-And in very practical terms, another thing it could do, I don't know if it can already do that is you have SegWit scripts now, but we'll have hopefully half Taproot, which can put things in a Merkle tree. So your compiler could figure out where to put stuff in the Merkle tree. You don't have to worry about how to build the Merkle tree.
+With Taproot, see chapter @sec:taproot, rather than splitting different conditions using _and_ / _or_, they can be split into a Merkle tree of scripts. You don't have to worry about how to build the Merkle tree, the compiler takes care of that. In principle each leave can also contain _and_ / _or_ statements. Does it make sense to do that? Or is it better to stick to one condition per leaf? Who knows, a future miniscript compiler can just try all permutations and decide what's optimal.
 
-The technical term for going from Miniscript to script — or for transforming source code from any language into another similar one — is trans-piling, which can basically be done in two directions. So you can go from Miniscript to script, or from script to Miniscript, but you can't go back to a policy language.
+The technical term for going from Miniscript to script — or for transforming source code from any language into another similar one — is trans-piling, which can basically be done in two directions. So you can go from Miniscript to script, or from script to Miniscript, but you can't trivially go back to a policy language. However using automated analysis tools, you can often still figure out what policy language was used to produce a given piece of miniscript.
 
 As mentioned above, Bitcoin Script is essentially an alphabet, just different letters that have different meanings. Meanwhile, Miniscript is a set of words — not really words, because you can put things between the words, but maybe words and brackets and commas. And then the policy language is the thing that can be converted to Miniscript. It's a bit more high level. And there are several of those apparently by now.
 
