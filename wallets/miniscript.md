@@ -82,11 +82,11 @@ Worse still, because Bitcoin is live system and users can't be forced to all upd
 
 The script's language is diverse enough to allow for weird stuff. If you just want somebody to send money to you, you only need this very simple standard script that we explained above: `OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG`
 
-But let's say you're collaborating, and you want to do a multi-signature, or multisig. In order to spend a coins, two signatures need to provided, rather than just one. Now you could just use `OP_CHECKMULTISIG`, but let's say they didn't yet exist. Instead, you could take the script for one signature from above and just duplicate it, like so: `OP_DUP OP_HASH160 <pubKeyHashA> OP_EQUALVERIFY OP_CHECKSIG OP_DUP OP_HASH160 <pubKeyHashB> OP_EQUALVERIFY OP_CHECKSIG`. In this example you are B, the second key that's checked.
+But let's say you're collaborating, and you want to do a multi-signature, or multisig. In order to spend a coins, two signatures need to provided, rather than just one. Now you could just use `OP_CHECKMULTISIG`, but let's say they didn't yet exist. Instead, you could take the script for one signature from above more or less duplicate it, like so: `<KEY_A> OP_CHECKSIGVERIFY <KEY_B> OP_CHECKSIG`. In this example you are B, the second key that's checked (we also don't bother with hashing the public keys).
 
 Essentially, if you start with those two public keys and two signatures on the stack, and you run both of these scripts in sequence, and then if A and B signed, it's all good. This would be a poor man's multisig.
 
-However, a malicious actor could insert an op code called `OP_RETURN` in the middle: `OP_DUP OP_HASH160 <pubKeyHashA> OP_EQUALVERIFY OP_CHECKSIG OP_RETURN OP_DUP OP_HASH160 <pubKeyHashB> OP_EQUALVERIFY OP_CHECKSIG`
+However, a malicious actor could insert an op code called `OP_RETURN` in the middle: `<KEY_A> OP_CHECKSIGVERIFY OP_RETURN <KEY_B> OP_CHECKSIG`
 
 This `OP_RETURN` code instructs the blockchain to stop evaluating the program, in other words skipping the signature check for B, your signature.
 
