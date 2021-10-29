@@ -20,28 +20,6 @@ So you'd tell the other person your public key or the hash of it. Then, you'd pu
 
 However, although this a common type of constraint, there are all sorts of other types of constraints, and you can even specify multiple constraints, such as "I can spend this, but my mom also needs to sign it. But after 35 years, maybe I can sign it alone." In such a scenario, if you want to spend the money, you only need to fulfill one of the criterium to override the constraint.
 
-### Script Hash
-
-Now if I want to receive coins from someone, I have to specify exactly what script to use. This is strange, because I'd be telling them how I want to spend my coins. And if this was put in an address, then the above example would be a very long address, due to all these different possible constraints.
-
-We already explained in chapter @sec:address how addresses typically use the hash of the public key rather than the public itself. Similarly, instead of giving my counterparty (the sender) the full script — I give them the hash of the script, which is always the same length and happens to be the same length of a normal address.
-
-In 2012, the Pay-to-Script-Hash (P2SH) was standardized. These kinds of transactions let you send to a script hash, which is an address beginning with 3, in place of sending to a public key hash, which is an address beginning with 1. Otherwise, they'll look kind of the same.
-
-The person on the other end has to copy-paste it, put it in their Bitcoin wallet, and send money to it. And it works. Now, when I want to spend that money, I need to reveal the actual script to the blockchain, which my wallet will handle automatically. So I don't have to bother anyone else with the complexity of remembering what the script was and correctly sending to it.
-
-In other words, if you receive money, you only have to share a hash. The person that's sending you money doesn't need to care what this hash actually hides. And then only when you spend the coins do you need to reveal the constraints. From a privacy point of view, this is much better than immediately putting the script on the chain. Chapter @sec:taproot_basics will explain how Taproot takes this even further.
-
-### Miniscript and Script
-
-[Miniscript <https://medium.com/blockstream/miniscript-bitcoin-scripting-3aeff3853620>] is a project that was designed by a few Blockstream engineers: Pieter Wuille, Andrew Poelstra, and Sanket Kanjalkar. [It's <http://bitcoin.sipa.be/miniscript>] "a language for writing (a subset of) Bitcoin Scripts in a structured way, enabling analysis, composition, generic signing and more."
-
-Script is a programming language that was introduced in Bitcoin, though it resembles a preexisting language known as Forth. Script seems to have been cobbled together as an afterthought, but it was only later that people realized that you can only change Bitcoin through very carefully grafted soft forks.
-
-So you can't just say, "Oh, let's just start with a draft language," and then clean it up later. As a result, it's been a complete nightmare to make sure the language doesn't do anything surprising or bad. And in turn, a lot of the operations that were part of the language were removed almost immediately, because there were all sorts of ways that you could just crash a node or do other things.
-
-Ethereum had a similar experience in 2015, where complex programs could do all sorts of unexpected things. But Bitcoin had that in the beginning too.
-
 ### How Script Works
 
 Script is a stack-based language, so think of it like a stack of plates. You can put plates on it, and you can take the top plate off, but generally you don't want to just take a plate out of the middle.
@@ -74,6 +52,28 @@ The next operation is OP_EQUAL_VERIFY, which takes the two things off the top of
 What's left on the stack is your signature and your public key, and it calls object six. So it checks the signature using your public key. And then, the stack is empty.
 
 That's how the Bitcoin program is run. And you can do arbitrarily complicated things. However, during this entire process, the signature isn't checked.
+
+### Script Hash
+
+Now if I want to receive coins from someone, I have to specify exactly what script to use. This is strange, because I'd be telling them how I want to spend my coins. And if this was put in an address, then the above example would be a very long address, due to all these different possible constraints.
+
+We already explained in chapter @sec:address how addresses typically use the hash of the public key rather than the public itself. Similarly, instead of giving my counterparty (the sender) the full script — I give them the hash of the script, which is always the same length and happens to be the same length of a normal address.
+
+In 2012, the Pay-to-Script-Hash (P2SH) was standardized. These kinds of transactions let you send to a script hash, which is an address beginning with 3, in place of sending to a public key hash, which is an address beginning with 1. Otherwise, they'll look kind of the same.
+
+The person on the other end has to copy-paste it, put it in their Bitcoin wallet, and send money to it. And it works. Now, when I want to spend that money, I need to reveal the actual script to the blockchain, which my wallet will handle automatically. So I don't have to bother anyone else with the complexity of remembering what the script was and correctly sending to it.
+
+In other words, if you receive money, you only have to share a hash. The person that's sending you money doesn't need to care what this hash actually hides. And then only when you spend the coins do you need to reveal the constraints. From a privacy point of view, this is much better than immediately putting the script on the chain. Chapter @sec:taproot_basics will explain how Taproot takes this even further.
+
+### Miniscript and Script
+
+[Miniscript <https://medium.com/blockstream/miniscript-bitcoin-scripting-3aeff3853620>] is a project that was designed by a few Blockstream engineers: Pieter Wuille, Andrew Poelstra, and Sanket Kanjalkar. [It's <http://bitcoin.sipa.be/miniscript>] "a language for writing (a subset of) Bitcoin Scripts in a structured way, enabling analysis, composition, generic signing and more."
+
+Script is a programming language that was introduced in Bitcoin, though it resembles a preexisting language known as Forth. Script seems to have been cobbled together as an afterthought, but it was only later that people realized that you can only change Bitcoin through very carefully grafted soft forks.
+
+So you can't just say, "Oh, let's just start with a draft language," and then clean it up later. As a result, it's been a complete nightmare to make sure the language doesn't do anything surprising or bad. And in turn, a lot of the operations that were part of the language were removed almost immediately, because there were all sorts of ways that you could just crash a node or do other things.
+
+Ethereum had a similar experience in 2015, where complex programs could do all sorts of unexpected things. But Bitcoin had that in the beginning too.
 
 ### Really Absurd Things
 
