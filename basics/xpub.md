@@ -1,5 +1,5 @@
 \newpage
-## What is an Xpub?
+## What is an Xpub? {#sec:xpub}
 
 Listen to Bitcoin, Explained episode 7:\
 ![](qr/07.png){ width=25% }

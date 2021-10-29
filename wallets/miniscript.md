@@ -100,17 +100,21 @@ To continue with the plate analogy, you'd take a hammer and smash one, and then 
 
 So that's the long and short of the problem with scripts: It's easy to make mistakes or hide bugs and make all sorts of complex arrangements that people might or might not notice. And then your money goes places you don't want it to go. We've already seen in other projects, famously with the Ethereum DAO hack and resulting hard fork^[<https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-smart-contracts-2bd8c8db3562>], how bad things can get if you have a very complicated language that does things you're not completely expecting. But Bitcoin dodged many bullets in the early days, and despite its relative simplicity^[Pun intended: <https://blockstream.com/2018/11/28/en-simplicity-github/>], still requires vigilance.
 
-### How Miniscript Works
+### Enter Miniscript
+
+Miniscript^[<https://medium.com/blockstream/miniscript-bitcoin-scripting-3aeff3853620>] is a project that was designed by a few Blockstream engineers: Pieter Wuille, Andrew Poelstra, and Sanket Kanjalkar. It's "a language for writing (a subset of) Bitcoin Scripts in a structured way, enabling analysis, composition, generic signing and more." You can see examples and try it yourself at <http://bitcoin.sipa.be/miniscript>.
 
 Now with Miniscript, it takes certain example scripts, i.e. a sequence of op codes, and it lists a few dozen templates. And whereas Bitcoin Script uses an alphabet essentially, Miniscript has a set of words. So it's not a subset of the alphabet, but it's a subset of words. There are certain patterns of op codes you're allowed to use, and they need to be used in a specific way.
 
-This removes some of the foot guns, but it also allows you to do very cool stuff safely. In particular, it lets you do things like, `AND`. So you can say condition `A` must be true `AND` condition `B` must be true and you can do things like `OR`. And whatever's inside the `OR` or inside the `AND` can be arbitrarily complex.
+A simple example of miniscript is `pkh(A)`, which is the equivalent of the standard P2PKH script we analyzed above (`OP_DUP OP_HASH160 <pubKeyHashA> OP_EQUALVERIFY OP_CHECKSIG`). The poor man's multisig above in miniscript is `and_v(v:pk(pubKeyA),pk(pubKeyB))`.
 
-In contrast, with Bitcoin Script, you have `if` and `L` statements, but if you're not careful, those `if` and `L` statements won't do what you think they're going to do, because there's complexity hidden after these statements.
+Miniscript makes sure there's no funny stuff in the fine print. It removes some of the foot guns^[an unsafe piece of code that causes users to shoot themselves in the foot. Early Bitcoin developer Gregory Maxwell was using this term as early as 2012, see e.g. <https://github.com/bitcoin/bitcoin/pull/1889#issuecomment-9638527>, but it may be older], but it also allows you to do very cool stuff safely. In particular, it lets you do things like, `AND`. So you can say condition `A` must be true `AND` condition `B` must be true and you can do things like `OR`. And whatever's inside the `OR` or inside the `AND` can be arbitrarily complex.
+
+In contrast, with Bitcoin Script, you have `if` and `else` statements, but if you're not careful, those `if` and `else` statements won't do what you think they're going to do, because there's complexity hidden after these statements.
 
 Meanwhile, with Miniscript, the templates make sure you're only doing things that are actually doing what you think they're doing. Let's say you're a company and you offer a semi-custodial wallet solution, where you have one of the keys of the user and the user has the other has two keys. You don't have a majority of the keys, but maybe there's a five-year timeout where you do have control in case the user dies or something else happens.
 
-This would be like a multisig set up. Normally, when you set up a multisig, everybody gives their master key, their expo, for example, and you create a simple script that has three keys and three people sign. But the problem is, because you're a big business that offers a service, you have some really complicated internal accounting department and you maybe want to have five different signatures by specific people with varied levels of complexity.
+This would be like a multisig set up. Normally, when you set up a multisig, everybody gives their public key^[Usually everyone would provide not just one public key, but a whole series of public keys, by using an extended public key, or xpub, see chapter @sec:xpub] for example, and you create a simple script that has three keys and three people sign. But the problem is, because you're a big business that offers a service, you have some really complicated internal accounting department and you maybe want to have five different signatures by specific people with varied levels of complexity.
 
 There's a lot of complex stuff you can do with it, and all the complex stuff should count as one key.
 
