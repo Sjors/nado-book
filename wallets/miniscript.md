@@ -70,35 +70,35 @@ In other words, if you receive money, you only have to share a hash. The person 
 
 Similar to workflow with regular P2PKH addresses, what you communicate to the sender is just the hash of the script. Before the senders wallet puts that on the blockchain, it prepends `OP_HASH160` and appends `OP_EQUAL`. So this is essentially a script within a script. The outer script, which the wallet puts on the blockchain, tells the blockchain there is an inner script that must be revealed and satisfied by the recipient in order to spend from it.
 
-### Miniscript and Script
-
-Miniscript^[<https://medium.com/blockstream/miniscript-bitcoin-scripting-3aeff3853620>] is a project that was designed by a few Blockstream engineers: Pieter Wuille, Andrew Poelstra, and Sanket Kanjalkar. It's "a language for writing (a subset of) Bitcoin Scripts in a structured way, enabling analysis, composition, generic signing and more."^[<http://bitcoin.sipa.be/miniscript>]
-
-Script is a programming language that was introduced in Bitcoin, though it resembles a preexisting language known as Forth. Script seems to have been cobbled together as an afterthought, but it was only later that people realized that you can only change Bitcoin through very carefully grafted soft forks.
-
-So you can't just say, "Oh, let's just start with a draft language," and then clean it up later. As a result, it's been a complete nightmare to make sure the language doesn't do anything surprising or bad. And in turn, a lot of the operations that were part of the language were removed almost immediately, because there were all sorts of ways that you could just crash a node or do other things.
-
-Ethereum had a similar experience in 2015, where complex programs could do all sorts of unexpected things. But Bitcoin had that in the beginning too.
-
 ### Really Absurd Things
 
-The script's language is diverse enough to allow for weird stuff. So if you're sending money to yourself, you only need this very simple standard script that everybody's seen a million times.
+Script is a programming language that was introduced in Bitcoin, though it resembles a preexisting language known as Forth. Script seems to have been cobbled together as an afterthought. In fact, a lot of the operations that were part of the language were removed almost immediately, because there were all sorts of ways that you could just crash a node or do other bad things.
 
-But let's say you're collaborating, and you want to do a multi-signature, or multisig. Now there are actually instructions for how to do this, but let's say they didn't yet exist. So one way you could do a multisig is to use the script that was just explained (with the recipient's public key or public key hash), along with the script with the sender's public key hash, just in sequence.
+Unfortunately with Bitcoin you can't just start with a draft language and then clean it up later. But this only became clear later once developers realized the only safe way to upgrade Bitcoin is through very carefully grafted soft forks. Every change has to be backwards compatible and not break any existing script out there. But developers can't always know the intention of scripts that are already out there, and worse still, as we explained above, most scripts are hashed, so they could contain anything.
 
-Essentially, if you start with those two public keys and two signatures on the stack, and you run both of these scripts in sequence, and then if both people signed, it's all good. This would be a poor man's multisig.
+As a result, it's been a complete nightmare to make sure upgrades to the script language don't do anything surprising or bad. If it turns out that existing nodes can be negatively impacted, e.g. crashed, by some obscure script, developers have to very carefully work around that issue; they have to fix the problem without accidentally making coins unspendable, and without introducing new bugs, including in any unknown (hashed) script potentially out there.
 
-However, someone who doesn't know better, or someone with bad intentions, could insert an op code called OP_RETURN in the middle. This OP_RETURN code basically instructs XXX to stop evaluating the program.
+Worse still, because Bitcoin is live system and users can't be forced to all update at once, an ideal fix should not tip off an attacker as to what the issue is. But at the same time it's an open source and transparent system, where changes can't go through without public justification. This makes Responsible Disclosure^[<https://github.com/bitcoin/bitcoin/blob/master/SECURITY.md>] very complicated. So it's really best to go above and beyond to avoid such problems in first place.
 
-Now, if I had an electronic lawyer that wanted to check that this multisig is what it says it does, that lawyer might say, "Well, I see that my signature's being checked, but I don't care about whatever the rest of the script does." But of course, the electronic lawyer should see that OP_RETURN statement and warn me. But the problem is there are countless ways in which scripts can go wrong, which is why we need a standardized way of dealing with these scripts.
+The script's language is diverse enough to allow for weird stuff. If you just want somebody to send money to you, you only need this very simple standard script that we explained above: `OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG`
 
-[In an interview with Bitcoin Magazine <https://bitcoinmagazine.com/technical/miniscript-how-blockstream-engineers-are-making-bitcoin-programming-easyer>], Andrew Poelstra said, "There are opcodes in Bitcoin Script which do really absurd things, like, interpret a signature as a true/false value, branch on that; convert that boolean to a number and then index into the stack, and rearrange the stack based on that number. And the specific rules for how it does this are super nuts."
+But let's say you're collaborating, and you want to do a multi-signature, or multisig. In order to spend a coins, two signatures need to provided, rather than just one. Now you could just use `OP_CHECKMULTISIG`, but let's say they didn't yet exist. Instead, you could take the script for one signature from above and just duplicate it, like so: `OP_DUP OP_HASH160 <pubKeyHashA> OP_EQUALVERIFY OP_CHECKSIG OP_DUP OP_HASH160 <pubKeyHashB> OP_EQUALVERIFY OP_CHECKSIG`. In this example you are B, the second key that's checked.
+
+Essentially, if you start with those two public keys and two signatures on the stack, and you run both of these scripts in sequence, and then if A and B signed, it's all good. This would be a poor man's multisig.
+
+However, a malicious actor could insert an op code called `OP_RETURN` in the middle: `OP_DUP OP_HASH160 <pubKeyHashA> OP_EQUALVERIFY OP_CHECKSIG OP_RETURN OP_DUP OP_HASH160 <pubKeyHashB> OP_EQUALVERIFY OP_CHECKSIG`
+
+This `OP_RETURN` code instructs the blockchain to stop evaluating the program, in other words skipping the signature check for B, your signature.
+
+If you naively looked at this script, you might think that your signature is checked at the end, and so the rest of the script is not relevant. If you had a vigilent electronic lawyer, who would properly check that this "smart contract" does what it says it does, they might say, "Carefull there, your signature is not getting checked". This hypothetical electronic lawyer should see that `OP_RETURN` "fine print" and warn you. But the problem is there are countless ways in which scripts can go wrong, which is why we need a standardized way of dealing with these scripts.
+
+In an interview with Bitcoin Magazine^[<https://bitcoinmagazine.com/technical/miniscript-how-blockstream-engineers-are-making-bitcoin-programming-easyer>], Andrew Poelstra said, "There are opcodes in Bitcoin Script which do really absurd things, like, interpret a signature as a true/false value, branch on that; convert that boolean to a number and then index into the stack, and rearrange the stack based on that number. And the specific rules for how it does this are super nuts."
 
 This quote exemplifies the complexity of potential ways to mess around with script.
 
 To continue with the plate analogy, you'd take a hammer and smash one, and then you'd confuse two and paint one red and then it still works, if you do it correctly. It's completely absurd.
 
-So that's the long and short of the problem with scripts: It's easy to make mistakes or hide bugs and make all sorts of complex arrangements that people might or might not notice. And then your money goes places you don't want it to go. We've already seen [in other projects <https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-smart-contracts-2bd8c8db3562>] how bad things can get if you have a very complicated language that does things you're not completely expecting.
+So that's the long and short of the problem with scripts: It's easy to make mistakes or hide bugs and make all sorts of complex arrangements that people might or might not notice. And then your money goes places you don't want it to go. We've already seen in other projects, famously with the Ethereum DAO hack and resulting hard fork^[<https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-smart-contracts-2bd8c8db3562>], how bad things can get if you have a very complicated language that does things you're not completely expecting. But Bitcoin dodged many bullets in the early days, and despite its relative simplicity^[Pun intended: <https://blockstream.com/2018/11/28/en-simplicity-github/>], still requires vigilance.
 
 ### How Miniscript Works
 
