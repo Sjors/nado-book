@@ -56,7 +56,6 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         wallets/hardware_jade.md\
         taproot/_section.md\
         taproot/basics.md\
-        taproot/schnorr.md\
         taproot/payment_pools.md\
         taproot/activation_options.md\
         taproot/activation_options_2.md\
