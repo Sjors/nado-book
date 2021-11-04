@@ -18,7 +18,7 @@ However, although this a common type of constraint, there are all sorts of other
 
 Script^[<https://en.bitcoin.it/wiki/Script>] is a stack-based language, so think of it like a stack of plates. You can put plates on it, and you can take the top plate off, but you can't manipulate plates in the middle.
 
-A stack works different from regular memory where you can read and write to arbitrary addresses (such as a hard disk or RAM - Random Access Memory). A stack is easier to implement and reason about.^[In contrast, Ethereum smart contracts have both a stack and regular memory. It even has long storage. As a consequence it is much difficult for developers to reason about its behavior. See also <https://dlt-repo.net/storage-vs-memory-vs-stack-in-solidity-ethereum/>].
+A stack works differently than regular memory where you can read and write to arbitrary addresses (such as a hard disk or RAM — random-access memory). A stack is easier to implement and reason about.^[In contrast, Ethereum smart contracts have both a stack and regular memory. It even has long storage. As a consequence, it's much more difficult for developers to reason about its behavior. See also <https://dlt-repo.net/storage-vs-memory-vs-stack-in-solidity-ethereum/>].
 
 With a stack, you put something on it and take something away from it. The most commonly used (before SegWit, see chapter @sec:segwit) Bitcoin Script reads as follows:
 
