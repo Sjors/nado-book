@@ -18,7 +18,7 @@ However, although this a common type of constraint, there are all sorts of other
 
 Script^[<https://en.bitcoin.it/wiki/Script>] is a stack-based language, so think of it like a stack of plates. You can put plates on it, and you can take the top plate off, but you can't manipulate plates in the middle.
 
-This is just as easy to implement as a programming language in general, e.g. when people made early computer processors, it was easier to have memory where you could only put things on top of it or take the top element off. You didn't have addresses — like with memory, you'd have to say which part of the memory you want.
+A stack works different from regular memory where you can read and write to arbitrary addresses (such as a hard disk or RAM - Random Access Memory). A stack is easier to implement and reason about.^[In contrast, Ethereum smart contracts have both a stack and regular memory. It even has long storage. As a consequence it is much difficult for developers to reason about its behavior. See also <https://dlt-repo.net/storage-vs-memory-vs-stack-in-solidity-ethereum/>].
 
 With a stack, you put something on it and take something away from it. The most commonly used (before SegWit, see chapter @sec:segwit) Bitcoin Script reads as follows:
 
@@ -45,7 +45,7 @@ The next operation is `pubKeyHash`, which is the hash of your public key again. 
 
 Finally, there's `OP_EQUAL_VERIFY`, which takes the two things off the top of the stack and checks to see if they're the same.
 
-What's left on the stack is your signature and your public key, and it calls object six. So it checks the signature using your public key, and then the stack is empty.
+What's left on the stack is your signature and your public key, and it checks the signature using your public key, and then the stack is empty.
 
 In a nutshell, that's how the Bitcoin program is run, and you can do arbitrarily complicated things along the way. However, during this entire process, the signature isn't checked.
 
@@ -67,13 +67,16 @@ Similar to the workflow with regular P2PKH addresses, what you communicate to th
 
 ### Really Absurd Things
 
-Script is a programming language that was introduced in Bitcoin, though it resembles a preexisting language known as Forth. It also seems to have been cobbled together as an afterthought. In fact, a lot of the operations that were part of the language were removed almost immediately, because there were all sorts of ways that you could just crash a node or do other bad things.
-
+Script is a programming language that was introduced in Bitcoin, though it resembles a preexisting language known as Forth. It also seems to have been cobbled together as an afterthought. In fact, a lot of the operations that were part of the language were removed almost immediately, because there were all sorts of ways that you could just crash a node or do other bad things.^[
 Unfortunately, with Bitcoin, you can't just start with a draft language and then clean it up later. But this only became clear once developers realized the only safe way to upgrade Bitcoin is through very carefully grafted soft forks. Every change has to be backward compatible and not break any existing script. But developers can't always know the intention of scripts that are already out there, and worse still, as explained above, most scripts are hashed, so they could contain anything.
-
+<!-- The double \ is needed to separate paragraphs in a footnote. Without it everything but the first paragraph disappears entirely. -->
+\
+\
 As a result, it's been a complete nightmare to make sure upgrades to the script language don't do anything surprising or bad. If it turns out that existing nodes can be negatively impacted, e.g. crashed, by some obscure script, developers have to very carefully work around that issue; they have to fix the problem without accidentally making coins unspendable and without introducing new bugs, including in any unknown (hashed) script potentially out there.
-
+\
+\
 Worse still, because Bitcoin is a live system and users can't be forced to all update at once, an ideal fix should not tip off an attacker as to what the issue is. But at the same time, it's an open source and transparent system, where changes can't go through without public justification. This makes Responsible Disclosure^[<https://github.com/bitcoin/bitcoin/blob/master/SECURITY.md>] very complicated. So it's really best to go above and beyond to avoid such problems in first place.
+]
 
 The script's language is diverse enough to allow for weird stuff. If you just want somebody to send money to you, you only need this very simple standard script explained above: `OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG`.
 
@@ -139,7 +142,7 @@ With Taproot (see chapter @sec:taproot), rather than splitting different conditi
 
 The technical term for going from Miniscript to script — or for transforming source code from any language into another similar one — is trans-piling, which can basically be done in two directions. So you can go from Miniscript to script, or from script to Miniscript, but you can't trivially go back to a policy language. However, using automated analysis tools, you can often still figure out what policy language was used to produce a given piece of Miniscript.
 
-As mentioned above, Bitcoin Script is essentially an alphabet, just different letters that have different meanings. Meanwhile, Miniscript is a set of words — not really words, because you can put things between the words, but maybe words and brackets and commas. And then the policy language is the thing that can be converted to Miniscript. It's a bit more high level. 
+As mentioned above, Bitcoin Script is essentially an alphabet, just different letters that have different meanings. Meanwhile, Miniscript is a set of words — not really words, because you can put things between the words, but maybe words and brackets and commas. And then the policy language is the thing that can be converted to Miniscript. It's a bit more high level.
 
 Miniscript has to be set in stone, because you want to do all the safety checks on it, but then just like you can have different programming language, you can have different policy languages.
 
