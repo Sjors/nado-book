@@ -46,6 +46,7 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         attacks/timewarp.md\
         attacks/psbt_rbf.md\
         attacks/eclipse.md\
+        attacks/fake_nodes.md\
         attacks/erebus.md\
         attacks/pool_censorship\.md\
         wallets/_section.md\
