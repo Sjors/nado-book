@@ -17,7 +17,7 @@ Explainer article by Aaron discussing the different upgrade options:
 https://bitcoinmagazine.com/articles/bip-8-bip-9-or-modern-soft-fork-activation-how-bitcoin-could-upgrade-next
 
 <!--
-At the start of the episode we explain what softforks are in general. It could make sense to move that to the SegWit (softfork) chapter, since that comes earlier.
+At the start of the episode we explain what softforks are in general. It could make sense to move that to a new chapter about softfork activation, right after the SegWit (softfork) chapter.
 -->
 
 <!-- Transcript
