@@ -24,7 +24,7 @@ At the start of the episode we explain what softforks are in general. It could m
 
 -->
 
-### LOT=true vs FALSE
+### BIP 8 and LOT=true vs FALSE
 
 ![Ep. 29 {l0pt}](qr/29.png)
 
@@ -300,6 +300,10 @@ AvW: We’ll see then I guess.
 SP: Yeah we’ll see. This might be the dumbest thing I’ve ever said.
 
 -->
+
+![BIP 8 flow. Full specification and image source: <https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki>](taproot/bip8.svg)
+
+\newpage
 
 ### Speedy Trial
 

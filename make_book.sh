@@ -18,6 +18,7 @@ popd
 
 # Process figures:
 dot -Tsvg taproot/speedy_trial.dot > taproot/speedy_trial.svg
+dot -Tsvg taproot/bip8.dot > taproot/bip8.svg
 
 # Generate document
 pandoc --table-of-contents --toc-depth=2 --number-sections\
