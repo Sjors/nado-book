@@ -1,8 +1,8 @@
 \newpage
 ## Bitcoin Improvement Proposal (BIP) process
 
-Listen to Bitcoin, Explained episode 39:\
-![](qr/39.png){ width=25% }
+
+![Ep. 39 {l0pt}](qr/39.png)
 
 explain what Bitcoin Improvement Proposals (BIPs) are, and how the BIP process works. They discuss why the BIP process is a useful, yet non-binding convention within Bitcoin’s technical community.
 

@@ -1,8 +1,7 @@
 \newpage
 ## Erebus attack
 
-Listen to Bitcoin, Explained episode 18:\
-![](qr/18.png){ width=25% }
+![Ep. 18 {l0pt}](qr/18.png)
 
 discuss the Erebus Attack. The episode is a follow-up from last week’s episode on Eclipse Attacks, a type of attack that isolates a Bitcoin node by occupying all of its connection slots to block the node from receiving any transactions. Erebus Attacks are Eclipse Attacks where an attacker essentially spoofs a whole part of the internet.
 

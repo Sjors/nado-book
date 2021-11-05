@@ -1,8 +1,8 @@
 \newpage
 ## Hardware Wallet Security and Jade
 
-Listen to Bitcoin, Explained episode 43:\
-![](qr/43.png){ width=25% }
+
+![Ep. 43 {l0pt}](qr/43.png)
 
 he is joined by Blockstream’s Lawrence Nahum, one of the developers behind the Jade wallet, and Ben Kaufman, one of the developers of the Spectre wallet, which is specifically designed to work with hardware wallets.
 

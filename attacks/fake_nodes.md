@@ -1,8 +1,10 @@
 \newpage
 ## Fake nodes
 
-Listen to Bitcoin, Explained episode 49:\
-![](qr/49.png){ width=25% }
+
+![Ep. 49 {l0pt}](qr/49.png)
+
+Lorem ipsum
 
 <!--
 Chaincode podcast that also covers this attack: https://podcast.chaincode.com/2021/10/26/pieter-wuille-amiti-uttarwar-p2p.html

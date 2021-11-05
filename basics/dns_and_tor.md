@@ -1,8 +1,7 @@
 \newpage
 ## DNS boostrapping and Tor v3 {#sec:dns}
 
-Listen to Bitcoin, Explained episode 13:\
-![](qr/13.png){ width=25% }
+![Ep. 13 {l0pt}](qr/13.png)
 
 Bitcoin Core 0.21 will support Tor v3 addresses. Aaron and Sjors explain what this means and why it matters, and also discuss how new Bitcoin nodes find existing Bitcoin nodes when they bootstrap to the network.
 

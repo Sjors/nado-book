@@ -4,12 +4,7 @@ comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-03-
 \newpage
 ## Speedy Trial
 
-Listen to Bitcoin, Explained episode 31:\
-![](qr/31.png){ width=25% }
-
-TODO: refer to figure in text
-
-![speedy trial flow](taproot/speedy_trial.svg)
+![Ep. 31 {l0pt}](qr/31.png)
 
 discuss Speedy Trial, the proposed Taproot activation mechanism that has been gaining traction in recent weeks.
 
@@ -33,6 +28,10 @@ Aaron explains that Speedy Trial was born out of a compromise between developers
 43:25 - 47:28 Block height vs. block time
 42:28 - 51:03 The time warp attack/consensus amongst developers
 51:03 - 51:53 Wrapping up
+
+TODO: refer to figure in text
+
+![speedy trial flow](taproot/speedy_trial.svg)
 
 <!--
 

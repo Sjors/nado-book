@@ -4,8 +4,8 @@ comment: guest Ruben
 \newpage
 ## Utreexo
 
-Listen to Bitcoin, Explained episode 15:\
-![](qr/15.png){ width=25% }
+
+![Ep. 15 {l0pt}](qr/15.png)
 
 they dive into a concept by Tadge Dryja called Utreexo.
 

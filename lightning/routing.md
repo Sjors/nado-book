@@ -1,8 +1,8 @@
 \newpage
 ## Routing
 
-Listen to Bitcoin, Explained episode 41:\
-![](qr/41.png){ width=25% }
+
+![Ep. 41 {l0pt}](qr/41.png)
 
 are joined by Lightning developer Joost Jager to discuss everything about Lightning Network routing.
 

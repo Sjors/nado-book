@@ -1,8 +1,8 @@
 \newpage
 ## Eltoo and SIGHASH_ANYPREVOUT
 
-Listen to Bitcoin, Explained episode 35:\
-![](qr/35.png){ width=25% }
+
+![Ep. 35 {l0pt}](qr/35.png)
 
 discuss SIGHASH_ANYPREVOUT, a proposed new sighash flag that would enable a cleaner version of the Lightning Network and other Layer Two protocols.Sighash flags are included in Bitcoin transactions to indicate which part of the transaction is signed by the required private keys, exactly.
 

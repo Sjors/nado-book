@@ -1,8 +1,7 @@
 \newpage
 ## Replace by Fee (RBF)
 
-Listen to Bitcoin, Explained episode 26:\
-![](qr/26.png){ width=25% }
+![Ep. 26 {l0pt}](qr/26.png)
 
 discuss Replace By Fee (RBF). RBF is a trick that lets unconfirmed transactions be replaced by conflicting transactions that include a higher fee.
 

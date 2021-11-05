@@ -1,8 +1,8 @@
 \newpage
 ## Script and Miniscript {#sec:miniscript}
 
-Listen to Bitcoin, Explained episode 4:\
-![](qr/04.png){ width=25% }
+
+![Ep. 04 {l0pt}](qr/04.png)
 
 dive into Miniscript and how it makes using Bitcoin Script much easier.
 

@@ -1,8 +1,8 @@
 \newpage
 ## Hardware Wallet Integration in Bitcoin Core
 
-Listen to Bitcoin, Explained episode 30:\
-![](qr/30.png){ width=25% }
+
+![Ep. 30 {l0pt}](qr/30.png)
 
 discuss hardware wallet integration into Bitcoin Core, one of the ongoing projects that Sjors regularly contributes to himself.
 

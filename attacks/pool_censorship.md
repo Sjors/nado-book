@@ -4,8 +4,8 @@ comment: Mara pool has since changed course
 \newpage
 ## Mining pool censorship
 
-Listen to Bitcoin, Explained episode 37:\
-![](qr/37.png){ width=25% }
+
+![Ep. 37 {l0pt}](qr/37.png)
 
 discuss the emergence of Mara Pool, the American Bitcoin mining pool operated by Marathon Digital Holdings, which claims to be fully compliance with US regulations. More generally, Aaron and Sjors discuss the prospects of mining censorship, what that would mean for Bitcoin, and what can be done about it.
 

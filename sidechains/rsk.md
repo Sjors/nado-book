@@ -1,8 +1,8 @@
 \newpage
 ## RSK, federated sidechains and Powpeg
 
-Listen to Bitcoin, Explained episode 20:\
-![](qr/20.png){ width=25% }
+
+![Ep. 20 {l0pt}](qr/20.png)
 
 discuss RSK’s shift from a federated sidechain model to the project’s new Powpeg solution.
 

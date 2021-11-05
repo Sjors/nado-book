@@ -1,8 +1,8 @@
 \newpage
 ## Locked in
 
-Listen to Bitcoin, Explained episode 40:\
-![](qr/40.png){ width=25% }
+
+![Ep. 40 {l0pt}](qr/40.png)
 
 discuss the lock-in of the Taproot soft fork upgrade.
 

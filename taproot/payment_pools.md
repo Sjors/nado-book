@@ -1,8 +1,8 @@
 \newpage
 ## Payment pools
 
-Listen to Bitcoin, Explained episode 6:\
-![](qr/06.png){ width=25% }
+
+![Ep. 06 {l0pt}](qr/06.png)
 
 What are payment pools?
 

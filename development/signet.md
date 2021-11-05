@@ -1,8 +1,8 @@
 \newpage
 ## Signet
 
-Listen to Bitcoin, Explained episode 10:\
-![](qr/10.png){ width=25% }
+
+![Ep. 10 {l0pt}](qr/10.png)
 
 Signet, a new type of testnet for Bitcoin that was merged into Bitcoin Core last week. They also discuss the original version of testnet and its problems, as well as alternative testing environment regtest.
 

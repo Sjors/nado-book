@@ -12,7 +12,7 @@ done
 # Process QR codes:
 pushd qr
     for f in *.txt; do
-        qrencode -o ${f%.txt}.png -r $f --level=M -d 300
+        qrencode -o ${f%.txt}.png -r $f --level=M -d 300 -s 6
     done
 popd
 

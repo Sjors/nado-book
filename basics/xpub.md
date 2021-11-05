@@ -1,8 +1,8 @@
 \newpage
 ## What is an Xpub?
 
-Listen to Bitcoin, Explained episode 7:\
-![](qr/07.png){ width=25% }
+
+![Ep. 07 {l0pt}](qr/07.png)
 
 explain what an xpub is and how it is used by Bitcoin wallets.
 

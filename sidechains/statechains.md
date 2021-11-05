@@ -4,8 +4,8 @@ comment: guest Ruben Somsen
 \newpage
 ## Statechains
 
-Listen to Bitcoin, Explained episode 8:\
-![](qr/08.png){ width=25% }
+
+![Ep. 08 {l0pt}](qr/08.png)
 
 discuss his proposals for Statechains on Bitcoin! Statechains allow you to send keys not UTXO and it offers quite a few scaling and functionality improvements!
 

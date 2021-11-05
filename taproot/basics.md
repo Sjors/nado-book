@@ -10,8 +10,8 @@ TODO: add episode transcript, split into sections
 -->
 
 
-Listen to Bitcoin, Explained episode 2:\
-![](qr/02.png){ width=25% }
+
+![Ep. 02 {l0pt}](qr/02.png)
 
 break down and explain Taproot, the building blocks that make Taproot possible, and what it enables Bitcoin to do.
 
