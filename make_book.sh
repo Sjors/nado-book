@@ -59,11 +59,7 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         taproot/_section.md\
         taproot/basics.md\
         taproot/payment_pools.md\
-        taproot/activation_options.md\
-        taproot/activation_options_2.md\
-        taproot/speedy_trial.md\
-        taproot/lot_true.md\
-        taproot/locked_in.md\
+        taproot/activation.md\
         development/_section.md\
         development/signet.md\
         development/bip.md\
