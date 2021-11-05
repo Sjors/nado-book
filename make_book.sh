@@ -24,6 +24,7 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         --metadata-file meta.yaml\
         --strip-comments\
         --filter pandoc-secnos\
+        --filter pandoc/wrapfig.py\
         $EXTRA_OPTIONS\
         header-includes.yaml\
         intro.md\

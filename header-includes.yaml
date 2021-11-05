@@ -1,6 +1,7 @@
 ---
 header-includes:
 - \usepackage{caption}
+- \usepackage{wrapfig}
 - \captionsetup[figure]{labelformat=empty}
 - \isopage
 - \checkandfixthelayout
