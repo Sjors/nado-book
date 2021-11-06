@@ -4,7 +4,7 @@
 Listen to Bitcoin, Explained episode 4:\
 ![](qr/04.png){ width=25% }
 
-This chapter will talk about Miniscript and how it makes using Bitcoin Script much easier. TODO
+This chapter will talk about Miniscript and how it makes using Bitcoin Script much easier. It'll break down how Script works, how you can do more complicated and even absurd things with it, and how Miniscript emerged to make transactions less complicated and more secure. Additionally, it'll cover what policy language is and how it can make it easier to create Scripts.
 
 ### Constraints
 
@@ -18,7 +18,7 @@ However, although this a common type of constraint, there are all sorts of other
 
 Script^[<https://en.bitcoin.it/wiki/Script>] is a stack-based language, so think of it like a stack of plates. You can put plates on it, and you can take the top plate off, but you can't manipulate plates in the middle.
 
-A stack works differently than regular memory where you can read and write to arbitrary addresses (such as a hard disk or RAM — random-access memory). A stack is easier to implement and reason about.^[In contrast, Ethereum smart contracts have both a stack and regular memory. It even has long storage. As a consequence, it's much more difficult for developers to reason about its behavior. See also <https://dlt-repo.net/storage-vs-memory-vs-stack-in-solidity-ethereum/>].
+A stack works differently than regular memory where you can read and write to arbitrary addresses (such as a hard disk or RAM — random-access memory). A stack is easier to implement and reason about.^[In contrast, Ethereum smart contracts have both a stack and regular memory. Ethereum even has long-term storage. As a consequence, it's much more difficult for developers to reason about its behavior. See also <https://dlt-repo.net/storage-vs-memory-vs-stack-in-solidity-ethereum/>].
 
 With a stack, you put something on it and take something away from it. The most commonly used (before SegWit, see chapter @sec:segwit) Bitcoin Script reads as follows:
 
@@ -35,7 +35,7 @@ When the blockchain encounters this script, it's in the output of a transaction.
 
 What that actually looks like is a couple of things that you're putting on the stack. The Bitcoin interpreter will see what you put on the stack, and it'll start running the program from the output. In this case, what you put on the stack is your signature and your public key, because the original script didn't have your public key; it had the hash of your public key.
 
-Continuing with the example from above, we start with a stack that has two plates. Plate 1 at the bottom is your signature, and on top of that is a plate with your public key, and then the script says `OP_DUP`. It takes the top element of the stacks — the top plate, which is the public key — and duplicates it. So now you have two plates with a public key at the top of the stack, and your signature's still at the bottom.
+Continuing with the example from above, we start with a stack that has two plates. The plate at the bottom is your signature, and on top of that is a plate with your public key, and then the script says `OP_DUP`. It takes the top element of the stacks — the top plate, which is the public key — and duplicates it. So now you have two plates with a public key at the top of the stack, and your signature's still at the bottom.
 
 The next instruction is `OP_HASH160`. This takes what's on top of the stack — one of the public keys — and hashes it, and then puts the hash back on the stack.
 
@@ -57,7 +57,7 @@ But in the earlier more complicated example, with alternative conditions such as
 
 Fortunately, there's an alternative to giving the counterparty (the sender) the full script — you can give them the hash of the script, which is always the same length, and also happens to be the same length of a normal address.
 
-In 2012, the Pay-to-Script-Hash (P2SH) was standardized^[<https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki>]. These kinds of transactions let you send to a script hash, which is an address beginning with 3, in place of sending to a public key hash, which is an address beginning with 1. With the exception of the prefix, they'll look kind of the same.
+In 2012, the Pay-to-Script-Hash (P2SH) was standardized.^[<https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki>] These kinds of transactions let you send to a script hash, which is an address beginning with 3, in place of sending to a public key hash, which is an address beginning with 1. With the exception of the prefix, they'll look kind of the same.
 
 The person on the other end has to copy-paste it, put it in their Bitcoin wallet, and send money to it. And it works. Now, when you want to spend that money, you need to reveal the actual script to the blockchain, which your wallet will handle automatically. So in this way, you don't have to bother anyone else with the complexity of remembering what the script was and correctly sending to it.
 
@@ -90,13 +90,13 @@ This `OP_RETURN` code instructs the blockchain to stop evaluating the program �
 
 If you naively looked at this script, you might think that your signature is checked at the end, and so the rest of the script isn't relevant. If you had a vigilant electronic lawyer (i.e. a person or computer program that does due diligence on transactions), who would properly check that this "smart contract" does what it says it does, they might say, "Careful there, your signature isn't getting checked." This hypothetical electronic lawyer should see that `OP_RETURN` "fine print" and warn you. But the problem is there are countless ways in which scripts can go wrong, which is why we need a standardized way of dealing with these scripts.
 
-In an interview with Bitcoin Magazine^[<https://bitcoinmagazine.com/technical/miniscript-how-blockstream-engineers-are-making-bitcoin-programming-easyer>], Andrew Poelstra said, "There are opcodes in Bitcoin Script which do really absurd things, like, interpret a signature as a true/false value, branch on that; convert that boolean to a number and then index into the stack, and rearrange the stack based on that number. And the specific rules for how it does this are super nuts."
+In an interview with Bitcoin Magazine,^[<https://bitcoinmagazine.com/technical/miniscript-how-blockstream-engineers-are-making-bitcoin-programming-easyer>] Andrew Poelstra said, "There are opcodes in Bitcoin Script which do really absurd things, like, interpret a signature as a true/false value, branch on that; convert that boolean to a number and then index into the stack, and rearrange the stack based on that number. And the specific rules for how it does this are super nuts."
 
 This quote exemplifies the complexity of potential ways to mess around with script.
 
 To return to the plate analogy, you'd take a hammer and smash one, and then you'd confuse two and paint one red and then it would still work, if you do it correctly. It's completely absurd.
 
-So that's the long^[If you can't get enough of this, watch Andrew Poelstra's two-hour presentation at London Bitcoin Devs, where he goes on and on and on about the problems in script: <https://www.youtube.com/watch?v=_v1lECxNDiM>] and short of the problem with scripts: It's easy to make mistakes or hide bugs and make all sorts of complex arrangements that people might or might not notice. And then your money goes places you don't want it to go. We've already seen in other projects, famously with the Ethereum DAO hack and resulting hard fork^[<https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-smart-contracts-2bd8c8db3562>], how bad things can get if you have a very complicated language that does things you're not completely expecting. But Bitcoin dodged many bullets in the early days, and despite its relative simplicity^[Pun intended: <https://blockstream.com/2018/11/28/en-simplicity-github/>], it still requires vigilance.
+So that's the long^[If you can't get enough of this, watch Andrew Poelstra's two-hour presentation at London Bitcoin Devs, where he goes on and on and on about the problems in script: <https://www.youtube.com/watch?v=_v1lECxNDiM>] and short of the problem with scripts: It's easy to make mistakes or hide bugs and make all sorts of complex arrangements that people might or might not notice. And then your money goes places you don't want it to go. We've already seen in other projects, famously with the Ethereum DAO hack and resulting hard fork,^[<https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-smart-contracts-2bd8c8db3562>] how bad things can get if you have a very complicated language that does things you're not completely expecting. But Bitcoin dodged many bullets in the early days, and despite its relative simplicity,^[Pun intended: <https://blockstream.com/2018/11/28/en-simplicity-github/>] it still requires vigilance.
 
 ### Enter Miniscript
 
@@ -106,7 +106,7 @@ Now with Miniscript, it takes certain example scripts, i.e. a sequence of op cod
 
 A simple example of Miniscript is `pkh(A)`, which is the equivalent of the standard P2PKH script analyzed above (`OP_DUP OP_HASH160 <pubKeyHashA> OP_EQUALVERIFY OP_CHECKSIG`). The poor man's multisig above in Miniscript is `and_v(v:pk(pubKeyA),pk(pubKeyB))`.
 
-Miniscript makes sure there's no funny stuff in the fine print. It removes some of the foot guns^[an unsafe piece of code that causes users to shoot themselves in the foot. Early Bitcoin developer Gregory Maxwell was using this term as early as 2012, see e.g. <https://github.com/bitcoin/bitcoin/pull/1889#issuecomment-9638527>, but it may be older], but it also allows you to do very cool stuff safely. In particular, it lets you do things like `AND`. So you can say condition `A` must be true `AND` condition `B` must be true, and you can do things like `OR`. And whatever's inside the `OR` or inside the `AND` can be arbitrarily complex.
+Miniscript makes sure there's no funny stuff in the fine print. It removes some of the foot guns,^[an unsafe piece of code that causes users to shoot themselves in the foot. Early Bitcoin developer Gregory Maxwell was using this term as early as 2012, see e.g. <https://github.com/bitcoin/bitcoin/pull/1889#issuecomment-9638527>, but it may be older] but it also allows you to do very cool stuff safely. In particular, it lets you do things like `AND`. So you can say condition `A` must be true `AND` condition `B` must be true, and you can do things like `OR`. And whatever's inside the `OR` or inside the `AND` can be arbitrarily complex.
 
 In contrast, with Bitcoin Script, you have `if` and `else` statements, but if you're not careful, those `if` and `else` statements won't do what you think they're going to do, because there's complexity hidden after these statements.
 
