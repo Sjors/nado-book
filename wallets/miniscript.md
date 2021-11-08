@@ -4,7 +4,7 @@
 Listen to Bitcoin, Explained episode 4:\
 ![](qr/04.png){ width=25% }
 
-This chapter will talk about Miniscript and how it makes using Bitcoin Script much easier. It'll break down how Script works, how you can do more complicated and even absurd things with it, and how Miniscript emerged to make transactions less complicated and more secure. Additionally, it'll cover what policy language is and how it can make it easier to create Scripts.
+This chapter will talk about Miniscript and how it makes using Bitcoin Script much easier. It'll break down how Script works, how you can do more complicated and even absurd things with it, and how Miniscript emerged to make transactions less complicated and more secure. Additionally, it'll cover what policy language is and how it can make it easier to create scripts.
 
 ### Constraints
 
@@ -124,7 +124,7 @@ With Bitcoin Script, it's challenging to draw out what a contract would look lik
 
 ### Policy Language
 
-A policy language is a way to express your intentions. It's easier than writing a Miniscript directly, let alone writing Bitcoin script directly. A compiler then does the hard work.
+A policy language is a way to express your intentions. It's easier than writing a Miniscript directly, let alone writing Bitcoin Script directly. A compiler then does the hard work.
 
 Our earlier example of a poor man's multisig was actually found this way. Starting with a policy `and(pk(KEY_A),pk(KEY_B))`, the compiler produced `and_v(v:pk(KEY_A),pk(KEY_B))`, which is equivalent to the script `<KEY_A> OP_CHECKSIGVERIFY <KEY_B> OP_CHECKSIG`. It turns out this actually produces a lower fee transaction than `<KEY_A> <KEY_B> 2 OP_CHECKMULTISIG`. This is the kind of optimization a human might overlook, which is what compilers are good for.
 
@@ -140,7 +140,7 @@ However, you can also tell the compiler, "OK, I think most of the time it's cond
 
 With Taproot (see chapter @sec:taproot), rather than splitting different conditions using _and_ / _or_, they can be split into a Merkle tree of scripts. You don't have to worry about how to build the Merkle tree, as the compiler takes care of that. In principle, each leaf can also contain _and_ / _or_ statements. Does it make sense to do that? Or is it better to stick to one condition per leaf? Who knows? A future Miniscript compiler can just try all permutations and decide what's optimal.
 
-The technical term for going from Miniscript to script — or for transforming source code from any language into another similar one — is trans-piling, which can basically be done in two directions. So you can go from Miniscript to script, or from script to Miniscript, but you can't trivially go back to a policy language. However, using automated analysis tools, you can often still figure out what policy language was used to produce a given piece of Miniscript.
+The technical term for going from Miniscript to Script — or for transforming source code from any language into another similar one — is trans-piling, which can basically be done in two directions. So you can go from Miniscript to Script, or from Script to Miniscript, but you can't trivially go back to a policy language. However, using automated analysis tools, you can often still figure out what policy language was used to produce a given piece of Miniscript.
 
 As mentioned above, Bitcoin Script is essentially an alphabet, just different letters that have different meanings. Meanwhile, Miniscript is a set of words — not really words, because you can put things between the words, but maybe words and brackets and commas. And then the policy language is the thing that can be converted to Miniscript. It's a bit more high level.
 
@@ -150,7 +150,7 @@ Miniscript has to be set in stone, because you want to do all the safety checks 
 
 All this said, there are some limitations when you're using policy language or Miniscript in general.
 
-To ensure Miniscript and its corresponding Bitcoin script can be safely reasoned about, it does provide access to the full power of script. Sometimes, however, doing things safely results in a script that's unacceptably long and expensive to execute. In that case, a human may be able to construct a better solution. In regard to the example Poelstra mentioned in the context of how Lightning deals with time locks, hashes, or nonces, there are some optimizations. As he put it: "Oh, you do some weird switching of the stack and you interpret things, not the way they were." You put a public key on it, but you interpret it as a number — those kind of weird tricks.
+To ensure Miniscript and its corresponding Bitcoin Script can be safely reasoned about, it does provide access to the full power of script. Sometimes, however, doing things safely results in a script that's unacceptably long and expensive to execute. In that case, a human may be able to construct a better solution. In regard to the example Poelstra mentioned in the context of how Lightning deals with time locks, hashes, or nonces, there are some optimizations. As he put it: "Oh, you do some weird switching of the stack and you interpret things, not the way they were." You put a public key on it, but you interpret it as a number — those kind of weird tricks.
 
 Those might be very hard to reason about, and a human might be able to do it, but the Miniscript compiler wouldn't, which means the compiler would end up with potentially longer Lightning scripts. Perhaps one day Miniscript can be expanded so it can also find these shortcuts. But the Miniscript developers have to be careful, because they really want to make sure there's nothing in Miniscript that brings back the scary properties of the underlying language.
 
