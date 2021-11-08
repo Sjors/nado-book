@@ -6,8 +6,6 @@
 
 explain what an xpub is and how it is used by Bitcoin wallets.
 
-<!--
-
 Transcript (computer generated):
 
 Aaron:
@@ -27,6 +25,8 @@ And I'm not sure what the drama is about either, but I think I have a faint idea
 
 Sjors:
 Now we can get to it. Now. I think my theory is that for some reason, people were talking about xpubs and then Peter McCormack got really upset and said, I don't know what experts are, but I'm proud of it. And then of course, all the Bitcoins said, oh my God, Peter McCormick does not know what an xpub is and they'll start it, you know, explaining it to him. And yeah. So that's why we're talking it.
+
+<!-- (the above section of the transcript was uncommented in order to have enough text to wrap around the QR code. This fixes QR placement in the next section)
 
 Aaron:
 It's like the classic cycle where it, where Peter McCormack says something slightly controversial about how everyone's being too, too nerdy about Bitcoin. And then everyone gets mad at him because he's not a real Bitcoiner. So then he gets his controversy for a show and then all the Bitcoiners get their, for two signaling for being a hardcore Bitcoin and everyone is happy.

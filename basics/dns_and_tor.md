@@ -5,6 +5,11 @@
 
 Bitcoin Core 0.21 added support for Tor V3 addresses in 2020. This chapter will explain what this means and why it matters. It'll also discuss how new Bitcoin nodes find existing Bitcoin nodes when they bootstrap to the network.
 
+<!-- Blank paragraphs added for QR and section title alignment -->
+\
+
+\
+
 ### How Does Tor Work?
 
 When you see a Tor address, it looks quite weird. The idea is that it's actually a public key that refers to a hidden service somewhere on the internet. The way you communicate to that hidden service is not directly — because you don't know its IP address — but rather indirectly, through the Tor network.
