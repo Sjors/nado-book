@@ -42,15 +42,17 @@ This begs the question of why this makes a difference, and what's wrong with the
 
 IPv6 addresses were formalized in 1998 with the intention of replacing IPv4, because the number of IPv4 addresses was limited. There are 4,294,967,296 (232) potential unique IPv4 addresses,^[<https://en.wikipedia.org/wiki/IPv4>] whereas there are just enough IPv6 addresses for every molecule in the universe.
 
-Bitcoin nodes keep lists of other Bitcoin nodes and their IP addresses, which are IPv4 and IPv6 addresses. And the way you'd communicate a Tor address is to piggyback on IPv6, because there's a convention where if the IPv6 address starts with a certain prefix, certain numbers, then everything that follows is the Tor address.
+Bitcoin nodes keep lists of other Bitcoin nodes and their IP addresses, which are IPv4 and IPv6 addresses. And the way you'd communicate a Tor address is to piggyback on IPv6. If an "address" starts with fd87::d87e::eb43 then Bitcoin Core knows that what follows should be interpreted as a Tor address. RFC-4193 ensures that such addresses won't clash with any computer in the real world.^[<https://datatracker.ietf.org/doc/html/rfc4193>]
 
 Now, when nodes connect with each other, they share their lists, which is known as gossiping. As a result, everyone has an even more complete list of all of the Bitcoin nodes.
 
 The problem with Tor V3 addresses is they're 32 bytes, which is twice as long as an IPv6 address, and nodes have no way to communicate those addresses at the moment.
 
-Wladimir van der Laan wrote a standard a while ago. I think in 2019, that has a new way of communicating — or gossiping addresses. The major change is that each message says, "OK, this is the type of address I'm going to communicate, and it can be various types, including the new Tor one, but also future ones, and then it can have different lengths". So, in the future, if a new address format^[For example, I2P (Invisible Internet Project, an alternative to Tor) support was added in 2021: <https://github.com/bitcoin/bitcoin/blob/7740ebcb023089d03cd2373da16305a4e501cfad/doc/i2p.md>] comes along that's too long, it's not going to be a problem.
+Wladimir van der Laan wrote a standard in 2019 - BIP155 - that has a new way of communicating — or gossiping addresses.^[<https://github.com/bitcoin/bips/blob/master/bip-0155.mediawiki#Specification>] It introduces the new ADDRv2 message, which among other things, nodes can use to gossip those new Tor addresses. A major improvement is that each message says, "OK, this is the type of address I'm going to communicate". It can be various types, including the new Tor one, but also future ones, and each address type can have a different length. So, in the future, if a new address format^[For example, I2P (Invisible Internet Project, an alternative to Tor) support was added in 2021: <https://github.com/bitcoin/bitcoin/blob/7740ebcb023089d03cd2373da16305a4e501cfad/doc/i2p.md>] comes along, it's not going to be a problem.
 
-The nice thing is it's a completely new peer-to-peer message. Old nodes just ignore that message, or if you know it's an old node you're talking to, you don't use that message. So newer nodes will know this new message and can communicate all these new address types, and old the nodes carry on like nothing happened.
+The nice thing about this new peer-to-peer message is that old nodes just ignore it. And if your node knows it's talking to an old node, it won't use that message. So newer nodes will know this new message and can communicate all these new address types, and old the nodes carry on like nothing happened. Unless you want to use Tor V3, you're not required to upgrade.
+
+However, since the Tor project _is_ centralized, they can and did force users to - with a long grace period - upgrade from Tor V2 to V3. So if you relied on Tor V2 for the privacy of your Bitcoin node, you'll have no choice but to upgrade your node.
 
 ### How DNS Works
 
@@ -89,7 +91,3 @@ You bootstrap to the Bitcoin network by first querying DNS records to find other
 Alternatively, you can query from the DNS records. At that point, you ask about all of the nodes that they know and you update your list. And from that point on, you're also sharing the IP addresses you have with other nodes. So far, these were IPv4 and IPv6, and the latter had a subset of onion nodes. And with this upgrades will be ready for a newer version of onion nodes.
 
 And then one tiny little thing that was recently added, is that the Bitcoin node actually can spin up the V3 onion node. But that's actually a five-line change. If you were running a version 2 node before, it's going to run a version 3 tor node after if you weren't. And then you need to read the documentation on how to set it up if you want to use it.
-
-Helpful Links:
-
-* the ADDRv2 message added in BIP155 that allows nodes to gossip those new Tor addresses: https://github.com/bitcoin/bips/blob/master/bip-0155.mediawiki#Specification
