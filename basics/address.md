@@ -1,6 +1,6 @@
 \newpage
 
-## Bitcoin Addresses
+## Bitcoin Addresses {#sec:address}
 
 
 ![Ep. 28 {l0pt}](qr/28.png)

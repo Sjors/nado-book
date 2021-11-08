@@ -1,5 +1,5 @@
 \newpage
-## What is an Xpub?
+## What is an Xpub? {#sec:xpub}
 
 
 ![Ep. 07 {l0pt}](qr/07.png)

@@ -1,5 +1,5 @@
 \newpage
-## SegWit
+## SegWit {#sec:segwit}
 
 
 ![Ep. 32 {l0pt}](qr/32.png)
