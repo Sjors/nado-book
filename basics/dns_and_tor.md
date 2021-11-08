@@ -24,11 +24,17 @@ To support this, all of these Tor nodes have their own sort of IP address — th
 
 ### Running a Bitcoin Node behind Tor
 
-There are a few reasons why you'd want your IP address to be secret. For example, you might not want the rest of the world to know that your IP address is running a Bitcoin node. And if you're sending transactions from an IP address, network analysis can reveal where transactions originated.
+For various reasons you might not want the rest of the world to know that your IP address is running a Bitcoin node. In particular, you may not want your Bitcoin addresses associated with your IP addresses, since the former says how much money you have, and the latter can often be tied directly to your name and address. Not just by governments, but also by someone with access to e.g. a hacked e-commerce database with the IP address and home address of their customers.
 
-Ideally your node behaves in a way that it looks indistinguishable from all nodes. It downloads all the blocks and Mempool transactions, and you can't tell which wallet is running inside. However, there are a lot of sneaky companies that try to determine this, and as a result, they might know you sent a specific transaction or which Bitcoins belong to you, since they could easily figure out who you are based on your IP address. But in theory, it could be nice to have Tor.
+Bitcoin nodes already try to behave in ways that make them look indistinguishable from other nodes. Ideally a node does not reveal to other nodes which coins it controls. A node downloads the entire blockchain and keeps track of all transactions in the mempool, as opposed to only fetching the information about its own coins.
 
-You can use Bitcoin from behind Tor,^[<https://github.com/bitcoin/bitcoin/blob/master/doc/tor.md>] and there's a new type of onion address as a result of an update in the Tor protocol. This means Tor addresses are longer, which makes them more secure. So, if you want to keep running a Bitcoin node on Tor, you'll have to use those longer addresses because Tor is centralized and they decided to eventually get rid of the version two addresses. As a result, Bitcoin needed to be upgrade to support these new addresses.
+Unfortunately the system is not perfect. Especially when you are sending and receiving transactions from your IP address, careful network analysis by an adversary can sometimes reveal where those transactions originated. This type of analysis is a billion dollar business, where companies do not always behave ethically^[<https://www.coindesk.com/business/2021/09/21/leaked-slides-show-how-chainalysis-flags-crypto-suspects-for-cops/>, <https://www.coindesk.com/markets/2019/03/05/coinbase-pushes-out-ex-hacking-team-employees-following-uproar/>].
+
+Therefore using Bitcoin from behind Tor^[<https://github.com/bitcoin/bitcoin/blob/master/doc/tor.md>] may improve your privacy, by severing the link between your IP address and any information about you that your node may accidentally reveal.
+
+As a practical matter, if you were already doing this, there's a new type of onion address as a result of an update in the Tor protocol. These new Tor addresses are longer, which makes them more secure.^[<https://blog.torproject.org/v3-onion-services-usage>] So, if you want to keep running a Bitcoin node on Tor, you'll have to use those longer addresses.
+
+Bitcoin Core needed an upgrade to support these new addresses.
 
 ### Bitcoin Nodes and Gossip
 
