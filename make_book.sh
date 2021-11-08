@@ -43,7 +43,6 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         blockchain/neutrino.md\
         blockchain/erlay.md\
         blockchain/timestamps.md\
-        blockchain/rgb.md\
         attacks/_section.md\
         attacks/timewarp.md\
         attacks/psbt_rbf.md\
@@ -55,7 +54,6 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         wallets/hwi.md\
         wallets/accounts.md\
         wallets/miniscript.md\
-        wallets/bitcoin_beach.md\
         wallets/hardware_jade.md\
         taproot/_section.md\
         taproot/basics.md\
@@ -80,3 +78,4 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         lightning/eltoo.md\
         lightning/rbf_bug.md\
         acknowledgments.md\
+        appendix/more_episodes.md\
