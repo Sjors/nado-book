@@ -23,6 +23,7 @@ dot -Tsvg taproot/bip8.dot > taproot/bip8.svg
 # Generate document
 pandoc --table-of-contents --toc-depth=2 --number-sections\
         --metadata-file meta.yaml\
+        --template=templates/pandoc.tex\
         --strip-comments\
         --filter pandoc-secnos\
         --filter pandoc/wrapfig.py\
