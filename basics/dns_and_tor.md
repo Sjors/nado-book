@@ -3,7 +3,7 @@
 
 ![Ep. 13 {l0pt}](qr/13.png)
 
-Bitcoin Core 0.21 added support for Tor V3 addresses in 2020. This chapter will explain what this means and why it matters. It'll also discuss how new Bitcoin nodes find existing Bitcoin nodes when they bootstrap to the network.
+Bitcoin Core 0.21 added support for Tor V3 addresses in 2020.^[<https://github.com/bitcoin/bitcoin/pull/19954>] This chapter will explain what this means and why it matters. It'll also discuss how new Bitcoin nodes find existing Bitcoin nodes when they bootstrap to the network.
 
 <!-- Blank paragraphs added for QR and section title alignment -->
 \
@@ -14,7 +14,7 @@ Bitcoin Core 0.21 added support for Tor V3 addresses in 2020. This chapter will 
 
 When you see a Tor address^[e.g. <https://bitcoincore.org> can also be reached using a Tor browser at <http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion/>], it looks quite weird. The idea is that it's actually a public key that refers to a hidden service somewhere on the internet. The way you communicate to that hidden service is not directly — because you don't know its IP address — but rather indirectly, through the Tor network.
 
-Tor is an onion network, which means messages exist in encrypted layers, similar to layers of an onion. This makes it easy to maintain anonymity and security. To connect, you'd use onion packages^[<https://github.com/bitcoin/bitcoin/pull/19954>]: The idea is that you start from the inside, like the last hop before the hidden service, and you give that hop instructions on how to reach the hidden service. Then, you write instructions for the second-to-last hop, and you give it instructions on how to reach the first hop.
+Tor is an onion network, which means messages exist in encrypted layers, similar to layers of an onion. This makes it easy to maintain anonymity and security. To connect, you'd use onion packages: The idea is that you start from the inside, like the last hop before the hidden service, and you give that hop instructions on how to reach the hidden service. Then, you write instructions for the second-to-last hop, and you give it instructions on how to reach the first hop.
 
 When doing this, you're still using IP addresses, but you don't know the IP address of the Tor nodes you're communicating with. Instead, you're communicating with other Tor nodes, and every Tor node communicates with the direct peer. So, everyone only knows the IP address of their direct peer, but they don't know where the message originated from or where it ends up. Additionally, they can't read the message because it's encrypted.
 
