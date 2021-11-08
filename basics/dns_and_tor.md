@@ -12,7 +12,7 @@ Bitcoin Core 0.21 added support for Tor V3 addresses in 2020. This chapter will 
 
 ### How Does Tor Work?
 
-When you see a Tor address, it looks quite weird. The idea is that it's actually a public key that refers to a hidden service somewhere on the internet. The way you communicate to that hidden service is not directly — because you don't know its IP address — but rather indirectly, through the Tor network.
+When you see a Tor address^[e.g. <https://bitcoincore.org> can also be reached using a Tor browser at <http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion/>], it looks quite weird. The idea is that it's actually a public key that refers to a hidden service somewhere on the internet. The way you communicate to that hidden service is not directly — because you don't know its IP address — but rather indirectly, through the Tor network.
 
 Tor is an onion network, which means messages exist in encrypted layers, similar to layers of an onion. This makes it easy to maintain anonymity and security. To connect, you'd use onion packages^[<https://github.com/bitcoin/bitcoin/pull/19954>]: The idea is that you start from the inside, like the last hop before the hidden service, and you give that hop instructions on how to reach the hidden service. Then, you write instructions for the second-to-last hop, and you give it instructions on how to reach the first hop.
 
