@@ -7,7 +7,7 @@ Bitcoin Core 0.21 added support for Tor V3 addresses in 2020. This chapter will 
 
 ### How Does Tor Work?
 
-When you see a Tor address, it looks quite weird. The idea is that it's actually a public key that refers to a hidden service somewhere on the internet. The way you communicate to that hidden service is not directly — because you don't know its IP address — but rather indirectly, through the Tor network. 
+When you see a Tor address, it looks quite weird. The idea is that it's actually a public key that refers to a hidden service somewhere on the internet. The way you communicate to that hidden service is not directly — because you don't know its IP address — but rather indirectly, through the Tor network.
 
 Tor is an onion network, which means messages exist in encrypted layers, similar to layers of an onion. This makes it easy to maintain anonymity and security. To connect, you'd use onion packages^[<https://github.com/bitcoin/bitcoin/pull/19954>]: The idea is that you start from the inside, like the last hop before the hidden service, and you give that hop instructions on how to reach the hidden service. Then, you write instructions for the second-to-last hop, and you give it instructions on how to reach the first hop.
 
@@ -31,11 +31,11 @@ IPv6 addresses were formalized in 1998 with the intention of replacing IPv4, bec
 
 Bitcoin nodes keep lists of other Bitcoin nodes and their IP addresses, which are IPv4 and IPv6 addresses. And the way you'd communicate a Tor address is to piggyback on IPv6, because there's a convention where if the IPv6 address starts with a certain prefix, certain numbers, then everything that follows is the Tor address.
 
-Now, when nodes connect with each other, they share their lists, which is known as gossiping. As a result, everyone has an even more complete list of all of the Bitcoin nodes.  
+Now, when nodes connect with each other, they share their lists, which is known as gossiping. As a result, everyone has an even more complete list of all of the Bitcoin nodes.
 
-The problem with Tor V3 addresses is they're 32 bytes, which is twice as long as an IPv6 address, and nodes have no way to communicate those addresses at the moment. 
+The problem with Tor V3 addresses is they're 32 bytes, which is twice as long as an IPv6 address, and nodes have no way to communicate those addresses at the moment.
 
-Wladimir van der Laan wrote a standard a while ago. I think in 2019, that has a new way of communicating — or gossiping addresses. The major change is that each message says, "OK, this is the type of address I'm going to communicate, and it can be various types, including the new Tor one, but also future ones, and then it can have different lengths". So, in the future, if a new address format^[For example, I2P (Invisible Internet Project, an alternative to Tor) support was added in 2021: <https://github.com/bitcoin/bitcoin/blob/7740ebcb023089d03cd2373da16305a4e501cfad/doc/i2p.md>] comes along that's too long, it's not going to be a problem. 
+Wladimir van der Laan wrote a standard a while ago. I think in 2019, that has a new way of communicating — or gossiping addresses. The major change is that each message says, "OK, this is the type of address I'm going to communicate, and it can be various types, including the new Tor one, but also future ones, and then it can have different lengths". So, in the future, if a new address format^[For example, I2P (Invisible Internet Project, an alternative to Tor) support was added in 2021: <https://github.com/bitcoin/bitcoin/blob/7740ebcb023089d03cd2373da16305a4e501cfad/doc/i2p.md>] comes along that's too long, it's not going to be a problem.
 
 The nice thing is it's a completely new peer-to-peer message. Old nodes just ignore that message, or if you know it's an old node you're talking to, you don't use that message. So newer nodes will know this new message and can communicate all these new address types, and old the nodes carry on like nothing happened.
 
@@ -57,7 +57,7 @@ Ideally this is already cached, because so many people go to google.com that if 
 
 In the scenario above, there's a centralization risk because you're trusting the DNS server. Where Bitcoin is concerned, it's abused, because Bitcoin nodes are not websites. But the idea is that there are a couple of Core developers who run DNS seeds, which are essentially DNS servers. And we're just pretending that, for example, seed.bitcoin.sprovoost.nl is a "website," and when you ask that "website" what its IP address is, you get a whole list of IP addresses. However, those IP addresses are Bitcoin nodes, and every time you ask, it's going to give you different IP addresses.
 
-This means that the standard infrastructure of the internet — all the ISPs in the world and all these others — are caching exactly where all the Bitcoin nodes are, because they think it's just a website. So it's kind of nice that you keep all these lists of nodes redundantly stored on the internet, and there are quite a few protections against censorship of DNS. 
+This means that the standard infrastructure of the internet — all the ISPs in the world and all these others — are caching exactly where all the Bitcoin nodes are, because they think it's just a website. So it's kind of nice that you keep all these lists of nodes redundantly stored on the internet, and there are quite a few protections against censorship of DNS.
 
 But at the same time, if someone were to lie and run a fake server, it could send you to any node they want, but that would be very visible. The reason it's visible is because anyone can request these IP addresses from you and then check if they actually lead to Bitcoin nodes or not. And them being visible is to prevent cheating.
 
@@ -65,15 +65,15 @@ However, if the DNS seeds aren't reachable because, for example, they're offline
 
 Bitcoin nodes are embedded into the source code. Every six months or so all the DNS seed maintainers are asked to provide a list of the most reliable nodes — just all the nodes sorted by how frequently they're online, because your DNS seed tends to track. What a DNS seed does on its side is it's just a crawler.^[<https://github.com/sipa/bitcoin-seeder>] It goes to a couple of Bitcoin nodes, asks it for all the nodes it knows, keeps a list, goes to the list, and pings them all. Then, once it's done pinging them all, it's just going to be them all again.
 
-It also keeps track of how often they're online, which results in a list sorted by reliability. You take that from all the contributors and that goes into the source code.^[<https://github.com/bitcoin/bitcoin/blob/v22.0/contrib/seeds/nodes_main.txt>] So that's the fallback. But it's only the first time you start your node, at least in theory. So only the very first time you start your node, you need this. 
+It also keeps track of how often they're online, which results in a list sorted by reliability. You take that from all the contributors and that goes into the source code.^[<https://github.com/bitcoin/bitcoin/blob/v22.0/contrib/seeds/nodes_main.txt>] So that's the fallback. But it's only the first time you start your node, at least in theory. So only the very first time you start your node, you need this.
 
 After that, you'd keep track of the nodes you know about, i.e. store all these gossip nodes in a file. You can open the file and first try the nodes you know about, and only if you run out or if it doesn't work, do you ask the seed again. But otherwise, you keep syncing your list of IP addresses with the new nodes.
 
 Whenever a node connects to you for the first time, that's one of the first things it asks: "Who else do you know?" You can even send them unsolicited, which is why, if you start a new node, you get inbound connections pretty quickly because  you've announced your IP address to other people and they're gossiping it around and these other nodes then start connecting.
 
-You bootstrap to the Bitcoin network by first querying DNS records to find other Bitcoin nodes. Then you get a list of IP addresses and use them to connect to the actual Bitcoin nodes, which could also be Tor nodes at that point. 
+You bootstrap to the Bitcoin network by first querying DNS records to find other Bitcoin nodes. Then you get a list of IP addresses and use them to connect to the actual Bitcoin nodes, which could also be Tor nodes at that point.
 
-Alternatively, you can query from the DNS records. At that point, you ask about all of the nodes that they know and you update your list. And from that point on, you're also sharing the IP addresses you have with other nodes. So far, these were IPv4 and IPv6, and the latter had a subset of onion nodes. And with this upgrades will be ready for a newer version of onion nodes. 
+Alternatively, you can query from the DNS records. At that point, you ask about all of the nodes that they know and you update your list. And from that point on, you're also sharing the IP addresses you have with other nodes. So far, these were IPv4 and IPv6, and the latter had a subset of onion nodes. And with this upgrades will be ready for a newer version of onion nodes.
 
 And then one tiny little thing that was recently added, is that the Bitcoin node actually can spin up the V3 onion node. But that's actually a five-line change. If you were running a version 2 node before, it's going to run a version 3 tor node after if you weren't. And then you need to read the documentation on how to set it up if you want to use it.
 
