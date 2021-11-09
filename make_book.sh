@@ -66,11 +66,5 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         development/guix.md\
         development/core_0_21.md\
         development/core_22_0.md\
-        sidechains/_section.md\
-        sidechains/statechains.md\
-        sidechains/one-way-peg.md\
-        sidechains/rsk.md\
-        sidechains/drivechain.md\
-        sidechains/softchains.md\
         appendix/more_episodes.md\
         appendix/crime-on-testnet.md\

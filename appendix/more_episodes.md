@@ -105,3 +105,69 @@ Where coins on Bitcoin’s base layer are sent to addresses, the Lightning netwo
 BOLT 12, which has been implemented in c-lightning, is a way to essentially refer a payer to the node that is to be paid, in order to request a new invoice. While the BOLT 12 offer can be static and reusable — it always refers to the same node — the payee can generate new invoices on the fly when requested, allowing for much more flexibility, Sjors explains.
 
 Finally, we discuss how the new BOLT 12 messages are communicated over the Lightning Network through an update to the BOLT 7 specification for message relay.
+
+### Sidechains
+
+Lightning is not the only path forward for scaling Bitcoin, though it is the most actively developed one at the moment. Sidechains are another approach, optionally combined with Lightning.
+
+Though there is no universally agreed upon definition, the general idea is that you create a separate blockchain with its own rules, that is somehow pegged to the Bitcoin blockchain. The advantage of this approach, in theory, is that only nodes that care about a paricular sidechain need to verify it, while the rest of the network only needs to check that the amount of Bitcoin leaving the sidechain does not exceed the amount going in.
+
+We discussed several of these ideas in the podcast, often with the help of Utrecht based ad hoc co-host Ruben Somsen.
+
+#### Drivechains
+
+![Ep. 23 {l0pt}](qr/23.png)
+
+Drivechain is a sidechain project spearheaded by Paul Sztorc.
+
+This should make the sidechain coins interchangeable with bitcoin and therefore carry an equal value. In a way, sidechains let users “move” bitcoin across blockchains, where they are subject to different protocol rules, allowing for greater transaction capacity, more privacy, and other benefits. We explain that Drivechain consists of two main innovations.
+
+The first is blind merged mining, which lets Bitcoin miners secure the drivechain with their existing hash power, but without necessarily needing to validate everything that happens on the sidechain.
+
+The second is hashrate escrows, which lets miners “move” coins from the Bitcoin blockchain to the sidechain and back.
+
+We also discuss some of the benefits as well as complications with Drivechain, most notably the security implications of letting miners control the pegging out process. They consider the arguments why this process is incentive compatible (in other words: secure) — or why it might not be.
+
+#### Perpetual One-Way Peg
+
+![Ep. 12 {l0pt}](qr/12.png)
+
+Ruben explains his proposal to combine blind merged mining and perpetual one-way pegs in order to create a new type of sidechain. The bad news: it won't make you rich but it could help scale Bitcoin!
+
+First Ruben introduces the concept of a blind merge-mind chain. He then explains the use cases for the perpetual one-way peg and what Merge Mining is. We then get to Perpetual One-Way Peg and try answer the question: why would the side chain coin be worth anything?
+
+A blog post by Ruben also explains the concept.^[<https://medium.com/@RubenSomsen/21-million-bitcoins-to-rule-all-sidechains-the-perpetual-one-way-peg-96cb2f8ac302>]
+
+#### Softchains
+
+![Ep. 27 {l0pt}](qr/27.png)
+
+This time, they discuss one of Ruben’s own proposals, called Softchains.
+
+Softchains are a type of two-way peg sidechains that utilize a new type of consensus mechanism: proof-of-work fraud proofs (or as Sjors prefers to call them, proof-of-work fraud indicators). Using this consensus mechanism, users don’t validate the content of each block, but instead only check the proof of work header, like Simplified Payment Verification (SPV) clients do. But using proof-of-work fraud proofs, users do validate the entire content of blocks any time a blockchain fork occurs. This offers a security model in between full node security and SPV security.
+
+Ruben explains that by using proof-of-work fraud proofs for sidechains to create Softchains, Bitcoin full nodes could validate entire sidechains at minimal cost. This new model might be useful for certain types of sidechains, most notably “block size increase” sidechains that do nothing fancy but do offer more transaction capacity. Aaron, Sjors and Ruben also discuss some of the downsides of the Softchain model.
+
+#### Statechains
+
+![Ep. 08 {l0pt}](qr/08.png)
+
+We discuss yet another one of Ruben's proposals: Statechains on Bitcoin. Statechains allow you to send keys not UTXO and it offers quite a few scaling and functionality improvements.
+
+See also Ruben's presentation^[<https://youtu.be/CKx6eULIC3A>] on Bitcoin Magazine about Statechains and Aaron's Bitcoin Magazine article^[<https://bitcoinmagazine.com/articles/statechains-sending-keys-not-coins-to-scale-bitcoin-off-chain>].
+
+#### RSK, federated sidechains and Powpeg
+
+![Ep. 20 {l0pt}](qr/20.png)
+
+We discuss RSK’s shift from a federated sidechain model to the project’s new Powpeg solution.
+
+RSK is a merge-mined, Ethereum-like Bitcoin sidechain developed by IOVlabs. Bitcoin users can effectively move their coins to this blockchain that operates more like Ethereum, and move the coins back to the Bitcoin blockchain when they so choose. Some Bitcoin miners utilize their hash power to mine bocks on the sidechain, and earn some extra transaction fees by doing so.
+
+The tricky part of any sidechain is allowing users to securely move their coins between blockchains. This is technically done by locking coins on the Bitcoin blockchain and issuing corresponding coins on the sidechain, and vice versa: locking coins on the sidechain to unlock the coins on the Bitcoin blockchain.
+
+So far, RSK has done this by locking the coins into a multisignature address, for which the private keys were controlled by a group of well-known companies (known as a federated sidechain model). A majority of them was needed to unlock the coins, which they were to only do if and when the corresponding sidechain coins were locked.
+
+RSK is now switching to a Powpeg model where the keys to the multisignature address are controlled by special tamper-proof hardware modules that are in turn programmed to only unlock coins on the Bitcoin blockchain if and when the corresponding coins on the sidechain are locked, and the transactions to lock these coins up have a significant number of confirmations.
+
+The hosts explain how this works exactly, and discuss some of Powpeg’s security tradeoffs.

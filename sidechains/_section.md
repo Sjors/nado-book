@@ -1,4 +1,0 @@
-\newpage
-# Sidechains
-
-Definitions, blah.
