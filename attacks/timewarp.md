@@ -10,4 +10,4 @@ comment: Does not cover the Bitcoin Cash part of the episode
 
 explains the "time-warp attack" on Bitcoin
 
-https://github.com/TheBlueMatt/bips/blob/cleanup-softfork/bip-XXXX.mediawiki
+<https://github.com/TheBlueMatt/bips/blob/cleanup-softfork/bip-XXXX.mediawiki>
