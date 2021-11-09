@@ -31,3 +31,77 @@ We are joined by Ruben Somsen to discuss RGB tokens, a Layer Two protocol for Bi
 We explain that the Bitcoin blockchain has been (ab)used by users to host data since the project’s early days. This was initially done through otherwise-useless transaction outputs, which meant that all Bitcoin users had to store this data locally. A feature called `OP_RETURN` later limited this burden.They also explain that people have been using the Bitcoin blockchain to host alternative currency and token schemes for a long time.
 
 A few years ago I also gave a presentation about RGB as well as earlier attemps at using the Bitcoin blockchain to store non-money things: <https://www.youtube.com/watch?v=PgeqT6ruBWU>
+
+### Lightning
+
+One could write a entire book about lightning. And in fact, others have, see e.g. _Mastering the Lightning Network: A Second Layer Blockchain Protocol for Instant Bitcoin Payments_ by Andreas Antonopoulos and Olaoluwa Osuntokun (aka Roasbeef).
+
+This book does not cover Lightning, but several Bitcoin, Explained episodes did.
+
+#### Basics
+
+![Ep. 22 {l0pt}](qr/22.png)
+
+We discuss the basics of the Lightning Network, Bitcoin’s Layer 2 protocol for cheaper, faster and potentially more private transactions. We explain that the Lightning Network works as a scaling layer because it lets users make off-chain transactions through bi-directional payment channels: two users can pay one another an arbitrary number of times without these transactions being recorded on the blockchain. We went on to explain how, in the Lightning protocol, these off-chain transactions are secure, that is, how each of the participants is at any point guaranteed to claim their respective funds from the payment channel.
+
+Then we explain how bi-directional payment channels can be linked across a network of users, to extend the potential of off-chain transactions so any Lightning user can pay any other Lightning user, even if they haven’t set up a payment channel between the two of them specifically.
+
+Finally, we briefly touch on some of the challenges presented by the Lightning Network, most notably the requirement of payment channels to have sufficient liquidity locked into them.
+
+#### RBF bug in Bitcoin Core
+
+![Ep. 38 {l0pt}](qr/38.png)
+
+We discuss CVE-2021-31876, a bug in the Bitcoin Core code that affects replace-by-fee (RBF) child transactions.^[<https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31876>] The CVE (Common Vulnerabilities and Exposures) system offers an overview of publicly known software bugs. A newly discovered bug in the Bitcoin Core code was recently discovered and disclosed by Antoine Riard, and added to the CVE overview.
+
+We explain that the bug affects how RBF logic is handled by the Bitcoin Core software. When one unconfirmed transaction includes an RBF flag (which means it should be considered replaceable if a conflicting transaction with a higher fee is broadcast over the network) any following transaction that spends coins from the original transaction should also be considered replaceable — even if the second transaction doesn’t itself have an RBF flag. Bitcoin Core software would not do this, however, which means the second transaction would in fact not be considered replaceable.
+
+This is a fairly innocent bug; in most cases the second transaction will still confirm eventually, while there are also other solutions to speed confirmation up if the included fee is too low. But in very specific cases, like some fallback security mechanisms on the Lightning Network, the bug could in fact cause complications. We try to explain what such a scenario would look like, but end up totally confused.
+
+#### Routing
+
+![Ep. 41 {l0pt}](qr/41.png)
+
+We are joined by Lightning developer Joost Jager to discuss everything about Lightning Network routing.
+
+The Lightning Network consists of a network of payments channels. Each payment channel exists between two Lightning users. But even if two users don’t have a payment channel between themselves directly, they can pay each other though one or several other Lightning users, who in that case forward the payment from the payer to the payee.
+
+The challenge is that a payment path across the network must be found, which allows the funds to move from the payer to the payee, and ideally the cheapest, fastest and most reliable payment path available.
+
+Joost explains how Lightning nodes currently construct a map of the Lightning Network, and what information about all of the (publicly visible) payment channels is included about in that map. Next, he outlines on what basis Lightning nodes calculate the best path over the network to reach the payee, and how the performance of this route factors into future path finding calculations.
+
+Finally we discuss some (potential) optimizations to benefit Lightning Network routing, such as rebalancing schemes and Trampoline Payments.
+
+#### Optimally Reliable & Cheap Payment Flows on the Lightning Network
+
+![Ep. 47 {l0pt}](qr/47.png)
+
+In this episode I interview another expert on Lightning routing, René Pickhardt. We discuss his paper “Optimally Reliable & Cheap Payment Flows on the Lightning Network”.^[<https://arxiv.org/abs/2107.05322>] To cite the abstract:
+
+> Today, payment paths in Bitcoin's Lightning Network are found by searching for shortest paths on the fee graph. We enhance this approach in two dimensions. Firstly, we take into account the probability of a payment actually being possible due to the unknown balance distributions in the channels. Secondly, we use minimum cost flows as a proper generalization of shortest paths to multi-part payments (MPP). In particular we show that under plausible assumptions about the balance distributions we can find the most likely MPP for any given set of senders, recipients and amounts by solving for a (generalized) integer minimum cost flow with a separable and convex cost function. Polynomial time exact algorithms as well as approximations are known for this optimization problem. We present a round-based algorithm of min-cost flow computations for delivering large payment amounts over the Lightning Network. This algorithm works by updating the probability distributions with the information gained from both successful and unsuccessful paths on prior rounds. In all our experiments a single digit number of rounds sufficed to deliver payments of sizes that were close to the total local balance of the sender. Early experiments indicate that our approach increases the size of payments that can be reliably delivered by several orders of magnitude compared to the current state of the art. We observe that finding the cheapest multi-part payments is an NP-hard problem considering the current fee structure and propose dropping the base fee to make it a linear min-cost flow problem. Finally, we discuss possibilities for maximizing the probability while at the same time minimizing the fees of a flow. While this turns out to be a hard problem in general as well - even in the single path case - it appears to be surprisingly tractable in practice.
+
+#### Eltoo and SIGHASH_ANYPREVOUT
+
+We covered this topic twice, so there's two epidodes to choose from. In episode 35 Aaron and I explain it, whereas in episode 48 one of the authors, c-lightning developer Christian joins me to explain it in his words.
+
+![Ep. 35 {l0pt}](qr/35.png)
+
+First we discuss `SIGHASH_ANYPREVOUT`, a proposed new sighash flag that would enable a cleaner version of the Lightning Network and other Layer Two protocols. Sighash flags are included in Bitcoin transactions to indicate which part of the transaction is signed by the required private keys, exactly.
+
+This can be (almost) the entire transaction, or specific parts of it. Signing only specific parts allows for some flexibility to adjust the transaction even after it is signed, which can sometimes be useful. We explain that `SIGHASH_ANYPREVOUT` is a new type of sighash flag, which would sign most of the transaction, but not the inputs. This means that the inputs could be swapped, as long as the new inputs would still be compatible with the signature.
+
+![Ep. 48 {l0pt}](qr/48.png)
+
+`SIGHASH_ANYPREVOUT` would be especially useful in context of Eltoo, a proposed Layer Two protocol that would enable a new version of the Lightning Network. Where Lightning users currently need to store old channel data for security reasons, and could also be punished severely if they accidentally broadcast some of this data at the wrong time, we how SIGHASH_ANYPREVOUT would do away with this requirement.
+
+#### Bolt 12 - Recurring payments, etc
+
+![Ep. 44 {l0pt}](qr/44.png)
+
+We discuss BOLT 12 (Basis of Lightning Technology 12), a newly proposed Lightning Network specification for “offers”, a type of “meta invoices” designed by c-lightning developer Rusty Russell.
+
+Where coins on Bitcoin’s base layer are sent to addresses, the Lightning network uses invoices. Invoices communicate the requested amount, node destination, and the hash of a secret which is used for payment routing. This works, but has a number of limitations, Sjors explains, notably that the amount must be bitcoin-denominated (as opposed for fiat denominated), and the invoice can only be used once.
+
+BOLT 12, which has been implemented in c-lightning, is a way to essentially refer a payer to the node that is to be paid, in order to request a new invoice. While the BOLT 12 offer can be static and reusable — it always refers to the same node — the payee can generate new invoices on the fly when requested, allowing for much more flexibility, Sjors explains.
+
+Finally, we discuss how the new BOLT 12 messages are communicated over the Lightning Network through an update to the BOLT 7 specification for message relay.

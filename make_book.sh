@@ -72,11 +72,5 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         sidechains/rsk.md\
         sidechains/drivechain.md\
         sidechains/softchains.md\
-        lightning/_section.md\
-        lightning/basics.md\
-        lightning/routing.md\
-        lightning/bolt12.md\
-        lightning/eltoo.md\
-        lightning/rbf_bug.md\
         appendix/more_episodes.md\
         appendix/crime-on-testnet.md\
