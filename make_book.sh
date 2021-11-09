@@ -79,3 +79,4 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         lightning/eltoo.md\
         lightning/rbf_bug.md\
         appendix/more_episodes.md\
+        appendix/crime-on-testnet.md\
