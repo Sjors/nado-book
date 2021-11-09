@@ -32,9 +32,7 @@ Unfortunately the system isn't perfect. Especially when you're sending and recei
 
 Therefore, using Bitcoin from behind Tor^[<https://github.com/bitcoin/bitcoin/blob/master/doc/tor.md>] may improve your privacy by severing the link between your IP address and any information about you that your node may accidentally reveal.
 
-As a practical matter, if you were already doing this, there's a new type of onion address as a result of an update in the Tor protocol: Tor V3. These new Tor addresses are longer, which makes them more secure.^[<https://blog.torproject.org/v3-onion-services-usage>] So, if you want to keep running a Bitcoin node on Tor, you'll have to use the longer addresses.
-
-Bitcoin Core needed an upgrade to support these new addresses.
+As a practical matter, if you were already doing this, there's a new type of onion address as a result of an update in the Tor protocol: Tor V3. These new Tor addresses are longer, which makes them more secure.^[https://blog.torproject.org/v3-onion-services-usage] Additionally, Bitcoin Core was upgraded to support these new addresses, so if you want to keep running a Bitcoin node on Tor, just upgrade your node and it will automatically use these longer addresses.
 
 ### Bitcoin Nodes and Gossip
 
