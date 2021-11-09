@@ -32,7 +32,7 @@ Unfortunately the system isn't perfect. Especially when you're sending and recei
 
 Therefore, using Bitcoin from behind Tor^[<https://github.com/bitcoin/bitcoin/blob/master/doc/tor.md>] may improve your privacy by severing the link between your IP address and any information about you that your node may accidentally reveal.
 
-As a practical matter, if you were already doing this, there's a new type of onion address as a result of an update in the Tor protocol. These new Tor addresses are longer, which makes them more secure.^[<https://blog.torproject.org/v3-onion-services-usage>] So, if you want to keep running a Bitcoin node on Tor, you'll have to use the longer addresses. 
+As a practical matter, if you were already doing this, there's a new type of onion address as a result of an update in the Tor protocol: Tor V3. These new Tor addresses are longer, which makes them more secure.^[<https://blog.torproject.org/v3-onion-services-usage>] So, if you want to keep running a Bitcoin node on Tor, you'll have to use the longer addresses.
 
 Bitcoin Core needed an upgrade to support these new addresses.
 
@@ -74,7 +74,7 @@ Because of this caching, DNS records are stored very redundantly. That's good fo
 
 Bitcoin kind of abuses this system, because Bitcoin nodes aren't websites. There are a couple of Core developers who run DNS seeds, which are essentially DNS servers. And we're just pretending that, for example, seed.bitcoin.sprovoost.nl is a "website," and when you ask that "website" what its IP address is, you get a whole list of IP addresses. However, those IP addresses are Bitcoin nodes, and every time you ask, it's going to give you different IP addresses.
 
-What a DNS seed does on its side is it's just a crawler.^[<https://github.com/sipa/bitcoin-seeder>] It goes to a couple of Bitcoin nodes, asks it for all the nodes it knows, keeps a list, goes to the list, and pings them all. Then, once it's done pinging them all, it's just going to be them all again.
+What a DNS seed does on its side is it's just a crawler.^[<https://github.com/sipa/bitcoin-seeder>] It goes to a couple of Bitcoin nodes, asks it for all the nodes it knows, keeps a list, goes through the list, and pings them all. Then, once it's done pinging them all, it's just going to ping them all again.
 
 This means that the standard infrastructure of the internet — including all the ISPs in the world — is caching a huge list of Bitcoin nodes that you can connect to, because it thinks it's just a website. So it's kind of nice that you keep all these lists of nodes redundantly stored on the internet, and there are quite a few protections against censorship of DNS.
 
