@@ -32,13 +32,13 @@ Unfortunately the system isn't perfect. Especially when you're sending and recei
 
 Therefore, using Bitcoin from behind Tor^[<https://github.com/bitcoin/bitcoin/blob/master/doc/tor.md>] may improve your privacy by severing the link between your IP address and any information about you that your node may accidentally reveal.
 
-As a practical matter, if you were already doing this, there's a new type of onion address as a result of an update in the Tor protocol: Tor V3. These new Tor addresses are longer, which makes them more secure.^[https://blog.torproject.org/v3-onion-services-usage] Additionally, Bitcoin Core was upgraded to support these new addresses, so if you want to keep running a Bitcoin node on Tor, just upgrade your node and it will automatically use these longer addresses.
+As a practical matter, if you were already doing this, there's a new type of onion address as a result of an update in the Tor protocol: Tor V3. These new Tor addresses are longer, which makes them more secure.^[<https://blog.torproject.org/v3-onion-services-usage>] Additionally, Bitcoin Core was upgraded to support these new addresses, so if you want to keep running a Bitcoin node on Tor, you'll have to use the longer addresses.
 
 ### Bitcoin Nodes and Gossip
 
 This begs the question of why this makes a difference, and what's wrong with the longer address? This has to do with how Bitcoin nodes spread the word about who they are. The idea is that nodes can communicate with each other: They send each other lists of known nodes, and they ask each other, "Hey, which Bitcoin nodes do you know?" In return, they get a list of IP addresses, which are generally either IPv4 addresses or IPv6 addresses.
 
-IPv6 addresses were formalized in 1998 with the intention of replacing IPv4, because the number of IPv4 addresses was limited. There are 4,294,967,296 (232) potential unique IPv4 addresses,^[<https://en.wikipedia.org/wiki/IPv4>] whereas there are just enough IPv6 addresses for every molecule in the universe.
+IPv6 addresses were formalized in 1998 with the intention of replacing IPv4, because the number of IPv4 addresses was limited. There are nearly 4.3 billion potential unique IPv4 addresses,^[<https://en.wikipedia.org/wiki/IPv4>] whereas there are just enough IPv6 addresses for every molecule in the universe.
 
 Bitcoin nodes keep lists of other Bitcoin nodes and their IP addresses, which are IPv4 and IPv6 addresses. And the way you'd communicate a Tor address is to piggyback on IPv6. If an "address" starts with fd87::d87e::eb43, then Bitcoin Core knows that what follows should be interpreted as a Tor address. RFC-4193 ensures that such addresses won't clash with any computer in the real world.^[<https://datatracker.ietf.org/doc/html/rfc4193>]
 
@@ -90,4 +90,4 @@ Whenever a node connects to you for the first time, one of the first things it a
 
 You bootstrap to the Bitcoin network by first querying DNS records to find other Bitcoin nodes. Then you get a list of IP addresses and use them to connect to the actual Bitcoin nodes, which could also be Tor nodes at that point.
 
-Alternatively, you can query from the DNS records. At that point, you ask about all of the nodes that they know and you update your list. And from that point on, you're also sharing the IP addresses you have with other nodes. So far, these were IPv4 and IPv6, and the latter had a subset of onion nodes. And with this, upgrades will be ready for a newer version of onion nodes.
+Alternatively, you can query from the DNS records. At that point, you ask about all of the nodes that they know and you update your list. And from that point on, you're also sharing the IP addresses you have with other nodes. So far, these were IPv4 and IPv6, and the latter had a subset of onion nodes. And with this (ADDRv2 message), upgraded nodes will be ready for a newer version of onion nodes.
