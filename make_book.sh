@@ -53,12 +53,10 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         attacks/pool_censorship\.md\
         wallets/_section.md\
         wallets/hwi.md\
-        wallets/accounts.md\
         wallets/miniscript.md\
         wallets/hardware_jade.md\
         taproot/_section.md\
         taproot/basics.md\
-        taproot/payment_pools.md\
         taproot/activation.md\
         development/_section.md\
         development/signet.md\

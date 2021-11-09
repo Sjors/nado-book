@@ -32,6 +32,28 @@ We explain that the Bitcoin blockchain has been (ab)used by users to host data s
 
 A few years ago I also gave a presentation about RGB as well as earlier attemps at using the Bitcoin blockchain to store non-money things: <https://www.youtube.com/watch?v=PgeqT6ruBWU>
 
+### Accounts with Easypaysy
+
+![Ep. 11 {l0pt}](qr/11.png)
+
+We discuss Jose Femenias' Easypaysy proposal, an account system for Bitcoin, on Bitcoin. One feature it supports is stealth address identities. We discuss several use cases. Finally we explain what non repudiation is.
+
+Aaron also wrote an article covering Easypaysy for Bitcoin Magazine.^[<https://bitcoinmagazine.com/articles/bitcoin-need-accounts-one-developer-thinks-figured>]
+
+### Payment pools
+
+![Ep. 06 {l0pt}](qr/06.png)
+
+In this episode we explain what payment pools are, and why they need Taproot. We discuss the user experience of sharing UTXOs and how payment pools can work with lightning.
+
+See also Aaron's article.^[<https://bitcoinmagazine.com/articles/building-on-taproot-payment-pools-could-be-bitcoins-next-layer-two-protocol>]
+
+\
+
+\
+
+\
+
 ### Lightning
 
 One could write a entire book about lightning. And in fact, others have, see e.g. _Mastering the Lightning Network: A Second Layer Blockchain Protocol for Instant Bitcoin Payments_ by Andreas Antonopoulos and Olaoluwa Osuntokun (aka Roasbeef).
