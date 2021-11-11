@@ -1,17 +1,13 @@
 # A crime on Testnet {#sec:crime_on_testnet}
-
 _This dystopian fiction, which explains the basics of blockchain
 analytics, was originally published as a blog post._^[<https://sprovoost.nl/2018/12/28/a-crime-on-testnet-6d95ede8da03/>]
-
 \
 
 On a warm summer day I crave a frappuccino. Unfortunately drugs such as caffeine, sugar and cacao were declared illegal decades ago. This happened because young unemployed college graduates often felt triggered by loud caffeinated rich people. Sugar was causing mass obesity and was also a carcinogen. Cacao was too clearly associated with oppression. These days hardly anyone remembers the reasons, they’re just shown pictures of cocaine addicts and are told cacao is a gateway drug to that.
 
 Fortunately I know a guy, and he charges 0.002,000,-- bitcoin. I spin up my Bitcoin Core wallet, because I like the retro look. It doesn’t even use comma’s after the decimal separator, something we all got used to during the hyper-deflation era. Some people would just say 2,000 Bitcoin, but don’t say that anywhere near a Core church!
 
-![](appendix/core-1.png){ width=60% }
-
-First I need to buy some Bitcoin. Bitcoin in Europe is a bit like guns in the US. A lot of people don’t like it, others love it, but it’s perfectly legal. So I surf to bitonic.nl to buy a little more than I need:
+First I need to buy some Bitcoin. Bitcoin in Europe is a bit like guns in the USA. A lot of people don’t like it, others love it, but it’s perfectly legal. So I surf to bitonic.nl to buy a little more than I need:
 
 ![](appendix/buy.png){ width=30% }
 
