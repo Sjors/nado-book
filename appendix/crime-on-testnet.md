@@ -7,13 +7,15 @@ On a warm summer day I crave a frappuccino. Unfortunately drugs such as caffeine
 
 Fortunately I know a guy, and he charges 0.002,000,-- bitcoin. I spin up my Bitcoin Core wallet, because I like the retro look. It doesn’t even use comma’s after the decimal separator, something we all got used to during the hyper-deflation era. Some people would just say 2,000 Bitcoin, but don’t say that anywhere near a Core church!
 
+\newpage
+
 First I need to buy some Bitcoin. Bitcoin in Europe is a bit like guns in the USA. A lot of people don’t like it, others love it, but it’s perfectly legal. So I surf to bitonic.nl to buy a little more than I need:
 
 ![](appendix/buy.png){ width=30% }
 
 I pay with iDEAL, which is used for all online (fiat) shopping. They need a Bitcoin address to send it to, which I obtain from my Bitcoin Core wallet:
 
-![](appendix/core-2.png){ width=70% }
+![](appendix/core-2.png){ width=80% }
 
 I click Request payment and get an address:
 
@@ -21,21 +23,21 @@ I click Request payment and get an address:
 
 I copy the address into the Bitonic form under “Your bitcoinaddress”, ignore all the warnings my banking app gives, and finish the €10 payment. A few moments later Bitcoin Core tells me that I received 0.003,247,40 BTC on the address that I labeled “Buy Bitcoin” and that I gave to Bitonic (tb1q9jdtps…):
 
-![](appendix/core-4.png){ width=50% }
+![](appendix/core-4.png){ width=70% }
 
 While I wait for the transaction to confirm on the blockchain, I walk to my guy, let’s call him Dmitry even though that’s racist. He opens his own wallet and gives me an address (tb1qnm…), which I enter into my wallet in order to send him 0.0002,000,-- BTC.
 
-![](appendix/core-5.png){ width=50% }
+![](appendix/core-5.png){ width=/80% }
 
 Dmitry knows where I live, so he doesn’t wait for confirmation and just gives me the frap. We could have used Lightning to make the payment go through instantly without having to wait for confirmation. Lightning also doesn’t leave the same traces on the blockchain, so it could have prevented the pain soon to come. But we didn’t.
 
 So now my wallet looks like this and that should be where the story ends for me:
 
-![](appendix/core-6.png){ width=70% }
+![](appendix/core-6.png){ width=80% }
 
 Dmitry in the mean time sells a bunch of fraps to different customers, giving each one a unique address. Their wallets will look exactly the same as mine. At the end of the day, Dmitry’s wallet looks like this:
 
-![](appendix/core-7.png){ width=70% }
+![](appendix/core-7.png){ width=80% }
 
 Dmitry wants to buy some alcohol, the only drug that’s still legal, despite the violence, broken families, destroyed careers, crime, disease and mass road casualties it caused, especially after AI cars were banned. This was partially because AI cars enriched the big corporations that leased them out to the poor - who previously couldn’t afford a car - but what really broke the camels back was the ISIS hack that killed 15 million people during their work commute.
 
@@ -45,21 +47,21 @@ Anyway, why doesn’t Dmitry just use Bitonic to sell his coins? Well, because h
 
 So Dmitry now has an empty wallet and Kees received just a little under 0.006,000,-- BTC in his wallet (miners take a small fee to process each transaction):
 
-![](appendix/core-8.png){ width=70% }
+![](appendix/core-8.png){ width=80% }
 
 Kees has a problem. He’s being watched. Soon after the trade with Dmitry an undercover cop offers to sell 0.001,000,-- BTC. Kees offers him cash at 10% below the market price and gives the address tb1q3nf… Now his wallet looks like this:
 
-![](appendix/core-9.png){ width=70% }
+![](appendix/core-9.png){ width=80% }
 
 Unbeknownst to Kees, Dmitry was caught on camera selling coffee that day, he was arrested on his way out of the supermarket. His (empty) Bitcoin wallet was confiscated, as was his now empty fiat wallet and what was left in the liquor bottle. The wallet contained transactions and notes as you can see above. The timing of each transaction coincided with the camera footage, the amount matched the well known price of fraps, and the notes even said it was fraps. The wallet also shows the destination address where Dmitry sent the BTC (tb1qja…), which the police suspect belongs to Kees. They suspect Dmitry sold the coins in exchange for cash, though they were too late to find the cash.
 
 Kees is not arrested yet and so nobody knows what his Bitcoin addresses are. A privacy activist approaches him, because he wants to buy Bitcoin and doesn’t want the kind of surveillance that comes with buying coins online with iDeal. He has no intention of committing any crime whatsoever, not even tax evasion. He withdraws some of his hard and legally earned cash from an ATM. He then endures the long phone interrogation by his bank that always follows such behavior. He then negotiates a nice 3% fee above market rate. Kees sends him the coins, so Kees’ wallet now looks like this (2 buys, 1 sell):
 
-![](appendix/core-10.png){ width=65% }
+![](appendix/core-10.png){ width=80% }
 
 Meanwhile our police officer, let’s call him Donald, goes online and looks up the address used in his trade with Kees (tb1q3nf…). Bitcoin Core doesn’t support address lookups, because it doesn’t scale well and as Wladimir van der Laan put it “bitcoin core is not meant as a chain analysis platform”. His favorite block explorer blockchain.com doesn’t support bech32 address lookups, so he goes to a competitor:
 
-![](appendix/explorer.png){ width=65% }
+![](appendix/explorer.png){ width=80% }
 
 This page describes transactions related to the tb1q3nf… address. He suspects this address belongs to Kees, because it’s the address Kees gave him to send coins to.
 
