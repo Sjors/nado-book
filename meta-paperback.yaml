@@ -4,5 +4,6 @@ documentclass: memoir
 classoption:
   - twosides
   - statementpaper
+  - 11pt
 title: "Bitcoin: a Work in Progress"
 author: Sjors Provoost

@@ -3,6 +3,7 @@ header-includes:
 - \usepackage{caption}
 - \usepackage{wrapfig}
 - \captionsetup[figure]{labelformat=empty}
-- \isopage
+- \semiisopage
+- \setlrmarginsandblock{2.0cm}{2.0cm}{*}
 - \checkandfixthelayout
 ...
