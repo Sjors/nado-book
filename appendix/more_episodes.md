@@ -150,6 +150,8 @@ The second is hashrate escrows, which lets miners “move” coins from the Bitc
 
 We also discuss some of the benefits as well as complications with Drivechain, most notably the security implications of letting miners control the pegging out process. They consider the arguments why this process is incentive compatible (in other words: secure) — or why it might not be.
 
+\newpage
+
 #### Perpetual One-Way Peg
 
 ![Ep. 12 {l0pt}](qr/12.png)

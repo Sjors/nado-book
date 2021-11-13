@@ -7,8 +7,6 @@ On a warm summer day I crave a frappuccino. Unfortunately drugs such as caffeine
 
 Fortunately I know a guy, and he charges 0.002,000,-- bitcoin. I spin up my Bitcoin Core wallet, because I like the retro look. It doesn’t even use comma’s after the decimal separator, something we all got used to during the hyper-deflation era. Some people would just say 2,000 Bitcoin, but don’t say that anywhere near a Core church!
 
-\newpage
-
 First I need to buy some Bitcoin. Bitcoin in Europe is a bit like guns in the USA. A lot of people don’t like it, others love it, but it’s perfectly legal. So I surf to bitonic.nl to buy a little more than I need:
 
 ![](appendix/buy.png){ width=30% }

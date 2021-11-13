@@ -30,6 +30,6 @@ Timestamps:
 
 
 Helpful links:
-https://www.youtube.com/watch?v=6Y6n88DmkjU
+<https://www.youtube.com/watch?v=6Y6n88DmkjU>
 
-https://bitcoinmagazine.com/articles/bitcoins-growing-utxo-problem-and-how-utreexo-can-help-solve-it
+<https://bitcoinmagazine.com/articles/bitcoins-growing-utxo-problem-and-how-utreexo-can-help-solve-it>
