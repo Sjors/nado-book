@@ -9,15 +9,15 @@ In short, SegWit allowed transaction data and signature data to be separated wit
 
 ### Why Segregate Witnesses?
 
-Before SegWit arrived on the scene, there was a problem with transaction malleability. What this means is if someone sends you coins and you send them to someone else, the transaction you make will refer to the initial transaction. In theory, this is fine. However, the problem that arrises is someone else can take the initial transaction and manipulate it. As a result, the second transaction would no longer refer to the initial transaction, but rather to a void.
+Before SegWit arrived on the scene, there was a problem with transaction malleability. What this means is if someone sends you coins and you send them to someone else, your transaction (B) will refer their initial transaction (A). In theory, this is fine. However, the problem that arrises is someone else can take transaction A and manipulate it. As a result, transaction B would no longer refer to transaction A, but rather to a void. A transaction that tries to spend from a void is invalid, and thus never makes it into a block. This is a confusing experience in the best case.
 
-More specifically, the part of the transaction being manipulated is the signature: Every transaction is signed with a cryptographic signature, and the signature can be tweaked somehow in a way that it looks different, but it's still valid.
+More specifically, the part of the transaction being manipulated is the signature: Every transaction is signed with a cryptographic signature, and the signature could be tweaked somehow in a way that it looks different, but it's still valid.
 
-There were lots of ways to manipulate a signature. One way was to multiply the signature with minus one or to put an up minus in front of it, and anybody could do that.
+Prior to SegWit there were lots of ways to manipulate a signature. One way was to put a minus in front of the signature - remember that a signature is just a big number - and anybody could do that.^[This was resolved with BIP 66: <https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki>]
 
-So you'd broadcast a transaction, and it would go from one note to the other. Somebody else could see that transaction and they could say, "Well, I'm just going to flip this bit and send it onward, and then we'll see which one wins."
+So you'd broadcast a transaction, and it would go from one node to the other. Somebody else could see that transaction and they could say, "Well, I'm just going to flip this bit and send it onward, and then we'll see which one wins."
 
-The above scenario is for simple signatures, but if there were more complicated scripts, there were also ways someone could mess with those.
+The above scenario is for simple signatures, but if there were more complicated scripts, there were also ways someone could mess with those (see also chapter @sec:miniscript).
 
 So you may ask yourself, "Why is this a problem?" It's not necessarily a problem in this scenario, but imagine you sent a transaction to a super secure vault in the Arctic located thousands of meters underground. And then you went to the Arctic and created a redeemed transaction back to your hot wallet, but you broadcast it and didn't sign it. Then, if you broadcast this original transaction to send some money to the vault and somebody messes with it, you have to go back to the Arctic, which is complicated at best.
 
