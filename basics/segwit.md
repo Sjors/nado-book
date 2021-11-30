@@ -105,4 +105,6 @@ The second is an increase in block size, even though this is dwarfed by the capa
 
 There are some minor tweaks as well in there, but it was a pretty big change; compared to that, Taproot is relatively simple.
 
-There are of course some people who take issue with SegWit, claiming it would have been simpler to do as a hard fork, or that there would've been a clearer place to put the signature hash tree.
+### Block Size War
+
+If the above sounds great and uncontroversial, it's because in my opinion it is. There was however much drama in the years surrounding this soft-fork. One account of this is provided in Jonathan Bier's "The Blocksize War: The battle over who controls Bitcoin’s protocol rules".^[<https://www.amazon.com/Blocksize-War-controls-Bitcoins-protocol/dp/B08YQMC2WM>]
