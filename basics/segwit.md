@@ -69,15 +69,11 @@ The versioning works as follows, and is also touched on in chapter @sec:address 
 
 Before a new soft-fork activates, anything following an unknown version number is ignored, thus anyone-can-spend. One of the things that could go wrong with soft fork activation, is that a majority of miners is not actually enforcing the new rules. But as long as most miners do enforce the new rules, then they will ensure that these anyone-can-spend outputs, from the perspective of old nodes, won't actually get spent.
 
-### Merkle Trees
+They'll consider blocks that spend these coins invalid. And as long as they're in the majority, they'll also create the longest chain. So now the new nodes are happy because all the new rules are being followed, and the old nodes are happy because no rules are being broken from their perspective and they just follow the longest chain. So everyone's still in consensus.
 
-Signatures are appended to the end of a block, but there's a reference in the coinbase. But all these transactions included in one little transaction because of something called the Merkle tree TODO INCLUDE CHAPTER REFERENCE IF THERE IS ONE.
+Note that even in the event of a hashpower majority ignoring the new soft-fork rules, despite having initially signalled to enforce them, individual user nodes, and presumably nodes run by various Bitcoin exchanges, would still enforce the new rules. This would result in a chain split, where users who upgraded to the new soft-fork rules will see a different chain than those who didn't.
 
-A Merkle tree is a little bit more elegant than a hash because it allows you to point to specific elements inside the tree. A hash will just say yes or no for everything that's in it. However, with a Merkle tree, you can say, "OK, I can actually prove that this specific transaction exists inside that tree at that position," without having to reveal everything else in it.
-
-It's essentially a mirror of the actual transactions, which are also included in the Merkle tree in the block. There's one Merkle tree for regular transaction data, and then there's a mirroring Merkle tree for all the references to the signatures in the coinbase block.
-
-This idea could be generalized to something called extension blocks, where you could add something else to transactions in the future and just refer to them in a coinbase output. And so you could increase block size through soft forks to a degree, but you can't really go super far with that. Because as far as the old nodes is concerned, there still has to be a valid transaction out there. And a valid transaction probably has to have at least an input and at least an output, even if the output says, "Do whatever you want with this." Can't make it smaller than that, and there's still the one megabyte limit as far as these old nodes are concerned. You can't use extension blocks just to add data to transactions. You can use it to add data to transactions, but you can't use it to create an infinite number of transactions because those transactions have a minimum size, probably about 60 bytes.
+Perhaps in that case this majority of miners won't be able to sell the coins they generated, because buyers won't accept their blocks. A subset of those miners would then finally update their software, building on top of the shorter chain, enforcing the new rules, so they can sell their coins. If enough miners do this, the short chain with the new rules would eventually overtake the longer chain with the old rules, in a big reorg. Needless to say, this scenario is very undesirable, so when contemplating a soft-fork it's critical to make sure everyone, including miners, is on the same page, and actually ready to enforce the new rules.
 
 ### Hardware Wallets
 
