@@ -41,7 +41,7 @@ In short, SegWit solved the transaction malleability issue, where transaction ID
 
 ### Block Size Limit
 
-Blocks have a one-megabyte limits, and that limit used to include the transaction data, plus all the signatures, plus a little bit of metadata. Now, it's mostly the signature data and not the signatures contributing to the block size increase. Theoretically, it's up to four megabytes, but in practice, it's more like two and a half. 
+Blocks have a one-megabyte limits, and that limit used to include the transaction data, plus all the signatures, plus a little bit of metadata. Now, it's mostly the signature data and not the signatures contributing to the block size increase. Theoretically, it's up to four megabytes, but in practice, it's more like two and a half.
 
 And because this data goes into a place that old nodes don't care about, now you can bypass the one-megabyte block size limit without a hard fork because old nodes will see a block with exactly one megabyte in it. But new nodes will see more megabytes.
 
