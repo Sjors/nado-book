@@ -61,21 +61,13 @@ The new data is appended to the end of the block, kind of like a sub-block, whic
 
 This Coinbase transaction can spend the money however it wants, but it has to contain at least one output with an `OP_RETURN` in it, and that `OP_RETURN` must refer to the witness blocks. An `OP_RETURN` typically signifies that transaction verification is done, but it can be followed by text, which is then ignored. So old nodes just see an `OP_RETURN` statement and they don't care. The exception is with new nodes, which will check it. This allows nodes to communicate blocks and transactions to both new and old nodes, and they all agree on what's there.
 
-### Taproot
+### Future SegWit versions, e.g. Taproot
 
 The topic of Taproot is covered in depth in chapter @sec:taproot_basics. But what's important to know here is SegWit’s script versioning allows for easier upgrades to new transaction types, and the recent Taproot upgrade is the first example of this feature.
 
-There's a lot that can go wrong with soft fork activation and this is one example of it. But luckily, it didn't go wrong because if there's a mix of all the new nodes on the network, but most miners have forced the new rules, then most miners will ensure that these coins in anyone can spend outputs from this perspective of old nodes, won't actually get spent.
+The versioning works as follows, and is also touched on in chapter @sec:address about addresses. The output of each transaction contains the amount and something called the `scriptPubKey`. The latter is a piece of Bitcoin script that constrains how to spend this coin, as explained in chapter @sec:miniscript. With SegWit the `scriptPubKey` always starts with a number, which is interpreted as the SegWit version. The rules for interpreting SegWit version 0 are set in stone, as are those for interpreting SegWit version 1 aka Taproot. But anything following a 2 or higher is up for grabs: those rules may be written later.
 
-They'll consider blocks that spend these coins invalid. And as long as they're in the majority, they'll also create the longest chain. So now the new nodes are happy because all the new rules are being followed, and the old nodes are happy because no rules are being broken from their perspective and they just follow the longest chain. So everyone's still in consensus.
-
-However, this aforementioned rule — script up key — is a hack. It's just leveraging some ugly aspect of ancient ways that Bitcoin scripts work. But with SegWit, the first thing will be the number zero or the number one, etc. And this actually introduces a cleaner variant of the same principle, which is that, as far as a SegWit note is concerned, if it starts with the number zero, it's going to enforce the rules. If it starts with the number one or higher, it'll allow anyone to spend it.
-
-And if we get Taproot, then the new nodes will see version zero and they'll enforce the rules, and they'll see version one and they'll enforce the rules. But if they see version two or higher, they would just consider it valid, and that means that moving forward, it's much easier to introduce soft forks like Taproot without having to find another hack in the old scripting system to exploit.
-
-SegWit was a little bit of a hack, but it was in that sense a one-time hack, because now we can use versioning, and every time we want to introduce a new rule for spending coins, it's going to be pretty clean and easy moving forward.
-
-And within Taproot, there are multiple branches that can have their own condition, and those scripts also have a versioning mechanism. So there's even more versioning that can be done.
+Before a new soft-fork activates, anything following an unknown version number is ignored, thus anyone-can-spend. One of the things that could go wrong with soft fork activation, is that a majority of miners is not actually enforcing the new rules. But as long as most miners do enforce the new rules, then they will ensure that these anyone-can-spend outputs, from the perspective of old nodes, won't actually get spent.
 
 ### Merkle Trees
 
