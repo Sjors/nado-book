@@ -99,9 +99,9 @@ In summary, this input signing resolved some edge case problems where wallets ne
 
 ### Recap
 
-In total, there are four main benefits of SegWit. The first and most important is malleability, which enables things like Lightning, resulting in a pretty big capacity increase potential.
+In total, there are four main benefits of SegWit. The first and most important is fixing malleability, which enables things like Lightning, resulting in a pretty big increase in potential transaction throughput.
 
-The second is an increase in block size. The third is versioning, which makes it easier to deploy future upgrades. And fourth is the hardware wallet fee issue is solved.
+The second is an increase in block size, even though this is dwarfed by the capacity increase Lightning could achieve. The third is versioning, which makes it easier to deploy future upgrades. And fourth is the hardware wallet fee issue is solved.
 
 There are some minor tweaks as well in there, but it was a pretty big change; compared to that, Taproot is relatively simple.
 
