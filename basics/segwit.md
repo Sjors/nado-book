@@ -77,19 +77,23 @@ Perhaps in that case this majority of miners won't be able to sell the coins the
 
 ### Hardware Wallets
 
-In addition to all the aforementioned benefits — changes in block size, an increase in limits, versioning, etc. — there's also committing to the inputs, which primarily applies to hardware wallets.
+In addition to all the aforementioned benefits — fixing malleability, increasing block size, versioning, etc. — there's also committing to the inputs, which primarily applies to hardware wallets.
 
 If you're a hardware wallet and you want to sign something, you want to look at the output amounts TODO. You can do that, but you want to make sure the input amounts actually add up to the same as the output amounts so that money isn't just disappearing into fees.
 
-However, the only way to do that is to actually have the input transactions and look at their output amounts. In the past, that meant you'd have to send all the input transactions to the hardware wallet as well, which would, in turn, process them. This was potentially a lot of work, especially if the transactions were big.
+However, the only way to do that is to actually have the input transactions and look at their output amounts. In the past, that meant you'd have to send all the input transactions to the hardware wallet as well, which would, in turn, process them. This is problematic when the transactions are big, because these devices tend to be slow and have very limited memory resources.
 
-To be clear, this is always the case for any wallet. You always have inputs, which are coins you own. And then you have the outputs, which are coins you're sending, including a change output to yourself usually. The difference between them is the fee the miner keeps, and the fee isn't mentioned in the transaction, so you calculate it yourself.
+To be clear, any wallet should perform these checks, not just hardware wallets. You always have inputs, which are coins you own. And then you have the outputs, which are coins you're sending, including a change output to yourself usually. The difference between them is the fee the miner keeps, and the fee isn't mentioned in the transaction, so the wallet calculates it for you.
 
-This works for a regular wallet, because it knows how much all of the inputs are worth. But a hardware wallet is signing from private keys, and it doesn't necessarily know how much all the inputs are worth. It's sending money away, but it's actually not sure how much money it's sending, and therefore a hardware wallet has the risk that it's sending 10 million coins as a fee without realizing it.
+This works for a regular wallet, because it knows how much all of the inputs are worth. But a hardware wallet is disconnected from the internet, it doesn't necessarily know how much all the inputs are worth. Without that information, it can't be sure how much money it's about to send.
 
-The main problem with this is the fee could be arbitrary. And so if somebody colludes with the miner or just wants to take your coins hostage in some weird way, that's not good. So what SegWit does is it commits to those inputs.
+Therefore a hardware wallet has the risk that it's sending 10 million coins as a fee without realizing it. And so if somebody colludes with the miner or just wants to take your coins hostage in some weird way, that's not good. So what SegWit does is it commits to those inputs.^[Unfortunately the approach used by SegWit still left some potential attacks open, which have been addressed by Taproot.]
 
-A transaction has multiple outputs, so you'd say the suspending output zero of this and this transaction. And with SegWit, what's added to that is the entire transaction. So take the transaction and hash it, and that's what you're committing to now. And that includes the output amounts of that transaction. So now when you're signing it, you can check it. It could still be entirely fake, by the way; you could craft a fake transaction with fake inputs and any output amount you want, but then if the hardware wallet signs it and you put it on the blockchain, well, it's not going to be valid. So that's kind of a useless cheat.
+A transaction can have multiple outputs, so a transaction input has to specify not just the transaction ID it's spending, but also which output. The signature covers this information, so a device has access to the previous transaction, it can check the output amount.
+
+What SegWit adds to this is that, before creating a signature, the output amount is added to the data that is signed. The device now receives these amounts, along with the transaction it needs to sign. It uses that to inform the user and to create the signature. If your computer lied to the device about the amount, then the resulting signature is invalid. So the device no longer needs to look at the actual previous transaction.
+
+Note that nothing is stopping your computer from crafting a fake transaction with fake inputs and any output amount it wants. The hardware wallet will happily sign it. But when your computer then broadcasts it to the network in order to get it included in the blockchain, it's just not going to be valid. So it's pointless for an attacker to try this.
 
 In summary, this input signing resolved some edge case problems where wallets needed to make sure they don’t overpay in transaction fees, and hardware wallets benefit from this solution in particular.
 
