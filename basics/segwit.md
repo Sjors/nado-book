@@ -43,15 +43,11 @@ In short, SegWit solved the transaction malleability issue, where transaction ID
 
 ### Block Size Limit
 
-Blocks have a one-megabyte limits, and that limit used to include the transaction data, plus all the signatures, plus a little bit of metadata. Now, it's mostly the signature data and not the signatures contributing to the block size increase. Theoretically, it's up to four megabytes, but in practice, it's more like two and a half.
+Before SegWit, blocks had a one-megabyte limit, and that limit included the transaction data, plus all the signatures, plus a little bit of block header data. Today, because SegWit transactions put their signature data in a separate place that old nodes won't see, blocks can be larger. Theoretically, they can be up to four megabytes, but in practice with typical transactions, it's closer to two and a half.
 
-And because this data goes into a place that old nodes don't care about, now you can bypass the one-megabyte block size limit without a hard fork because old nodes will see a block with exactly one megabyte in it. But new nodes will see more megabytes.
+Because the signature (witness) data goes into a place that old nodes don't care about, we can now bypass the one-megabyte block size limit without a hard fork because old nodes will see a block with exactly one megabyte in it. But new nodes will see more megabytes.
 
-The reason for this is a new way of calculating how data is counted when it comes to the signature. What happens is you take the old data and multiply it by three or something. Then, you take the new data and add it up. So the signature's kind of discounted in a way, and that's kind of an arbitrary number, but at least it creates an incentive to use SegWit.
-
-This also makes the block size limit more flexible now: If there are many transactions with many signatures — for example, multisignature transactions — then the size of the blocks could be a little bit bigger because of how it's all calculated.
-
-With the usual old-fashioned transactions, there wasn't much going on in terms of signatures. There just aren't that many signatures, but you could conceive of much more complicated transactions that have much longer signatures, like in a multisignature situation. And those are nicely discounted in SegWit.
+This increase is not unlimited either. SegWit nodes use a new way of calculating how data is counted, which gives a 75 percent discount to this segregated signature data. The percentage was somewhat arbitrary: enough to make SegWit transactions cheaper than their pre-SegWit counterparts, but not so much to incentivise abuse.
 
 ### SegWit as a Soft Fork
 
