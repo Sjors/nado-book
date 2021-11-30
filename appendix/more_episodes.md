@@ -1,6 +1,6 @@
 <!-- \backmatter -->
 \appendix
-# More episodes {epub:type=appendix}
+# More episodes {#sec:more_eps}
 
 Not all episodes of Bitcoin, Explained made it into this book. Here's some other episodes you could listen to:
 
