@@ -61,17 +61,9 @@ The new data is appended to the end of the block, kind of like a sub-block, whic
 
 This Coinbase transaction can spend the money however it wants, but it has to contain at least one output with an `OP_RETURN` in it, and that `OP_RETURN` must refer to the witness blocks. An `OP_RETURN` typically signifies that transaction verification is done, but it can be followed by text, which is then ignored. So old nodes just see an `OP_RETURN` statement and they don't care. The exception is with new nodes, which will check it. This allows nodes to communicate blocks and transactions to both new and old nodes, and they all agree on what's there.
 
-Another reason why SegWit can be a soft fork is because when sending coins, you're using a special address type, and this address type is on the blockchain. That is what an output says. So an output of a transaction tells you how to spend the new transaction by putting a constraint on it. This script up key with SegWit starts with a zero, but with Taboo, it'll start with a one.
-
-It's followed by the hash of a public key or the hash of a script, and new nodes know what to do with this. They see it's version zero, so they know it's SegWit. And they see a public key hash and they know that whoever wants to spend it needs to actually provide the public key and a signature. Meanwhile, what old nodes see is that there's a condition that they don't recognize, but as long as it's not a zero, it doesn't fail. This is called the script up key.
-
-Old nodes think anybody can spend that coin, but new nodes know exactly who can spend it and who can not spend it.
-
-In a hypothetical situation with only old nodes on the network, it'd mean that the coins in these addresses could be spent by anyone, which is why the activation of Taproot was important.
-
 ### Taproot
 
-The topic of Taproot is covered in depth in chapter TODO. But what's important to know here is SegWit’s script versioning allows for easier upgrades to new transactions types, and the anticipated Taproot upgrade could be a first example of this feature.
+The topic of Taproot is covered in depth in chapter @sec:taproot_basics. But what's important to know here is SegWit’s script versioning allows for easier upgrades to new transaction types, and the recent Taproot upgrade is the first example of this feature.
 
 There's a lot that can go wrong with soft fork activation and this is one example of it. But luckily, it didn't go wrong because if there's a mix of all the new nodes on the network, but most miners have forced the new rules, then most miners will ensure that these coins in anyone can spend outputs from this perspective of old nodes, won't actually get spent.
 
