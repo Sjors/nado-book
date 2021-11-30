@@ -49,9 +49,13 @@ Because the signature (witness) data goes into a place that old nodes don't care
 
 This increase is not unlimited either. SegWit nodes use a new way of calculating how data is counted, which gives a 75 percent discount to this segregated signature data. The percentage was somewhat arbitrary: enough to make SegWit transactions cheaper than their pre-SegWit counterparts, but not so much to incentivise abuse.
 
+Another way to express this discount is by introducing the concept of transaction "weight" rather than size. Witness data, which is the signature and any other data provided by the spender to satisfy the script, is given a lower weight than all the other transaction data.
+
 ### SegWit as a Soft Fork
 
-So SegWit offered a modest block size limit increase by discounting the “weight” of witness data, most notably signatures. But the question is, how can SegWit be deployed as a soft fork (backward-compatible upgrade)?
+So SegWit offered a modest block size limit increase by discounting the “weight” of witness data. But how could SegWit be deployed as a soft fork (backward-compatible upgrade)?
+
+We already touched on the fact that old nodes don't see any of the new witness data, and that SegWit transactions look like anyone-can-spend to them.
 
 Well, old nodes still recognize the SegWit chain, as long as it has majority hash power. They do this because this new data that was added isn't communicated to old nodes. And every transaction has a little piece of witness that isn't communicated to old nodes, and every block has a part that's the witness that's not communicated to old nodes.
 
