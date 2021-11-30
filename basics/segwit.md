@@ -31,11 +31,13 @@ There's another well-known example, which is what happened with Mt. Gox, a bitco
 
 So it's easy to see how much of an issue this was.
 
-A transaction consists of all of the transaction data, plus the signature in most cases, or in some transactions, the transaction data and the signature hashed together. The result is a string of numbers, which is the transaction ID.
+A transaction consists of all of the transaction data and the signature. It is identified by the transaction ID, which before SegWit was the hash of these two things. For example the 10 BTC transaction from Satoshi to Hal Finney is f4184fc5...^[f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16 <https://bitcointalk.org/index.php?topic=155054.0>]
 
 However, because the signature can be tweaked, the hash (transaction ID) can also be tweaked, and you end up with basically the same transaction but with a different transaction ID. That's the problem that needed to be solved: Somehow making sure a transaction would always result in the same transaction ID.
 
-The solution was to put the signature in a separate place inside the transaction that, as far as old nodes are concerned, doesn't even exist. Then, you'd still refer back to other transactions by the original data. So the original part of the transaction that still creates the hash and the signature is this new data, and it isn't used to create a hash.
+The solution was to append the signature to the end of a transaction. This new transaction part is not included when calculating the identifier hash. It's also not given to old nodes. As far as old nodes are concerned, the signature is empty and anyone can spend the transaction.^[
+To be more precise: the `scriptSig` is empty, where before it would have put a public key and signature on the stack. In turn the `scriptPubKey` is a `0` followed by a public key hash. To old nodes this combination results in a non-zero item on the stack, i.e. `True`, which is valid spend. SegWit enabled nodes on the other hand will interpret the `scriptPubKey` as a SegWit v0 program and also use the new `witness` field when evaluating. See <https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki>
+] Because the new signature part is not included in the transaction hash, its identifier doesn't change when the signature changes. Old nodes which don't have access to this signature can still calculate the transaction identifier.
 
 In short, SegWit solved the transaction malleability issue, where transaction IDs could be altered without invalidating the transactions themselves. In turn, solving the transaction malleability issue enabled second-layer protocols like the Lightning Network.
 
