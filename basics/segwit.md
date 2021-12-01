@@ -17,15 +17,15 @@ Prior to SegWit, there were lots of ways to manipulate a signature. One way was 
 
 So you'd broadcast a transaction, and it'd go from one node to the other. Somebody else could see that transaction and they could say, "Well, I'm just going to flip this bit and send it onward, and then we'll see which one wins."
 
-The above scenario is for simple signatures, but if there were more complicated scripts, there were also ways someone could mess with those (see chapter @sec:miniscript).
+The above scenario is for simple signatures, but there were also ways someone could mess with more complicated scripts (see chapter @sec:miniscript).
 
-So you may ask yourself, "Why is this a problem?" It's not necessarily a problem in this scenario, but imagine you sent a transaction (A) to a super secure vault in the Arctic located thousands of meters underground. And then you went to the Arctic and created a redeem transaction (B) back to your hot wallet, and you signed it, but you didn't yet broadcast it. Then, once you broadcast the first transaction (A) to send some money to the vault and somebody messes with it, suddenly the second transaction (B) is no longer valid, since it refers to the unaltered one (A). Now you have to go back to the Arctic to create a new transaction (B) that refers to the altered version (A), which is complicated at best.
+So you may ask yourself, "Why is this a problem?" It's not necessarily a problem in this scenario, but imagine you sent a transaction (A) to a super secure vault in the Arctic located thousands of meters underground. And then you went to the Arctic and created a redeem transaction (B) back to your hot wallet, and you signed it, but you didn't yet broadcast it. Then, once you broadcast the first transaction (A) to send some money to the vault and somebody messes with it, suddenly the second transaction (B) is no longer valid, since it refers to the unaltered one (A). Now you have to go back to the Arctic to create a new transaction (B) that refers to the altered version (A) — a scenario that's complicated at best.
 
 Another, perhaps more down to earth, example of how this becomes a problem is with Lightning,^[The book doesn't cover Lightning, but appendix @sec:more_eps has some pointers.] which is where you're building unconfirmed transactions on top of each other. So if one of the underlying transactions is tweaked, the transactions that follow up on that one are no longer valid.
 
 In such a scenario, two people might send money to a shared address, and the only way to get money out of that address would be using transactions that both people signed before they sent money to that address. You don't want somebody messing with the transaction that goes into the address, because then you can't spend from it anymore — or rather, you can, but you both have to sign it again. That potentially gives one party the power to blackmail the other to get their fair share of the coins back.
 
-There's another well-known example, which is what happened with Mt. Gox, a bitcoin exchange from Japan.^[For a deep dive into the demise of Mt. Gox, listen to <https://www.whatbitcoindid.com/mtgox-interviews>] According to some sources, Mt. Gox was doing its internal accounting based on transaction IDs. A customer would withdraw funds, use malleability to change the withdrawal transaction a little bit, and receive the money because the transaction was still valid, but then claim, "I made a withdrawal but never received the money." In response, Mt. Gox would use the transaction ID and look to see if it was in the blockchain. It'd see there wasn't a transaction ID in the blockchain that matched, reason the customer was right, and resend the coins.^[<https://en.wikipedia.org/wiki/Mt._Gox#Withdrawals_halted;_trading_suspended;_bitcoin_missing_(2014)>]
+There's another well-known example, which is what happened with Mt. Gox, a bitcoin exchange from Japan.^[For a deep dive into the demise of Mt. Gox, listen to <https://www.whatbitcoindid.com/mtgox-interviews>] According to some sources, Mt. Gox was doing its internal accounting based on transaction IDs. A customer would withdraw funds, use malleability to change the withdrawal transaction a little bit and receive the money because the transaction was still valid, but then claim, "I made a withdrawal but never received the money." In response, Mt. Gox would use the transaction ID and look to see if it was in the blockchain. It'd see there wasn't a transaction ID in the blockchain that matched, reason the customer was right, and resend the coins.^[<https://en.wikipedia.org/wiki/Mt._Gox#Withdrawals_halted;_trading_suspended;_bitcoin_missing_(2014)>]
 
 ### Solving Transaction Malleability
 
@@ -41,25 +41,23 @@ To be more precise: The `scriptSig` is empty, where before it would've put a pub
 
 In short, SegWit solved the transaction malleability issue, where transaction IDs could be altered without invalidating the transactions themselves. In turn, solving the transaction malleability issue enabled second-layer protocols like the Lightning Network.
 
+### SegWit as a Soft Fork
+
+That's all well and good, but how could SegWit be deployed as a soft fork (backward-compatible upgrade)?
+
+Well, old nodes still recognize the SegWit chain, as long as it has majority hash power. Meanwhile, new data is appended to the end of a block, kind of like a subblock, and it isn't sent to legacy nodes. A hash of this data is added to the coinbase transaction^[The company Coinbase was named after this first transaction in a block, which creates coins out of nowhere and pays the miner their reward.] in an `OP_RETURN` statement. Old nodes simply ignore this hash. This ensures that the main block hash is still considered valid by old nodes. At same time, SegWit nodes can verify that the witness data is correct by comparing its hash to that found in the special place inside the coinbase transaction.
+
+This coinbase transaction can spend the money however it wants, but it has to contain at least one output with an `OP_RETURN` in it, and that `OP_RETURN` must refer to the witness blocks. An `OP_RETURN` typically signifies that transaction verification is done, but it can be followed by text, which is then ignored. So old nodes just see an `OP_RETURN` statement and they don't care. The exception is with new nodes, which will check it. This allows nodes to communicate blocks and transactions to both new and old nodes, and they all agree on what's there.
+
 ### Block Size Limit
 
 Before SegWit, blocks had a one-megabyte limit, and that limit included the transaction data, plus all the signatures, plus a little bit of block header data. Today, because SegWit transactions put their signature data in a separate place that old nodes won't see, blocks can be larger. Theoretically, they can be up to four megabytes, but in practice with typical transactions, it's closer to two and a half.
 
-Because the signature (witness) data goes into a place that old nodes don't care about, we can now bypass the one-megabyte block size limit without a hard fork because old nodes will see a block with exactly one megabyte in it. But new nodes will see more megabytes.
+This is possible because the signature (witness) data goes into a place that old nodes don't care about. In turn, we can now bypass the one-megabyte block size limit without a hard fork because old nodes will see a block with exactly one megabyte in it. But new nodes will see more megabytes.
 
 This increase isn't unlimited either. SegWit nodes use a new way of calculating how data is counted, which gives a 75 percent discount to this segregated signature data. The percentage is somewhat arbitrary — enough to make SegWit transactions cheaper than their pre-SegWit counterparts, but not so much to incentivize abuse.
 
 Another way to express this discount is by introducing the concept of transaction "weight" rather than size. Witness data, which is the signature and any other data provided by the spender to satisfy the script, is given a lower weight than all the other transaction data.
-
-### SegWit as a Soft Fork
-
-So SegWit offered a modest block size limit increase by discounting the “weight” of witness data. But how could SegWit be deployed as a soft fork (backward-compatible upgrade)?
-
-Well, old nodes still recognize the SegWit chain, as long as it has majority hash power. We already touched on the fact that every transaction has a little piece of witness that isn't communicated to old nodes, and that SegWit transactions look like anyone can spend to them. Every block has a part where the witness of every transaction is collected. This part of the block isn't communicated to old nodes.
-
-The new data is appended to the end of the block, kind of like a subblock, and it isn't sent to legacy nodes. A hash of this data is added to the coinbase transaction^[The company Coinbase was named after this first transaction in a block, which creates coins out of nowhere and pays the miner their reward.] in an `OP_RETURN` statement. Old nodes simply ignore this hash. This ensures that the main block hash is still considered valid by old nodes. At same time, SegWit nodes can verify that the witness data is correct by comparing its hash to that found in the special place inside the coinbase transaction.
-
-This coinbase transaction can spend the money however it wants, but it has to contain at least one output with an `OP_RETURN` in it, and that `OP_RETURN` must refer to the witness blocks. An `OP_RETURN` typically signifies that transaction verification is done, but it can be followed by text, which is then ignored. So old nodes just see an `OP_RETURN` statement and they don't care. The exception is with new nodes, which will check it. This allows nodes to communicate blocks and transactions to both new and old nodes, and they all agree on what's there.
 
 ### Future SegWit versions, e.g. Taproot
 
