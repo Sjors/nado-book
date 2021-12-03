@@ -11,7 +11,7 @@ Chaincode podcast that also covers this attack: https://podcast.chaincode.com/20
 Explanation of ADDR message: https://developer.bitcoin.org/reference/p2p_networking.html#addr
 -->
 
-In mid 2021, people who run nodes started noticing that random people were connecting to them.^[To read the thread where people mention noticing this attack, see <https://bitcointalk.org/index.php?topic=5348856.0>] Of course, on its own, this isn't too bizarre. That's because nodes essentially bootstrap to the network, which is how Bitcoin nodes find other Bitcoin nodes. In turn, those nodes share IP addresses with one another, enabling more connection, which is how the network forms. 
+In mid 2021, people who run nodes started noticing that random people were connecting to them.^[To read the thread where people mention noticing this attack, see <https://bitcointalk.org/index.php?topic=5348856.0>] Of course, on its own, this isn't too bizarre. That's because nodes essentially bootstrap to the network, which is how Bitcoin nodes find other Bitcoin nodes. In turn, those nodes share IP addresses with one another, enabling more connection, which is how the network forms.
 
 However, what was unusual about this instance was these random people would connect to them and then send 500 messages, and each of those 500 messages would contain 10 IP addresses that were supposed to represent other nodes in the network.
 
@@ -29,7 +29,7 @@ Furthermore, not many people noticed what was happening, as most people who aren
 
 A couple weeks after this attack, Matthias Grundmann and Max Baumstark wrote a paper^[<https://arxiv.org/abs/2108.00815>] describing the attack and speculating about the reasoning behind it.
 
-TODO the show nodes from, I believe, the Council Institute of Technology. And the department is the Institute of Information Security and Dependability. 
+TODO the show nodes from, I believe, the Council Institute of Technology. And the department is the Institute of Information Security and Dependability.
 
 What they're guessing is that this attacker wasn't so much trying to destroy the network, as they were trying to map the network to get a sense of how well nodes are connected to each other. And the reason they can do that is because when you receive 10 IP addresses, you'll forward some — but not all — of them to some of your peers. So you get some exponential decay where you send them to your neighbors and their neighbors send some of them to their neighbors.
 
@@ -51,7 +51,7 @@ Now, the interesting part is that apparently this fix was added in the weeks bef
 
  So it almost sounds like somebody saw the solution and saw an opportunity to carry out this specific attack. Or perhaps somebody was already planning this attack and then figured they should do it soon, before it was no longer possible.
 
-### Other Examples 
+### Other Examples
 
 There have been other examples of this, like back in the Bitcoin Unlimited days, where they had an alternative implementation that had a bug in it, and then the bug was fixed, but before the fix was deployed, the bug was exploited by somebody. In turn, that brought down all the Bitcoin Unlimited nodes at that time.
 
