@@ -1,5 +1,5 @@
 \newpage
-## libsecp256k1 (Software Libraries)
+## libsecp256k1 (Software Libraries) {#sec:libsecp}
 
 
 ![Ep. 09 {l0pt}](qr/09.png)

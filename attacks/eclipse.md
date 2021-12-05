@@ -1,5 +1,5 @@
 \newpage
-## Eclipse attacks
+## Eclipse attacks {#sec:eclipse}
 
 ![Ep. 17 {l0pt}](qr/17.png)
 
