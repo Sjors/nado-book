@@ -6,6 +6,10 @@
 
 This chapter talks about an attack that took place in the summer of 2021. It discusses what happened, speculates why it may have happened, and shares the fix that will prevent it from happening again.
 
+<!-- Blank lines to move the next section header below the QR code -->
+\
+\
+
 ### Random Connections
 
 In mid 2021, people who run nodes started noticing that random people were connecting to them.^[To read the thread where people mention noticing this attack, see <https://bitcointalk.org/index.php?topic=5348856.0>] Of course, on its own, this isn't too bizarre. That's because nodes essentially bootstrap to the network, which is how Bitcoin nodes find other Bitcoin nodes. In turn, those nodes share IP addresses with one another, enabling more connections, which is how the network forms.
