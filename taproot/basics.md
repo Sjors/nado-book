@@ -39,7 +39,7 @@ While Merkle trees are a good solution, it'd be even better if you could hide th
 
 Let's return to the previous example of you and your mom. In this smart contract, if you and your mom both agree to spend the money, you don't have to wait 35 years. And most smart contracts have this condition where, if everyone who's involved agrees to spend the money, you can.
 
-It'd be nice to have a way to express this using only the signature — without scripts or an entire tree. This can be done by tweaking your public key. Instead of saying, "Send this to my public key," you'd roughly say, "Send this to my public key, plus my mom's public key, plus this MAST key." 
+It'd be nice to have a way to express this using only the signature — without scripts or an entire tree. This can be done by tweaking your public key. Instead of saying, "Send this to my public key," you'd roughly say, "Send this to my public key, plus my mom's public key, plus this MAST key."
 
 The idea of tweaking keys is oversimplified, because cryptography is subtle, but in theory, you can add up keys, and you can also add up signatures, and it looks to the outside world as if it's just a regular signature. As a result, you can hide things inside.
 
@@ -47,15 +47,15 @@ The idea of tweaking keys is oversimplified, because cryptography is subtle, but
 
 Chapter @sec:libsecp talks about libsecp256k1, and in May 2021, BIP 340^[<https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki>] support was merged into libsecp256k1. This added Schnorr signatures to Bitcoin Core.
 
-Schnorr digital signatures were first created by Claus-Peter Schnorr, a German mathematician. He created the Schnorr signature algorithm, which he then patented. It would've been great for Bitcoin, but because of the patent, people had to find another way. 
+Schnorr digital signatures were first created by Claus-Peter Schnorr, a German mathematician. He created the Schnorr signature algorithm, which he then patented. It would've been great for Bitcoin, but because of the patent, people had to find another way.
 
 What happened is a bunch of lawyers, engineers, and cryptographers joined forces and tried to figure out if there was a way to maim Schnorr's algorithm so far that it would legally not fall under the patent, but still work. The result was a signature algorithm called Elliptic Curve Digital Signature Algorithm (ECDSA), which is the elliptic curve algorithm that Bitcoin currency currently uses and that the libsecp library implements. ECDSA uses public and private keys to create digital signatures, but it's difficult...
 
-Although ECDSA is a convoluted version of Schnorr, it's been standardized; the NSA published some nice numbers for it. OpenSSL, the cryptographic library that many programs use, also uses it. And so, when Satoshi, probably when he was working on Bitcoin, he had to pick a cryptographic curve, and he just picked something from OpenSSL, namely ECDSA and not Schnorr. 
+Although ECDSA is a convoluted version of Schnorr, it's been standardized; the NSA published some nice numbers for it. OpenSSL, the cryptographic library that many programs use, also uses it. And so, when Satoshi, probably when he was working on Bitcoin, he had to pick a cryptographic curve, and he just picked something from OpenSSL, namely ECDSA and not Schnorr.
 
 First of all, he knew it was patented, or the patent maybe just ran out, but second, there was just no implementation of it and it's much easier to just use a library, because writing your own cryptography is really, really hard. Whatever this massive team was that Satoshi supposedly had, did not have a cryptographer that could do that.
 
-Overall, Schnorr is simpler than ECDSA. They use the same elliptic curve, but to make a signature, you have to do slightly different calculations with it. So that also means that the change for Schnorr is not as complicated as, say the initial version of libsecp was. 
+Overall, Schnorr is simpler than ECDSA. They use the same elliptic curve, but to make a signature, you have to do slightly different calculations with it. So that also means that the change for Schnorr is not as complicated as, say the initial version of libsecp was.
 
 The initial version of libsecp had to implement the elliptic curve, including all the operations you can do in a curve like addition and multiplication, and then implement the signature algorithm of ECDSA. But for Schnorr, you just need to do the signature algorithm for Schnorr, and you can skip all the math.
 
@@ -71,7 +71,7 @@ Schnorr signatures make it possible to:
 
 A MAST is represented by a hash, i.e. the hash of the top of the tree. It's essentially just a big number, just as a private key is. If you add the hash to the private key, it'll look like any other private key.
 
-Meanwhile, a hash can be turned into a "public key," just like a private key can. Additionally, it's commutative, which means the order of operands changing doesn't change the result: 
+Meanwhile, a hash can be turned into a "public key," just like a private key can. Additionally, it's commutative, which means the order of operands changing doesn't change the result:
 - public_key(private key + hash) == public_key(private_key) + public_key(hash)
 
 When you spend this, you have two choices:
@@ -79,7 +79,7 @@ When you spend this, you have two choices:
 2. Reveal the hash, and sign with the original private key. In this case, the blockchain requires that you reveal the relevant parts of the merkle tree (which anyone can verify results in that hash) and satisfy the leaf script.
 
 ### Actually Using Schnorr
- 
+
 Now that it's merged, there's an updated version of this library, but nobody's using that library yet. And another change is that Bitcoin Core was changed I think a few days ago to include that new version of the library. To include it, not to actually use it in any way.
 
 So if you download the first major release of Bitcoin Core, you'll download the library that includes Schnorr.
@@ -132,7 +132,6 @@ Additionally, you can do multi signatures without script, because you can actual
 
 The Taproot itself can be one signature, but it can also be a multisig, but just an M-of-N multisig, because there's just general math that you can use to combine signatures. That was possible; it's called threshold signatures in ECDSA. There's lots of papers about it and it's all very complicated, but with Schnorr, it should be slightly easier. By easier, I mean there's still only five people on the planet who can understand the math so they can write tools.
 
-TODO: I'm not sure what collaborative spent, N-of-M, Musid all are
 Aaron:
 Collaborative spent. That's what we're calling it, right?
 
@@ -147,7 +146,7 @@ There's a proposal called Musid. What it does, is it adds the signature.
 
 Exactly. It combines signatures.
 
-To the outside world, it looks like a regular public key and a regular signature. However, it's a combination of public keys that are then all signing, and you can add them up. In theory, I believe you can also do threshold things with that. That will still look like a single signature and a single public key, but actually, it's two out of three signatures. You don't have to bake it into the protocol; as long as you support Schnorr, somebody can come up with a way to combine these signatures, and to the outside world, it'll look the same. 
+To the outside world, it looks like a regular public key and a regular signature. However, it's a combination of public keys that are then all signing, and you can add them up. In theory, I believe you can also do threshold things with that. That will still look like a single signature and a single public key, but actually, it's two out of three signatures. You don't have to bake it into the protocol; as long as you support Schnorr, somebody can come up with a way to combine these signatures, and to the outside world, it'll look the same.
 
 Taproot enables these things, and it also makes Lightning more private. More specifically, with Lightning, both sides of the channel agree in an operation, and for the rest of the world, it looks like a normal transaction. But if they disagree, there are a lot of additional timeout conditions, which can be nicely hidden inside the Taproot.
 
@@ -165,12 +164,12 @@ So that would be hard right now?
 Sjors:
 That would be more difficult, because instead of using a pre-image in a hash, you just use essentially public keys and private keys. Everything would just be points on the elliptic curve that you're adding up, and then every point along the route can tweak the number slightly differently. To an outside observer that does not know the private keys, they just look like random numbers. Now, they can still correlate the amounts, so there's still some problems remaining, but again, it's an increase in privacy, which is very nice. Yeah.
 
-While it's true that some of the things you can do with Taproot are technically possible (but more complicated) already, there are some things Taproot unlocks. 
+While it's true that some of the things you can do with Taproot are technically possible (but more complicated) already, there are some things Taproot unlocks.
 
 For example, you can do infinitely large multisigs.
 
-However, most people won't necessarily notice the difference, except that privacy will be slightly better. As these advanced options come along, they'll use them but not notice them. 
- 
+However, most people won't necessarily notice the difference, except that privacy will be slightly better. As these advanced options come along, they'll use them but not notice them.
+
 ---
 
 Helpful Links:
