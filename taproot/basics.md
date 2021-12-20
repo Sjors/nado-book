@@ -69,15 +69,21 @@ It's a different way of signing, and in fact a simpler way of signing.
 ### How Schnorr Works
 
 Schnorr signatures make it possible to:
+
 1. Turn multiple signatures into a single signature (so in a 2-of-2 multisig, if both parties sign, it'll look indistinguisable from a normal single signature 1-of-1 wallet where 1 person signed) — in turn saving block space and improving privacy.
 2. Hide a MAST by tweaking the public key and signature.
 
 A MAST is represented by a hash, i.e. the hash of the top of the tree. It's essentially just a big number, just as a private key is. If you add the hash to the private key, it'll look like any other private key.
 
 Meanwhile, a hash can be turned into a "public key," just like a private key can. Additionally, it's commutative, which means the order of operands changing doesn't change the result:
-- public_key(private key + hash) == public_key(private_key) + public_key(hash)
+
+```
+public_key(private key + hash) ==
+public_key(private_key) + public_key(hash)
+```
 
 When you spend this, you have two choices:
+
 1. Don't reveal the hash. Instead, sign with the (private key + hash) as if it's a regular private key.
 2. Reveal the hash, and sign with the original private key. In this case, the blockchain requires that you reveal the relevant parts of the merkle tree (which anyone can verify results in that hash) and satisfy the leaf script.
 
