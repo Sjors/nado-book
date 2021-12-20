@@ -3,7 +3,10 @@
 
 ![Ep. 02 {l0pt}](qr/02.png)
 
-This chapter is all about Taproot[<https://bitcoinmagazine.com/articles/taproot-coming-what-it-and-how-it-will-benefit-bitcoin>]: what it is, what it does, and why it's interesting. In particular, it'll break down and explain Taproot, cover the building blocks that make Taproot possible, and explain what it enables Bitcoin to do.
+This chapter is all about Taproot^[<https://bitcoinmagazine.com/articles/taproot-coming-what-it-and-how-it-will-benefit-bitcoin>]: what it is, what it does, and why it's interesting. In particular, it'll break down and explain Taproot, cover the building blocks that make Taproot possible, and explain what it enables Bitcoin to do.
+
+<!-- Blank line to move the next section header below the QR code -->
+\
 
 ### Taproot, Briefly
 
