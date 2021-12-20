@@ -10,7 +10,7 @@ This chapter is all about Taproot^[<https://bitcoinmagazine.com/articles/taproot
 
 ### Taproot, Briefly
 
-Taproot is an upgrade to Bitcoin that was implemented in November 2021. This soft fork is aimed at increasing privacy, but additional benefits are that it makes Bitcoin more efficient and intuitive, and it lowers transaction fees.
+Taproot is an upgrade to Bitcoin that was proposed in 2018 and deployed in November 2021. This soft fork increases privacy for "smart contracts" and reduces their transaction fees. It achieves this by hiding all the different spending conditions in a Merkle tree, and only revealing the one that is eventually used. It also introduces Schnorr signatures, which make it much easier to compress signatures from multiple participants into a single signature. Both of these things result in less usage of precious block space, reducing fees, and improving privacy in the process.
 
 ### Merklized Abstract Syntax Trees
 
