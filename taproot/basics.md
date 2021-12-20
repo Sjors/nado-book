@@ -20,7 +20,7 @@ The example from that chapter outlines a scenario where you need to either have 
 
 This scenario is exaggerated for the purpose of making a point, but the point stands: Once you spend money, it'd be nice to only reveal the solution you use and not all the other options.
 
-This is where Merklized Abstract Syntax Trees (a backronym of MAST^[<https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2018-November/016500.html>]) comes in.
+This is where Merklized Abstract Syntax Trees (MAST^[<https://bitcoinops.org/en/topics/mast/>]) comes in.
 
 A Merkle tree^[Not to be confused with Merkel's tree: <https://www.reddit.com/r/ProgrammerHumor/comments/qzwjm3/please_dont_confuse_these_two/>] is a tree of hashes off the script, and it specifies the different ways to spend Bitcoin. So if you had a list of eight conditions, you could group them in a tree, with the eight conditions (or hashes) at the bottom. Then, you'd bundle them into pairs, resulting in four groups of hashes. They'd again be hashed, up and up the tree, until there's one hash left at the top, which is the one you share and the one the coins are spent to.
 
