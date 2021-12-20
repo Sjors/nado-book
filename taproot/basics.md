@@ -50,7 +50,7 @@ The idea of tweaking keys is oversimplified, because cryptography is subtle, but
 
 Chapter @sec:libsecp talks about libsecp256k1, and in May 2021, BIP 340^[<https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki>] support was merged into libsecp256k1. This added Schnorr signatures to Bitcoin Core.
 
-Schnorr digital signatures were first created by Claus-Peter Schnorr, a German mathematician. He created the Schnorr signature algorithm, which he then patented. It would've been great for Bitcoin, but because of the patent, people had to find another way.
+Schnorr digital signatures were first created by Claus-Peter Schnorr, a German mathematician. He created the Schnorr signature algorithm, which he then patented. It would've been great for Bitcoin, as well as many other open source project that came before it, but because of the patent, people had to find another way.
 
 What happened is a bunch of lawyers, engineers, and cryptographers joined forces and tried to figure out if there was a way to maim Schnorr's algorithm so far that it would legally not fall under the patent, but still work. The result was a signature algorithm called Elliptic Curve Digital Signature Algorithm (ECDSA), which is the elliptic curve algorithm that Bitcoin currency currently uses and that the libsecp library implements. ECDSA uses public and private keys to create digital signatures, but it's difficult...
 
