@@ -3,42 +3,39 @@
 
 ![Ep. 02 {l0pt}](qr/02.png)
 
-This chapter is all about Taproot^[<https://bitcoinmagazine.com/articles/taproot-coming-what-it-and-how-it-will-benefit-bitcoin>]: what it is, what it does, and why it's interesting. In particular, it'll break down and explain Taproot, cover the building blocks that make Taproot possible, and explain what it enables Bitcoin to do.
-
-<!-- Blank line to move the next section header below the QR code -->
-\
-
-### Taproot, Briefly
-
-Taproot is an upgrade to Bitcoin that was proposed in 2018 and deployed in November 2021. This soft fork increases privacy for "smart contracts" and reduces their transaction fees. It achieves this by hiding all the different spending conditions in a Merkle tree and only revealing the one that's eventually used. It also introduces Schnorr signatures, which make it much easier to compress signatures from multiple participants into a single signature. Both of these things result in less use of precious block space, reduced fees, and improved privacy.
+First we introduce a Merkle tree that hides all the different spending conditions until they are used. This is called MAST. Next, we explain how Schnorr signatures allow us to hide the MAST itself, which improves privacy further. We cover earlier proposals for MAST which didn't have the benefit of Schnorr, which illustrates the power of Taproot. Finally we point out some cool things Taproot enables.
 
 ### Merklized Abstract Syntax Trees
 
 Chapter @sec:miniscript covered how the Pay-to-Script-Hash (P2SH) soft fork from 2012 made it possible to hide the contents of a script until it's spent. From a privacy point of view, this is much better than immediately putting the script on the chain. However, what's unfortunate about this is that when you do spend, all the constraints that were placed on the transaction are then visible to everyone.
 
-The example from that chapter outlines a scenario where you need to either have your mom cosign a transaction or else wait two years to spend the coins on your own. One potential downside of showing the contents of the script before it's spent is an attacker could steal the keys and spend the coins after two years. But even if that doesn't occur since the contents are hidden, if you and your mom spend it together, the whole world doesn't necessarily need to know that you could have also spent it without your mom.
+The example from that chapter outlines a scenario where you need to either have your mom cosign a transaction or else wait two years to spend the coins on your own. One potential downside of showing the contents of the entire script, including fallback condition, is that an attacker learns that they only need to steal _your_ keys and are then free to spend the coins after two years. The very first time you add coins to this particular wallet, the attacker won't know anything about how to spend it (thanks to P2SH). And if you only use that wallet once in your lifetime, and spend all of it at once, then the attacker will learn about the fallback, but it will be too late to be of any use. However, if you use the wallet more than once, then, as soon as you make your first spend from it, you revealed that the fallback condition exists. From then on you're in trouble.
 
-This scenario is exaggerated for the purpose of making a point, but the point stands: Once you spend money, it'd be nice to only reveal the solution you use and not all the other options.
+This scenario is exaggerated for educational purposes, but the point stands: Once you spend money, it'd be nice to only reveal the solution you use and not all the other options.
 
 This is where Merklized Abstract Syntax Trees (MAST^[<https://bitcoinops.org/en/topics/mast/>]) come in.
 
-A Merkle tree^[Not to be confused with Merkel's tree: <https://www.reddit.com/r/ProgrammerHumor/comments/qzwjm3/please_dont_confuse_these_two/>] is a tree of hashes of scripts, and it specifies the different ways to spend Bitcoin. So if you had a list of eight conditions, you could group them in a tree, with the eight conditions (or hashes) at the bottom. Then, you'd bundle them into pairs, resulting in four groups of hashes. They'd again be hashed, up and up the tree, until there's one hash left at the top, which is the one you share and the one the coins are spent to.
+A Merkle tree^[Not to be confused with Merkel's tree: <https://www.reddit.com/r/ProgrammerHumor/comments/qzwjm3/please_dont_confuse_these_two/>] is a tree of hashes of scripts, and it specifies the different ways to spend Bitcoin. Picture it upside down, with the root at the top and leaves at the bottom. So if you have a list of four conditions, you build up the tree by starting with those four conditions (or hashes) at the bottom. Then, you bundle them into pairs, resulting in two groups of hashes. They'd again be hashed, up and up the tree, until there's one hash left at the top, the root, which is the one you share and the one the coins are spent to.
 
-In other words, when you want to spend it, you say, "This is the part of the tree I want to spend," and then you use that script. You also give the neighbor's script hash, because scripts come in pairs, and you give a hash of every other point in the tree. If the tree is four levels high, you need to give four hashes in the tree, which, depending on the scripts, is usually a lot less data than the original eight scripts, and you keep everything else secret. In this way, you prove you didn't change the script, but you also avoid revealing everything.
+Later, when you want to spend it, you say, "This is the part of the tree I want to spend," and then you use that script. You also give the neighbor's script hash, because scripts come in pairs, and you give a hash of every other point in the tree. By revealing the script and its neighbor leaf hash, you prove you didn't change the script.
+
+![Merkle tree^[Modified from: <https://commons.wikimedia.org/wiki/File:Hash_Tree.svg>]](taproot/hash_tree.svg)
+
+In this example with four conditions, the tree is three levels high and you need to reveal two hashes: your script's neighbor leaf at bottom, and the neighbor of their parent (where the tree is two hashes wide). The top hash doesn't need to be revealed, because anyone can calculate it from the two hashes you provided. Depending on the scripts, this usually requires less data than the original four scripts, and you keep everything else secret. With 1024 scripts you only need to put the script you used plus nine hashes on the blockchain.
 
 Now, Merkle trees are common: They're used in blocks, for file sharing, in BitTorrent, etc. Using them enables you to only share the parts of something you need. In the context of Bitcoin, that might be the script you're using to spend a coin, whereas in the context of BitTorrent, that might be a specific two seconds of video; your computer can receive lots of short fragments and confidently store those on your hard disk, knowing it's really a piece of the movie you're downloading, and not some garbage data. In both scenarios, the rest remains hashed, and you just add some extra data to prove that it — the script or a slice of the video file — was in that tree somewhere.
 
-In addition to keeping things secret, using MAST is also less expensive, because you don't need to include all of the possible scripts in the blockchain. The blockchain is a scarce resource, and including everything costs a lot. Even if you're only including it when spending, you still have to pay all of these fees.
+In addition to keeping things secret, using MAST is also less expensive, because you don't need to include all of the possible scripts in the blockchain. This is especially true for big trees with lots of scripts, which a "smart contract" might need. The blockchain is a scarce resource, and including everything costs a lot. When spending a coin, you have to reveal the script, which requires fees. Since the introduction of P2SH, it is the spender who reveals the script. Without MAST the spender has to reveal all possible scripts, with MAST only the script that is actually used.
 
 #### Hiding the MAST
 
-While Merkle trees are a good solution, it'd be even better if you could hide that you're using MAST.
+While Merkle trees are a good solution, it'd be even better if you could hide the very MAST itself. Ideally nobody even knows that you're using MAST.
 
-Let's return to the previous example of you and your mom. In this smart contract, if you and your mom both agree to spend the money, you don't have to wait two years. And most smart contracts have this condition where, if everyone who's involved agrees to spend the money, you can.
+Let's return to the previous example of you and your mom. In this smart contract, if you and your mom both agree to spend the money, you don't have to wait two years. In most smart contracts, no matter how complicated the various possible scripts are, when everyone who's involved agrees to spend the money, they might as well dispense with the scripts and just create a single joint signature.
 
 It'd be nice to have a way to express this using only the signature — without scripts or an entire tree. This can be done by tweaking your public key, as discussed in BIP 341.^[<https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki>] Instead of saying, "Send this to my public key," you'd instead say, "Send this to my public key, plus my mom's public key, plus this MAST key."
 
-The idea of tweaking keys is oversimplified, because cryptography is subtle, but in theory, you can add up keys, and you can also add up signatures, and it looks to the outside world as if it's just a regular signature. As a result, you can hide things inside — a process which requires Schnorr.
+This tweaking of keys is slightly more complicated than litterly addinging them, owing to the many subtleties of cryptography, but in essence you can add up keys, and you can also add up signatures, and it looks to the outside world as if it's just a regular signature. As a result, you can hide things inside — but this process is extremely difficult without Schnorr.
 
 ### Schnorr {#sec:schnorr}
 
@@ -46,7 +43,7 @@ Chapter @sec:libsecp talks about libsecp256k1, and in May 2021, BIP 340^[<https:
 
 Schnorr digital signatures were first created by Claus-Peter Schnorr, a German mathematician. He created the Schnorr signature algorithm, which he then patented. It would've been great for Bitcoin, as well as many other open source projects that came before it, but because of the patent, people had to find another way to reap the benefits of these signatures.
 
-So a bunch of lawyers, engineers, and cryptographers joined forces and tried to figure out if there was a way to maim Schnorr's algorithm so far that it would legally not fall under the patent, but still work. The result was a signature algorithm called Elliptic Curve Digital Signature Algorithm (ECDSA), which is the elliptic curve algorithm that Bitcoin currency currently uses and that the libsecp library implements. ECDSA uses public and private keys to create digital signatures, which is a slightly more complicated process than creating a Schnorr signature.
+So a bunch of lawyers, engineers, and cryptographers joined forces and tried to figure out if there was a way to maim Schnorr's algorithm so far that it would legally not fall under the patent, but still work. The result was a signature algorithm called Elliptic Curve Digital Signature Algorithm (ECDSA), which is the elliptic curve algorithm that Bitcoin currently uses and that the libsecp library implements. ECDSA uses public and private keys to create digital signatures, which is a slightly more complicated process than creating a Schnorr signature.
 
 Although ECDSA is a convoluted version of Schnorr, it was standardized in 2005, and at least a dozen cryptographic libraries implemented it, including OpenSSL. And so, when Satoshi had to pick a cryptographic curve for Bitcoin, he chose ECDSA namely because it wasn't patented and it's already in OpenSSL.
 
@@ -54,71 +51,61 @@ Overall, Schnorr is simpler than ECDSA. They use the same elliptic curve, but to
 
 The initial version of libsecp had to implement the elliptic curve, including all the operations you can do in a curve, like addition and multiplication, and then implement the signature algorithm of ECDSA. But for Schnorr, you just need to do the signature algorithm for Schnorr, and you can skip — or remove — all the needless math.
 
-Moving from ECDSA to Schnorr isn't a huge change; it's not adding a different elliptical curve or even an entirely new one. Rather, it's a different — and simpler — way of signing.
+Moving from ECDSA to Schnorr isn't a huge change; it's not modifying the elliptical curve or introducing an entirely new one. Rather, it's a different — and simpler — way of signing.
+
+The fewer changes developers have to make to a cryptographic library the better. It means fewer places where critical bugs can be introduced. It also means less code review for the community. With almost a trillion dollars at stake, any bug related to Bitcoin's digital signatures could have disastrous consequences, so the importance of only needing a simple change is hard to overstate.
+
+On top of that, because Schnorr is added as a soft-fork, using it is entirely opt-in. ECDSA is not going anywhere.
 
 ### But Why Schnorr?
 
 Even before Taproot, people wanted to add Schnorr because of all the things it enabled. But at some point, Bitcoin Core contributor and former Blockstream CTO Gregory Maxwell came up with a clever way of using Schnorr in combination with MAST.
 
-Basically, because you can add anything to a public key, you can also add a script to a public key, because a script is essentially just a number and a private key is essentially just a number, so you can just add numbers, like so:
+Basically, because you can add anything to a public key, you can also add a script to a public key, because a script is essentially just a number and a private key is essentially just a number, and numbers can be added. Converting an elliptic curve private key to a public key also happens to be commutative. That let's you do this:
 
 ```
 public_key(private key + hash) ==
 public_key(private_key) + public_key(hash)
 ```
 
-An example of this would be if you forgot your own private key. You could use some secret, which is a very bad idea, but let's say you would do that. So your script, your MASTs, would contain two options. Either it's you, your signature, or it's this secret piece of information that you wrote down somewhere else without a signature.
+Let's use an example, namely a backup system in case you forget your private key. You start out with two keys, a primary key and a backup key. Your keep your primary key on a very secure and tamper proof hardware wallet at home. Your backup key could be a note in a remote safe. If your house burns down, or the hardware bricked itself after three incorrect PIN attempts, or is stolen, you effectively lose the primary private key. So you would fetch fetch your backup key.
 
-If you know your key, if you still have your private key, it's a shame to reveal the fact that you could have revealed the secret number. And so, what you can do now is, in Taproot, thanks to Schnorr, you can actually take this MAST and hide it inside your public key. And then, when you're signing the actual transaction, you're just signing a public key and you're not even revealing the fact that there's a Taproot out there. You're basically just ignoring it, because you just add the hash to your private key. You've added the hash to the public key, and nobody needs to know.
+The backup key is what goes _in_ the MAST. If you never use it, nothing on the blockchain will indicate that you even have this backup. Under normal circumstances you only use the primary key without revealing the MAST or the backup key in it.
 
-Anyone else doesn't see any difference between a tweaked public key and the original public key. So if you've tweaked your public key with this MAST structure, it looks the same to the rest of the world.
+But how does this hiding of the MAST work? Well that's where Schnorr comes in. Schnorr lets you take this MAST and hide it inside your public key. You wallet adds the root hash of the MAST to your private key, and then calculates the corresponding, tweaked, public key. That tweaked key is what you put on the blockchain. To the outside world it looks like any old public key.
 
-If you want to use this MAST structure, instead of revealing the tweaked key, you review the original key and you reveal the script, one of them.
+And then, when you sign a actual transaction, you sign for this tweaked public key. Anyone else doesn't see any difference between a tweaked public key and one that isn't tweaked. They're both perfectly valid public keys. Again, whether or not you tweaked your public key with this MAST structure, it looks the same to the rest of the world.
 
-Then, the person verifying can take that script, calculate the hash, and add it up to the public key. Now, they can see that that's the tweaked public key, and they can see that the signature is valid for the whole thing. You can choose to not reveal anything, not even the tree itself, or you can reveal any part of the tree.
+Only when you need to use your backup key, it's time to reveal the MAST structure. Instead of using the tweaked key in your transaction, you reveal the original untweaked key and you reveal the script (or one of your scripts, if you have a more complicated setup with more scripts in the tree).
 
-This option is space efficient, but it also means that if you're sending coins to somebody, it doesn't matter if you're sending to a single person, which is one key, or some super complicated exchange, or some other condition. It all looks the same.
+Then, any person verifying, i.e. everyone who runs a full node, will take that script, calculate the hash, and add it up to the public key. They will see that this matches the tweaked key that was already on the blockchain, which proves you didn't just make up a new script. The new script reveals to the world what your backup public key is. They will check if your signature was indeed made using the private key for that public key.
 
-With the example of you and your mom, if you accept Bitcoin with your mom this way, you'd combine your public keys. And you'd have a MAST structure, which includes the two constraints.
+Using this approach of public key tweaked with a MAST is very space efficient. It improves privacy overall, because there's no difference between transactions that pay to an individual with a simple single key wallet, and one that pays to an exchange with a super fancy multi-signature setup. It all looks the same, unless any of the backup conditions are used.
 
-If you want to spend it and you both agree, you can both sign it, combine the signatures, and tweak it with the MAST Merkle root. What you publish will look like a regular signature for everyone else.
+In the earlier example of you and your mom, if you accept Bitcoin with your mom this way, the first step is for the two of you to combine your public keys.^[The art of combining public keys and making joint signatures deserves a chapter of its own. It is an important feature that Schnorr enables. But Taproot does not do this for you. That task is up to wallet software to take care of, and this is still a work in progress. The MuSig2 protocol is the latest proposal for how future wallet software can do this in a provably secure manner: <https://eprint.iacr.org/2020/1261>] Next you generate a MAST with at least one leaf: the script where after two years you can spend the coins alone.^[It might also contain a second leaf that allows you and your mom to bypass the MuSig2 protocol and instead provide two individual signatures. This is less good for privacy and incurs higher fees, but it's easier in some circumstances.]
 
-However, if there's a scenario where one of you doesn't sign, and those two years go by, at the end you can reveal that it was actually a tweaked public key. The rest of the world can look at that and say, "Yep. That adds up. The math makes total sense. That was what you were always doing; we just never were able to see it. Yep, two years have passed, so you're totally allowed to spend this money now on your own."
+Under normal circumstances, when you want to spend some coins, you call your mom and produce a joint signature. The coin that you spend from specifies the public key, which has been tweaked with the MAST Merkle root. So you tweak the signature with that same hash. What you publish will look like a regular signature for everyone else.
+
+However, if there's a scenario where one of you can't sign, and those two years go by, at the end you can reveal that it was actually a tweaked public key.^[Under the hood every Taproot spend involves a tweaked key, using an empty MAST if there are no script leafs.] The rest of the world can look at that and say, "Yep. That adds up. The math makes total sense. That was what you were always doing; we just never were able to see it. Yep, two years have passed, so you're totally allowed to spend this money now on your own."
 
 As a result, the condition is only revealed if you actually use it. Otherwise, it'll be a secret forever, unless somebody hacks your wallet.
 
-The fact that you can have multiple conditions and only reveal one of those conditions is MAST. The ability to tweak things is Schnorr^[<https://bitcoinmagazine.com/articles/the-power-of-schnorr-the-signature-algorithm-to-increase-bitcoin-s-scale-and-privacy-1460642496>]. But, this magic is combined, like Captain Planet, and now you can do all these things.
+The ability to have multiple conditions and only reveal one of those conditions is what MAST enables. The ability to public keys with other keys and hashes is what Schnorr enables.^[<https://bitcoinmagazine.com/articles/the-power-of-schnorr-the-signature-algorithm-to-increase-bitcoin-s-scale-and-privacy-1460642496>]. But, this magic is combined, like Captain Planet, and now you can hide the MAST.
 
 ### Earlier MASTs
 
-The first MAST proposal, BIP 114,^[<https://github.com/bitcoin/bips/blob/master/bip-0114.mediawiki>] introduced a new SegWit version. This offered privacy benefits similar to the Taproot Merkle tree proposal, and it only revealed the spending condition or script that was used.
+Let's make a brief excursion back in time, to appreciate Taproot more.
+
+The first MAST proposal, BIP 114,^[<https://github.com/bitcoin/bips/blob/master/bip-0114.mediawiki>] introduced a new SegWit version. It offered privacy benefits similar to the Taproot Merkle tree proposal, and it only revealed the spending condition or script that was used.
 
 Instead of introducing a new SegWit version, the second MAST proposal, BIP 116,^[<https://github.com/bitcoin/bips/blob/master/bip-0116.mediawiki>] added a new opcode, `MERKLEBRANCHVERIFY`, to the existing script system. While the privacy was the same, the implementation varied.
 
-However, there are two downsides to a MAST solution:
+However, there are downsides to both these earlier MAST proposals:
 
 1. As soon as you spend it, everyone can see that a MAST tree existed, even if they can't see the full contents of the tree.
-2. In the case where everyone agrees, you can't just ignore the script and put signatures on the chain: You still have to publish the script and satisfy it, which uses precious blockchain bytes.
+2. In the case where everyone agrees, you can't just ignore the script and put signatures on the chain: You still have to pick a "we all agree" script from the MAST tree and satisfy it, which uses precious blockchain bytes.
 
-This is where Taproot — and Schnorr — comes in. In place of spending conditions, you can use a Schnorr signature — so long as all the signing parties agree — and someone looking at the blockchain won't even known there were any spending scripts.
-
-This is useful because most transactions on the blockchain are just regular payments with a single signature, and they don't use advanced scripts.
-
-More specifically, Schnorr signatures make it possible to:
-
-1. Turn multiple signatures into a single signature (so in a 2-of-2 multisig, if both parties sign, it'll look indistinguishable from a normal single signature 1-of-1 wallet where 1 person signed) — in turn saving block space and improving privacy.
-2. Hide a MAST by tweaking the public key and signature.
-
-Remember, a MAST is represented by a hash, i.e. the hash of the top of the tree. It's essentially just a big number, just as a private key is. If you add the hash to the private key, it'll look like any other private key.
-
-Meanwhile, a hash can be turned into a "public key," just like a private key can. Additionally, it's commutative, which means the order of operands changing doesn't change the result.
-
-When you spend this, you have two choices:
-
-1. Don't reveal the hash. Instead, sign with the (private key + hash) as if it's a regular private key.
-2. Reveal the hash, and sign with the original private key. In this case, the blockchain requires that you reveal the relevant parts of the Merkle tree (and anyone can verify results in that hash) and satisfy the leaf script.
-
-Now that it's merged, there's an updated version of this library, so if you download the first major release of Bitcoin Core, you'll download the library that includes Schnorr.
+By tapping the MAST root onto a Schnorr public key, so to speak, you fix these issues, as explained above.
 
 #### But Wait, There's More...
 
@@ -126,21 +113,15 @@ While it's true that some of the things you can do with Taproot were already tec
 
 For example, M-of-N signatures, or multi signatures, can now be done without a script, because Taproot enables protocols for combining them. This was possible before with threshold signatures in ECDSA,^[<https://eprint.iacr.org/2020/1390.pdf>], but like everything before Schnorr, it was complicated, and now it's slightly easier.
 
-To the outside world, it looks like a regular public key and a regular signature. However, it's a combination of public keys that are then all signing, and you can add them up. And you don't have to bake it into the protocol; as long as you support Schnorr, somebody can come up with a way to combine these signatures, and to the outside world, it'll look the same.
+To the outside world, a threshold signature looks like a single public key and a single signature. For M-of-M signatures, e.g. 2-of-2, the MuSig2 algorithm can be used. For more general M-of-N there is no recommended algorithm yet. This is not a problem, because the algorithm for combining keys and signatures does not need to be baked it into the protocol. The Bitcoin protocol just needs to support Schnorr. When someone comes up with a new way to combine signatures, the result will look like a single signature, not just to humans but also to nodes. And single signatures can be verified.
 
-Another cool feature is how Taproot makes the Lightning Network,^[<https://lightning.network/>] which is a layer 2 payment protocol, more private. Payments on Lightning involve passing a hash around, which is the same for all intermediate hops. This is a potential privacy concern, because someone with access to many nodes on the network could reconstruct the route a given payment took. With Schnorr, these hashes can be replaced with elliptic curve points that are different for each hop.^[<https://bitcoinops.org/en/topics/ptlc/>]
+Another cool feature is how Taproot can make the Lightning Network,^[<https://lightning.network/>] which is a layer 2 payment protocol, more private. Payments on Lightning involve passing a hash around, which is the same for all intermediate hops. This is a potential privacy concern, because someone with access to many nodes on the network could reconstruct the route a given payment took. With Schnorr, these hashes can be replaced with elliptic curve points that are different for each hop.^[<https://bitcoinops.org/en/topics/ptlc/>]
 
 Additionally, Lightning uses channels, which are coins protected by two signatures, and with Taproot:
 
-1. Those two signatures can be combined into one signature.
+1. Those two signatures can be combined into one signature (e.g. using MuSig2).
 2. The scripts Lightning uses to enforce good behavior can be hidden in the MAST, only to be revealed in the case of misbehavior.
 
-In other words, if both sides of the channel agree on an operation, it looks like a normal transaction to outsiders. But if they disagree, there are a lot of additional timeout conditions, which can be nicely hidden inside the Taproot.
+In other words, if both sides of the channel agree on an operation, it looks like a normal transaction to outsiders. But if they disagree, there are a lot of additional timeout conditions, which can be nicely hidden inside the MAST.
 
-However, most people won't necessarily notice much of a difference, except that privacy will be slightly better. As these advanced options come along, they'll use them but not notice them. That said, taking advantage of this functionality makes things faster, easier, and more secure.
-
----
-
-Helpful Links:
-
-Schnorr and Taproot workshop with text, video and interactive Python notebooks: https://bitcoinops.org/en/schorr-taproot-workshop/
+However, most people won't necessarily notice much of a difference, except that privacy will be slightly better. As these advanced options come along, they'll use them but not notice them. That said, taking advantage of this functionality makes things cheaper, easier and more private.

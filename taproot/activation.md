@@ -1,5 +1,5 @@
 \newpage
-## Taproot activation
+## Taproot activation {#sec:taproot_activation}
 
 By the time you're reading this the Taproot softfork has activated on the bitcoin mainnet. This happened on November 13th, 2021, approximately one year after its finalized code was merged.^[<https://github.com/bitcoin/bitcoin/commit/3caee16946575e71e90ead9ac531f5a3a1259307>] It happened much quicker than SegWit and with far less drama. But it was not an uneventful year.
 
