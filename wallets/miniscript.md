@@ -12,7 +12,7 @@ Scripts are how the Bitcoin blockchain constrains how a given coin can be spent:
 
 So you'd tell the person sending bitcoin either your public key or the hash of it. Then, they'd put that on the blockchain with a note on it saying that only the owner of that public key can spend the bitcoin. They're not sending a file; they're just publishing something on the blockchain that says, "Whoever has this public key can now spend these coins." And that happens to be the recipient's public key.
 
-However, although this a common type of constraint, there are all sorts of other types of constraints, and you can even specify multiple constraints, such as "I can spend this, but my mom also needs to sign it. But after 35 years, maybe I can sign it alone." In such a scenario, if you want to spend the money, you only need to fulfill one of the criterion to satisfy one of the constraints of a script.
+However, although this a common type of constraint, there are all sorts of other types of constraints, and you can even specify multiple constraints, such as "I can spend this, but my mom also needs to sign it. But after two years, maybe I can sign it alone." In such a scenario, if you want to spend the money, you only need to fulfill one of the criterion to satisfy one of the constraints of a script.
 
 ### How Script Works
 
