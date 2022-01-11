@@ -1,5 +1,5 @@
 \newpage
-## Transaction relay with Erlay
+## Transaction relay with Erlay {#sec:erlay}
 
 
 ![Ep. 34 {l0pt}](qr/34.png)
@@ -13,6 +13,8 @@ Bitcoin nodes use bandwidth to receive and transmit both block data as well as t
 In the episode, Aaron and Sjors explain that Erlay uses set reconciliation to reduce the amount of data nodes need to share transactions. More specifically, Erlay uses a mathematical trick called Minisketch^[<https://github.com/sipa/minisketch>]. This solution is based on pre-existing mathematical formulas used in biometrics technology.
 
 Aaron and Sjors outline how this trick is applied in the context of Bitcoin to let different nodes sync their mempools: the sets of transactions they’ve received in anticipation of a new block, or, in the case of a miner, to include in a new block.
+
+<!-- This is a good place to explain what a mempool is, since I've dropped the dedicated chapter for now -->
 
 <!--
 Aaron:

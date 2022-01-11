@@ -17,7 +17,7 @@ In the past, it was possible to send bitcoin to people’s IP addresses, althoug
 
 Although you can instruct your Bitcoin node to specifically connect to a friend's node, it typically just connects to random peers (see chapter @sec:dns). Perhaps in the beginning, the idea might have been to connect to peers you know, and then you might as well do transactions with them. But right now, you don't really do transactions with the peers you're directly connected to. At least not on Bitcoin on-chain.
 
-Instead a transaction makes its way through all the nodes on the network (see chapter @sec:mempool), eventually to be seen by a miner node, which includes it in a block. Your counter party may see the transaction as their node receives it from one of its peers, or they'll see it once they receive the block it's in.
+Instead a transaction makes its way through all the nodes on the network (see chapter @sec:erlay), eventually to be seen by a miner node, which includes it in a block. Your counter party may see the transaction as their node receives it from one of its peers, or they'll see it once they receive the block it's in.
 
 Another way of doing transactions was by mining bitcoins, which means sending the block rewards to your public key. In the beginning, Bitcoin had a piece of mining software built into the software, so if you downloaded the Bitcoin software, it would just start mining.
 
@@ -78,7 +78,7 @@ One of the biggest differences between bech32 and base58 is that there isn't a m
 +16  s	3  j  n	5	4  k  h
 +24  c	e  6  m	u	a  7  l
 
-Table: Bech32 mapping. E.g. `q` means zero, `3` means 17 (1 + 16) 
+Table: Bech32 mapping. E.g. `q` means zero, `3` means 17 (1 + 16)
 
 A bech32^[BIP 173 is the spec for bech32: <https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki>] address consists of two parts separated by 1.
 

@@ -4,6 +4,171 @@
 
 Not all episodes of Bitcoin, Explained made it into this book. Here's some other episodes you could listen to:
 
+### Erebus attack
+
+![Ep. 18 {l0pt}](qr/18.png)
+
+This episode continues on the topic of eclipse attacks where chapter @sec:eclipse left of.
+
+Eclipse Attacks are a type of attack that isolates a Bitcoin node by occupying all of its connection slots to block the node from receiving any transactions. The Erebus Attack^[<https://erebus-attack.comp.nus.edu.sg>] is an eclipse attack where an attacker essentially spoofs a whole part of the internet.
+
+The internet is made up of Autonomous Systems, basically clusters of IP-addresses owned by the same entity, like an ISP. Last week, the hosts explained how Bitcoin Core nodes can counter Eclipse Attacks by ensuring that they are connected to a variety of IP addresses from different Autonomous Systems. As it turns out, however, some Autonomous Systems can effectively act as bottlenecks when trying to reach other Autonomous Systems.
+
+This allows an attacker controlling such a bottleneck to launch a successful Eclipse Attack even against nodes that connect with multiple Autonomous Systems.
+
+Since its most recent release, Bitcoin Core includes an optional feature — ASMAP — to counter these types of Eclipse Attacks. The hosts explain how mapping of the internet has allowed Bitcoin Core contributors to create a tool which ensures that Bitcoin nodes not only connect to various Autonomous Systems, but also ensures that they avoid being trapped behind said bottlenecks.
+
+### What is an Xpub?
+
+![Ep. 07 {l0pt}](qr/07.png)
+
+In this episode we explain what an xpub is and how it is used by Bitcoin wallets.
+
+\
+
+\
+
+\
+
+
+### Replace by Fee (RBF)
+
+![Ep. 26 {l0pt}](qr/26.png)
+
+In this episode we explain Replace By Fee (RBF). RBF is a trick that lets unconfirmed transactions be replaced by conflicting transactions that include a higher fee.
+
+With RBF, users can essentially bump a transaction fee to incentivize miners to include the transaction in a block. Aaron and Sjors explain three advantages of RBF: the option the “speed up” a transaction (1), which can in turn result in a more effective fee market for block space (2), as well as the potential to make more efficient use of block space by updating transactions to include more recipients (3).
+
+The main disadvantage of RBF is that it makes it slightly easier to double spend unconfirmed transactions, which was also at the root of last week’s “double spend” controversy that dominated headlines. Aaron and Sjors discuss some solutions to diminish this risk, including “opt-in RBF” which is currently implemented in Bitcoin Core.
+
+Finally, we explain in some detail how opt-in RBF works in Bitcoin Core, and which conditions must be met before a transaction is considered replaceable. He also notes some complications with this version of RBF, for example in the context of the Lightning Network.
+
+### PSBT and RBF attack
+
+![Ep. 01 {l0pt}](qr/01.png)
+
+In this episode we break down and explain Partially Signed Bitcoin Transactions (PSBT) and Replace By Fee (RBF) and some really tricky attacks that where recently discovered in Bitcoin.
+
+\
+
+\
+
+\
+
+### Mempools, Child Pays for Parent, and Package Relay
+
+![Ep. 19 {l0pt}](qr/19.png)
+
+In this episode we discuss Bitcoin mempools, Child Pays For Parent (CPFP) and package relay.
+
+Package relay is the project that Gloria Zhao will work on as part of her Brink fellowship, which was announced earlier this week, and would make the Lightning Network more robust (among other benefits). Mempools are the collections of unconfirmed transactions stored by nodes, from which they forward transactions to peers. Miners usually select the transactions from their mempools that include the highest fees, to include these in the blocks they mine.
+
+Mempools can get full, however, at which point transactions that pay the lowest fees are ejected. This is actually a problem in context of CPFP, a trick that lets users speed up low-fee transactions by spending the coins from that transactions in a new transaction with a high fee to compensate. Tricks like these can be particularly important in the context of time-sensitive protocols like the Lightning Network.
+
+In this episode, van Wirdum and Provoost explained how package relay could enable CPFP, even in cases where low-fee transactions are dropped from mempools, by bundling transactions into packets. And they explore why this may be easier said than done.
+
+### Timewarp attack
+
+
+![Ep. 05 {l0pt}](qr/05.png)
+
+In this episode we explain the "time-warp attack" on Bitcoin. A potential fix for this attack is included in Matt Corallo's proposed Great Consensus Cleanup softfork^[<https://github.com/TheBlueMatt/bips/blob/cleanup-softfork/bip-XXXX.mediawiki>], which at the time of writing has not seen much progress.
+
+### Hardware Wallet Security and Jade
+
+![Ep. 43 {l0pt}](qr/43.png)
+
+Co-host Aaron is joined by Blockstream’s Lawrence Nahum, one of the developers behind the Jade wallet, and Ben Kaufman, one of the developers of the Spectre wallet, which is specifically designed to work with hardware wallets.
+
+Aaron, Lawrence and Ben talk about what hardware wallets are, and discuss the design tradeoffs that different hardware wallets have taken by focussing on the Trezor, Ledger and ColdCard specifically. In this light, Lawrence and Ben explain what secure elements and secure chips are, and why some hardware wallets choose to rely on using such chips more than others.
+
+Then, Lawrence explains which tradeoffs the Jade wallet makes. He also details how an additional server-based security step is used to further secure the Jade wallet, and briefly outlines some additional differences in hardware wallet designs, for example those focused on usability.
+
+Finally, Aaron, Lawrence and Ben discuss whether the concept of hardware wallets are a good idea in the first place, or if it would perhaps be better to use dedicated smartphones to store your bitcoin.
+
+### Signet
+
+![Ep. 10 {l0pt}](qr/10.png)
+
+Signet is a new type of testnet for Bitcoin. In this episode we discuss discuss the original version of testnet and its problems, as well as alternative testing environment regtest.
+
+\
+
+\
+
+### Bitcoin Improvement Proposal (BIP) process
+
+![Ep. 39 {l0pt}](qr/39.png)
+
+In this episode we explain what Bitcoin Improvement Proposals (BIPs) are, and how the BIP process works. We discuss why the BIP process is a useful, yet non-binding convention within Bitcoin’s technical community.
+
+First we explain what a BIP is exactly— and what it is not. We also explain that only improvements to Bitcoin software that affects other projects require a BIP. We then dive into the history of the BIP process a little bit, noting that the format was introduced by Libbitcoin developer Amir Taaki and later updated by Bitcoin Knots maintainer Luke-jr.
+
+Finally we explain how the BIP process itself works, that is, how a proposal can be turned into a BIP, and eventually be implemented in software. We also briefly explain how the BIP process could become corrupted, and why that wouldn’t be a very big deal.
+
+### Bitcoin Core v0.21
+
+![Ep. 24 {l0pt}](qr/24.png)
+
+In this episode we discuss the newly released Bitcoin Core 0.21.0, the 21st and latest major release of the Bitcoin Core software, the oldest and most important Bitcoin node implementation, which is often also regarded as the reference implementation for the Bitcoin protocol.
+
+Guided by the Bitcoin Core 0.21.0 release notes, van Wirdum and Provoost discussed this release’s most important changes. These include the new mempool policy for rebroadcasting transactions, Tor v3 support, peer anchors for when the node restarts, BIP 157 (Neutrino) for light clients, the new testnet called Signet, BIP 339 (wtxid relay), Taproot code, RPC changes including a new send RPC, ZeroMQ, descriptor wallets, the new SQLite database system and the satoshi-per-byte fee denomination.
+
+For each of the new features, the hosts discussed what the features are, how they will change using Bitcoin (Core) and — where applicable — what the end goal is. (In Bitcoin Core development, new features are often part of a bigger process.) For any feature they discussed on a previous episode of "The Van Wirdum Sjorsnado," they also mentioned the relevant episode number.
+
+https://bitcoinmagazine.com/technical/bitcoin-core-0-21-0-released-whats-new
+
+### Bitcoin Core v22.0
+
+![Ep. 45 {l0pt}](qr/45.png)
+
+In this episode we discuss Bitcoin Core 22.0, the latest major release of the Bitcoin Core software client, currently the de facto reference implementation of the Bitcoin protocol. Aaron and Sjors highlight several improvements to the Bitcoin Core software.
+
+The first of these is hardware wallet support in the graphical user interface (GUI). While hardware wallet support has been rolling out across several previous Bitcoin Core releases, it is now fully available in the GUI. The second highlighted upgrade is support for the Invisible Internet Project (I2P), a Tor-like internet privacy layer. Aaron and Sjors also briefly touch on the differences between I2P and Tor.
+
+The third upgrade discussed in the episode is Taproot support. While Taproot activation logic was already included in Bitcoin Core 0.21.1 Bitcoin Core 22.0 is the first major Bitcoin Core release ready to support Taproot when it activates this November, and includes some basic Taproot functionality.
+
+The fourth upgrade that Aaron and Sjors discuss is an update to the `testmempoolaccept` logic, which paves the way to a bigger package relay upgrade. This could in a future release allow transactions to be transmitted over the Bitcoin network in packages including several transactions at the same time.
+
+Additionally, Aaron and Sjors briefly discuss an extension to create multisig and add multisig address, the new NAT-PMP option, and more.
+
+### Compact Client Side Filtering (Neutrino)
+
+![Ep. 25 {l0pt}](qr/25.png)
+
+In this episode we discuss Compact Client Side Filtering, also known as Neutrino. Compact Client Side Filtering is a solution to use Bitcoin without needing to download and validate the entire blockchain, and without sacrificing your privacy to someone who operates a full node (and therefore did download and validate the entire blockchain).
+
+Downloading and validating the entire Bitcoin blockchain can take a couple of days even on a standard laptop, and much longer on smart phones or other limited-performance computers. This is why many people prefer to use light clients. These aren’t quite as secure as full Bitcoin nodes, but they do require fewer computational resources to operate.
+
+Some types of light clients — Simplified Payment Verification (SPV) clients — essentially ask nodes on the Bitcoin network about the particular Bitcoin addresses they are interested in, to check how much funds they own. This is bad for privacy, since the full node operators learns which addresses belong to the SPV user.
+
+Compact Client Side Filtering is a newer solution to accomplish similar goals as SPV, but without the loss of privacy. This works, in short, by having full node operators create a cryptographic data-structure that tells the light client user whether a block could have contained activity pertaining to its addresses, so the user can keep track of its funds by downloading only a small subset of all Bitcoin blocks.
+
+We explain how this works in more detail, and discuss some of the tradeoffs of this solution.
+
+### Mining pool censorship
+
+![Ep. 37 {l0pt}](qr/37.png)
+
+In this episode we discuss the emergence of Mara Pool, the American Bitcoin mining pool operated by Marathon Digital Holdings, which at the time claimed to be fully compliance with US regulations. This means that it applies anti-money laundering (AML) checks and adheres to the sanction list of the Office of Foreign Asset Control (OFAC). While details have not been made explicit, this presumably means that this pool will not include transactions in their blocks if these transactions send coin to or from Bitcoin addresses that have been included on an OFAC blacklist.
+
+Some time after recording they changed course and announced that they would not be censoring transactions.
+
+In the episode we discuss the prospects of mining censorship, what that would mean for Bitcoin, and what can be done about it. We discuss what it means that a mining pool is now censoring certain transactions, and go on to expand what it could look like if this practice gets adopted more widely. We consider what censoring mining pools could accomplish if they ever get close to controlling a majority of hash power, and what Bitcoin users could potentially do in such a scenario (if anything).
+
+### Open Timestamps
+
+![Ep. 16 {l0pt}](qr/16.png)
+
+In this episode we discuss Open Timestamps, a Bitcoin-based time stamping project by applied cryptography consultant and former Bitcoin Core contributor Peter Todd. Open Timestamps leverages the security of the Bitcoin blockchain to timestamp any type of data, allowing for irrefutable proof that that data existed at a particular point in time.
+
+Aaron and Sjors explain that virtually any amount of data can, in fact, be timestamped in the Bitcoin blockchain at minimal cost because Open Timestamps leverages Merkle trees, the cryptographic trick to aggregate data into a single, compact hash. This hash is then included in a Bitcoin transaction, making all of the data aggregated into the hash as immutable as any other Bitcoin transaction.
+
+Todd offered an interesting showcase of Open Timestamps earlier this week, as he proved that the public key used by Google to sign “the email" to Hunter Biden indeed existed in 2016.
+
+Aaron and Sjors also discuss some of the other possibilities that a time-stamping system like Open Timestamps offers, as well as its limitations. Finally, Aaron provides a little bit of context for the history of cryptographic time stamping, which was itself referenced in the Bitcoin white paper.
+
+
 ### Bitcoin Beach
 
 ![Ep. 42 {l0pt}](qr/42.png)
@@ -39,6 +204,8 @@ A few years ago I also gave a presentation about RGB as well as earlier attemps 
 We discuss Jose Femenias' Easypaysy proposal, an account system for Bitcoin, on Bitcoin. One feature it supports is stealth address identities. We discuss several use cases. Finally we explain what non repudiation is.
 
 Aaron also wrote an article covering Easypaysy for Bitcoin Magazine.^[<https://bitcoinmagazine.com/articles/bitcoin-need-accounts-one-developer-thinks-figured>]
+
+\
 
 ### Payment pools
 
@@ -179,6 +346,8 @@ Ruben explains that by using proof-of-work fraud proofs for sidechains to create
 We discuss yet another one of Ruben's proposals: Statechains on Bitcoin. Statechains allow you to send keys not UTXO and it offers quite a few scaling and functionality improvements.
 
 See also Ruben's presentation^[<https://youtu.be/CKx6eULIC3A>] on Bitcoin Magazine about Statechains and Aaron's Bitcoin Magazine article^[<https://bitcoinmagazine.com/articles/statechains-sending-keys-not-coins-to-scale-bitcoin-off-chain>].
+
+\
 
 #### RSK, federated sidechains and Powpeg
 
