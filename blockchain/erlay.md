@@ -10,6 +10,269 @@ Bitcoin nodes use bandwidth to receive and transmit both block data as well as t
 
 
 
-In the episode, Aaron and Sjors explain that Erlay uses set reconciliation to reduce the amount of data nodes need to share transactions. More specifically, Erlay uses a mathematical trick called Minisketch. This solution is based on pre-existing mathematical formulas used in biometrics technology.
+In the episode, Aaron and Sjors explain that Erlay uses set reconciliation to reduce the amount of data nodes need to share transactions. More specifically, Erlay uses a mathematical trick called Minisketch^[<https://github.com/sipa/minisketch>]. This solution is based on pre-existing mathematical formulas used in biometrics technology.
 
 Aaron and Sjors outline how this trick is applied in the context of Bitcoin to let different nodes sync their mempools: the sets of transactions they’ve received in anticipation of a new block, or, in the case of a miner, to include in a new block.
+
+<!--
+Aaron:
+Erlay is a project, I think it was started at the University of British Columbia or at least University of British Columbia Researchers, Gleb Naumenko, Alexandra Fedorova and Ivan Beschastnikh were working on it as well as Blockstream's, Pieter Wuille and Greg Maxwell.
+
+Sjors:
+Yeah, Greg Maxwell is a Blockstream veteran.
+
+Aaron:
+Yeah. Well, when the project started, maybe he was still there. I'm not ex-
+
+Sjors:
+No, he uses his personal email, so he might have been after. Okay.
+
+Aaron:
+Yeah, Erley, the problem. It solves. So the problem, Sjors, is that node use bandwidth-
+
+Sjors:
+Lots of Bandwidth.
+
+Aaron:
+This is a problem because we want people to be able to run full nodes. If full nodes use bandwidth and bandwidth costs money, the more bandwidth means it's more expensive to run a full node. Which means fewer people will run full nodes or at least, they'll be incentivized not to. It would be good if we could reduce the cost of running a full node.
+
+Sjors:
+That's right.
+
+Aaron:
+So it would be good if we could find ways to make it cheaper, to run full nodes. What means, if we could find ways to reduce bandwidth use.
+
+Sjors:
+That's right and we've previously talked about downloading the blockchain as a source of bandwidth use, and we talked about some ways to make that smarter. But now we're going to talk about the transactions that are not yet in a block; the mempool.
+
+Aaron:
+I want to finish the benefits basically, or the problem with office. So part one is, it would be good if we could reduce bandwidth or if people choose to keep using the amount of bandwidth they're currently using. If we could further optimize the efficiency there, then we could make sure then we could have nodes connect to more other nodes. Which would in turn benefit network robustness, it would counter certain types of attacks like eclipse attacks.
+
+Sjors:
+Yeah, cause we talked about eclipse attacks in earlier episodes. One of the solutions we already mentioned is, just connect to more peers. There is a big downside to that, which we'll explain then I guess in a bit, in terms of bandwidth use.
+
+Aaron:
+If we could optimize bandwidth use, that means people can either run a full node, more cheaply or they can connect two more nodes, which counter certain types of attacks or a bit of both. That's what we're trying to do is reduce bandwidth use. You already mentioned this, there's basically two main things that cost bandwidth. One of them is receiving and forwarding blocks. Blocks themselves. This is what the blockchain consists of. The other thing is receiving and forwarding transactions
+
+Sjors:
+That's right before they are in the block.
+
+Aaron:
+Yeah. This is how transactions find their way over the network, which ultimately is how they find their way to miners. So they know which transactions they can include in blocks.
+
+Sjors:
+Yeah. So every node has a thing called a mempool, which is where they keep track of transactions that aren't in the block yet. They relay those to their peers. You might say, why would you do that? There's some selfish interest, as in you want to know, as soon as somebody's about to send you a transaction, you want to know as soon as somebody's about to cheat on you on Lighting. It's nice to know that these transactions might start happening before they're in a block, but there's also an altruistic reason. If nobody did this, then transactions would not get to miners because you'd have to know which nodes are the miners and send it directly to them. Especially because it's altruistic, you want to make it cheap or, get a lot of value out of it.
+
+Aaron:
+Right, so this receiving and sending transactions over the network, not the blocks, the transactions, how does this actually work on a technical level?
+
+Sjors:
+Well, basically you just scream. That's kind of what it boils down to. I mean, you hear about the transaction. It's like, oh my God, everybody did you know about this transaction? So literally you might be connected to eight peers, outbound, or even more inbound. If you hear it from your first peer, you will tell all your other peers about it. This is called flooding. Everybody just tells, gossips the transactions to as many nodes as they can. This uses an enormous amount of bandwidth, but it's very robust. It's very likely for transaction to make it through and it'll make it through very fast.
+
+Aaron:
+Yeah.Well I do. It's a little bit more nuanced than that I think. Right? Because you send transaction IDs first, right?
+
+Sjors:
+There is some optimizations because what I just described would be sending the whole transaction. That would use a lot of bandwidth, but what you could do instead, what nodes actually do instead is, is sending short IDs, which is just a very short hash of the transaction. Not even the normal transaction ID, but something even smaller. Then when a note receives those, they can say, okay, I don't know about these ones, tell me more. Then you give the whole transaction. This went back and forth, and this saves bandwidth, but it's a one off saving. Maybe it reduces the total bandwidth by a factor of four, but that's it.
+
+Aaron:
+To make this very explicit, what happens is I receive a transaction ID or a short version of a transaction ID, which is a hash of a transaction. Then I guess an even shorter version of that. I check this against all of the transactions I have in my mempool. If I don't have it yet, then I get back to the nodes that sent me the ID. I tell them, Hey, send me this whole transaction. I haven't seen this yet.
+
+Aaron:
+This node sends me the whole transaction. Now I turn to all my other peers and I send them this ID. Then some of these peers will get back to me and tell me, I don't have this transaction either send it to me as well, please. That's how it's forwarded, or if they have it already, then I'm not going to send them the whole transaction. I send them the ID, they checked it. They already have it. So we're good.
+
+Aaron:
+Now what happens is that this last example, where I send out an ID and my peer already has that transaction, that actually happens a lot because they are connected to so many other peers as well and odds are they already got it from someone else. It happens a lot that these transaction IDs are basically sent for nothing. They're they already had the transaction. This is in a way wasted bandwidth. I'm sending the transaction ID to them. They're receiving it, but they already had the whole transaction. So I'm sending the ID for no good reason.
+
+Sjors:
+Yeah, and it's good to realize that it's kind of impossible to at least naively impossible to prevent that waste, but we can get into how much of that waste it is. But compared to the most ideal scenario where or theoretical ideal scenario, which is bad for decentralization reasons. If everybody just downloaded the transactions from a central website, that would be the most efficient way to do it in terms of data usage. But of course we don't want to have a central website,
+
+Aaron:
+The numbers are I think more than half of all bandwidth that a node is using are these transaction IDs, sharing these transaction ID. Then if they run the numbers at some point, and I think about 44% of a total bandwidth use of a node is basically waste, these transaction IDs-
+
+Sjors:
+Are telling people what they already know-
+
+Aaron:
+Exactly. This 44%, that's what we're going to try to bring down with Erlay.
+
+Sjors:
+That's right.
+
+Aaron:
+That's what Erlay tries to bring down. Now, Erlay in order to bring that down, it uses something called Minisketch, right?
+
+Sjors:
+Yeah, it basically does two things, I guess. Two general things. One is it still uses this flooding that we just described and the other, this uses Minisketch.
+
+Aaron:
+What is Minisketch?
+
+Sjors:
+The flooding is reduced. So it's only flooding now between publicly reachable nodes. The general idea is that some nodes can be reached from the internet, they are page known and other nodes are probably behind a firewall or just, they have a privacy setting on and they're not reachable. But the idea is that every node that is not reachable will connect to a node that is reachable or almost everyone, unless you do it manually. Otherwise, how do you connect the rest of the network? Then the idea is that as long as all these reachable nodes flood a lot between each other, then at least all the unreachable notes are just one hop away from all the transaction data. That's sort of the first step, where you reduce the flooding to a smaller group of people. Then the second thing you do is, and this is the cool part is the Minisketch.
+
+Aaron:
+Right. So what's Minisketch?
+
+Sjors:
+Okay. So the goal of Minisketch is to do set reconciliation.
+
+Aaron:
+What is set reconciliation?
+
+Sjors:
+A set is basically just a bag of stuff in this case, the contents of your mempool. The list of all your transactions, that's a set or the list of all the short IDs of your transactions is a set or whatever. I have a mempool, so I have a set and you have a mempool, so you have a set. Then the question is, what is the difference between these sets? What are the transactions that I have that you don't have, and that you have that I don't have. That's perfect, just a fraction of the mempool. That challenge in computer science is just called set reconciliation, trying to find out what the difference is, and then trying for both of us to get the same set eventually. Sending the least amount of data over and back and forth.
+
+Aaron:
+So, so one way we could do that is you just sent all of the transactions you have in your mempool, to me. I compare all of your transactions to all of my transactions. I can easily tell the difference and send you the transactions that you didn't have yet and keep the transactions from yours that I didn't have. Now the sets are reconciled.
+
+Sjors:
+That is one way to do it. That is worse than what we just described with flooding.
+
+Aaron:
+Yes, this is a very resource intensive thing to do. So we're using something more clever than this, but this is the general principle. We're just using something mathematically more clever.
+
+Sjors:
+Exactly. The mathematical clever thing is this, and this is where we're going to get extremely hand wavy because I do not actually know or understand the moon math involved.
+
+Aaron:
+God knows I don't either.
+
+Sjors:
+No, that's okay though. The idea is I take my mempool, the set and I do some math on it. The end result is a little one kilobyte object, or two kilo or whatever, some small object compared to the rest of the mempool. You do the same type of operation, and you end up with a one kilobyte object. Now I send you my one kilobyte object. This is called the sketch. So I'm sending you my sketch. That's just a tiny thing. You receive the sketch. Now the math says that if the difference between our two mempools was actually less than the size of the sketch. So if that was true, then you can actually figure out exactly which transactions were missing, on either side, only then. So if it, if the difference is bigger, then you get gibberish. You don't know anything. But if the difference is the same or smaller, you can actually reconstruct which transactions I am missing and which transaction you are missing. Then the procedure is pretty simple. Your node will just give me the transactions that it knows I need, and it will ask for the transactions that it needs.
+
+Aaron:
+Right.
+
+Sjors:
+By ID.
+
+Aaron:
+If for some absurd reason, we have completely different mempools, then this won't work very well or at all.
+
+Sjors:
+No and the good thing of course, about the mempool is that because you're syncing it all the time, and because there are rules about highest fee things are more important. It's actually fairly predictable what the mempool of other people are going to look like. For the most part, it's going to be the same.
+
+Sjors:
+Then it's just a matter of finding the right parameters to use with the sketch. How big do you want to make the sketches so that most of the time people will actually find the difference. But not so big that it just wastes more bandwidth and the flooding protocol, and that's sort of what the paper went into with simulations.
+
+Aaron:
+Yeah. If it's close enough, then I can figure out which transactions are different and we can reconcile just these transactions. So, without getting into the moon math specifically, I know there's been some other examples where this kind of math has been used.
+
+Sjors:
+Yeah. It's interesting and I only learned this today, maybe wrong on some of this stuff, but it refers to something called what was it? Fuzzy matchers. I think was the term.
+
+[edit:
+Actually it's Fuzzy Extractors^[<https://eprint.iacr.org/2003/235>]
+]
+
+Aaron:
+I think so.
+
+Sjors:
+It refers to an older paper from, I think 2004, 2008.
+
+Aaron:
+Yeah. The trick predates Bitcoin basically.
+
+Sjors:
+Yeah. I'm sure the general principle is even older, but the idea there is that, or the problem they were trying to solve was for example, biometric identification.
+
+Aaron:
+Like fingerprints.
+
+Sjors:
+Yes. So if I want to go to my moon base and I want to enter the moon base, they want my fingerprint.
+
+Aaron:
+Of course.
+
+Sjors:
+But I don't want them to have a database-
+
+Aaron:
+Every everyone knows you can't get into your moon base without a fingerprint.
+
+Sjors:
+Right. But I don't want them to have a database of my fingerprint. I don't want them to have a photo of my fingerprint. But they're going to need that, naively speaking, because when I put my finger on the little sensor, it's going to take a picture. That picture's always going to be slightly different than what it was before. They cannot just store say a hash of the image. They have to store the image itself and then look at it and say, this is so and so much difference.
+
+Aaron:
+The reason it's going to be slightly different than before is basically it's a photo. Even if you take a photo of the same object, slightly tilt it, or slightly darker or some pixel is going to be different at least.
+
+Sjors:
+Yeah
+
+Aaron:
+It's going to be similar but not literally exactly a copy.
+
+Sjors:
+Every single pixel is slightly different and the same really goes with normal passwords. One typo in your password and it just doesn't work anymore.
+
+Aaron:
+Right. So it could work. We could take a picture of your fingerprints and then make a new fingerprint and compare it to, however, the problem here is that we don't want a database full of fingerprints because people can steal the database and abuse it and rob banks and leave your fingerprints all over there.
+
+Sjors:
+There's another use case where this is an even bigger problem, which is what if I want to put some Bitcoin on a private key that is generated by my fingerprint. In this case, there is no database. There is just my fingerprint and I want to construct a private key from that fingerprint. But if I do that, take a picture on the device and take the image and put the image literally on a cold cart and that's its entropy. It'll give you a set of private keys. Then if I repeat that, it'll give me a different set of private keys. That'd be quite bad. So it'd be nice, however, if you could do this in a way, and that's kind of what that original paper described, a way to do that. It would take certain properties of the fingerprint or the iris scan, doesn't really matter what, and then it would create a sketch of your fingerprint.
+
+Aaron:
+Right, that's where the term sketch comes from. I'ts a mathematical sketch basically.
+
+Sjors:
+Yeah. A mathematical sketch of your fingerprint, which is not the same of a hash, but it is some sort of summary of it. But if you have that sketch, you cannot reconstruct a fingerprint. It is similar to a hash in that you can't go back. A one way function, but it has a little bit more useful information than a hash does, and it's very small. What the moon base does or what the-
+
+Aaron:
+iPhone.
+
+Sjors:
+Yeah or what the iPhone would do is, it would store this sketch and then when you reappear and you put your fingerprint on the sensor, it's now going to make a sketch of this new fingerprint. Then because of what we just talked about, if those sketches are similar enough, you can actually reconstruct the difference. In other words, in the case of the moon base, you can say, Hey, I can reconstruct a difference, therefore, I think this difference is small enough, it's the real person, it's the real fingerprint or indicates it's a private key. You can actually, because you stored a sketch of the original fingerprint. You can now, using the other fingerprint, essentially the second fingerprint and this original sketch. You make catch of the new one. You can actually reconstruct the exact image that you would've had the first time around. So you do get the same entropy. So you can use your fingerprint to story a Bitcoin. Don't do this, but you could, using this methodology and this-
+
+Aaron:
+That, yeah. That's sounds-
+
+Sjors:
+That difference can also be used for mempool comparison.
+
+Aaron:
+Yeah. This trick for comparing fingerprints is the same mathematical trick that we're now using in the context of Bitcoin for set reconciliation in mempools.
+
+Sjors:
+Which will make it more efficient to put your node on the moon and, or a full circle.
+
+Aaron:
+Yeah.
+
+Sjors:
+Exactly.
+
+Aaron:
+Okay. How, how is this actually used in Bitcoin then what actually happens? What's the step by step process if we're using set reconciliation.
+
+Sjors:
+Yeah. If this stuff were to be merged in the Bitcoin corridor, the nice thing is it doesn't change any consensus rules, so it's just something people can use or they cannot use it. You connect to peers. If those peer support this way of handling things, then depending on whether they are public nodes or not, you would either do the original flooding or you would use the sketching and you would basically exchange would keep your mempool synced by using these sketches.
+
+Aaron:
+Right. So, instead of constantly sharing every transaction ID you receive with all your peers. Now you are also once in a while, just sharing a sketch, and based on that, sharing the transactions that you don't share yet.
+
+Sjors:
+Yes. This is so much more efficient that you can have lots and lots of peers with which you are exchanging these sketches. Far more than you could, if you were using the flooding. You use flooding with a subset of your peers or not at all. You use the sketches otherwise. If the sketch somehow fails, there's a little fallback that's described in the protocol. That says, if the sketch is too big, you can try something like half the sketch again and overlap those. You can do a second attempt if the difference is just a little bit bigger. Then if you give up, if it fails again, because the difference was too big, great. You just fall back to the original flooding protocol. That's what it does and there is a pool request on it. There's a BIP out there.
+
+Aaron:
+Yeah. This is an actual, because it sounds very hypothetical, but this is actually something that's being developed and that could be merged into Bitcoin core.
+
+Sjors:
+Right now.
+
+Aaron:
+Soonish.
+
+Sjors:
+I looked at the only briefly, it looks at the poll request and it looks like most of the things are in there, but of course I haven't tested it or thoroughly reviewed it. But my guess is it'll happen.
+
+Aaron:
+All right.
+
+Sjors:
+Maybe not if there's a huge problem, of course. But as far as I'm concerned, it sounds pretty good.
+
+
+-->
