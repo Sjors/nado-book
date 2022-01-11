@@ -590,3 +590,17 @@ Yes. And there's a website that links to some of the solutions that have been im
 
 
 -->
+
+---
+
+### Erebus attack
+
+![{l0pt}](qr/18.png)
+
+Episode 18 of Bitcoin, Explained continues on the topic of eclipse attacks where this chapter left of. It describes the Erebus Attack^[<https://erebus-attack.comp.nus.edu.sg>]: an eclipse attack where an attacker essentially spoofs a whole part of the internet.
+
+The internet is made up of Autonomous Systems, basically clusters of IP-addresses owned by the same entity, like an ISP. As we explained above, Bitcoin Core nodes can counter Eclipse Attacks by ensuring that they are connected to a variety of IP addresses from different Autonomous Systems. As it turns out, however, some Autonomous Systems can effectively act as bottlenecks when trying to reach other Autonomous Systems.
+
+This allows an attacker controlling such a bottleneck to launch a successful Eclipse Attack even against nodes that connect with multiple Autonomous Systems.
+
+Recent versions Bitcoin Core therefore include an optional feature — ASMAP — to counter these types of Eclipse Attacks. The episode explains how mapping of the internet has allowed Bitcoin Core contributors to create a tool which ensures that Bitcoin nodes not only connect to various Autonomous Systems, but also ensures that they avoid being trapped behind said bottlenecks.
