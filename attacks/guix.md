@@ -48,25 +48,40 @@ Oh and what about all the other software that's running on your computer and pot
 
 ### Checking the Validity
 
-So assuming you trust the process, say you download the binaries from Bitcoincore.org. The first problem is that you don't know if Bitcoincore.org is run by the same people who have verified that the source code isn't corrupt. But even if you can, it could be that the site is hacked, or the site isn't hacked, but the DNS is hacked. There are lots of reasons why what you download isn't actually the thing you think you're downloading. It's called malware.
+Let's say you trust the development and release process, so you download the binaries from Bitcoincore.org. The first problem is that you don't know if Bitcoincore.org is run by the Bitcoin developers. Even if you were confident of that, it could be that the site is hacked, or the site isn't hacked, but the DNS is hacked. There are lots of reasons why what you download isn't actually the thing you think you're downloading: it could be malware.
 
 To get around this, open source projects almost always publish a checksum. What this means is that if you download something and run a particular script on it, the resulting checksum you get should match what they say it should be. In theory, that works. However, whoever hacked the site might have also hacked the checksum, so it's not foolproof.
 
-The next steo is to sign the checksum. So, for example, a well-known person — in this case, Vladimir [inaudible 00:10:19] — signs the checksum with a signature, with a key, with a PGP key that's publicly known. It's been the same for 10 years. So then at least you have something to check.
+The next step is to sign the checksum. So, for example, a well-known person — in this case, Wladimir van der Laan, the (Dutch) lead maintainer^[Maintainers are not as powerful as some people think they are: <https://blog.lopp.net/who-controls-bitcoin-core-/>] of Bitcoin Core — signs the checksum with a signature, with a key, with a PGP key that's publicly known. It's been the same for 10 years. So then at least you have something to check.
 
 And he knows the binaries reflect the open source code because he took the source code, ran a command, and got the binary. In other words, he put the code through some other piece of software that produces binaries from the open source software.
 
 Here's where it gets a little bit more complicated. Ideally, what you do is you run the same command and you also compile it, and then hopefully, you get the same result.
 
-Sometimes that works with a specific project, but as the project gets complicated, it often doesn't work, because it can depend on some very specific details on your computer system what the exact binary file is going to be.
+Sometimes that works with a specific project, but as the project gets complicated, it often doesn't work, because it depends on some very specific details on your computer system what the exact binary file is going to be.
 
-As an example, say the software uses libraries and those libraries are living on your system and get updated all the time. And maybe you updated two months ago, and Vladimir is very accurate and he updated yesterday. As a result, the final product contains a different version of a library. And if you only change one letter in a computer program, then boom, your checksum doesn't work anymore.
+Take a trivial c++ program:
 
-In this scenario, or one like it, if you want to compile to code yourself, it doesn't necessarily matter. However, if your security model depends on hoping that somebody will do this checking for you because you didn't compile it yourself, you want there to be a mechancism in place where some people do check and sound the alarm if it's wrong.
+```
+int main() {
+  return 0;
+}
+```
 
-However, that isn't trivial because, for example, these libraries might be slightly different. For example, if you compile the Bitcoin core software on your MacBook and your friend does it on their, they could still compile into different binaries. And this could all come down to something as simple as the time it's done.
+This program exits and returns `0`. It's more boring than Hello World.
 
-That's because there's some random output that contains a timestamp, maybe a log. And if the log is included in the final product, then there's a different timestamp in your version than in your friend's version because it wasn't compiled at exactly the same time. And that's a problem.
+When I compile this on one of my Macs it produces a 16536 byte program. When I repeat that on a different Mac, it produces an identical file, as evidenced by its sha256 checksum. But when I compile it on my Ubuntu machine I get a 15768 byte result.
+
+
+All it takes is one changed letter in a computer program, or in its compiled binary, and boom, your checksum doesn't work anymore.
+
+If the compiled program includes a library (see chapter @sec:libsecp) then the end result depends on the exact library version that happened to be on the developer machine when they created the binary.
+
+So when you download the latest Bitcoin Core from its website, and you compare it to what you compiled yourself, it's going to have a different checksum. Perhaps the difference is due to you have a more recent version of some library, or perhaps it's due to a subtle difference between your system and that of Wladimir.
+
+As mentioned above, if you're one of those lucky people who can compile code yourself, this isn't a big deal. More likely however your security depends on the hope that somebody else will do this check for you. Those people might then sound the alarm if anything is wrong.
+
+But because it's so difficult to check if the source code matches the downloadable binary, should you really assume that anyone out there does this?
 
 ### Fixing the Problem with Gitian
 
