@@ -42,10 +42,6 @@ Bitcoin code is open source and it's hosted on GitHub in a repository. This mean
 
 If we wanted to increase the number of people who could read and understand Bitcoin source code, it would need to be cleaner and more readable. The original code Satoshi wrote was very, very hard to reason about.^[To understand what it means to reason about something, imagine you're looking at the code and you see, there's a function called make a private key. Your line of thinking might go as follows: "OK What does that function do? Oh, it calls in this other function. Where's that other function? Oh, it's 20,000 lines up in the same file. Let me scroll 20,000 lines up and have a look at that code. I see, it's referring to a variable. Oh, but this variable is also accessed in 15 different places in the codebase..."]
 
-To make matters worse, just reviewing the Bitcoin Core code is not enough, because just like most computer programs, it uses libraries (chapter @sec:libsecp), and each library might in turn use some other library, and so forth and so on. You need to inspect all of those too. But we'll get to that later.
-
-Oh and what about all the other software that's running on your computer and potentially has access to your Bitcoin? Who is scrutinizing that? Anyway, take a deep breath and read on.
-
 ### Checking the Validity
 
 Let's say you trust the development and release process, so you download the binaries from Bitcoincore.org. The first problem is that you don't know if Bitcoincore.org is run by the Bitcoin developers. Even if you were confident of that, it could be that the site is hacked, or the site isn't hacked, but the DNS is hacked. There are lots of reasons why what you download isn't actually the thing you think you're downloading: it could be malware.
@@ -89,37 +85,36 @@ If your goal is to verify that nothing went wrong, you need to somehow make sure
 
 What deterministic implies is that, given a source, you're going to get the same binary. And if you change one letter in the source, you're going to get a different binary, but everybody will get the same result if they make the same change.
 
-The current way Bitcoin Core does this is with Gitian.^[<https://gitian.org/>] In short, you take an Ubuntu machine and download a very specific Ubuntu version. Many people in the world have seen that version, so you should trust it.
+In addition we need to solve the problem of slight differences in machine configuration leading to a different binary file.
 
-Inside that machine, you build another virtual machine. And inside that virtual machine, there are all sorts of little changes made to make sure that that machine is identical for everyone who builds this thing. It essentially uses a fake time, and all the files are in the same place, and all the libraries are the exact same versions, etc. And then you build Bitcoin Core, and then you look at the checksums inside that virtual machine.
+Until mid 2021 the way Bitcoin Core did this is with Gitian.^[<https://gitian.org/>] In short, you take a virtual or physical computer, download the installation "CD" for a very specific Ubuntu version and install that. This ensures everyone has an identical starting position, and because Ubuntu is widely used, there's some confidence that there is no Bitcoin-backdoor on that installation disk.
 
-In turn, everyone's sort of running this same "computer within a computer" on their actual computer. And therefore, the software they're compiling into binaries in the computer in the computer is resulting in the exact same binaries.
+Inside that machine, you build another virtual machine, which has been tailor made to ensure it builds identical binaries for everyone who using it. For example it uses a fixed fake time so that if a timestamp ends up in the final binary, it's going to be the same timestamp no matter what time you ran the compiler. It ensures all the libraries are the exact same versions, it uses a very specific compiler version, etc. And then you build Bitcoin Core inside that virtual machine, and look at the checksum. This should now match the downloadable files on bitcoincore.org.
 
-This is turned into a checksum, and if the checksums match, then the developers sign because they can all verify that it's correct. Moreover, they can trust it because if someone tries to cheat, it's easy to see.
+About a dozen developers and other volunteers run this "computer within a computer". Around each new released version, they all compile the binaries and publish the resulting hashes for others to see. In addition they sign these hashes with their public PGP key.
 
-However, while this sounds easy in theory, in practice, it's a huge pain to get the system working. There aren't many open source projects that use this — Bitcoin Core and Tor do, and maybe a few others, but not a lot.
+However, while this sounds easy in theory, in practice, it's always been a huge pain to get the system working. There aren't many open source projects that use Gitian — as far as I know only Bitcoin Core and Tor do. Even most, if not all, altcoin forks of the Bitcoin Core software don't bother with this process.
 
-### More Problems
+### Dependencies, dependencies, dependencies
 
 However, this isn't the only problem.
 
-Let's say you've read every single line of code in Bitcoin Core and you can say, "OK, I've read every single line in there. I understand every single line of it." It's just like when you read the Facebook terms and conditions, but then it turns out the Facebook terms and conditions point to some other document. Now you have a problem, because Bitcoin Core uses all sorts of other things, known as dependencies. And so you have to inspect those dependencies too.
+Let's say you just read the Facebook terms and conditions, but it turns out those terms and conditions point to some other document, perhaps the entirety of US copyright law. So now yo have to read that too.
 
-One of the constraints when working on Bitcoin Core is to try and keep the number of dependencies as small as possible, and also to not update them all the time. Because, of course, the people who maintain those dependencies know Bitcoin Core is using it. Right? So you need to be somewhat on your toes to make sure that those projects are being scrutinized, too.
+Similarly just reviewing the Bitcoin Core code is not enough, because like most computer programs, it uses all sorts of other things, known as dependencies, mostly in the form of libraries (see chapter @sec:libsecp). And each library might in turn use some other library, and so forth and so on. You need to inspect all of those too.
 
-And if it turns out that dependency is corrupt, it could steal your coins. This actually happened at least in one other project called Copay,^[<https://github.com/bitpay/copay>] which was, a library for wallets used by BitPay, but by other companies, too.It's written in a different programming language, but the general idea is the same.
+One of the constraints Bitcoin Core developers work with is to keep the number of dependencies as small as possible, and also to not update them all the time. Such updates require extra review work. And of course the people who maintain those dependencies know Bitcoin Core is using it; all the more reason to be somewhat on your toes to make sure that those projects are being scrutinized, too.
 
-What happened was they had a piece of software that's open source, meaning everybody could review it. But it uses dependencies, and those dependencies use dependencies, and so on.
+And if it turns out that a dependency is corrupt, it could steal your coins. This actually happened at least in one other project 2018. It involved a dependency of a dependency of a dependency of the Copay library, which itself is a dependency of several wallets. Fortunately, it was detected quickly,^[What happened was they had a piece of software that's open source, meaning everybody could review it. But it uses dependencies, and those dependencies use dependencies, and so on.
+\
+They were using npm, which is the package manager for Node.js. This is, in turn, a large open source community, and it's a highly modular system.
+\
+Every single package links to a repository on GitHub, with its own maintainer who can release updates whenever they want. A typical piece of wallet software might be pulling in 10,000 dependencies indirectly. You might start with five dependencies, and each of those pull in 50 dependencies, and those each pull in another 50 dependencies. If even a single one of the developers or maintainers of any of these packages is corrupted, they could include coin stealing malware.
+\
+A javascript wallet like CoPay stores the users private keys somewhere inside the browser memory. Unfortunately that is a very egalitarian place, meaning that any piece of JavaScript can access it. This is how malware hidden in a sub-sub-dependency can steal coins.
+\
+See also this writeup: <https://www.synopsys.com/blogs/software-security/malicious-dependency-supply-chain/>] so it was never exploited in the wild.
 
-They were using npm, which is the package manager for Node.js. This is, in turn, a large open source community, and they've very much focused on making very modular packages.
-
-Every single package links to a place on GitHub, so it's all open source. And every package could have its own maintainer who can release updates whenever they want. And so now you have a problem, because you might be pulling in 10,000 dependencies without even realizing it. This is because even if you only pull in maybe five dependencies, each of those pull in 50 dependencies, and those each pull in another 50 dependencies. And if any of these is corrupted, it could, at least theoretically, include coin stealing malware.
-
-In theory, there are ways to avoid this by isolating or encapsulating a piece of code so that it doesn't run unless you specifically do something with it. But with JavaScript, which is what they were using, that was very difficult to do.
-
-Any JavaScript that's run can do anything in the entire browser. In the case of Copay, there, would be private keys somewhere inside the browser, and a piece of malware could steal coins.
-
-Somebody actually wrote this malware in 2018, and because it was in a dependency of a dependency of a dependency, it made it into the Copay library. Fortunately, it was detected quickly,^[<https://www.synopsys.com/blogs/software-security/malicious-dependency-supply-chain/>] so it was never exploited in the wild.
 
 ### The Solution
 
