@@ -51,7 +51,7 @@ To get around this, open source projects almost always publish a checksum. What 
 The next steo is to sign the checksum. So, for example, a well-known person — in this case, Vladimir [inaudible 00:10:19] — signs the checksum with a signature, with a key, with a PGP key that's publicly known. It's been the same for 10 years. So then at least you have something to check.
 
 And he knows the binaries reflect the open source code because he took the source code, ran a command, and got the binary. In other words, he put the code through some other piece of software that produces binaries from the open source software.
- 
+
 Here's where it gets a little bit more complicated. Ideally, what you do is you run the same command and you also compile it, and then hopefully, you get the same result.
 
 Sometimes that works with a specific project, but as the project gets complicated, it often doesn't work, because it can depend on some very specific details on your computer system what the exact binary file is going to be.
@@ -90,15 +90,15 @@ One of the constraints when working on Bitcoin Core is to try and keep the numbe
 
 And if it turns out that dependency is corrupt, it could steal your coins. This actually happened at least in one other project called Copay,^[<https://github.com/bitpay/copay>] which was, a library for wallets used by BitPay, but by other companies, too.It's written in a different programming language, but the general idea is the same.
 
-What happened was they had a piece of software that's open source, meaning everybody could review it. But it uses dependencies, and those dependencies use dependencies, and so on. 
+What happened was they had a piece of software that's open source, meaning everybody could review it. But it uses dependencies, and those dependencies use dependencies, and so on.
 
-They were using npm, which is the package manager for Node.js. This is, in turn, a large open source community, and they've very much focused on making very modular packages. 
+They were using npm, which is the package manager for Node.js. This is, in turn, a large open source community, and they've very much focused on making very modular packages.
 
 Every single package links to a place on GitHub, so it's all open source. And every package could have its own maintainer who can release updates whenever they want. And so now you have a problem, because you might be pulling in 10,000 dependencies without even realizing it. This is because even if you only pull in maybe five dependencies, each of those pull in 50 dependencies, and those each pull in another 50 dependencies. And if any of these is corrupted, it could, at least theoretically, include coin stealing malware.
 
 In theory, there are ways to avoid this by isolating or encapsulating a piece of code so that it doesn't run unless you specifically do something with it. But with JavaScript, which is what they were using, that was very difficult to do.
 
-Any JavaScript that's run can do anything in the entire browser. In the case of Copay, there, would be private keys somewhere inside the browser, and a piece of malware could steal coins. 
+Any JavaScript that's run can do anything in the entire browser. In the case of Copay, there, would be private keys somewhere inside the browser, and a piece of malware could steal coins.
 
 Somebody actually wrote this malware in 2018, and because it was in a dependency of a dependency of a dependency, it made it into the Copay library. Fortunately, it was detected quickly,^[<https://www.synopsys.com/blogs/software-security/malicious-dependency-supply-chain/>] so it was never exploited in the wild.
 
@@ -106,13 +106,13 @@ Somebody actually wrote this malware in 2018, and because it was in a dependency
 
 This begs the questions of what the solution is, and unfortunately, it's to not depend on dependencies. If necessary, it's important to use as few as possible, and you especially want to stay away from things that have nested dependencies.
 
-In the case of Bitcoin Core, it's not too bad, because it doesn't have many dependencies and they don't have a lot of nested ones. So, it's not a big tree. It's relatively shallow and you'd have to go after those specific dependencies directly to attack. 
+In the case of Bitcoin Core, it's not too bad, because it doesn't have many dependencies and they don't have a lot of nested ones. So, it's not a big tree. It's relatively shallow and you'd have to go after those specific dependencies directly to attack.
 
 ### Can Gitian Be Corrupted?
 
 Earlier in this chapter we discussed how Gitian helps create deterministic builds. But that begs the question of it Gitian itself is corrupted somehow.
 
-More specifically, Gitian uses Ubuntu, and somebody might say, "Hey, this Bitcoin project's pretty cool. This Ubuntu project's pretty cool. Let me contribute some source to Ubuntu." 
+More specifically, Gitian uses Ubuntu, and somebody might say, "Hey, this Bitcoin project's pretty cool. This Ubuntu project's pretty cool. Let me contribute some source to Ubuntu."
 
 Now, when everybody runs their Gitian builder, which includes Ubuntu, there's a compiler on Ubuntu and maybe that compiler is modified to add some code to steal coins. It would be very, very scary, because it'd still have deterministic builds, and everybody would be using the same malware to build it.
 
