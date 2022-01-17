@@ -16,7 +16,9 @@ Presentation by Carl Dong, author of Guix.^[<https://www.youtube.com/watch?v=I2i
 
 ### Free vs. Open Source
 
-There isn't much of a different between free software and open source software, except for a philosophical difference. The idea behind the free software movement is if software is closed source, it results in a power relationship between developers and users, because users don't know what software they're running.
+A brief primer on the historical difference between free software and open source software, and how they were combined into FOSS (Free and open-source software).
+
+The idea behind the free (as in freedom) software movement is that if software is closed source, it results in a power relationship between developers and users, because users don't know what software they're running.
 
 The reason for this is that the actual software you're running on your computer are binaries. They're ones and zeros. That's the stuff computers can read. While humans, when they write software, they write computer code, and the two aren't the same thing. So when you're running closed software, you're just running the binaries and you are not exactly sure what your computer's actually doing.
 
@@ -24,9 +26,9 @@ So, for example, if a developer puts malware into the closed software, your comp
 
 Richard Stallman didn't like the idea of closed software, so he started the free software movement where the source code had to be available so people could actually check what they were running on their computer. This in turn eliminated the power dynamic. So, free in that context means freedom. It doesn't mean free as in free beer.
 
-However, in 1999, Eric S. Raymond wrote a book called _The Cathedral and the Bazaar: Musings on Linux and Open Source by an Accidental Revolutionary_^[<https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar>]. In this book, he explained the benefits of free software and how it could actually provide high-quality code. According to him, "given enough eyeballs, all bugs are shallow." In other words, the more the code is seen and reviewed, the better the chance all bugs are found.
+A slightly different, but compatible, perspective was given by Eric S. Raymond in his 1999 _The Cathedral and the Bazaar: Musings on Linux and Open Source by an Accidental Revolutionary_^[<https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar>]. In this book, he explained the benefits of free software and how it could actually provide high-quality code. According to him, "given enough eyeballs, all bugs are shallow." In other words, the more the code is seen and reviewed, the better the chance all bugs are found.
 
-Because of his pragmatic reasoning as to why free software was a good idea, the people at the Netscape Communications Corporation were convinced to turn their internal browser into an open source project, Mozilla. We're calling it open source now because this group of people rebranded free software to open source to better accentuate these different benefits. There weren't necessarily in favor of open sourcing software for thiephilosophical freedom reasons Stallman was advertising, but rather more for pragmatic reasons. And that's where the difference between free software and open source stems from.
+Because of this pragmatic reasoning about code quality, the people at the Netscape Communications Corporation were convinced to turn their internal browser into an open source project, Mozilla. We're calling it open source now because this group of people rebranded free (as in freedom) software to open source to better accentuate these different benefits. There weren't necessarily in favor of open sourcing software for the philosophical freedom reasons Stallman was advertising, but rather more for pragmatic reasons. And that's where the difference between free software and open source stems from.
 
 ### Bitcoin, an Open Source Project
 
