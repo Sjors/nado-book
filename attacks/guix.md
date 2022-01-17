@@ -1,5 +1,5 @@
 \newpage
-## Why open source matters (guix) {#sec:guix}
+## Why Open Source Matters (guix) {#sec:guix}
 
 
 ![Ep. 21 {l0pt}](qr/21.png)
@@ -14,421 +14,107 @@ Finally, Aaron and Sjors discuss Guix, a relatively new project that goes above 
 
 Presentation by Carl Dong, author of Guix.^[<https://www.youtube.com/watch?v=I2iShmUTEl8>]
 
-<!--
+### Free vs. Open Source
 
-Aaron:
-This episode, we're going to discuss open source?
+There isn't much of a different between free software and open source software, except for a philosophical difference. The idea behind the free software movement is if software is closed source, it results in a power relationship between developers and users, because users don't know what software they're running.
 
-Sjors:
-Yes.
+The reason for this is that the actual software you're running on your computer are binaries. They're ones and zeros. That's the stuff computers can read. While humans, when they write software, they write computer code, and the two aren't the same thing. So when you're running closed software, you're just running the binaries and you are not exactly sure what your computer's actually doing.
 
-Aaron:
-We're going to discuss open source and why it's useful, or free software and why it's useful. Are you on the free software train or on the open source train?
+So, for example, if a developer puts malware into the closed software, your computer could spy on you or do something you don't actually want the software to do. So in that sense, you have to trust that the developer didn't include malware or tamper with anything.
 
-Sjors:
-I'm on every train.
+Richard Stallman didn't like the idea of closed software, so he started the free software movement where the source code had to be available so people could actually check what they were running on their computer. This in turn eliminated the power dynamic. So, free in that context means freedom. It doesn't mean free as in free beer.
 
-Aaron:
-Do you know-
+However, in 1999, Eric S. Raymond wrote a book called _The Cathedral and the Bazaar: Musings on Linux and Open Source by an Accidental Revolutionary_^[<https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar>]. In this book, he explained the benefits of free software and how it could actually provide high-quality code. According to him, "given enough eyeballs, all bugs are shallow." In other words, the more the code is seen and reviewed, the better the chance all bugs are found.
 
-Sjors:
-I like trains, but tell me-
+Because of his pragmatic reasoning as to why free software was a good idea, the people at the Netscape Communications Corporation were convinced to turn their internal browser into an open source project, Mozilla. We're calling it open source now because this group of people rebranded free software to open source to better accentuate these different benefits. There weren't necessarily in favor of open sourcing software for thiephilosophical freedom reasons Stallman was advertising, but rather more for pragmatic reasons. And that's where the difference between free software and open source stems from.
 
-Aaron:
-I can tell you the difference because a lot of people don't know this. There isn't a lot of difference except for a philosophical difference. So the idea is that Richard Stallman, he founded the free software movement. And the idea there was if software is closed source, then there is a power relationship between developers and users, because users don't know what software they are running. And we'll get to this in a bit, I guess.
+### Bitcoin, an Open Source Project
 
-Aaron:
-Well, I can explain this very briefly right now. The reason is, and you know this, but I'm explaining it to our listeners, the reason is that the actual software you're running on your computer are binaries. They're ones and zeros. That's the stuff computers can read. While humans, when they write software, they write computer code, and the two aren't the same thing. So when you're running closed software, you're just running the binaries and you are not exactly sure what your computer's actually doing.
+All of this is connected to Bitcoin. Just imagine you're trying to use Bitcoin. You install a computer program and it gives you an address, and then it turns out there's some code in there that just steals your Bitcoin. That would be bad. It's an extreme example, but it makes it very clear why you really need the maximum transparency of what exactly is running on your machine.
 
-Aaron:
-So what your computer could be doing, for example, is spy on you. If the developer puts a malware into the closed software, then your computer could spy on you, or I don't know, could do all sorts of stuff that you don't actually want the software to do. So you have to trust the developer in that sense. You have to trust the developer that he didn't include malware into your binaries, into your software.
+It sounds easy though, but in reality, it's a lot harder to ensure the code on your computer is actually doing what you want it to do.
 
-Aaron:
-So Richard Stallman, he didn't like this idea. That wasn't his vision for the future, so he started the free software movement where the source code had to be available so people could actually check what they were running on their computer. So in that sense, there wasn't a power relationship anymore. They didn't need to trust their developer. So, free in that context means freedom. It doesn't mean free as in free beer.
+That's because you want whatever Bitcoin code is running to be open source, so you can see what it is, but most computer programs, use libraries or dependencies, which use some other piece of software, which in turn use some other piece of software, and so forth and so on.
 
-Sjors:
-Yeah. So in Dutch we have the word, vrijheid, which means freedom and gratis which means free beer. So, we can intuitively understand this.
+Bitcoin code is open source and it's hosted on GitHub in a repository.  This means anyone with the know how can look at the source code and check that it does what it's supposed to do. Additionally, anyone who has that skill can compile it themselves rather than downloading it. But in reality, the number of people is low.^[The number of people who can read this code depends on what you mean by actually read. How many people are computer literate in general? Probably many, many tens of millions of people in the world. How many can roughly read what a C program is doing? Again, probably several million, or maybe even tens of millions. But the number of people who can actually understand what the Bitcoin software is doing is probably a lot smaller. And the number of people who actually do look at this code in addition to being able to is in the dozens. And then even then it's hyper-specialized. So somebody might know everything about peer-to-peer networking code and have never looked at some other part of the code.]
 
-Aaron:
-Yeah. We actually have two different words for that. Yeah, exactly.
+If we wanted to increase the number of people who could read and understand Bitcoin source code, it would need to be cleaner and more readble. The reason it's not this way is because, when Satoshi wrote it, everything was one file with many many lines of code in it. And that's very, very, very hard to reason about.^[To understand what it means to reason about something, imagine you're looking at the code and you see, there's a function called make a private key. Your line of thinking might go as follows: "OK What does that function do? Oh, it calls in this other function. Where's that other function? Oh, it's 20,000 lines up in the same file. Let me scroll 20,000 lines up and have a look at that code. I see, it's calling something else. But it's not calling something; it's referring to a variable. Oh, but this variable can be accessed in 15 different places at the same time somewhere in this file..."]
 
-Sjors:
-And I'm sure German has 27 words for it.
+TODO: Yeah. Getting a little bit of help from all these altcoins, which are cloning the Bitcoin code. Not all altcoins are, but many are. And they're cloning it and they're working on it, and they might occasionally find bucks, too. Or at least they're looking at it.
 
-Aaron:
-Probably. Where was I? So, that was Stallman's vision. Then I think in the early nineties, there was a difference. I can't remember the guy who wrote it, but there was this paper about the cathedral and the bizarre, the bizarre and the cathedral, something like that, It was like a Linux contributor. And he explained the benefits of free software as it was just called until then from a different perspective where he explained how free software could actually provide high quality code. Because there's a lot of people checking the code, enough eyeballs make all box shallow, that's the saying.
+### Checking the Validity
 
-Aaron:
-So he came up with a more sort of pragmatic reason why free software was a good idea. This convinced the Netscape people to turn Netscape, the internal browser, into an open source project. I'm calling it open source now, and that was Firefox. And I'm calling it open source now because this group of people, they sort of rebranded free software to open source to more accentuate these different benefits. So they weren't necessarily proposing, or they weren't in favor of open sourcing software for this philosophical freedom reasons that Stallman was advertising, that he was promoting, but more this pragmatic attitude. So, that's where the difference between free software and open source stems from.
+So assuming you trust the process, say you download the binaries from Bitcoincore.org. The first problem is that you don't know if Bitcoincore.org is run by the same people who have verified that the source code isn't corrupt. But even if you can, it could be that the site is hacked, or the site isn't hacked, but the DNS is hacked. There are lots of reasons why what you download isn't actually the thing you think you're downloading. It's called malware.
 
-Sjors:
-There's also a difference between freeware because, of course, that was a term that was going around too, but freeware could still be closed source.
+To get around this, open source projects almost always publish a checksum. What this means is that if you download something and run a particular script on it, the resulting checksum you get should match what they say it should be. In theory, that works. However, whoever hacked the site might have also hacked the checksum, so it's not foolproof.
 
-Aaron:
-I don't know. I do know that basically every free software project is also an open software project. There are very subtle differences for some of the licenses, but it's basically the same thing, just explained with different philosophies.
+The next steo is to sign the checksum. So, for example, a well-known person — in this case, Vladimir [inaudible 00:10:19] — signs the checksum with a signature, with a key, with a PGP key that's publicly known. It's been the same for 10 years. So then at least you have something to check.
 
-Sjors:
-All right. Well, in our case we're going to be quite pragmatic, so the terminology is less important.
+And he knows the binaries reflect the open source code because he took the source code, ran a command, and got the binary. In other words, he put the code through some other piece of software that produces binaries from the open source software.
+ 
+Here's where it gets a little bit more complicated. Ideally, what you do is you run the same command and you also compile it, and then hopefully, you get the same result.
 
-Aaron:
-You want to just go with open source?
+Sometimes that works with a specific project, but as the project gets complicated, it often doesn't work, because it can depend on some very specific details on your computer system what the exact binary file is going to be.
 
-Sjors:
-Yes.
+As an example, say the software uses libraries and those libraries are living on your system and get updated all the time. And maybe you updated two months ago, and Vladimir is very accurate and he updated yesterday. As a result, the final product contains a different version of a library. And if you only change one letter in a computer program, then boom, your checksum doesn't work anymore.
 
-Aaron:
-Okay. So we're just going to discuss open source. Okay. So Bitcoin is an open source project?
+In this scenario, or one like it, if you want to compile to code yourself, it doesn't necessarily matter. However, if your security model depends on hoping that somebody will do this checking for you because you didn't compile it yourself, you want there to be a mechancism in place where some people do check and sound the alarm if it's wrong.
 
-Sjors:
-Yes.
+However, that isn't trivial because, for example, these libraries might be slightly different. For example, if you compile the Bitcoin core software on your MacBook and your friend does it on their, they could still compile into different binaries. And this could all come down to something as simple as the time it's done.
 
-Aaron:
-Why is that very important in the context of Bitcoin, Sjors?
+That's because there's some random output that contains a timestamp, maybe a log. And if the log is included in the final product, then there's a different timestamp in your version than in your friend's version because it wasn't compiled at exactly the same time. And that's a problem.
 
-Sjors:
-Well, imagine you are trying to use Bitcoin and you install a computer program and it gives you an address, and then turns out there's some code in there that just steals your Bitcoin. That would be bad.
+### Fixing the Problem with Gitian
 
-Aaron:
-Yeah. That would be bad.
+If your goal is to verify that nothing went wrong, you need to somehow make sure the same source code compiles into the exact same binaries. This phenomena is called reproducible builds, or deterministic builds.
 
-Sjors:
-So at minimum you want to know what code you're actually about to send your pension to.
+What deterministic implies is that, given a source, you're going to get the same binary. And if you change one letter in the source, you're going to get a different binary, but everybody will get the same result if they make the same change.
 
-Aaron:
-Yep. Well, this is actually... This is exactly... I just gave you the spying example of Stallman, but this would obviously be another great example where you don't want to trust the developers to not steal your coins. You want-
+The current way Bitcoin Core does this is with Gitian.^[<https://gitian.org/>] In short, you take an Ubuntu machine and download a very specific Ubuntu version. Many people in the world have seen that version, so you should trust it.
 
-Sjors:
-It's a very extreme example. It makes it very clear why you really need the maximum transparency of what the hell is running on your machine.
+Inside that machine, you build another virtual machine. And inside that virtual machine, there are all sorts of little changes made to make sure that that machine is identical for everyone who builds this thing. It essentially uses a fake time, and all the files are in the same place, and all the libraries are the exact same versions, etc. And then you build Bitcoin Core, and then you look at the checksums inside that virtual machine.
 
-Aaron:
-Exactly.
+In turn, everyone's sort of running this same "computer within a computer" on their actual computer. And therefore, the software they're compiling into binaries in the computer in the computer is resulting in the exact same binaries.
 
-Sjors:
-And we're going to go down that rabbit hole a little bit.
+This is turned into a checksum, and if the checksums match, then the developers sign because they can all verify that it's correct. Moreover, they can trust it because if someone tries to cheat, it's easy to see.
 
-Aaron:
-Yeah. Because it's not that easy.
+However, while this sounds easy in theory, in practice, it's a huge pain to get the system working. There aren't many open source projects that use this — Bitcoin Core and Tor do, and maybe a few others, but not a lot.
 
-Sjors:
-No, it's not.
+### More Problems
 
-Aaron:
-It would be nice if it was that easy, but it's actually a lot harder than it sounds to make sure that the code on your computer is actually doing what you want it to do.
+However, this isn't the only problem.
 
-Sjors:
-Yeah. Because one thing is you want whatever Bitcoin code is running to be open source so you can see what it is. But most computer programs, as we talked about in the first episode, use libraries or dependencies, use some other piece of software, that in turn uses some other piece of software, that in turn uses some other piece of software.
+Let's say you've read every single line of code in Bitcoin Core and you can say, "OK, I've read every single line in there. I understand every single line of it." It's just like when you read the Facebook terms and conditions, but then it turns out the Facebook terms and conditions point to some other document. Now you have a problem, because Bitcoin Core uses all sorts of other things, known as dependencies. And so you have to inspect those dependencies too.
 
-Aaron:
-I want to take this one step at a time. First step, so the code of Bitcoin, it's open source. It's hosted on the GitHub repository?
+One of the constraints when working on Bitcoin Core is to try and keep the number of dependencies as small as possible, and also to not update them all the time. Because, of course, the people who maintain those dependencies know Bitcoin Core is using it. Right? So you need to be somewhat on your toes to make sure that those projects are being scrutinized, too.
 
-Sjors:
-Yeah, it's a GIT repository, which is also hosted on GitHub.
+And if it turns out that dependency is corrupt, it could steal your coins. This actually happened at least in one other project called Copay,^[<https://github.com/bitpay/copay>] which was, a library for wallets used by BitPay, but by other companies, too.It's written in a different programming language, but the general idea is the same.
 
-Aaron:
-Right, okay. Sorry. Thanks for that correction. So it's on GIT app, so anyone with the skills can look at this source code and check that it does what it's supposed to do. So, Sjors-
+What happened was they had a piece of software that's open source, meaning everybody could review it. But it uses dependencies, and those dependencies use dependencies, and so on. 
 
-Sjors:
-In addition, everybody who has that skill can compile it themselves rather than downloading it.
+They were using npm, which is the package manager for Node.js. This is, in turn, a large open source community, and they've very much focused on making very modular packages. 
 
-Aaron:
-Right. First question, Sjors, because I actually cannot read this at all, how many people do you think can actually read this?
+Every single package links to a place on GitHub, so it's all open source. And every package could have its own maintainer who can release updates whenever they want. And so now you have a problem, because you might be pulling in 10,000 dependencies without even realizing it. This is because even if you only pull in maybe five dependencies, each of those pull in 50 dependencies, and those each pull in another 50 dependencies. And if any of these is corrupted, it could, at least theoretically, include coin stealing malware.
 
-Sjors:
-Well, that depends on what you mean by actually read. How many people are computer literate in general? Probably many, many tens of millions in the world. How many can roughly read what a C program is doing? I guess, again, several million, tens of millions probably. But the number of people who can actually understand what the Bitcoin software is doing is probably a lot smaller.
+In theory, there are ways to avoid this by isolating or encapsulating a piece of code so that it doesn't run unless you specifically do something with it. But with JavaScript, which is what they were using, that was very difficult to do.
 
-Sjors:
-And the number of people who actually do in addition to being able to, is in the dozens. And then even then it's hyper-specialized. So somebody might know everything about pier-to-pier networking code and have never looked at some other part of the code.
+Any JavaScript that's run can do anything in the entire browser. In the case of Copay, there, would be private keys somewhere inside the browser, and a piece of malware could steal coins. 
 
-Aaron:
-So, this sounds like a small number. Why is it so small? And can it be bigger? How could we make this bigger in the future?
+Somebody actually wrote this malware in 2018, and because it was in a dependency of a dependency of a dependency, it made it into the Copay library. Fortunately, it was detected quickly,^[<https://www.synopsys.com/blogs/software-security/malicious-dependency-supply-chain/>] so it was never exploited in the wild.
 
-Sjors:
-Well, one thing is you can make the source code more clean, more readable. So then there are just more people who can read it, because it's just better.
+### The Solution
 
-Aaron:
-So why isn't that the case right now, for example?
+This begs the questions of what the solution is, and unfortunately, it's to not depend on dependencies. If necessary, it's important to use as few as possible, and you especially want to stay away from things that have nested dependencies.
 
-Sjors:
-Well, it's better than it was, but when Satoshi wrote it, everything was one file with God knows how many lines of code in it. And that's very, very, very hard to reason about.
+In the case of Bitcoin Core, it's not too bad, because it doesn't have many dependencies and they don't have a lot of nested ones. So, it's not a big tree. It's relatively shallow and you'd have to go after those specific dependencies directly to attack. 
 
-Aaron:
-For the non-programmers, reason about means-
+### Can Gitian Be Corrupted?
 
-Sjors:
-Just you're looking at the code and you see, okay, there's a function called make a private key. Okay. What does that function do? Oh, call in this other function. Where's that other function? Oh, it's 20,000 lines up in the same file. Let me scroll 20,000 lines up, have a look at that code, and it's calling something else.
+Earlier in this chapter we discussed how Gitian helps create deterministic builds. But that begs the question of it Gitian itself is corrupted somehow.
 
-Aaron:
-Reason-
+More specifically, Gitian uses Ubuntu, and somebody might say, "Hey, this Bitcoin project's pretty cool. This Ubuntu project's pretty cool. Let me contribute some source to Ubuntu." 
 
-Sjors:
-Oh, but it's not calling something. It's referring to a variable. Oh, but this variable can be accessed in 15 different places at the same time somewhere in this file.
-
-Aaron:
-Reason about means understand what the hell is going on.
-
-Sjors:
-Yes.
-
-Aaron:
-Right. Okay. So there's not that many, but hopefully, it's improving or it's getting easier, but that's the work in progress and it's still pretty hard.
-
-Sjors:
-Yeah. Getting a little bit of help from all these altcoins, which are cloning the Bitcoin code. Not all altcoins are, but many are. And they're cloning it and they're working on it, and they might occasionally find bucks, too. Or at least they're looking at it.
-
-Aaron:
-Right. Okay. So let's say I trust that this process where a bunch of people can look at it, and I trust that they're not all cheating and this process is working. At that point, I can download the binaries from Bitcoincore.org and I should be totally fine. Right?
-
-Sjors:
-No.
-
-Aaron:
-Oh, what's the next problem?
-
-Sjors:
-Well, there's a lot of problems. First of all, who says Bitcoincore.org is run by the same people you just mentioned? It might not be. Well, okay, maybe you can still prove that. But then maybe the site is hacked, or the site isn't hacked, but the DNS is hacked. There's lots of reasons why the thing you download is not the thing you think you're downloading. It's called malware.
-
-Sjors:
-So one thing that open source projects almost always do is publish a checksum, which is basically saying when you download this thing and you run this script on it, it should have the following checksum. That's one thing you can do, but then can you trust the checksum that you downloaded? I don't know, because whoever hacked the site might have also hacked the checksum.
-
-Sjors:
-So then what you do is you sign the checksum. So, for example, a well-known person, in this case, Vladimir [inaudible 00:10:19], he signs the checksum with a signature, with a key, with a PGP key that's publicly known. It's been the same for 10 years. So then at least you have something to check.
-
-Aaron:
-Okay. So how does Vladimir know that the binaries he got actually reflects the open source code from the GIT?
-
-Sjors:
-Well, he knows, because he did it. So, he took the source code. He ran a command and he got the binary.
-
-Aaron:
-Yeah. And by he ran a command, you mean he put it through some other piece of software that produces binaries from the open source software?
-
-Sjors:
-Yeah. A compiler and a bunch of other tools.
-
-Aaron:
-Yeah.
-
-Sjors:
-Yeah. So, that's great. But then the question is how do you know?
-
-Aaron:
-Right.
-
-Sjors:
-And here it gets a little bit more complicated. Ideally, what you do is you run the same command and you also compile it, and then hopefully, you get the same result.
-
-Aaron:
-Right.
-
-Sjors:
-And sometimes that works with some project, but as a project got really complicated, it often doesn't work because it can depend on some very specific details on your computer system what the exact binary file is going to be.
-
-Sjors:
-So for example, the software uses libraries and those libraries are living on your system. So we talked about that in one of the first episodes about libraries in general. These libraries might live in your system and these libraries get updated all the time. And maybe you updated two months ago and Vladimir is very accurate and he updated yesterday. And so the final product contains a different version of a library. And if you only change one letter in a computer program, then boom, your checksum doesn't work anymore. So that's one of the things that can go wrong.
-
-Aaron:
-Hang on. One step at a time. Why do I even need to care that my checksum matches whatever Vladimir signed if I compiled it myself?
-
-Sjors:
-If all you want is to compile it yourself, you don't care.
-
-Aaron:
-Right.
-
-Sjors:
-But basically what this whole mechanism relies on is that some people check, and that if some people find a problem, they're going to sound the alarm bell. And so your security model depends on hoping that somebody will do this checking for you because you didn't compile it yourself.
-
-Aaron:
-Right. Everyone who compiles this software should compile into the same checksum because that's how we know everyone's running the same software and no one's being fed malicious software, for example.
-
-Sjors:
-Yeah. So you, as somebody who wants to make sure that no shenanigan is going on, you go to Bitcoincore.org, you download the binary, you just put it in a nice place, and then you compile it yourself, and you say, "Hey, is this the same?" If not, you go on Twitter and on the news media and you say, "Hey, there's malware on this website."
-
-Aaron:
-Right.
-
-Sjors:
-However, that is not trivial because, for example, these libraries that might be slightly different. So you get a different checksum, even though there are no shenanigans going on. It's just your computer is different.
-
-Aaron:
-Right. So if I compile the Bitcoin core software on my MacBook and you compile it on your MacBook, they could still compile into different binaries?
-
-Sjors:
-Yes, because there might be some subtle differences. And it's not just libraries. It can even be the time of your computer. So, because as you-
-
-Aaron:
-The clock.
-
-Sjors:
-Find stuff, there's some random output that contains a timestamp, maybe a log. And if the log is included in the final product, then there's a different timestamp in your version than in my version because we didn't compile it exactly at the same time. And so, that's a problem.
-
-Aaron:
-Right. So somehow we need to make sure that the same source code compiles into the exact same binaries.
-
-Sjors:
-Yeah, at least if your goal is to verify that nothing went wrong, right? Because normally if you're just using it yourself, you don't care about that. So this phenomena is called deterministic builds. So deterministic really just implies given a source, you're going to get the same binary. And if you change one letter in the source, you're going to get a different binary, but everybody will get the same, basically, if they make the same change.
-
-Aaron:
-So how's this done?
-
-Sjors:
-So, this is difficult. And the current way that Bitcoin Core is doing this is called Gitean. And just to sum that up, it's basically you take a Ubuntu machine, could be a virtual machine or could be a real machine. And you just take a very specific Ubuntu version, I think, that you download. And many people in the world have seen that version, so you trust it.
-
-Sjors:
-And then inside that machine, you build another virtual machine. And inside that virtual machine, there are all sorts of little changes made to make sure that that machine is identical for everyone who builds this thing. So I think it uses a fake time and all the files are in the same place and all the libraries are the exact same versions, et cetera. And then you build Bitcoin Core, and then you look at the checksums inside that virtual machine.
-
-Aaron:
-Right. Yeah. So it's kind of like running a computer within your actual computer-
-
-Sjors:
-Within a computer.
-
-Aaron:
-And everyone's sort of running the same computer within the computer, in their actual computer. And therefore, the software they're compiling into binaries in the computer in the computer is resulting in the exact same binaries.
-
-Sjors:
-That's right.
-
-Aaron:
-This is turned into a checksum. And if the checksums match, then the developers sign because they can all verify that, yep, it all worked out and this is the correct checksum. And you can trust this because we're not all going to cheat on you. Unless they are, but at least-
-
-Sjors:
-But we can catch them.
-
-Aaron:
-Yeah.
-
-Sjors:
-Anybody has the opportunity to see that there's a shenanigan going on.
-
-Aaron:
-Anyone can follow this process and catch that something.
-
-Sjors:
-Yeah, in theory. In practice, it's a pain. It's a huge pain to get the system working. There's not many open source projects that use this. As far as I know Bitcoin Core and Tor do, maybe a few others, but not a lot.
-
-Aaron:
-Maybe some other cryptocurrencies.
-
-Sjors:
-Some, but a lot of them, even if they've cloned Bitcoin Core, they've stopped doing this process because it's too much work.
-
-Aaron:
-Right.
-
-Sjors:
-But, okay.
-
-Aaron:
-So far so good.
-
-Sjors:
-So, it's great, but there is another problem because the rabbit hole is deeper. And there's actually two different problems, but they're kind of the same. So, let's start with the first thing.
-
-Sjors:
-Let's say you have read every single line of code in Bitcoin Core and you can say, okay, I've read every single line in there. I understand every single line of it. It's just like when you read the Facebook terms and conditions, but then it turns out the Facebook terms and conditions point to some other document. Like, for example, I don't know, the United States law, all of it. So, with phrases like as defined in law. Now you have a problem, because Bitcoin Core uses all sorts of other things. And so you have to inspect those things, too.
-
-Aaron:
-Yeah. Dependencies, these are called. Yeah.
-
-Sjors:
-Because the dependencies could also be stealing your coins, so they should be open source, too. And-
-
-Aaron:
-Bitcoin Core doesn't use that many dependencies anymore, right?
-
-Sjors:
-Exactly. So one of the constraints when working on Bitcoin Core is to try and keep the number of dependencies as small as possible, and also not update them all the time. Because, of course, the people who maintain those dependencies know that Bitcoin Core is using it. Right? So you need to be somewhat on your toes to make sure that those projects are being scrutinized, too.
-
-Aaron:
-So let's say some dependency is corrupted. What could that mean for Bitcoin? Could they-
-
-Sjors:
-Oh-
-
-Aaron:
-Go on.
-
-Sjors:
-Yeah, if some dependency is corrupted, it could steal your coins, basically.
-
-Aaron:
-Right, that bad.
-
-Sjors:
-Yeah, that's your worst case.
-
-Aaron:
-Okay.
-
-Sjors:
-And this actually it happened at least in another project called Copay, which is, I think it's a library for wallets in general used by BitPay, but by other companies, too. And it's written in a different programming language, but the general idea is the same.
-
-Sjors:
-They have a piece of software that's open source. Everybody can review it. But it uses dependencies, and those dependencies use dependencies, and those and those and those and those. And in this case, they were using NPM, the Node Package Manager and Node.js, and that package manager is basically a very large open source community. And they've very much focused on making very modular packages. So I think there's an individual package for addition or multiplication or fairly trivial packages.
-
-Sjors:
-And every single package links to a place on GitHub, so it's all open source. And every package could have its own maintainer who can release updates whenever they want. And so now you have a problem, because you might be pulling in 10,000 dependencies without even realizing it. Because you only pull in maybe five dependencies, but those each pull in 50 dependencies, and those each pull in another 50 dependencies.
-
-Aaron:
-And if any of these is corrupted, it could, at least theoretically, include coin stealing malware.
-
-Sjors:
-Yeah. And so, it depends. There are some ways in theory that you can try to avoid that by encapsulating by saying, okay, this piece of code, I'm going to run that code. I don't trust it, but I'm going to put it in some place where it cannot do anything other than that I want it to do. But with JavaScript, which is what they're using, at least at the time, this is two years ago, that was very difficult to do.
-
-Sjors:
-So any JavaScript that is run can do anything in the entire browser. So in this case with the Copay wallet, there would be private keys somewhere inside the browser. And a piece of malware could just say window dot, blah, blah, blah, blah, blah dot steal coins, basically.
-
-Aaron:
-And this actually happened or-
-
-Sjors:
-Well, somebody wrote that malware. I don't think it was exploited in the wild. I think it was detected.
-
-Aaron:
-Someone, because I vaguely remember this, but someone actually got this kind of malware into the Copay wallets basically, into the Copay library. This was actually done.
-
-Sjors:
-Yeah. In a dependency of a dependency of a dependency. So what they did is they found some random, far away dependency deep down in the tree that's actually used by millions of projects, and that dependency was no longer maintained. So somebody wrote it, everybody uses it, and then the guy or girl no longer maintained it.
-
-Sjors:
-And so the attackers sent an email to that previous maintainer saying, "Hey, I really love your project. I care about this. Maybe I can take over from you." And so he got the keys to the kingdom and he was able to publish updates. And so then he published an update that contained some malware, some coin-stealing code, that was specifically designed to attack Copay wallets or that general library. And what it did was, well, first of all, he hid it. So, it's open source, but if you release an update, you can do different versions. So you can do a minor update saying, "Oh, this is just a small change," and you can do major updates. And most software will constrain these updates. So it'll automatically update for you, but only for minor updates. It won't automatically upgrade a major upgrade.
-
-Sjors:
-So what the attacker did is he made a minor update, and then immediately afterwards made a major update, which undid the attack. So if you looked at the most recent version of the code, there would not be any attack code in there. So anybody inspecting the open source would say, okay, this is fine. But if you looked at the specific minor version that was being used, then it was there. So, you don't only have to review the most recent source code, you have to review the source code specific version that you're using for all of your dependencies. It's completely impossible.
-
-Aaron:
-Right. So Copay was open source, but because of these dependencies and the dependencies on those dependencies, it's still not going to solve your problems.
-
-Sjors:
-No, and it was very, very subtle, right?
-
-Aaron:
-Right.
-
-Sjors:
-Because I guess it was found by somebody very, very carefully looking for this sort of stuff, because it's very hard to stumble into it. And it was even made that it wouldn't reveal itself early. Because what you want to do as an attacker is you want to look for a very big bounty and then take that. Because as soon as you start stealing coins, if you only steal one satoshi and the person losing that one satoshi notices it, they're going to sound the alarm bell and then people are going to start looking where the malware is, knowing that it exists, and they're going to find it.
-
-Sjors:
-So basically, it had a condition in there that says there has to be at least a couple of Bitcoin in there and only then am I going to attack. And I guess that never happened, fortunately, because they caught it on time. But this is the risk.
-
-Aaron:
-So what's the solution? Just not depend on dependencies?
-
-Sjors:
-Pretty much. I think there are now, over the last couple of years, there's some companies that will screen as a service that might actually go through all these dependencies. But what you really want to do is you want to have very few dependencies, and especially you want to stay away from things that have nested dependencies.
-
-Sjors:
-So in the case of Bitcoin Core, it's not too bad. It has, I think, about 10 dependencies that do not have a bunch of nested dependencies. So, it's not a big tree. It's relatively shallow. So you'd have to go after those dependencies directly to attack. So, that's good news.
-
-Aaron:
-Okay, Sjors. I think that part is clear. Now I have another question for you. I think you have a vague idea where I'm going, because we already discussed exactly where we're going.
-
-Aaron:
-We just discussed how you have deterministic builds and how different developers are all using this Gitean building thing to get the exact same binaries and sign all of that. Now, here's my next question. What if the Gitean building process itself is corrupted somehow? Is that possible?
-
-Sjors:
-Yeah. Or specifically, Gitean uses Ubuntu, and what if somebody says, "Hey, this Bitcoin project's pretty cool. This Ubuntu project's pretty cool. Let me contribute some source to Ubuntu." And now when everybody runs their Gitean builder which includes Ubuntu, there is a compiler on Ubuntu and maybe that compiler is modified to, if it compiles Bitcoin Core, it actually adds some code to steal coins. It would be very, very scary. So it still have deterministic builds because everybody would be using the same malware to build it.
+Now, when everybody runs their Gitian builder, which includes Ubuntu, there's a compiler on Ubuntu and maybe that compiler is modified to add some code to steal coins. It would be very, very scary, because it'd still have deterministic builds, and everybody would be using the same malware to build it.
 
 Aaron:
 Yeah. I guess that's a dependency in itself then, right? That's like a dependency for Ubuntu, or am I saying that right?
