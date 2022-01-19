@@ -16,7 +16,7 @@ More recently Guix, a project that goes above and beyond the Gitian process, cam
 
 Before getting into the details of Gitian and Guix, this section serves as a brief primer on the historical difference between free software and open source software and how they were combined into FOSS (free and open-source software).
 
-The idea behind the free (as in freedom) software movement is that if software is closed source, it results in a power relationship between developers and users, because users don't know what software they're running.
+The idea behind the free software movement is that if software is closed source, it results in a power relationship between developers and users, because users don't know what software they're running.
 
 The reason for this is that the actual software you're running on your computer that it can read is made up of binaries, which are ones and zeros. Meanwhile when humans write software, they write computer code, and the two aren't the same thing. So when you're running closed software, you're just running the binaries, which results in not being exactly sure what your computer's doing.
 
