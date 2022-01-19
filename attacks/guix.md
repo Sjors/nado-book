@@ -26,7 +26,7 @@ A programmer by the name of Richard Stallman didn't like the idea of closed soft
 
 A slightly different, but compatible, perspective was given by Eric S. Raymond in his 1999 book _The Cathedral and the Bazaar: Musings on Linux and Open Source by an Accidental Revolutionary_^[<https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar>]. In it, he explained the benefits of free software and how it could actually provide high-quality code. According to him, "given enough eyeballs, all bugs are shallow." In other words, the more a piece of code is seen and reviewed, the better the chance all its bugs are found.
 
-Because of this pragmatic reasoning about code quality, the people at the Netscape Communications Corporation were convinced to turn their internal browser into an open source project, Mozilla. We're calling it open source now because this group of people rebranded free (as in freedom) software to open source to better accentuate these different benefits. They weren't necessarily in favor of open sourcing software for the philosophical freedom reasons Stallman was advertising, but rather more for pragmatic reasons. And that's where the difference between free software and open source stems from.
+Because of this pragmatic reasoning about code quality, the people at the Netscape Communications Corporation were convinced to turn their internal browser into an open source project, Mozilla. We're calling it open source now because this group of people rebranded free software to open source, to prevent any confusion with beer. And that's where the difference between free software and open source stems from.
 
 ### Bitcoin, an Open Source Project
 
