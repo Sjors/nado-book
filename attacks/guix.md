@@ -8,9 +8,9 @@ This chapter discusses open source software in the context of why it matters tha
 
 In theory, the fact that most Bitcoin nodes, wallets, and applications are open source should ensure that developers can’t include malicious code in the programs, because anyone can inspect the source code for malware. In practice, however, the number of people with enough expertise to do this is limited, while the reliance of some Bitcoin projects on external code libraries, or dependencies, makes it even harder.
 
-Furthermore, even if the open source code is sound, this doesn’t guarantee that the binaries (computer code) really correspond with the open source code. In the past, this risk was largely mitigated in Bitcoin through a process called Gitian building. This is where several Bitcoin Core developers sign the binaries if, and only if, they all produce the exact same binaries from the same source code. This requires special compiler software.
+Furthermore, even if the open source code is sound, this doesn’t guarantee that the binaries (computer code) really correspond with the open source code. The first attempt at mitigating this risk in Bitcoin involved a process called Gitian building. This is where several Bitcoin Core developers sign the binaries if, and only if, they all produce the exact same binaries from the same source code. This requires special compiler software.
 
-But then Guix, a relatively new project that goes above and beyond the Gitian process, came along. It helped minimize the level of trust required to turn source code into binaries — including trust in the compiler itself.
+More recently Guix, a project that goes above and beyond the Gitian process, came along. It helped minimize the level of trust required to turn source code into binaries — including trust in the compiler itself.
 
 ### Free vs. Open Source
 
