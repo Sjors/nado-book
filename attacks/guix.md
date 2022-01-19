@@ -135,7 +135,7 @@ The key is to make everything open source and everything a deterministic build. 
 
 This is where Guix^[<https://guix.gnu.org/>] enters the picture. It's a project Carl Dong^[<https://twitter.com/carl_dong>] from Chaincode Labs^[<https://chaincode.com/>] started working on, and it replaced Gitian in Bitcoin Core version 22^[<https://bitcoin.org/en/releases/22.0/>].
 
-The ambition of Guix is roughly as follows. You start with about 150 bytes of actual machine code. That's the binary code that you must trust. All you need to do is read and compile the source. But how do you do that when there isn't a compiler?
+The ambition of Guix is roughly as follows.^[See also Carl Dong's presentation: <https://www.youtube.com/watch?v=I2iShmUTEl8>] You start with about 150 bytes of actual machine code. That's the binary code that you must trust. All you need to do is read and compile the source. But how do you do that when there isn't a compiler?
 
 Well, these 150 bytes are able to bootstrap. They're able to read something and produce a little bit more code, but that's it.
 
