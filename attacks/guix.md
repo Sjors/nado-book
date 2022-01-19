@@ -135,7 +135,7 @@ The hope is that the people who are maintaining all these compilers and all the 
 
 The key is to make everything open source and everything a deterministic build. So not just Bitcoin is a deterministic build, but every dependency of Bitcoin is a deterministic build, and every tool that is used to build Bitcoin is a deterministic build, including the compiler.
 
-This is where Guix^[<https://guix.gnu.org/>] enters the picture. It's a project Carl Dong^[<https://twitter.com/carl_dong>] from Chaincode Labs^[<https://chaincode.com/>] started working on, and it replaced Gitian in Bitcoin Core version 22^[<https://bitcoin.org/en/releases/22.0/>].
+This is where Guix^[<https://guix.gnu.org/>] enters the picture. This GNU project  has been around for a decade. A few years ago Carl Dong^[<https://twitter.com/carl_dong>] from Chaincode Labs^[<https://chaincode.com/>] began work on replacing Gitian with Guix, which finally happened in Bitcoin Core version 22^[<https://bitcoin.org/en/releases/22.0/>]. This involved making changes on both the Bitcoin Core and the GUIX side of things.
 
 The ambition of Guix is roughly as follows.^[See also Carl Dong's presentation: <https://www.youtube.com/watch?v=I2iShmUTEl8>] You start with about 150 bytes of actual machine code. That's the binary code that you must trust. All you need to do is read and compile the source. But how do you do that when there isn't a compiler?
 
