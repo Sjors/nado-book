@@ -101,7 +101,7 @@ Similarly, just reviewing the Bitcoin Core code isn't enough, because like most 
 
 One of the constraints Bitcoin Core developers work with is to keep the number of dependencies as small as possible, and also to not update them all the time. Such updates require extra review work. And of course, the people who maintain those dependencies know Bitcoin Core is using them; all the more reason to be somewhat on your toes to make sure that those projects are being scrutinized, too.
 
-And if it turns out that a dependency is corrupt, it could steal your coins. This actually happened in at least one other project in 2018. It involved a dependency of a dependency of a dependency of the Copay library, which itself is a dependency of several wallets. Fortunately, it was detected quickly,^[What happened was they had a piece of software that's open source, meaning everybody could review it. But it used dependencies, and those dependencies used dependencies, and so on.
+And if it turns out that a dependency is corrupt, it could steal your coins. This actually happened in at least one other project in 2018. It involved a dependency of a dependency of a dependency of the Copay wallet. Fortunately, it was detected quickly,^[What happened was they had a piece of software that's open source, meaning everybody could review it. But it used dependencies, and those dependencies used dependencies, and so on.
 \
 They were using npm, which is the package manager for Node.js. This is, in turn, a large open source community, and it's a highly modular system.
 \
@@ -110,6 +110,8 @@ Every single package links to a repository on GitHub, with its own maintainer wh
 A JavaScript wallet like Copay stores a user's private keys somewhere inside the browser memory. Unfortunately, that's a very egalitarian place, meaning that any piece of JavaScript can access it. This is how malware hidden in a sub-sub-dependency can steal coins.
 \
 For more information, see this writeup: <https://www.synopsys.com/blogs/software-security/malicious-dependency-supply-chain/>] so it was never exploited in the wild.
+
+A more recent example of casual dependency usage gone horribly wrong, is the Log4j saga.^[<https://english.ncsc.nl/topics/log4j-vulnerability>]
 
 ### The Solution
 
