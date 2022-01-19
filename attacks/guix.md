@@ -119,21 +119,25 @@ This begs the questions of what the solution is, and unfortunately, it's to not 
 
 In the case of Bitcoin Core, it's not too bad, because it doesn't have many dependencies and they don't have a lot of nested ones. So, it's not a big tree. It's relatively shallow and you'd have to go after those specific dependencies directly to attack.
 
-### Can Gitian Be Corrupted?
+### Who builds the builder?
 
-Earlier in this chapter, we discussed how Gitian helps create deterministic builds. But that begs the question of it Gitian itself is corrupted somehow.
+Earlier in this chapter, we discussed how Gitian helps create deterministic builds. But what if Gitian, or any of the tools it uses, is itself corrupted somehow?
 
-More specifically, Gitian uses Ubuntu, and somebody might say, "Hey, this Bitcoin project's pretty cool. This Ubuntu project's pretty cool. Let me contribute some source to Ubuntu."
+For example, since Gitian uses Ubuntu, somebody might say, "Hey, this Bitcoin project's pretty cool. This Ubuntu project's pretty cool. Let me contribute some source to Ubuntu." Their "contribution" could be a small change to the compiler that is shipped with Ubuntu. They could modify that compiler, so that whenever it compiles Bitcoin, it sneaks in some code to steal coins. When it compiles any other software it behaves normally.
 
-Now, when everybody runs their Gitian builder, which includes Ubuntu, there's a compiler on Ubuntu and maybe that compiler is modified to add some code to steal coins. It would be very, very scary, because it'd still have deterministic builds, and everybody would be using the same malware to build it.
+This example is a bit contrived, and someone attempting this is very likely to get caught long before they do any damage. There is much more scrutiny on compiler software and on Ubuntu than there is in the Node.js ecosystem we described above. But the general attack strategy would be the same. And with a trillion dollars at stake, attackers can be very sophisticated and very patient.
 
-There are two kinds of dependencies: One is the dependency you're actively running that's inside the binary you're shipping to your customers. But the other dependency, and that's a real can of worms, is all the tools you're using to produce the binary, and even to download the binary.
+Now let's say everybody runs their Gitian builder, which includes this hypothetical compromised Ubuntu compiler. It would be very, very scary, because it'd still have deterministic builds, because everybody is using the exact same malware to build it.
 
-So if the tools you use to build Bitcoin Core are corrupt, then you still have a problem because all of the developers are getting to solve the same binaries from their Gitian process, but if that's corrupted..
+There are two kinds of dependencies: One is the dependency you're actively running that's inside the binary you're shipping to your customers. But the other dependency, and it's no less a can of worms, is all the tools you're using to produce the binary, and even to download the binary.
 
-The hope is that the people who are maintaining all these compilers and all the other things know what they're doing and would never let any such back door through.
+So if even a single one of the tools that developers use to build Bitcoin Core is corrupt, deterministic builds won't help. Every developer running the Gitian build process would diligently produce the same malware. The binary will not match what's in the source code.
 
-The key is to make everything open source and everything a deterministic build. So not just Bitcoin is a deterministic build, but every dependency of Bitcoin is a deterministic build, and every tool that is used to build Bitcoin is a deterministic build, including the compiler.
+The hope is that the people who are maintaining all these compilers and all the other things know what they're doing and would never let any back door through. This is not just a problem for Bitcoin users. The entire world relies on this scrutiny, which is mostly done by volunteers.
+
+So can we do better?
+
+## Enter Guix
 
 This is where Guix^[<https://guix.gnu.org/>] enters the picture. This GNU project  has been around for a decade. A few years ago Carl Dong^[<https://twitter.com/carl_dong>] from Chaincode Labs^[<https://chaincode.com/>] began work on replacing Gitian with Guix, which finally happened in Bitcoin Core version 22^[<https://bitcoin.org/en/releases/22.0/>]. This involved making changes on both the Bitcoin Core and the GUIX side of things.
 
