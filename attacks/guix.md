@@ -137,7 +137,7 @@ The hope is that the people who are maintaining all these compilers and all the 
 
 So can we do better?
 
-## Enter Guix
+### Enter Guix
 
 The key is to make everything open source and everything a deterministic build. Every library, every printer driver, every compiler — everything. For Bitcoin Core to truly be a deterministic build, each of its dependencies need to a deterministic build, and every tool that is used to build it, including the compiler. Ideally also the hardware, but that's a whole other can of worms.^[<https://media.ccc.de/v/36c3-10690-open_source_is_insufficient_to_solve_trust_problems_in_hardware>]
 
