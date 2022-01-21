@@ -40,7 +40,7 @@ If we wanted to increase the number of people who could read and understand Bitc
 
 ### Checking the Validity
 
-Let's say you trust the development and release process, so you download the binaries from bitcoincore.org. The first problem is that you don't know if bitcoincore.org is run by the Bitcoin developers. But even if you were confident of that, it could be that the site is hacked, or the site isn't hacked, but the DNS is hacked. There are lots of reasons why what you download isn't actually the thing you think you're downloading: It could be malware.
+Let's say you trust the development and release process, so you download the binary from bitcoincore.org. The first problem is that you don't know if bitcoincore.org is run by the Bitcoin developers. But even if you were confident of that, it could be that the site is hacked, or the site isn't hacked, but the DNS is hacked. There are many ways in which you could end up downloading malware.
 
 To get around this, open source projects almost always publish a checksum, which is a sequence of numbers and letters. What this means is that if you download something and run a particular script on it, the resulting checksum you get should match what the developers say it should be. The project maintainer usually publishes the checksum on the download page. In theory, that works. However, whoever hacked the site might have also hacked the checksum, so it's not foolproof.
 
@@ -117,7 +117,7 @@ A more recent example of casual dependency usage gone horribly wrong is the Log4
 
 This begs the questions of what the solution is, and unfortunately, it's to not depend on dependencies. If necessary, it's important to use as few as possible, and you especially want to stay away from things that have nested dependencies.
 
-In the case of Bitcoin Core, it's not too bad, because it doesn't have many dependencies and they don't have a lot of nested ones. So, it's not a big tree. It's relatively shallow, and you'd have to go after those specific dependencies directly to attack.
+In the case of Bitcoin Core, it's not too bad, because it doesn't have many dependencies, and those dependencies don't have a lot of nested ones. So, it's not a big tree. It's relatively shallow, and you'd have to go after those specific dependencies directly to attack.
 
 ### Who Builds the Builder?
 
@@ -139,7 +139,7 @@ So can we do better?
 
 ### Enter Guix
 
-The key is to make everything open source and everything a deterministic build. Every library, every printer driver, every compiler — everything. For Bitcoin Core to truly be a deterministic build, each of its dependencies need to a deterministic build, and every tool that is used to build it, including the compiler. Ideally also the hardware, but that's a whole other can of worms.^[<https://media.ccc.de/v/36c3-10690-open_source_is_insufficient_to_solve_trust_problems_in_hardware>]
+The key is to make everything open source and everything a deterministic build. Every library, every printer driver, every compiler — everything. For Bitcoin Core to truly be a deterministic build, each of its dependencies needs to be a deterministic build, as does every tool that's used to build it, including the compiler. Ideally the hardware is as well, but that's a whole other can of worms.^[<https://media.ccc.de/v/36c3-10690-open_source_is_insufficient_to_solve_trust_problems_in_hardware>]
 
 This is where Guix^[<https://guix.gnu.org/>] enters the picture. This GNU project has been around for a decade, but a few years ago, Carl Dong^[<https://twitter.com/carl_dong>] from Chaincode Labs^[<https://chaincode.com/>] began work on replacing Gitian with Guix, which finally happened in Bitcoin Core version 22^[<https://bitcoin.org/en/releases/22.0/>]. This involved making changes on both the Bitcoin Core and the Guix side of things.
 
