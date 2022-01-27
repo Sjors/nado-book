@@ -1,5 +1,5 @@
 \newpage
-## Activation Options
+## Activation Options {#sec:taproot_activation}
 
 ![Ep. 03 {l0pt}](qr/03.png)
 
