@@ -65,6 +65,8 @@ In the end, you can't really tell what happened. It didn't go wrong, and nobody 
 
 ### Rethinking Activation, BIP 8
 
+![BIP 8 flow. Full specification and image source: <https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki>](taproot/bip8.svg)
+
 In rethinking how activation should work, they took a proposal, BIP 8,^[<https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki>] which was a flag date proposal, and revamped it. The new idea was to have a combination of a flag date and what was proposed in BIP 9: Signaling still exists, with some tweaks, but there's also a built-in option for having a flag date.
 
 With this option, a flag date is a one-way mechanism. In other words, you could propose a new soft fork and not set a flag date, and then later on set a flag date. But you can't propose a flag date and then unset it.
@@ -407,8 +409,6 @@ AvW: We’ll see then I guess.
 SP: Yeah we’ll see. This might be the dumbest thing I’ve ever said.
 
 -->
-
-![BIP 8 flow. Full specification and image source: <https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki>](taproot/bip8.svg)
 
 \newpage
 
