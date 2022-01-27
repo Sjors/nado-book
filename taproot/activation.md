@@ -410,11 +410,15 @@ SP: Yeah we’ll see. This might be the dumbest thing I’ve ever said.
 
 -->
 
-\newpage
+
 
 ### Speedy Trial
 
-<!-- This ended up getting deployed. It was a compromise to pre-empt  -->
+<!--
+This ended up getting deployed.
+Some of this chapter covers the LOT=true client, which belongs above.
+-->
+
 
 ---
 comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-03-12-taproot-activation-speedy-trial/
@@ -717,13 +721,18 @@ AvW: There you go.
 
 -->
 
-### LOT=true client
+### LOT=true client, rogue?
+
+![Ep. 36 {l0pt}](qr/36.png)
+
+<!-- Dramatically shorten, maybe even just stick to episode summary. What is important here
+is this alternative client was released, similar to UASF. But we've mostly covered the pros and cons of that above in the LOT section.
+
+This also introduces the speedy trial, which should be moved below.
 
 ---
 comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-04-23-taproot-activation-update/
 ...
-
-![Ep. 36 {l0pt}](qr/36.png)
 
 discussed the final implementation details of Speedy Trial, the Taproot activation mechanism included in Bitcoin Core 0.21.1. Van Wirdum and Provoost also compared Speedy Trial to the alternative BIP 8 LOT=true activation client.
 
