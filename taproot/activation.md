@@ -1,5 +1,4 @@
 \newpage
-In this chapter we first discuss how softforks were activated in the past, and what options were reasonably expected to be available for Taproot. We then zoom in on a heated discussion over `LOT=true` vs `LOT=false` and the "compromise" known as Speedy Trial. Don't worry if these terms mean nothing to you at the moment. Finally we talk about what needs to happed after activation, some of which has already been done as you're reading this.
 ## Activation Options
 
 ![Ep. 03 {l0pt}](qr/03.png)
