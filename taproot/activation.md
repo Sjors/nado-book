@@ -15,11 +15,13 @@ Additionally, a soft fork gets rid of things that are no longer useful and makes
 
 What this means is that people can keep using Bitcoin as they did before; they don't have to upgrade, and they can keep using the old rules if they want to. An exchange can basically ignore SegWit for years and it's perfectly fine, as far as the blockchain is concerned.
 
-There are a few different ways to introduce a soft fork. You can do it randomly, you can announce a date, and you can have miners signal up to a certain threshold.
+There are a few different ways to introduce a soft fork. You can do it randomly, usually only as the result of an accident, you can announce a date or block height, and you can have miners signal up to a certain threshold.
+
+But what perhaps matters more than the mechanics of activation, is how a decision is reached to deploy in the soft fork in the first place.
 
 ### The earliest soft forks
 
-Probably the most infamous soft fork of all times is the one-megabyte block size limit introduced by Satoshi in 2010.^[<https://en.bitcoin.it/wiki/Block_size_limit_controversy> It was deployed unilaterally and nobody paid much attention to it until many years later, when this limit became a practical issue in the form of increasing fees for scarce block space.
+Probably the most infamous soft fork of all times is the one-megabyte block size limit introduced by Satoshi in 2010.^[<https://en.bitcoin.it/wiki/Block_size_limit_controversy>] It was deployed unilaterally and nobody paid much attention to it until many years later, when this limit became a practical issue in the form of increasing fees for scarce block space.
 
 Not only was it a unilateral decision by Satoshi to impose this limit, he initially did it secretly. He probably found it safer to keep this change under wraps, because he did not want to alert potential attackers to the gaping security hole, where massive blocks could have ground the network to a halt.
 
@@ -27,13 +29,25 @@ But outside some existential emergency, there's a general consensus that this is
 
 Although the term did not yet exist, in those early days there were many soft forks, mostly related to closing security holes in the early prototype.^[<https://blog.bitmex.com/bitcoins-consensus-forks/>] In 2013 there was even an accidental soft fork, and in 2015 a near-miss accidental softfork due to OpenSSL changes that we covered in chapter @sec:libsecp.
 
-Most of the above examples used a flag day as their method of activation. In other words, you'd say, "From this day forward, this new rule shall apply." And you announce that in advance, giving people plenty of time to upgrade. For a "secret" soft fork you would simply insist that people upgrade, explaining the reason afterwards.
+Most of the above examples used a flag day or block height as their method of activation. In other words, you'd say, "From this moment forward, this new rule shall apply." And you announce that in advance, giving people plenty of time to upgrade. For a "secret" soft fork you would simply insist that people upgrade, explaining the reason afterwards.
 
 ### How does a softfork work?
 
 But there's still a problem there, which is that you want to make sure everybody's actually running the new software — especially miners, because they kind of have to enforce those new rules.
 
 So everyone who's upgraded is enforcing the new rules, but if a majority of hash power does it, that means they always reclaim the launch chain even for the non-upgraded nodes. So then everyone, old and new nodes, will converge on this chain. So that's why it's very nice if a majority hash power enforces the rules as well.
+
+### Who decides?
+
+Nobody. Initially Satoshi would unilaterally decide what to change, though ultimately he could not force anyone to run the new versions he released, so he could not make completely arbitrary controversial changes. Nowadays, without going to deep in the weeds here, the Bitcoin development follows a process of "rough consensus", as described in RFC 7282. ^[<https://datatracker.ietf.org/doc/html/rfc7282>]
+
+Anyone can propose a change to the rules of Bitcoin. But not only do they need to convince other of the usefulness, they also need to address all technical objections that are raised to it. E.g. if someone complains that a proposal would break their (wallet) software, the proposal author can't simply say "tough". Instead they have to address the issue. Maybe they can propose a simple fix for the wallet in question, or they can modify their own proposal so it doesn't break stuff.
+
+This and a few other requirements usually involve much back and forth on technical mailinglists, and many iterations of improving the proposal. Many proposals don't survive this process at all, because it turns out they cause too many problems. Hard-fork proposals often get rejected based on just the fact that they break existing software, require every participant to upgrade, and to do so at the same time. A soft fork variant of the same proposal addresses all these concerns, so they are generally preferred instead.
+
+In addition to not having any unaddressed objections, there's also the need to get enough experienced developers to review a proposal. Lack of enthusiasm amongst a very small group of such experienced developers can cause a perfectly fine soft fork to never see the light of day. Or, more often, a lack of reviewer enthusiasm combined with difficult to address technical problems keeps a proposal in limbo.
+
+But if all this goes well, and the code ends up merged into the Bitcoin Core software, there's still the matter of what activation procedure to apply. This is subject to the same kind of rough consensus discussion as a proposal itself; peole may love a proposal, but a flag day might cause a problem for them. To avoid proposals from getting stuck in a discussion about their activation, ideally the community agrees on a single activation mechansism that's applied for every softfork. Well, that turns out to be a challenge.
 
 ### Signalling (BIP 9)
 
