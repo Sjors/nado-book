@@ -1,7 +1,7 @@
 \newpage
 ## Taproot and Schnorr {#sec:taproot_basics}
 
-![Ep. 02 {l0pt}](qr/02.png)
+![Ep. 02 {l0pt}](qr/ep/02.png)
 
 In this chapter, we first introduce a Merkle tree that hides all the different spending conditions until they're used. This is called MAST. Next, we explain how Schnorr signatures allow us to hide the MAST itself, which improves privacy further. We cover earlier proposals for MAST, which didn't have the benefit of Schnorr, which in turn illustrates the power of Taproot. Finally, we point out some cool things Taproot enables.
 

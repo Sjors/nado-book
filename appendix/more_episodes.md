@@ -8,7 +8,7 @@ Not all episodes of Bitcoin, Explained made it into this book. Here's some other
 
 ### What is an Xpub?
 
-![Ep. 07 {l0pt}](qr/07.png)
+![Ep. 07 {l0pt}](qr/ep/07.png)
 
 In this episode we explain what an xpub is and how it is used by Bitcoin wallets.
 
@@ -21,7 +21,7 @@ In this episode we explain what an xpub is and how it is used by Bitcoin wallets
 
 ### Replace by Fee (RBF)
 
-![Ep. 26 {l0pt}](qr/26.png)
+![Ep. 26 {l0pt}](qr/ep/26.png)
 
 In this episode we explain Replace By Fee (RBF). RBF is a trick that lets unconfirmed transactions be replaced by conflicting transactions that include a higher fee.
 
@@ -34,7 +34,7 @@ Finally, we explain in some detail how opt-in RBF works in Bitcoin Core, and whi
 
 ### Signet
 
-![Ep. 10 {l0pt}](qr/10.png)
+![Ep. 10 {l0pt}](qr/ep/10.png)
 
 Signet is a new type of testnet for Bitcoin. In this episode we discuss discuss the original version of testnet and its problems, as well as alternative testing environment regtest.
 
@@ -44,7 +44,7 @@ Signet is a new type of testnet for Bitcoin. In this episode we discuss discuss 
 
 ### PSBT and RBF attack
 
-![Ep. 01 {l0pt}](qr/01.png)
+![Ep. 01 {l0pt}](qr/ep/01.png)
 
 In this episode we break down and explain Partially Signed Bitcoin Transactions (PSBT) and Replace By Fee (RBF) and some really tricky attacks that where recently discovered in Bitcoin.
 
@@ -56,7 +56,7 @@ In this episode we break down and explain Partially Signed Bitcoin Transactions 
 
 ### Mempools, Child Pays for Parent, and Package Relay
 
-![Ep. 19 {l0pt}](qr/19.png)
+![Ep. 19 {l0pt}](qr/ep/19.png)
 
 In this episode we discuss Bitcoin mempools, Child Pays For Parent (CPFP) and package relay.
 
@@ -68,7 +68,7 @@ In this episode, van Wirdum and Provoost explained how package relay could enabl
 
 ### Bitcoin Improvement Proposal (BIP) process
 
-![Ep. 39 {l0pt}](qr/39.png)
+![Ep. 39 {l0pt}](qr/ep/39.png)
 
 In this episode we explain what Bitcoin Improvement Proposals (BIPs) are, and how the BIP process works. We discuss why the BIP process is a useful, yet non-binding convention within Bitcoin’s technical community.
 
@@ -80,7 +80,7 @@ Finally we explain how the BIP process itself works, that is, how a proposal can
 
 ### Compact Client Side Filtering (Neutrino)
 
-![Ep. 25 {l0pt}](qr/25.png)
+![Ep. 25 {l0pt}](qr/ep/25.png)
 
 In this episode we discuss Compact Client Side Filtering, also known as Neutrino. Compact Client Side Filtering is a solution to use Bitcoin without needing to download and validate the entire blockchain, and without sacrificing your privacy to someone who operates a full node (and therefore did download and validate the entire blockchain).
 
@@ -97,13 +97,13 @@ We explain how this works in more detail, and discuss some of the tradeoffs of t
 ### Timewarp attack
 
 
-![Ep. 05 {l0pt}](qr/05.png)
+![Ep. 05 {l0pt}](qr/ep/05.png)
 
 In this episode we explain the "time-warp attack" on Bitcoin. A potential fix for this attack is included in Matt Corallo's proposed Great Consensus Cleanup softfork^[<https://github.com/TheBlueMatt/bips/blob/cleanup-softfork/bip-XXXX.mediawiki>], which at the time of writing has not seen much progress.
 
 ### Mining pool censorship
 
-![Ep. 37 {l0pt}](qr/37.png)
+![Ep. 37 {l0pt}](qr/ep/37.png)
 
 In this episode we discuss the emergence of Mara Pool, the American Bitcoin mining pool operated by Marathon Digital Holdings, which at the time claimed to be fully compliance with US regulations. This means that it applies anti-money laundering (AML) checks and adheres to the sanction list of the Office of Foreign Asset Control (OFAC). While details have not been made explicit, this presumably means that this pool will not include transactions in their blocks if these transactions send coin to or from Bitcoin addresses that have been included on an OFAC blacklist.
 
@@ -115,7 +115,7 @@ In the episode we discuss the prospects of mining censorship, what that would me
 
 ### Hardware Wallet Security and Jade
 
-![Ep. 43 {l0pt}](qr/43.png)
+![Ep. 43 {l0pt}](qr/ep/43.png)
 
 Co-host Aaron is joined by Blockstream’s Lawrence Nahum, one of the developers behind the Jade wallet, and Ben Kaufman, one of the developers of the Spectre wallet, which is specifically designed to work with hardware wallets.
 
@@ -127,7 +127,7 @@ Finally, Aaron, Lawrence and Ben discuss whether the concept of hardware wallets
 
 ### Bitcoin Beach
 
-![Ep. 42 {l0pt}](qr/42.png)
+![Ep. 42 {l0pt}](qr/ep/42.png)
 
 Co-host Aaron van Wirdum speaks with Bitcoin Beach Wallet developer Nicolas Burtey in El Zonte, El Salvador — which has been dubbed Bitcoin Beach — to discuss the Bitcoin Beach Wallet, a Bitcoin and Lightning wallet specifically designed for use in the small Central American coastal town frequented by surfers and, now, bitcoiners.
 
@@ -139,13 +139,13 @@ Aaron and Nicolas also discuss some of the subtle incompatibilities between diff
 
 ### Chivo
 
-![Ep. 46 {l0pt}](qr/46.png)
+![Ep. 46 {l0pt}](qr/ep/46.png)
 
 In this episode we discuss discuss the Chivo application, the Bitcoin wallet, and payment terminal provided by the government of El Salvador. The Chivo app is closed source software. Instead of analyzing the source code and design of the application, we had to rely on Aaron’s personal experience with the wallet and payment terminal or what he remembers of that personal experience. The episode opens with some general information about the Chivo Wallet, like why it was developed and who developed it (insofar anything is known about that). We discuss Aaron’s experiences with the wallet and speculate what that means for the design. After that, we discuss the design of the payment terminal that’s included in the application, and also briefly touch on the Chivo ATMs that have been deployed across the country. Finally, we discuss the difference in philosophy between the design of the Chivo application and Bitcoin’s free and open-source software culture.
 
 ### Accounts with Easypaysy
 
-![Ep. 11 {l0pt}](qr/11.png)
+![Ep. 11 {l0pt}](qr/ep/11.png)
 
 We discuss Jose Femenias' Easypaysy proposal, an account system for Bitcoin, on Bitcoin. One feature it supports is stealth address identities. We discuss several use cases. Finally we explain what non repudiation is.
 
@@ -155,7 +155,7 @@ Aaron also wrote an article covering Easypaysy for Bitcoin Magazine.^[<https://b
 
 ### Payment pools
 
-![Ep. 06 {l0pt}](qr/06.png)
+![Ep. 06 {l0pt}](qr/ep/06.png)
 
 In this episode we explain what payment pools are, and why they need Taproot. We discuss the user experience of sharing UTXOs and how payment pools can work with lightning.
 
@@ -175,7 +175,7 @@ This book does not cover Lightning, but several Bitcoin, Explained episodes did.
 
 ### Basics
 
-![Ep. 22 {l0pt}](qr/22.png)
+![Ep. 22 {l0pt}](qr/ep/22.png)
 
 We discuss the basics of the Lightning Network, Bitcoin’s Layer 2 protocol for cheaper, faster and potentially more private transactions. We explain that the Lightning Network works as a scaling layer because it lets users make off-chain transactions through bi-directional payment channels: two users can pay one another an arbitrary number of times without these transactions being recorded on the blockchain. We went on to explain how, in the Lightning protocol, these off-chain transactions are secure, that is, how each of the participants is at any point guaranteed to claim their respective funds from the payment channel.
 
@@ -185,7 +185,7 @@ Finally, we briefly touch on some of the challenges presented by the Lightning N
 
 ### RBF bug in Bitcoin Core
 
-![Ep. 38 {l0pt}](qr/38.png)
+![Ep. 38 {l0pt}](qr/ep/38.png)
 
 We discuss CVE-2021-31876, a bug in the Bitcoin Core code that affects replace-by-fee (RBF) child transactions.^[<https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31876>] The CVE (Common Vulnerabilities and Exposures) system offers an overview of publicly known software bugs. A newly discovered bug in the Bitcoin Core code was recently discovered and disclosed by Antoine Riard, and added to the CVE overview.
 
@@ -195,7 +195,7 @@ This is a fairly innocent bug; in most cases the second transaction will still c
 
 ### Routing
 
-![Ep. 41 {l0pt}](qr/41.png)
+![Ep. 41 {l0pt}](qr/ep/41.png)
 
 We are joined by Lightning developer Joost Jager to discuss everything about Lightning Network routing.
 
@@ -209,7 +209,7 @@ Finally we discuss some (potential) optimizations to benefit Lightning Network r
 
 ### Optimally Reliable & Cheap Payment Flows on the Lightning Network
 
-![Ep. 47 {l0pt}](qr/47.png)
+![Ep. 47 {l0pt}](qr/ep/47.png)
 
 In this episode I interview another expert on Lightning routing, René Pickhardt. We discuss his paper “Optimally Reliable & Cheap Payment Flows on the Lightning Network”.^[<https://arxiv.org/abs/2107.05322>] To cite the abstract:
 
@@ -219,19 +219,19 @@ In this episode I interview another expert on Lightning routing, René Pickhardt
 
 We covered this topic twice, so there's two epidodes to choose from. In episode 35 Aaron and I explain it, whereas in episode 48 one of the authors, c-lightning developer Christian joins me to explain it in his words.
 
-![Ep. 35 {l0pt}](qr/35.png)
+![Ep. 35 {l0pt}](qr/ep/35.png)
 
 First we discuss `SIGHASH_ANYPREVOUT`, a proposed new sighash flag that would enable a cleaner version of the Lightning Network and other Layer Two protocols. Sighash flags are included in Bitcoin transactions to indicate which part of the transaction is signed by the required private keys, exactly.
 
 This can be (almost) the entire transaction, or specific parts of it. Signing only specific parts allows for some flexibility to adjust the transaction even after it is signed, which can sometimes be useful. We explain that `SIGHASH_ANYPREVOUT` is a new type of sighash flag, which would sign most of the transaction, but not the inputs. This means that the inputs could be swapped, as long as the new inputs would still be compatible with the signature.
 
-![Ep. 48 {l0pt}](qr/48.png)
+![Ep. 48 {l0pt}](qr/ep/48.png)
 
 `SIGHASH_ANYPREVOUT` would be especially useful in context of Eltoo, a proposed Layer Two protocol that would enable a new version of the Lightning Network. Where Lightning users currently need to store old channel data for security reasons, and could also be punished severely if they accidentally broadcast some of this data at the wrong time, we how SIGHASH_ANYPREVOUT would do away with this requirement.
 
 ### Bolt 12 - Recurring payments, etc
 
-![Ep. 44 {l0pt}](qr/44.png)
+![Ep. 44 {l0pt}](qr/ep/44.png)
 
 We discuss BOLT 12 (Basis of Lightning Technology 12), a newly proposed Lightning Network specification for “offers”, a type of “meta invoices” designed by c-lightning developer Rusty Russell.
 
@@ -251,7 +251,7 @@ We discussed several of these ideas in the podcast, often with the help of Utrec
 
 ### Drivechains
 
-![Ep. 23 {l0pt}](qr/23.png)
+![Ep. 23 {l0pt}](qr/ep/23.png)
 
 Drivechain is a sidechain project spearheaded by Paul Sztorc.
 
@@ -267,7 +267,7 @@ We also discuss some of the benefits as well as complications with Drivechain, m
 
 ### Perpetual One-Way Peg
 
-![Ep. 12 {l0pt}](qr/12.png)
+![Ep. 12 {l0pt}](qr/ep/12.png)
 
 Ruben explains his proposal to combine blind merged mining and perpetual one-way pegs in order to create a new type of sidechain. The bad news: it won't make you rich but it could help scale Bitcoin!
 
@@ -277,7 +277,7 @@ A blog post by Ruben also explains the concept.^[<https://medium.com/@RubenSomse
 
 ### Softchains
 
-![Ep. 27 {l0pt}](qr/27.png)
+![Ep. 27 {l0pt}](qr/ep/27.png)
 
 This time, they discuss one of Ruben’s own proposals, called Softchains.
 
@@ -287,7 +287,7 @@ Ruben explains that by using proof-of-work fraud proofs for sidechains to create
 
 ### Statechains
 
-![Ep. 08 {l0pt}](qr/08.png)
+![Ep. 08 {l0pt}](qr/ep/08.png)
 
 We discuss yet another one of Ruben's proposals: Statechains on Bitcoin. Statechains allow you to send keys not UTXO and it offers quite a few scaling and functionality improvements.
 
@@ -297,7 +297,7 @@ See also Ruben's presentation^[<https://youtu.be/CKx6eULIC3A>] on Bitcoin Magazi
 
 ### RSK, federated sidechains and Powpeg
 
-![Ep. 20 {l0pt}](qr/20.png)
+![Ep. 20 {l0pt}](qr/ep/20.png)
 
 We discuss RSK’s shift from a federated sidechain model to the project’s new Powpeg solution.
 
@@ -315,7 +315,7 @@ The hosts explain how this works exactly, and discuss some of Powpeg’s securit
 
 ### Open Timestamps
 
-![Ep. 16 {l0pt}](qr/16.png)
+![Ep. 16 {l0pt}](qr/ep/16.png)
 
 In this episode we discuss Open Timestamps, a Bitcoin-based time stamping project by applied cryptography consultant and former Bitcoin Core contributor Peter Todd. Open Timestamps leverages the security of the Bitcoin blockchain to timestamp any type of data, allowing for irrefutable proof that that data existed at a particular point in time.
 
@@ -327,7 +327,7 @@ Aaron and Sjors also discuss some of the other possibilities that a time-stampin
 
 ### RGB
 
-![Ep. 33 {l0pt}](qr/33.png)
+![Ep. 33 {l0pt}](qr/ep/33.png)
 
 We are joined by Ruben Somsen to discuss RGB tokens, a Layer Two protocol for Bitcoin to support alternative currency and token schemes (like the currently popular non-fungible tokens, or NFTs).
 
@@ -337,7 +337,7 @@ A few years ago I also gave a presentation about RGB as well as earlier attemps 
 
 ### Bitcoin Core v0.21
 
-![Ep. 24 {l0pt}](qr/24.png)
+![Ep. 24 {l0pt}](qr/ep/24.png)
 
 In this episode we discuss the newly released Bitcoin Core 0.21.0, the 21st and latest major release of the Bitcoin Core software, the oldest and most important Bitcoin node implementation, which is often also regarded as the reference implementation for the Bitcoin protocol.
 
@@ -349,7 +349,7 @@ https://bitcoinmagazine.com/technical/bitcoin-core-0-21-0-released-whats-new
 
 ### Bitcoin Core v22.0
 
-![Ep. 45 {l0pt}](qr/45.png)
+![Ep. 45 {l0pt}](qr/ep/45.png)
 
 In this episode we discuss Bitcoin Core 22.0, the latest major release of the Bitcoin Core software client, currently the de facto reference implementation of the Bitcoin protocol. Aaron and Sjors highlight several improvements to the Bitcoin Core software.
 

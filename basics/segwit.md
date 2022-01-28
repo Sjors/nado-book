@@ -1,7 +1,7 @@
 \newpage
 ## SegWit {#sec:segwit}
 
-![Ep. 32 {l0pt}](qr/32.png)
+![Ep. 32 {l0pt}](qr/ep/32.png)
 
 Segregated Witness, also known as SegWit, was a soft fork activated on the Bitcoin network in the summer of 2017. It was the last soft fork before Taproot activated in the fall of 2021, and it's arguably still the biggest Bitcoin protocol upgrade to date.
 

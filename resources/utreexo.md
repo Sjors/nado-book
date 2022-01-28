@@ -5,7 +5,7 @@ comment: guest Ruben
 ## Utreexo
 
 
-![Ep. 15 {l0pt}](qr/15.png)
+![Ep. 15 {l0pt}](qr/ep/15.png)
 
 they dive into a concept by Tadge Dryja called Utreexo.
 

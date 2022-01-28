@@ -2,7 +2,7 @@
 ## Headers First, Assume Valid and Assume UTXO
 
 
-![Ep. 14 {l0pt}](qr/14.png)
+![Ep. 14 {l0pt}](qr/ep/14.png)
 
  discuss “Assume UTXO”, a proposal and project by Chaincode Labs alumni James O’Beirne.
 

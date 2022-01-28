@@ -7,7 +7,7 @@ In this chapter we first discuss how softforks were activated in the past, and w
 
 ### Activation options
 
-![Ep. 03 {l0pt}](qr/03.png)
+![Ep. 03 {l0pt}](qr/ep/03.png)
 
 break down and explain the different opinions and options available for activating Taproot and potentially future softfork upgrades.
 
@@ -945,7 +945,7 @@ There we go.
 
 ### BIP 8 and LOT=true vs FALSE
 
-![Ep. 29 {l0pt}](qr/29.png)
+![Ep. 29 {l0pt}](qr/ep/29.png)
 
 <!-- The transcript link is mentioned here so the volunteer effort gets credit. But it can be moved to where it makes sense in the flow. -->
 
@@ -1230,7 +1230,7 @@ SP: Yeah we’ll see. This might be the dumbest thing I’ve ever said.
 comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-03-12-taproot-activation-speedy-trial/
 ...
 
-![Ep. 31 {l0pt}](qr/31.png)
+![Ep. 31 {l0pt}](qr/ep/31.png)
 
 discuss Speedy Trial, the proposed Taproot activation mechanism that has been gaining traction in recent weeks.
 
@@ -1533,7 +1533,7 @@ AvW: There you go.
 comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-04-23-taproot-activation-update/
 ...
 
-![Ep. 36 {l0pt}](qr/36.png)
+![Ep. 36 {l0pt}](qr/ep/36.png)
 
 discussed the final implementation details of Speedy Trial, the Taproot activation mechanism included in Bitcoin Core 0.21.1. Van Wirdum and Provoost also compared Speedy Trial to the alternative BIP 8 LOT=true activation client.
 
@@ -1948,7 +1948,7 @@ SP: We’ll have the same arguments all over again because we’ve learnt absolu
 
 ### Locked in
 
-![Ep. 40 {l0pt}](qr/40.png)
+![Ep. 40 {l0pt}](qr/ep/40.png)
 
 discuss the lock-in of the Taproot soft fork upgrade.
 

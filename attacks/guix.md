@@ -2,7 +2,7 @@
 ## Why Open Source Matters (guix) {#sec:guix}
 
 
-![Ep. 21 {l0pt}](qr/21.png)
+![Ep. 21 {l0pt}](qr/ep/21.png)
 
 This chapter discusses open source software in the context of why it matters that Bitcoin software is open source. But it also delves into the reason why even open source software doesn't necessarily solve all software-specific trust issues.
 

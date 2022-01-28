@@ -1,7 +1,7 @@
 \newpage
 ## Eclipse attacks {#sec:eclipse}
 
-![Ep. 17 {l0pt}](qr/17.png)
+![Ep. 17 {l0pt}](qr/ep/17.png)
 
 discuss Eclipse attacks. More specifically, they discuss the 2015 paper “Eclipse Attacks on Bitcoin’s Peer-to-Peer Network,” written by Ethan Heilman, Alison Kendler, Aviv Zohar and Sharon Goldberg, from Boston University and Hebrew University/MSR Israel.^[<https://cs-people.bu.edu/heilman/eclipse/>]
 
@@ -595,7 +595,7 @@ Yes. And there's a website that links to some of the solutions that have been im
 
 ### Erebus attack
 
-![{l0pt}](qr/18.png)
+![{l0pt}](qr/ep/18.png)
 
 Episode 18 of Bitcoin, Explained continues on the topic of eclipse attacks where this chapter left of. It describes the Erebus Attack^[<https://erebus-attack.comp.nus.edu.sg>]: an eclipse attack where an attacker essentially spoofs a whole part of the internet.
 
