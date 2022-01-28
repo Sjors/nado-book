@@ -24,9 +24,11 @@ https://cs-people.bu.edu/heilman/eclipse/
 https://cseweb.ucsd.edu/~smeiklejohn/files/imc13.pdf
 https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31876
 https://datatracker.ietf.org/doc/html/rfc4193
+https://datatracker.ietf.org/doc/html/rfc7282
 https://developer.bitcoin.org/reference/p2p_networking.html#addr
 https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-02-26-taproot-activation-lockinontimeout/
 https://dlt-repo.net/storage-vs-memory-vs-stack-in-solidity-ethereum/
+https://en.bitcoin.it/wiki/Block_size_limit_controversy
 https://en.bitcoin.it/wiki/IP_transaction
 https://en.bitcoin.it/wiki/Script
 https://en.wikipedia.org/wiki/%22Hello,_World!%22_program
@@ -42,11 +44,13 @@ https://erebus-attack.comp.nus.edu.sg
 https://github.com/TheBlueMatt/bips/blob/cleanup-softfork/bip-XXXX.mediawiki
 https://github.com/bitcoin-core/secp256k1
 https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki
+https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0114.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0116.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki
+https://github.com/bitcoin/bips/blob/master/bip-0148.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0155.mediawiki#Specification
 https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki

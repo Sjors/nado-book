@@ -24,9 +24,11 @@ bit.ly/3ILNm1r
 bit.ly/3GdZAy2
 bit.ly/3oakVm1
 bit.ly/32E7TWa
+https://bit.ly/3HqYVel
 https://developer.bitcoin.org/reference/p2p_networking.html#addr
 bit.ly/3rad0XO
 bit.ly/3IIZ10U
+https://bit.ly/35rlKAd
 bit.ly/3uam3de
 bit.ly/3rVXFcx
 bit.ly/3u9VmVJ
@@ -42,11 +44,13 @@ nus.edu/3KQUETs
 bit.ly/3IMQoCq
 bit.ly/3o7vyGi
 bit.ly/3u7NLHn
+bit.ly/3KUZQ8U
 bit.ly/3AHQpoz
 bit.ly/3u621QY
 bit.ly/3KT0IdX
 bit.ly/3o9xCNL
 bit.ly/33XPaFP
+bit.ly/3g8tcSR
 https://github.com/bitcoin/bips/blob/master/bip-0155.mediawiki#Specification
 bit.ly/3oanOmR
 bit.ly/3r9YUpf
