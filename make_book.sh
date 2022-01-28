@@ -39,7 +39,7 @@ for i in $(seq $count); do
     url=`sed -n ${i}p qr/note/urls.txt`
     short_url=`sed -n ${i}p qr/note/shorts.txt`
     # Skip URL's that haven't been shortened
-    if echo $short_url | grep bit.ly; then
+    if echo $short_url | grep 'bit.ly\|nus.edu'; then
         echo $short_url | qrencode -o qr/note/${i}.png --level=L -8 -d 300 -s 2 --margin=1
         # Add to processed markdown (might be macOS specific):
         find intro.processed.md **/*.processed.md -exec sed -i '' -e "s#<$url>#<$url> ![](qr/note/$i.png)#g" {} \;

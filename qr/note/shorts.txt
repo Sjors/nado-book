@@ -38,7 +38,6 @@ https://english.ncsc.nl/topics/log4j-vulnerability
 https://eprint.iacr.org/2003/235
 https://eprint.iacr.org/2020/1261
 https://eprint.iacr.org/2020/1390.pdf
-https://erebus-attack.comp.nus.edu.sg
 https://github.com/TheBlueMatt/bips/blob/cleanup-softfork/bip-XXXX.mediawiki
 https://github.com/bitcoin-core/secp256k1
 https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki
@@ -47,6 +46,7 @@ https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0114.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0116.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki
+nus.edu/3KQUETs
 https://github.com/bitcoin/bips/blob/master/bip-0155.mediawiki#Specification
 https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki
