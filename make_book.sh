@@ -9,6 +9,10 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
+# Generate .processed.md files:
+find intro.md **/*.md -exec cp {} {}.processed \;
+find . -name "*.md.processed" -exec sh -c 'mv "$1" "${1%.md.processed}.processed.md"' _ {} \;
+
 # Process episode QR codes:
 pushd qr/ep
     for f in *.txt; do
@@ -16,9 +20,37 @@ pushd qr/ep
     done
 popd
 
+# Process footnote QR codes:
+# Collect URL's:
+find intro.md **/*.md -print0 | xargs -0 perl -ne 'print "$1\n" if /<(http.*?)>/' | sort | uniq > qr/note/urls.txt
+if ! git diff --quiet qr/note/urls.txt; then
+    echo "Please update bit.ly links for URLs:"
+    git diff qr/note/urls.txt
+    exit 1
+fi
+
+if ! [ "$(wc -l < qr/note/urls.txt)" -eq "$(wc -l < qr/note/shorts.txt)" ]; then
+    echo "shorts.txt should have the same number of entries as urls.txt"
+    exit 1
+fi
+
+count=`wc -l < qr/note/urls.txt`
+for i in $(seq $count); do
+    url=`sed -n ${i}p qr/note/urls.txt`
+    short_url=`sed -n ${i}p qr/note/shorts.txt`
+    # Skip URL's that haven't been shortened
+    if echo $short_url | grep bit.ly; then
+        echo $short_url | qrencode -o qr/note/${i}.png --level=L -8 -d 300 -s 2 --margin=1
+        # Add to processed markdown (might be macOS specific):
+        find intro.processed.md **/*.processed.md -exec sed -i '' -e "s#<$url>#<$url> ![](qr/note/$i.png)#g" {} \;
+    fi
+done
+
 # Process figures:
 dot -Tsvg taproot/speedy_trial.dot > taproot/speedy_trial.svg
 dot -Tsvg taproot/bip8.dot > taproot/bip8.svg
+
+echo "Generate PDF..."
 
 # Generate document
 pandoc --table-of-contents --toc-depth=2 --number-sections\
@@ -29,25 +61,25 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         --filter pandoc/wrapfig.py\
         $EXTRA_OPTIONS\
         header-includes.yaml\
-        intro.md\
-        basics/_section.md\
-        basics/address.md\
-        basics/dns_and_tor.md\
-        basics/segwit.md\
-        basics/libsecp256k1.md\
-        resources/_section.md\
-        resources/assume-utxo.md\
-        resources/utreexo.md\
-        resources/erlay.md\
-        attacks/_section.md\
-        attacks/eclipse.md\
-        attacks/fake_nodes.md\
-        attacks/guix.md\
-        wallets/_section.md\
-        wallets/hwi.md\
-        wallets/miniscript.md\
-        taproot/_section.md\
-        taproot/basics.md\
-        taproot/activation.md\
-        appendix/more_episodes.md\
-        appendix/crime-on-testnet.md\
+        intro.processed.md\
+        basics/_section.processed.md\
+        basics/address.processed.md\
+        basics/dns_and_tor.processed.md\
+        basics/segwit.processed.md\
+        basics/libsecp256k1.processed.md\
+        resources/_section.processed.md\
+        resources/assume-utxo.processed.md\
+        resources/utreexo.processed.md\
+        resources/erlay.processed.md\
+        attacks/_section.processed.md\
+        attacks/eclipse.processed.md\
+        attacks/fake_nodes.processed.md\
+        attacks/guix.processed.md\
+        wallets/_section.processed.md\
+        wallets/hwi.processed.md\
+        wallets/miniscript.processed.md\
+        taproot/_section.processed.md\
+        taproot/basics.processed.md\
+        taproot/activation.processed.md\
+        appendix/more_episodes.processed.md\
+        appendix/crime-on-testnet.processed.md\
