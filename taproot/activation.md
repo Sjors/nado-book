@@ -1,7 +1,7 @@
 \newpage
 ## Activation Options {#sec:taproot_activation}
 
-![Ep. 03 {l0pt}](qr/ep/ep/03.png)
+![Ep. 03 {l0pt}](qr/ep/03.png)
 
 The Taproot soft fork was activated on November 13, 2021, approximately one year after the finalized code was merged.^[<https://github.com/bitcoin/bitcoin/commit/3caee16946575e71e90ead9ac531f5a3a1259307>] It happened much more quickly than SegWit did, and with far less drama, but it wasn't an uneventful year. This chapter discusses how soft forks were activated in the past and what options were reasonably expected to be available for Taproot.
 
@@ -149,7 +149,7 @@ Overall, it's difficult to say which approach is best. In the short run, it's ni
 
 ### The mother of all parameters: LOT
 
-![Ep. 29 {l0pt}](qr/ep/ep/29.png)
+![Ep. 29 {l0pt}](qr/ep/29.png)
 
 <!-- The transcript link is mentioned here so the volunteer effort gets credit. But it can be moved to where it makes sense in the flow. -->
 
@@ -1159,7 +1159,7 @@ AvW: There you go.
 
 ### Locked in
 
-![Ep. 40 {l0pt}](qr/ep/ep/40.png)
+![Ep. 40 {l0pt}](qr/ep/40.png)
 
 discuss the lock-in of the Taproot soft fork upgrade.
 
