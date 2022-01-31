@@ -885,7 +885,7 @@ This process made it so Taproot would activate six months after the initial rele
 
 As mentioned above, there wasn't a consensus for how to activate the proposal One reason it came to this gridlock situation where people feel very strongly about different ideas has a lot to do what happened during the SegWit upgrade.
 
-Some people feel very strongly that users showed their muscles. Users claimed their sovereignty, users claimed back the protocol, and they basically forced miners to activate the SegWit upgrade. It was a huge victory for Bitcoin users. 
+Some people feel very strongly that users showed their muscles. Users claimed their sovereignty, users claimed back the protocol, and they basically forced miners to activate the SegWit upgrade. It was a huge victory for Bitcoin users.
 
 But then other people feel very strongly that Bitcoin came near to a complete disaster with a fractured network and people losing money.
 
@@ -893,7 +893,7 @@ But then other people feel very strongly that Bitcoin came near to a complete di
 
  The first group of people really likes doing a UASF again or starting with LOT=false and switching to LOT=true or maybe just starting with LOT=true. The people who think it was a big mess, they prefer to use a flag day this time. Nice and safe in a way, use a flag day, none of this miner signaling, miners can’t be forced to signal and all of that.
 
---> 
+-->
 
 These different views on what actually happened a couple of years ago now means people can’t really agree on a new activation proposal. After a lot of discussion, all factions were sort of willing to settle on Speedy Trial, even though no one really liked it. The first group, the UASF people, were OK with Speedy Trial because it didn’t get in the way of the UASF, and if it failed, they'd still do the UASF the following year. Meanwhile, the flag day people were OK with it because the three months likely wouldn't have allowed for a big enough window to do the UASF.
 
