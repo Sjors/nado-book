@@ -67,11 +67,11 @@ It was used succesfully to deploy the CSV and SegWit soft fork. It could have be
 
 but when it was time to deploy SegWit, it took a long time. The code was ready, but it didn't activate, because fewer than 95 percent of miners were signaling for it.^[With BIP 9, many miners were blocking the upgrade, either because they wanted political leverage, or because they were secretly benefiting from something that the upgrade would've fixed without telling anyone that that was the case — or both. In short, there were bad reasons for the miners to block this upgrade, and this made Bitcoin core developers and others realize that depending on them gave the miners leverage, which they shouldn't have at all. They were treating it like a vote — when it's just meant to be a coordination mechanism — and abusing their vote in ways that were bad.]
 
-At this point, a number of different things happened outside the blockchain. There was basically a group of people that said, "Hey, you know what? Instead of the signaling, we're just going to go back to the old flag day approach." And that was called BIP 148.^[<https://github.com/bitcoin/bips/blob/master/bip-0148.mediawiki>] They picked April 1, 2017 as a date and said that on that day, their nodes would enforce the rules.
+At this point, a number of different things happened outside the blockchain. There was basically a group of people that said, "Hey, you know what? Instead of the signaling, we're just going to go back to the old flag day approach." And that was called BIP 148.^[<https://github.com/bitcoin/bips/blob/master/bip-0148.mediawiki>] They picked August 1, 2017 as a date and said that on that day, their nodes would enforce the rules.
 
 So essentially what happened was a bit of a standoff between the two groups. And no one knows quite how it resolved, because if you just look at the blockchain, what you'd see is that, all of a sudden, 95 percent started signaling and it was activated.
 
-Now it's of course very remarkable that this activated exactly before August 1 and not some random other date that it could have happened. But there were no blocks rejected that we could still point at saying, "Hey look, there was actually a fight between miners and et cetera." At the same time, there was an initiative from the New York Agreement Group. And they had a whole bunch of things that they were planning to do. But one thing they were doing is called BIP 91, which was aimed at lowering the threshold. So they said, "Instead of having 95 percent, we're just going to accept 75 percent."
+Now it's of course very remarkable that this activated exactly before August 1 and not some random other date that it could have happened. But there were no blocks rejected that we could still point at saying, "Hey look, there was actually a fight between miners and et cetera." At the same time, there was an initiative from the New York Agreement Group.^[<https://dcgco.medium.com/bitcoin-scaling-agreement-at-consensus-2017-133521fe9a77>] And they had a whole bunch of things that they were planning to do. But one thing they were doing is called BIP 91, which was aimed at lowering the threshold. So they said, "Instead of having 95 percent, we're just going to accept 75 percent."
 
 What they did in the end was use 75 percent forced signaling. So it was like BIP 148, but it was like a soft fork to activate a soft fork — basically, you had to signal that you were going to activate the soft fork. And then because there was more signaling, it would activate. But you couldn't chain, because immediately people started signaling at 95 percent.
 
@@ -81,7 +81,7 @@ In the end, you can't really tell what happened. It didn't go wrong, and nobody 
 
 ![BIP 8 flow. Full specification and image source: <https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki>](taproot/bip8.svg)
 
-In rethinking how activation should work, they took a proposal, BIP 8,^[<https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki>] which was a flag date proposal, and revamped it. The new idea was to have a combination of a flag date and what was proposed in BIP 9: Signaling still exists, with some tweaks, but there's also a built-in option for having a flag date.
+In rethinking how activation should work, BIP 8^[<https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki>] proponents came out with a flag date proposal and revamped it. The new idea was to have a combination of a flag date and what was proposed in BIP 9: Signaling still exists, with some tweaks, but there's also a built-in option for having a flag date.
 
 With this option, a flag date is a one-way mechanism. In other words, you could propose a new soft fork and not set a flag date, and then later on set a flag date. But you can't propose a flag date and then unset it.
 
@@ -121,7 +121,7 @@ In other words, if you remove any ability to object, then why even bother with t
 
 Yet another idea is that of Luke Dashjr, which supports BIP 8 with forced signaling toward the end, but he prefers it to be deployed in forks for clients and not in Bitcoin core. In other words, he thinks soft fork activation should happen through different clients. That sort of takes away this pressure on Bitcoin core developers.
 
-The problem with this is, as mentioned before, if you have multiple dates, you're going to get the cowboy bias. Because whoever picks the most aggressive date is the party you kind of have to listen to. But that might be a recklessly early date.
+The problem with this is, as mentioned before, if you have multiple dates, whoever picks the most aggressive date is the party you kind of have to listen to. But that might be a recklessly early date.
 
 So here's a bad scenario. Let's say we ship the completely ready Taproot code ready for main net in two months. And say the code has this one-year miner signaling stipulation and then it expires. And now the most aggressive group comes out and says, "No, no, no, we're going to activate this like one month later." That's going to be the consensus of the loudest people.
 
@@ -129,7 +129,7 @@ So then, two weeks into that scheme, the miners actually start reviewing it, bec
 
 But at the same time, you have this super loud group that's already canceled everybody who doesn't agree with them to activate this thing. So that's why there should be at least some decent amount of time and some community agreement on, "When are we going to flag date this thing?" And it shouldn't be within a few months. You should give people a decent amount of time.
 
-This was a very extreme example. A less extreme example would be that miners should have some time to review this code after it's shipped. But some people might say, "No, they should have reviewed it earlier, because we don't want to set the incentive."
+This was a very extreme example. A less extreme example would be that miners should have some time to review this code after it's shipped. But some people might say, "No, they should have reviewed it earlier, because we don't want to set a precedent."
 
 Moving on, yet another idea is that of BIP 8 plus BIP 91. This deploys BIP 9, with a long signaling period. After that amount of time, the activation is triggered. However, in the meantime. you're going to see what happens. So, for example, if after a year, it's still not activated, then developers can sort of try to find out why it hasn't activated again, sort of similar to Matt's idea. Developers take their time. They figure out, "OK, there's actually no good reason that it's not being X failed." At that point, they can deploy a new client that has sort of BIP 91 in it, which forces miners to signal support for it before the specified time period is over — in other words, the update is shipped with a lower threshold, which in turn triggers the higher threshold.
 
@@ -848,13 +848,7 @@ SP: We’ll have the same arguments all over again because we’ve learnt absolu
 
 -->
 
-### Speedy Trial
-
-<!--
-This ended up getting deployed.
-Some of this chapter covers the LOT=true client, which belongs above.
--->
-
+### The Speedy Trial Proposal
 
 ---
 comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-03-12-taproot-activation-speedy-trial/
@@ -862,108 +856,57 @@ comment: transcript https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-03-
 
 ![Ep. 31 {l0pt}](qr/ep/31.png)
 
-discuss Speedy Trial, the proposed Taproot activation mechanism that has been gaining traction in recent weeks.
-
-Aaron and Sjors explain that Speedy Trial would give miners three months to signal support for the Taproot upgrade with their hash power. If a supermajority of miners signal support for the upgrade within these thee months, Taproot will activate a couple of months later: six months since the release of the software client that includes the activation logic. If miners don’t signal support within three months, the upgrade will expire, and a new upgrade path can be considered. (It is as of yet not defined what the potential alternative upgrade path would look like.)
-
-Aaron explains that Speedy Trial was born out of a compromise between developers and users who preferred different upgrade mechanisms for the Taproot soft fork, while Sjors details what some of the more technical implementation considerations of Speedy Trial are, like the benefits of using block heights instead of time stamps, and the extended delay between signaling and enforcement. Finally, Aaron and Sjors discuss some of the downsides and risks of Speedy Trial.
-
-00:00 - 4:20 Intro and brief explanation of taproot activation
-4:20 - 10:02 How Bitcoin core is going to upgrade to taproot/speedy trial
-10:02 - 12:58 LOT=True Client
-12:59 - 15:10 Differences between speedy trial and LOT=True
-15:10 - 16:20 The naming of the clients
-16:20 - 17:44 Potential incompatability with the two clients
-17:44 - 23:01 If miners signal readiness after the speedy trial fails
-23:01 - 25:06 More potential risks with a soft fork
-25:13 - 27:03 Recap of the clients and previous topics
-27:03 - 32:02 Potential incompatability (cont.)
-32:05 - 34:35 If the majority of miners don't signal when the 18 months are up for LOT=True and the collective wisdom of the market
-34:36 - 38:44 Concerns about development process of LOT=True client
-38:48 - 43:23 Different activation methods
-43:25 - 47:28 Block height vs. block time
-42:28 - 51:03 The time warp attack/consensus amongst developers
-51:03 - 51:53 Wrapping up
-
-TODO: refer to figure in text
+Speedy Trial was born out of a compromise between developers and users who preferred different upgrade mechanisms for the Taproot soft fork. What Speedy Trial proposed^[<https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018583.html>] was to say “Rather than discussing whether or not there's going to be signaling and having lots of arguments about it, let’s just try it quickly.” The proposed timeline^[<https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018594.html>] suggesting the signaling would start in early May, last three months (until August) and then be activated three months later, in November.
 
 ![speedy trial flow](taproot/speedy_trial.svg)
 
 <!--
 
-### Intro
-
-Aaron van Wirdum (AvW): Live from Utrecht this is the van Wirdum Sjorsnado. Sjors, what is your pun of the week?
-
-Sjors Provoost (SP): I actually asked you for a pun and then you said “Cut, re-edit. We are going to do it again.” I don’t have a pun this week.
-
-AvW: Puns are your thing.
-
-SP: We tried this LOT thing last time.
-
-AvW: Sjors, we are going to talk a lot this week.
-
-SP: We are going to get blocked for this.
-
 AvW: We talked a lot two weeks ago. LOT was the parameter we discussed two weeks ago, LOT=true, LOT=false, about Taproot activation. We are two weeks further in and now it seems like the community is somewhat reaching consensus on an activation solution called “Speedy Trial”. That is what we are going to discuss today.
+-->
 
-SP: That’s right.
-
-### Speedy Trial proposal
-
-Speedy Trial proposal: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018583.html
-
-Proposed timeline: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018594.html
-
-AvW: Should we begin with Speedy Trial, what is Speedy Trial Sjors?
-
-SP: I think that is a good idea to do. With the proposals that we talked about last time for activating Taproot, basically Bitcoin Core would release some software, maybe in April of something, and then the miners will start signaling using that software in I think, August or something. Then they can signal for a year and at the end of the year the whole thing ends.
-
+<!--
 AvW: That was LOT=true or LOT=false. The debate was on whether or not it should end with forced signaling or not. That’s the LOT=true, LOT=false thing.
+-->
 
-SP: The thing to keep in mind is that the first signaling, it would be a while before that starts happening. Until that time we really don’t know essentially. What Speedy Trial proposes is to say “Rather than discussing whether or not there is going to be signaling and having lots of arguments about it, let’s just try that really quickly.” Instead there would be a release maybe around April, of course there’s nobody in charge of actual timelines. In that case the signaling would start much earlier, I’m not entirely sure when, maybe in May or pretty early. The signaling would only be for 3 months. At the end of 3 months it would give up.
-
+<!--
 AvW: It would end on LOT=false basically.
 
 SP: Yes. It is the equivalent of LOT=false or just how it used to be with soft forks. It signals but only for a couple of months.
+-->
 
-AvW: If it isn’t activated within these months by hash power which is probably going to be 90 percent hash power? It is going to require 90 percent hash power to activate Taproot. If it doesn’t happen then the proposal expires and when it expires we can continue our discussion on how to activate Taproot. Or if it activates then what happens?
+You want to give everybody plenty of time to upgrade, so the idea is to start the signaling quickly — and note that miners can signal without installing the software. Once the signal threshold has been reached, the soft fork is set in stone, meaning it's going to happen, at least if people run the full nodes.
 
-SP: The thing is because you still want to give miners enough time to really upgrade their software the actual Taproot rules won’t take effect until September or August.
+Then, there's still some time for people to upgrade and for miners to really upgrade and run that new software rather than just signal for it. They could run that software but they might not. That is why it's sort of OK to release a bit early.
 
-AvW: Miners and actual Bitcoin users.
+This process made it so Taproot would activate six months after the initial release of the software, assuming 90 percent of miners were signaling. If that threshold wasn't met, the proposal would have expired, and activation options would have been discussed more, albiet with more data to back up decision making.
 
-SP: Yes. You want to give everybody plenty of time to upgrade. The idea is we would start the signaling very quickly. Also miners can signal without installing the software. Once the signal threshold has been reached then the soft fork is set in stone. It is going to happen, at least if people run the full nodes. Then there is still some time for people to upgrade and for miners to really upgrade and run that new software rather than just signal for it. They could run that software but they might not. That is why is sort of ok to release a bit early.
+### The Evolution of the Speedy Trial Proposal
 
-AvW: They should really be running the software if they are signaling?
+As mentioned above, there wasn't a consensus for how to activate the proposal One reason it came to this gridlock situation where people feel very strongly about different ideas has a lot to do what happened during the SegWit upgrade.
 
-SP: No. We can get into that later.
+Some people feel very strongly that users showed their muscles. Users claimed their sovereignty, users claimed back the protocol, and they basically forced miners to activate the SegWit upgrade. It was a huge victory for Bitcoin users. 
 
-AvW: For now, to recap really briefly, Speedy Trial means release the software fairly fast and quickly after it is released start the signaling period for 3 months, which is relatively short for a signaling period. See if 90 percent of miners agree, if they do Taproot activates 6 months after the initial release of the software. If 90 percent of miners don’t activate within 3 months the proposal expires and we can continue the discussion on how to activate Taproot.
+But then other people feel very strongly that Bitcoin came near to a complete disaster with a fractured network and people losing money.
 
-SP: We are then back to where we were a few weeks ago but with more data.
+<!--
 
-### The evolution of the Speedy Trial proposal
+ The first group of people really likes doing a UASF again or starting with LOT=false and switching to LOT=true or maybe just starting with LOT=true. The people who think it was a big mess, they prefer to use a flag day this time. Nice and safe in a way, use a flag day, none of this miner signaling, miners can’t be forced to signal and all of that.
 
-AvW: Exactly. I want to briefly touch on how we got here. We discussed the whole LOT=true and LOT=false thing and there appeared to be a gridlock. Some people definitely didn’t want LOT=true, some people definitely didn’t want LOT=false and then a third proposal entered the mix. It wasn’t brand new but it wasn’t a major part of the discussion, a simple flag day. A simple flag day would have meant that the Bitcoin Core code would have included a date in the future or a block height in the future, at which point the Taproot upgrade would activate regardless of hash power up until that point.
+--> 
 
-SP: I find this an even worse idea. When there is a lot of debate people start proposing stuff.
+These different views on what actually happened a couple of years ago now means people can’t really agree on a new activation proposal. After a lot of discussion, all factions were sort of willing to settle on Speedy Trial, even though no one really liked it. The first group, the UASF people, were OK with Speedy Trial because it didn’t get in the way of the UASF, and if it failed, they'd still do the UASF the following year. Meanwhile, the flag day people were OK with it because the three months likely wouldn't have allowed for a big enough window to do the UASF.
 
-AvW: I think the reason that we reached this gridlock situation where people feel very strongly about different ideas has a lot to do what happened during the SegWit upgrade. We discussed this before but people have very different ideas of what actually happened. Some people feel very strongly that users showed their muscles. Users claimed their sovereignty, users claimed back the protocol and they basically forced miners to activate the SegWit upgrade. It was a huge victory for Bitcoin users. Then other people feel very strongly that Bitcoin came near to a complete disaster with a fractured network and people losing money, a big mess. The first group of people really likes doing a UASF again or starting with LOT=false and switching to LOT=true or maybe just starting with LOT=true. The people who think it was a big mess, they prefer to use a flag day this time. Nice and safe in a way, use a flag day, none of this miner signaling, miners can’t be forced to signal and all of that. These different views on what actually happened a couple of years ago now means people can’t really agree on a new activation proposal. After a lot of discussion all factions were sort of willing to settle on Speedy Trial even though no one really likes it for a couple of reasons which we will get into. The UASF people, they are ok with Speedy Trial because it doesn’t get in the way of the UASF. If the Speedy Trial fails they will still do the UASF next year. The flag day people are sort of ok because the 3 months doesn’t allow for a big enough window to do the UASF probably. The UASF people have said that that is too fast and let’s do this Speedy Trial.
-
+<!--
 SP: There is also still the LOT=false, let’s just do soft forks the way we’ve done them before where they might just expire. A group of people that were quietly continuing to work on the actual code that could do that. Just from mailing lists and Twitter it is hard to gauge what is really going on. This is a very short timescale.
 
 AvW: The LOT=false people, this is basically LOT=false just on a shorter timescale. Everyone is sort of willing to settle on this even though no one really likes it.
 
-SP: From the point of view that I’m seeing, I’m actually looking at the code that is being written, what I have noticed is that once the Speedy Trial came out more people came out of the woodwork and started writing code that could actually get this done. Whereas before it was mostly Luke I think writing that one pull request.
+-->
 
-AvW: BIP 8?
+Once this was decided on, what became apparenty is more people came out of the woodwork and started writing code that could actually get Speedy Trial done. In turn, because there were more developers from different angles cooperating on it and getting things done a little bit more quickly, it demonstrated that Speedy Trial was a good idea. When you have some disagreement, then people start procrastinating, not reviewing things, or not writing things. But if people begin working on something quickly and it's making progress, that’s a vague indicator that it's a good choice.
 
-SP: Yeah BIP 8. I guess we can get into the technical details, what I am trying to say is one thing that shows that Speedy Trial seems like a good idea is that there are more developers from different angles cooperating on it and getting things done a little bit more quickly. When you have some disagreement then people start procrastinating, not reviewing things or not writing things. That’s a vague indicator that this seems to be ok. People are working on it quickly and it is making progress so that is good.
-
-AvW: Some technical details you want to get into?
-
-### Different approaches of implementing Speedy Trial
+### Different Approaches of Implementing Speedy Trial
 
 Stack Exchange on block height versus mix of block height and MTP: https://bitcoin.stackexchange.com/questions/103854/should-block-height-or-mtp-or-a-mixture-of-both-be-used-in-a-soft-fork-activatio/
 
@@ -971,7 +914,7 @@ PR 21377 implementing mix of block height and MTP: https://github.com/bitcoin/bi
 
 PR 21392 implementing block height: https://github.com/bitcoin/bitcoin/pull/21392
 
-SP: The idea of Speedy Trial can be implemented in two different ways. You can use the existing BIP 9 system that we already have. The argument for that would be that’s far less code because it already works. It is just for 3 months so why not just use the old BIP 9 code?
+Deciding on Speedy Trial was just one part of the equation. The next was determinig how to implement it, and for that, there were two different ways. The first was using the existing BIP 9 system. The argument for that would be that it’s far less code because it already works. It's just for 3 months so why not just use the old BIP 9 code?
 
 AvW: BIP 9 used dates in the future?
 
