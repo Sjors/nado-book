@@ -874,6 +874,8 @@ SP: We’ll have the same arguments all over again because we’ve learnt absolu
 
 Speedy Trial was born out of a compromise between developers and users who preferred different upgrade mechanisms for the Taproot soft fork. What Speedy Trial proposed^[<https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018583.html>] was to say “Rather than discussing whether or not there's going to be signaling and having lots of arguments about it, let’s just try it quickly.” The proposed timeline^[<https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018594.html>] suggested the signaling would start in early May, last three months (until August) and then be activated three months later, in November.
 
+Spoiler: as we mentioned at the top of the chapter, Taproot indeed activated on November 13, 2021.
+
 ![Speedy trial flow. Same as BIP 9, except for a delay in the transition from `LOCKED_IN` to `ACTIVE`.](taproot/speedy_trial.svg)
 
 <!--
