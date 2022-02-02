@@ -22,7 +22,7 @@ popd
 
 # Process footnote QR codes:
 # Collect URL's:
-find intro.md **/*.md -print0 | xargs -0 perl -ne 'print "$1\n" if /<(http.*?)>/' | sort | uniq > qr/note/urls.txt
+find intro.md **/*.md -print0 | xargs -0 perl -ne 'print "$1\n" while /<(http.*?)>/g' | sort | uniq > qr/note/urls.txt
 if ! git diff --quiet qr/note/urls.txt; then
     echo "Please update bit.ly links for URLs:"
     git diff qr/note/urls.txt
