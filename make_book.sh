@@ -10,6 +10,7 @@ while [[ "$#" -gt 0 ]]; do
 done
 
 # Generate .processed.md files:
+find **/*processed* -exec rm -rf {} \;
 find intro.md **/*.md -exec cp {} {}.processed \;
 find . -name "*.md.processed" -exec sh -c 'mv "$1" "${1%.md.processed}.processed.md"' _ {} \;
 
