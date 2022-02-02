@@ -432,6 +432,22 @@ SP: Yeah we’ll see. This might be the dumbest thing I’ve ever said.
 
 ![Ep. 36 {l0pt}](qr/ep/36.png)
 
+<!-- whitespace so the QR code fits; can be removed once this section has text -->
+
+Lorum
+
+\
+
+\
+
+\
+
+\
+
+\
+
+ipsum
+
 <!-- Dramatically shorten, maybe even just stick to episode summary. What is important here
 is this alternative client was released, similar to UASF. But we've mostly covered the pros and cons of that above in the LOT section.
 
