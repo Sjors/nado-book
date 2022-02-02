@@ -21,6 +21,8 @@ But what perhaps matters more than the mechanics of activation, is how a decisio
 
 ### The earliest soft forks
 
+![Informal diagram of a flag height activated soft fork](taproot/flag.svg){ width=60% }
+
 Probably the most infamous soft fork of all times is the one-megabyte block size limit introduced by Satoshi in 2010.^[<https://en.bitcoin.it/wiki/Block_size_limit_controversy>] It was deployed unilaterally and nobody paid much attention to it until many years later, when this limit became a practical issue in the form of increasing fees for scarce block space.
 
 Not only was it a unilateral decision by Satoshi to impose this limit, he initially did it secretly. He probably found it safer to keep this change under wraps, because he did not want to alert potential attackers to the gaping security hole, where massive blocks could have ground the network to a halt.
@@ -51,6 +53,8 @@ But if all this goes well, and the code ends up merged into the Bitcoin Core sof
 
 ### Signalling (BIP 9)
 
+![BIP 9 flow](taproot/bip9.svg){ width=75% }
+
 There's a risk for miners: If a majority of miners enforces the new rules, but a minority doesn't, the minority could accidentally mine an invalid block and then have their block orphaned. And they might not even know why this happens if they haven't upgraded.
 
 This is where miner signaling comes in. Signaling works as a coordination mechanism for the network to figure out that enough miners have upgraded. This signals to everyone the network is ready. And through this signaling mechanism, which is embedded in the code, a date or a time or a block height is communicated. And if enough signals are included in the blockchain, then we all know at block height X, the new rules will go into effect.
@@ -79,7 +83,7 @@ In the end, you can't really tell what happened. It didn't go wrong, and nobody 
 
 ### Rethinking Activation, BIP 8
 
-![BIP 8 flow, from the BIP.](taproot/bip8.svg)
+![BIP 8 flow](taproot/bip8.svg)
 
 In rethinking how activation should work, BIP 8^[<https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki>] proponents came out with a flag date proposal and revamped it. The new idea was to have a combination of a flag date and what was proposed in BIP 9: Signaling still exists, with some tweaks, but there's also a built-in option for having a flag date.
 
@@ -854,7 +858,7 @@ SP: We’ll have the same arguments all over again because we’ve learnt absolu
 
 Speedy Trial was born out of a compromise between developers and users who preferred different upgrade mechanisms for the Taproot soft fork. What Speedy Trial proposed^[<https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018583.html>] was to say “Rather than discussing whether or not there's going to be signaling and having lots of arguments about it, let’s just try it quickly.” The proposed timeline^[<https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018594.html>] suggested the signaling would start in early May, last three months (until August) and then be activated three months later, in November.
 
-![speedy trial flow](taproot/speedy_trial.svg)
+![Speedy trial flow. Same as BIP 9, except for a delay in the transition from `LOCKED_IN` to `ACTIVE`.](taproot/speedy_trial.svg)
 
 <!--
 
