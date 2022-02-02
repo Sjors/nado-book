@@ -79,7 +79,7 @@ In the end, you can't really tell what happened. It didn't go wrong, and nobody 
 
 ### Rethinking Activation, BIP 8
 
-![BIP 8 flow. Full specification and image source: <https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki>](taproot/bip8.svg)
+![BIP 8 flow, from the BIP.](taproot/bip8.svg)
 
 In rethinking how activation should work, BIP 8^[<https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki>] proponents came out with a flag date proposal and revamped it. The new idea was to have a combination of a flag date and what was proposed in BIP 9: Signaling still exists, with some tweaks, but there's also a built-in option for having a flag date.
 
