@@ -1,5 +1,5 @@
 *.epub
 *.pdf
 qr/**/*.png
-*.processed.md
+**.processed.md
 .DS_Store

@@ -24,11 +24,13 @@ bit.ly/3ILNm1r
 bit.ly/3GdZAy2
 bit.ly/3oakVm1
 bit.ly/32E7TWa
-https://bit.ly/3HqYVel
+bit.ly/3HqYVel
+bit.ly/3okYg6C
 https://developer.bitcoin.org/reference/p2p_networking.html#addr
 bit.ly/3rad0XO
 bit.ly/3IIZ10U
-https://bit.ly/35rlKAd
+bit.ly/35rlKAd
+bit.ly/3uiHvg1
 bit.ly/3uam3de
 bit.ly/3rVXFcx
 bit.ly/3u9VmVJ
@@ -64,6 +66,7 @@ bit.ly/3HqV8h7
 bit.ly/3KSwc43
 https://github.com/bitcoin/bitcoin/pull/1889#issuecomment-9638527
 bit.ly/3AUwIKt
+bit.ly/35Izp6e
 bit.ly/32EOrbR
 bit.ly/3IJNka9
 bit.ly/3HdBp43
@@ -74,6 +77,7 @@ bit.ly/3u7QMaF
 bit.ly/3o4qoLa
 bit.ly/3AGZ0Yr
 bit.ly/3AGe4FL
+bit.ly/3GkSR5B
 bit.ly/3rWKsQx
 bit.ly/3Hdg1w2
 bit.ly/34eyyJF

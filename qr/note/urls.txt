@@ -25,10 +25,12 @@ https://cseweb.ucsd.edu/~smeiklejohn/files/imc13.pdf
 https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31876
 https://datatracker.ietf.org/doc/html/rfc4193
 https://datatracker.ietf.org/doc/html/rfc7282
+https://dcgco.medium.com/bitcoin-scaling-agreement-at-consensus-2017-133521fe9a77
 https://developer.bitcoin.org/reference/p2p_networking.html#addr
 https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-02-26-taproot-activation-lockinontimeout/
 https://dlt-repo.net/storage-vs-memory-vs-stack-in-solidity-ethereum/
 https://en.bitcoin.it/wiki/Block_size_limit_controversy
+https://en.bitcoin.it/wiki/Chain_Reorganization
 https://en.bitcoin.it/wiki/IP_transaction
 https://en.bitcoin.it/wiki/Script
 https://en.wikipedia.org/wiki/%22Hello,_World!%22_program
@@ -64,6 +66,7 @@ https://github.com/bitcoin/bitcoin/issues/15605
 https://github.com/bitcoin/bitcoin/pull/17265
 https://github.com/bitcoin/bitcoin/pull/1889#issuecomment-9638527
 https://github.com/bitcoin/bitcoin/pull/19954
+https://github.com/bitcoin/bitcoin/pull/21392
 https://github.com/bitcoin/bitcoin/pull/22387
 https://github.com/curl/curl
 https://github.com/sipa
@@ -74,6 +77,7 @@ https://gizmodo.com/how-heartbleed-works-the-code-behind-the-internets-se-156134
 https://guix.gnu.org/
 https://guix.gnu.org/en/blog/2020/guix-further-reduces-bootstrap-seed-to-25/
 https://lightning.network/
+https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018583.html
 https://media.ccc.de/v/36c3-10690-open_source_is_insufficient_to_solve_trust_problems_in_hardware
 https://medium.com/@MeshCollider/some-of-the-math-behind-bech32-addresses-cf03c7496285
 https://medium.com/@RubenSomsen/21-million-bitcoins-to-rule-all-sidechains-the-perpetual-one-way-peg-96cb2f8ac302
