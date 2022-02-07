@@ -51,7 +51,7 @@ In addition to not having any unaddressed objections, there's also the need to g
 
 But if all this goes well, and the code ends up merged into the Bitcoin Core software, there's still the matter of what activation procedure to apply. This is subject to the same kind of rough consensus discussion as a proposal itself; peole may love a proposal, but a flag day might cause a problem for them. To avoid proposals from getting stuck in a discussion about their activation, ideally the community agrees on a single activation mechansism that's applied for every softfork. Well, that turns out to be a challenge.
 
-### Signalling (BIP 9)
+### Signaling (BIP 9)
 
 ![BIP 9 flow](taproot/bip9.svg){ width=75% }
 
@@ -59,7 +59,9 @@ There's a risk for miners: If a majority of miners enforces the new rules, but a
 
 This is where miner signaling comes in. Signaling works as a coordination mechanism for the network to figure out that enough miners have upgraded. This signals to everyone the network is ready. And through this signaling mechanism, which is embedded in the code, a date or a time or a block height is communicated. And if enough signals are included in the blockchain, then we all know at block height X, the new rules will go into effect.
 
-Usually it's every two weeks you count the number of blocks that have the signal. And if it's above a certain threshold, for example, 95 percent, then you know that two weeks later the new rule is active.
+Signaling happens in periods of 2,016 blocks. It's not a rolling window, so if in a given period — say every two weeks — 95 percent of blocks contain the signal, then we move to the next phase in the state flow.
+
+TODO NATALYE: Reference this comment when returning to this section https://github.com/Sjors/nado-book/pull/14#discussion_r797462237
 
 In 201X, BIP 9^[<https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki>] arrived on the scene, and it allowed deployment of soft forks in parallel.
 
@@ -944,9 +946,7 @@ With both proposals, you could have the same scenario of exactly one vote at the
 
 ### The Hash Power Threshold
 
-What's being implemented now in Bitcoin Core is the general mechanism, which says that for any soft fork that you call Speedy Trial, you could, for example, use 90 percent. But the code for Taproot in Bitcoin Core just says “It never activates.” That is the way you indicate that this soft fork is in the code but isn't going to happen yet. These numbers are arbitrary. The code will support 70 percent or 95 percent, as long as it is not some imaginary number or more than 100 percent.
-
-In the end, it's always 51 percent effictively, because 51 percent of miners can always decide to orphan non-signaling blocks.
+What's being implemented now in Bitcoin Core is the general mechanism, which says that for any soft fork that you call Speedy Trial, you could, for example, use 90 percent. But the code for Taproot in Bitcoin Core just says “It never activates.” That is the way you indicate that this soft fork is in the code but isn't going to happen yet. These numbers are arbitrary. The code will support anything from 51 percent to 100 percent. Less than this range makes no sense, because 51 percent of miners can always decide to orphan non-signaling blocks, which then increases the percentage.
 
 The benefit of having the higher threshold is a lower risk of orphan blocks after activation.
 
@@ -956,7 +956,7 @@ However, because Taproot called for a delayed activation, there was a long time 
 
 ![Ep. 40 {l0pt}](qr/ep/40.png)
 
-Normally, what happens is you tally the votes in the last difficulty period. If it's more than whatever the threshold is, then the state of the soft fork goes from `STARTED`, as in we know about it and we are counting, to `LOCKED_IN`. The  `LOCKED_IN` state normally lasts for two weeks — or one retargeting period — and then the rules actually take effect.
+Normally, what happens is you tally the votes in the last difficulty period.^[<https://en.bitcoin.it/wiki/Difficulty>] If it's more than whatever the threshold is, then the state of the soft fork goes from `STARTED`, as in we know about it and we are counting, to `LOCKED_IN`. The  `LOCKED_IN` state normally lasts for two weeks — or one retargeting period — and then the rules actually take effect.
 
 What's different with Speedy Trial is that with the delayed activation part, this `LOCKED_IN` state will be much longer. It might go on for months, and then the rules will actually take effect. This change is only two lines of code which is quite nice.
 
@@ -1001,62 +1001,6 @@ SP: To be clear false signaling is not some malicious act, it is just a lazy, co
 AvW: I haven’t upgraded yet but I will upgrade. That’s the risk of false signaling.
 
 SP: It could be deliberate too but that would have to be a pretty large conspiracy.
-
--->
-
-<!--
-
-AvW: One other concern, one risk that has been mentioned is that using LOT=false in general could help users launch a UASF because they could run a UASF client with LOT=true and incentivize miners to signal, like we just mentioned. That would not only mean they would fork off to their own soft fork themselves but basically activate a soft fork for the entire economy. That’s not a problem in itself but some people consider it a problem if users are incentivized to try a UASF. Do you understand that problem?
-
-SP: If we go for this BIP 8 approach, if we switch to using block height rather than timestamps…
-
-AvW: Or flag day.
-
-SP: The Speedy Trial doesn’t use a flag day.
-
-AvW: I know. I am saying that if you do a flag day you cannot do a UASF that triggers something else.
-
-SP: You could maybe, why not?
-
-AvW: What would you trigger?
-
-SP: There is a flag day out there but you deploy software that requires signaling.
-
-AvW: That is what UASF people would be running.
-
-SP: They can run that anyway. Even if there is a flag day they can decide to run software that requires signaling, even though nobody would signal probably. But they could.
-
-AvW: Absolutely but they cannot “co-opt” to call it that LOT=false nodes if there is only a flag day out there.
-
-SP: That’s true. They would require the signaling but the flag day nodes that are out there would be like “I don’t know why you’re not accepting these blocks. There’s no signal, there’s nothing to activate. There is just my flag day and I am going to wait for my flag day.”
-
-AvW: I don’t want to get into the weeds too much but if there are no LOT=false nodes to “co-opt” then miners could just false signal. The UASF nodes are activating Taproot but the rest of the network still hasn’t got Taproot activated. If the UASF nodes ever send coins to a Taproot address they are going to lose their coins at least on the rest of the network.
-
-SP: And they wouldn’t get this re-org advantage that they think they have. This sounds even more complicated than the stuff we talked about 2 weeks ago.
-
-AvW: Yes, that’s why I mentioned I’m getting a little bit into the weeds now. But do you get the problem?
-
-SP: Is this an argument for or against a flag day?
-
-AvW: It depends on your perspective Sjors.
-
-SP: That of somebody who does not want Bitcoin to implode in a huge fire and would like to see Taproot activated.
-
-AvW: If you don’t like UASFs, if you don’t want people to do UASFs then you might also not want LOT=false nodes out there.
-
-SP: Yeah ok, you’re saying “If you really want to not see UASF exist at all.” I’m not terribly worried about these things existing. What I talked about 2 weeks ago, I am not going to contribute to them probably.
-
-AvW: I just wanted to mention that that is one argument against LOT=false that I’ve seen out there. Not an argument I agree with myself either but I have seen the argument.
-
-SP: Accurately what you are saying is it is an argument for not using signaling but using a flag day.
-
-AvW: Yes. Even Speedy Trial uses signaling. While it is shorter, it might still be long enough to throw a UASF against it for example.
-
-SP: And it is compatible with that. Because it uses signaling it is perfectly compatible with somebody deploying a LOT=true system and making a lot of noise about it. But I guess in this case, even the strongest LOT=true proponents, one of them at least, argued that would be completely reckless to do that.
-
-AvW: There are no UASF proponents out there right now who think this is a good idea. As far as I know at least.
-
-SP: So far there are not. But we talked about, in September I think, this cowboy theory. I am sure there is somebody out there that will try a UASF even on the Speedy Trial.
 
 -->
 
