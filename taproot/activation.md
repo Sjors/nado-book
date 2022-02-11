@@ -769,21 +769,6 @@ TODO: NATALYE: Notes from comments, turn this into text: The in the Speedy Trial
 
 But to add a margin of safety, the transition from LOCKED_IN to active was increased from the usual 1 period (2 weeks) to a fixed block height, expected to be reached in November 2021. That was the only code change required (a much smaller change than BIP 8).
 
-<!--
-
-AvW: We talked a lot two weeks ago. LOT was the parameter we discussed two weeks ago, LOT=true, LOT=false, about Taproot activation. We are two weeks further in and now it seems like the community is somewhat reaching consensus on an activation solution called “Speedy Trial”. That is what we are going to discuss today.
--->
-
-<!--
-AvW: That was LOT=true or LOT=false. The debate was on whether or not it should end with forced signaling or not. That’s the LOT=true, LOT=false thing.
--->
-
-<!--
-AvW: It would end on LOT=false basically.
-
-SP: Yes. It is the equivalent of LOT=false or just how it used to be with soft forks. It signals but only for a couple of months.
--->
-
 Even though the name implies it's a fast process, you want to give everybody plenty of time to upgrade, so the idea is to start the signaling quickly — and note that miners can signal without installing the software. Once the signal threshold has been reached, the soft fork is set in stone, meaning it's going to happen, at least if people run the full nodes.
 
 Then, there's still some time for people to upgrade and for miners to really upgrade and run that new software rather than just signal for it. They could run that software but they might not. That is why it's sort of OK to release a bit early.
@@ -805,13 +790,6 @@ But then, other people felt that Bitcoin came near to a complete disaster with a
 -->
 
 These different views on what actually happened a couple of years ago meant people couldn't really agree on a new activation proposal. After a lot of discussion, all factions were sort of willing to settle on Speedy Trial, even though no one really liked it. The first group, the UASF people, were OK with Speedy Trial because it didn’t get in the way of the UASF, and if it failed, they'd still do the UASF the following year. Meanwhile, the flag day people were OK with it because the three months likely wouldn't have allowed for a big enough window to do the UASF.
-
-<!--
-SP: There is also still the LOT=false, let’s just do soft forks the way we’ve done them before where they might just expire. A group of people that were quietly continuing to work on the actual code that could do that. Just from mailing lists and Twitter it is hard to gauge what is really going on. This is a very short timescale.
-
-AvW: The LOT=false people, this is basically LOT=false just on a shorter timescale. Everyone is sort of willing to settle on this even though no one really likes it.
-
--->
 
 Once this was decided on, what became apparent is more people came out of the woodwork and started writing code that could actually get Speedy Trial done. In turn, because there were more developers from different angles cooperating on it and getting things done a little bit more quickly, it demonstrated that Speedy Trial was a good idea. When you have some disagreement, then people start procrastinating, not reviewing things, or not writing things. But if people begin working on something quickly and it's making progress, that’s a vague indicator that it was a good choice.
 
