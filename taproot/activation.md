@@ -7,83 +7,81 @@ The Taproot soft fork was activated on November 13, 2021, approximately one year
 
 ### Soft Forks: A Primer
 
-As Taproot's deployment grew close, the question of how to activate soft forks once again became a topic up for debate in the Bitcoin community.
+As Taproot's deployment grew close, the question of how to activate soft forks once again became a topic of debate in the Bitcoin community.
 
 Soft forks, if you recall, are changes to the protocol that are backward compatible. In other words, anyone who has upgraded will reap the benefits of new changes, but those who don't upgrade will still find their software working.
 
 Additionally, a soft fork gets rid of things that are no longer useful and makes improvements to things that were problematic or vulnerable before. In the context of Bitcoin, it's a nice and elegant way to make the rules stricter without suddenly freezing anybody's coins.
 
-What this means is that people can keep using Bitcoin as they did before; they don't have to upgrade, and they can keep using the old rules if they want to. An exchange can basically ignore SegWit for years and it's perfectly fine, as far as the blockchain is concerned.
+There are a few different ways to introduce a soft fork. You can do it randomly (usually only as the result of an accident), you can announce a date or block height, and you can have miners signal up to a certain threshold.
 
-There are a few different ways to introduce a soft fork. You can do it randomly, usually only as the result of an accident, you can announce a date or block height, and you can have miners signal up to a certain threshold.
+But what perhaps matters more than the mechanics of activation is how a decision is reached to deploy in the soft fork in the first place.
 
-But what perhaps matters more than the mechanics of activation, is how a decision is reached to deploy in the soft fork in the first place.
-
-### The earliest soft forks
+### The Earliest Soft Forks
 
 ![Informal diagram of a flag height activated soft fork](taproot/flag.svg){ width=60% }
 
-Probably the most infamous soft fork of all times is the one-megabyte block size limit introduced by Satoshi in 2010.^[<https://en.bitcoin.it/wiki/Block_size_limit_controversy>] It was deployed unilaterally and nobody paid much attention to it until many years later, when this limit became a practical issue in the form of increasing fees for scarce block space.
+Probably the most infamous soft fork of all time is the one-megabyte block size limit introduced by Satoshi in 2010.^[<https://en.bitcoin.it/wiki/Block_size_limit_controversy>] It was deployed unilaterally and nobody paid much attention to it until many years later, when this limit became a practical issue in the form of increasing fees for scarce block space.
 
-Not only was it a unilateral decision by Satoshi to impose this limit, he initially did it secretly. He probably found it safer to keep this change under wraps, because he did not want to alert potential attackers to the gaping security hole, where massive blocks could have ground the network to a halt.
+Not only was it a unilateral decision by Satoshi to impose this limit, but he initially did it secretly. He probably found it safer to keep this change under wraps because he didn't want to alert potential attackers to the gaping security hole, where massive blocks could have ground the network to a halt.
 
-But outside some existential emergency, there's a general consensus that this isn't an acceptable way of introducing a soft fork now. If there had been a debate on the block size limit back then, perhaps much later drama could have been prevented.
+But outside some existential emergency, there's a general consensus that this isn't an acceptable way of introducing a soft fork now. If there had been a debate on the block size limit back then, perhaps drama that came later could've been prevented.
 
-Although the term did not yet exist, in those early days there were many soft forks, mostly related to closing security holes in the early prototype.^[<https://blog.bitmex.com/bitcoins-consensus-forks/>] In 2013 there was even an accidental soft fork, and in 2015 a near-miss accidental softfork due to OpenSSL changes that we covered in chapter @sec:libsecp.
+Although the term didn't yet exist, in those early days, there were many soft forks, mostly related to closing security holes in the early prototype.^[<https://blog.bitmex.com/bitcoins-consensus-forks/>] In 2013, there was even an accidental soft fork, and in 2015 there was a near-miss accidental soft fork due to OpenSSL changes (which we covered in chapter @sec:libsecp).
 
-Most of the above examples used a flag day or block height as their method of activation. In other words, you'd say, "From this moment forward, this new rule shall apply." And you announce that in advance, giving people plenty of time to upgrade. For a "secret" soft fork you would simply insist that people upgrade, explaining the reason afterwards.
+Most of the above examples used a flag day or block height as their method of activation. In other words, you'd say, "From this moment forward, this new rule shall apply." And you'd announce that in advance, giving people plenty of time to upgrade. For a "secret" soft fork, you'd simply insist that people upgrade, explaining the reason afterward.
 
-### How does a softfork work?
+### How Does a Soft Fork Work?
 
 But there's still a problem there, which is that you want to make sure everybody's actually running the new software — especially miners, because they kind of have to enforce those new rules.
 
 So everyone who's upgraded is enforcing the new rules, but if a majority of hash power does it, that means they always reclaim the launch chain even for the non-upgraded nodes. So then everyone, old and new nodes, will converge on this chain. So that's why it's very nice if a majority hash power enforces the rules as well.
 
-### Who decides?
+### Who Decides?
 
-Nobody. Initially Satoshi would unilaterally decide what to change, though ultimately he could not force anyone to run the new versions he released, so he could not make completely arbitrary controversial changes. Nowadays, without going to deep in the weeds here, the Bitcoin development follows a process of "rough consensus", as described in RFC 7282. ^[<https://datatracker.ietf.org/doc/html/rfc7282>]
+Nobody actually decides what changes. Initially, Satoshi would unilaterally decide what to change, though he ultimately couldn't force anyone to run the new versions he released, so he couldn't make completely arbitrary controversial changes. Nowadays, without going too deep in the weeds, the Bitcoin development follows a process of "rough consensus," as described in RFC 7282. ^[<https://datatracker.ietf.org/doc/html/rfc7282>]
 
-Anyone can propose a change to the rules of Bitcoin. But not only do they need to convince other of the usefulness, they also need to address all technical objections that are raised to it. E.g. if someone complains that a proposal would break their (wallet) software, the proposal author can't simply say "tough". Instead they have to address the issue. Maybe they can propose a simple fix for the wallet in question, or they can modify their own proposal so it doesn't break stuff.
+Anyone can propose a change to the rules of Bitcoin. But not only do they need to convince others of the usefulness, they also need to address all technical objections that are raised to it. For example, if someone complains that a proposal would break their (wallet) software, the proposal author can't simply say "tough luck." Instead, they have to address the issue. Maybe they can propose a simple fix for the wallet in question, or they can modify their own proposal so it doesn't break stuff.
 
-This and a few other requirements usually involve much back and forth on technical mailinglists, and many iterations of improving the proposal. Many proposals don't survive this process at all, because it turns out they cause too many problems. Hard-fork proposals often get rejected based on just the fact that they break existing software, require every participant to upgrade, and to do so at the same time. A soft fork variant of the same proposal addresses all these concerns, so they are generally preferred instead.
+This — along with a few other requirements — usually involves a lot of back and forth on technical mailinglists, as well as many iterations of improving the proposal. Many proposals don't survive this process at all, because it turns out they cause too many problems. Hard fork proposals often get rejected based on just the fact that they break existing software, and they require every participant to upgrade at the same time. A soft fork variant of the same proposal would address all these concerns, so it's generally preferred instead.
 
-In addition to not having any unaddressed objections, there's also the need to get enough experienced developers to review a proposal. Lack of enthusiasm amongst a very small group of such experienced developers can cause a perfectly fine soft fork to never see the light of day. Or, more often, a lack of reviewer enthusiasm combined with difficult to address technical problems keeps a proposal in limbo.
+In addition to not having any unaddressed objections, there's also the need to get enough experienced developers to review a proposal. Lack of enthusiasm among a very small group of such experienced developers can cause a perfectly fine soft fork to never see the light of day. Or, more often, a lack of reviewer enthusiasm combined with difficult-to-address technical problems will keep proposal in limbo.
 
-But if all this goes well, and the code ends up merged into the Bitcoin Core software, there's still the matter of what activation procedure to apply. This is subject to the same kind of rough consensus discussion as a proposal itself; peole may love a proposal, but a flag day might cause a problem for them. To avoid proposals from getting stuck in a discussion about their activation, ideally the community agrees on a single activation mechansism that's applied for every softfork. Well, that turns out to be a challenge.
+But if all goes well and the code ends up merged into the Bitcoin Core software, there's still the matter of what activation procedure to apply. This is subject to the same kind of rough consensus discussion as a proposal itself; people may love a proposal, but a flag day might cause a problem for them. To avoid scenarios where proposals get stuck in a discussion about their activation, ideally the community agrees on a single activation mechanism that's applied for every soft fork. But, well, that turns out to be a challenge.
 
 ### Signaling (BIP 9)
-
-![BIP 9 flow](taproot/bip9.svg){ width=75% }
 
 There's a risk for miners: If a majority of miners enforces the new rules, but a minority doesn't, the minority could accidentally mine an invalid block and then have their block orphaned. And they might not even know why this happens if they haven't upgraded.
 
 This is where miner signaling comes in. Signaling works as a coordination mechanism for the network to figure out that enough miners have upgraded. This signals to everyone the network is ready. And through this signaling mechanism, which is embedded in the code, a date or a time or a block height is communicated. And if enough signals are included in the blockchain, then we all know at block height X, the new rules will go into effect.
 
-Signaling happens in periods of 2,016 blocks. It's not a rolling window, so if in a given period — say every two weeks — 95 percent of blocks contain the signal, then we move to the next phase in the state flow.
+As an example, let’s say the signaling deadline of this soft fork is on September 1 at midnight UTC. A miner mines block number 2,016 or some multiple of 2,016 one second before midnight and signals "yes." Everyone who sees that block says, “OK, we have the required percentage of signaling right before the deadline, so Taproot is active.” They also have this automatic script that says “I am now going to put all my savings in a Taproot address because I want to be in the first block and I am feeling reckless, and I love being reckless.”
 
-TODO NATALYE: Reference this comment when returning to this section https://github.com/Sjors/nado-book/pull/14#discussion_r797462237
+Then, there's another miner who mine two seconds later because they didn’t see that recent block. Their block arrives one second past midnight. It votes positive too, but it's too late, and so the soft fork doesn't activate because the signaling wasn't done before midnight, the deadline.^ [When two blocks build on top of the same block, both are equally valid. As miners continue to generate more blocks, they'll pick one of those blocks to build on top of (usually whichever they saw first). Eventually the tie is broken and one chain becomes longer. The block that is now no longer part of the longest chain is called stale. The website <https://forkmonitor.info/> keeps track of these events and shows an alert if one happened recently.] That's the subtlety you get with BIP 9, and with shorter signaling periods, because with a longer signaling period, it's less likely the signal arrives at the edge of a cutoff point. Usually it isn't a problem, but it's difficult to explain these edge cases to people.
 
-In 201X, BIP 9^[<https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki>] arrived on the scene, and it allowed deployment of soft forks in parallel.
+![BIP 9 flow](taproot/bip9.svg){ width=75% }
 
-It was used succesfully to deploy the CSV and SegWit soft fork. It could have been used for Taproot as well. The first deployment went smoothly, but the second one involved much drama and took much longer than many people considered necessary. This led to worries that perhaps BIP 9 is not a future-proof deployment mechanism. So several other  mechanisms were proposed, as well as variations on those mechanisms.
+The significance of 2,016 is that signaling happens in periods of 2,016 blocks, which is the number of blocks in a single difficulty adjustment period, or retarget period.^[<https://en.bitcoin.it/wiki/Difficulty>] In the diagram above, each arrow represents one signaling period. The looping arrows indicate when the state stays the same — for example, when a soft fork is `DEFINED` (meaning the node knows about it, but there's no signaling yet), it'll stay that way if the MTP^ [MTP stands for Median Time Past, and it refers to the middle block of the last 11 blocks. This is a mechanism used to discourage miners from gaming the timestamp in each block.] is still below starttime. When it's at or after starttime, the state jumps to `STARTED`. It stays there pending signaling. For each period — say every two weeks — we check if enough blocks are signaling. If so, we move to the next phase, which is `LOCKED_IN`. If not, and if timeout is reached, we move to `FAILED`. `LOCKED_IN` is a grace period where the new rules don't yet apply, but after two weeks, the soft fork is `ACTIVE` and the rules do apply.
 
-### The first drama, and BIP 148/91
+This decision to have a standard soft fork activation process is the result of BIP 9,^[<https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki>] which also allows the deployment of soft forks in parallel. It hands control of upgrade activation to miners, and it requires a support threshold of 95 percent for a soft fork activation to succeed.
 
-<!-- in the title above, I mean to say that the drama was there _before_ BIP148. But then things got worse. -->
+BIP 9 was used succesfully to deploy the CSV and SegWit soft forks, and it could've been used for Taproot as well. The first deployment went smoothly, but the second one involved a lot drama and took much longer than many people considered necessary. This led to worries that perhaps BIP 9 isn't a future-proof deployment mechanism. As a result, several other mechanisms were proposed, along with variations on those mechanisms.
 
-but when it was time to deploy SegWit, it took a long time. The code was ready, but it didn't activate, because fewer than 95 percent of miners were signaling for it.^[With BIP 9, many miners were blocking the upgrade, either because they wanted political leverage, or because they were secretly benefiting from something that the upgrade would've fixed without telling anyone that that was the case — or both. In short, there were bad reasons for the miners to block this upgrade, and this made Bitcoin core developers and others realize that depending on them gave the miners leverage, which they shouldn't have at all. They were treating it like a vote — when it's just meant to be a coordination mechanism — and abusing their vote in ways that were bad.]
+### The First Drama, and BIP 148/91
+
+However, when it was time to deploy SegWit, it took a long time. The code was ready, but it didn't activate, because fewer than 95 percent of miners were signaling for it.^[With BIP 9, many miners were blocking the upgrade, either because they wanted political leverage, or because they were secretly benefiting from something that the upgrade would've fixed without telling anyone that that was the case — or both. In short, there were bad reasons for the miners to block this upgrade, and this made Bitcoin core developers and others realize that depending on them gave the miners leverage, which they shouldn't have at all. They were treating it like a vote — when it's just meant to be a coordination mechanism — and abusing their vote in ways that were bad.]
 
 At this point, a number of different things happened outside the blockchain. There was basically a group of people that said, "Hey, you know what? Instead of the signaling, we're just going to go back to the old flag day approach." And that was called BIP 148.^[<https://github.com/bitcoin/bips/blob/master/bip-0148.mediawiki>] They picked August 1, 2017 as a date and said that on that day, their nodes would enforce the rules.
 
 So essentially what happened was a bit of a standoff between the two groups. And no one knows quite how it resolved, because if you just look at the blockchain, what you'd see is that, all of a sudden, 95 percent started signaling and it was activated.
 
-Now it's of course very remarkable that this activated exactly before August 1 and not some random other date that it could have happened. But there were no blocks rejected that we could still point at saying, "Hey look, there was actually a fight between miners and et cetera." At the same time, there was an initiative from the New York Agreement Group.^[<https://dcgco.medium.com/bitcoin-scaling-agreement-at-consensus-2017-133521fe9a77>] And they had a whole bunch of things that they were planning to do. But one thing they were doing is called BIP 91, which was aimed at lowering the threshold. So they said, "Instead of having 95 percent, we're just going to accept 75 percent."
+Now it's of course very remarkable that this activated exactly before August 1 and not some random other date that it could have happened. But there were no blocks rejected that we could still point at saying, "Hey look, there was actually a fight between miners and et cetera." At the same time, there was an initiative from the New York Agreement Group,^[<https://dcgco.medium.com/bitcoin-scaling-agreement-at-consensus-2017-133521fe9a77>] and they had a whole bunch of things they were planning to do. One example is BIP 91, which was aimed at lowering the threshold. So they said, "Instead of having 95 percent, we're just going to accept 75 percent."
 
 What they did in the end was use 75 percent forced signaling. So it was like BIP 148, but it was like a soft fork to activate a soft fork — basically, you had to signal that you were going to activate the soft fork. And then because there was more signaling, it would activate. But you couldn't chain, because immediately people started signaling at 95 percent.
 
 In the end, you can't really tell what happened. It didn't go wrong, and nobody called each other's bluff. But what did come out of it is that everyone realized it was important to rethink how to actually activate soft forks. Because if you have chain splits — and especially if you have multiple chain splits with people having different opinions about what the blockchain should be — it defeats the purpose of a well-functioning blockchain.
 
-### Rethinking Activation, BIP 8
+### Rethinking Activation, and the Introduction of BIP 8
 
 ![BIP 8 flow](taproot/bip8.svg)
 
@@ -97,55 +95,53 @@ In other words, if you have two groups of BIP 8 nodes, one of them has the force
 
 ### Playing with Parameters
 
-<!-- much of the text below goes very deep into the weeds of trade-offs between proposals. Maybe that should get its own section, so we can first list the different options. On the other hand, the options make more sense in the context of explaining the trade-offs.  -->
+There are multiple ways of enforcing activation, but you can also tweak the parameters. For example, with a flag day, you can play with how long or how far into the future it should be. You can also play with a parameter of what the hash power should be. It could be 95 percent, but you could potentially lower this:  You could say 75 percent is enough^[As was the case with BIP 91], 50 percent is enough, or even 1 percent is enough.
 
-So there are multiple ways of enforcing activation, but you can also tweak the parameters. For example, with a flag day, you can play with how long or how far into the future it should be. You can also play with a parameter of what the hash power should be. It could be 95 percent, but you could potentially lower this:  You could say 75 percent is enough. 50 percent is enough. Even 1 percent is enough.
+Doing so is ultimately useless, but the point is you can play around with these permutations in all sorts of ways. With Taproot, there were many pieces of the puzzle, and people could begin thinking of ways to put these pieces together to come up with a concrete activation strategy.^[You can also imagine that there would've been a lot of permutations, resulting in a byte shedding nightmare.]
 
-However, doing so is ultimately useless, but the point is you can play around with these permutations in all sorts of ways. So now you have pieces of the puzzle, and you can begin thinking of ways to put these pieces together to come up with a concrete activation strategy that will be used for Taproot.^[You can also imagine that there's going to be a lot of permutations, so this could also be a byte shedding nightmare.]
+One idea was that of modern soft fork activation. This proposed using BIP 8 without forced signaling on the end, or without forced activation on the end for a year. This is more along the lines of BIP 9.
 
-One idea, which was proposed by Matt Corallo, a well-known core contributor, is what he calls modern soft fork activation. He proposes using BIP 8 without forced signaling on the end, or without forced activation on the end for a year. This is more along the lines of BIP 9, which is what used to be done.
+In this scenario, you'd see if miners activated a soft fork at the requirement of a 95 percent hash power. If so, great, the soft fork has been activated. If not, then phase two of this proposal comes into play, which is six months of developer reconsideration.
 
-In this scenario, you'd see if miners activate a soft fork at the requirement of a 95 percent hash power. If they do it, great, and the soft fork has been activated. If they don't, then phase two of this proposal comes into play, which is six months of developer reconsideration.
+At this point, the developers see if there was a good reason for miners to block the soft fork. For example, maybe there was a problem with the proposal they hadn't considered before.
 
-At this point, the developers see if there was a good reason for miners to block the soft fork. For example, maybe there was a problem with the proposal — in this case, Taproot — that they hadn't considered before.
+If, after six months, they haven't found anything wrong with the proposal and they conclude that it was actually just miner apathy or there was no good reason, they'll deploy it again, either with forced signaling or a flag day.
 
-If after six months they haven't found anything wrong with the proposal and they conclude that it was actually just miner apathy or there was no good reason, they'll deploy it again, either with forced signaling or a flag day.
+On the flag day, either the soft fork is enforced or the signaling is forced, the latter of which triggers the soft fork.
 
-On the flag day, what you do is either enforce the soft fork, or else force the signaling, which then triggers the soft fork.
+The benefit of this proposed approach was not rushing things, but instead reconsidering if there was maybe something wrong with a proposal — and if there was something wrong with the proposal, people didn't have to actually need to upgrade their soft fork; they could just keep running whatever they were running.
 
-The benefit of this proposed approach is not rushing things but instead reconsidering if there's maybe something wrong with a proposal — and if there is something wrong with the proposal, people don't have to actually need to upgrade their soft fork; they can just keep running whatever they were running.
-
-The downside is that if miners don't cooperate, it'll take a long time before the soft fork is actually live on the network, which means everyone is stuck waiting for essentially no good reason.
+The downside is that if miners didn't cooperate, it'd take a long time before the soft fork is actually live on the network, which means everyone would be stuck waiting for essentially no good reason.
 
 Overall, it's nice if you can have improvements ship quickly. That said, if developers decide on a soft fork and activate it quickly, it could result in putting too much power in the hands of the developers. It's a difficult tradeoff, because on the time scale of 200 years, it really doesn't matter if the soft fork takes three years longer. But we have no idea what the right time is.
 
-Another idea for activation is having a deadline of a year, at which point, forced signaling happens. This ultimately sounds easy enough, but the problem with a forced signal is, if you ship something and say, "OK, miners can signal for it, but if they don't, it's going to activate," you kind of lock yourself into that outcome.
+Another idea for activation was having a deadline of a year, at which point, forced signaling happens. This ultimately sounds easy enough, but the problem with a forced signal is, if you ship something and say, "OK, miners can signal for it, but if they don't, it's going to activate," you kind of lock yourself into that outcome.
 
-And in that scenario, there's no real way to object anymore. Because even if miners come up and say, "Hey, wait a minute, there's a problem," you can't cancel it anymore, because people have this new soft fork and they have the forced signaling in. So lots of people would see their nodes just stop. And so you're essentially ending up with a hard fork if you decide to not do it.
+And in that scenario, there's no real way to object, because even if miners come up and say, "Hey, wait a minute, there's a problem," you can't cancel it, because people have this new soft fork and they have the forced signaling in. So lots of people would see their nodes just stop, and you'd essentially end up with a hard fork if you decided to not do it.
 
 In other words, if you remove any ability to object, then why even bother with the miner signaling? Because once you put a flag date in the code and you ship that code, that's it. It's just going to activate.
 
-Yet another idea is that of Luke Dashjr, which supports BIP 8 with forced signaling toward the end, but he prefers it to be deployed in forks for clients and not in Bitcoin core. In other words, he thinks soft fork activation should happen through different clients. That sort of takes away this pressure on Bitcoin core developers.
+Yet another idea is one that supported BIP 8 with forced signaling toward the end, but deployed in forks for clients and not in Bitcoin core. The thinking is it sort of takes away this pressure on Bitcoin core developers.
 
 The problem with this is, as mentioned before, if you have multiple dates, whoever picks the most aggressive date is the party you kind of have to listen to. But that might be a recklessly early date.
 
-So here's a bad scenario. Let's say we ship the completely ready Taproot code ready for main net in two months. And say the code has this one-year miner signaling stipulation and then it expires. And now the most aggressive group comes out and says, "No, no, no, we're going to activate this like one month later." That's going to be the consensus of the loudest people.
+So here's a bad scenario. Let's say we shipped the completely ready Taproot code ready for main net in two months. And say the code had a one-year miner signaling stipulation and then it expired. And then the most aggressive group came out and says, "No, no, no, we're going to activate this one month later." That would be the consensus of the loudest people.
 
-So then, two weeks into that scheme, the miners actually start reviewing it, because people might only review code when it's ready. Now they find a critical bug. And most of the core developers would agree, "OK, this is actually a bug. We should abort. Soft fork miners, please don't signal for it."
+So then, two weeks into that scheme, say the miners actually started reviewing it — because people might only review code when it's ready — and they found a critical bug. And most of the core developers agreed, "OK, this is actually a bug. We should abort. Soft fork miners, please don't signal for it."
 
-But at the same time, you have this super loud group that's already canceled everybody who doesn't agree with them to activate this thing. So that's why there should be at least some decent amount of time and some community agreement on, "When are we going to flag date this thing?" And it shouldn't be within a few months. You should give people a decent amount of time.
+But at the same time, there was this super loud group that already canceled everybody who didn't agree with them. So that's why there should be at least some decent amount of time and some community agreement on, "When are we going to flag date this thing?" And it shouldn't be within a few months. You should give people a decent amount of time.
 
 This was a very extreme example. A less extreme example would be that miners should have some time to review this code after it's shipped. But some people might say, "No, they should have reviewed it earlier, because we don't want to set a precedent."
 
-Moving on, yet another idea is that of BIP 8 plus BIP 91. This deploys BIP 9, with a long signaling period. After that amount of time, the activation is triggered. However, in the meantime. you're going to see what happens. So, for example, if after a year, it's still not activated, then developers can sort of try to find out why it hasn't activated again, sort of similar to Matt's idea. Developers take their time. They figure out, "OK, there's actually no good reason that it's not being X failed." At that point, they can deploy a new client that has sort of BIP 91 in it, which forces miners to signal support for it before the specified time period is over — in other words, the update is shipped with a lower threshold, which in turn triggers the higher threshold.
+Moving on, yet another idea is that of BIP 8 plus BIP 91. This deploys BIP 9, with a long signaling period. After that amount of time, the activation is triggered. However, in the meantime, you'd see what happens. So, for example, if after a year, it's still not activated, then developers can sort of try to find out why it hasn't activated again. Developers take their time and they figure out there wasn't any good reason it failed. At that point, they can deploy a new client that sort of has BIP 91 in it, which forces miners to signal support for it before the specified time period is over — in other words, the update is shipped with a lower threshold, which in turn triggers the higher threshold.
 
-The reason you might want mandatory signaling here, is to avoid a problem for people who are running the first version. Those nodes are just waiting for the 95 percent, and they will assume the soft fork failed to activate. If those users decide to upgrade later on, there's also the complication that the new node has to reprocess a potentially large chunk of blockchain, first to see if the softfork was activated under its (looser) rules, and then to retroactively enforce the new rules. This makes the software more complicated and it's a bad user experience.
+The reason you might want mandatory signaling here is to avoid a problem for people who are running the first version. Those nodes are just waiting for the 95 percent, and they will assume the soft fork failed to activate. If those users decide to upgrade later on, there's also the complication that the new node has to reprocess a potentially large chunk of blockchain — first to see if the soft fork was activated under its (looser) rules, and then to retroactively enforce the new rules. This makes the software more complicated and it's a bad user experience.
 
-But the reason you might _not_ want mandatory signalling, is for when there is a bug fix. With mandatory signalling there is no way to call of the soft fork once its code is released. This would require releasing another soft fork, this time with a flag date, that activates at the same as the original soft fork, and undoes it. This is also not a deseriable scenario.
+But the reason you might _not_ want mandatory signaling is for when there's a bug fix. With mandatory signaling, there's no way to call off the soft fork once its code is released. This would require releasing another soft fork, this time with a flag date, that activates at the same as the original soft fork and undoes it. This isn't a desiriable scenario either.
 
-So a one-year signaling thing is nice, because that means that you can say, "OK, if this thing doesn't activate in a year because there's a bug, we wait a year and we try again, and then we know for sure we're not going to accidentally activate the old version after that year."
+So one-year signaling is nice, because that means that you can say, "OK, if this thing doesn't activate in a year because there's a bug, we wait a year and we try again, and then we know for sure we're not going to accidentally activate the old version after that year."
 
-Of course, it's kind of annoying to have to wait for a year. But if there really is a bug in something that was ready to be deployed, that really warrants a year of thinking really, really well about how that could happen.
+Of course, it's kind of annoying to have to wait for a year. But if there really is a bug in something that was ready to be deployed, that really warrants a year of thinking really, really hard about how that could happen.
 
 Another idea is similar to the initial BIP 8, which has the option of allowing soft fork signaling. In other words, there's a long period, but without forced signaling at the end. Then you still keep an eye on what's happening. If, after a while, you find that there's no problem with it, but miners aren't signaling for it because they're just apathetic or they have another bad reason, then you can deploy another client with BIP 8 — this time with forced signaling that starts forced signaling before the end of the current signaling period, or at least not later than that.
 
@@ -153,7 +149,7 @@ If it starts before that, then you have two groups of nodes online on the networ
 
 Overall, it's difficult to say which approach is best. In the short run, it's nice to have all this stuff fast, because being slow for the sake of being slow doesn't make any sense. In the long run, it's kind of scary if something can happen fast, because it gives you less time to stop something if it's bad.
 
-### The mother of all parameters: LOT
+### The Mother of All Parameters: LOT
 
 ![Ep. 29 {l0pt}](qr/ep/29.png)
 
@@ -880,6 +876,10 @@ Spoiler: as we mentioned at the top of the chapter, Taproot indeed activated on 
 
 ![Speedy trial flow. Same as BIP 9, except for a delay in the transition from `LOCKED_IN` to `ACTIVE`.](taproot/speedy_trial.svg)
 
+TODO: NATALYE: Notes from comments, turn this into text: The in the Speedy Trial section we only have to explain the difference: the waiting period before signaling (DEFINED) as well as the signaling period (STARTED) was much shorter than usual (months instead of a full year). This way we could know the result faster (the 3rd period reached the threshold). This doesn't change the mechanism itself, so there's no new code to write.
+
+But to add a margin of safety, the transition from LOCKED_IN to active was increased from the usual 1 period (2 weeks) to a fixed block height, expected to be reached in November 2021. That was the only code change required (a much smaller change than BIP 8).
+
 <!--
 
 AvW: We talked a lot two weeks ago. LOT was the parameter we discussed two weeks ago, LOT=true, LOT=false, about Taproot activation. We are two weeks further in and now it seems like the community is somewhat reaching consensus on an activation solution called “Speedy Trial”. That is what we are going to discuss today.
@@ -934,7 +934,7 @@ Deciding on Speedy Trial was just one part of the equation. The next was determi
 
 MTP used the existing BIP 9 system. The argument in support of it is it’s far less code because it already works.
 
-As an example, let’s say the signaling deadline of this soft fork is on September 1 at midnight UTC. A miner mines block number 2,016 or some multiple of 2,016 one second before midnight and signals "yes." Everyone who sees that block says, “OK, we have the required percentage of signaling right before the deadline, so Taproot is active.” They also have this automatic script that says “I am now going to put all my savings in a Taproot address because I want to be in the first block and I am feeling reckless, and I love being reckless.”
+As an example, let’s say the signaling deadline of this soft fork is on September 1 at midnight UTC. A miner mines block number 2,016 or some multiple of 2,016 one second before midnight and signals "yes." Everyone who sees that block says, “OK, we have the required percentage of signaling right before the deadline, so Taproot is active.” But then there might be a hypothetical user who also has this automatic script that says “I am now going to put all my savings in a Taproot address because I want to be in the first block and I am feeling reckless, and I love being reckless.”
 
 Then, there's another miner who mine two seconds later because they didn’t see that recent block. Their block arrives one second past midnight. It votes positive too, but it's too late, and so the soft fork doesn't activate because the signaling wasn't done before midnight, the deadline. That is the subtlety you get with BIP 9, and with shorter signaling periods, because with a longer signaling period, it's less likely the signal arrives at the edge of a cutoff point. Usually it isn't a problem, but it's difficult to explain these edge cases to people.
 
@@ -948,7 +948,7 @@ With both proposals, you could have the same scenario of exactly one vote at the
 
 What's being implemented now in Bitcoin Core is the general mechanism, which says that for any soft fork that you call Speedy Trial, you could, for example, use 90 percent. But the code for Taproot in Bitcoin Core just says “It never activates.” That is the way you indicate that this soft fork is in the code but isn't going to happen yet. These numbers are arbitrary. The code will support anything from 51 percent to 100 percent. Less than this range makes no sense, because 51 percent of miners can always decide to orphan non-signaling blocks, which then increases the percentage.
 
-The benefit of having the higher threshold is a lower risk of orphan blocks after activation.
+The benefit of having the higher threshold is a lower risk of orphan blocks after activation. What could happen with orphan blocks is that a non-upgraded miner could accidentally include a transaction that doesn't obey the new rules. There are some safety mechanisms in place to prevent this, but on the offchance it does happen, it means their block is now invalid. If other miners don't check the new rules either, they'll build on top of this invalid block. So, as long as more than 50 percent of miners do check the new rules, they won't build on this invalid chainm and eventually they'll overtake it.
 
 However, because Taproot called for a delayed activation, there was a long time between signaling and activation, whereas normally you signal and it activates immediately — or at least within two weeks. Right now it can take much, much longer. That means miners have a longer time to upgrade. As a result, there's a little less risk of orphaning, even if you have a lower signaling threshold.
 
