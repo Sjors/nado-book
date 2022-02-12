@@ -153,13 +153,7 @@ Overall, it's difficult to say which approach is best. In the short run, it's ni
 
 ![Ep. 29 {l0pt}](qr/ep/29.png)
 
-<!--
-
-The transcript link is mentioned here so the volunteer effort gets credit. But it can be moved to where it makes sense in the flow.
-
 The transcript for the accompanying episode can be found here.^[This transcript was written by Michael Folkson. The site contains many other transcripts from technical Bitcoin podcast, conference talks and even group conversations. Many of them are written by Bryan Bishop a.k.a. Kanzure, quite possibly one of the fastest typists on Earth.  <https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-02-26-taproot-activation-lockinontimeout/>]
-
--->
 
 When it came to the Taproot activation process, there was a debate surrounding it related to the `lockinontimeout` parameter, or `LOT`, which was introduced with BIP 8. It has two options: `false`, and `true.`
 
