@@ -118,6 +118,7 @@ https://tools.ietf.org/id/draft-msporny-base58-01.html
 https://twitter.com/carl_dong
 https://twitter.com/pwuille/status/1108085284862713856
 https://ubuntu.com/download/server
+https://whale-alert.medium.com/the-satoshi-fortune-e49cf73f9a9b
 https://www.amazon.com/Blocksize-War-controls-Bitcoins-protocol/dp/B08YQMC2WM
 https://www.coindesk.com/business/2021/09/21/leaked-slides-show-how-chainalysis-flags-crypto-suspects-for-cops/
 https://www.coindesk.com/markets/2019/03/05/coinbase-pushes-out-ex-hacking-team-employees-following-uproar/
