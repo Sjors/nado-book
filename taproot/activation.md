@@ -3,7 +3,7 @@
 
 ![Ep. 03 {l0pt}](qr/ep/03.png)
 
-The Taproot soft fork was activated on November 13, 2021, approximately one year after the finalized code was merged.^[<https://github.com/bitcoin/bitcoin/commit/3caee16946575e71e90ead9ac531f5a3a1259307>] It happened much more quickly than SegWit did, and with far less drama, but it wasn't an uneventful year. This chapter discusses how soft forks were activated in the past and what options were reasonably expected to be available for Taproot.
+The Taproot soft fork was activated on November 13, 2021, approximately one year after the finalized code was merged.^[<https://github.com/bitcoin/bitcoin/commit/3caee16946575e71e90ead9ac531f5a3a1259307>] It happened much more quickly than SegWit did, and with far less drama, but it wasn't an uneventful year. This chapter discusses how soft forks were activated in the past, what options were considered for Taproot and how it finally got activated.
 
 ### Soft Forks: A Primer
 
@@ -11,11 +11,15 @@ As Taproot's deployment grew close, the question of how to activate soft forks o
 
 Soft forks, if you recall, are changes to the protocol that are backward compatible. In other words, anyone who has upgraded will reap the benefits of new changes, but those who don't upgrade will still find their software working.
 
-Additionally, a soft fork gets rid of things that are no longer useful and makes improvements to things that were problematic or vulnerable before. In the context of Bitcoin, it's a nice and elegant way to make the rules stricter without suddenly freezing anybody's coins.
+In addition to introducing new features, a soft fork can be used to get rid of bugs and potential vulnerabilities, at least some of them. The way this is done is by making the rules stricter, but without suddenly freezing anybody's coins.
 
-There are a few different ways to introduce a soft fork. You can do it randomly (usually only as the result of an accident), you can announce a date or block height, and you can have miners signal up to a certain threshold.
+A simple example of such stricter rules was BIP 66^[<https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki>] which mandated that any new signatures had to confirm to a strict standard, whereas there was previously some (unintented) flexibility in how to encode them.  
 
-But what perhaps matters more than the mechanics of activation is how a decision is reached to deploy in the soft fork in the first place.
+It may seem paradoxical that strict rules allow for _more_ features, but in chapter @sec:segwit under Future SegWit versions we explained why this works. In this chapter we are less concerned with how soft forks work, and instead focus on how they're activated.
+
+There are a few different ways to introduce a soft fork. You can do it randomly by accident or deliberately sneak one into the code. You can also announce a date or block height from which the new rules apply. Finally, and this how things currently work, you can have miners signal and have soft fork activate once a certain threshold is reached.
+
+But what perhaps matters more than the mechanics of activation is how a decision is reached to deploy the soft fork in the first place. And who decides anyway?
 
 ### The Earliest Soft Forks
 
