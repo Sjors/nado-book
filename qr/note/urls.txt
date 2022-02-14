@@ -2,6 +2,7 @@ http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion/
 http://bitcoin.sipa.be/miniscript
 https://arxiv.org/abs/2107.05322
 https://arxiv.org/abs/2108.00815
+https://bitcoin.org/en/alert/2015-07-04-spv-mining#cause
 https://bitcoin.org/en/releases/22.0/
 https://bitcoin.stackexchange.com/questions/103854/should-block-height-or-mtp-or-a-mixture-of-both-be-used-in-a-soft-fork-activatio/
 https://bitcoincore.org
@@ -64,6 +65,7 @@ https://github.com/bitcoin-core/secp256k1
 https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki
+https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0114.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0116.mediawiki
@@ -124,6 +126,7 @@ https://whale-alert.medium.com/the-satoshi-fortune-e49cf73f9a9b
 https://www.amazon.com/Blocksize-War-controls-Bitcoins-protocol/dp/B08YQMC2WM
 https://www.coindesk.com/business/2021/09/21/leaked-slides-show-how-chainalysis-flags-crypto-suspects-for-cops/
 https://www.coindesk.com/markets/2019/03/05/coinbase-pushes-out-ex-hacking-team-employees-following-uproar/
+https://www.reddit.com/r/Bitcoin/comments/3c305f/comment/csrt3dg/
 https://www.reddit.com/r/Buttcoin/comments/6dvkr6/short_writeup_of_the_bip66_disaster_is_this/
 https://www.reddit.com/r/ProgrammerHumor/comments/qzwjm3/please_dont_confuse_these_two/
 https://www.synopsys.com/blogs/software-security/malicious-dependency-supply-chain/
