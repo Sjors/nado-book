@@ -13,6 +13,7 @@ https://bitcoinmagazine.com/articles/building-on-taproot-payment-pools-could-be-
 https://bitcoinmagazine.com/articles/statechains-sending-keys-not-coins-to-scale-bitcoin-off-chain
 https://bitcoinmagazine.com/articles/taproot-coming-what-it-and-how-it-will-benefit-bitcoin
 https://bitcoinmagazine.com/articles/the-power-of-schnorr-the-signature-algorithm-to-increase-bitcoin-s-scale-and-privacy-1460642496
+https://bitcoinmagazine.com/technical/bitcoin-network-shaken-by-blockchain-fork-1363144448
 https://bitcoinmagazine.com/technical/miniscript-how-blockstream-engineers-are-making-bitcoin-programming-easyer
 https://bitcoinmagazine.com/technical/satoshis-genius-unexpected-ways-in-which-bitcoin-dodged-some-cryptographic-bullet-1382996984
 https://bitcoinmagazine.com/technical/security-researcher-found-bug-knocked-out-bitcoin-unlimited

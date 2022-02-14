@@ -23,7 +23,7 @@ But what perhaps matters more than the mechanics of activation is how a decision
 
 ### The Earliest Soft Forks
 
-Although the term didn't yet exist, in those early days, there were many soft forks, mostly related to closing security holes in the early prototype.^[For a long list, see: <https://blog.bitmex.com/bitcoins-consensus-forks/>] In 2013, there was even an accidental soft fork, and in 2015 there was a near-miss accidental soft fork due to OpenSSL changes (which we covered in chapter @sec:libsecp).
+Although the term didn't yet exist - Satoshi spoke of _"lightly" enforced_ - in those early days, there were many soft forks, mostly related to closing security holes in the early prototype.^[For a long list, see: <https://blog.bitmex.com/bitcoins-consensus-forks/>] In 2013, there was even an accidental soft fork, and in 2015 there was a near-miss accidental soft fork due to OpenSSL changes (which we covered in chapter @sec:libsecp).
 
 They mostly used a block height as their method of activation. In other words, you'd say, "From this moment forward, this new rule shall apply." And you'd announce that in advance, giving people plenty of time to upgrade. For a "secret" soft fork, you'd simply insist that people upgrade, explaining the reason afterward.
 
@@ -37,11 +37,15 @@ It's not that nobody looked at the source code changes, because in the forum whe
 
 But outside some existential emergency, there's a general consensus that this isn't an acceptable way of introducing a soft fork now. If there had been a debate on the block size limit back then, perhaps drama that came later could've been prevented.
 
-### How Does a Soft Fork Work?
+### How Is a Soft Fork Enforced?
 
-But there's still a problem there, which is that you want to make sure everybody's actually running the new software — especially miners, because they kind of have to enforce those new rules.
+Releasing a new software version which activates a soft fork at a given height is one thing. But unless the right people run it, and do so in time, it won't actually take effect. If a soft fork is released in a forest...
 
-So everyone who's upgraded is enforcing the new rules, but if a majority of hash power does it, that means they always reclaim the launch chain even for the non-upgraded nodes. So then everyone, old and new nodes, will converge on this chain. So that's why it's very nice if a majority hash power enforces the rules as well.
+Satoshi just announced the new version on a forum and presumable that the community was small enough that everyone updated well before the activation height, even if that was only a week away. This was generally not put to the test, because many of those initial soft forks were such that only a malicious actor would produce blocks that violate the new rule, and there weren't many of those around.
+
+Despite that, even in 2010 there was a growing understanding that the safest way to enforce a soft fork is to have a super-majority of miners run the latest version. This is because nodes will follow the longest chain that they consider valid. So even if a user hasn't upgraded their node, as long as the majority of miners are enforcing the rules, they'll produce the longest chain, and the users node will follow along. In this situation, even if a miner maliciously or accidentally produces an invalid block, the majority of miners won't build on top of it, and the invalid block goes stale. This is what _"lightly" enforced_ referred to.
+
+We don't know how many individual miners there were in 2010 but it's conceivable they were very much on top of these updates. Even in 2013 when an accidental soft fork happened, enough miners deployed the fix in just a few hours.^[<https://bitcoinmagazine.com/technical/bitcoin-network-shaken-by-blockchain-fork-1363144448>] But emergencies are not the same as regular soft forks, especially when they're not even announced as such.
 
 ### Who Decides?
 
