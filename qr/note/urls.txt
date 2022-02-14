@@ -107,6 +107,7 @@ https://podcast.chaincode.com/2021/10/26/pieter-wuille-amiti-uttarwar-p2p.html
 https://podcastaddict.com/episode/94276066
 https://redmonk.com/jgovernor/2017/05/26/just-how-many-darned-developers-are-there-in-the-world-github-is-puzzled/
 https://security.stackexchange.com/a/18198/209204
+https://sprovoost.nl/2017/07/22/historical-bitcoin-core-client-performance-c5f16e1f8ccb/
 https://sprovoost.nl/2018/12/28/a-crime-on-testnet-6d95ede8da03/
 https://stackoverflow.com/questions/41673073/how-does-the-bitcoin-client-determine-the-first-ip-address-to-connect
 https://tools.ietf.org/id/draft-msporny-base58-01.html

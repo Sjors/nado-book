@@ -1,5 +1,5 @@
 \newpage
-## Headers First, Assume Valid and Assume UTXO
+## Headers First, Assume Valid and Assume UTXO {#sec:assume}
 
 
 ![Ep. 14 {l0pt}](qr/ep/14.png)
