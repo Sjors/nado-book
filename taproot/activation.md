@@ -51,7 +51,7 @@ But if all goes well and the code ends up merged into the Bitcoin Core software,
 
 ### Signaling (BIP 9)
 
-Signaling didn't exist prior to BIP 9, and BIP 9 was introduced in part as a response to what happened with the BIP 66 soft fork, where miners weren't verifying transactions.^[<https://www.reddit.com/r/Buttcoin/comments/6dvkr6/short_writeup_of_the_bip66_disaster_is_this/>]
+Signaling didn't exist prior to BIP 9,^[<https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki>] and BIP 9 was introduced in part as a response to what happened with the BIP 66 soft fork, where miners weren't verifying transactions.^[<https://www.reddit.com/r/Buttcoin/comments/6dvkr6/short_writeup_of_the_bip66_disaster_is_this/>]
 
 This is risky for miners: If a majority of miners enforces the new rules, but a minority doesn't, the minority could accidentally mine an invalid block and then have their block orphaned. And they might not even know why this happens if they haven't upgraded.
 
@@ -65,7 +65,7 @@ Then, there's another miner who mines two seconds later because they didn’t se
 
 The significance of 2,016 is that signaling happens in periods of 2,016 blocks, which is the number of blocks in a single difficulty adjustment period, or retarget period.^[<https://en.bitcoin.it/wiki/Difficulty>] In the diagram above, each arrow represents one signaling period. The looping arrows indicate when the state stays the same — for example, when a soft fork is `DEFINED` (meaning the node knows about it, but there's no signaling yet), it'll stay that way if the MTP^[MTP stands for Median Time Past, and it refers to the middle block of the last 11 blocks. This is a mechanism used to discourage miners from gaming the timestamp in each block.] is still below starttime. When it's at or after starttime, the state jumps to `STARTED`. It stays there pending signaling. For each period — say every two weeks — we check if enough blocks are signaling. If so, we move to the next phase, which is `LOCKED_IN`. If not, and if timeout is reached, we move to `FAILED`. `LOCKED_IN` is a grace period where the new rules don't yet apply, but after two weeks, the soft fork is `ACTIVE` and the rules do apply. This process renders the example of being reckless above essentially harmless.
 
-This decision to have a standard soft fork activation process is the result of BIP 9,^[<https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki>] which also allows the deployment of soft forks in parallel. It hands control of upgrade activation to miners, and it requires a support threshold of 95 percent for a soft fork activation to succeed.
+This decision to have a standard soft fork activation process allows the deployment of soft forks in parallel. It temporarily hands control of upgrade activation to miners, and it requires a signaling readiness of 95 percent for a soft fork activation to succeed.
 
 BIP 9 was used succesfully to deploy the CSV and SegWit soft forks, and it could've been used for Taproot as well. The first deployment went smoothly, but the second one involved a lot drama and took much longer than many people considered necessary. This led to worries that perhaps BIP 9 isn't a future-proof deployment mechanism. As a result, several other mechanisms were proposed, along with variations on those mechanisms.
 
