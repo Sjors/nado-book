@@ -14,6 +14,7 @@ https://bitcoinmagazine.com/articles/building-on-taproot-payment-pools-could-be-
 https://bitcoinmagazine.com/articles/statechains-sending-keys-not-coins-to-scale-bitcoin-off-chain
 https://bitcoinmagazine.com/articles/taproot-coming-what-it-and-how-it-will-benefit-bitcoin
 https://bitcoinmagazine.com/articles/the-power-of-schnorr-the-signature-algorithm-to-increase-bitcoin-s-scale-and-privacy-1460642496
+https://bitcoinmagazine.com/technical/bip-91-has-activated-heres-what-means-and-what-it-does-not
 https://bitcoinmagazine.com/technical/bitcoin-network-shaken-by-blockchain-fork-1363144448
 https://bitcoinmagazine.com/technical/miniscript-how-blockstream-engineers-are-making-bitcoin-programming-easyer
 https://bitcoinmagazine.com/technical/satoshis-genius-unexpected-ways-in-which-bitcoin-dodged-some-cryptographic-bullet-1382996984
@@ -27,6 +28,7 @@ https://bitcointalk.org/index.php?topic=5348856.0
 https://bitcointalk.org/index.php?topic=999.msg12181#msg12181
 https://blockstream.com/2018/11/28/en-simplicity-github/
 https://blog.bitmex.com/bitcoins-consensus-forks/
+https://blog.bitmex.com/the-blocksize-war-chapter-14-asicboost/
 https://blog.lopp.net/who-controls-bitcoin-core-/
 https://blog.torproject.org/v3-onion-services-usage
 https://blogs.scientificamerican.com/roots-of-unity/ancient-babylonian-number-system-had-no-zero/
