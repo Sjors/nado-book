@@ -19,6 +19,7 @@ https://bitcoinmagazine.com/technical/security-researcher-found-bug-knocked-out-
 https://bitcoinops.org/en/topics/cve-2018-17144/
 https://bitcoinops.org/en/topics/mast/
 https://bitcoinops.org/en/topics/ptlc/
+https://bitcointalk.org/index.php?topic=1327.msg14788#msg14788
 https://bitcointalk.org/index.php?topic=155054.0
 https://bitcointalk.org/index.php?topic=5348856.0
 https://blockstream.com/2018/11/28/en-simplicity-github/
@@ -38,7 +39,6 @@ https://dcgco.medium.com/bitcoin-scaling-agreement-at-consensus-2017-133521fe9a7
 https://developer.bitcoin.org/reference/p2p_networking.html#addr
 https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-02-26-taproot-activation-lockinontimeout/
 https://dlt-repo.net/storage-vs-memory-vs-stack-in-solidity-ethereum/
-https://en.bitcoin.it/wiki/Block_size_limit_controversy
 https://en.bitcoin.it/wiki/Chain_Reorganization
 https://en.bitcoin.it/wiki/Difficulty
 https://en.bitcoin.it/wiki/IP_transaction
@@ -77,7 +77,9 @@ https://github.com/bitcoin/bitcoin/blob/7740ebcb023089d03cd2373da16305a4e501cfad
 https://github.com/bitcoin/bitcoin/blob/master/SECURITY.md
 https://github.com/bitcoin/bitcoin/blob/master/doc/tor.md
 https://github.com/bitcoin/bitcoin/blob/v22.0/contrib/seeds/nodes_main.txt
+https://github.com/bitcoin/bitcoin/commit/172f006020965ae8763a0610845c051ed1e3b522
 https://github.com/bitcoin/bitcoin/commit/3caee16946575e71e90ead9ac531f5a3a1259307
+https://github.com/bitcoin/bitcoin/commit/a30b56ebe76ffff9f9cc8a6667186179413c6349
 https://github.com/bitcoin/bitcoin/issues/15605
 https://github.com/bitcoin/bitcoin/pull/17265
 https://github.com/bitcoin/bitcoin/pull/1889#issuecomment-9638527
@@ -106,6 +108,7 @@ https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-sma
 https://podcast.chaincode.com/2021/10/26/pieter-wuille-amiti-uttarwar-p2p.html
 https://podcastaddict.com/episode/94276066
 https://redmonk.com/jgovernor/2017/05/26/just-how-many-darned-developers-are-there-in-the-world-github-is-puzzled/
+https://satoshi.nakamotoinstitute.org/code/
 https://security.stackexchange.com/a/18198/209204
 https://sprovoost.nl/2017/07/22/historical-bitcoin-core-client-performance-c5f16e1f8ccb/
 https://sprovoost.nl/2018/12/28/a-crime-on-testnet-6d95ede8da03/
