@@ -19,9 +19,9 @@ https://bitcoinmagazine.com/technical/security-researcher-found-bug-knocked-out-
 https://bitcoinops.org/en/topics/cve-2018-17144/
 https://bitcoinops.org/en/topics/mast/
 https://bitcoinops.org/en/topics/ptlc/
-https://bitcointalk.org/index.php?topic=1327.msg14788#msg14788
 https://bitcointalk.org/index.php?topic=155054.0
 https://bitcointalk.org/index.php?topic=5348856.0
+https://bitcointalk.org/index.php?topic=999.msg12181#msg12181
 https://blockstream.com/2018/11/28/en-simplicity-github/
 https://blog.bitmex.com/bitcoins-consensus-forks/
 https://blog.lopp.net/who-controls-bitcoin-core-/
@@ -77,9 +77,9 @@ https://github.com/bitcoin/bitcoin/blob/7740ebcb023089d03cd2373da16305a4e501cfad
 https://github.com/bitcoin/bitcoin/blob/master/SECURITY.md
 https://github.com/bitcoin/bitcoin/blob/master/doc/tor.md
 https://github.com/bitcoin/bitcoin/blob/v22.0/contrib/seeds/nodes_main.txt
-https://github.com/bitcoin/bitcoin/commit/172f006020965ae8763a0610845c051ed1e3b522
 https://github.com/bitcoin/bitcoin/commit/3caee16946575e71e90ead9ac531f5a3a1259307
 https://github.com/bitcoin/bitcoin/commit/a30b56ebe76ffff9f9cc8a6667186179413c6349
+https://github.com/bitcoin/bitcoin/commit/f1e1fb4bdef878c8fc1564fa418d44e7541a7e83
 https://github.com/bitcoin/bitcoin/issues/15605
 https://github.com/bitcoin/bitcoin/pull/17265
 https://github.com/bitcoin/bitcoin/pull/1889#issuecomment-9638527
