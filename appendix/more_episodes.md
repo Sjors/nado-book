@@ -12,12 +12,7 @@ Not all episodes of Bitcoin, Explained made it into this book. Here's some other
 
 In this episode we explain what an xpub is and how it is used by Bitcoin wallets.
 
-\
-
-\
-
-\
-
+\newpage
 
 ### Replace by Fee (RBF)
 
@@ -92,6 +87,7 @@ Compact Client Side Filtering is a newer solution to accomplish similar goals as
 
 We explain how this works in more detail, and discuss some of the tradeoffs of this solution.
 
+\newpage
 ## Attacks
 
 ### Timewarp attack
