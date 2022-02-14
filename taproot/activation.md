@@ -53,7 +53,7 @@ But if all goes well and the code ends up merged into the Bitcoin Core software,
 
 Signaling didn't exist prior to BIP 9,^[<https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki>] and BIP 9 was introduced in part as a response to what happened with the BIP 66 soft fork, where miners weren't verifying transactions.^[<https://www.reddit.com/r/Buttcoin/comments/6dvkr6/short_writeup_of_the_bip66_disaster_is_this/>]
 
-This is risky for miners: If a majority of miners enforces the new rules, but a minority doesn't, the minority could accidentally mine an invalid block and then have their block orphaned. And they might not even know why this happens if they haven't upgraded.
+Skipping block verification is risky for miners even without a soft fork, but under normal and benevolent circumstances they may get away with it. However, in a soft fork where a majority of miners enforces the new rules, but a minority doesn't, when one of these minority miners accidentally mines an invalid block, other minority miners will build on top of it. The upgraded majority will ignore all these blocks, and once their chain is longer, all these minority miners find their blocks orphaned. And if they weren't paying attention to mailinglists and other communications about the upgrade, they might not even understand why it happened.
 
 This is where miner signaling comes in. Signaling works as a coordination mechanism for the network to figure out that enough miners have upgraded. This signals to everyone the network is ready. And through this signaling mechanism, which is embedded in the code, a date or a time or a block height is communicated. If enough signals are included in the blockchain, then we all know at block height X, the new rules will go into effect.
 
