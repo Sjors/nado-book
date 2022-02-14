@@ -106,6 +106,7 @@ https://medium.com/@MeshCollider/some-of-the-math-behind-bech32-addresses-cf03c7
 https://medium.com/@RubenSomsen/21-million-bitcoins-to-rule-all-sidechains-the-perpetual-one-way-peg-96cb2f8ac302
 https://medium.com/blockstream/miniscript-bitcoin-scripting-3aeff3853620
 https://nadobtc.libsyn.com
+https://news.ycombinator.com/item?id=11230394
 https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-smart-contracts-2bd8c8db3562
 https://podcast.chaincode.com/2021/10/26/pieter-wuille-amiti-uttarwar-p2p.html
 https://podcastaddict.com/episode/94276066
