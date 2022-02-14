@@ -3,6 +3,7 @@ http://bitcoin.sipa.be/miniscript
 https://arxiv.org/abs/2107.05322
 https://arxiv.org/abs/2108.00815
 https://bitcoin.org/en/releases/22.0/
+https://bitcoin.stackexchange.com/questions/103854/should-block-height-or-mtp-or-a-mixture-of-both-be-used-in-a-soft-fork-activatio/
 https://bitcoincore.org
 https://bitcoincore.org/en/2018/09/20/notice/
 https://bitcoincore.org/en/segwit_wallet_dev/

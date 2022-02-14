@@ -789,7 +789,7 @@ Once this was decided on, what became apparent is more people came out of the wo
 
 ### Different Approaches of Implementing Speedy Trial
 
-Stack Exchange on block height versus mix of block height and MTP: https://bitcoin.stackexchange.com/questions/103854/should-block-height-or-mtp-or-a-mixture-of-both-be-used-in-a-soft-fork-activatio/
+Stack Exchange on block height versus mix of block height and MTP: <https://bitcoin.stackexchange.com/questions/103854/should-block-height-or-mtp-or-a-mixture-of-both-be-used-in-a-soft-fork-activatio/>
 
 Deciding on Speedy Trial was just one part of the equation. The next was determining how to implement it, and for that, there were two different ways: block height,^[<https://github.com/bitcoin/bitcoin/pull/21392>] and median time past (MTP).^[<https://github.com/bitcoin/bitcoin/pull/21377>]
 
