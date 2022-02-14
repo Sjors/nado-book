@@ -93,6 +93,7 @@ https://gizmodo.com/how-heartbleed-works-the-code-behind-the-internets-se-156134
 https://guix.gnu.org/
 https://guix.gnu.org/en/blog/2020/guix-further-reduces-bootstrap-seed-to-25/
 https://lightning.network/
+https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-May/014380.html
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018583.html
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018594.html
 https://media.ccc.de/v/36c3-10690-open_source_is_insufficient_to_solve_trust_problems_in_hardware
@@ -114,6 +115,7 @@ https://ubuntu.com/download/server
 https://www.amazon.com/Blocksize-War-controls-Bitcoins-protocol/dp/B08YQMC2WM
 https://www.coindesk.com/business/2021/09/21/leaked-slides-show-how-chainalysis-flags-crypto-suspects-for-cops/
 https://www.coindesk.com/markets/2019/03/05/coinbase-pushes-out-ex-hacking-team-employees-following-uproar/
+https://www.reddit.com/r/Buttcoin/comments/6dvkr6/short_writeup_of_the_bip66_disaster_is_this/
 https://www.reddit.com/r/ProgrammerHumor/comments/qzwjm3/please_dont_confuse_these_two/
 https://www.synopsys.com/blogs/software-security/malicious-dependency-supply-chain/
 https://www.techopedia.com/definition/3828/software-library
