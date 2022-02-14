@@ -48,7 +48,7 @@ if [ "$SKIP_QR" -eq "0" ]; then
         if echo $short_url | grep 'bit.ly\|nus.edu\|amzn.to\|gitian.org'; then
             echo $short_url | qrencode -o qr/note/${i}.png --level=L -8 -d 300 -s 2 --margin=1
             # Add to processed markdown (might be macOS specific):
-            find intro.processed.md **/*.processed.md -exec sed -i '' -e "s#<$url>#<$url> ![](qr/note/$i.png)#g" {} \;
+            find intro.processed.md **/*.processed.md -exec sed -i '' -e "s*<$url>*<$url> ![](qr/note/$i.png)*g" {} \;
         fi
     done
 
