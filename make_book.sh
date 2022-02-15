@@ -45,7 +45,7 @@ if [ "$SKIP_QR" -eq "0" ]; then
         short_url=`sed -n ${i}p qr/note/shorts.txt`
         # Skip URL's that haven't been shortened
         # Some domains are so short, they don't need shortening (unless we deep link to them)
-        if echo $short_url | grep 'bit.ly\|nus.edu\|amzn.to\|gitian.org'; then
+        if echo $short_url | grep 'bit.ly\|nus.edu\|amzn.to\|gitian.org\|yhoo.it'; then
             echo $short_url | qrencode -o qr/note/${i}.png --level=L -8 -d 300 -s 2 --margin=1
             # Add to processed markdown (might be macOS specific):
             find intro.processed.md **/*.processed.md -exec sed -i '' -e "s*<$url>*<$url> ![](qr/note/$i.png)*g" {} \;

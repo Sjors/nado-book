@@ -4,9 +4,9 @@ https://arxiv.org/abs/2107.05322
 https://arxiv.org/abs/2108.00815
 https://bitcoin.org/en/alert/2015-07-04-spv-mining#cause
 https://bitcoin.org/en/releases/22.0/
-https://bitcoin.stackexchange.com/questions/103854/should-block-height-or-mtp-or-a-mixture-of-both-be-used-in-a-soft-fork-activatio/
 https://bitcoincore.org
 https://bitcoincore.org/en/2018/09/20/notice/
+https://bitcoincore.org/en/2021/05/01/release-0.21.1/
 https://bitcoincore.org/en/segwit_wallet_dev/
 https://bitcoinmagazine.com/articles/bitcoin-need-accounts-one-developer-thinks-figured
 https://bitcoinmagazine.com/articles/bitcoins-growing-utxo-problem-and-how-utreexo-can-help-solve-it
@@ -89,9 +89,11 @@ https://github.com/bitcoin/bitcoin/commit/f1e1fb4bdef878c8fc1564fa418d44e7541a7e
 https://github.com/bitcoin/bitcoin/issues/15605
 https://github.com/bitcoin/bitcoin/pull/17265
 https://github.com/bitcoin/bitcoin/pull/1889#issuecomment-9638527
+https://github.com/bitcoin/bitcoin/pull/19573
 https://github.com/bitcoin/bitcoin/pull/19954
 https://github.com/bitcoin/bitcoin/pull/21377
 https://github.com/bitcoin/bitcoin/pull/21392
+https://github.com/bitcoin/bitcoin/pull/21686
 https://github.com/bitcoin/bitcoin/pull/22387
 https://github.com/curl/curl
 https://github.com/sipa
@@ -103,6 +105,7 @@ https://guix.gnu.org/
 https://guix.gnu.org/en/blog/2020/guix-further-reduces-bootstrap-seed-to-25/
 https://lightning.network/
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-May/014380.html
+https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-February/018498.html
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018583.html
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018594.html
 https://media.ccc.de/v/36c3-10690-open_source_is_insufficient_to_solve_trust_problems_in_hardware
@@ -117,9 +120,12 @@ https://podcastaddict.com/episode/94276066
 https://redmonk.com/jgovernor/2017/05/26/just-how-many-darned-developers-are-there-in-the-world-github-is-puzzled/
 https://satoshi.nakamotoinstitute.org/code/
 https://security.stackexchange.com/a/18198/209204
+https://sports.yahoo.com/locked-bitcoin-taproot-upgrade-gets-120837972.html
 https://sprovoost.nl/2017/07/22/historical-bitcoin-core-client-performance-c5f16e1f8ccb/
+https://sprovoost.nl/2017/11/10/a-short-history-of-replay-protection-2bd8b288cf94/
 https://sprovoost.nl/2018/12/28/a-crime-on-testnet-6d95ede8da03/
 https://stackoverflow.com/questions/41673073/how-does-the-bitcoin-client-determine-the-first-ip-address-to-connect
+https://stephanlivera.com/episode/277/
 https://tools.ietf.org/id/draft-msporny-base58-01.html
 https://twitter.com/carl_dong
 https://twitter.com/pwuille/status/1108085284862713856
@@ -129,6 +135,7 @@ https://www.amazon.com/Blocksize-War-controls-Bitcoins-protocol/dp/B08YQMC2WM
 https://www.coindesk.com/business/2021/09/21/leaked-slides-show-how-chainalysis-flags-crypto-suspects-for-cops/
 https://www.coindesk.com/markets/2019/03/05/coinbase-pushes-out-ex-hacking-team-employees-following-uproar/
 https://www.reddit.com/r/Bitcoin/comments/3c305f/comment/csrt3dg/
+https://www.reddit.com/r/Bitcoin/comments/mruopv/bitcoincorebased_bip8_lottrue_taproot_activation/
 https://www.reddit.com/r/Buttcoin/comments/6dvkr6/short_writeup_of_the_bip66_disaster_is_this/
 https://www.reddit.com/r/ProgrammerHumor/comments/qzwjm3/please_dont_confuse_these_two/
 https://www.synopsys.com/blogs/software-security/malicious-dependency-supply-chain/
