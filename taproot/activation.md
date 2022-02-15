@@ -119,15 +119,30 @@ So in the end, all we can say is it didn't go wrong. Nobody called each other's 
 
 ### Rethinking Activation, and the Introduction of BIP 8
 
+Inspired by UASF as well seeing the need clean up BIP 9, BIP 8^[<https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki>] was proposed.^[In case you're wondering why a new proposal gets a lower BIP number, my guess is as follows. BIP numbers tend to thematically grouped in ranges of 10, e.g. BIP 340-343 all relate to Taproot. BIP 1 and 2 are meta issues, they explain among other things how Bitcoin ought to be upgraded. So it makes sense to include soft fork activation logic to the single digit range, but filling it out in descending order.]
+
+It uses a signaling mechanism similar to BIP 9, but based on block height rather than timestamps. This makes it easier to reason about reorgs, e.g. when the last block of a signalling period arrives just _before_ the `timeout` a soft fork would activate, but then if an alternate branch of blocks appears and takes over, and this alternate branch arrives (has timestamps of) directly _after_ `timeout` then it didn't activate. The downside is that you can't predict on which date the the timeout is going to happen, because it depends on how fast blocks are produced.^[This is mainly a problem for developers who use testnet to test e.g. wallet software ahead of the real activation. On testnet blocks do not arrive in semi regular 10 minute intervals, but can instead arrive in huge numbers. This makes it impossible to pick reasonable activation heights. See Appendix @sec:more_eps for the episode about Signet, for a more thorough explanation and solution.]
+
 ![BIP 8 flow](taproot/bip8.svg)
 
-In rethinking how activation should work, BIP 8^[<https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki>] proponents came out with a flag date proposal and revamped it. The new idea was to have a combination of a flag date and what was proposed in BIP 9: Signaling still exists, with some tweaks, but there's also a built-in option for having a flag date.
+So far BIP 8 would just be a nice drop in replacement for BIP 9. But where it really differentiates itself is in the UASF style flag date for forced signalling. This is indicated by the `MUST_SIGNAL` phase in the diagram, which otherwise doesn't differ much from what you saw above with BIP 9.
 
-With this option, a flag date is a one-way mechanism. In other words, you could propose a new soft fork and not set a flag date, and then later on set a flag date. But you can't propose a flag date and then unset it.
+What this means is that the flag date doesn't activate the soft fork itself. Rather if, closer to the date, there's a block that isn't mining support for the soft fork, that block will be orphaned: that's how it forces signaling towards the end.
 
-What this means is it doesn't activate the soft fork itself. Rather, it means that if, closer to the date, there's a block that isn't mining support for the soft fork, that block will be orphaned: It forces signaling toward the end.
+Like with the UASF, this forced signaling only makes sense if there are _other_ nodes out there that don't have such a flag date.^[In that case the horizontal line from `STARTED` to `MUST_SIGNAL` is never used, and instead the vertical line from `STARTED` to `FAILED` would occur, and it's essentially BIP 9.
+] This is why the flag day setting itself is optional. What exactly does optional mean here? It could mean that there are two different downloads: one with the flag day enabled and one without, presumably released by two seperate teams with different priorities. It could also mean that there is a single download that allows the user to choose.
 
-In other words, if you have two groups of BIP 8 nodes, one of them has the forced signaling on and one of them has the forced signaling off. But miners go along with the forced signaling on, and the nodes that have forced signaling off will still accept the soft fork because they're still seeing the signaling.^[There's a caveat to all of this though. If you have a flag date in mind, you may still need to include it, because you don't want different people to have different flag dates. In the end, if you force people to signal and then they don't signal, and then you just decide to not accept all their blocks, it becomes a mess. In that sense, it's not completely thought out, but you probably still want to have some consensus. If you decide on the flag date, you want to have a very large consensus on what that flag date is and ensure that really everybody goes along with it.]
+It allows for an escalation ladder: perhaps most of the community starts out not using a flag date, and then as time goes by more do.
+
+In this sense it formalizes the process that happened informally in 2017. Basically saying: if you want to do something like a UASF, please do it in this specific way.
+
+Just like its predecessor UASF, this proposal is not without its problems. Here's how forced signalling is supposed to work:
+
+_If you run a node with this feature enabled._ When after the flag day a block is produced that does not include a signal, your node will consider this block invalid, no matter how many other blocks are built on top of it. If some miners produce an alternative branch of blocks, even if it's shorter, that do include the signal, your node will follow that alternative branch. Eventually, if and only if enough blocks are produced on this alternative branch, the soft fork is guaranteed to activate.
+
+On the other hand, _if you run a node without this feature_, or for that matter if you run older node software that doesn't know about the soft fork. Then you will continue to follow the longest chain, regardless of what its block signal. If the longest chain happens to comply with mandatory signaling, your node will follow it. If it doesn't comply, your node will also follow it. The scenario to worry about here is when initially the longest chain doesn't signal, but after some time it gets overtaken by a chain that does. Since your node doesn't care if blocks signal or not, it will happily switch over to this new branch.
+
+In any scenario where two alternative chains exists, it is unsafe for users whose node follows one branch to transact with users whose node follows the other branch. In fact it is unsafe for _anyone_ to use the blockchain at that point. On the other hand as long as the only chain in existence complies with mandatory signalling, there's nothing to worry about. This might remind some readers of the game theory around mutually assured destruction (MAD).
 
 ### Playing with Parameters
 
