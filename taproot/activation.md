@@ -95,7 +95,7 @@ They weren't raising any technical objections, so the previously established RFC
 
 In any case, BIP 9 wasn't supposed to be a referendum, and given how quickly miners were able to upgrade with previous soft forks, this stalemate made little sense and frustrated those who wanted to take advantage of the SegWit features we discussed in chapter @sec:segwit. One particularly frustrating aspect of this situation is that was holding back the much demanded block size increase that SegWit offered.
 
-At this point, most of the Bitcoin Core developers were perhaps frustrated, but they preferred to stay on the conservative side and simply wait for the `timeout` and some earlier success. When there's no consensus on a new course of action, the default is to just do nothing. But that doesn't have to stop anyone else.
+At this point, most of the Bitcoin Core developers were perhaps just as frustrated, but they preferred to stay on the conservative side and simply wait for the `timeout` and some earlier success. When there's no consensus on a new course of action, the default is to just do nothing. But that doesn't have to stop anyone else.
 
 Around early March of 2017, there was a group of people that said, "Hey, you know what? It's time for a flag day." They picked August 1, 2017 as a date and said that on that day, their nodes would enforce the new SegWit rules.
 
