@@ -21,7 +21,7 @@ if [ "$SKIP_QR" -eq "0" ]; then
     # Process episode QR codes:
     pushd qr/ep
         for f in *.txt; do
-            qrencode -o ${f%.txt}.png -r $f --level=M -d 300 -s 6
+            qrencode -o ${f%.txt}.png -r $f --level=M -d 300 -s 4
         done
     popd
 
