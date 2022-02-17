@@ -256,7 +256,7 @@ Remember that the signal for a soft fork (BIP 9, BIP 8, or Speedy Trial) is just
 
 In general, it's preferred if miners actually upgrade their nodes and don't fake signal. That's one reason why the timeout in BIP 9 was so long. But because Speedy Trial happened on such short notice, some may have considered it too risky to upgrade their software. Others ran into practical issues performing the upgrade. Mining pool operator Alejandro De La Torre described some of the practical issues he encountered in the field on a podcast episode.^[<https://stephanlivera.com/episode/277/>]
 
-The accompanying goes into further detail about what, once Taproot activation became inevitable, needed to happen before it could ultimately be used on the Bitcoin network safely. We also explain how upcoming Bitcoin Core releases will handle the Taproot upgrade, especially with respect to its wallet software. At the time of writing, there's some basic Taproot wallet support, but it's still a work in progress.
+The accompanying episode goes into further detail about what, once Taproot activation became inevitable, needed to happen before it could ultimately be used on the Bitcoin network safely. We also explain how upcoming Bitcoin Core releases will handle the Taproot upgrade, especially with respect to its wallet software. At the time of writing, there's some basic Taproot wallet support, but it's still a work in progress.
 
 ### Moving Forward
 
