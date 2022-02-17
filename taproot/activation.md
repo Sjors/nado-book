@@ -27,7 +27,7 @@ But perhaps what matters more than the mechanics of activation is how a decision
 
 Although the term didn't yet exist in the early days, there were many soft forks, mostly related to closing security holes in the early prototype.^[For a long list, see: <https://blog.bitmex.com/bitcoins-consensus-forks/>] In 2013, there was even an accidental soft fork, and in 2015, there was a near-miss accidental soft fork due to OpenSSL changes (which we covered in chapter @sec:libsecp).
 
-They mostly used a block height as their method of activation. In other words, you'd say, "From this moment forward, this new rule shall apply." And you'd announce that in advance, giving people plenty of time to upgrade. For a "secret" soft fork, you'd simply insist that people upgrade, explaining the reason afterward.
+The earliest soft forks mostly used a block height as their method of activation. In other words, "as of this future block, the new rule shall apply." Ideally this is announced well in advance, giving people plenty of time to upgrade. For a "secret" soft fork, developers might simply insist that people upgrade, and then explain the reason afterward.
 
 ![Informal diagram of a flag height activated soft fork](taproot/flag.svg){ width=60% }
 
