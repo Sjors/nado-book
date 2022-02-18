@@ -85,7 +85,6 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         attacks/fake_nodes.processed.md\
         attacks/guix.processed.md\
         wallets/_section.processed.md\
-        wallets/hwi.processed.md\
         wallets/miniscript.processed.md\
         taproot/_section.processed.md\
         taproot/basics.processed.md\
