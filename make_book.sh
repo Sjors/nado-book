@@ -80,7 +80,6 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         resources/_section.processed.md\
         resources/assume-utxo.processed.md\
         resources/utreexo.processed.md\
-        resources/erlay.processed.md\
         attacks/_section.processed.md\
         attacks/eclipse.processed.md\
         attacks/fake_nodes.processed.md\
