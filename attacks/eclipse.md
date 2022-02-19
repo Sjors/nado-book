@@ -1,606 +1,105 @@
 \newpage
-## Eclipse attacks {#sec:eclipse}
+## Eclipse Attacks {#sec:eclipse}
 
 ![Ep. 17 {l0pt}](qr/ep/17.png)
 
-discuss Eclipse attacks. More specifically, they discuss the 2015 paper “Eclipse Attacks on Bitcoin’s Peer-to-Peer Network,” written by Ethan Heilman, Alison Kendler, Aviv Zohar and Sharon Goldberg, from Boston University and Hebrew University/MSR Israel.^[<https://cs-people.bu.edu/heilman/eclipse/>]
+An eclipse attack is a type of attack that isolates a Bitcoin node by occupying all of its connection slots to block the node from receiving any transactions, in turn barring it from transactions other than those sent to it by the attacker. This prevents the node from seeing what’s going on in the Bitcoin network, and potentially even tricks the node into accepting an alternative (invalid) version of the Bitcoin blockchain.
 
-Eclipse attacks are a type of attack that isolates a Bitcoin node by occupying all of its connection slots to block the node from receiving any transactions, barring it from transactions other than those sent to it by the attacker. This would prevent the node from seeing what’s going on in the Bitcoin network, and potentially even trick the node into accepting an alternative (and thus invalid) version of the Bitcoin blockchain.
+This chapter discusses how this type of attack could be used to dupe users and miners. It also talks about solutions to counter this type of attack, some of which were outlined in the 2015 paper “Eclipse Attacks on Bitcoin’s Peer-to-Peer Network,” which was written by Ethan Heilman, Alison Kendler, Aviv Zohar, and Sharon Goldberg, from Boston University and Hebrew University/MSR Israel.^[<https://cs-people.bu.edu/heilman/eclipse/>] Many of the solutions proposed by this paper have already been implemented in Bitcoin Core software — the most recent of which was included in Bitcoin Core 0.21.0. This chapter also discusses a potential solution that wasn't in the paper.
 
-Aaron and Sjors explain how this type of attack could be used to dupe users and miners. They also discuss some of the solutions proposed in the paper to counter this type of attack, including solutions that have by now already been implemented in Bitcoin Core software. This includes a solution that will be included in the next Bitcoin Core software release, Bitcoin Core 0.21.0. They also mention one solution that is not included in the paper.
+### What an Eclipse Attack Is
 
-<!--
-Sjors:
-Yeah, we're going to discuss a paper about eclipse attacks.
+Under normal circumstances, your node connects to the outside world — via up to eight peers outbound and up to 117 inbound, on average. In the case of an eclipse attack, your node only sees and connects to your enemy or attacker. So you might think you're talking to the whole world, but you're actually only talking to one person. In other words, that person is eclipsing your view of the world.
 
-Aaron:
-It's the paper Eclipse Attacks on Bitcoin's Peer-to-Peer Network by Ethan Heilman, Alison Kendler, Aviv Zohar, and Sharon Goldberg from Boston University and Hebrew University MSR Israel.
+The reason you connect to all these nodes is because you want to ask them for new transactions and blocks, and they'll spontaneously give these to you. But if you're only talking to one person, that person can decide not to give you certain transactions and blocks.
 
-Sjors:
-That's right and it was published in 2015.
+What they can't do is fake signatures. But they can do a double spend attack on you.
 
-Aaron:
-Yeah. So it's a little while ago. We're discussing this because the new Bitcoin Core release will include a new method to prevent eclipse attacks?
+So let's say you're expecting money from somebody, and you see this transaction appear in your mempool — which is where valid transactions wait to be confirmed — but it's not yet in a block.
 
-Sjors:
-That's right and it's actually something that was suggested in that paper. So to give you an idea about the speed of Bitcoin development, sometimes somebody writes a paper in 2015 and then over the years, improvements are made based on that paper and that's still happening.
+Then, it turns out this person is actually sending you that transaction over the wire, but to the outside world, they're sending a very different transaction. And so then a new block arrives, but you're not going to see that block because the user is sending a conflicting transaction — most likely coins to themselves.
 
-Aaron:
-Yeah, but this is not the first improvement based on this paper. This is one of them and this is just the reason we're doing an episode about it now.
+Nowadays, people know that accepting zero confirmation transactions is a bad idea for various reasons, but this is the easiest thing you can do when you can basically hide what's happening: You can tell this person one thing that you paid them and tell other people another thing.
 
-Sjors:
-Correct. A lot of things have already been done.
+If you do wait for a confirmation, they can still attack you using an eclipse attack, but it's going to get a lot more expensive, so they'll have to produce a valid block.
 
-Aaron:
-Okay. So Sjors, what are eclipse attacks?
+When they give you that block, it includes the transaction, so you think it's confirmed. However, the outside world of normal miners is also producing blocks, and the attacker is hiding those normal blocks from you. And for the normal miners, your transaction never happened, because there's a longer chain that's not paying you. Instead, you've just accepted the one block or maybe multiple blocks. And the attack gets more expensive as they have to produce more blocks.
 
-Sjors:
-So an eclipse attack is when your node is only seeing your enemy, basically. Your attacker. Your node has connections that it makes to the outside world and there are people who connect to your node.
+The idea is: If you're a miner and you want to launch this attack on someone, but you only control 10 percent of hash power, then usually it wouldn't work, because even the blocks you produce with the fake transaction will just be orphans. However, if you also have an eclipse attack, then it could actually work, because the person you're attacking won't see the competing chain.
 
-Aaron:
-Mm-hmm (affirmative).
+This is a good reminder of why it's important for Bitcoin to be somewhat expensive, because it's really expensive to produce blocks like that, whereas back in 2015, this would've been cheaper. So, the attacker is only going to attack you if the cost of making a fake block is lower than the amount of money they're scamming you for.
 
-Sjors:
-And if all those connections are to some evil person, then you think you're talking to the whole world, but you're actually only talking to one person so that person is eclipsing your view of the world.
+But it turns out they can do something else: They can actually try to split miners. The way this works is that while they're trying to scam you, they're also scamming miners at the same time. And then you might have one miner producing the block attacker ones and one miner producing the block that goes to you. The miners don't even know this is going on, and they're wasting a giant amount of money and the attacker just robs you of $100. So there's a lot of economic damage, but they still scam you.
 
-Aaron:
-Exactly. Yeah. Bitcoin is a peer-to-peer network so it consists of peers that talk with each other and I think an average, regular nodes connects to how many peers?
+To simplify this example, let's say there are two miners on the network. Someone launches an eclipse attack on one of them and source launches an eclipse attack on another. What happens is the first minor produces blocks but can't see their competitor's blocks. The attacker then sends those blocks from the first miner to the second miner. The result is the miner wasting money, and people being cheated with fake transactions. So the attacker doesn't necessarily have to produce the blocks themselves to profit from an eclipse attack.
 
-Sjors:
-Usually a node connects to eight peers outbound.
+Mining is still somewhat centralized, so there are specialized networks that connect miners, making this difficult to do. But this shouldn't be the only thing we're relying on to avoid eclipse attacks. Luckily, it's becoming more difficult to do, largely because we're introducing more solutions designed to make this attacks more difficult.
 
-Aaron:
-Mm-hmm (affirmative).
+### How an Eclipse Attack Works
 
-Sjors:
-And it can have up to 117 inbound. That's changed maybe a little bit, but that's the idea.
+Nodes are becoming a little bit hardened, but to understand that, it's important to understand how the aforementioned paper proposes that one does an eclipse attack.
 
-Aaron:
-Right, so then the idea is if you control all outbound or inbound nodes.
+There are a couple of ingredients. First, as mentioned in chapter X, when a node starts, it tries to find other peers, and once it's been running for a while, it has a list of addresses it got from other peers and it stores them in a file. Then, when the node restarts, it looks at this file for all the addresses it knows, and it starts randomly connecting to them.
 
-Sjors:
-Both.
+As an attacker, the idea is to pollute this file by giving the node either addresses you control or addresses that don't exist. Either way, the goal is to exploit the way the node picks the addresses, so that every time it makes a connection, it either fails because there's nothing there, or it connects to you — and eventually it only connects to you.
 
-Aaron:
-Both. Okay. So if you control both all inbound and outbound nodes of someone else, then you can basically lie to them and they have no other connection to the network. Am I saying that right?
+This happens due to the nature of how a node collects and organizes IP addresses: by sorting them into various "buckets" based on things like the starting number or ???
 
-Sjors:
-That's right. So basically you connect to all these nodes because you want to ask them for new transactions and for new blocks and they'll spontaneously give you new transactions and new blocks. And so if you're only talking to one person eventually, then that person can decide not to give you certain transactions and not to give you certain blocks.
+Imagine someone has 1,000 real IP addresses of other nodes. Then you, the attacker, feed them 10 gazillion fake IP addresses or IP addresses that are yours. Then, as the person's nodes start to pick IP addresses, the odds are it'll pick some of those IP addresses, and possibly not any real ones.
 
-Aaron:
-Right.
+Part of the trick is that there's a list of IP addresses that are known, but every time a node learns new ones, it starts throwing away the older ones.
 
-Sjors:
-Now they cannot make fake things entirely, right? They can't fake signatures because you're still checking all the consensus rules.
+Here's where the paper comes into play. It ran a simulation to see how difficult it was to actually overflow all these buckets, and it found that, within a matter of days, it can be successful.
 
-Aaron:
-Sure.
+At this point, the node still has outbound connections to the real world, so the question for the attacker is: How can you get rid of those connections? The trick is to try and make the node crash.
 
-Sjors:
-But this is-
+This is one reason why it's extremely important for developers to ensure they don't write code that can make a node crash, because crashable nodes are an important ingredient in these type of attacks.
 
-Aaron:
-But what can do then? What's the risk, let's say I'm attacked like this. I'm-
+TODO And another attacks. So whenever there is a bug that allows Bitcoin Core to crash, it's a pretty serious one, but you can overload somehow overload its ram usage, there's been lots of problems like that, but when it crashes and it starts again, hopefully, usually automatically if you've configured a server correctly and when it starts automatically, when it starts, it's going to look at that file of peers it knows, and it's going to try and connect to them. So it's going to look in all these buckets and it's only going to find the attacker. And then the attacker also makes sure that it makes sure it's connecting to you. So all your inbound connections are full and then you're just only talking to the attacker. That's all that's needed for the eclipse attack to be in play.
 
-Sjors:
-Well the-
+### How to Solve It
 
-Aaron:
-... subject to an eclipse attack.
+It's important to understand that attacks like these are a numbers game. If you're the attacker, you need to give a lot of spam addresses to a node to fill up all the buckets and make sure it only connects to you.
 
-Sjors:
-The easiest thing and that's I guess, less relevant now because people are more aware of that risk in general, is they can do a double spend attack on you. So let's say you're expecting money from somebody, you're expecting coins from somebody and you see this transaction appear in your Mempool, so in your memory, but it's not yet in a block and you're happy.
+One very simple solution for avoiding an attack like this is to have more buckets. Another is to remove the bias toward selecting more recent peers and discarding the old ones. However, the tradeoff is you don't want to prioritize old IP addresses, because they might not be there any longer.
 
-Aaron:
-Mm-hmm (affirmative).
+What you can do is this: If you hear of a new address and you want to put it in a bucket and remove something else, you first check the address that's already in the bucket. That entails connecting to it to see if it still exists. If it does exist, you don't replace it. This is called the feeler connection.
 
-Sjors:
-But now it turns out that this person is actually sending you that transaction over the wire, but to the outside world, he's sending a very different transaction. And so then a new block arrives, but you're not going to see that block.
+A couple years ago, what was merged is something where every now and then, Bitcoin Core looks at a bucket, quickly connects to a node, sees if it's real, and remembers that and then disconnects. This is a way of prioritizing all the addresses in a more intelligent way.
 
-Aaron:
-He's sending a conflicting transaction is what you mean. He's sending the same coins to someone else?
+Bitcoin Core 0.21.0 was released in January 2021, and it included a new method to prevent eclipse attacks that was suggested in the 2015 paper.^[To give you an idea about the speed of Bitcoin development, a person can write a paper in 2015, and improvements based on that paper can happen gradually for the next five or more years.] What happens is that when you restart, you try to remember some of the last connections you had. Your node remembers the two connections that it only exchanges blocks with, and it tries to reconnect to those — but not too often, because it's not a good idea to always try to reconnect to the same nodes again when you restart, as, for all you know, the reason you crashed in the first place is because one of those nodes was evil. And in that case, if you connect to the last connect and it goes wrong again, then you don't try reconnecting again.
 
-Sjors:
-Yeah to himself probably.
+Another thing you can do instead of having more buckets is have more outbound connections. This is because the more outbound connections you have, the more likely you are to be connecting to honest nodes, and the more difficult it is for an attacker to control all of the IP addresses you're connected to.
 
-Aaron:
-Yeah.
+You may be wondering: Why wouldn't you just have as many connections as possible from the get-go? But the problem is that it requires a lot of data exchange — especially for the transactions in a mempool — and that's extremely data intense, so you can't just add more connections without also increasing bandwidth use.
 
-Sjors:
-And so you think you've got this unconfirmed transaction and it's going towards you and you're not seeing any new blocks, but you think, okay, I guess, this is good. It's mine.
+That said, there are some new proposals for reducing the bandwidth needed for these mempool synchronizations that would allow more connections — so there's an incentive to make this data exchange more efficient. 
 
-Aaron:
-I wouldn't think that Sjors.
+Plus, there's the solution that some of the connections you connect to, you don't share mempool stuff with; instead, you only connect to blocks.
 
-Sjors:
-No. So nowadays people know that accepting zero confirmation transactions is a very bad idea and for all sorts of reasons, but this is the easiest thing you can do when you can basically hide what's happening. You can tell this person one thing that you paid them and tell other people another thing.
+One of the ways to have the upside of more connections without the downside of more bandwidth is to only exchange blocks with those extra connections, because that happens much less frequently. This still costs a little bit of an extra bandwidth, but much less.
 
-Aaron:
-Right, so what if I don't trust zero conf?
+This. reminds us that you need to wait for confirmations because those extra connections will tell you about new blocks. They won't tell you about new stuff in a Mempool, but that's fine if you wait for confirmations.
 
-Sjors:
-So if you do wait for a confirmation, they can still attack you using an eclipse attack, but it's going to get a lot more expensive. So they'll have to produce a block basically.
-
-Aaron:
-Mm-hmm (affirmative).
-
-Sjors:
-A valid block.
-
-Aaron:
-Right.
-
-Sjors:
-And then they give you that block and it includes the transaction so you think it's confirmed but the outside world is also producing blocks, the normal miners. And they're hiding those normal blocks from you. So now in the outside world, that transaction never happened because there's a longer chain that's not paying you and you've just accepted their one block or maybe multiple blocks.
-
-Aaron:
-Yeah.
-
-The attack gets more expensive as they have to produce more blocks.
-
-Aaron:
-Yeah. So the idea is if you are a miner and you want to launch this attack on someone, but you only control 10% of hash power, then usually it wouldn't work because even the blocks you produce with the fake transaction will just be orphans away. But if you also have an eclipse attack, then it could actually work because the person you're attacking, doesn't see the competing chain.
-
-Sjors:
-Yes. And this of course reminds us why it's important for Bitcoin to be somewhat expensive because it's really expensive to produce blocks like that. Back in 2015, this would've been cheaper.
-
-Aaron:
-Right.
-
-Sjors:
-But another thing you can do is because now you think, okay, so they're only going to attack me if the cost of making this fake block is lower than the amount of money they're scamming you for. So unless you-
-
-Aaron:
-Which is very unlikely.
-
-Sjors:
-Right. Unless you're buying Teslas or all these fancy cars all the time, you don't have to worry about this, you think.
-
-Aaron:
-Mm-hmm (affirmative).
-
-Sjors:
-But it turns out they can do something else, which is they can actually try to split miners. So they're trying to scam you, but they're also scamming to miners at the same time, basically making miners, not see each other's blocks. And then you might have one miner producing the block attacker ones and one miner producing the block that goes to you. And the miners don't even know that this is going on and they're wasting a giant amount of money and the attacker just robs you of a $100. So there's a lot of economic damage, but they still scam you.
-
-Aaron:
-Right, so basically let's say there are two miners on network just to simplify things. Then you launch an eclipse attack on one of them plus you source launch an eclipse attack on me then you can have this one miner produced blocks and he doesn't see the blocks of his competitor and you send these blocks of the miner you're attacking to me and therefore we're on sort of a separate network, which could be a minority network so the miner is wasting money and I'm being cheated with fake transactions at the same time.
-
-Sjors:
-Yes but the attacker still makes money. So yeah, it's important that the attacker doesn't necessarily have to produce the blocks themselves in order to profit from an eclipse attack.
-
-Aaron:
-Right.
-
-Sjors:
-Now, the good news, or I don't know if it's good news, but mining is still somewhat centralized, there's specialized networks that connect miners so this is quite difficult to do.
-
-Aaron:
-Yeah. Like [crosstalk 00:06:43].
-
-Sjors:
-We don't want to rely on that.
-
-Aaron:
-Relay networks and these kinds of things.
-
-Sjors:
-Exactly. But we don't want to rely on that of course.
-
-Aaron:
-Right.
-
-Sjors:
-Ideally, it should be impossible to eclipse anyone.
-
-Aaron:
-Right. So luckily it's getting harder over time because we're getting more solutions to make it harder.
-
-Sjors:
-Exactly. Nodes are becoming a little bit hardened. So I guess in order to understand that, we should explain how this paper proposes that one does an eclipse attack.
-
-Aaron:
-Right. Oh yeah. I almost forgot about that. Yes.
-
-Sjors:
-Yes.
-
-Aaron:
-How do you actually do it?
-
-Sjors:
-Well, how did you used to? The idea that you... There's a couple of ingredients that you need here. One is that what nodes are doing when they start, they try to find other peers and I think we talked about that before a little bit when we talked about DNS seeds.
-
-Aaron:
-Yeah.
-
-Sjors:
-So-
-
-Aaron:
-Couple of episodes ago.
-
-Sjors:
-Yeah. But basically, when a node has been running for a while, it has a list of addresses that it got from other peers and it's stores them in a file. And when the node restarts, it looks at this file for all the addresses it heard of, and it starts randomly connecting to them. And the idea here is that you try to pollute this file as an attacker.
-
-Aaron:
-Mm-hmm (affirmative).
-
-Sjors:
-You try to give the node a lot of new addresses that you control.
-
-Aaron:
-Right.
-
-Sjors:
-Or that just don't exist. That's fine too. And you kind of try to exploit the way that this node picks the addresses.
-
-Aaron:
-Mm-hmm (affirmative).
-
-Sjors:
-That's sort of at a high level, what happens. And so basically the node [defines 00:08:13] the addresses in buckets, it basically looks at the IP address and finds some patterns in it, like the starting letters of the IP address or deciding numbers of the IP address and it divides them across buckets that way.
-
-Aaron:
-And I guess buckets are just a different word for lists.
-
-Sjors:
-Yes.
-
-Aaron:
-Yeah.
-
-Sjors:
-Separate lists. And then when it's starting up, it just tries to pick things from different buckets.
-
-Aaron:
-Right.
-
-Sjors:
-It's still get confused by the details. It doesn't really matter, but there's basically a way that it does that and you can exploit that mechanism because the mechanism has, or had a bias in it-
-
-Aaron:
-Mm-hmm (affirmative).
-
-Sjors:
-... for one thing, it tried to take very recent items from the... So if you've learned about an address recently it would be slightly more likely to use that.
-
-Aaron:
-Mm-hmm (affirmative).
-
-Sjors:
-And so you could exploit that, but the idea is you give the node... You start up a whole bunch of attack nodes.
-
-Aaron:
-Mm-hmm (affirmative).
-
-Sjors:
-And you just feed IP addresses. You connect to the victim node.
-
-Aaron:
-Mm-hmm (affirmative).
-
-Sjors:
-So you can occupy all the inbound connections, that's easy.
-
-Aaron:
-Right.
-
-Sjors:
-And then you give it a lot of nonsense addresses and a lot of real addresses that are you.
-
-Aaron:
-Yeah. So-
-
-Sjors:
-And every time it makes a connection, it either fails because there's nothing there or it connects to you and eventually it only connects to you.
-
-Aaron:
-Right. So if I would have to simplify this probably by a lot, then let's say I have a thousand real IP addresses of other nodes and then you feed me, I don't know, 10 gazillion fake IP addresses or IP addresses that are yours and then my nodes start to pick IP addresses, then the odds are, I'm just going to pick IP addresses that are either fake or yours and I'm not going to pick any of the real ones because I'm only picking so many IP addresses.
-
-Sjors:
-Yeah. And so part of the trick here is that you have a list of IP addresses that you know already, but every time you learn new ones you start throwing away the old ones you already knew.
-
-Aaron:
-Right. So it's even worse than the sort of random example I gave.
-
-Sjors:
-Yeah. Well that's the problem right? You can just keep giving somebody new addresses and then eventually they won't remember any of their old addresses. So the paper runs a simulation to see how difficult it is to actually overflow all these buckets right? Because maybe it just, it might be possible in theory, but maybe it's just too much work and the paper show said it's actually not too much work.
-
-Aaron:
-Hmm.
-
-Sjors:
-I think it's like a matter of days that you can flood it.
-
-Aaron:
-Okay. So it's going to take a couple of days to basically fill the buckets, the lists of another nodes' IP addresses with all of your own IP addresses and fake IP addresses?
-
-Sjors:
-Yep.
-
-Aaron:
-What then?
-
-Sjors:
-So then the node is still not really... The node still has connections, still has outbound connections to the real world so the question is, how can you get rid of those connections? And the trick there is you try to make the node crash in whatever way you can make a node crash. And-
-
-Aaron:
-What are some ways you can make a node crash?
-
-Sjors:
-Well, there are hopefully no ways to make a node crash.
-
-Aaron:
-Oh.
-
-Sjors:
-But this is why it's extremely important to make sure you, as a developer, you don't write code that can make a node crash, because it is an important ingredient in these type of attacks.
-
-Aaron:
-Right.
-
-Sjors:
-And another attacks. So whenever there is a bug that allows Bitcoin Core to crash, it's a pretty serious one, but you can overload somehow overload its ram usage, there's been lots of problems like that, but when it crashes and it starts again, hopefully, usually automatically if you've configured a server correctly and when it starts automatically, when it starts, it's going to look at that file of peers it knows, and it's going to try and connect to them. So it's going to look in all these buckets and it's only going to find the attacker.
-
-Aaron:
-Right.
-
-Sjors:
-And then the attacker also makes sure that it makes sure it's connecting to you. So all your inbound connections are full and then you're just only talking to the attacker. So that's what you need.
-
-Aaron:
-And then the eclipse attack is in play.
-
-Sjors:
-Exactly.
-
-Aaron:
-So now are we going to solve it?
-
-Sjors:
-Yeah. So what are we going to do about it?
-
-Aaron:
-What are we going to do about it Sjors?
-
-Sjors:
-So as we already said, it is a numbers game. You need to give a lot of spam addresses to this node to fill up all the buckets and make sure that it only connects to you. So one very simple solution is just to have more buckets. Another is, what we said, these more recent peers that you are biased towards.
-
-Aaron:
-Mm-hmm (affirmative).
-
-Sjors:
-One thing you can do is to not have that bias.
-
-Aaron:
-Right. Or reverse that bias?
-
-Sjors:
-Well then you just attack it in some opposite way. Whenever there's a bias that gives you something that you can attack.
-
-Aaron:
-I would imagine it's harder to attack the reversed version of that bias if you prioritize IP addresses, you already knew, then it's harder for an attacker to attack you, right?
-
-Sjors:
-Yes. But if you prioritize old IP addresses that you knew a long time ago, then they might not be there anymore. So you're constantly failed to connect. So there's a trade off there. If you've recently heard about the IP address, it's probably still out there. So there's a bit of a trade off, but there is one medication that's sort of related to this, which is that if you hear of a new address and you want to replace that, you want to put that in the bucket and therefore take something else out of the bucket, first, you check the address that's already in the bucket. You connect to it, you see if it's still out there. If it's still out there, you don't replace it.
-
-Aaron:
-Mm-hmm (affirmative).
-
-Sjors:
-So that's called the feeler connection. So what I think a couple years ago, was merged was basically Bitcoin Core every now and then looks at that bucket, quickly connects to a node, sees if it's real and remembers that and then disconnects.
-
-Aaron:
-Right. So that is prioritizing all the addresses just in a smarter way.
-
-Sjors:
-Yes.
-
-Aaron:
-Yeah.
-
-Sjors:
-Exactly.
-
-Aaron:
-And this was merged. And what about the previous one? I didn't ask, but is that one merged using more buckets? Is that?
-
-Sjors:
-I don't think so.
-
-Aaron:
-Okay.
-
-Sjors:
-I don't think using more buckets was merged. Basically the paper has about 10 suggestions and some of them have been merged. Some of them even before the paper came out, because obviously it was an exploitable vulnerability.
-
-Aaron:
-Right.
-
-Sjors:
-And some of them much later. Another thing you can do, and that is actually what has been merged a few weeks' ago.
-
-Aaron:
-Which will be in the next Bitcoin Core release.
-
-Sjors:
-Hopefully yes. Well, yes. Is that when you restart, you try to remember some of the last connections you had and so that's what it's doing, basically. It remembers the, I think two connections, namely two connections that it only exchanges blocks with.
-
-Aaron:
-Mm-hmm (affirmative).
-
-Sjors:
-And it tries to reconnect to those, but not too often because there's straight offs everywhere, but apparently it's not a good idea to always try to reconnect to the same nodes again when you restart because for all you know, the reason you crashed in the first place is because one of those nodes was evil.
-
-Aaron:
-Right.
-
-Sjors:
-Right.
-
-Aaron:
-Yeah. So yeah, the idea is that, as you explained before, you need to crash a node for a node to start up again and find, well, all of that attack IP address in this case. This attack would be countered because you're just connected to some of the same IP addresses you were already connected to.
-
-Sjors:
-Yeah. But not-
-
-Aaron:
-With the trade after maybe the one you connected to was also the one that crashed you so you might be crashed again.
-
-Sjors:
-Yes. But you... You exactly. Yeah. And I think one of the mitigations for that is that you only try this once so you connect to the one you were connected to last, but if that goes wrong again, you don't do it again.
-
-Aaron:
-Right.
-
-Sjors:
-Now another thing you can do is not have more buckets, but have more connections, more outbound connections because the more outbound connections you have, the more likely you are to be connecting to honest nodes.
-
-Aaron:
-Yeah. The harder it is for an attacker to control all of the IP addresses you're connected to.
-
-Sjors:
-Yeah. And you may ask yourself why wouldn't you do that, right? Why not just have as many connections as possible?
-
-Aaron:
-Why not have as many connections as possible Sjors?
-
-Sjors:
-That's an excellent question.
-
-Aaron:
-Thank you.
-
-Sjors:
-The problem is that you're exchanging a lot of data and especially the transactions that are in a Mempool. That is very data intense.
-
-Aaron:
-Mm-hmm (affirmative).
-
-Sjors:
-Like gigabytes and gigabytes and gigabytes. So you can't just add more connections without also increasing bandwidth use. And there are some new proposals that we'll probably discussing future episodes that will reduce the bandwidth needed to do these Mempool synchronizations and then you can have more connections. So there's an incentive to make this data exchange more efficient.
-
-Aaron:
-Plus there's the solution that some of the connections you connect to, you don't share Mempool stuff, you only connect blocks.
-
-Sjors:
-That's right.
-
-Aaron:
-I guess that's also one of the solutions mentioned in the paper isn't it?
-
-Sjors:
-I believe it is.
-
-Aaron:
-But we sort of already spoiled it in the previous solution.
-
-Sjors:
-We may have. So one of the ways to have more connections to have the upside of more connections without the downside of more bandwidth is to only exchange blocks with those extra connections, because that happens much less frequently. And-
-
-Aaron:
-It still costs a little bit of an extra bandwidth.
-
-Sjors:
-Yeah.
-
-Aaron:
-But much less.
-
-Sjors:
-And this, again-
-
-Aaron:
-Not nearly as much.
-
-Sjors:
-... reminds us that you need to wait for confirmations because those extra connections will tell you about new blocks. They won't tell you about new stuff in a Mempool, but that's fine if you wait for confirmations.
-
-Aaron:
-Is there more?
-
-Sjors:
 Well, I mean, you can always use the block stream satellite or something like that as another source of data. Of course that's not a universal solution, but it is a really-
-
-Aaron:
-It is almost, I think.
-
-Sjors:
-Well, you... I mean specifically you would be trusting Blockstream.
-
-Aaron:
-Yes.
 
 Sjors:
 But there is an incentive for Bitcoin blocks to be broadcast in general, over satellite or AM, or for multiple sources so it's more difficult to eclipse someone because you'd have to eclipse the whole planet, right? If the signal is coming from a satellite, you want to eclipse somebody who's listening to that satellite and you either have to blow up the satellite connection to them or blow up the satellite itself, which everybody would notice and it'd be in the news and you'd say, "Hey, there's probably something going on here."
 
 Aaron:
-Sure.
-
-Sjors:
-Let's see, any other mitigations?
-
-Aaron:
 I like your [inaudible 00:18:00] mindset though, that you do recognize that that's actually a risk that someone blows up the satellite.
 
 Sjors:
-Well, I mean, you don't actually physically have to blow it up, I guess. You can just tell people to stop broadcasting to it. One more solution is to have more nodes, basically, that other people don't know are yours. So if you have multiple nodes that you're using for-
+Well, I mean, you don't actually physically have to blow it up, I guess. You can just tell people to stop broadcasting to it. One more solution is to have more nodes, basically, that other people don't know are yours. So if you have multiple nodes that you're using for-... your, whatever your services and you make sure that the outside world doesn't know all of them, and they might try to eclipse one of them, but they forgot to eclipse the other ones.
 
-Aaron:
-Sure.
-
-Sjors:
-... your, whatever your services and you make sure that the outside world doesn't know all of them, and they might try to eclipse one of them, but they forgot to eclipse the other ones.
-
-Aaron:
-That's like a good idea to me Sjors.
-
-Sjors:
-Yeah.
-
-Aaron:
-But there were like 10 solutions in the paper.
-
-Sjors:
-Yeah, there were.
-
-Aaron:
-But we didn't cover them all then?
-
-Sjors:
-No we didn't because in order to cover them all, you would have to describe the attack in much more detail.
-
-Aaron:
-Mm.
-
-Sjors:
-To the point that even though I've read this paper probably two or three times over the past few years, I don't understand all the details, especially these buckets, the way they're filled is rather tedious.
-
-Aaron:
-Right. Fair enough.
-
-Sjors:
-So.
-
-Aaron:
-So yeah, I guess we'll put the paper in the show notes, right?
-
-Sjors:
-Yes. And there's a website that links to some of the solutions that have been implemented although-
-
-
--->
-
----
-
-### Erebus attack
+### Erebus Attack
 
 ![{l0pt}](qr/ep/18.png)
 
-Episode 18 of Bitcoin, Explained continues on the topic of eclipse attacks where this chapter left of. It describes the Erebus Attack^[<https://erebus-attack.comp.nus.edu.sg>]: an eclipse attack where an attacker essentially spoofs a whole part of the internet.
+If you want to learn more about eclipse attacks, you might be interested in the Erebus attack^[<https://erebus-attack.comp.nus.edu.sg>]: an eclipse attack where an attacker essentially spoofs an entire part of the internet.
 
-The internet is made up of Autonomous Systems, basically clusters of IP-addresses owned by the same entity, like an ISP. As we explained above, Bitcoin Core nodes can counter Eclipse Attacks by ensuring that they are connected to a variety of IP addresses from different Autonomous Systems. As it turns out, however, some Autonomous Systems can effectively act as bottlenecks when trying to reach other Autonomous Systems.
+How this works is the internet is made up of Autonomous Systems (AS), which are basically clusters of IP addresses owned by the same entity, like an ISP. As explained above, Bitcoin Core nodes can counter eclipse attacks by ensuring they're connected to a variety of IP addresses from different Autonomous Systems.
 
-This allows an attacker controlling such a bottleneck to launch a successful Eclipse Attack even against nodes that connect with multiple Autonomous Systems.
+As it turns out, however, some Autonomous Systems can effectively act as bottlenecks when trying to reach other Autonomous Systems. This allows an attacker controlling such a bottleneck to launch a successful eclipse attack — even against nodes that connect with multiple Autonomous Systems.
 
-Recent versions Bitcoin Core therefore include an optional feature — ASMAP — to counter these types of Eclipse Attacks. The episode explains how mapping of the internet has allowed Bitcoin Core contributors to create a tool which ensures that Bitcoin nodes not only connect to various Autonomous Systems, but also ensures that they avoid being trapped behind said bottlenecks.
+Recent versions of Bitcoin Core include an optional feature — ASMAP — to counter these types of eclipse attacks. The episode explains how mapping of the internet has allowed Bitcoin Core contributors to create a tool which ensures that Bitcoin nodes not only connect to various Autonomous Systems, but also ensures that they avoid being trapped behind said bottlenecks.
