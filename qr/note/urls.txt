@@ -5,6 +5,7 @@ https://arxiv.org/abs/2108.00815
 https://bitcoin.org/en/alert/2015-07-04-spv-mining#cause
 https://bitcoin.org/en/releases/22.0/
 https://bitcoin.stackexchange.com/a/10666/4948
+https://bitcoin.stackexchange.com/a/1992/4948
 https://bitcoincore.org
 https://bitcoincore.org/en/2018/09/20/notice/
 https://bitcoincore.org/en/2021/05/01/release-0.21.1/
