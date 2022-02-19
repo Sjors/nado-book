@@ -21,7 +21,7 @@ if [ "$SKIP_QR" -eq "0" ]; then
     # Process episode QR codes:
     pushd qr/ep
         for f in *.txt; do
-            qrencode -o ${f%.txt}.png -r $f --level=M -d 300 -s 6
+            qrencode -o ${f%.txt}.png -r $f --level=M -d 300 -s 4
         done
     popd
 
@@ -46,9 +46,8 @@ if [ "$SKIP_QR" -eq "0" ]; then
         # Skip URL's that haven't been shortened
         # Some domains are so short, they don't need shortening (unless we deep link to them)
         if echo $short_url | grep 'bit.ly\|nus.edu\|amzn.to\|gitian.org\|yhoo.it'; then
-            echo $short_url | qrencode -o qr/note/${i}.png --level=L -8 -d 300 -s 2 --margin=1
             # Add to processed markdown (might be macOS specific):
-            find intro.processed.md **/*.processed.md -exec sed -i '' -e "s*<$url>*<$url> ![](qr/note/$i.png)*g" {} \;
+            find intro.processed.md **/*.processed.md -exec sed -i '' -e "s*<$url>*<$url> \\\qrcode[height=0.45cm,level=M]{$short_url}*g" {} \;
         fi
     done
 

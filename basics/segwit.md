@@ -59,7 +59,7 @@ This increase isn't unlimited either. SegWit nodes use a new way of calculating 
 
 Another way to express this discount is by introducing the concept of transaction "weight" rather than size. Witness data, which is the signature and any other data provided by the spender to satisfy the script, is given a lower weight than all the other transaction data.
 
-### Future SegWit versions, e.g. Taproot
+### Future SegWit Versions, e.g. Taproot
 
 The topic of Taproot is covered in depth in chapter @sec:taproot_basics. But what's important to know here is SegWit’s script versioning allows for easier upgrades to new transaction types, and the recent Taproot upgrade is the first example of this feature.
 

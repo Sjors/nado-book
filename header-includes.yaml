@@ -1,6 +1,7 @@
 ---
 header-includes:
 - \usepackage{caption}
+- \usepackage{qrcode}
 - \usepackage{wrapfig}
 - \captionsetup[figure]{labelformat=empty}
 - \semiisopage
