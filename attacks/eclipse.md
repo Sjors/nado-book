@@ -3,9 +3,9 @@
 
 ![Ep. 17 {l0pt}](qr/ep/17.png)
 
-An eclipse attack is a type of attack that isolates a Bitcoin node by occupying all of its connection slots to block the node from receiving any transactions, in turn barring it from transactions other than those sent to it by the attacker. This prevents the node from seeing what’s going on in the Bitcoin network, and potentially even tricks the node into accepting an alternative (invalid) version of the Bitcoin blockchain.
+An eclipse attack is a type of attack that isolates a Bitcoin node by occupying all of its connection slots to block the node from receiving any transactions and blocks, other than those sent to it by the attacker. This prevents the node from seeing what’s going on in the Bitcoin network, and potentially even tricks the node into accepting an alternative branch of the Bitcoin blockchain. Although nodes will never accept an invalid transaction or block, an eclipse attack can still cause harm, as we'll see.  
 
-This chapter discusses how this type of attack could be used to dupe users and miners. It also talks about solutions to counter this type of attack, some of which were outlined in the 2015 paper “Eclipse Attacks on Bitcoin’s Peer-to-Peer Network,” which was written by Ethan Heilman, Alison Kendler, Aviv Zohar, and Sharon Goldberg, from Boston University and Hebrew University/MSR Israel.^[<https://cs-people.bu.edu/heilman/eclipse/>] Many of the solutions proposed by this paper have already been implemented in Bitcoin Core software — the most recent of which was included in Bitcoin Core 0.21.0. This chapter also discusses a potential solution that wasn't in the paper.
+This chapter discusses how this type of attack could be used to dupe users and miners. It also talks about solutions to counter this type of attack, some of which were outlined in the 2015 paper “Eclipse Attacks on Bitcoin’s Peer-to-Peer Network,” which was written by Ethan Heilman, Alison Kendler, Aviv Zohar, and Sharon Goldberg, from Boston University and Hebrew University/MSR Israel.^[<https://cs-people.bu.edu/heilman/eclipse/>] Many of the solutions proposed by this paper have gradually been implemented in Bitcoin Core software in the past few years. This chapter also discusses a potential solution that wasn't in the paper.
 
 ### What an Eclipse Attack Is
 
@@ -73,7 +73,7 @@ Another thing you can do instead of having more buckets is have more outbound co
 
 You may be wondering: Why wouldn't you just have as many connections as possible from the get-go? But the problem is that it requires a lot of data exchange — especially for the transactions in a mempool — and that's extremely data intense, so you can't just add more connections without also increasing bandwidth use.
 
-That said, there are some new proposals for reducing the bandwidth needed for these mempool synchronizations that would allow more connections — so there's an incentive to make this data exchange more efficient. 
+That said, there are some new proposals for reducing the bandwidth needed for these mempool synchronizations that would allow more connections — so there's an incentive to make this data exchange more efficient.
 
 Plus, there's the solution that some of the connections you connect to, you don't share mempool stuff with; instead, you only connect to blocks.
 
