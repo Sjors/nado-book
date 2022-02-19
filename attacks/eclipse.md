@@ -47,11 +47,15 @@ Miners and pool operators are of course are not naive. They might run multiple n
 
 ### How an Eclipse Attack Works
 
-Nodes are becoming a little bit hardened, but to understand that, it's important to understand how the aforementioned paper proposes that one does an eclipse attack.
+So far we've taken for granted that an eclipse attack can be done, and shown how it's used to trick you into parting with your hard earned coins. But how is actually done?
 
-There are a couple of ingredients. First, as mentioned in chapter X, when a node starts, it tries to find other peers, and once it's been running for a while, it has a list of addresses it got from other peers and it stores them in a file. Then, when the node restarts, it looks at this file for all the addresses it knows, and it starts randomly connecting to them.
+Recall from above that in order to eclipse your node, the attack needs to take over all eight of your outbound connections and whether number of inbound connections your node has. This is a cat and mouse game, and even before the above mentioned paper was written, the Bitcoin Core software was hardened to prevent eclipse attacks. But let's see how the paper proposed overcoming the existing defenses.
 
-As an attacker, the idea is to pollute this file by giving the node either addresses you control or addresses that don't exist. Either way, the goal is to exploit the way the node picks the addresses, so that every time it makes a connection, it either fails because there's nothing there, or it connects to you — and eventually it only connects to you.
+There are a couple of ingredients. First, as mentioned in chapter @sec:dns, when a node starts, it tries to find other peers, and once it's been running for a while, it has a list of addresses it got from other peers and it stores them in a file. Then, when the node restarts, it looks at this file for all the addresses it knows, and it starts randomly connecting to them.
+
+As an attacker, the idea is to pollute this file by giving your node a bunch of addresses that they control or that don't exist at all. This way, whatever address your node picks, every time it makes a connection, it either fails because there's nothing there, or it connects to the attacker — and eventually all connections are to the attacker.
+
+The attacker also needs to control all inbound connections to your node. Without going into too much detail in this chapter, one approach is to just make lots and lots of connection attempts until all your 117 inbound slots are full. Over time, perhaps weeks, as honest peers occasionally disconnect from you, the attacker quickly fills up the open inbound slot, so that no new honest peer gets through.
 
 This happens due to the nature of how a node collects and organizes IP addresses: by sorting them into various "buckets" based on things like the starting number or ???
 
