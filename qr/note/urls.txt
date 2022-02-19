@@ -4,6 +4,7 @@ https://arxiv.org/abs/2107.05322
 https://arxiv.org/abs/2108.00815
 https://bitcoin.org/en/alert/2015-07-04-spv-mining#cause
 https://bitcoin.org/en/releases/22.0/
+https://bitcoin.stackexchange.com/a/10666/4948
 https://bitcoincore.org
 https://bitcoincore.org/en/2018/09/20/notice/
 https://bitcoincore.org/en/2021/05/01/release-0.21.1/
@@ -27,6 +28,7 @@ https://bitcoinops.org/en/topics/ptlc/
 https://bitcointalk.org/index.php?topic=155054.0
 https://bitcointalk.org/index.php?topic=5348856.0
 https://bitcointalk.org/index.php?topic=999.msg12181#msg12181
+https://bitcoinvisuals.com/chain-block-reward
 https://blockstream.com/2018/11/28/en-simplicity-github/
 https://blog.bitmex.com/bitcoins-consensus-forks/
 https://blog.bitmex.com/the-blocksize-war-chapter-14-asicboost/
@@ -114,6 +116,7 @@ https://medium.com/@MeshCollider/some-of-the-math-behind-bech32-addresses-cf03c7
 https://medium.com/@RubenSomsen/21-million-bitcoins-to-rule-all-sidechains-the-perpetual-one-way-peg-96cb2f8ac302
 https://medium.com/blockstream/miniscript-bitcoin-scripting-3aeff3853620
 https://nadobtc.libsyn.com
+https://nadobtc.libsyn.com/federated-ecash-episode-52
 https://news.ycombinator.com/item?id=11230394
 https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-smart-contracts-2bd8c8db3562
 https://podcast.chaincode.com/2021/10/26/pieter-wuille-amiti-uttarwar-p2p.html
