@@ -47,23 +47,27 @@ Miners and pool operators are of course are not naive. They might run multiple n
 
 ### How an Eclipse Attack Works
 
-So far we've taken for granted that an eclipse attack can be done, and shown how it's used to trick you into parting with your hard earned coins. But how is actually done?
+So far we've taken for granted that an eclipse attack can be done, and shown how it's used to trick you into parting with your hard earned coins. But how is it actually done?
 
-Recall from above that in order to eclipse your node, the attack needs to take over all eight of your outbound connections and whether number of inbound connections your node has. This is a cat and mouse game, and even before the above mentioned paper was written, the Bitcoin Core software was hardened to prevent eclipse attacks. But let's see how the paper proposed overcoming the existing defenses.
+Recall from above that in order to eclipse your node, the attacker needs to take over all eight of your outbound connections and whatever number of inbound connections your node has. This is a cat and mouse game, and even before the above mentioned paper was written, the Bitcoin Core software was hardened to prevent eclipse attacks. But let's see how the paper proposed overcoming the existing defenses.
 
-There are a couple of ingredients. First, as mentioned in chapter @sec:dns, when a node starts, it tries to find other peers, and once it's been running for a while, it has a list of addresses it got from other peers and it stores them in a file. Then, when the node restarts, it looks at this file for all the addresses it knows, and it starts randomly connecting to them.
+There are a couple of ingredients. First, as mentioned in chapter @sec:dns, when a node starts, it tries to find other peers, and once it's been running for a while, it has a list of addresses it learned from other peers and it stores them in a file. Then, whenever a node loses one of its eight outbound connections, or when  restarts, it looks at this file with all the addresses it ever heard of, and it starts randomly connecting to them.
 
 As an attacker, the idea is to pollute this file by giving your node a bunch of addresses that they control or that don't exist at all. This way, whatever address your node picks, every time it makes a connection, it either fails because there's nothing there, or it connects to the attacker — and eventually all connections are to the attacker.
 
 The attacker also needs to control all inbound connections to your node. Without going into too much detail in this chapter, one approach is to just make lots and lots of connection attempts until all your 117 inbound slots are full. Over time, perhaps weeks, as honest peers occasionally disconnect from you, the attacker quickly fills up the open inbound slot, so that no new honest peer gets through.
 
-This happens due to the nature of how a node collects and organizes IP addresses: by sorting them into various "buckets" based on things like the starting number or ???
+As early as 2012 developers realized that it was possible for an attacker to give your node huge numbers of IP addresses, all controlled by them. Let's say your node has 1,000 real IP addresses of other nodes. Then the attacker feeds you 10,000 addresses that they control. As your node starts to pick IP addresses, the odds are 90 percent that it will connect to the attacker.
 
-Imagine someone has 1,000 real IP addresses of other nodes. Then you, the attacker, feed them 10 gazillion fake IP addresses or IP addresses that are yours. Then, as the person's nodes start to pick IP addresses, the odds are it'll pick some of those IP addresses, and possibly not any real ones.
+But as long as these addresses were closely related, e.g. because they're all in the same data center, there was something that could be done. A bucket system was introduced, which puts all IP addresses with the same two starting digits, e.g. `172.67.*.*` into the same bucket. The node would then pick from different buckets for each of its outbound connections.<https://github.com/bitcoin/bitcoin/pull/787>
 
-Part of the trick is that there's a list of IP addresses that are known, but every time a node learns new ones, it starts throwing away the older ones.
+In the above example all the attacker's IP addresses end up in one bucket, and there are 256 such buckets, so the odds of connecting to even a single attacker node drop dramatically. Keep in mind that you only need _one_ honest peer to be protected against eclipse attacks.
 
-Here's where the paper comes into play. It ran a simulation to see how difficult it was to actually overflow all these buckets, and it found that, within a matter of days, it can be successful.
+Each bucket is also limited in size, so most of the 10,000 addresses in the example above would be thrown out of their bucket almost as soon as they entered it.
+
+Finally, in the same pull request, nodes also started remembering which nodes they previously connected to. Whenever they needed a new connection, they would toss a coin, and either connect to one of those, or pick a new one from one of the 256 buckets.
+
+You might think this would do the trick, but here's where the paper comes into play. It ran a simulation to see how difficult it was to actually overflow all these buckets, and it found that, within a matter of days, it can be successful.
 
 At this point, the node still has outbound connections to the real world, so the question for the attacker is: How can you get rid of those connections? The trick is to try and make the node crash.
 
