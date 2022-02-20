@@ -1,3 +1,3 @@
 # Better wallets
 
-Better ways to store your bitcoin for consumers, exchanges as well as hybrid solutions.
+<!-- Intentionally left out, because this part only has one chapter -->
