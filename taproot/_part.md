@@ -1,4 +1,3 @@
-\newpage
 # Taproot {#sec:taproot}
 
 This section is all about Taproot: what it is, why it's interesting and how it came to be.

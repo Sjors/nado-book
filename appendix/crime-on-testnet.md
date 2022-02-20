@@ -1,4 +1,5 @@
-# A crime on Testnet {#sec:crime_on_testnet}
+## A crime on Testnet {#sec:crime_on_testnet}
+
 _This dystopian fiction, which explains the basics of blockchain
 analytics, was originally published as a blog post._^[<https://sprovoost.nl/2018/12/28/a-crime-on-testnet-6d95ede8da03/>]
 \

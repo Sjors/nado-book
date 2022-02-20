@@ -1,5 +1,5 @@
 \newpage
-## Why Open Source Matters (guix) {#sec:guix}
+## Open Source Matters - Guix {#sec:guix}
 
 
 ![Ep. 21 {l0pt}](qr/ep/21.png)

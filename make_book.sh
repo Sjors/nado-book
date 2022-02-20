@@ -62,7 +62,7 @@ dot -Tsvg taproot/speedy_trial.dot > taproot/speedy_trial.svg
 echo "Generate PDF..."
 
 # Generate document
-pandoc --table-of-contents --toc-depth=2 --number-sections\
+pandoc --table-of-contents --top-level-division=part --toc-depth=1\
         --metadata-file meta.yaml\
         --template=templates/pandoc.tex\
         --strip-comments\
@@ -71,21 +71,21 @@ pandoc --table-of-contents --toc-depth=2 --number-sections\
         $EXTRA_OPTIONS\
         header-includes.yaml\
         intro.processed.md\
-        basics/_section.processed.md\
+        basics/_part.processed.md\
         basics/address.processed.md\
         basics/dns_and_tor.processed.md\
         basics/segwit.processed.md\
         basics/libsecp256k1.processed.md\
-        resources/_section.processed.md\
+        resources/_part.processed.md\
         resources/assume-utxo.processed.md\
         resources/utreexo.processed.md\
-        attacks/_section.processed.md\
+        attacks/_part.processed.md\
         attacks/eclipse.processed.md\
         attacks/fake_nodes.processed.md\
         attacks/guix.processed.md\
-        wallets/_section.processed.md\
+        wallets/_part.processed.md\
         wallets/miniscript.processed.md\
-        taproot/_section.processed.md\
+        taproot/_part.processed.md\
         taproot/basics.processed.md\
         taproot/activation.processed.md\
         appendix/more_episodes.processed.md\

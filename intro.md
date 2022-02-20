@@ -1,4 +1,4 @@
-# Introduction
+## Introduction {.unnumbered}
 
 Lorem ipsum
 

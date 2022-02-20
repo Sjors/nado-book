@@ -1,4 +1,3 @@
-\newpage
 # Resource usage
 
 The blockchain is big. Resources like CPU power, RAM and internet bandwidth are increasing every year, thanks to Moore's law, but they are still scarce and not equally distributed in the world. They're also not guaranteed to go on forever.

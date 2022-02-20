@@ -1,5 +1,5 @@
 \newpage
-## DNS Bootstrapping and Tor V3 {#sec:dns}
+## DNS Bootstrap and Tor V3 {#sec:dns}
 
 ![Ep. 13 {l0pt}](qr/ep/13.png)
 

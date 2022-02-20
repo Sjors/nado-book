@@ -1,12 +1,15 @@
 <!-- \backmatter -->
 \appendix
-# More episodes {#sec:more_eps}
+\pagestyle{headings}
+# Appendix {.unnumbered}
+
+## More episodes {#sec:more_eps}
 
 Not all episodes of Bitcoin, Explained made it into this book. Here's some other episodes you could listen to:
 
-## Basics
+### Basics
 
-### What is an Xpub?
+#### What is an Xpub?
 
 ![Ep. 07 {l0pt}](qr/ep/07.png)
 
@@ -14,7 +17,7 @@ In this episode we explain what an xpub is and how it is used by Bitcoin wallets
 
 \newpage
 
-### Replace by Fee (RBF)
+#### Replace by Fee (RBF)
 
 ![Ep. 26 {l0pt}](qr/ep/26.png)
 
@@ -27,7 +30,7 @@ The main disadvantage of RBF is that it makes it slightly easier to double spend
 Finally, we explain in some detail how opt-in RBF works in Bitcoin Core, and which conditions must be met before a transaction is considered replaceable. He also notes some complications with this version of RBF, for example in the context of the Lightning Network.
 
 
-### Signet
+#### Signet
 
 ![Ep. 10 {l0pt}](qr/ep/10.png)
 
@@ -37,7 +40,7 @@ Signet is a new type of testnet for Bitcoin. In this episode we discuss discuss 
 
 \
 
-### PSBT and RBF attack
+#### PSBT and RBF attack
 
 ![Ep. 01 {l0pt}](qr/ep/01.png)
 
@@ -49,7 +52,7 @@ In this episode we break down and explain Partially Signed Bitcoin Transactions 
 
 \
 
-### Mempools, Child Pays for Parent, and Package Relay
+#### Mempools, Child Pays for Parent, and Package Relay
 
 ![Ep. 19 {l0pt}](qr/ep/19.png)
 
@@ -61,7 +64,7 @@ Mempools can get full, however, at which point transactions that pay the lowest 
 
 In this episode, van Wirdum and Provoost explained how package relay could enable CPFP, even in cases where low-fee transactions are dropped from mempools, by bundling transactions into packets. And they explore why this may be easier said than done.
 
-### Bitcoin Improvement Proposal (BIP) process
+#### Bitcoin Improvement Proposal (BIP) process
 
 ![Ep. 39 {l0pt}](qr/ep/39.png)
 
@@ -71,9 +74,9 @@ First we explain what a BIP is exactly— and what it is not. We also explain th
 
 Finally we explain how the BIP process itself works, that is, how a proposal can be turned into a BIP, and eventually be implemented in software. We also briefly explain how the BIP process could become corrupted, and why that wouldn’t be a very big deal.
 
-## Resource usage
+### Resource usage
 
-### Compact Client Side Filtering (Neutrino)
+#### Compact Client Side Filtering (Neutrino)
 
 ![Ep. 25 {l0pt}](qr/ep/25.png)
 
@@ -87,7 +90,7 @@ Compact Client Side Filtering is a newer solution to accomplish similar goals as
 
 We explain how this works in more detail, and discuss some of the tradeoffs of this solution.
 
-### Erlay
+#### Erlay
 
 ![Ep. 34 {l0pt}](qr/ep/34.png)
 
@@ -99,16 +102,16 @@ In the episode, Aaron and Sjors explain that Erlay uses set reconciliation to re
 
 Aaron and Sjors outline how this trick is applied in the context of Bitcoin to let different nodes sync their mempools: the sets of transactions they’ve received in anticipation of a new block, or, in the case of a miner, to include in a new block.
 
-## Attacks
+### Attacks
 
-### Timewarp attack
+#### Timewarp attack
 
 
 ![Ep. 05 {l0pt}](qr/ep/05.png)
 
 In this episode we explain the "time-warp attack" on Bitcoin. A potential fix for this attack is included in Matt Corallo's proposed Great Consensus Cleanup softfork^[<https://github.com/TheBlueMatt/bips/blob/cleanup-softfork/bip-XXXX.mediawiki>], which at the time of writing has not seen much progress.
 
-### Mining pool censorship
+#### Mining pool censorship
 
 ![Ep. 37 {l0pt}](qr/ep/37.png)
 
@@ -118,9 +121,9 @@ Some time after recording they changed course and announced that they would not 
 
 In the episode we discuss the prospects of mining censorship, what that would mean for Bitcoin, and what can be done about it. We discuss what it means that a mining pool is now censoring certain transactions, and go on to expand what it could look like if this practice gets adopted more widely. We consider what censoring mining pools could accomplish if they ever get close to controlling a majority of hash power, and what Bitcoin users could potentially do in such a scenario (if anything).
 
-## Wallets
+### Wallets
 
-### Hardware Wallet Integration in Bitcoin Core
+#### Hardware Wallet Integration in Bitcoin Core
 
 
 ![Ep. 30 {l0pt}](qr/ep/30.png)
@@ -130,7 +133,7 @@ discuss hardware wallet integration into Bitcoin Core, one of the ongoing projec
 Hardware wallets are a popular solution for storing private keys offline, to minimize the risk that hackers gain access to the corresponding coins. They are used in combination with regular software wallets to sign transactions in such a way that the private keys never leave the device.
 
 
-### Hardware Wallet Security and Jade
+#### Hardware Wallet Security and Jade
 
 ![Ep. 43 {l0pt}](qr/ep/43.png)
 
@@ -142,7 +145,7 @@ Then, Lawrence explains which tradeoffs the Jade wallet makes. He also details h
 
 Finally, Aaron, Lawrence and Ben discuss whether the concept of hardware wallets are a good idea in the first place, or if it would perhaps be better to use dedicated smartphones to store your bitcoin.
 
-### Bitcoin Beach
+#### Bitcoin Beach
 
 ![Ep. 42 {l0pt}](qr/ep/42.png)
 
@@ -154,13 +157,13 @@ They go one to discuss some of the design decisions and tradeoffs that the Bitco
 
 Aaron and Nicolas also discuss some of the subtle incompatibilities between different Lightning wallets that use different techniques for routing payments, privacy considerations versus user experience in a community like El Zonte’s, and more.
 
-### Chivo
+#### Chivo
 
 ![Ep. 46 {l0pt}](qr/ep/46.png)
 
 In this episode we discuss discuss the Chivo application, the Bitcoin wallet, and payment terminal provided by the government of El Salvador. The Chivo app is closed source software. Instead of analyzing the source code and design of the application, we had to rely on Aaron’s personal experience with the wallet and payment terminal or what he remembers of that personal experience. The episode opens with some general information about the Chivo Wallet, like why it was developed and who developed it (insofar anything is known about that). We discuss Aaron’s experiences with the wallet and speculate what that means for the design. After that, we discuss the design of the payment terminal that’s included in the application, and also briefly touch on the Chivo ATMs that have been deployed across the country. Finally, we discuss the difference in philosophy between the design of the Chivo application and Bitcoin’s free and open-source software culture.
 
-### Accounts with Easypaysy
+#### Accounts with Easypaysy
 
 ![Ep. 11 {l0pt}](qr/ep/11.png)
 
@@ -170,7 +173,7 @@ Aaron also wrote an article covering Easypaysy for Bitcoin Magazine.^[<https://b
 
 \
 
-### Payment pools
+#### Payment pools
 
 ![Ep. 06 {l0pt}](qr/ep/06.png)
 
@@ -184,13 +187,13 @@ See also Aaron's article.^[<https://bitcoinmagazine.com/articles/building-on-tap
 
 \
 
-## Lightning
+### Lightning
 
 One could write a entire book about lightning. And in fact, others have, see e.g. _Mastering the Lightning Network: A Second Layer Blockchain Protocol for Instant Bitcoin Payments_ by Andreas Antonopoulos and Olaoluwa Osuntokun (aka Roasbeef).
 
 This book does not cover Lightning, but several Bitcoin, Explained episodes did.
 
-### Basics
+#### Basics
 
 ![Ep. 22 {l0pt}](qr/ep/22.png)
 
@@ -200,7 +203,7 @@ Then we explain how bi-directional payment channels can be linked across a netwo
 
 Finally, we briefly touch on some of the challenges presented by the Lightning Network, most notably the requirement of payment channels to have sufficient liquidity locked into them.
 
-### RBF bug in Bitcoin Core
+#### RBF bug in Bitcoin Core
 
 ![Ep. 38 {l0pt}](qr/ep/38.png)
 
@@ -210,7 +213,7 @@ We explain that the bug affects how RBF logic is handled by the Bitcoin Core sof
 
 This is a fairly innocent bug; in most cases the second transaction will still confirm eventually, while there are also other solutions to speed confirmation up if the included fee is too low. But in very specific cases, like some fallback security mechanisms on the Lightning Network, the bug could in fact cause complications. We try to explain what such a scenario would look like, but end up totally confused.
 
-### Routing
+#### Routing
 
 ![Ep. 41 {l0pt}](qr/ep/41.png)
 
@@ -224,7 +227,7 @@ Joost explains how Lightning nodes currently construct a map of the Lightning Ne
 
 Finally we discuss some (potential) optimizations to benefit Lightning Network routing, such as rebalancing schemes and Trampoline Payments.
 
-### Optimally Reliable & Cheap Payment Flows on the Lightning Network
+#### Optimally Reliable & Cheap Payment Flows on the Lightning Network
 
 ![Ep. 47 {l0pt}](qr/ep/47.png)
 
@@ -232,7 +235,7 @@ In this episode I interview another expert on Lightning routing, René Pickhardt
 
 > Today, payment paths in Bitcoin's Lightning Network are found by searching for shortest paths on the fee graph. We enhance this approach in two dimensions. Firstly, we take into account the probability of a payment actually being possible due to the unknown balance distributions in the channels. Secondly, we use minimum cost flows as a proper generalization of shortest paths to multi-part payments (MPP). In particular we show that under plausible assumptions about the balance distributions we can find the most likely MPP for any given set of senders, recipients and amounts by solving for a (generalized) integer minimum cost flow with a separable and convex cost function. Polynomial time exact algorithms as well as approximations are known for this optimization problem. We present a round-based algorithm of min-cost flow computations for delivering large payment amounts over the Lightning Network. This algorithm works by updating the probability distributions with the information gained from both successful and unsuccessful paths on prior rounds. In all our experiments a single digit number of rounds sufficed to deliver payments of sizes that were close to the total local balance of the sender. Early experiments indicate that our approach increases the size of payments that can be reliably delivered by several orders of magnitude compared to the current state of the art. We observe that finding the cheapest multi-part payments is an NP-hard problem considering the current fee structure and propose dropping the base fee to make it a linear min-cost flow problem. Finally, we discuss possibilities for maximizing the probability while at the same time minimizing the fees of a flow. While this turns out to be a hard problem in general as well - even in the single path case - it appears to be surprisingly tractable in practice.
 
-### Eltoo and SIGHASH_ANYPREVOUT
+#### Eltoo and SIGHASH_ANYPREVOUT
 
 We covered this topic twice, so there's two epidodes to choose from. In episode 35 Aaron and I explain it, whereas in episode 48 one of the authors, c-lightning developer Christian joins me to explain it in his words.
 
@@ -246,7 +249,7 @@ This can be (almost) the entire transaction, or specific parts of it. Signing on
 
 `SIGHASH_ANYPREVOUT` would be especially useful in context of Eltoo, a proposed Layer Two protocol that would enable a new version of the Lightning Network. Where Lightning users currently need to store old channel data for security reasons, and could also be punished severely if they accidentally broadcast some of this data at the wrong time, we how SIGHASH_ANYPREVOUT would do away with this requirement.
 
-### Bolt 12 - Recurring payments, etc
+#### Bolt 12 - Recurring payments, etc
 
 ![Ep. 44 {l0pt}](qr/ep/44.png)
 
@@ -258,7 +261,7 @@ BOLT 12, which has been implemented in c-lightning, is a way to essentially refe
 
 Finally, we discuss how the new BOLT 12 messages are communicated over the Lightning Network through an update to the BOLT 7 specification for message relay.
 
-## Sidechains and more
+### Sidechains and more
 
 Lightning is not the only path forward for scaling Bitcoin, though it is the most actively developed one at the moment. Sidechains are another approach, optionally combined with Lightning.
 
@@ -266,7 +269,7 @@ Though there is no universally agreed upon definition, the general idea is that 
 
 We discussed several of these ideas in the podcast, often with the help of Utrecht based ad hoc co-host Ruben Somsen.
 
-### Drivechains
+#### Drivechains
 
 ![Ep. 23 {l0pt}](qr/ep/23.png)
 
@@ -282,7 +285,7 @@ We also discuss some of the benefits as well as complications with Drivechain, m
 
 \newpage
 
-### Perpetual One-Way Peg
+#### Perpetual One-Way Peg
 
 ![Ep. 12 {l0pt}](qr/ep/12.png)
 
@@ -292,7 +295,7 @@ First Ruben introduces the concept of a blind merge-mind chain. He then explains
 
 A blog post by Ruben also explains the concept.^[<https://medium.com/@RubenSomsen/21-million-bitcoins-to-rule-all-sidechains-the-perpetual-one-way-peg-96cb2f8ac302>]
 
-### Softchains
+#### Softchains
 
 ![Ep. 27 {l0pt}](qr/ep/27.png)
 
@@ -302,7 +305,7 @@ Softchains are a type of two-way peg sidechains that utilize a new type of conse
 
 Ruben explains that by using proof-of-work fraud proofs for sidechains to create Softchains, Bitcoin full nodes could validate entire sidechains at minimal cost. This new model might be useful for certain types of sidechains, most notably “block size increase” sidechains that do nothing fancy but do offer more transaction capacity. Aaron, Sjors and Ruben also discuss some of the downsides of the Softchain model.
 
-### Statechains
+#### Statechains
 
 ![Ep. 08 {l0pt}](qr/ep/08.png)
 
@@ -312,7 +315,7 @@ See also Ruben's presentation^[<https://youtu.be/CKx6eULIC3A>] on Bitcoin Magazi
 
 \
 
-### RSK, federated sidechains and Powpeg
+#### RSK, federated sidechains and Powpeg
 
 ![Ep. 20 {l0pt}](qr/ep/20.png)
 
@@ -328,9 +331,9 @@ RSK is now switching to a Powpeg model where the keys to the multisignature addr
 
 The hosts explain how this works exactly, and discuss some of Powpeg’s security tradeoffs.
 
-## More stuff on the chain
+### More stuff on the chain
 
-### Open Timestamps
+#### Open Timestamps
 
 ![Ep. 16 {l0pt}](qr/ep/16.png)
 
@@ -342,7 +345,7 @@ Todd offered an interesting showcase of Open Timestamps earlier this week, as he
 
 Aaron and Sjors also discuss some of the other possibilities that a time-stamping system like Open Timestamps offers, as well as its limitations. Finally, Aaron provides a little bit of context for the history of cryptographic time stamping, which was itself referenced in the Bitcoin white paper.
 
-### RGB
+#### RGB
 
 ![Ep. 33 {l0pt}](qr/ep/33.png)
 
@@ -352,7 +355,7 @@ We explain that the Bitcoin blockchain has been (ab)used by users to host data s
 
 A few years ago I also gave a presentation about RGB as well as earlier attemps at using the Bitcoin blockchain to store non-money things: <https://www.youtube.com/watch?v=PgeqT6ruBWU>
 
-### Bitcoin Core v0.21
+#### Bitcoin Core v0.21
 
 ![Ep. 24 {l0pt}](qr/ep/24.png)
 
@@ -364,7 +367,7 @@ For each of the new features, the hosts discussed what the features are, how the
 
 https://bitcoinmagazine.com/technical/bitcoin-core-0-21-0-released-whats-new
 
-### Bitcoin Core v22.0
+#### Bitcoin Core v22.0
 
 ![Ep. 45 {l0pt}](qr/ep/45.png)
 

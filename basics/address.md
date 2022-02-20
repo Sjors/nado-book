@@ -17,7 +17,7 @@ In the past, it was possible to send bitcoin to people’s IP addresses, althoug
 
 Although you can instruct your Bitcoin node to specifically connect to a friend's node, it typically just connects to random peers (see chapter @sec:dns). Perhaps in the beginning, the idea might have been to connect to peers you know, and then you might as well do transactions with them. But right now, you don't really do transactions with the peers you're directly connected to. At least not on Bitcoin on-chain.
 
-Instead a transaction makes its way through all the nodes on the network (see chapter @sec:erlay), eventually to be seen by a miner node, which includes it in a block. Your counter party may see the transaction as their node receives it from one of its peers, or they'll see it once they receive the block it's in.
+Instead a transaction makes its way through all the nodes on the network, eventually to be seen by a miner node, which includes it in a block. Your counter party may see the transaction as their node receives it from one of its peers, or they'll see it once they receive the block it's in.
 
 Another way of doing transactions was by mining bitcoins, which means sending the block rewards to your public key. In the beginning, Bitcoin had a piece of mining software built into the software, so if you downloaded the Bitcoin software, it would just start mining.
 
