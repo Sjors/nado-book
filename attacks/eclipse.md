@@ -91,9 +91,10 @@ So although crashing a Bitcoin node is not a very useful attack on its own, it c
 
 ### How to Solve It
 
-It's important to understand that attacks like these are a numbers game. If you're the attacker, you need to give a lot of spam addresses to a node to fill up all the buckets and make sure it only connects to you.
+It's important to understand that attacks like these are a numbers game. An attacker needs to give your node a lot of spam addresses to fill up all the buckets and make sure it only connects to you.
 
-One very simple solution for avoiding an attack like this is to have more buckets. Another is to remove the bias toward selecting more recent peers and discarding the old ones. However, the tradeoff is you don't want to prioritize old IP addresses, because they might not be there any longer.
+So one obvious mitigation^[mitigate - "to cause to become less harsh or hostile": <https://www.merriam-webster.com/dictionary/mitigate>\
+A mitigation is not a complete solution. Although a bit redundant, the term "partial mitigation" is often used as well.] for avoiding an attack like this is to have more buckets. Another is to remove the bias toward selecting more recent peers and discarding the old ones. However, the tradeoff is you don't want to prioritize old IP addresses, because they might not be there any longer.
 
 What you can do is this: If you hear of a new address and you want to put it in a bucket and remove something else, you first check the address that's already in the bucket. That entails connecting to it to see if it still exists. If it does exist, you don't replace it. This is called the feeler connection.
 
