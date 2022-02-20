@@ -94,36 +94,29 @@ So although crashing a Bitcoin node is not a very useful attack on its own, it c
 It's important to understand that attacks like these are a numbers game. An attacker needs to give your node a lot of spam addresses to fill up all the buckets and make sure it only connects to you.
 
 So one obvious mitigation^[mitigate - "to cause to become less harsh or hostile": <https://www.merriam-webster.com/dictionary/mitigate>\
-A mitigation is not a complete solution. Although a bit redundant, the term "partial mitigation" is often used as well.] for avoiding an attack like this is to have more buckets. Another is to remove the bias toward selecting more recent peers and discarding the old ones. However, the tradeoff is you don't want to prioritize old IP addresses, because they might not be there any longer.
+A mitigation is not a complete solution. Although a bit redundant, the term "partial mitigation" is often used as well.] of an attack like this is to have more buckets. Unfortunately this doesn't help much on in isolation, because the number of buckets only doubles the attack cost, and we already saw how cheap it is. Still, the number of buckets was quadrupled, almost immediately after the paper was published.^[<https://github.com/bitcoin/bitcoin/pull/5941/commits/1d21ba2f5ecbf03086d0b65c4c4c80a39a94c2ee>]
 
-What you can do is this: If you hear of a new address and you want to put it in a bucket and remove something else, you first check the address that's already in the bucket. That entails connecting to it to see if it still exists. If it does exist, you don't replace it. This is called the feeler connection.
+Another counter measure lies in the aformentioned coin toss. This toss was actually biassed toward trying new nodes and towards those that we most recently learned about. This was changed to just a coin toss (in that same early pull request). Why not go further and only connect to nodes you've known the longest? There's always trade-offs, in this case your node might spend too much time going through a list of no longer reachable IP addresses.
 
-A couple years ago, what was merged is something where every now and then, Bitcoin Core looks at a bucket, quickly connects to a node, sees if it's real, and remembers that and then disconnects. This is a way of prioritizing all the addresses in a more intelligent way.
+But there was another proposed mitigation, that also provided a bias towards familiar nodes, but in a safer way. It pertained to how buckets are handled when they're about to overflow. When you hear of a new address and you want to put it in a bucket and remove something else, you first check the address that's already in the bucket. That entails connecting to it to see if it still exists. If it does exist, you don't replace it. This is called the feeler connection. This was more complicated and it took until mid 2016 to be implemented.^[By one of the authors in fact: <https://github.com/bitcoin/bitcoin/pull/8282>]
 
-Bitcoin Core 0.21.0 was released in January 2021, and it included a new method to prevent eclipse attacks that was suggested in the 2015 paper.^[To give you an idea about the speed of Bitcoin development, a person can write a paper in 2015, and improvements based on that paper can happen gradually for the next five or more years.] What happens is that when you restart, you try to remember some of the last connections you had. Your node remembers the two connections that it only exchanges blocks with, and it tries to reconnect to those — but not too often, because it's not a good idea to always try to reconnect to the same nodes again when you restart, as, for all you know, the reason you crashed in the first place is because one of those nodes was evil. And in that case, if you connect to the last connect and it goes wrong again, then you don't try reconnecting again.
+Still other mitigations too much longer. When Bitcoin Core 0.21.0 was released in January 2021, it included a new method to prevent eclipse attacks that was suggested in this same 2015 paper.^[Anchor connections: <https://github.com/bitcoin/bitcoin/pull/17428>] What happens is that when you restart, you try to remember some of the last connections you had. Your node remembers the two connections that it only exchanges blocks with, and it tries to reconnect to those.
 
-Another thing you can do instead of having more buckets is have more outbound connections. This is because the more outbound connections you have, the more likely you are to be connecting to honest nodes, and the more difficult it is for an attacker to control all of the IP addresses you're connected to.
+Why two? It's not a good idea to always try to reconnect to the same nodes again when you restart, as, for all you know, the reason you crashed in the first place is because one of those nodes was evil. The same logic applies to the scenario where you're _already_ being eclipsed.^[<https://github.com/bitcoin/bitcoin/issues/17326#issuecomment-550521262>]
+
+### What else can be done?
+
+Outside the many suggestions from the paper there are other things that can be done, and some have been implemented.
 
 You may be wondering: Why wouldn't you just have as many connections as possible from the get-go? But the problem is that it requires a lot of data exchange — especially for the transactions in a mempool — and that's extremely data intense, so you can't just add more connections without also increasing bandwidth use.
 
-That said, there are some new proposals for reducing the bandwidth needed for these mempool synchronizations that would allow more connections — so there's an incentive to make this data exchange more efficient.
+Erlay (see Appendix @sec:more_eps) is a proposal for reducing the bandwidth needed for these mempool synchronizations. It reduces the main cost (bandwidth) _per connection_. A lower cost per connection allows nodes to have more connections. Having more connections makes any eclipse attack scheme more difficult.
 
-Plus, there's the solution that some of the connections you connect to, you don't share mempool stuff with; instead, you only connect to blocks.
+Another way to have more connections without increasing bandwidth too much, is to constrain some connections to blocks only, and not sync the mempool with those peers. This was implemented in 2019.^[<https://github.com/bitcoin/bitcoin/pull/15759>]
 
-One of the ways to have the upside of more connections without the downside of more bandwidth is to only exchange blocks with those extra connections, because that happens much less frequently. This still costs a little bit of an extra bandwidth, but much less.
+Finally there's the Blockstream Satellite^[<https://blockstream.com/satellite/>], or any other satellite or even radio broadcast.^[<https://www.wired.com/story/cypherpunks-bitcoin-ham-radio/>] These allow anyone in the world to receive the latest blocks. This is mainly useful for people with very low bandwidth internet connections in remote areas. But it can also offer protection against an eclipse attack. This is because when your node receives the satellite signal, even if all inbound and outbound connections are taken over by an attacker, you'll still learn about new blocks.
 
-This. reminds us that you need to wait for confirmations because those extra connections will tell you about new blocks. They won't tell you about new stuff in a Mempool, but that's fine if you wait for confirmations.
-
-Well, I mean, you can always use the block stream satellite or something like that as another source of data. Of course that's not a universal solution, but it is a really-
-
-Sjors:
-But there is an incentive for Bitcoin blocks to be broadcast in general, over satellite or AM, or for multiple sources so it's more difficult to eclipse someone because you'd have to eclipse the whole planet, right? If the signal is coming from a satellite, you want to eclipse somebody who's listening to that satellite and you either have to blow up the satellite connection to them or blow up the satellite itself, which everybody would notice and it'd be in the news and you'd say, "Hey, there's probably something going on here."
-
-Aaron:
-I like your [inaudible 00:18:00] mindset though, that you do recognize that that's actually a risk that someone blows up the satellite.
-
-Sjors:
-Well, I mean, you don't actually physically have to blow it up, I guess. You can just tell people to stop broadcasting to it. One more solution is to have more nodes, basically, that other people don't know are yours. So if you have multiple nodes that you're using for-... your, whatever your services and you make sure that the outside world doesn't know all of them, and they might try to eclipse one of them, but they forgot to eclipse the other ones.
+Note that you should not blindly trust the satellite either, for _it_ might try to eclipse you. But remember that you only need a single honest peer, and you achieve this by having as diverse a set of connections as possible.
 
 ### Erebus Attack
 

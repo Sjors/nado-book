@@ -32,6 +32,7 @@ https://bitcointalk.org/index.php?topic=5348856.0
 https://bitcointalk.org/index.php?topic=999.msg12181#msg12181
 https://bitcoinvisuals.com/chain-block-reward
 https://blockstream.com/2018/11/28/en-simplicity-github/
+https://blockstream.com/satellite/
 https://blog.bitmex.com/bitcoins-consensus-forks/
 https://blog.bitmex.com/the-blocksize-war-chapter-14-asicboost/
 https://blog.lopp.net/who-controls-bitcoin-core-/
@@ -94,7 +95,10 @@ https://github.com/bitcoin/bitcoin/commit/3caee16946575e71e90ead9ac531f5a3a12593
 https://github.com/bitcoin/bitcoin/commit/a30b56ebe76ffff9f9cc8a6667186179413c6349
 https://github.com/bitcoin/bitcoin/commit/f1e1fb4bdef878c8fc1564fa418d44e7541a7e83
 https://github.com/bitcoin/bitcoin/issues/15605
+https://github.com/bitcoin/bitcoin/issues/17326#issuecomment-550521262
+https://github.com/bitcoin/bitcoin/pull/15759
 https://github.com/bitcoin/bitcoin/pull/17265
+https://github.com/bitcoin/bitcoin/pull/17428
 https://github.com/bitcoin/bitcoin/pull/1889#issuecomment-9638527
 https://github.com/bitcoin/bitcoin/pull/19573
 https://github.com/bitcoin/bitcoin/pull/19954
@@ -102,7 +106,9 @@ https://github.com/bitcoin/bitcoin/pull/21377
 https://github.com/bitcoin/bitcoin/pull/21392
 https://github.com/bitcoin/bitcoin/pull/21686
 https://github.com/bitcoin/bitcoin/pull/22387
+https://github.com/bitcoin/bitcoin/pull/5941/commits/1d21ba2f5ecbf03086d0b65c4c4c80a39a94c2ee
 https://github.com/bitcoin/bitcoin/pull/787
+https://github.com/bitcoin/bitcoin/pull/8282
 https://github.com/curl/curl
 https://github.com/sipa
 https://github.com/sipa/bitcoin-seeder
@@ -154,6 +160,7 @@ https://www.torproject.org/download/
 https://www.whatbitcoindid.com/mtgox-interviews
 https://www.whatbitcoindid.com/podcast/andrew-poelstra-on-schnorr-taproot-graft-root-coming-to-bitcoin
 https://www.whatbitcoindid.com/podcast/the-quantum-threat-to-bitcoin-with-quantum-physicist-dr-stepan-snigirev
+https://www.wired.com/story/cypherpunks-bitcoin-ham-radio/
 https://www.youtube.com/watch?v=6Y6n88DmkjU
 https://www.youtube.com/watch?v=I2iShmUTEl8
 https://www.youtube.com/watch?v=NqiN9VFE4CU
