@@ -34,6 +34,7 @@ https://bitcoinvisuals.com/chain-block-reward
 https://blockstream.com/2018/11/28/en-simplicity-github/
 https://blockstream.com/satellite/
 https://blog.bitmex.com/bitcoins-consensus-forks/
+https://blog.bitmex.com/call-to-action-testing-and-improving-asmap/
 https://blog.bitmex.com/the-blocksize-war-chapter-14-asicboost/
 https://blog.lopp.net/who-controls-bitcoin-core-/
 https://blog.torproject.org/v3-onion-services-usage
@@ -147,6 +148,7 @@ https://twitter.com/pwuille/status/1108085284862713856
 https://ubuntu.com/download/server
 https://whale-alert.medium.com/the-satoshi-fortune-e49cf73f9a9b
 https://www.amazon.com/Blocksize-War-controls-Bitcoins-protocol/dp/B08YQMC2WM
+https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/
 https://www.coindesk.com/business/2021/09/21/leaked-slides-show-how-chainalysis-flags-crypto-suspects-for-cops/
 https://www.coindesk.com/markets/2019/03/05/coinbase-pushes-out-ex-hacking-team-employees-following-uproar/
 https://www.merriam-webster.com/dictionary/mitigate

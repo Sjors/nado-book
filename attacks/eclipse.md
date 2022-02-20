@@ -124,8 +124,12 @@ Note that you should not blindly trust the satellite either, for _it_ might try 
 
 If you want to learn more about eclipse attacks, you might be interested in the Erebus attack^[<https://erebus-attack.comp.nus.edu.sg>]: an eclipse attack where an attacker essentially spoofs an entire part of the internet.
 
-How this works is the internet is made up of Autonomous Systems (AS), which are basically clusters of IP addresses owned by the same entity, like an ISP. As explained above, Bitcoin Core nodes can counter eclipse attacks by ensuring they're connected to a variety of IP addresses from different Autonomous Systems.
+How this works is the internet is made up of Autonomous Systems (AS), which are basically clusters of IP addresses owned by the same entity, like an ISP.^[<https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/>]
 
 As it turns out, however, some Autonomous Systems can effectively act as bottlenecks when trying to reach other Autonomous Systems. This allows an attacker controlling such a bottleneck to launch a successful eclipse attack — even against nodes that connect with multiple Autonomous Systems.
 
-Recent versions of Bitcoin Core include an optional feature — ASMAP — to counter these types of eclipse attacks. The episode explains how mapping of the internet has allowed Bitcoin Core contributors to create a tool which ensures that Bitcoin nodes not only connect to various Autonomous Systems, but also ensures that they avoid being trapped behind said bottlenecks.
+As explained above, Bitcoin Core nodes already counter eclipse attacks by ensuring they're connected to a variety of IP addresses, based on the first two digits of the IP address. This can be further improved by separating buckets by Autonomous System instead.
+
+But this does not thwart the Erebus attack. For that, recent versions of Bitcoin Core include an optional feature — ASMAP.^[<https://blog.bitmex.com/call-to-action-testing-and-improving-asmap/>]
+
+The episode explains how mapping of the internet has allowed Bitcoin Core contributors to create a tool which ensures that Bitcoin nodes not only connect to various Autonomous Systems, but also ensures that they avoid being trapped behind said bottlenecks.
