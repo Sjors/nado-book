@@ -67,13 +67,27 @@ Each bucket is also limited in size, so most of the 10,000 addresses in the exam
 
 Finally, in the same pull request, nodes also started remembering which nodes they previously connected to. Whenever they needed a new connection, they would toss a coin, and either connect to one of those, or pick a new one from one of the 256 buckets.
 
+### The Botnet
+
 You might think this would do the trick, but here's where the paper comes into play. It ran a simulation to see how difficult it was to actually overflow all these buckets, and it found that, within a matter of days, it can be successful.
 
-At this point, the node still has outbound connections to the real world, so the question for the attacker is: How can you get rid of those connections? The trick is to try and make the node crash.
+How does it do this? By using a botnet.^[<https://en.wikipedia.org/wiki/Botnet>] Not a real one of course, that would probably be unethical for university researchers. Not to mention potentially illegal. But they simulated one. A botnet is a group of random computers in the world that have been hacked and can be remote controlled. Because they're not all in the same data center as our example above, their IP address have many different starting digits, so they end up in different buckets.
 
-This is one reason why it's extremely important for developers to ensure they don't write code that can make a node crash, because crashable nodes are an important ingredient in these type of attacks.
+The paper estimated that a botnet with less than 5,000 computers can succesfully pull of an eclipse attack. That might sound like a lot, but an unscrupolous person can rent that from various nefarious "companies" for probably less than $100.^[Business Model of a Botnet: <https://arxiv.org/pdf/1804.10848.pdf>]
 
-TODO And another attacks. So whenever there is a bug that allows Bitcoin Core to crash, it's a pretty serious one, but you can overload somehow overload its ram usage, there's been lots of problems like that, but when it crashes and it starts again, hopefully, usually automatically if you've configured a server correctly and when it starts automatically, when it starts, it's going to look at that file of peers it knows, and it's going to try and connect to them. So it's going to look in all these buckets and it's only going to find the attacker. And then the attacker also makes sure that it makes sure it's connecting to you. So all your inbound connections are full and then you're just only talking to the attacker. That's all that's needed for the eclipse attack to be in play.
+In addition to attacking your node from many different directions, defeating the bucket system, the hypothetical attacker in the paper also exploited other weaknesses.
+
+First they would flood your node with IP addresses that are known to be fake. This would flush all buckets with fake nodes. Remember that when your node needs a new peer, it will toss a coin to either connect to familiar node or try a new one. Well there wouldn't be any new ones to try.^[We'll revisit the problem of fake nodes in chapter @sec:fake_nodes.]
+
+For the other side of the coin flip, connecting to a familiar node, the attackers exploited another weakness. It turns out your node considers any node it ever connected to "familiar". That includes botnet nodes that connected _to_ it, even if only briefly. There is a seperate 64 bucket system for these familiar nodes, and over time those get filled up by botnet IPs.
+
+### Don't Crash
+
+At this point, your node still has long lived connections to the real world, from before the attack began, so the attacker still needs to get rid of those. The trick is to wait for your node to restart, or to try and crash it.
+
+Whenever your node restarts^[Nodes that run on a server are typically automatically restarted after a crash or system reboot, using something like like systemd: <https://en.wikipedia.org/wiki/Systemd>], it starts out with 0 connections. Firstly this creates an opportunity to very quickly fill up all 117 inbound slots. And secondly, it's going to look at that file of peers it knows, and it's going to try and connect to them. If an attacker succeeded at dominating these buckets, your node is going to connect to attacker IP addresses. That's all that's needed for the eclipse attack to be in play.
+
+So although crashing a Bitcoin node is not a very useful attack on its own, it can help when performing an eclipse attack. This is one reason why it's important for developers to ensure they don't write code that can make a node crash.
 
 ### How to Solve It
 

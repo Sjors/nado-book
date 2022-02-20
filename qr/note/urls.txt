@@ -2,6 +2,7 @@ http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion/
 http://bitcoin.sipa.be/miniscript
 https://arxiv.org/abs/2107.05322
 https://arxiv.org/abs/2108.00815
+https://arxiv.org/pdf/1804.10848.pdf
 https://bitcoin.org/en/alert/2015-07-04-spv-mining#cause
 https://bitcoin.org/en/releases/22.0/
 https://bitcoin.stackexchange.com/a/10666/4948
@@ -53,11 +54,13 @@ https://en.bitcoin.it/wiki/Difficulty
 https://en.bitcoin.it/wiki/IP_transaction
 https://en.bitcoin.it/wiki/Script
 https://en.wikipedia.org/wiki/%22Hello,_World!%22_program
+https://en.wikipedia.org/wiki/Botnet
 https://en.wikipedia.org/wiki/Cargo_cult_science
 https://en.wikipedia.org/wiki/Hexadecimal
 https://en.wikipedia.org/wiki/IPv4
 https://en.wikipedia.org/wiki/Mt._Gox#Withdrawals_halted;_trading_suspended;_bitcoin_missing_(2014)
 https://en.wikipedia.org/wiki/SHA-2
+https://en.wikipedia.org/wiki/Systemd
 https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar
 https://english.ncsc.nl/topics/log4j-vulnerability
 https://eprint.iacr.org/2003/235
