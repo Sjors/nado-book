@@ -14,5 +14,5 @@ header-includes: |
     \clearmark{section}
     \createmark{chapter}{right}{shownumber}{\chaptername\ }{. \ }
   }
-  \pagestyle{myheadings}
+  \pagestyle{simple}
 ...

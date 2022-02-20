@@ -1,3 +1,4 @@
+\pagestyle{myheadings}
 ## Introduction {.unnumbered}
 
 Lorem ipsum
