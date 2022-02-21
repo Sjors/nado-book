@@ -74,6 +74,7 @@ First we explain what a BIP is exactly— and what it is not. We also explain th
 
 Finally we explain how the BIP process itself works, that is, how a proposal can be turned into a BIP, and eventually be implemented in software. We also briefly explain how the BIP process could become corrupted, and why that wouldn’t be a very big deal.
 
+\newpage
 ### Resource usage
 
 #### Compact Client Side Filtering (Neutrino)
@@ -102,6 +103,7 @@ In the episode, Aaron and Sjors explain that Erlay uses set reconciliation to re
 
 Aaron and Sjors outline how this trick is applied in the context of Bitcoin to let different nodes sync their mempools: the sets of transactions they’ve received in anticipation of a new block, or, in the case of a miner, to include in a new block.
 
+\newpage
 ### Attacks
 
 #### Timewarp attack
@@ -110,6 +112,10 @@ Aaron and Sjors outline how this trick is applied in the context of Bitcoin to l
 ![Ep. 05 {l0pt}](qr/ep/05.png)
 
 In this episode we explain the "time-warp attack" on Bitcoin. A potential fix for this attack is included in Matt Corallo's proposed Great Consensus Cleanup softfork^[<https://github.com/TheBlueMatt/bips/blob/cleanup-softfork/bip-XXXX.mediawiki>], which at the time of writing has not seen much progress.
+
+\
+
+\
 
 #### Mining pool censorship
 
@@ -121,6 +127,7 @@ Some time after recording they changed course and announced that they would not 
 
 In the episode we discuss the prospects of mining censorship, what that would mean for Bitcoin, and what can be done about it. We discuss what it means that a mining pool is now censoring certain transactions, and go on to expand what it could look like if this practice gets adopted more widely. We consider what censoring mining pools could accomplish if they ever get close to controlling a majority of hash power, and what Bitcoin users could potentially do in such a scenario (if anything).
 
+\newpage
 ### Wallets
 
 #### Hardware Wallet Integration in Bitcoin Core
@@ -157,6 +164,7 @@ They go one to discuss some of the design decisions and tradeoffs that the Bitco
 
 Aaron and Nicolas also discuss some of the subtle incompatibilities between different Lightning wallets that use different techniques for routing payments, privacy considerations versus user experience in a community like El Zonte’s, and more.
 
+\newpage
 #### Chivo
 
 ![Ep. 46 {l0pt}](qr/ep/46.png)
@@ -181,12 +189,7 @@ In this episode we explain what payment pools are, and why they need Taproot. We
 
 See also Aaron's article.^[<https://bitcoinmagazine.com/articles/building-on-taproot-payment-pools-could-be-bitcoins-next-layer-two-protocol>]
 
-\
-
-\
-
-\
-
+\newpage
 ### Lightning
 
 One could write a entire book about lightning. And in fact, others have, see e.g. _Mastering the Lightning Network: A Second Layer Blockchain Protocol for Instant Bitcoin Payments_ by Andreas Antonopoulos and Olaoluwa Osuntokun (aka Roasbeef).
@@ -203,6 +206,7 @@ Then we explain how bi-directional payment channels can be linked across a netwo
 
 Finally, we briefly touch on some of the challenges presented by the Lightning Network, most notably the requirement of payment channels to have sufficient liquidity locked into them.
 
+\newpage
 #### RBF bug in Bitcoin Core
 
 ![Ep. 38 {l0pt}](qr/ep/38.png)
@@ -213,6 +217,7 @@ We explain that the bug affects how RBF logic is handled by the Bitcoin Core sof
 
 This is a fairly innocent bug; in most cases the second transaction will still confirm eventually, while there are also other solutions to speed confirmation up if the included fee is too low. But in very specific cases, like some fallback security mechanisms on the Lightning Network, the bug could in fact cause complications. We try to explain what such a scenario would look like, but end up totally confused.
 
+\newpage
 #### Routing
 
 ![Ep. 41 {l0pt}](qr/ep/41.png)
@@ -227,6 +232,7 @@ Joost explains how Lightning nodes currently construct a map of the Lightning Ne
 
 Finally we discuss some (potential) optimizations to benefit Lightning Network routing, such as rebalancing schemes and Trampoline Payments.
 
+\newpage
 #### Optimally Reliable & Cheap Payment Flows on the Lightning Network
 
 ![Ep. 47 {l0pt}](qr/ep/47.png)
@@ -249,6 +255,7 @@ This can be (almost) the entire transaction, or specific parts of it. Signing on
 
 `SIGHASH_ANYPREVOUT` would be especially useful in context of Eltoo, a proposed Layer Two protocol that would enable a new version of the Lightning Network. Where Lightning users currently need to store old channel data for security reasons, and could also be punished severely if they accidentally broadcast some of this data at the wrong time, we how SIGHASH_ANYPREVOUT would do away with this requirement.
 
+\newpage
 #### Bolt 12 - Recurring payments, etc
 
 ![Ep. 44 {l0pt}](qr/ep/44.png)
@@ -331,6 +338,7 @@ RSK is now switching to a Powpeg model where the keys to the multisignature addr
 
 The hosts explain how this works exactly, and discuss some of Powpeg’s security tradeoffs.
 
+\newpage
 ### More stuff on the chain
 
 #### Open Timestamps
@@ -345,6 +353,7 @@ Todd offered an interesting showcase of Open Timestamps earlier this week, as he
 
 Aaron and Sjors also discuss some of the other possibilities that a time-stamping system like Open Timestamps offers, as well as its limitations. Finally, Aaron provides a little bit of context for the history of cryptographic time stamping, which was itself referenced in the Bitcoin white paper.
 
+\newpage
 #### RGB
 
 ![Ep. 33 {l0pt}](qr/ep/33.png)
@@ -354,6 +363,10 @@ We are joined by Ruben Somsen to discuss RGB tokens, a Layer Two protocol for Bi
 We explain that the Bitcoin blockchain has been (ab)used by users to host data since the project’s early days. This was initially done through otherwise-useless transaction outputs, which meant that all Bitcoin users had to store this data locally. A feature called `OP_RETURN` later limited this burden.They also explain that people have been using the Bitcoin blockchain to host alternative currency and token schemes for a long time.
 
 A few years ago I also gave a presentation about RGB as well as earlier attemps at using the Bitcoin blockchain to store non-money things: <https://www.youtube.com/watch?v=PgeqT6ruBWU>
+
+\newpage
+
+### Software releases
 
 #### Bitcoin Core v0.21
 
@@ -367,6 +380,7 @@ For each of the new features, the hosts discussed what the features are, how the
 
 https://bitcoinmagazine.com/technical/bitcoin-core-0-21-0-released-whats-new
 
+\newpage
 #### Bitcoin Core v22.0
 
 ![Ep. 45 {l0pt}](qr/ep/45.png)
