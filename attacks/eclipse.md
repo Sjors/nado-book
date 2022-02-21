@@ -47,11 +47,11 @@ Miners and pool operators are of course not naive. They might run multiple nodes
 
 ### How an Eclipse Attack Works
 
-So far, we’ve taken for granted that an eclipse attack can be done, and we've explained how it’s used to trick you into parting with your hard-earned coins. But how is it actually done?
+So far, we’ve taken for granted that an eclipse attack can be done, and we’ve explained how it’s used to trick you into parting with your hard-earned coins. But how is it actually done?
 
 Recall from above that, in order to eclipse your node, the attacker needs to take over all eight of your outbound connections and whatever number of inbound connections your node has. This is a cat and mouse game, and even before the above-mentioned paper was written, the Bitcoin Core software was hardened to prevent eclipse attacks. But let’s see how the paper proposed overcoming the existing defenses.
 
-There are a couple of ingredients. First, as mentioned in chapter @sec:dns, when a node starts, it tries to find other peers, and once it’s been running for a while, it has a list of addresses it learned from other peers and it stores them in a file. Then, whenever a node loses one of its eight outbound connections, or when it restarts, it looks at this file with all the addresses it's ever heard of, and it starts randomly connecting to them.
+There are a couple of ingredients. First, as mentioned in chapter @sec:dns, when a node starts, it tries to find other peers, and once it’s been running for a while, it has a list of addresses it learned from other peers and it stores them in a file. Then, whenever a node loses one of its eight outbound connections, or when it restarts, it looks at this file with all the addresses it’s ever heard of, and it starts randomly connecting to them.
 
 As an attacker, the idea is to pollute this file by giving your node a bunch of addresses that either don’t exist or that they (the attacker) control. This way, whatever address your node picks, every time it makes a connection, it either fails because there’s nothing there, or it connects to the attacker — and eventually all connections are to the attacker.
 
@@ -77,46 +77,46 @@ The paper estimated that a botnet with less than 5,000 computers can successfull
 
 In addition to attacking your node from many different directions, thereby defeating the bucket system, the hypothetical attacker in the paper also exploited other weaknesses.
 
-First, they would flood your node with IP addresses that are known to be fake. This would flush all buckets with fake nodes. Remember that when your node needs a new peer, it'll toss a coin to either connect to familiar node or try a new one. Well, there wouldn’t be any new ones to try.^[We’ll revisit the problem of fake nodes in chapter @sec:fake_nodes.]
+First, they would flood your node with IP addresses that are known to be fake. This would flush all buckets with fake nodes. Remember that when your node needs a new peer, it’ll toss a coin to either connect to familiar node or try a new one. Well, there wouldn’t be any new ones to try.^[We’ll revisit the problem of fake nodes in chapter @sec:fake_nodes.]
 
-For the other side of the coin flip — connecting to a familiar node — the attackers exploited another weakness. It turns out your node considers any node it ever connected to “familiar.” That includes botnet nodes that connected _to_ it, even if only briefly. There's a separate 64-bucket system for these familiar nodes, and over time, those get filled up by botnet IPs.
+For the other side of the coin flip — connecting to a familiar node — the attackers exploited another weakness. It turns out your node considers any node it ever connected to “familiar.” That includes botnet nodes that connected _to_ it, even if only briefly. There’s a separate 64-bucket system for these familiar nodes, and over time, those get filled up by botnet IPs.
 
 ### Don’t Crash
 
-At this point, your node still has long lived connections to the real world, from before the attack began, so the attacker still needs to get rid of those. The trick is to wait for your node to restart, or to try and crash it.
+At this point, your node still has long-lived connections to the real world from before the attack began, so the attacker still needs to get rid of those. The trick is to either wait for your node to restart, or to try and crash it.
 
-Whenever your node restarts^[Nodes that run on a server are typically automatically restarted after a crash or system reboot, using something like like systemd: <https://en.wikipedia.org/wiki/Systemd>], it starts out with 0 connections. Firstly this creates an opportunity to very quickly fill up all 117 inbound slots. And secondly, it’s going to look at that file of peers it knows, and it’s going to try and connect to them. If an attacker succeeded at dominating these buckets, your node is going to connect to attacker IP addresses. That’s all that’s needed for the eclipse attack to be in play.
+Whenever your node restarts^[Nodes that run on a server are typically automatically restarted after a crash or system reboot, using something like systemd: <https://en.wikipedia.org/wiki/Systemd>], it starts out with zero connections. Firstly, this creates an opportunity to very quickly fill up all 117 inbound slots. And secondly, it’s going to look at that file of peers it knows, and it’s going to try and connect to them. If an attacker succeeded at dominating these buckets, your node is going to connect to attacker IP addresses. That’s all that’s needed for the eclipse attack to be in play.
 
-So although crashing a Bitcoin node is not a very useful attack on its own, it can help when performing an eclipse attack. This is one reason why it’s important for developers to ensure they don’t write code that can make a node crash.
+So although crashing a Bitcoin node isn’t a very useful attack on its own, it can help when performing an eclipse attack. This is one reason why it’s important for developers to ensure they don’t write code that can make a node crash.
 
 ### How to Solve It
 
 It’s important to understand that attacks like these are a numbers game. An attacker needs to give your node a lot of spam addresses to fill up all the buckets and make sure it only connects to you.
 
-So one obvious mitigation^[mitigate - "to cause to become less harsh or hostile": <https://www.merriam-webster.com/dictionary/mitigate>\
-A mitigation is not a complete solution. Although a bit redundant, the term "partial mitigation" is often used as well.] of an attack like this is to have more buckets. Unfortunately this doesn’t help much on in isolation, because the number of buckets only doubles the attack cost, and we already saw how cheap it is. Still, the number of buckets was quadrupled, almost immediately after the paper was published.^[<https://github.com/bitcoin/bitcoin/pull/5941/commits/1d21ba2f5ecbf03086d0b65c4c4c80a39a94c2ee>]
+So one obvious mitigation^[mitigate — “to cause to become less harsh or hostile”: <https://www.merriam-webster.com/dictionary/mitigate>\
+A mitigation isn’t a complete solution. Although a bit redundant, the term “partial mitigation” is often used as well.] of an attack like this is to have more buckets. Unfortunately, this doesn’t help much with isolation, because the number of buckets only doubles the attack cost, and we already saw how cheap it is. Still, the number of buckets was quadrupled almost immediately after the paper was published.^[<https://github.com/bitcoin/bitcoin/pull/5941/commits/1d21ba2f5ecbf03086d0b65c4c4c80a39a94c2ee>]
 
-Another counter measure lies in the aformentioned coin toss. This toss was actually biassed toward trying new nodes and towards those that we most recently learned about. This was changed to just a coin toss (in that same early pull request). Why not go further and only connect to nodes you’ve known the longest? There’s always trade-offs, in this case your node might spend too much time going through a list of no longer reachable IP addresses.
+Another countermeasure lies in the aforementioned coin toss. This toss was actually biased toward trying new nodes and toward those that we most recently learned about. This was changed to just a coin toss (in that same early pull request). Why not go further and only connect to nodes you’ve known the longest? There are always tradeoffs — in this case, your node might spend too much time going through a list of no-longer-reachable IP addresses.
 
-But there was another proposed mitigation, that also provided a bias towards familiar nodes, but in a safer way. It pertained to how buckets are handled when they’re about to overflow. When you hear of a new address and you want to put it in a bucket and remove something else, you first check the address that’s already in the bucket. That entails connecting to it to see if it still exists. If it does exist, you don’t replace it. This is called the feeler connection. This was more complicated and it took until mid 2016 to be implemented.^[By one of the authors in fact: <https://github.com/bitcoin/bitcoin/pull/8282>]
+But there was another proposed mitigation that also provided a bias toward familiar nodes, only in a safer way. It pertained to how buckets are handled when they’re about to overflow. When you hear of a new address and you want to put it in a bucket and remove something else, you first check the address that’s already in the bucket. That entails connecting to it to see if it still exists. If it does exist, you don’t replace it. This is called the feeler connection. This was more complicated and it took until mid-2016 to be implemented.^[By one of the authors in fact: <https://github.com/bitcoin/bitcoin/pull/8282>]
 
-Still other mitigations too much longer. When Bitcoin Core 0.21.0 was released in January 2021, it included a new method to prevent eclipse attacks that was suggested in this same 2015 paper.^[Anchor connections: <https://github.com/bitcoin/bitcoin/pull/17428>] What happens is that when you restart, you try to remember some of the last connections you had. Your node remembers the two connections that it only exchanges blocks with, and it tries to reconnect to those.
+Still, other mitigations took much longer. When Bitcoin Core 0.21.0 was released in January 2021, it included a new method to prevent eclipse attacks that was suggested in this same 2015 paper.^[Anchor connections: <https://github.com/bitcoin/bitcoin/pull/17428>] What happens is that when you restart, you try to remember some of the last connections you had. Your node remembers the two connections that it only exchanges blocks with, and it tries to reconnect to those.
 
 Why two? It’s not a good idea to always try to reconnect to the same nodes again when you restart, as, for all you know, the reason you crashed in the first place is because one of those nodes was evil. The same logic applies to the scenario where you’re _already_ being eclipsed.^[<https://github.com/bitcoin/bitcoin/issues/17326#issuecomment-550521262>]
 
-### What else can be done?
+### What Else Can Be Done?
 
-Outside the many suggestions from the paper there are other things that can be done, and some have been implemented.
+In addition to the many suggestions from the paper, there are other things that can be done, and some have been implemented.
 
-You may be wondering: Why wouldn’t you just have as many connections as possible from the get-go? But the problem is that it requires a lot of data exchange — especially for the transactions in a mempool — and that’s extremely data intense, so you can’t just add more connections without also increasing bandwidth use.
+You may be wondering: Why wouldn’t you just have as many connections as possible from the get-go? But the problem is that it requires a lot of data exchange — especially for the transactions in a mempool — and that’s extremely data intensive, so you can’t just add more connections without also increasing bandwidth use.
 
 Erlay (see Appendix @sec:more_eps) is a proposal for reducing the bandwidth needed for these mempool synchronizations. It reduces the main cost (bandwidth) _per connection_. A lower cost per connection allows nodes to have more connections. Having more connections makes any eclipse attack scheme more difficult.
 
-Another way to have more connections without increasing bandwidth too much, is to constrain some connections to blocks only, and not sync the mempool with those peers. This was implemented in 2019.^[<https://github.com/bitcoin/bitcoin/pull/15759>]
+Another way to have more connections without increasing bandwidth too much is to constrain some connections to blocks only, and to not sync the mempool with those peers. This was implemented in 2019.^[<https://github.com/bitcoin/bitcoin/pull/15759>]
 
-Finally there’s the Blockstream Satellite^[<https://blockstream.com/satellite/>], or any other satellite or even radio broadcast.^[<https://www.wired.com/story/cypherpunks-bitcoin-ham-radio/>] These allow anyone in the world to receive the latest blocks. This is mainly useful for people with very low bandwidth internet connections in remote areas. But it can also offer protection against an eclipse attack. This is because when your node receives the satellite signal, even if all inbound and outbound connections are taken over by an attacker, you’ll still learn about new blocks.
+Finally, there’s the Blockstream Satellite^[<https://blockstream.com/satellite/>], or any other satellite or even radio broadcast.^[<https://www.wired.com/story/cypherpunks-bitcoin-ham-radio/>] These allow anyone in the world to receive the latest blocks. This is mainly useful for people with very low bandwidth internet connections in remote areas. But it can also offer protection against an eclipse attack. This is because when your node receives the satellite signal, even if all inbound and outbound connections are taken over by an attacker, you’ll still learn about new blocks.
 
-Note that you should not blindly trust the satellite either, for _it_ might try to eclipse you. But remember that you only need a single honest peer, and you achieve this by having as diverse a set of connections as possible.
+Note, however, that you shouldn’t blindly trust the satellite either, for _it_ might try to eclipse you. But remember that you only need a single honest peer, and you achieve this by having as diverse a set of connections as possible.
 
 ### Erebus Attack
 
@@ -128,8 +128,8 @@ How this works is the internet is made up of Autonomous Systems (AS), which are 
 
 As it turns out, however, some Autonomous Systems can effectively act as bottlenecks when trying to reach other Autonomous Systems. This allows an attacker controlling such a bottleneck to launch a successful eclipse attack — even against nodes that connect with multiple Autonomous Systems.
 
-As explained above, Bitcoin Core nodes already counter eclipse attacks by ensuring they’re connected to a variety of IP addresses, based on the first two digits of the IP address. This can be further improved by separating buckets by Autonomous System instead.
+As explained above, Bitcoin Core nodes already counter eclipse attacks by ensuring they’re connected to a variety of IP addresses, based on the first two digits of the IP address. This can be further improved by separating buckets by Autonomous Systems instead.
 
-But this does not thwart the Erebus attack. For that, recent versions of Bitcoin Core include an optional feature — ASMAP.^[<https://blog.bitmex.com/call-to-action-testing-and-improving-asmap/>]
+But this doesn’t thwart the Erebus attack. For that, recent versions of Bitcoin Core include an optional feature — ASMAP.^[<https://blog.bitmex.com/call-to-action-testing-and-improving-asmap/>]
 
-The episode explains how mapping of the internet has allowed Bitcoin Core contributors to create a tool which ensures that Bitcoin nodes not only connect to various Autonomous Systems, but also ensures that they avoid being trapped behind said bottlenecks.
+The episode explains how mapping the internet has allowed Bitcoin Core contributors to create a tool which ensures that Bitcoin nodes not only connect to various Autonomous Systems, but also that they avoid being trapped behind said bottlenecks.
