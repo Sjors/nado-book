@@ -151,6 +151,7 @@ https://www.amazon.com/Blocksize-War-controls-Bitcoins-protocol/dp/B08YQMC2WM
 https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/
 https://www.coindesk.com/business/2021/09/21/leaked-slides-show-how-chainalysis-flags-crypto-suspects-for-cops/
 https://www.coindesk.com/markets/2019/03/05/coinbase-pushes-out-ex-hacking-team-employees-following-uproar/
+https://www.coindesk.com/markets/2020/08/07/ethereum-classic-attacker-successfully-double-spends-168m-in-second-attack-report/
 https://www.merriam-webster.com/dictionary/mitigate
 https://www.reddit.com/r/Bitcoin/comments/3c305f/comment/csrt3dg/
 https://www.reddit.com/r/Bitcoin/comments/mruopv/bitcoincorebased_bip8_lottrue_taproot_activation/
