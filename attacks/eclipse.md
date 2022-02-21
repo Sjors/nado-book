@@ -69,9 +69,9 @@ Finally, in the same pull request, nodes also started remembering which nodes th
 
 ### The Botnet
 
-You might think this would do the trick, but here’s where the paper comes into play. It ran a simulation to see how difficult it was to actually overflow all these buckets, and it found that, within a matter of days, it can be successful.
+You might think this would do the trick, but here’s where the paper comes into play. The authors ran a simulation to see how difficult it was to actually overflow all these buckets, and it found that, within a matter of days, it can be successful.
 
-How did it do this? By using a botnet^[<https://en.wikipedia.org/wiki/Botnet>] — not a real one of course, as that would probably be unethical for university researchers, not to mention potentially illegal. But they simulated one. A botnet is a group of random computers in the world that have been hacked and can be remote controlled. Because they’re not all in the same data center as our example above, their IP address have many different starting digits, so they end up in different buckets.
+How did they do this? By using a botnet^[<https://en.wikipedia.org/wiki/Botnet>] — not a real one of course, as that would probably be unethical for university researchers, not to mention potentially illegal. But they simulated one. A botnet is a group of random computers in the world that have been hacked and can be remote controlled. Because they’re not all in the same data center as our example above, their IP address have many different starting digits, so they end up in different buckets.
 
 The paper estimated that a botnet with less than 5,000 computers can successfully pull off an eclipse attack. That might sound like a lot, but an unscrupulous person can rent that from various nefarious “companies” for probably less than $100.^[Business Model of a Botnet: <https://arxiv.org/pdf/1804.10848.pdf>]
 
