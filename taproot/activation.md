@@ -19,7 +19,7 @@ A simple example of such stricter rules is BIP 66,^[<https://github.com/bitcoin/
 
 It may seem paradoxical that strict rules allow for _more_ features, but in chapter @sec:segwit, under the future SegWit versions section, we explained why this works. In this chapter, we’re less concerned with how soft forks work, and instead we focus on how they’re activated.
 
-There are a few different ways to introduce a soft fork. You can do it randomly by accident, or you can deliberately sneak one into the code. You can also announce a date or block height from which the new rules apply. Finally — and this is how things currently work — you can have miners signal and have the soft fork activate once a certain threshold is reached.
+There are a few different ways to introduce a soft fork. You can do it randomly by accident, or you can deliberately sneak one into the code. You can also announce a date (known as a flag day) or block height from which the new rules apply. Finally — and this is how things currently work — you can have miners signal and have the soft fork activate once a certain threshold is reached.
 
 But perhaps what matters more than the mechanics of activation is how a decision is reached to deploy the soft fork in the first place. And who decides anyway?
 
@@ -43,7 +43,7 @@ But barring some existential emergency, there’s a general consensus that this 
 
 Releasing a new software version that activates a soft fork at a given height is one thing. But unless the right people run it and do so in time, it won’t actually take effect. If a soft fork is released in a forest...
 
-What Satoshi did was announce the new version on a forum and presume the community was small enough that everyone would update well before the activation height, even if that was only a week away. This was generally not put to the test, because many of those initial soft forks were such that only a malicious actor would produce blocks that violate the new rule, and there weren’t many of them around.
+What Satoshi did was announce the new version on a forum and presume the community was small enough that everyone would update well before the activation height, even if that was only a week away. This was generally not put to the test, because many of those initial soft forks were made in such a way, either by design or accident, that only a malicious actor would produce blocks that violate the new rule, and there weren’t many of them around.
 
 Despite that, even in 2010, there was a growing understanding that the safest way to enforce a soft fork is to have a supermajority of miners run the latest version. This is because nodes will follow the longest chain that they consider valid.^[See chapter @sec:eclipse for an explanation of stale blocks.] So even if a user hasn’t upgraded their node, as long as the majority of miners are enforcing the rules, they’ll produce the longest chain, and the user’s node will follow along. In this situation, even if a miner maliciously or accidentally produces an invalid block, the majority of miners won’t build on top of it, and the invalid block goes stale.
 
