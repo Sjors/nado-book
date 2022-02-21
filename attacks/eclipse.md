@@ -47,7 +47,7 @@ Miners and pool operators are of course not naive. They might run multiple nodes
 
 ### How an Eclipse Attack Works
 
-So far, we’ve taken for granted that an eclipse attack can be done, and we’ve explained how it’s used to trick you into parting with your hard-earned coins. But how is it actually done?
+For the sake of argument, so far we've assumed that an eclipse attack can be done, in order to explain how it’s used to trick you into parting with your hard-earned coins. But how is it actually done?
 
 Recall from above that, in order to eclipse your node, the attacker needs to take over all eight of your outbound connections and whatever number of inbound connections your node has. This is a cat and mouse game, and even before the above-mentioned paper was written, the Bitcoin Core software was hardened to prevent eclipse attacks. But let’s see how the paper proposed overcoming the existing defenses.
 
