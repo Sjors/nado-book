@@ -27,6 +27,7 @@ https://bitcoinmagazine.com/technical/security-researcher-found-bug-knocked-out-
 https://bitcoinmagazine.com/technical/what-happened-when-bitcoin-creator-satoshi-nakamoto-disappeared
 https://bitcoinops.org/en/topics/cve-2018-17144/
 https://bitcoinops.org/en/topics/mast/
+https://bitcoinops.org/en/topics/psbt/
 https://bitcoinops.org/en/topics/ptlc/
 https://bitcointalk.org/index.php?topic=155054.0
 https://bitcointalk.org/index.php?topic=5348856.0

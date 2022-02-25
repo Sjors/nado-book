@@ -43,11 +43,9 @@ A signet is a new type of testnet for Bitcoin. In this episode, we discuss the o
 
 In this episode, we break down and explain Partially Signed Bitcoin Transactions (PSBT) and Replace-by-Fee (RBF), along with some really tricky attacks that were recently discovered in Bitcoin.
 
-\
+PSBT is a data format that allows wallets and other tools to exchange information about a Bitcoin transaction and the signatures necessary to complete it.^[<https://bitcoinops.org/en/topics/psbt/>]
 
-\
-
-\
+\newpage
 
 #### Mempools, Child Pays for Parent, and Package Relay
 
