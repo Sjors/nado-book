@@ -53,11 +53,13 @@ PSBT is a data format that allows wallets and other tools to exchange informatio
 
 In this episode, we discuss Bitcoin mempools, Child Pays For Parent (CPFP), and package relay.
 
-Package relay is the project that Gloria Zhao will work on as part of her Brink fellowship, which was announced earlier this week, and would make the Lightning Network more robust (among other benefits). Mempools are the collections of unconfirmed transactions stored by nodes, from which they forward transactions to peers. Miners usually select the transactions from their mempools that include the highest fees to include these in the blocks they mine.
+Package relay is the project that Gloria Zhao is working on as part of her Brink fellowship^[<https://brink.dev/programs>], and would make the Lightning Network more robust (among other benefits). Mempools are the collections of unconfirmed transactions stored by nodes, from which they forward transactions to peers. Miners usually select the transactions from their mempools that include the highest fees to include these in the blocks they mine.
 
 However, mempools can get full, at which point transactions that pay the lowest fees are ejected. This is actually a problem in context of CPFP, a trick that lets users speed up low-fee transactions by spending the coins from those transactions in a new transaction with a high fee to compensate. Tricks like these can be particularly important in the context of time-sensitive protocols like the Lightning Network.
 
 In this episode, we go into detail about how package relay could enable CPFP — even in cases where low-fee transactions are dropped from mempools — by bundling transactions into packets. We also explore why this may be easier said than done.
+
+\newpage
 
 #### Bitcoin Improvement Proposal (BIP) Process
 

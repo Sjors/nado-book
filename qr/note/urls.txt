@@ -41,6 +41,7 @@ https://blog.bitmex.com/the-blocksize-war-chapter-14-asicboost/
 https://blog.lopp.net/who-controls-bitcoin-core-/
 https://blog.torproject.org/v3-onion-services-usage
 https://blogs.scientificamerican.com/roots-of-unity/ancient-babylonian-number-system-had-no-zero/
+https://brink.dev/programs
 https://chaincode.com/
 https://coinmarketcap.com/alexandria/glossary/chain-split
 https://commons.wikimedia.org/wiki/File:Hash_Tree.svg
