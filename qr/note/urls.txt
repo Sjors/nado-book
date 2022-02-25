@@ -25,6 +25,7 @@ https://bitcoinmagazine.com/technical/miniscript-how-blockstream-engineers-are-m
 https://bitcoinmagazine.com/technical/satoshis-genius-unexpected-ways-in-which-bitcoin-dodged-some-cryptographic-bullet-1382996984
 https://bitcoinmagazine.com/technical/security-researcher-found-bug-knocked-out-bitcoin-unlimited
 https://bitcoinmagazine.com/technical/what-happened-when-bitcoin-creator-satoshi-nakamoto-disappeared
+https://bitcoinops.org/en/topics/cpfp/
 https://bitcoinops.org/en/topics/cve-2018-17144/
 https://bitcoinops.org/en/topics/mast/
 https://bitcoinops.org/en/topics/psbt/
