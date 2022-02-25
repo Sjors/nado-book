@@ -119,6 +119,7 @@ https://gitian.org/
 https://gizmodo.com/how-heartbleed-works-the-code-behind-the-internets-se-1561341209
 https://guix.gnu.org/
 https://guix.gnu.org/en/blog/2020/guix-further-reduces-bootstrap-seed-to-25/
+https://insights.deribit.com/market-research/was-there-a-bitcoin-double-spend-on-jan-20-2021/
 https://lightning.network/
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-May/014380.html
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-February/018498.html
