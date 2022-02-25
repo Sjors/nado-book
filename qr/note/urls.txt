@@ -77,7 +77,9 @@ https://github.com/bitcoin-core/secp256k1
 https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki
+https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki
+https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0114.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0116.mediawiki

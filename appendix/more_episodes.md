@@ -9,11 +9,11 @@ Not all episodes of Bitcoin, Explained made it into this book. Here are some oth
 
 ### Basics
 
-#### What Is an xPub?
+#### What Is an xpub?
 
 ![Ep. 07 {l0pt}](qr/ep/07.png)
 
-In this episode, we explain what an xPub is and how it's used by Bitcoin wallets.
+In this episode, we explain what an extended public key (xpub) is and how it's used by Bitcoin wallets. Extended keys were first introduced in BIP 32 in order to create so called hierarchical deterministic wallets.^[<https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki>] Such wallets create a fresh address each time the user wants to receive coins. Unlike earlier wallets that required a fresh backup for every address, these new wallets only require a single backup, usually in the form of the familiar 12-24 word BIP 39 mnemonic.^[<https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki>]
 
 \newpage
 
