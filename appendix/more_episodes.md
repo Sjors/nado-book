@@ -35,11 +35,7 @@ Finally, we explain in some detail how opt-in RBF works in Bitcoin Core and whic
 
 ![Ep. 10 {l0pt}](qr/ep/10.png)
 
-Signet is a new type of testnet for Bitcoin. In this episode, we discuss the original version of testnet and outline its problems, and we introduce the alternative testing environment regtest.
-
-\
-
-\
+A signet is a new type of testnet for Bitcoin. In this episode, we discuss the original version of the public testing blockchain (testnet) and outline its problems. We then explain how signets are similar in nature to testnet, but more reliable and centrally controlled. A signet - there can be more than one - achieves this by adding an additional signature requirement to block validation (hence “sig”).^[Read more about signet(s), or try for yourself: <https://en.bitcoin.it/wiki/Signet>]
 
 #### PSBT and RBF Attacks
 
