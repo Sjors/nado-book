@@ -100,6 +100,7 @@ https://github.com/bitcoin/bitcoin/commit/a30b56ebe76ffff9f9cc8a6667186179413c63
 https://github.com/bitcoin/bitcoin/commit/f1e1fb4bdef878c8fc1564fa418d44e7541a7e83
 https://github.com/bitcoin/bitcoin/issues/15605
 https://github.com/bitcoin/bitcoin/issues/17326#issuecomment-550521262
+https://github.com/bitcoin/bitcoin/pull/15606
 https://github.com/bitcoin/bitcoin/pull/15759
 https://github.com/bitcoin/bitcoin/pull/17265
 https://github.com/bitcoin/bitcoin/pull/17428
@@ -123,6 +124,7 @@ https://gizmodo.com/how-heartbleed-works-the-code-behind-the-internets-se-156134
 https://guix.gnu.org/
 https://guix.gnu.org/en/blog/2020/guix-further-reduces-bootstrap-seed-to-25/
 https://lightning.network/
+https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-May/014337.html
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-May/014380.html
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-February/018498.html
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018583.html
