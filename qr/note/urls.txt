@@ -54,6 +54,7 @@ https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-02-26-taproot-activatio
 https://dlt-repo.net/storage-vs-memory-vs-stack-in-solidity-ethereum/
 https://en.bitcoin.it/wiki/Chain_Reorganization
 https://en.bitcoin.it/wiki/Difficulty
+https://en.bitcoin.it/wiki/Genesis_block
 https://en.bitcoin.it/wiki/IP_transaction
 https://en.bitcoin.it/wiki/Script
 https://en.wikipedia.org/wiki/%22Hello,_World!%22_program
