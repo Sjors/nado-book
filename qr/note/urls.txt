@@ -73,6 +73,7 @@ https://erebus-attack.comp.nus.edu.sg
 https://forkmonitor.info/
 https://git.savannah.nongnu.org/cgit/stage0.git/tree/README.org
 https://github.com/TheBlueMatt/bips/blob/cleanup-softfork/bip-XXXX.mediawiki
+https://github.com/alerj78/lucky7coin/issues/1
 https://github.com/bitcoin-core/secp256k1
 https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
