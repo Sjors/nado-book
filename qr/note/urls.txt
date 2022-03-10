@@ -111,6 +111,7 @@ https://github.com/bitcoin/bitcoin/pull/22387
 https://github.com/bitcoin/bitcoin/pull/5941/commits/1d21ba2f5ecbf03086d0b65c4c4c80a39a94c2ee
 https://github.com/bitcoin/bitcoin/pull/787
 https://github.com/bitcoin/bitcoin/pull/8282
+https://github.com/bitcoin/bitcoin/pull/9053
 https://github.com/curl/curl
 https://github.com/sipa
 https://github.com/sipa/bitcoin-seeder

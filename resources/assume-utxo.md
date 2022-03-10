@@ -18,13 +18,23 @@ When you turn on your Bitcoin Core node, the node needs to first connect to the 
 
 The most naive way of doing this is connecting to other peers and asking for everything. This results in downloading terrabytes of blocks, headers, and other random stuff, most likely resulting in a full hard disk that crashes.
 
-The initial version of Bitcoin would ask nodes for a header. Once it got a header, it'd ask nodes for a block and it would get that block. Then it'd ask for the next header, and it'd get all the headers and blocks sequentially. The problem with this is you don't know if you're following a dead end.
+The initial version of Bitcoin would ask nodes for a header. Once it got a header, it'd ask nodes for a block and it would get that block. Then it'd ask for the next header, and it'd get all the headers and blocks sequentially.^[It was slighly more complicated. When a node received a block that did not directly build on the tip of its chain, it would, as Satoshi put it in a source code comment, "shunt it off to [a] holding area". From there it could be appended to the chain tip later. These were called _orphan blocks_, a term often mixed up with _stale blocks_ (see chapter @sec:eclipse).] Your node would only check the blocks right in front of it, without seeing the big picture.
 
-The problem with this is someone could give you the first block and then mine the second and third blocks themselves at a very low difficulty by keeping the Bitcoin difficulty at one and just buying a chain with a million blocks in it. They'd give them to you one by one,^[It was slighly more complicated. When a node received a block that did not directly build on the tip of its chain, it would, as Satoshi put it in a source code comment, "shunt it off to [a] holding area". From there it could be appended to the chain tip later. These were called _orphan blocks_, a term often mixed up with _stale blocks_ (see chapter @sec:eclipse).] and you would check it and you'd be happy and you would check it and you'd be happy. And they'd would send you megabyte size blocks or even bigger with all the secret stuff in it.
+The problem with this is you don't know if you're following a dead end. Someone could feed your node a long branch of blocks that are not part of the of most proof-of-work chain. Nodes that just came online are especially vulnerable to that. This is because the proof-of-work difficulty has historically increased. It's expensive to create dead-end branches that start from recent blocks, because many miners are competing to produce blocks, pushing up the cost of creating a block. But if an attacker starts from very old block, from a time where there were fewer and less powerful miners, then the cost to produce these blocks are very low.
 
-Even though the difficulty is low, it doesn't make it any easier for my nodes to verify the transactions, and it still costs a lot of computational power.
+So an attacker can create a chain of very low difficulty blocks that branch off from some old block. If your node is new in town, when it sees two - or even thousands - possible branches, it doesn't which is the real one. If it picks the branch from the attacker first, it can end up wasting lots of time and computer resources to verify the blocks. Even though the proof-of-work difficulty of these blocks is low, it's not any easier for a node to verify the transactions. These dead end branches may be filled to their one megabyte maximum with specially crafted transactions that are extra slow to verify.
 
-It's cheap to generate a fake chain with very low difficulty. And I can just keep you busy for a long time. So one way to get rid of that problem is to first ask for just headers.
+In addition to bogging down nodes with dead-end branches of low difficulty blocks, there's also the issue of eclipse attacks, which we'll cover in chapter @sec:eclipse.
+
+### Checkpoints
+
+One solution to this problem was the use of checkpoints. Developers would put the hash and height of several known valid blocks in the source code. Any new block that does not descend from one of these checkpoints would be ignored. This didn't completely undo dead-end branches, but it limited their maximum length.
+
+The downside of checkpoints is that they potentially give a lot of power to developers. A malicious cabal of developers, or a benevolent dictator doing what's best for the community - whatever perspective you prefer, could decree that a certain block is valid. Even if an alternative branch with more proof of work exists, nodes would not consider this branch.
+
+Perhaps a developer loses their Bitcoin in a hack, they could then introduce a checkpoint right before the hacked coins moved, and move their coins to safety in the revised history. Such an attack can't happen in secret, and if it ever really happened users might simply refuse to install new node software with the malicious checkpoint. But prevention would be better better.
+
+The last checkpoint was added in late 2014. They were made most unnecessary by various means, including the introduction of `nMinimumChainWork` in 2016.^[<https://github.com/bitcoin/bitcoin/pull/9053>] This parameter states how much proof of work any chain of headers must demonstrate before even being considered. But for this to work, it requires nodes to be less myopic; they need to consider _where_ a given trail of blocks leads before spending lots of computer power chasing it. That's where Headers First comes in, so let's discuss that.
 
 ### Headers First
 
