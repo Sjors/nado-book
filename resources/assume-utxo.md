@@ -18,9 +18,9 @@ When you turn on your Bitcoin Core node, the node needs to first connect to the 
 
 The most naive way of doing this is connecting to other peers and asking for everything. This results in downloading terrabytes of blocks, headers, and other random stuff, most likely resulting in a full hard disk that crashes.
 
-The initial version of Bitcoin would ask nodes for a header. Once it got a header, it'd ask nodes for a block and it would get that block. Then it'd ask for the next header, and it'd get all the headers and blocks sequentially. The problem with this is you don't know if you're following a dead end. 
+The initial version of Bitcoin would ask nodes for a header. Once it got a header, it'd ask nodes for a block and it would get that block. Then it'd ask for the next header, and it'd get all the headers and blocks sequentially. The problem with this is you don't know if you're following a dead end.
 
-The problem with this is someone could give you the first block and then mine the second and third blocks themselves at a very low difficulty by keeping the Bitcoin difficulty at one and just buying a chain with a million blocks in it. They'd give them to you one by one,and you would check it and you'd be happy and you would check it and you'd be happy. And they'd would send you megabyte size blocks or even bigger with all the secret stuff in it. 
+The problem with this is someone could give you the first block and then mine the second and third blocks themselves at a very low difficulty by keeping the Bitcoin difficulty at one and just buying a chain with a million blocks in it. They'd give them to you one by one,and you would check it and you'd be happy and you would check it and you'd be happy. And they'd would send you megabyte size blocks or even bigger with all the secret stuff in it.
 
 Even though the difficulty is low, it doesn't make it any easier for my nodes to verify the transactions, and it still costs a lot of computational power.
 
@@ -28,7 +28,7 @@ It's cheap to generate a fake chain with very low difficulty. And I can just kee
 
 ### Headers First
 
-In theory, this isn't necessarily a problem, because your node would compare blockchains and pick the one with the most difficulty. But you'd need to verify the chains first, and it wouldn't necessarily be easy to determine the correct one. 
+In theory, this isn't necessarily a problem, because your node would compare blockchains and pick the one with the most difficulty. But you'd need to verify the chains first, and it wouldn't necessarily be easy to determine the correct one.
 
 The idea is to instead download the headers, which are much smaller, which makes it easier to determine difficulty.
 
@@ -46,19 +46,19 @@ Bitcoin Core currently doesn't do this right now, rather it's a trick to avoid h
 
 ### Assume Valid
 
-Assume Valid is a block hash that's encoded in the software. More specifically, it's a hash of a block from before the release. Many Bitcoin Core developers and anyone on GitHub can see what that hash is, and they can check for themselves whether that hash is real. 
+Assume Valid is a block hash that's encoded in the software. More specifically, it's a hash of a block from before the release. Many Bitcoin Core developers and anyone on GitHub can see what that hash is, and they can check for themselves whether that hash is real.
 
 If you're a new user and you start Bitcoin Core, it'll sync all the headers and get all the blocks. And if that particular hash is in the chain, it won't verify the signatures. So it's not a checkpoint. The hash doesn't have to be out there, but if it is, you won't verify any of the signatures up to that point. This in turn speeds up syncing.
 
 You're still downloading the whole blockchain, but it's a shortcut for syncing. Instead of validating signatures, you're checking the proof-of-work. In other words, you're checking: that miners actually produce the blocks by expending energy; that it's the longest chain; and all the transactions to construct the UTXO set, which is the current state of balances.
 
-What you're not checking are the signatures. Neither are you checking that the valid owner of each coin in any part of history was actually the correct owner. Instead, you're essetnially trusting the miners and the developers. More specifically, you're trusting that if the developers were to put in something that's not real, somebody would notice. 
+What you're not checking are the signatures. Neither are you checking that the valid owner of each coin in any part of history was actually the correct owner. Instead, you're essetnially trusting the miners and the developers. More specifically, you're trusting that if the developers were to put in something that's not real, somebody would notice.
 
 That's because you can see the source code and it's just one line, and if it has a hash in it that doesn't exist, you should be worried. Even then, it'd be strange, because it would have to be a chain with more proof-of-work, otherwise you'd never see it. So some evil developer would have to produce a chain with more proof of work than the real thing in order to trick some future user, but risk everybody noticing it.
 
 Ultimately, while this is about trusting, what's most important it to verify things.
 
-You're still downloading a piece of software from the internet, which could have a line of code in there that says, “Send all the Bitcoins to me.” So you have to check for sneaky things by the developers in general. 
+You're still downloading a piece of software from the internet, which could have a line of code in there that says, “Send all the Bitcoins to me.” So you have to check for sneaky things by the developers in general.
 
 But this particular sneaky thing would be extremely easy to see, because it's one place in the code base that has a hash in it and everybody can reproduce it. And if you don't like this — and you don't have to like this — you start Bitcoin from scratch with dash assume valid is zero, and then it will validate all the signatures.
 
@@ -70,7 +70,7 @@ In early 2019, Chaincode Labs alumni James O'Beirne introduced a proposal^[<http
 
 The general idea is that the only way you can reconstruct the UTXO set and find out which coins exist right now is to replay everything from scratch. This means you have to take the first block and see which coins it creates and which coins it destroys. You continue this with every block. Then the second block, see which coins it destroys, which coins it creates, et cetera, et cetera, et cetera, You have to start at th beginning and do it until the end, and you can only do it sequentially — all of which takes a long time.
 
-AssumeUTXO starts by doing Headers First syncing to determine which chain is the longest one, and once it has the headers, it can load a snapshot. This snapshot is of the UTXO set at a certain height — maybe just before the release or a bit older. And then when your node starts, it starts from that point. So it initially skips the whole history by starting from this snapshot. Then, it just checks the next block and the next block and the next block and the next block until it reaches the most recent block. So then you know exactly your balances and you can start using it. 
+AssumeUTXO starts by doing Headers First syncing to determine which chain is the longest one, and once it has the headers, it can load a snapshot. This snapshot is of the UTXO set at a certain height — maybe just before the release or a bit older. And then when your node starts, it starts from that point. So it initially skips the whole history by starting from this snapshot. Then, it just checks the next block and the next block and the next block and the next block until it reaches the most recent block. So then you know exactly your balances and you can start using it.
 
 But in the meantime, in the background, it starts at the genesis block, goes all the way to the snapshot, and verifies that the snapshot is correct. And if the snapshot isn't correct, it starts screaming.
 
@@ -78,12 +78,12 @@ With Assume Valid, it still did all of the UTXO set constructing and replayed al
 
 ### Tradeoffs
 
-There are of course some tradeoffs. For exampe, do you really want to check all the history before the snapshot? Because there are a lot of things you can know without checking history. So the question is, could you eventually in the future opt out of doing that? And what are you sacrificing when you do that? 
+There are of course some tradeoffs. For exampe, do you really want to check all the history before the snapshot? Because there are a lot of things you can know without checking history. So the question is, could you eventually in the future opt out of doing that? And what are you sacrificing when you do that?
 
 You're also trusting that miners are being honest. The nice thing is if you start at the snapshot and you create a new address and you receive coins on it and they get into a block, then you kind of know that block is valid. At least, unless there's another chain out there, because otherwise, a lot of miners are wasting a lot of proof-of-work on a chain that's not valid.
 
 There could of course be some conspiracy where the core developers and the miners collude and create a fake snapshot that has a couple of extra coins in it, and all the miners agree they'll approve blocks with those coins in it. In this way, they could sneak in a hard fork.
- 
+
 But that reenforces the importance of needing people to check whether the snapshot is real. You can either do it yourself with this back validation, or you can rely on the fact that other people are looking at the source code. And just like with headers, it would still need to match, so somebody would have to spend a whole lot of proof-of-work to sneak in a fake snapshot.
 
 Currently, Bitcoin Core can make snapshot of a UTXO set, but it doesn't actually do anything with it. In an upcoming release, it'll be able to load a UTXO set that you downloaded. And then maybe in the future version after that, it'll complete the package and you might have something called AssumeUTXO in Bitcoin Core.
