@@ -38,21 +38,11 @@ The last checkpoint was added in late 2014. They were made most unnecessary by v
 
 ### Headers First
 
-In theory, this isn't necessarily a problem, because your node would compare blockchains and pick the one with the most difficulty. But you'd need to verify the chains first, and it wouldn't necessarily be easy to determine the correct one.
+Given enough time - and if it doesn't crash - your node would compare all blockchain branches and eventually pick the one with the most difficulty. But because it needs to verify every branch first, it could a very long time to determine the correct one.
 
-The idea is to instead download the headers, which are much smaller, which makes it easier to determine difficulty.
+So rather than downloading and verifying entire blocks, the new approach is to download and verify just the headers, which are much smaller. In particular, headers are the only thing you need to determine the cumulative proof-of-work difficulty in any given branch.
 
-Instead of downloading and verifying all the chains and then picking the one with the most proof-of-work, you'd first check out which chain has the most proof-of-work and validate that one. In other words, you're inverting the process.
-
-Right. Because so far you just have SPV security. So you just know which one has the most proof of work, but it could be invalid. So in that case, you start downloading one block at a time. Or in fact, because you already have all the headers, you can download lots of blocks at the same time, from different nodes in parallel. But you have to verify them in sequence. And then if you run into an invalid block, okay, then you say this header chain might have the most proof of work, but it's not valid. So I'm going to go to this second most proof of work header chain and ask for the blocks. It's mostly going to be the same maybe except the last few.
-
-With SPV security, it'd be possible to bootstrap your nodes that way, and then after you're done validating all of the blocks, you'd get full security. However, you would nee the blocks to know your transaction history.
-
-The proposal for this was by Jonas Schnelli, I think four or five years ago, an attempt to at least start up in SPV mode. And then I guess if you create a new address from scratch, then you know it's history. So then when the next block comes in and you see a transaction to that address, then you know that you have a balance. You can't rescan any old addresses, but you can see anything new that comes in. Because you're going to download all the real blocks after yeah. Starting at the present basically.
-
-You're at least sure that more miners think it's a valid transaction or at least they're spending hash power telling you it's a valid transaction. So even though you don't have full security, it's a little bit better than nothing. And it's definitely enough to receive it. And then just to assume that it's fake, but you can just sit on it for a while. But in the meantime you would be validating all the older blocks.
-
-Bitcoin Core currently doesn't do this right now, rather it's a trick to avoid having to potentially download fake chains and instead only download the chain that has the most proof of work.
+Once your node knows which branch has the most work, proof-of-work, it downloads the blocks for it and starts verifying. This step can't be skipped, because it's still possible there's an invalid block in the chain with the most proof-of-work. Should your node run into such an invalid block, it discards the branch and repeats the process for whichever branch had the second most proof-of-work.
 
 ### Assume Valid
 
