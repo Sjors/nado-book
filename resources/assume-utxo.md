@@ -6,14 +6,11 @@
 
 One of the biggest bottlenecks — if not the biggest one — for scaling Bitcoin is initial block download. This is the time it takes for a Bitcoin node to synchronize with the Bitcoin network, as it needs to process all historic transactions and blocks to construct the latest unspent transaction output (UTXO) set, i.e. the current state of Bitcoin ownership.
 
-This chapter will cover some of the ways sync time has been sped up over time. It was first improved through Headers First synchronization, which ensures that new Bitcoin nodes don’t waste time validating (potentially) weaker blockchains. In recent years, synchronizing time has been improved with Assume Valid, an optional shortcut that lets nodes skip signature verification of older transactions, instead trusting that the Bitcoin Core development process — in combination with the resource-expensive nature of mining — offers a reliable version of transaction history.
+This chapter will cover some of the ways sync time has been sped up over time. It was first improved through Headers First synchronization, which ensures that new Bitcoin nodes don’t waste time validating (potentially) weaker blockchains. In recent years, synchronizing time has been improved with Assume Valid, a default shortcut that lets nodes skip signature verification of older transactions, instead trusting that the Bitcoin Core development process — in combination with the resource-expensive nature of mining — offers a reliable version of transaction history.
 
-It'll also discuss how the security assumptions underpinning Assume Valid could be extended to allow for the potential future upgrade, AssumeUTXO, to offer new Bitcoin Core users a speedy solution to get up to speed with the Bitcoin network by sacrificing a minimal amount of security during the initial bootstrapping phase.
+It'll also discuss how the security assumptions underpinning Assume Valid could be extended to allow for the potential future upgrade, AssumeUTXO, to offer new Bitcoin Core users a speedy solution to get up to speed with the Bitcoin network by syncing the most recent blocks first and checking historical blocks in the background later.
 
-Helpful Links:
-
-Chaincode podcast about the same:
-<https://www.youtube.com/watch?v=knBHvzKsIOY>
+In addition to the accompanying Bitcoin, Explained episode, you can also listen to a Chaincode podcast episode with AssumeUTXO author James O'Beirne covering the same topics as this chapter.^[<https://podcast.chaincode.com/2020/02/12/james-obeirne-4.html>].
 
 ### Downloading the Blockchain
 
