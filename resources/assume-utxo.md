@@ -50,7 +50,7 @@ Assume Valid is a block hash that’s encoded in the software. More specifically
 
 If you’re a new user and you start Bitcoin Core, it’ll sync all the headers and get all the blocks. And if that particular hash is in the chain, it won’t verify any signatures that came before it. It’ll still verify everything else, e.g. that the proof-of-work is valid and that no coins are created out of thin air. Skipping signature verification mainly saves CPU usage, and this speeds up the whole process.
 
-The Assume Valid mechanism is different from a checkpoint. A node doesn’t require that the hash occurs in the blockchain. If your node sees another branch of the blockchain without this hash, and if it has more proof-of-work, it’ll consider that other branch first. The only difference is that it _will_ verify the signatures for that other branch, so it’ll take a bit longer.
+The Assume Valid mechanism is different from a checkpoint, in that a node doesn’t require that the hash occurs in the blockchain. If your node sees another branch of the blockchain without this hash, and if it has more proof-of-work, it’ll consider that other branch first. The only difference is that it _will_ verify the signatures for that other branch, so it’ll take a bit longer.
 
 What does it mean to not check signatures for blocks before the Assume Valid hash? It means that if somebody stole a coin, i.e. spent a UTXO with an invalid signature, your node wouldn’t notice. But if someone created a coin out of thin air, your node would still see that.
 
