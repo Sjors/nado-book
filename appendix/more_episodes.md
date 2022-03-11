@@ -5,7 +5,7 @@
 
 ## More episodes {#sec:more_eps}
 
-Not all episodes of Bitcoin, Explained made it into this book. Here's some other episodes you could listen to:
+Not all episodes of _Bitcoin, Explained_ made it into this book. Here's some other episodes you could listen to:
 
 ### Basics
 
@@ -194,7 +194,7 @@ See also Aaron's article.^[<https://bitcoinmagazine.com/articles/building-on-tap
 
 One could write a entire book about lightning. And in fact, others have, see e.g. _Mastering the Lightning Network: A Second Layer Blockchain Protocol for Instant Bitcoin Payments_ by Andreas Antonopoulos and Olaoluwa Osuntokun (aka Roasbeef).
 
-This book does not cover Lightning, but several Bitcoin, Explained episodes did.
+This book does not cover Lightning, but several _Bitcoin, Explained_ episodes did.
 
 #### Basics
 

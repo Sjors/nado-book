@@ -10,7 +10,7 @@ This chapter will cover some of the ways sync time has been sped up over time. I
 
 It’ll also discuss how the security assumptions underpinning Assume Valid could be extended to allow for the potential future upgrade, AssumeUTXO, to offer new Bitcoin Core users a speedy solution to get up to speed with the Bitcoin network by syncing the most recent blocks first and checking historical blocks in the background later.
 
-In addition to the accompanying Bitcoin, Explained episode, you can also listen to a Chaincode podcast episode with AssumeUTXO author James O’Beirne, which covers the same topics as this chapter.^[<https://podcast.chaincode.com/2020/02/12/james-obeirne-4.html>].
+In addition to the accompanying _Bitcoin, Explained_ episode, you can also listen to a _Chaincode Podcast_ episode with AssumeUTXO author James O’Beirne, which covers the same topics as this chapter.^[<https://podcast.chaincode.com/2020/02/12/james-obeirne-4.html>].
 
 ### Downloading the Blockchain
 
