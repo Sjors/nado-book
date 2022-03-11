@@ -1,5 +1,5 @@
 \newpage
-## Headers First, Assume Valid, and AssumeUTXO {#sec:assume}
+## Sync Time and AssumeUTXO {#sec:assume}
 
 
 ![Ep. 14 {l0pt}](qr/ep/14.png)
