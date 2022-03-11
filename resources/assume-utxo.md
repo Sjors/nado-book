@@ -34,7 +34,7 @@ The downside of checkpoints is that they potentially give a lot of power to deve
 
 Perhaps a developer loses their Bitcoin in a hack; they could then introduce a checkpoint right before the hacked coins moved and move their coins to safety in the revised history. Such an attack can’t happen in secret, and if it ever really happened, users might simply refuse to install new node software with the malicious checkpoint. But prevention would be better.
 
-The last checkpoint was added in late 2014. They were made most unnecessary by various means, including the introduction of `nMinimumChainWork` in 2016.^[<https://github.com/bitcoin/bitcoin/pull/9053>] This parameter states how much proof-of-work any chain of headers must demonstrate before even being considered. But for this to work, it requires nodes to be less myopic; they need to consider _where_ a given trail of blocks leads before spending lots of computer power chasing it. And that’s where Headers First comes in.
+The last checkpoint was added in late 2014. They were made mostly unnecessary by various means, including the introduction of `nMinimumChainWork` in 2016.^[<https://github.com/bitcoin/bitcoin/pull/9053>] This parameter states how much proof-of-work any chain of headers must demonstrate before even being considered. But for this to work, it requires nodes to be less myopic; they need to consider _where_ a given trail of blocks leads before spending lots of computer power chasing it. And that’s where Headers First comes in.
 
 ### Headers First
 
