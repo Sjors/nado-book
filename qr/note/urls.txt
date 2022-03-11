@@ -1,8 +1,11 @@
 http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion/
 http://bitcoin.sipa.be/miniscript
+http://www.hashcash.org/papers/hashcash.pdf
+http://www.weidai.com/bmoney.txt
 https://arxiv.org/abs/2107.05322
 https://arxiv.org/abs/2108.00815
 https://arxiv.org/pdf/1804.10848.pdf
+https://bitcoin.org/bitcoin.pdf
 https://bitcoin.org/en/alert/2015-07-04-spv-mining#cause
 https://bitcoin.org/en/releases/22.0/
 https://bitcoin.stackexchange.com/a/10666/4948
@@ -55,6 +58,7 @@ https://dcgco.medium.com/bitcoin-scaling-agreement-at-consensus-2017-133521fe9a7
 https://developer.bitcoin.org/reference/p2p_networking.html#addr
 https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-02-26-taproot-activation-lockinontimeout/
 https://dlt-repo.net/storage-vs-memory-vs-stack-in-solidity-ethereum/
+https://doi.org/10.5195/ledger.2018.101
 https://en.bitcoin.it/wiki/Chain_Reorganization
 https://en.bitcoin.it/wiki/Difficulty
 https://en.bitcoin.it/wiki/Genesis_block
@@ -168,6 +172,7 @@ https://www.coindesk.com/markets/2019/03/05/coinbase-pushes-out-ex-hacking-team-
 https://www.coindesk.com/markets/2020/08/07/ethereum-classic-attacker-successfully-double-spends-168m-in-second-attack-report/
 https://www.merriam-webster.com/dictionary/mitigate
 https://www.reddit.com/r/Bitcoin/comments/3c305f/comment/csrt3dg/
+https://www.reddit.com/r/Bitcoin/comments/l2yu4k/comment/gke25ve/
 https://www.reddit.com/r/Bitcoin/comments/mruopv/bitcoincorebased_bip8_lottrue_taproot_activation/
 https://www.reddit.com/r/Buttcoin/comments/6dvkr6/short_writeup_of_the_bip66_disaster_is_this/
 https://www.reddit.com/r/ProgrammerHumor/comments/qzwjm3/please_dont_confuse_these_two/

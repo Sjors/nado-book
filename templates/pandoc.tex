@@ -28,6 +28,9 @@ $for(classoption)$
   $classoption$$sep$,
 $endfor$
 ]{$documentclass$}
+% Load early to prevent option clash
+\usepackage[fleqn]{amsmath}
+\usepackage{mathtools}
 $if(beamer)$
 $if(background-image)$
 \usebackgroundtemplate{%
@@ -433,7 +436,23 @@ $if(logo)$
 \logo{\includegraphics{$logo$}}
 $endif$
 $endif$
+% Crazy workaround to drop empty \caption{} produced by Pandoc:
+% https://tex.stackexchange.com/a/170810
+\makeatletter
+\def\ifemptyarg#1{%
+  \if\relax\detokenize{#1}\relax % H. Oberdiek
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi}
+\makeatother
 
+\let\oldcaption\caption
+\AtBeginDocument{%
+  \renewcommand{\caption}[2][]{%
+    \ifemptyarg{#2}{}{\oldcaption[#1]{#2}}%
+  }%
+}
 \begin{document}
 $if(has-frontmatter)$
 \frontmatter

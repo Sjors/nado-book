@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="130.3161mm"
+   height="54.740173mm"
+   viewBox="0 0 130.3161 54.740173"
+   version="1.1"
+   id="svg2070"
+   inkscape:version="1.1.2 (b8e25be8, 2022-02-05)"
+   sodipodi:docname="fig5.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview2072"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.77771465"
+     inkscape:cx="396.67505"
+     inkscape:cy="576.68967"
+     inkscape:window-width="1404"
+     inkscape:window-height="1081"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2067">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath737">
+      <path
+         d="M 118.5,448 H 493.9 V 607.3 H 118.5 Z"
+         clip-rule="evenodd"
+         id="path735" />
+    </clipPath>
+  </defs>
+  <g
+     inkscape:label="Laag 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g731"
+       transform="matrix(0.35277777,0,0,-0.35277777,-43.814999,212.78461)">
+      <g
+         id="g733"
+         clip-path="url(#clipPath737)">
+        <path
+           d="m 266.3,510.7 h -17.1 v 11.4 h 34.1 v -11.4 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path739" />
+        <g
+           id="g741">
+          <path
+             d="m 266.3,510.7 h -17.1 v 11.4 h 34.1 v -11.4 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path743" />
+        </g>
+        <g
+           id="g745">
+          <text
+             transform="matrix(1,0,0,-0.99980004,254.1,513.4)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text749"><tspan
+               x="0 5.0988197 9.0969191 12.697339 16.596018 20.594118"
+               y="0"
+               sodipodi:role="line"
+               id="tspan747">Hash01</tspan></text>
+        </g>
+        <path
+           d="M 314.6,476.6 H 300.4 V 488 h 28.4 v -11.4 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path751" />
+        <g
+           id="g753">
+          <path
+             d="M 314.6,476.6 H 300.4 V 488 h 28.4 v -11.4 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path755" />
+        </g>
+        <g
+           id="g757">
+          <text
+             transform="matrix(1,0,0,-0.99980004,304.4,479)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text761"><tspan
+               x="0 5.0988197 9.0969191 12.697339 16.695438"
+               y="0"
+               sodipodi:role="line"
+               id="tspan759">Hash2</tspan></text>
+        </g>
+        <path
+           d="M 354.4,476.6 H 340.1 V 488 h 28.5 v -11.4 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path763" />
+        <g
+           id="g765">
+          <path
+             d="M 354.4,476.6 H 340.1 V 488 h 28.5 v -11.4 z"
+             style="fill:none;stroke:#4c4c4c;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:1.1424, 1.1424, 1.1424, 1.1424;stroke-dashoffset:0;stroke-opacity:1"
+             id="path767" />
+        </g>
+        <g
+           id="g769">
+          <text
+             transform="matrix(1,0,0,-0.99980004,344.1,479)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text773"><tspan
+               x="0 5.0988197 9.0969191 12.697339 16.596018"
+               y="0"
+               sodipodi:role="line"
+               id="tspan771">Hash3</tspan></text>
+        </g>
+        <path
+           d="m 334.5,510.7 h -17.1 v 11.4 h 34.1 v -11.4 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path775" />
+        <g
+           id="g777">
+          <path
+             d="m 334.5,510.7 h -17.1 v 11.4 h 34.1 v -11.4 z"
+             style="fill:none;stroke:#4c4c4c;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:1.1424, 1.1424, 1.1424, 1.1424;stroke-dashoffset:0;stroke-opacity:1"
+             id="path779" />
+        </g>
+        <g
+           id="g781">
+          <text
+             transform="matrix(1,0,0,-0.99980004,322.2,513.4)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text785"><tspan
+               x="0 5.0988197 8.9974995 12.597919 16.596018 20.594118"
+               y="0"
+               sodipodi:role="line"
+               id="tspan783">Hash23</tspan></text>
+        </g>
+        <path
+           d="m 328.8,510.7 -1,-7.1 -4.1,2 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path787" />
+        <path
+           d="m 317.4,488 8.9,17.8"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path789" />
+        <path
+           d="m 340.1,510.7 5.1,-5.1 -4,-2 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path791" />
+        <path
+           d="m 351.5,488 -8.9,17.8"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path793" />
+        <path
+           d="m 306,539.1 h -51.1 v 51.2 h 102.3 v -51.2 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path795" />
+        <g
+           id="g797">
+          <path
+             d="m 306,539.1 h -51.1 v 51.2 h 102.3 v -51.2 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path799" />
+        </g>
+        <g
+           id="g801">
+          <text
+             transform="matrix(1,0,0,-0.99980004,260.6,579.6)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text805"><tspan
+               x="0 4.7011399 6.2989597 10.297059 13.897479 17.497898 19.5005 24.599319 28.597418 32.595516 36.494198 40.492298"
+               y="0"
+               sodipodi:role="line"
+               id="tspan803">Block Header</tspan></text>
+        </g>
+        <path
+           d="m 299.3,544.8 h -22.7 v 11.4 h 45.5 v -11.4 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path807" />
+        <g
+           id="g809">
+          <path
+             d="m 299.3,544.8 h -22.7 v 11.4 h 45.5 v -11.4 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path811" />
+        </g>
+        <g
+           id="g813">
+          <text
+             transform="matrix(1,0,0,-0.99980004,280.1,547.7)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text817"><tspan
+               x="0 5.8018603 9.7999592 12.10082 15.70124 17.398479 21.297159 23.299759 28.398579 32.396679 36.394779"
+               y="0"
+               sodipodi:role="line"
+               id="tspan815">Merkle Root</tspan></text>
+        </g>
+        <path
+           d="m 289,544.8 -2.3,-6.8 -3.6,2.7 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path819" />
+        <path
+           d="m 271.9,522.1 13.8,18.3"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path821" />
+        <path
+           d="m 311.7,544.8 5.9,-4.1 -3.6,-2.7 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path823" />
+        <path
+           d="M 328.8,522.1 315,540.4"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path825" />
+        <path
+           d="m 289,561.9 h -22.7 v 11.3 h 45.4 v -11.3 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path827" />
+        <g
+           id="g829">
+          <path
+             d="m 289,561.9 h -22.7 v 11.3 h 45.4 v -11.3 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path831" />
+        </g>
+        <g
+           id="g833">
+          <text
+             transform="matrix(1,0,0,-0.99980004,272.4,564.8)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text837"><tspan
+               x="0 4.80056 7.1014199 11.09952 14.600519 16.603121 21.701939 25.700039 29.300459"
+               y="0"
+               sodipodi:role="line"
+               id="tspan835">Prev Hash</tspan></text>
+        </g>
+        <path
+           d="m 334.5,561.9 h -17.1 v 11.3 h 34.1 v -11.3 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path839" />
+        <g
+           id="g841">
+          <path
+             d="m 334.5,561.9 h -17.1 v 11.3 h 34.1 v -11.3 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path843" />
+        </g>
+        <g
+           id="g845">
+          <text
+             transform="matrix(1,0,0,-0.99980004,323.9,564.8)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text849"><tspan
+               x="0 5.1982393 9.0969191 13.095018 16.695438"
+               y="0"
+               sodipodi:role="line"
+               id="tspan847">Nonce</tspan></text>
+        </g>
+        <path
+           d="m 186.7,539.1 h -51.2 v 51.2 h 102.3 v -51.2 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path851" />
+        <g
+           id="g853">
+          <path
+             d="m 186.7,539.1 h -51.2 v 51.2 h 102.3 v -51.2 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path855" />
+        </g>
+        <g
+           id="g857">
+          <text
+             transform="matrix(1,0,0,-0.99980004,141,579.6)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text861"><tspan
+               x="0 4.7011399 6.2989597 10.297059 13.897479 17.497898 19.5005 24.599319 28.597418 32.595516 36.494198 40.492298"
+               y="0"
+               sodipodi:role="line"
+               id="tspan859">Block Header</tspan></text>
+        </g>
+        <path
+           d="m 179,544.8 h -22.8 v 11.4 h 45.5 v -11.4 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path863" />
+        <g
+           id="g865">
+          <path
+             d="m 179,544.8 h -22.8 v 11.4 h 45.5 v -11.4 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path867" />
+        </g>
+        <g
+           id="g869">
+          <text
+             transform="matrix(1,0,0,-0.99980004,159.9,547.7)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text873"><tspan
+               x="0 5.8018603 9.7999592 12.200239 15.800659 17.398479 21.396578 23.299759 28.497999 32.396679 36.394779"
+               y="0"
+               sodipodi:role="line"
+               id="tspan871">Merkle Root</tspan></text>
+        </g>
+        <path
+           d="m 168.6,561.9 h -22.7 v 11.3 h 45.5 v -11.3 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path875" />
+        <g
+           id="g877">
+          <path
+             d="m 168.6,561.9 h -22.7 v 11.3 h 45.5 v -11.3 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path879" />
+        </g>
+        <g
+           id="g881">
+          <text
+             transform="matrix(1,0,0,-0.99980004,152.2,564.8)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text885"><tspan
+               x="0 4.80056 7.20084 11.09952 14.600519 16.603121 21.701939 25.700039 29.300459"
+               y="0"
+               sodipodi:role="line"
+               id="tspan883">Prev Hash</tspan></text>
+        </g>
+        <path
+           d="M 214.1,561.9 H 197 v 11.3 h 34.1 v -11.3 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path887" />
+        <g
+           id="g889">
+          <path
+             d="M 214.1,561.9 H 197 v 11.3 h 34.1 v -11.3 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path891" />
+        </g>
+        <g
+           id="g893">
+          <text
+             transform="matrix(1,0,0,-0.99980004,203.7,564.8)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text897"><tspan
+               x="0 5.0988197 8.9974995 12.995599 16.596018"
+               y="0"
+               sodipodi:role="line"
+               id="tspan895">Nonce</tspan></text>
+        </g>
+        <path
+           d="m 425.4,539.1 h -51.2 v 51.2 h 102.3 v -51.2 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path899" />
+        <g
+           id="g901">
+          <path
+             d="m 425.4,539.1 h -51.2 v 51.2 h 102.3 v -51.2 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path903" />
+        </g>
+        <g
+           id="g905">
+          <text
+             transform="matrix(1,0,0,-0.99980004,379.6,579.6)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text909"><tspan
+               x="0 4.7011399 6.2989597 10.297059 13.897479 17.497898 19.5005 24.599319 28.597418 32.595516 36.494198 40.492298"
+               y="0"
+               sodipodi:role="line"
+               id="tspan907">Block Header</tspan></text>
+        </g>
+        <path
+           d="M 418.7,544.8 H 396 v 11.4 h 45.4 v -11.4 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path911" />
+        <g
+           id="g913">
+          <path
+             d="M 418.7,544.8 H 396 v 11.4 h 45.4 v -11.4 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path915" />
+        </g>
+        <g
+           id="g917">
+          <text
+             transform="matrix(1,0,0,-0.99980004,399.7,547.7)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text921"><tspan
+               x="0 5.8018603 9.7999592 12.10082 15.70124 17.398479 21.297159 23.299759 28.398579 32.396679 36.394779"
+               y="0"
+               sodipodi:role="line"
+               id="tspan919">Merkle Root</tspan></text>
+        </g>
+        <path
+           d="m 408.3,561.9 h -22.7 v 11.3 h 45.5 v -11.3 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path923" />
+        <g
+           id="g925">
+          <path
+             d="m 408.3,561.9 h -22.7 v 11.3 h 45.5 v -11.3 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path927" />
+        </g>
+        <g
+           id="g929">
+          <text
+             transform="matrix(1,0,0,-0.99980004,392,564.8)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text933"><tspan
+               x="0 4.80056 7.1014199 11.09952 14.600519 16.603121 21.701939 25.700039 29.300459"
+               y="0"
+               sodipodi:role="line"
+               id="tspan931">Prev Hash</tspan></text>
+        </g>
+        <path
+           d="m 453.8,561.9 h -17 v 11.3 h 34.1 v -11.3 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path935" />
+        <g
+           id="g937">
+          <path
+             d="m 453.8,561.9 h -17 v 11.3 h 34.1 v -11.3 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path939" />
+        </g>
+        <g
+           id="g941">
+          <text
+             transform="matrix(1,0,0,-0.99980004,443.5,564.8)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text945"><tspan
+               x="0 5.0988197 9.0969191 13.095018 16.695438"
+               y="0"
+               sodipodi:role="line"
+               id="tspan943">Nonce</tspan></text>
+        </g>
+        <path
+           d="m 385.6,567.5 -6.8,-2.2 v 4.5 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path947" />
+        <path
+           d="m 357.2,567.5 h 23"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path949" />
+        <path
+           d="m 266.3,567.5 -6.8,-2.2 v 4.5 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path951" />
+        <path
+           d="m 237.8,567.5 h 23"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path953" />
+        <path
+           d="m 493.6,567.5 -6.8,-2.2 v 4.5 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path955" />
+        <path
+           d="m 476.5,567.5 h 11.6"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path957" />
+        <path
+           d="m 146.9,567.5 -6.8,-2.2 v 4.5 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path959" />
+        <path
+           d="m 124.2,567.5 h 17.3"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path961" />
+        <g
+           id="g963">
+          <text
+             transform="matrix(1,0,0,-0.99980004,362.4,498)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text967"><tspan
+               x="0 5.8018603 9.7999592 12.10082 15.70124 17.398479 21.297159 23.299759 28.000898 30.401178 34.399277 38.397377 41.997799 45.995899 47.899078 49.90168 53.899776 56.300056 58.203239 62.400177 65.801758"
+               y="0"
+               sodipodi:role="line"
+               id="tspan965">Merkle Branch for Tx3</tspan></text>
+        </g>
+        <g
+           id="g969">
+          <text
+             transform="matrix(1,0,0,-0.99980004,123.8,598)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text973"><tspan
+               x="0 3.9980996 7.9961991 11.994298 15.892978 19.891077 23.491497 25.494099 27.496698 32.197838 34.598118 38.596218 42.594318 44.596916 46.897778 50.895878 52.898479 55.199337 62.300758 66.19944 68.599716 72.200134 74.202736 79.301559 83.29966 87.297752 88.895576"
+               y="0"
+               sodipodi:role="line"
+               id="tspan971">Longest Proof-of-Work Chain</tspan></text>
+        </g>
+        <path
+           d="m 357.2,448.2 h -11.4 v 11.4 h 22.8 v -11.4 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path975" />
+        <g
+           id="g977">
+          <path
+             d="m 357.2,448.2 h -11.4 v 11.4 h 22.8 v -11.4 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path979" />
+        </g>
+        <g
+           id="g981">
+          <text
+             transform="matrix(1,0,0,-0.99980004,351.2,450.6)"
+             style="font-variant:normal;font-weight:normal;font-size:7.10142px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text985"><tspan
+               x="0 4.196939 7.5985193"
+               y="0"
+               sodipodi:role="line"
+               id="tspan983">Tx3</tspan></text>
+        </g>
+        <path
+           d="m 357.2,476.6 2.3,-6.8 h -4.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path987" />
+        <path
+           d="m 357.2,459.6 v 11.6"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path989" />
+      </g>
+    </g>
+  </g>
+</svg>

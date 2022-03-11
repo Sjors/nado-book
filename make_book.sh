@@ -90,3 +90,5 @@ pandoc --table-of-contents --top-level-division=part --toc-depth=1\
         taproot/activation.processed.md\
         appendix/more_episodes.processed.md\
         appendix/crime-on-testnet.processed.md\
+        appendix/whitepaper.processed.md\
+        whitepaper/bitcoin.processed.md\

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="105.66876mm"
+   height="31.138458mm"
+   viewBox="0 0 105.66876 31.138458"
+   version="1.1"
+   id="svg1280"
+   inkscape:version="1.1.2 (b8e25be8, 2022-02-05)"
+   sodipodi:docname="fig7.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1282"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.77771465"
+     inkscape:cx="396.67505"
+     inkscape:cy="576.68967"
+     inkscape:window-width="1404"
+     inkscape:window-height="1081"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1277">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath437">
+      <path
+         d="m 153.8,502.7 h 304.6 v 92.9 H 153.8 Z"
+         clip-rule="evenodd"
+         id="path435" />
+    </clipPath>
+  </defs>
+  <g
+     inkscape:label="Laag 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g431"
+       transform="matrix(0.35277777,0,0,-0.35277777,-56.044564,208.47984)">
+      <g
+         id="g433"
+         clip-path="url(#clipPath437)">
+        <path
+           d="M 185.7,561.4 H 163.6 V 576 h 44.2 v -14.6 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path439" />
+        <g
+           id="g441">
+          <path
+             d="M 185.7,561.4 H 163.6 V 576 h 44.2 v -14.6 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path443" />
+        </g>
+        <g
+           id="g445">
+          <text
+             transform="matrix(1,0,0,-0.99606554,173.2,566.2)"
+             style="font-variant:normal;font-weight:normal;font-size:6.12409px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text449"><tspan
+               x="0 1.8004839 5.1993566 8.5982294 12.101212 13.80371 15.206128 16.908627 18.311045 21.709917"
+               y="0"
+               sodipodi:role="line"
+               id="tspan447">Identities</tspan></text>
+        </g>
+        <path
+           d="M 244.7,561.4 H 222.6 V 576 h 44.2 v -14.6 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path451" />
+        <g
+           id="g453">
+          <path
+             d="M 244.7,561.4 H 222.6 V 576 h 44.2 v -14.6 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path455" />
+        </g>
+        <g
+           id="g457">
+          <text
+             transform="matrix(1,0,0,-0.99606554,227,566.2)"
+             style="font-variant:normal;font-weight:normal;font-size:6.12409px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text461"><tspan
+               x="0 3.3988726 5.4994373 8.8983097 12.297183 15.500085 18.898956 21.997749 23.700247 25.102665 28.501537 32.00452"
+               y="0"
+               sodipodi:role="line"
+               id="tspan459">Transactions</tspan></text>
+        </g>
+        <path
+           d="m 308.5,556.5 h -22.1 v 24.4 h 44.2 v -24.4 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path463" />
+        <g
+           id="g465">
+          <path
+             d="m 308.5,556.5 h -22.1 v 24.4 h 44.2 v -24.4 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path467" />
+        </g>
+        <g
+           id="g469">
+          <text
+             transform="matrix(1,0,0,-0.99606554,298.2,569.2)"
+             style="font-variant:normal;font-weight:normal;font-size:6.12409px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text473"><tspan
+               x="0 3.5029824 5.5055614 8.9044342 12.003226 13.80371 17.202583"
+               y="0"
+               sodipodi:role="line"
+               id="tspan471">Trusted</tspan></text>
+        </g>
+        <g
+           id="g475">
+          <text
+             transform="matrix(1,0,0,-0.99606554,293.5,562.5)"
+             style="font-variant:normal;font-weight:normal;font-size:6.12409px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text479"><tspan
+               x="0 3.6989534 7.097826 8.5002441 10.600808 13.999681 15.70218 19.7992 23.198072 25.298637 27.001135"
+               y="0"
+               sodipodi:role="line"
+               id="tspan477">Third Party</tspan></text>
+        </g>
+        <path
+           d="m 372.4,556.5 h -22.1 v 24.4 h 44.2 v -24.4 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path481" />
+        <g
+           id="g483">
+          <path
+             d="m 372.4,556.5 h -22.1 v 24.4 h 44.2 v -24.4 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path485" />
+        </g>
+        <g
+           id="g487">
+          <text
+             transform="matrix(1,0,0,-0.99606554,354.4,566.2)"
+             style="font-variant:normal;font-weight:normal;font-size:6.12409px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text491"><tspan
+               x="0 4.3971 7.7959728 11.298955 14.697828 16.498312 19.897184 21.899763 25.402746 28.801619 30.902184 32.604683"
+               y="0"
+               sodipodi:role="line"
+               id="tspan489">Counterparty</tspan></text>
+        </g>
+        <path
+           d="m 436.3,556.5 h -22.2 v 24.4 h 44.3 v -24.4 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path493" />
+        <g
+           id="g495">
+          <path
+             d="m 436.3,556.5 h -22.2 v 24.4 h 44.3 v -24.4 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path497" />
+        </g>
+        <g
+           id="g499">
+          <text
+             transform="matrix(1,0,0,-0.99606554,428.1,566.2)"
+             style="font-variant:normal;font-weight:normal;font-size:6.12409px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text503"><tspan
+               x="0 4.0970197 7.495892 10.894765 12.297183 13.6996"
+               y="0"
+               sodipodi:role="line"
+               id="tspan501">Public</tspan></text>
+        </g>
+        <g
+           id="g505">
+          <path
+             d="M 404.3,585.8 V 551.6"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path507" />
+        </g>
+        <path
+           d="m 185.7,507.5 h -22.1 v 14.7 h 44.2 v -14.7 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path509" />
+        <g
+           id="g511">
+          <path
+             d="m 185.7,507.5 h -22.1 v 14.7 h 44.2 v -14.7 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path513" />
+        </g>
+        <g
+           id="g515">
+          <text
+             transform="matrix(1,0,0,-0.99606554,173.2,512.2)"
+             style="font-variant:normal;font-weight:normal;font-size:6.12409px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text519"><tspan
+               x="0 1.8004839 5.1993566 8.5982294 12.101212 13.80371 15.206128 16.908627 18.311045 21.709917"
+               y="0"
+               sodipodi:role="line"
+               id="tspan517">Identities</tspan></text>
+        </g>
+        <path
+           d="m 249.6,507.5 h -22.1 v 14.7 h 44.2 v -14.7 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path521" />
+        <g
+           id="g523">
+          <path
+             d="m 249.6,507.5 h -22.1 v 14.7 h 44.2 v -14.7 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path525" />
+        </g>
+        <g
+           id="g527">
+          <text
+             transform="matrix(1,0,0,-0.99606554,232.1,512.2)"
+             style="font-variant:normal;font-weight:normal;font-size:6.12409px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text531"><tspan
+               x="0 3.3988726 5.4994373 8.8983097 12.297183 15.500085 18.898956 21.997749 23.700247 25.102665 28.605648 32.00452"
+               y="0"
+               sodipodi:role="line"
+               id="tspan529">Transactions</tspan></text>
+        </g>
+        <path
+           d="m 313.4,502.6 h -22.1 v 24.5 h 44.3 v -24.5 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path533" />
+        <g
+           id="g535">
+          <path
+             d="m 313.4,502.6 h -22.1 v 24.5 h 44.3 v -24.5 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path537" />
+        </g>
+        <g
+           id="g539">
+          <text
+             transform="matrix(1,0,0,-0.99606554,305.3,512.2)"
+             style="font-variant:normal;font-weight:normal;font-size:6.12409px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text543"><tspan
+               x="0 4.0970197 7.495892 10.894765 12.297183 13.6996"
+               y="0"
+               sodipodi:role="line"
+               id="tspan541">Public</tspan></text>
+        </g>
+        <g
+           id="g545">
+          <path
+             d="M 217.7,527.1 V 502.6"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path547" />
+        </g>
+        <path
+           d="m 291.3,514.9 -7.3,-2.5 v 4.9 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path549" />
+        <path
+           d="m 271.7,514.9 h 13.7"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path551" />
+        <g
+           id="g553">
+          <text
+             transform="matrix(1,0,0,-0.99606554,158.4,533.1)"
+             style="font-variant:normal;font-weight:normal;font-size:6.12409px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text557"><tspan
+               x="0 4.3971 7.9000826 12.199197 13.901695 17.998714 20.099279 21.501698 24.502504 27.901377 31.00017 34.098961 35.80146 40.798721 44.197594 47.700577 51.099449"
+               y="0"
+               sodipodi:role="line"
+               id="tspan555">New Privacy Model</tspan></text>
+        </g>
+        <g
+           id="g559">
+          <text
+             transform="matrix(1,0,0,-0.99606554,158.9,586.6)"
+             style="font-variant:normal;font-weight:normal;font-size:6.12409px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text563"><tspan
+               x="0 3.5029824 5.5055614 8.9044342 12.407416 13.809834 15.512333 16.914751 20.313623 23.816605 27.215479 28.617895 30.320395 34.417416 36.517979 37.920395 40.921204 44.320076 47.418869 50.517658 52.220158 57.217419 60.616291 64.015167 67.51815"
+               y="0"
+               sodipodi:role="line"
+               id="tspan561">Traditional Privacy Model</tspan></text>
+        </g>
+        <path
+           d="m 286.4,568.7 -7.3,-2.5 v 4.9 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path565" />
+        <path
+           d="m 266.8,568.7 h 13.7"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path567" />
+        <path
+           d="m 350.3,568.7 -7.4,-2.5 v 4.9 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path569" />
+        <path
+           d="m 330.6,568.7 h 13.8"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path571" />
+        <g
+           id="g573">
+          <path
+             d="m 207.8,568.7 h 14.8"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path575" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

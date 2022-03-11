@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="83.396667mm"
+   height="18.273888mm"
+   viewBox="0 0 83.396667 18.273888"
+   version="1.1"
+   id="svg17749"
+   inkscape:version="1.1.2 (b8e25be8, 2022-02-05)"
+   sodipodi:docname="fig3.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview17751"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.77771465"
+     inkscape:cx="396.67505"
+     inkscape:cy="576.68967"
+     inkscape:window-width="1404"
+     inkscape:window-height="1081"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs17746">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath17504">
+      <path
+         d="m 188,508.9 h 236.4 v 51.8 H 188 Z"
+         clip-rule="evenodd"
+         id="path17502" />
+    </clipPath>
+  </defs>
+  <g
+     inkscape:label="Laag 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g17498"
+       transform="matrix(0.35277777,0,0,-0.35277777,-66.322221,197.8025)">
+      <g
+         id="g17500"
+         clip-path="url(#clipPath17504)">
+        <path
+           d="m 260,508.8 h -49 v 51.9 h 97.9 v -51.9 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17506" />
+        <g
+           id="g17508">
+          <path
+             d="m 260,508.8 h -49 v 51.9 h 97.9 v -51.9 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path17510" />
+        </g>
+        <g
+           id="g17512">
+          <text
+             transform="matrix(0.99859,0,0,-1,216.8,550)"
+             style="font-variant:normal;font-weight:normal;font-size:7.2px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text17516"><tspan
+               x="0 4.8095999 6.4152002 10.4184 14.1264"
+               y="0"
+               sodipodi:role="line"
+               id="tspan17514">Block</tspan></text>
+        </g>
+        <path
+           d="m 245.6,531.9 h -23.1 v 11.5 h 46.1 v -11.5 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17518" />
+        <g
+           id="g17520">
+          <path
+             d="m 245.6,531.9 h -23.1 v 11.5 h 46.1 v -11.5 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path17522" />
+        </g>
+        <g
+           id="g17524">
+          <text
+             transform="matrix(0.99859,0,0,-1,228.8,534.4)"
+             style="font-variant:normal;font-weight:normal;font-size:7.2px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text17528"><tspan
+               x="0 4.8095999 7.2143998 11.2176 14.8248 16.826401 22.032 26.0352 29.642401"
+               y="0"
+               sodipodi:role="line"
+               id="tspan17526">Prev Hash</tspan></text>
+        </g>
+        <path
+           d="m 288.8,531.9 h -14.4 v 11.5 h 28.8 v -11.5 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17530" />
+        <g
+           id="g17532">
+          <path
+             d="m 288.8,531.9 h -14.4 v 11.5 h 28.8 v -11.5 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path17534" />
+        </g>
+        <g
+           id="g17536">
+          <text
+             transform="matrix(0.99859,0,0,-1,278.6,534.4)"
+             style="font-variant:normal;font-weight:normal;font-size:7.2px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text17540"><tspan
+               x="0 5.2055998 9.2088003 13.212 16.92"
+               y="0"
+               sodipodi:role="line"
+               id="tspan17538">Nonce</tspan></text>
+        </g>
+        <path
+           d="m 234.1,514.6 h -11.6 v 11.5 h 23.1 v -11.5 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17542" />
+        <g
+           id="g17544">
+          <path
+             d="m 234.1,514.6 h -11.6 v 11.5 h 23.1 v -11.5 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path17546" />
+        </g>
+        <g
+           id="g17548">
+          <text
+             transform="matrix(0.99859,0,0,-1,230,517)"
+             style="font-variant:normal;font-weight:normal;font-size:7.2px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text17552"><tspan
+               x="0 4.3056002"
+               y="0"
+               sodipodi:role="line"
+               id="tspan17550">Tx</tspan></text>
+        </g>
+        <path
+           d="m 262.9,514.6 h -11.6 v 11.5 h 23.1 v -11.5 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17554" />
+        <g
+           id="g17556">
+          <path
+             d="m 262.9,514.6 h -11.6 v 11.5 h 23.1 v -11.5 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path17558" />
+        </g>
+        <g
+           id="g17560">
+          <text
+             transform="matrix(0.99859,0,0,-1,258.8,517)"
+             style="font-variant:normal;font-weight:normal;font-size:7.2px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text17564"><tspan
+               x="0 4.3056002"
+               y="0"
+               sodipodi:role="line"
+               id="tspan17562">Tx</tspan></text>
+        </g>
+        <path
+           d="m 291.6,514.6 h -11.5 v 11.5 h 23.1 v -11.5 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17566" />
+        <g
+           id="g17568">
+          <path
+             d="m 291.6,514.6 h -11.5 v 11.5 h 23.1 v -11.5 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path17570" />
+        </g>
+        <g
+           id="g17572">
+          <text
+             transform="matrix(0.99859,0,0,-1,288.8,517)"
+             style="font-variant:normal;font-weight:normal;font-size:7.2px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text17576"><tspan
+               x="0 2.0016 4.0032001"
+               y="0"
+               sodipodi:role="line"
+               id="tspan17574">...</tspan></text>
+        </g>
+        <path
+           d="m 222.5,537.6 -6.8,-2.3 v 4.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17578" />
+        <path
+           d="m 188,537.6 h 29"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path17580" />
+        <path
+           d="m 375.1,508.8 h -48.9 v 51.9 h 97.9 v -51.9 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17582" />
+        <g
+           id="g17584">
+          <path
+             d="m 375.1,508.8 h -48.9 v 51.9 h 97.9 v -51.9 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path17586" />
+        </g>
+        <g
+           id="g17588">
+          <text
+             transform="matrix(0.99859,0,0,-1,332,550)"
+             style="font-variant:normal;font-weight:normal;font-size:7.2px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text17592"><tspan
+               x="0 4.8095999 6.4152002 10.4184 14.1264"
+               y="0"
+               sodipodi:role="line"
+               id="tspan17590">Block</tspan></text>
+        </g>
+        <path
+           d="m 360.7,531.9 h -23 v 11.5 h 46.1 v -11.5 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17594" />
+        <g
+           id="g17596">
+          <path
+             d="m 360.7,531.9 h -23 v 11.5 h 46.1 v -11.5 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path17598" />
+        </g>
+        <g
+           id="g17600">
+          <text
+             transform="matrix(0.99859,0,0,-1,343.9,534.4)"
+             style="font-variant:normal;font-weight:normal;font-size:7.2px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text17604"><tspan
+               x="0 4.8095999 7.2143998 11.2176 14.724 16.826401 21.9312 26.0352 29.642401"
+               y="0"
+               sodipodi:role="line"
+               id="tspan17602">Prev Hash</tspan></text>
+        </g>
+        <path
+           d="m 403.9,531.9 h -14.4 v 11.5 h 28.8 v -11.5 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17606" />
+        <g
+           id="g17608">
+          <path
+             d="m 403.9,531.9 h -14.4 v 11.5 h 28.8 v -11.5 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path17610" />
+        </g>
+        <g
+           id="g17612">
+          <text
+             transform="matrix(0.99859,0,0,-1,393.7,534.4)"
+             style="font-variant:normal;font-weight:normal;font-size:7.2px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text17616"><tspan
+               x="0 5.2055998 9.2088003 13.3128 16.92"
+               y="0"
+               sodipodi:role="line"
+               id="tspan17614">Nonce</tspan></text>
+        </g>
+        <path
+           d="m 349.2,514.6 h -11.5 v 11.5 h 23 v -11.5 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17618" />
+        <g
+           id="g17620">
+          <path
+             d="m 349.2,514.6 h -11.5 v 11.5 h 23 v -11.5 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path17622" />
+        </g>
+        <g
+           id="g17624">
+          <text
+             transform="matrix(0.99859,0,0,-1,345.1,517)"
+             style="font-variant:normal;font-weight:normal;font-size:7.2px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text17628"><tspan
+               x="0 4.3056002"
+               y="0"
+               sodipodi:role="line"
+               id="tspan17626">Tx</tspan></text>
+        </g>
+        <path
+           d="m 378,514.6 h -11.5 v 11.5 h 23 v -11.5 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17630" />
+        <g
+           id="g17632">
+          <path
+             d="m 378,514.6 h -11.5 v 11.5 h 23 v -11.5 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path17634" />
+        </g>
+        <g
+           id="g17636">
+          <text
+             transform="matrix(0.99859,0,0,-1,373.9,517)"
+             style="font-variant:normal;font-weight:normal;font-size:7.2px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text17640"><tspan
+               x="0 4.3056002"
+               y="0"
+               sodipodi:role="line"
+               id="tspan17638">Tx</tspan></text>
+        </g>
+        <path
+           d="m 406.8,514.6 h -11.5 v 11.5 h 23 v -11.5 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17642" />
+        <g
+           id="g17644">
+          <path
+             d="m 406.8,514.6 h -11.5 v 11.5 h 23 v -11.5 z"
+             style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path17646" />
+        </g>
+        <g
+           id="g17648">
+          <text
+             transform="matrix(0.99859,0,0,-1,403.9,517)"
+             style="font-variant:normal;font-weight:normal;font-size:7.2px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="text17652"><tspan
+               x="0 2.1024001 4.1040001"
+               y="0"
+               sodipodi:role="line"
+               id="tspan17650">...</tspan></text>
+        </g>
+        <path
+           d="m 337.7,537.6 -6.9,-2.3 v 4.6 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="path17654" />
+        <path
+           d="m 308.9,537.6 h 23.3"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           id="path17656" />
+      </g>
+    </g>
+  </g>
+</svg>
