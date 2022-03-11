@@ -25,8 +25,10 @@ https://bitcoinmagazine.com/technical/miniscript-how-blockstream-engineers-are-m
 https://bitcoinmagazine.com/technical/satoshis-genius-unexpected-ways-in-which-bitcoin-dodged-some-cryptographic-bullet-1382996984
 https://bitcoinmagazine.com/technical/security-researcher-found-bug-knocked-out-bitcoin-unlimited
 https://bitcoinmagazine.com/technical/what-happened-when-bitcoin-creator-satoshi-nakamoto-disappeared
+https://bitcoinops.org/en/topics/cpfp/
 https://bitcoinops.org/en/topics/cve-2018-17144/
 https://bitcoinops.org/en/topics/mast/
+https://bitcoinops.org/en/topics/psbt/
 https://bitcoinops.org/en/topics/ptlc/
 https://bitcointalk.org/index.php?topic=155054.0
 https://bitcointalk.org/index.php?topic=5348856.0
@@ -40,6 +42,7 @@ https://blog.bitmex.com/the-blocksize-war-chapter-14-asicboost/
 https://blog.lopp.net/who-controls-bitcoin-core-/
 https://blog.torproject.org/v3-onion-services-usage
 https://blogs.scientificamerican.com/roots-of-unity/ancient-babylonian-number-system-had-no-zero/
+https://brink.dev/programs
 https://chaincode.com/
 https://coinmarketcap.com/alexandria/glossary/chain-split
 https://commons.wikimedia.org/wiki/File:Hash_Tree.svg
@@ -57,6 +60,7 @@ https://en.bitcoin.it/wiki/Difficulty
 https://en.bitcoin.it/wiki/Genesis_block
 https://en.bitcoin.it/wiki/IP_transaction
 https://en.bitcoin.it/wiki/Script
+https://en.bitcoin.it/wiki/Signet
 https://en.wikipedia.org/wiki/%22Hello,_World!%22_program
 https://en.wikipedia.org/wiki/Botnet
 https://en.wikipedia.org/wiki/Cargo_cult_science
@@ -79,7 +83,9 @@ https://github.com/bitcoin-core/secp256k1
 https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki
+https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki
+https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0114.mediawiki
 https://github.com/bitcoin/bips/blob/master/bip-0116.mediawiki
@@ -123,6 +129,7 @@ https://gitian.org/
 https://gizmodo.com/how-heartbleed-works-the-code-behind-the-internets-se-1561341209
 https://guix.gnu.org/
 https://guix.gnu.org/en/blog/2020/guix-further-reduces-bootstrap-seed-to-25/
+https://insights.deribit.com/market-research/was-there-a-bitcoin-double-spend-on-jan-20-2021/
 https://lightning.network/
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-May/014337.html
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-May/014380.html

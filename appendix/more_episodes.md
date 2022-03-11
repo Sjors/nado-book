@@ -5,77 +5,74 @@
 
 ## More episodes {#sec:more_eps}
 
-Not all episodes of _Bitcoin, Explained_ made it into this book. Here's some other episodes you could listen to:
+Not all episodes of _Bitcoin, Explained_ made it into this book. Here are some other episodes you could listen to.
 
 ### Basics
 
-#### What is an Xpub?
+#### What Is an xpub?
 
 ![Ep. 07 {l0pt}](qr/ep/07.png)
 
-In this episode we explain what an xpub is and how it is used by Bitcoin wallets.
+In this episode, we explain what an extended public key (xpub) is and how it's used by Bitcoin wallets. Extended keys were first introduced in BIP 32 in order to create so called hierarchical deterministic wallets.^[<https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki>] Such wallets create a fresh address each time the user wants to receive coins. Unlike earlier wallets that required a fresh backup for every address, these new wallets only require a single backup, usually in the form of the familiar 12-24 word BIP 39 mnemonic.^[<https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki>]
 
 \newpage
 
-#### Replace by Fee (RBF)
+#### Replace-by-Fee (RBF)
 
 ![Ep. 26 {l0pt}](qr/ep/26.png)
 
-In this episode we explain Replace By Fee (RBF). RBF is a trick that lets unconfirmed transactions be replaced by conflicting transactions that include a higher fee.
+In this episode, we explain Replace-by-Fee (RBF). RBF is a trick that lets unconfirmed transactions be replaced with conflicting transactions that include a higher fee.
 
-With RBF, users can essentially bump a transaction fee to incentivize miners to include the transaction in a block. Aaron and Sjors explain three advantages of RBF: the option the “speed up” a transaction (1), which can in turn result in a more effective fee market for block space (2), as well as the potential to make more efficient use of block space by updating transactions to include more recipients (3).
+With RBF, users can essentially bump a transaction fee to incentivize miners to include the transaction in a block. We detail three advantages of RBF: the option the “speed up” a transaction (1), which can in turn result in a more effective fee market for block space (2), and the potential to make more efficient use of block space by updating transactions to include more recipients (3).
 
-The main disadvantage of RBF is that it makes it slightly easier to double spend unconfirmed transactions, which was also at the root of last week’s “double spend” controversy that dominated headlines. Aaron and Sjors discuss some solutions to diminish this risk, including “opt-in RBF” which is currently implemented in Bitcoin Core.
+The main disadvantage of RBF is that it makes it slightly easier to double-spend unconfirmed transactions, which was also at the root of a “double-spend” controversy that dominated headlines in early 2021.^[<https://insights.deribit.com/market-research/was-there-a-bitcoin-double-spend-on-jan-20-2021/>] We discuss some solutions to diminish this risk, including “opt-in RBF,” which is currently implemented in Bitcoin Core.
 
-Finally, we explain in some detail how opt-in RBF works in Bitcoin Core, and which conditions must be met before a transaction is considered replaceable. He also notes some complications with this version of RBF, for example in the context of the Lightning Network.
+Finally, we explain in some detail how opt-in RBF works in Bitcoin Core and which conditions must be met before a transaction is considered replaceable. In the process, we note some complications with this version of RBF — for example, in the context of the Lightning Network.
 
+\newpage
 
 #### Signet
 
 ![Ep. 10 {l0pt}](qr/ep/10.png)
 
-Signet is a new type of testnet for Bitcoin. In this episode we discuss discuss the original version of testnet and its problems, as well as alternative testing environment regtest.
+A signet is a new type of testnet for Bitcoin. In this episode, we discuss the original version of the public testing blockchain (testnet) and outline its problems. We then explain how signets are similar in nature to testnet, but more reliable and centrally controlled. A signet - there can be more than one - achieves this by adding an additional signature requirement to block validation (hence “sig”).^[Read more about signet(s), or try for yourself: <https://en.bitcoin.it/wiki/Signet>]
 
-\
-
-\
-
-#### PSBT and RBF attack
+#### PSBT and RBF Attacks
 
 ![Ep. 01 {l0pt}](qr/ep/01.png)
 
-In this episode we break down and explain Partially Signed Bitcoin Transactions (PSBT) and Replace By Fee (RBF) and some really tricky attacks that where recently discovered in Bitcoin.
+In this episode, we break down and explain Partially Signed Bitcoin Transactions (PSBT) and Replace-by-Fee (RBF), along with some really tricky attacks that were recently discovered in Bitcoin.
 
-\
+PSBT is a data format that allows wallets and other tools to exchange information about a Bitcoin transaction and the signatures necessary to complete it.^[<https://bitcoinops.org/en/topics/psbt/>]
 
-\
-
-\
+\newpage
 
 #### Mempools, Child Pays for Parent, and Package Relay
 
 ![Ep. 19 {l0pt}](qr/ep/19.png)
 
-In this episode we discuss Bitcoin mempools, Child Pays For Parent (CPFP) and package relay.
+In this episode, we discuss Bitcoin mempools, Child Pays For Parent (CPFP), and package relay.
 
-Package relay is the project that Gloria Zhao will work on as part of her Brink fellowship, which was announced earlier this week, and would make the Lightning Network more robust (among other benefits). Mempools are the collections of unconfirmed transactions stored by nodes, from which they forward transactions to peers. Miners usually select the transactions from their mempools that include the highest fees, to include these in the blocks they mine.
+Package relay is the project that Gloria Zhao is working on as part of her Brink fellowship^[<https://brink.dev/programs>], and would make the Lightning Network more robust (among other benefits). Mempools are the collections of unconfirmed transactions stored by nodes, from which they forward transactions to peers. Miners usually select the transactions from their mempools that include the highest fees to include these in the blocks they mine.
 
-Mempools can get full, however, at which point transactions that pay the lowest fees are ejected. This is actually a problem in context of CPFP, a trick that lets users speed up low-fee transactions by spending the coins from that transactions in a new transaction with a high fee to compensate. Tricks like these can be particularly important in the context of time-sensitive protocols like the Lightning Network.
+However, mempools can get full, at which point transactions that pay the lowest fees are ejected. This is actually a problem in context of CPFP, a trick that lets users speed up low-fee transactions by spending the coins from those transactions in a new transaction with a high fee to compensate.^[<https://bitcoinops.org/en/topics/cpfp/>] Tricks like these can be particularly important in the context of time-sensitive protocols like the Lightning Network.
 
-In this episode, van Wirdum and Provoost explained how package relay could enable CPFP, even in cases where low-fee transactions are dropped from mempools, by bundling transactions into packets. And they explore why this may be easier said than done.
+In this episode, we go into detail about how package relay could enable CPFP — even in cases where low-fee transactions are dropped from mempools — by bundling transactions into packets. We also explore why this may be easier said than done.
 
-#### Bitcoin Improvement Proposal (BIP) process
+\newpage
+
+#### Bitcoin Improvement Proposal (BIP) Process
 
 ![Ep. 39 {l0pt}](qr/ep/39.png)
 
-In this episode we explain what Bitcoin Improvement Proposals (BIPs) are, and how the BIP process works. We discuss why the BIP process is a useful, yet non-binding convention within Bitcoin’s technical community.
+In this episode, we explain what Bitcoin Improvement Proposals (BIPs) are, and how the BIP process works. We discuss why the BIP process is a useful, yet non-binding convention within Bitcoin’s technical community.
 
-First we explain what a BIP is exactly— and what it is not. We also explain that only improvements to Bitcoin software that affects other projects require a BIP. We then dive into the history of the BIP process a little bit, noting that the format was introduced by Libbitcoin developer Amir Taaki and later updated by Bitcoin Knots maintainer Luke-jr.
+First we explain what a BIP is exactly— and what it isn't. We also explain that only improvements to Bitcoin software that affect other projects require a BIP. We then dive into the history of the BIP process a little bit, noting that the format was introduced by Libbitcoin developer Amir Taaki, and later updated by Bitcoin Knots maintainer Luke-jr.
 
-Finally we explain how the BIP process itself works, that is, how a proposal can be turned into a BIP, and eventually be implemented in software. We also briefly explain how the BIP process could become corrupted, and why that wouldn’t be a very big deal.
+Finally, we explain how the BIP process itself works — that is, how a proposal can be turned into a BIP and eventually be implemented in software. We also briefly explain how the BIP process could become corrupted, and why that wouldn’t be a very big deal.
 
 \newpage
-### Resource usage
+### Resource Usage
 
 #### Compact Client Side Filtering (Neutrino)
 

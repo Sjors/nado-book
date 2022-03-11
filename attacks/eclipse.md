@@ -120,7 +120,7 @@ Note, however, that you shouldn’t blindly trust the satellite either, for _it_
 
 ### Erebus Attack
 
-![{l0pt}](qr/ep/18.png)
+![Ep. 18 {l0pt}](qr/ep/18.png)
 
 If you want to learn more about eclipse attacks, you might be interested in the Erebus attack^[<https://erebus-attack.comp.nus.edu.sg>]: an eclipse attack where an attacker essentially spoofs an entire part of the internet.
 
