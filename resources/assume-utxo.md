@@ -32,7 +32,7 @@ One solution to this problem was the use of checkpoints: Developers would put th
 
 The downside of checkpoints is that they potentially give a lot of power to developers. A malicious cabal of developers, or a benevolent dictator doing what’s best for the community — whichever perspective you prefer — could decree that a certain block is valid. Even if an alternative branch with more proof-of-work exists, nodes wouldn’t consider this branch.
 
-Perhaps a developer loses their Bitcoin in a hack; they could then introduce a checkpoint right before the hacked coins moved and move their coins to safety in the revised history. Such an attack can’t happen in secret, and if it ever really happened, users might simply refuse to install new node software with the malicious checkpoint. But prevention would be better.
+Perhaps a developer loses their Bitcoin in a hack; they could then introduce a malicious checkpoint right before the hacked coins moved and move their coins to safety in the revised history. Such an attack can’t happen in secret, and if it ever really happened, users might simply refuse to install new node software with the checkpoint. But prevention would be better.
 
 The last checkpoint was added in late 2014. Checkpoints were made mostly unnecessary by various means, including the introduction of `nMinimumChainWork` in 2016.^[<https://github.com/bitcoin/bitcoin/pull/9053>] This parameter states how much proof-of-work any chain of headers must demonstrate before even being considered. But for this to work, it requires nodes to be less myopic; they need to consider _where_ a given trail of blocks leads before spending lots of computer power chasing it. And that’s where Headers First comes in.
 
