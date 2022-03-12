@@ -6,8 +6,7 @@
 
 This chapter talks about an attack that took place in the summer of 2021. It discusses what happened, speculates why it may have happened, and shares the fix that will prevent it from happening again.
 
-<!-- Blank lines to move the next section header below the QR code -->
-\
+<!-- Blank line to move the next section header below the QR code -->
 \
 
 ### Random Connections
