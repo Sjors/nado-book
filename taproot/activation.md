@@ -41,7 +41,7 @@ But barring some existential emergency, there’s a general consensus that this 
 
 ### How Is a Soft Fork Enforced?
 
-Releasing a new software version that activates a soft fork at a given height is one thing. But unless the right people run it and do so in time, it won’t actually take effect. If a soft fork is released in a forest...
+Releasing a new software version that activates a soft fork at a given height is one thing. But unless the right people run it and do so in time, it won’t actually take effect. If a soft fork is released in a forest…
 
 What Satoshi did was announce the new version on a forum and presume the community was small enough that everyone would update well before the activation height, even if that was only a week away. This was generally not put to the test, because many of those initial soft forks were made in such a way, either by design or accident, that only a malicious actor would produce blocks that violate the new rule, and there weren’t many of them around.
 
@@ -143,7 +143,7 @@ On the other hand, _if you run a node without this feature_, or for that matter,
 
 In any scenario where two alternative chains exist, it’s unsafe for users whose node follows one branch to transact with users whose node follows the other branch. In fact, it’s unsafe for _anyone_ to use the blockchain at that point. On the other hand, as long as the only chain in existence complies with mandatory signaling, there’s nothing to worry about. This might remind some readers of the game theory around mutual assured destruction (MAD).
 
-\newpage <!-- Temporary page break so QR doesn't drop off the bottom -->
+\newpage <!-- Temporary page break so QR doesn’t drop off the bottom -->
 ### To Argue a LOT
 
 ![Ep. 29 {l0pt}](qr/ep/29.png)

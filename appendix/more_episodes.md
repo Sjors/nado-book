@@ -13,7 +13,7 @@ Not all episodes of _Bitcoin, Explained_ made it into this book. Here are some o
 
 ![Ep. 07 {l0pt}](qr/ep/07.png)
 
-In this episode, we explain what an extended public key (xpub) is and how it's used by Bitcoin wallets. Extended keys were first introduced in BIP 32 in order to create so called hierarchical deterministic wallets.^[<https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki>] Such wallets create a fresh address each time the user wants to receive coins. Unlike earlier wallets that required a fresh backup for every address, these new wallets only require a single backup, usually in the form of the familiar 12-24 word BIP 39 mnemonic.^[<https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki>]
+In this episode, we explain what an extended public key (xpub) is and how it’s used by Bitcoin wallets. Extended keys were first introduced in BIP 32 in order to create so called hierarchical deterministic wallets.^[<https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki>] Such wallets create a fresh address each time the user wants to receive coins. Unlike earlier wallets that required a fresh backup for every address, these new wallets only require a single backup, usually in the form of the familiar 12-24 word BIP 39 mnemonic.^[<https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki>]
 
 \newpage
 
@@ -67,7 +67,7 @@ In this episode, we go into detail about how package relay could enable CPFP —
 
 In this episode, we explain what Bitcoin Improvement Proposals (BIPs) are, and how the BIP process works. We discuss why the BIP process is a useful, yet non-binding convention within Bitcoin’s technical community.
 
-First we explain what a BIP is exactly— and what it isn't. We also explain that only improvements to Bitcoin software that affect other projects require a BIP. We then dive into the history of the BIP process a little bit, noting that the format was introduced by Libbitcoin developer Amir Taaki, and later updated by Bitcoin Knots maintainer Luke-jr.
+First we explain what a BIP is exactly— and what it isn’t. We also explain that only improvements to Bitcoin software that affect other projects require a BIP. We then dive into the history of the BIP process a little bit, noting that the format was introduced by Libbitcoin developer Amir Taaki, and later updated by Bitcoin Knots maintainer Luke-jr.
 
 Finally, we explain how the BIP process itself works — that is, how a proposal can be turned into a BIP and eventually be implemented in software. We also briefly explain how the BIP process could become corrupted, and why that wouldn’t be a very big deal.
 
@@ -108,7 +108,7 @@ Aaron and Sjors outline how this trick is applied in the context of Bitcoin to l
 
 ![Ep. 05 {l0pt}](qr/ep/05.png)
 
-In this episode we explain the "time-warp attack" on Bitcoin. A potential fix for this attack is included in Matt Corallo's proposed Great Consensus Cleanup softfork^[<https://github.com/TheBlueMatt/bips/blob/cleanup-softfork/bip-XXXX.mediawiki>], which at the time of writing has not seen much progress.
+In this episode we explain the “time-warp attack” on Bitcoin. A potential fix for this attack is included in Matt Corallo’s proposed Great Consensus Cleanup softfork^[<https://github.com/TheBlueMatt/bips/blob/cleanup-softfork/bip-XXXX.mediawiki>], which at the time of writing has not seen much progress.
 
 \
 
@@ -172,7 +172,7 @@ In this episode we discuss discuss the Chivo application, the Bitcoin wallet, an
 
 ![Ep. 11 {l0pt}](qr/ep/11.png)
 
-We discuss Jose Femenias' Easypaysy proposal, an account system for Bitcoin, on Bitcoin. One feature it supports is stealth address identities. We discuss several use cases. Finally we explain what non repudiation is.
+We discuss Jose Femenias’ Easypaysy proposal, an account system for Bitcoin, on Bitcoin. One feature it supports is stealth address identities. We discuss several use cases. Finally we explain what non repudiation is.
 
 Aaron also wrote an article covering Easypaysy for Bitcoin Magazine.^[<https://bitcoinmagazine.com/articles/bitcoin-need-accounts-one-developer-thinks-figured>]
 
@@ -184,7 +184,7 @@ Aaron also wrote an article covering Easypaysy for Bitcoin Magazine.^[<https://b
 
 In this episode we explain what payment pools are, and why they need Taproot. We discuss the user experience of sharing UTXOs and how payment pools can work with lightning.
 
-See also Aaron's article.^[<https://bitcoinmagazine.com/articles/building-on-taproot-payment-pools-could-be-bitcoins-next-layer-two-protocol>]
+See also Aaron’s article.^[<https://bitcoinmagazine.com/articles/building-on-taproot-payment-pools-could-be-bitcoins-next-layer-two-protocol>]
 
 \newpage
 ### Lightning
@@ -236,11 +236,11 @@ Finally we discuss some (potential) optimizations to benefit Lightning Network r
 
 In this episode I interview another expert on Lightning routing, René Pickhardt. We discuss his paper “Optimally Reliable & Cheap Payment Flows on the Lightning Network”.^[<https://arxiv.org/abs/2107.05322>] To cite the abstract:
 
-> Today, payment paths in Bitcoin's Lightning Network are found by searching for shortest paths on the fee graph. We enhance this approach in two dimensions. Firstly, we take into account the probability of a payment actually being possible due to the unknown balance distributions in the channels. Secondly, we use minimum cost flows as a proper generalization of shortest paths to multi-part payments (MPP). In particular we show that under plausible assumptions about the balance distributions we can find the most likely MPP for any given set of senders, recipients and amounts by solving for a (generalized) integer minimum cost flow with a separable and convex cost function. Polynomial time exact algorithms as well as approximations are known for this optimization problem. We present a round-based algorithm of min-cost flow computations for delivering large payment amounts over the Lightning Network. This algorithm works by updating the probability distributions with the information gained from both successful and unsuccessful paths on prior rounds. In all our experiments a single digit number of rounds sufficed to deliver payments of sizes that were close to the total local balance of the sender. Early experiments indicate that our approach increases the size of payments that can be reliably delivered by several orders of magnitude compared to the current state of the art. We observe that finding the cheapest multi-part payments is an NP-hard problem considering the current fee structure and propose dropping the base fee to make it a linear min-cost flow problem. Finally, we discuss possibilities for maximizing the probability while at the same time minimizing the fees of a flow. While this turns out to be a hard problem in general as well - even in the single path case - it appears to be surprisingly tractable in practice.
+> Today, payment paths in Bitcoin’s Lightning Network are found by searching for shortest paths on the fee graph. We enhance this approach in two dimensions. Firstly, we take into account the probability of a payment actually being possible due to the unknown balance distributions in the channels. Secondly, we use minimum cost flows as a proper generalization of shortest paths to multi-part payments (MPP). In particular we show that under plausible assumptions about the balance distributions we can find the most likely MPP for any given set of senders, recipients and amounts by solving for a (generalized) integer minimum cost flow with a separable and convex cost function. Polynomial time exact algorithms as well as approximations are known for this optimization problem. We present a round-based algorithm of min-cost flow computations for delivering large payment amounts over the Lightning Network. This algorithm works by updating the probability distributions with the information gained from both successful and unsuccessful paths on prior rounds. In all our experiments a single digit number of rounds sufficed to deliver payments of sizes that were close to the total local balance of the sender. Early experiments indicate that our approach increases the size of payments that can be reliably delivered by several orders of magnitude compared to the current state of the art. We observe that finding the cheapest multi-part payments is an NP-hard problem considering the current fee structure and propose dropping the base fee to make it a linear min-cost flow problem. Finally, we discuss possibilities for maximizing the probability while at the same time minimizing the fees of a flow. While this turns out to be a hard problem in general as well - even in the single path case - it appears to be surprisingly tractable in practice.
 
 #### Eltoo and SIGHASH_ANYPREVOUT
 
-We covered this topic twice, so there's two epidodes to choose from. In episode 35 Aaron and I explain it, whereas in episode 48 one of the authors, c-lightning developer Christian joins me to explain it in his words.
+We covered this topic twice, so there’s two epidodes to choose from. In episode 35 Aaron and I explain it, whereas in episode 48 one of the authors, c-lightning developer Christian joins me to explain it in his words.
 
 ![Ep. 35 {l0pt}](qr/ep/35.png)
 
@@ -293,7 +293,7 @@ We also discuss some of the benefits as well as complications with Drivechain, m
 
 ![Ep. 12 {l0pt}](qr/ep/12.png)
 
-Ruben explains his proposal to combine blind merged mining and perpetual one-way pegs in order to create a new type of sidechain. The bad news: it won't make you rich but it could help scale Bitcoin!
+Ruben explains his proposal to combine blind merged mining and perpetual one-way pegs in order to create a new type of sidechain. The bad news: it won’t make you rich but it could help scale Bitcoin!
 
 First Ruben introduces the concept of a blind merge-mind chain. He then explains the use cases for the perpetual one-way peg and what Merge Mining is. We then get to Perpetual One-Way Peg and try answer the question: why would the side chain coin be worth anything?
 
@@ -313,9 +313,9 @@ Ruben explains that by using proof-of-work fraud proofs for sidechains to create
 
 ![Ep. 08 {l0pt}](qr/ep/08.png)
 
-We discuss yet another one of Ruben's proposals: Statechains on Bitcoin. Statechains allow you to send keys not UTXO and it offers quite a few scaling and functionality improvements.
+We discuss yet another one of Ruben’s proposals: Statechains on Bitcoin. Statechains allow you to send keys not UTXO and it offers quite a few scaling and functionality improvements.
 
-See also Ruben's presentation^[<https://youtu.be/CKx6eULIC3A>] on Bitcoin Magazine about Statechains and Aaron's Bitcoin Magazine article^[<https://bitcoinmagazine.com/articles/statechains-sending-keys-not-coins-to-scale-bitcoin-off-chain>].
+See also Ruben’s presentation^[<https://youtu.be/CKx6eULIC3A>] on Bitcoin Magazine about Statechains and Aaron’s Bitcoin Magazine article^[<https://bitcoinmagazine.com/articles/statechains-sending-keys-not-coins-to-scale-bitcoin-off-chain>].
 
 \
 
@@ -346,7 +346,7 @@ In this episode we discuss Open Timestamps, a Bitcoin-based time stamping projec
 
 Aaron and Sjors explain that virtually any amount of data can, in fact, be timestamped in the Bitcoin blockchain at minimal cost because Open Timestamps leverages Merkle trees, the cryptographic trick to aggregate data into a single, compact hash. This hash is then included in a Bitcoin transaction, making all of the data aggregated into the hash as immutable as any other Bitcoin transaction.
 
-Todd offered an interesting showcase of Open Timestamps earlier this week, as he proved that the public key used by Google to sign “the email" to Hunter Biden indeed existed in 2016.
+Todd offered an interesting showcase of Open Timestamps earlier this week, as he proved that the public key used by Google to sign “the email” to Hunter Biden indeed existed in 2016.
 
 Aaron and Sjors also discuss some of the other possibilities that a time-stamping system like Open Timestamps offers, as well as its limitations. Finally, Aaron provides a little bit of context for the history of cryptographic time stamping, which was itself referenced in the Bitcoin white paper.
 
@@ -373,7 +373,7 @@ In this episode we discuss the newly released Bitcoin Core 0.21.0, the 21st and 
 
 Guided by the Bitcoin Core 0.21.0 release notes, van Wirdum and Provoost discussed this release’s most important changes. These include the new mempool policy for rebroadcasting transactions, Tor v3 support, peer anchors for when the node restarts, BIP 157 (Neutrino) for light clients, the new testnet called Signet, BIP 339 (wtxid relay), Taproot code, RPC changes including a new send RPC, ZeroMQ, descriptor wallets, the new SQLite database system and the satoshi-per-byte fee denomination.
 
-For each of the new features, the hosts discussed what the features are, how they will change using Bitcoin (Core) and — where applicable — what the end goal is. (In Bitcoin Core development, new features are often part of a bigger process.) For any feature they discussed on a previous episode of "The Van Wirdum Sjorsnado," they also mentioned the relevant episode number.
+For each of the new features, the hosts discussed what the features are, how they will change using Bitcoin (Core) and — where applicable — what the end goal is. (In Bitcoin Core development, new features are often part of a bigger process.) For any feature they discussed on a previous episode of “The Van Wirdum Sjorsnado,” they also mentioned the relevant episode number.
 
 https://bitcoinmagazine.com/technical/bitcoin-core-0-21-0-released-whats-new
 
