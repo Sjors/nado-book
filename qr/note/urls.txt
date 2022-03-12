@@ -75,7 +75,6 @@ https://en.wikipedia.org/wiki/SHA-2
 https://en.wikipedia.org/wiki/Systemd
 https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar
 https://english.ncsc.nl/topics/log4j-vulnerability
-https://eprint.iacr.org/2003/235
 https://eprint.iacr.org/2020/1261
 https://eprint.iacr.org/2020/1390.pdf
 https://erebus-attack.comp.nus.edu.sg
