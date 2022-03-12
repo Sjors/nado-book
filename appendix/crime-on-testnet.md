@@ -16,6 +16,7 @@ First I need to buy some Bitcoin. Bitcoin in Europe is a bit like guns in the US
 I pay with iDEAL, which is used for all online (fiat) shopping. They need a Bitcoin address to send it to, which I obtain from my Bitcoin Core wallet:
 
 ![](appendix/core-2.png){ width=100% }
+
 \newpage
 I click Request payment and get an address:
 
@@ -27,6 +28,8 @@ I copy the address into the Bitonic form under “Your bitcoinaddress”, ignore
 
 While I wait for the transaction to confirm on the blockchain, I walk to my guy, let’s call him Dmitry even though that’s racist. He opens his own wallet and gives me an address (tb1qnm…), which I enter into my wallet in order to send him 0.0002,000,-- BTC.
 
+\newpage
+
 ![](appendix/core-5.png){ width=100% }
 
 Dmitry knows where I live, so he doesn’t wait for confirmation and just gives me the frap. We could have used Lightning to make the payment go through instantly without having to wait for confirmation. Lightning also doesn’t leave the same traces on the blockchain, so it could have prevented the pain soon to come. But we didn’t.
@@ -35,10 +38,12 @@ So now my wallet looks like this and that should be where the story ends for me:
 
 ![](appendix/core-6.png){ width=100% }
 
+\newpage
+
 Dmitry in the mean time sells a bunch of fraps to different customers, giving each one a unique address. Their wallets will look exactly the same as mine. At the end of the day, Dmitry’s wallet looks like this:
 
 ![](appendix/core-7.png){ width=100% }
-\newpage
+
 Dmitry wants to buy some alcohol, the only drug that’s still legal, despite the violence, broken families, destroyed careers, crime, disease and mass road casualties it caused, especially after AI cars were banned. This was partially because AI cars enriched the big corporations that leased them out to the poor - who previously couldn’t afford a car - but what really broke the camels back was the ISIS hack that killed 15 million people during their work commute.
 
 Alcohol is only for sale in supermarkets and in order to monitor population health, you’re strongly encouraged to buy food with your bank card. This gives insurance companies a precise overview of how many calories you and your family are consuming, and municipal health workers use this data to pro-actively put problematic people on a diet. Privacy activists cried wolf about this as usual, but the policy never caused any real issues and the health statistics speak for themselves. There was a proposal to allow Bitcoin payments in supermarkets by taking a passport scan, like with cash, but this lead to GDPR problems.
@@ -59,11 +64,11 @@ Kees is not arrested yet and so nobody knows what his Bitcoin addresses are. A p
 
 ![](appendix/core-10.png){ width=100% }
 
-Meanwhile our police officer, let’s call him Donald, goes online and looks up the address used in his trade with Kees (tb1q3nf…). Bitcoin Core doesn’t support address lookups, because it doesn’t scale well and as Wladimir van der Laan put it “bitcoin core is not meant as a chain analysis platform”. His favorite block explorer blockchain.com doesn’t support bech32 address lookups, so he goes to a competitor:
+Meanwhile our police officer, let’s call him Donald, goes online and looks up the address used in his trade with Kees (tb1q3nf…). Bitcoin Core doesn’t support address lookups, because it doesn’t scale well and as Wladimir van der Laan put it “bitcoin core is not meant as a chain analysis platform”. His favorite block explorer blockchain.com doesn’t support bech32 address lookups, so he goes to a competitor.
 
 ![](appendix/explorer.png){ width=100% }
 
-This page describes transactions related to the tb1q3nf… address. He suspects this address belongs to Kees, because it’s the address Kees gave him to send coins to.
+The figure on the next page describes transactions related to the tb1q3nf… address. He suspects this address belongs to Kees, because it’s the address Kees gave him to send coins to.
 
 Reading from bottom to top, at 13:51:15 officer Donald sees coins from his own address (tb1qjy4…, blue) go to this address (again: tb1q3nf…, yellow, the address Kees gave him). He also sees coins going back to his own wallet as change (tb1q80q…, also blue).
 
