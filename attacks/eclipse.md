@@ -55,7 +55,7 @@ There are a couple of ingredients. First, as mentioned in chapter @sec:dns, when
 
 As an attacker, the idea is to pollute this file by giving your node a bunch of addresses that either don’t exist or that they (the attacker) control. This way, whatever address your node picks, every time it makes a connection, it either fails because there’s nothing there, or it connects to the attacker — and eventually all connections are to the attacker.
 
-The attacker also needs to control all inbound connections to your node. Without going into too much detail in this chapter, one approach is to just make lots and lots of connection attempts until all your 117 inbound slots are full. Over time, perhaps weeks, as honest peers occasionally disconnect from you, the attacker quickly fills the open inbound slots so that no new honest peers get through.
+The attacker also needs to control all inbound connections to your node. Without going into too much detail in this chapter, one approach is to just make lots and lots of connection attempts until all your 117 inbound slots are full. Over time, perhaps weeks, as honest peers occasionally disconnect from you, the attacker quickly fills the open inbound slots so that no new honest peers get through.^[This has been mode difficult, by sometimes dropping an existing inbound connection in favor of a new one: <https://github.com/bitcoin/bitcoin/pull/6374>]
 
 As early as 2012, developers realized it was possible for an attacker to give your node huge numbers of IP addresses, all controlled by them. Let’s say your node has 1,000 real IP addresses of other nodes. Then the attacker feeds you 10,000 addresses that they control. As your node starts to pick IP addresses, the odds are 90 percent that it will connect to the attacker.
 
@@ -79,7 +79,7 @@ In addition to attacking your node from many different directions, thereby defea
 
 First, they would flood your node with IP addresses that are known to be fake. This would flush all buckets with fake nodes. Remember that when your node needs a new peer, it’ll toss a coin to either connect to familiar node or try a new one. Well, there wouldn’t be any new ones to try.^[We’ll revisit the problem of fake nodes in chapter @sec:fake_nodes.]
 
-For the other side of the coin flip — connecting to a familiar node — the attackers exploited another weakness. It turns out your node considers any node it ever connected to “familiar.” That includes botnet nodes that connected _to_ it, even if only briefly. There’s a separate 64-bucket system for these familiar nodes, and over time, they get filled up by botnet IPs.
+For the other side of the coin flip — connecting to a familiar node — the attackers exploited another weakness. It turns out your node considers any node it ever connected to “familiar.” That includes botnet nodes that connected _to_ it, even if only briefly.^[This was fixed in 2016: <https://github.com/bitcoin/bitcoin/pull/8594>] There’s a separate 64-bucket system for these familiar nodes, and over time, they get filled up by botnet IPs.
 
 ### Don’t Crash
 
