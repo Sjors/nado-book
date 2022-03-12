@@ -75,7 +75,7 @@ Unfortunately, with Bitcoin, you can’t just start with a draft language and th
 As a result, it’s been a complete nightmare to make sure upgrades to the script language don’t do anything surprising or bad. If it turns out that existing nodes can be negatively impacted, e.g. crashed, by some obscure script, developers have to very carefully work around that issue; they have to fix the problem without accidentally making coins unspendable and without introducing new bugs, including in any unknown (hashed) script potentially out there.
 \
 \
-Worse still, because Bitcoin is a live system and users can’t be forced to all update at once, an ideal fix should not tip off an attacker as to what the issue is. But at the same time, it’s an open source and transparent system, where changes can’t go through without public justification. This makes Responsible Disclosure^[<https://github.com/bitcoin/bitcoin/blob/master/SECURITY.md>] very complicated. So it’s really best to go above and beyond to avoid such problems in first place.
+Worse still, because Bitcoin is a live system and users can’t be forced to all update at once, an ideal fix should not tip off an attacker as to what the issue is. But at the same time, it’s an open source and transparent system, where changes can’t go through without public justification. This makes Responsible Disclosure (<https://github.com/bitcoin/bitcoin/blob/master/SECURITY.md>) very complicated. So it’s really best to go above and beyond to avoid such problems in first place.
 ]
 
 The script’s language is diverse enough to allow for weird stuff. If you just want somebody to send money to you, you only need this very simple standard script explained above: `OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG`.
