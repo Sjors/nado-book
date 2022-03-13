@@ -1,10 +1,7 @@
-identifier:
-    ISBN-13: 9798491060504
 documentclass: memoir
 classoption:
-  - twoside
-  - statementpaper
-  - 11pt
-  - openany
+  - oneside
+  - a6paper
+  - 12pt
 title: "Bitcoin: a Work in Progress"
 author: Sjors Provoost

@@ -2,9 +2,8 @@
 SKIP_QR="0"
 while [[ "$#" -gt 0 ]]; do
     case $1 in
-        -p|--pdf) EXTRA_OPTIONS="-o nado-book.pdf --metadata-file meta-ebook.yaml"; shift ;;
-        -e|--epub) EXTRA_OPTIONS="-t epub3 -o nado-book.epub --css epub.css --metadata-file meta-ebook.yaml --epub-chapter-level 2" ;;
-        -b|--paperback) EXTRA_OPTIONS="-o nado-paperback.pdf --metadata-file meta-paperback.yaml --include-before-body copyright_paperback.tex" ;;
+        -b|--paperback) EXTRA_OPTIONS="-o nado-paperback.pdf --metadata-file meta-paperback.yaml --include-before-body copyright_paperback.tex"; HEADER_INCLUDES="templates/header-includes-paperback.tex" ;;
+        -k|--kindle) EXTRA_OPTIONS="-o nado-kindle.pdf --metadata-file meta-kindle.yaml --include-before-body copyright_kindle.tex"; HEADER_INCLUDES="templates/header-includes-kindle.tex" ;;
         -q|--skipqr) SKIP_QR="1"; shift ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
     esac
@@ -61,8 +60,6 @@ dot -Tsvg taproot/bip9.dot > taproot/bip9.svg
 dot -Tsvg taproot/flag.dot > taproot/flag.svg
 dot -Tsvg taproot/speedy_trial.dot > taproot/speedy_trial.svg
 
-echo "Generate PDF..."
-
 # Generate document
 pandoc --table-of-contents --top-level-division=part --toc-depth=1\
         --metadata-file meta.yaml\
@@ -71,7 +68,8 @@ pandoc --table-of-contents --top-level-division=part --toc-depth=1\
         --filter pandoc-secnos\
         --filter pandoc/wrapfig.py\
         $EXTRA_OPTIONS\
-        header-includes.yaml\
+        --include-in-header templates/header-includes.tex\
+        --include-in-header $HEADER_INCLUDES\
         intro.processed.md\
         basics/_part.processed.md\
         basics/address.processed.md\

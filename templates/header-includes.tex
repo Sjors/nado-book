@@ -1,0 +1,13 @@
+\usepackage{caption}
+\usepackage{qrcode}
+\usepackage{wrapfig}
+\usepackage{mwe}
+\captionsetup[figure]{labelformat=empty}
+\setlength{\belowcaptionskip}{-6pt}
+\setsecnumdepth{chapter}
+\makepsmarks{myheadings}{%
+\createmark{part}{left}{shownumber}{\partname\ }{. \ }
+\clearmark{section}
+\createmark{chapter}{right}{shownumber}{\chaptername\ }{. \ }
+}
+\pagestyle{simple}
