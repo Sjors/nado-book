@@ -104,19 +104,17 @@ We consider the scenario of an attacker trying to generate an alternate chain fa
 The race between the honest chain and an attacker chain can be characterized as a Binomial Random Walk. The success event is the honest chain being extended by one block, increasing its lead by +1, and the failure event is the attacker's chain being extended by one block, reducing the gap by -1.
 
 The probability of an attacker catching up from a given deficit is analogous to a Gambler's Ruin problem. Suppose a gambler with unlimited credit starts at a deficit and plays potentially an infinite number of trials to try to reach breakeven. We can calculate the probability he ever reaches breakeven, or that an attacker ever catches up with the honest chain, as follows [8]:
-\begin{align*}
-p &= \text{probability an honest node finds the next block}\\
-q &= \text{probability the attacker finds the next block}\\
-q_z &= \text{\parbox{8cm}{probability the attacker will ever catch up from z blocks behind}}\\
-\\
-q_z &=
-\begin{rcases}
-\begin{dcases}
-    1         & \text{if } p\leq q\\
-    (q / p)^z & \text{if } p > q
-\end{dcases}
-\end{rcases}
-\end{align*}
+
+\
+\indent $p=$ probability an honest node finds the next block\newline
+\indent $q=$ probability the attacker finds the next block\newline
+\indent $q_{z}=$ probability the attacker will ever catch up from z blocks behind
+$$
+q_{z}=\left\{\begin{array}{cc}
+1 & \text { if } p \leq q \\
+(q / p)^{z} & \text { if } p>q
+\end{array}\right\}
+$$
 Given our assumption that p > q, the probability drops exponentially as the number of blocks the attacker has to catch up with increases. With the odds against him, if he doesn't make a lucky lunge forward early on, his chances become vanishingly small as he falls further behind.
 
 We now consider how long the recipient of a new transaction needs to wait before being sufficiently certain the sender can't change the transaction. We assume the sender is an attacker who wants to make the recipient believe he paid him for a while, then switch it to pay back to himself after some time has passed. The receiver will be alerted when that happens, but the sender hopes it will be too late.
