@@ -5,3 +5,6 @@ classoption:
   - 12pt
 title: "Bitcoin: a Work in Progress"
 author: Sjors Provoost
+language: en-US
+include-before:
+  - '`\newpage{}`{=latex}'

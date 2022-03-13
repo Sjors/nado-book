@@ -35,3 +35,4 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     white-space: pre-wrap !important;
   }
 }
+.center { text-indent: 0; text-align: center; }

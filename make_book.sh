@@ -2,8 +2,9 @@
 SKIP_QR="0"
 while [[ "$#" -gt 0 ]]; do
     case $1 in
-        -b|--paperback) EXTRA_OPTIONS="-o nado-paperback.pdf --metadata-file meta-paperback.yaml --include-before-body copyright_paperback.tex"; HEADER_INCLUDES="templates/header-includes-paperback.tex" ;;
-        -k|--kindle) EXTRA_OPTIONS="-o nado-kindle.pdf --metadata-file meta-kindle.yaml --include-before-body copyright_kindle.tex"; HEADER_INCLUDES="templates/header-includes-kindle.tex" ;;
+        -b|--paperback) EXTRA_OPTIONS="-o nado-paperback.pdf --metadata-file meta-paperback.yaml --include-before-body copyright_paperback.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-paperback.tex" ;;
+        -k|--kindle) EXTRA_OPTIONS="-o nado-kindle.pdf --metadata-file meta-kindle.yaml --include-before-body copyright_kindle.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-kindle.tex" ;;
+        -e|--epub) EXTRA_OPTIONS="-t epub3 -o nado-book.epub --css epub.css --metadata-file meta-ebook.yaml --toc-depth=2" ;;
         -q|--skipqr) SKIP_QR="1"; shift ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
     esac
@@ -61,15 +62,14 @@ dot -Tsvg taproot/flag.dot > taproot/flag.svg
 dot -Tsvg taproot/speedy_trial.dot > taproot/speedy_trial.svg
 
 # Generate document
-pandoc --table-of-contents --top-level-division=part --toc-depth=1\
-        --metadata-file meta.yaml\
-        --template=templates/pandoc.tex\
+pandoc --table-of-contents --top-level-division=part\
         --strip-comments\
         --filter pandoc-secnos\
-        --filter pandoc/wrapfig.py\
+        --filter filters/wrapfig.py\
+        --filter filters/short-title-for-toc.py\
+        --lua-filter filters/center.lua\
         $EXTRA_OPTIONS\
-        --include-in-header templates/header-includes.tex\
-        --include-in-header $HEADER_INCLUDES\
+        $HEADER_INCLUDES\
         intro.processed.md\
         basics/_part.processed.md\
         basics/address.processed.md\

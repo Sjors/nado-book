@@ -8,3 +8,6 @@ classoption:
   - openany
 title: "Bitcoin: a Work in Progress"
 author: Sjors Provoost
+language: en-US
+include-before:
+  - '`\newpage{}`{=latex}'
