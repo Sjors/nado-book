@@ -40,16 +40,18 @@ if [ "$SKIP_QR" -eq "0" ]; then
     fi
 
     count=`wc -l < qr/note/urls.txt`
+    echo -n "" > qr/sed
     for i in $(seq $count); do
         url=`sed -n ${i}p qr/note/urls.txt`
         short_url=`sed -n ${i}p qr/note/shorts.txt`
         # Skip URL's that haven't been shortened
         # Some domains are so short, they don't need shortening (unless we deep link to them)
-        if echo $short_url | grep 'bit.ly\|nus.edu\|amzn.to\|gitian.org\|yhoo.it'; then
+        if echo $short_url | grep -q 'bit.ly\|nus.edu\|amzn.to\|gitian.org\|yhoo.it'; then
             # Add to processed markdown (might be macOS specific):
-            find intro.processed.md **/*.processed.md -exec sed -i '' -e "s*<$url>*<$url> \\\qrcode[height=0.45cm,level=M]{$short_url}*g" {} \;
+            echo "s*<$url>*<$url> \\\qrcode[height=0.45cm,level=M]{$short_url}*g;" >> qr/sed
         fi
     done
+    find intro.processed.md **/*.processed.md -exec sed -i '' -f qr/sed {} \;
 
 fi
 
