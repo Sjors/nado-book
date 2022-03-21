@@ -25,7 +25,7 @@ However, if we expect everybody in the world to eventually use Bitcoin and to ha
 
 ### Utreexo
 
-One way to address this issue is with Tadge Dryja’s proposal, the Utreexo.^[<https://www.youtube.com/watch?v=6Y6n88DmkjU>] Dryja is a research scientist at the MIT Digital Currency Initiative.
+One way to address this issue is with Tadge Dryja’s proposal, the Utreexo.^[<https://dci.mit.edu/utreexo>, <https://www.youtube.com/watch?v=6Y6n88DmkjU>] Dryja is a research scientist at the MIT Digital Currency Initiative.
 
 Currently with Bitcoin, you can prune things in the sense that you take a block, process it, extract the UTXO set from all the blocks, and throw everything else away. The downside is you don't have the blocks, so if you want to prove to another person that the UTXO set is valid, you can’t actually give them the blocks. However, the assumption is that somebody else will have the block.
 

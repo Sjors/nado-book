@@ -55,6 +55,7 @@ https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31876
 https://datatracker.ietf.org/doc/html/rfc4193
 https://datatracker.ietf.org/doc/html/rfc7282
 https://dcgco.medium.com/bitcoin-scaling-agreement-at-consensus-2017-133521fe9a77
+https://dci.mit.edu/utreexo
 https://developer.bitcoin.org/reference/p2p_networking.html#addr
 https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-02-26-taproot-activation-lockinontimeout/
 https://dlt-repo.net/storage-vs-memory-vs-stack-in-solidity-ethereum/
