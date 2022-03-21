@@ -6,11 +6,10 @@
 
 Whenever a new Bitcoin transaction is made, Bitcoin nodes use a UTXO set to determine that the coins being spent really exist (see chapter @sec:assume). This UTXO set is currently several gigabytes in size and continues to grow over time, and there's no upper limit to how big it can potentially get.
 
-Because Bitcoin nodes perform best and fastest if the UTXO set is kept in RAM, and because RAM is usually a relatively scarce resource for most computers, it would benefit a node’s performance if the UTXO set could be stored in a more compact format. This is the promise of Utreexo.
+Because Bitcoin nodes perform best if the UTXO set is kept in RAM, and because RAM is usually a relatively scarce resource for most computers, it would benefit a node’s performance if the UTXO set could be stored in a more compact format. This is the promise of Utreexo.^[Pronounced U Tree X O. See also: <https://bitcoinmagazine.com/articles/bitcoins-growing-utxo-problem-and-how-utreexo-can-help-solve-it>]
 
 Utreexo would take all the UTXOs in existence and include them in a Merkle Tree, which is a data structure consisting only of hashes. This chapter explains how the compact Utreexo structure could suffice in proving that a particular UTXO is included when a new transaction is made. It also covers the potential benefits that could surface if this solution becomes available, along with some of the potential tradeoffs.
 
-<https://bitcoinmagazine.com/articles/bitcoins-growing-utxo-problem-and-how-utreexo-can-help-solve-it>
 
 ### The Challenge
 
