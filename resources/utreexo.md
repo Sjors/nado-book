@@ -21,7 +21,7 @@ The time it take varies, but say you had a newer MacBook Pro, and you stored thi
 
 The key point here is that if you can keep more of the UTXO set in RAM, you’ll sync faster. It'd be nice if the size of the UTXO set could be decreased, but that's not necessarily possible. Of course, if you’re spending more coins than you’re creating, then the number of UTXOs and the RAM usage both go down. However, there’s a lot of junk in the UTXO set, because in the past, people created transactions to multi-sig addresses that were fake just to e.g. put pictures of Obama in the blockchain. And those are all sitting in your RAM because your node has no idea they’re nonsense.
 
-However, if we expect everybody in the world to eventually use Bitcoin and to have at least one or two UTXOs each, that’s a lot of people and a lot of RAM. And it could get to the point where fewer and fewer people would even have enough RAM to sync it quickly, which is a problem.
+However, if we expect everybody in the world to eventually use Bitcoin and to have at least one or two UTXOs each, that would take terabytes of RAM. Moore's Law is not going to catch up to this anytime soon. Even without the entire world using Bitcoin, it could get to the point where fewer and fewer people have enough RAM to sync it quickly, which is a problem. If fewer people run their own node, the system becomes less decentralised.
 
 ### Utreexo
 
