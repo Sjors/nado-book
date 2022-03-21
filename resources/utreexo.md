@@ -1,6 +1,3 @@
----
-comment: guest Ruben
-...
 \newpage
 ## Utreexo {#sec:utreexo}
 
