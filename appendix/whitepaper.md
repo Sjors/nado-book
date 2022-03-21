@@ -34,4 +34,4 @@ b1674191a88ec5cdd733e4240a818031
 05dc412d6c6708d53ab94fc248f4f553
 ```
 
-Because the arbitrary data doesn’t correspond to any real public key, these coins can never be spent. Although that follows from common sense, there’s no way to mathematically prove it. This means that all nodes have to keep these coins — i.e. the white paper — in memory until the end of time, or until a UTreeXO soft fork (chapter @sec:utreexo) removes the need for nodes to store the UTXO set.
+Because the arbitrary data doesn’t correspond to any real public key, these coins can never be spent. Although that follows from common sense, there’s no way to mathematically prove it. This means that all nodes have to keep these coins — i.e. the white paper — in memory until the end of time, or until a Utreexo soft fork (chapter @sec:utreexo) removes the need for nodes to store the UTXO set.
