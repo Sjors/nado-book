@@ -29,7 +29,7 @@ One way to address this issue is with Tadge Dryja’s proposal, the Utreexo.^[<h
 
 Currently with Bitcoin, you can prune things in the sense that you take a block, process it, extract the UTXO set from all the blocks, and throw everything else away. The downside is you don't have the blocks, so if you want to prove to another person that the UTXO set is valid, you can’t actually give them the blocks. However, the assumption is that somebody else will have the block.
 
-But with Utreexo, you’re pruning UTXO sets and you're essentially throwing away all the transactions and just keeping a Merkle root, inside of which is a commitment. Every single UTXO is committed in there, and you only keep the Merkle proofs of the UTXOs that you care about.
+But with Utreexo, you’re pruning the UTXO set and you're essentially throwing away all the transactions and just keeping a Merkle root, inside of which is a commitment. Every single UTXO is committed in there, and you only keep the Merkle proofs of the UTXOs that you care about.
 
 To put it another way, normally, when somebody sends you a transaction, the transaction says, “I’m spending this input, and you, the person running a node, have the responsibility to check whether that input exists in your own database.” And here, you’re flipping this around and telling the other node, “I have no idea which coins exist, because I don’t have RAM. You prove to me that this coin actually existed.” So the burden of evidence is reversed, which begs the question of how.
 
