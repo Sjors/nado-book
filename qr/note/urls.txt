@@ -162,6 +162,7 @@ https://sprovoost.nl/2018/12/28/a-crime-on-testnet-6d95ede8da03/
 https://stackoverflow.com/questions/41673073/how-does-the-bitcoin-client-determine-the-first-ip-address-to-connect
 https://stephanlivera.com/episode/277/
 https://tools.ietf.org/id/draft-msporny-base58-01.html
+https://twitter.com/_jonasschnelli_/status/1333303029370675201
 https://twitter.com/carl_dong
 https://twitter.com/pwuille/status/1108085284862713856
 https://ubuntu.com/download/server
