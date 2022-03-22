@@ -34,6 +34,7 @@ https://bitcoinops.org/en/topics/mast/
 https://bitcoinops.org/en/topics/psbt/
 https://bitcoinops.org/en/topics/ptlc/
 https://bitcointalk.org/index.php?topic=155054.0
+https://bitcointalk.org/index.php?topic=2161699.0
 https://bitcointalk.org/index.php?topic=5348856.0
 https://bitcointalk.org/index.php?topic=999.msg12181#msg12181
 https://bitcoinvisuals.com/chain-block-reward
@@ -172,6 +173,7 @@ https://www.coindesk.com/business/2021/09/21/leaked-slides-show-how-chainalysis-
 https://www.coindesk.com/markets/2019/03/05/coinbase-pushes-out-ex-hacking-team-employees-following-uproar/
 https://www.coindesk.com/markets/2020/08/07/ethereum-classic-attacker-successfully-double-spends-168m-in-second-attack-report/
 https://www.merriam-webster.com/dictionary/mitigate
+https://www.oreilly.com/library/view/mastering-bitcoin/9781491902639/ch05.html#tx_script
 https://www.reddit.com/r/Bitcoin/comments/3c305f/comment/csrt3dg/
 https://www.reddit.com/r/Bitcoin/comments/l2yu4k/comment/gke25ve/
 https://www.reddit.com/r/Bitcoin/comments/mruopv/bitcoincorebased_bip8_lottrue_taproot_activation/
