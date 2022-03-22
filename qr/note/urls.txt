@@ -112,6 +112,7 @@ https://github.com/bitcoin/bitcoin/issues/15605
 https://github.com/bitcoin/bitcoin/issues/17326#issuecomment-550521262
 https://github.com/bitcoin/bitcoin/pull/15606
 https://github.com/bitcoin/bitcoin/pull/15759
+https://github.com/bitcoin/bitcoin/pull/16834
 https://github.com/bitcoin/bitcoin/pull/17265
 https://github.com/bitcoin/bitcoin/pull/17428
 https://github.com/bitcoin/bitcoin/pull/1889#issuecomment-9638527
@@ -128,6 +129,7 @@ https://github.com/bitcoin/bitcoin/pull/8282
 https://github.com/bitcoin/bitcoin/pull/8594
 https://github.com/bitcoin/bitcoin/pull/9053
 https://github.com/curl/curl
+https://github.com/jlopp/physical-bitcoin-attacks
 https://github.com/sipa
 https://github.com/sipa/bitcoin-seeder
 https://github.com/sipa/minisketch
@@ -146,6 +148,7 @@ https://media.ccc.de/v/36c3-10690-open_source_is_insufficient_to_solve_trust_pro
 https://medium.com/@MeshCollider/some-of-the-math-behind-bech32-addresses-cf03c7496285
 https://medium.com/@RubenSomsen/21-million-bitcoins-to-rule-all-sidechains-the-perpetual-one-way-peg-96cb2f8ac302
 https://medium.com/blockstream/miniscript-bitcoin-scripting-3aeff3853620
+https://mempool.space/
 https://nadobtc.libsyn.com
 https://nadobtc.libsyn.com/federated-ecash-episode-52
 https://news.ycombinator.com/item?id=11230394
