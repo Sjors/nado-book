@@ -33,6 +33,7 @@ https://bitcoinops.org/en/topics/cve-2018-17144/
 https://bitcoinops.org/en/topics/mast/
 https://bitcoinops.org/en/topics/psbt/
 https://bitcoinops.org/en/topics/ptlc/
+https://bitcoinops.org/en/topics/vaults/
 https://bitcointalk.org/index.php?topic=155054.0
 https://bitcointalk.org/index.php?topic=2161699.0
 https://bitcointalk.org/index.php?topic=5348856.0
@@ -60,6 +61,7 @@ https://developer.bitcoin.org/reference/p2p_networking.html#addr
 https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-02-26-taproot-activation-lockinontimeout/
 https://dlt-repo.net/storage-vs-memory-vs-stack-in-solidity-ethereum/
 https://doi.org/10.5195/ledger.2018.101
+https://en.bitcoin.it/wiki/BIP_0062
 https://en.bitcoin.it/wiki/Chain_Reorganization
 https://en.bitcoin.it/wiki/Difficulty
 https://en.bitcoin.it/wiki/Genesis_block
