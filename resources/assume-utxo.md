@@ -6,7 +6,7 @@
 
 One of the biggest bottlenecks — if not the biggest one — for scaling Bitcoin is initial block download. This is the time it takes for a Bitcoin node to synchronize with the Bitcoin network, as it needs to process all historic transactions and blocks to construct the latest unspent transaction output (UTXO) set, i.e. the current state of Bitcoin ownership.
 
-This chapter will cover some of the ways sync time has been sped up over time. It was first improved through Headers First synchronization, which ensures that new Bitcoin nodes don’t waste time validating (potentially) weaker blockchains. In recent years, synchronizing time has been improved with Assume Valid, a default shortcut that lets nodes skip signature verification of older transactions, instead trusting that the Bitcoin Core development process — in combination with the resource-expensive nature of mining — offers a reliable version of transaction history.
+This chapter will cover some of the ways sync time has been sped up over time. It was first improved through Headers First synchronization, which ensures that new Bitcoin nodes don’t waste time validating (potentially) weaker blockchains. One of several recent improvements to synchronizing time is called Assume Valid, a default shortcut that lets nodes skip signature verification of older transactions, instead trusting that the Bitcoin Core development process — in combination with the resource-expensive nature of mining — offers a reliable version of transaction history.
 
 It’ll also discuss how the security assumptions underpinning Assume Valid could be extended to allow for a potential future upgrade, AssumeUTXO, to offer new Bitcoin Core users a speedy solution to get up to speed with the Bitcoin network by syncing the most recent blocks first and checking historical blocks in the background later.
 
@@ -14,13 +14,15 @@ In addition to the accompanying _Bitcoin, Explained_ episode, you can also liste
 
 ### Downloading the Blockchain
 
-When you turn on your Bitcoin Core node, the node needs to first connect to the network, and then it needs to be able to communicate with the network. To do that, it has to download the blockchain.
+When you turn on your Bitcoin node it finds and connects to other peers, as we explained in chapter @sec:dns. It then proceeds to download the blockchain.
 
-The most naive way of doing this is connecting to other peers and asking for everything. This results in downloading terabytes of blocks, headers, and other random stuff, most likely resulting in a full hard disk that crashes.
+The most naive way of downloading the blockchain would be to just ask your peers to send you everything they’ve got. That’s not a good idea, because if any of your peers are malicious, they could trick you into downloading terabytes of fake blocks, until you run out of disk space and your node crashes.
 
-The initial version of Bitcoin asked nodes for a header. Once it got a header, it’d ask nodes for a block, and it’d get that block. Then, it’d ask for the next header, and it’d get all the headers and blocks sequentially.^[In reality, it was slightly more complicated than this. When a node received a block that didn’t directly build on the tip of its chain, it would, as Satoshi put it in a source code comment, “shunt it off to [a] holding area.” From there, it could be appended to the chain tip later. These blocks were called _orphan blocks_, a term often mixed up with _stale blocks_ (see chapter @sec:eclipse).] Your node would only check the blocks right in front of it, without seeing the big picture.
+To prevent such abuse the initial version of Bitcoin would first ask nodes for a block header. This header includes the proof-of-work, which - as the term suggests - proves that some work went into creating the block. By checking the proof in this header before fetching the block itself, it makes it more expensive for an attacker to produce enough fake blocks to overflow your hard disk. Once the block is fetched and checked, your node asks for the next header, and so forth, processing headers and blocks sequentially.^[In reality, it was slightly more complicated than this. When a node received a block that didn’t directly build on the tip of its chain, it would, as Satoshi put it in a source code comment, “shunt it off to [a] holding area.” From there, it could be appended to the chain tip later. These blocks were called _orphan blocks_, a term often mixed up with _stale blocks_.]
 
-The problem with this is you don’t know if you’re following a dead end, and someone could feed your node a long branch of blocks that aren’t part of the proof-of-work chain. Nodes that just came online are especially vulnerable to this. This is because the proof-of-work difficulty has historically increased. It’s expensive to create dead-end branches that start from recent blocks, because many miners are competing to produce blocks, pushing up the cost of creating a block. But if an attacker starts from a very old block, from a time when there were fewer and less powerful miners, then the cost to produce these blocks is very low.
+Although this protects against the most trivial form of block spam, we're not out of the woods. The approach is still very myopic, in that your node only checks the blocks right in front of it, without seeing the big picture.
+
+The problem with this is you don’t know if you’re following a dead end, and someone could feed your node a long branch of blocks that aren’t part of the most proof-of-work chain. Nodes that just came online are especially vulnerable to this. This is because the proof-of-work difficulty has historically increased. It’s expensive to create dead-end branches that start from recent blocks, because many miners are competing to produce blocks, pushing up the cost of creating a block. But if an attacker starts from a very old block, from a time when there were fewer and less powerful miners, then the cost to produce these blocks is very low.
 
 So an attacker can create a chain of very low difficulty blocks that branch off from some old block. If your node is new in town, when it sees two — or even thousands of — possible branches, it doesn’t know which is the real one. If it picks the branch from the attacker first, it can end up wasting lots of time and computer resources to verify the blocks. Even though the proof-of-work difficulty of these blocks is low, it’s not any easier for a node to verify the transactions; these dead-end branches may be filled to their one megabyte maximum with specially crafted transactions that are verified extra slowly.
 
@@ -58,7 +60,7 @@ This is where the transparency of source code becomes an important factor. _If_ 
 
 Anyone who already runs a node would be able to see this hash on GitHub and check it against their own node. They’d then either not see the block at all, or their node would point out that it’s invalid (because of the invalid signature). Both would be reason to sound the alarm. Barring some immense social media censorship campaign, anyone about to download a new node might learn what’s going on.
 
-But the hypothetical malicious developers have another problem. No miners are building on top of their invalid block, because the miners already had their node software installed before the invalid hash was produced. Within hours of the developers publishing this hash, and long before they release any software for downloading, miners have already produced a longer chain that doesn’t include this stealing block. So even if a user didn’t notice the social media drama, their node would simply follow the longest chain. It’d be a bit slower because it couldn’t use the Assume Valid feature, but it’d be fine.
+But the hypothetical malicious developers have another problem. No miners are building on top of their invalid block, because the miners already had their node software installed before the invalid hash was produced. Within hours of the developers publishing this hash, and long before they release any software for download, miners have already produced a longer chain that doesn’t include this stealing block. So even if a user didn’t notice the social media drama, their node would simply follow the longest chain. It’d be a bit slower because it couldn’t use the Assume Valid feature, but it’d be fine.
 
 So, what if developers colluded with miners in the theft? If a majority of miners decide to work with the developers and continue building on the invalid stealing block, then they’d be able to trick new users. But they wouldn’t be able to trick existing users, which is generally the vast (economic) majority. Massive drama and probably massive economic losses for these miners would ensue, as no exchange would accept their deposit.
 
@@ -66,7 +68,7 @@ But what if developers, miners, _and_ all existing users conspire to trick new u
 
 What’s important to understand here is that developers can already collude against you and sneak bad things into the code — we’ll talk more about that in chapter @sec:guix. Developers could also put in a backdoor that gives them access to your private keys. This actually happened with an altcoin called Lucky7Coin.^[<https://github.com/alerj78/lucky7coin/issues/1>] These backdoors could be very carefully hidden in the code in a way that only very skilled developers could detect. The Assume Valid hash, on the other hand, is very clearly visible, and it requires very little skill to verify, as explained above. This is why the Bitcoin Core developers believe that this feature is safe against abuse.
 
-Although Assume Valid has been in Bitcoin Core since v0.14 (2017), there’s a new idea that’s been proposed: AssumeUTXO.
+Assume Valid has been in Bitcoin Core since v0.14 (2017), and now there’s a new proposal: AssumeUTXO.
 
 ### AssumeUTXO
 
@@ -78,7 +80,7 @@ AssumeUTXO instead uses a recent snapshot of the UTXO set and works from there, 
 
 But in the meantime, in the background, it starts at the genesis block, goes all the way to the snapshot, and verifies that the snapshot is correct. And if the snapshot isn’t correct, it starts screaming (or it unceremoniously crashes with an error message).
 
-With Assume Valid, it still did all of the UTXO set constructing and replayed all of the transactions; it just didn’t check for the signatures. Now, with AssumeUTXO, it skips the transaction replaying altogether, or more accurately: It defers it. Instead, it takes the UTXO set, and from there on out, it constructs the blockchain based on the newer blocks that have been found since then.
+With Assume Valid, it still did all of the UTXO set constructing and replayed all of the transactions; it just didn’t check for the signatures. Now, with AssumeUTXO, it skips the transaction replaying altogether, or more accurately: It defers it. Instead, it takes the UTXO set at the snapshot block height, and then processes all subsequent blocks in order to construct the current UTXO set.
 
 ### Does the Past Matter?
 
@@ -88,11 +90,11 @@ Assuming you’re a new user, the first thing you want to do is receive coins. Y
 
 To start with the second question — checking the 21 million limit — the answer is _no_. You can calculate the total amount of Bitcoin in existence right now by adding up all the values in the UTXO set. And then you can look at the source to understand how many coins can be created in the future. There’s no need to see past blocks for that.
 
-However, to know if others will accept the coins you received, you need to know that the person who sent you the coins didn’t create them out of thin air or steal them. This goes back to the question of if a malicious developer can get away with this. The answer is that it’s slightly more difficult than it is with Assume Valid.
+However, to know if others will accept the coins you received, you need to know that the person who sent you the coins didn’t create them out of thin air or steal them. This goes back to the question of if a malicious developer can get away with this. Let's look into how this compares to manipulating Assume Valid.
 
 Let’s say developers create some coins out of thin air and add them to the UXO set, or that they reassign existing coins to themselves. Anyone verifying the snapshot would find out, so again, code transparency mitigates some of this.
 
-But where, in the Assume Valid example above, the developers would have to create an invalid block, that’s not necessary here. The new or stolen coins would exist in your UTXO set without ever having been in a block. So miners and existing node operators won’t initially detect this, because there’s no invalid block floating around.
+But where, in the Assume Valid example above, the developers would have to create an invalid block right away, before making a new software release, that’s not necessary here. The new or stolen coins would exist in your UTXO set without ever having been in a block. So miners and existing node operators won’t initially detect this, because there’s no invalid block floating around.
 
 But there’s a catch: When you, as the new user, receive a coin that was created out of nowhere, it never gets confirmed in a block. The new transaction won’t be mined, because miners have the correct UTXO set and recognize the transaction as invalid.
 
@@ -100,10 +102,10 @@ What if miners are in on it? Then the transaction would confirm and you’d have
 
 Developers could be very patient though. Instead of immediately trying to spend the from-thin-air coins, they could wait many years. Perhaps by that time, many miners will have reinstalled their node, along with the manipulated snapshot, and synced it. Perhaps many exchanges did so as well. And many regular users. So when they finally spend the from-thin-air coins, perhaps the block is only considered invalid by a small group of old school hardcore bitcoiners.
 
-So as before, this attack requires the whole world to conspire against you, but as far as global conspiracies go, this one is slightly easier to pull off, and slightly more difficult to detect.
+So as before, this attack requires much of the world to conspire against you, but as far as global conspiracies go, it may be ever so slightly less difficult to get away with.
 
 One way to mitigate this attack is for every block to include a hash of the current UTXO snapshot. This would be a soft fork (see chapter @sec:taproot_activation). That way, every node verifies the snapshot, and it wouldn’t have to be included in the software.
 
-However, producing such a hash would increase the verification time for a block from a few seconds to more than a minute. So a different type of hash has been proposed.^[MuHash: <https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-May/014337.html>]
+However, as things stand today, producing such a hash would increase the verification time for a block from a few seconds to more than a minute. So a different type of hash has been proposed.^[MuHash: <https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-May/014337.html>]
 
 There will probably be a lot more discussion before such a soft fork is even proposed. At the time of writing, AssumeUTXO is still being developed. Nodes can already produce snapshots of their UTXO set, but the code to actually load and use a snapshot is still undergoing review.^[<https://github.com/bitcoin/bitcoin/pull/15606>]
