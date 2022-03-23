@@ -79,7 +79,7 @@ One of the biggest differences between bech32 and base58 is that there isn’t a
 
 Table: Bech32 mapping. E.g. `q` means zero, `3` means 17 (1 + 16)
 
-A bech32^[BIP 173 is the spec for bech32: <https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki>] address consists of two parts separated by 1, e.g.
+A bech32^[Bech32 spec (BIP 173): <https://en.bitcoin.it/wiki/BIP_0173>] address consists of two parts separated by 1, e.g.
 `bc1q9kdcd08adkhg35r4g6nwu8ae4nkmsgp9vy00gf`.
 
 <!-- The phrasing "e.g." ensures that the address doesn't exceed the right page margin -->
@@ -118,7 +118,8 @@ The good news is that bech32 was only used for SegWit, and SegWit addresses were
 
 ### Enter Bech32m
 
-To fix this bug, a new standard was proposed called bech32m^[BIP 350 is the spec for bech32m: <https://github.com/bitcoin/bips/blob/master/bip-0350.mediawiki>]. It’s actually a very simple change. It adds one extra number to the bech32 checksum math, which then makes sure no extra characters can be added without causing an invalid checksum.
+<!-- Colon intentionally omitted so footnote fits on one line -->
+To fix this bug, a new standard was proposed called bech32m^[Bech32m spec (BIP 350) <https://en.bitcoin.it/wiki/BIP_0350>]. It’s actually a very simple change. It adds one extra number to the bech32 checksum math, which then makes sure no extra characters can be added without causing an invalid checksum.
 
 The new standard is only used for Taproot and future addresses. For SegWit nothing changes, because it's already protected by the 20 or 32 byte length constraint. At the time of writing most wallet software supports the new bech32m standard.
 

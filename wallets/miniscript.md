@@ -57,7 +57,7 @@ But in the earlier more complicated example, with alternative conditions such as
 
 Fortunately, there’s an alternative to giving the counterparty (the sender) the full script — you can give them the hash of the script, which is always the same length, and also happens to be the same length of a normal address.
 
-In 2012, the Pay-to-Script-Hash (P2SH) was standardized.^[<https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki>] These kinds of transactions let you send to a script hash, which is an address beginning with 3, in place of sending to a public key hash, which is an address beginning with 1. With the exception of the prefix, they’ll look kind of the same.
+In 2012, the Pay-to-Script-Hash (P2SH) was standardized.^[<https://en.bitcoin.it/wiki/BIP_0016>] These kinds of transactions let you send to a script hash, which is an address beginning with 3, in place of sending to a public key hash, which is an address beginning with 1. With the exception of the prefix, they’ll look kind of the same.
 
 The person on the other end has to copy-paste it, put it in their Bitcoin wallet, and send money to it. And it works. Now, when you want to spend that money, you need to reveal the actual script to the blockchain, which your wallet will handle automatically. So in this way, you don’t have to bother anyone else with the complexity of remembering what the script was and correctly sending to it.
 

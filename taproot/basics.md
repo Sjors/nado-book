@@ -33,13 +33,13 @@ While Merkle trees are a good solution, it’d be even better if you could hide 
 
 Let’s return to the previous example of you and your mom. In this smart contract, if you and your mom both agree to spend the money, you don’t have to wait two years. In most smart contracts, no matter how complicated the various possible scripts are, when everyone who’s involved agrees to spend the money, they might as well dispense with the scripts and just create a single joint signature.
 
-It’d be nice to have a way to express this using only the signature — without scripts or an entire tree. This can be done by tweaking your public key, as discussed in BIP 341.^[<https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki>] Instead of saying, “Send this to my public key,” you’d instead say, “Send this to my public key, plus my mom’s public key, plus this MAST key.”
+It’d be nice to have a way to express this using only the signature — without scripts or an entire tree. This can be done by tweaking your public key, as discussed in BIP 341.^[<https://en.bitcoin.it/wiki/BIP_0341>] Instead of saying, “Send this to my public key,” you’d instead say, “Send this to my public key, plus my mom’s public key, plus this MAST key.”
 
 This tweaking of keys is slightly more complicated than literally adding them, owing to the many subtleties of cryptography, but in essence,f you can add up keys, and you can also add up signatures, and it looks to the outside world as if it’s just a regular signature. As a result, you can hide things inside — but this process is extremely difficult without Schnorr.
 
 ### Schnorr {#sec:schnorr}
 
-Chapter @sec:libsecp talks about libsecp256k1, and in May 2021, BIP 340^[<https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki>] support was merged into libsecp256k1. This added Schnorr signatures to Bitcoin Core.
+Chapter @sec:libsecp talks about libsecp256k1, and in May 2021, BIP 340^[<https://en.bitcoin.it/wiki/BIP_0340>] support was merged into libsecp256k1. This added Schnorr signatures to Bitcoin Core.
 
 Schnorr digital signatures were first created by Claus-Peter Schnorr, a German mathematician. He created the Schnorr signature algorithm, which he then patented. It would’ve been great for Bitcoin, as well as many other open source projects that came before it, but because of the patent, people had to find another way to reap the benefits of these signatures.
 
@@ -96,9 +96,9 @@ The ability to have multiple conditions and only reveal one of those conditions 
 
 To appreciate Taproot even more, let’s take a brief excursion back in time.
 
-The first MAST proposal, BIP 114,^[<https://github.com/bitcoin/bips/blob/master/bip-0114.mediawiki>] introduced a new SegWit version. It offered privacy benefits similar to the Taproot Merkle tree proposal, and it only revealed the spending condition or script that was used.
+The first MAST proposal, BIP 114,^[<https://en.bitcoin.it/wiki/BIP_0114>] introduced a new SegWit version. It offered privacy benefits similar to the Taproot Merkle tree proposal, and it only revealed the spending condition or script that was used.
 
-Instead of introducing a new SegWit version, the second MAST proposal, BIP 116,^[<https://github.com/bitcoin/bips/blob/master/bip-0116.mediawiki>] added a new opcode, `MERKLEBRANCHVERIFY`, to the existing script system. While the privacy was the same, the implementation varied.
+Instead of introducing a new SegWit version, the second MAST proposal, BIP 116,^[<https://en.bitcoin.it/wiki/BIP_0116>] added a new opcode, `MERKLEBRANCHVERIFY`, to the existing script system. While the privacy was the same, the implementation varied.
 
 However, there are downsides to both of these earlier MAST proposals:
 

@@ -42,7 +42,7 @@ First, users could still download the Bitcoin Core binary as usual, since it cam
 
 Second, those who prefer to compile their own software from source, were offered two possible workarounds.^[<https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-January/007097.html>] They could either hold off on updating OpenSSL, or use a sufficiently recent version of the source code, which now contained a patch that worked around the issue.
 
-Third, the BIP 66 soft fork was proposed,^[<https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki>] and indeed successfully activated (more on soft fork activation in chapter @sec:taproot_activation). This fork required that future signatures all abide by the stricter standard, so that both old and new versions of OpenSSL would accept them.
+Third, the BIP 66 soft fork was proposed,^[<https://en.bitcoin.it/wiki/BIP_0066>] and indeed successfully activated (more on soft fork activation in chapter @sec:taproot_activation). This fork required that future signatures all abide by the stricter standard, so that both old and new versions of OpenSSL would accept them.
 
 This incident wasn’t necessarily surprising, as OpenSSL is famous for its vulnerabilities. The main reason for this is because these libraries have been used by everyone for decades, but they’re only maintained by a tiny number of volunteers on a shoestring budget.
 
