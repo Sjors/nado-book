@@ -8,6 +8,7 @@ https://arxiv.org/pdf/1804.10848.pdf
 https://bitcoin.org/bitcoin.pdf
 https://bitcoin.org/en/alert/2015-07-04-spv-mining#cause
 https://bitcoin.org/en/releases/22.0/
+https://bitcoin.sipa.be
 https://bitcoin.stackexchange.com/a/10666/4948
 https://bitcoin.stackexchange.com/a/1992/4948
 https://bitcoin.stackexchange.com/questions/56485/can-someone-please-explain-fibre-to-me-like-im-5-and-why-is-it-useful
