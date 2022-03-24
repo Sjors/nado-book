@@ -118,6 +118,8 @@ Finally, there’s the Blockstream Satellite^[<https://blockstream.com/satellite
 
 Note, however, that you shouldn’t blindly trust the satellite either, for _it_ might try to eclipse you. But remember that you only need a single honest peer, and you achieve this by having as diverse a set of connections as possible.
 
+The Bitcoin Core development wiki also contains an overview of eclipse attacks and various counter measures.^[<https://github.com/bitcoin-core/bitcoin-devwiki/wiki/Addrman-and-eclipse-attacks>]
+
 \newpage
 ### Erebus Attack
 
