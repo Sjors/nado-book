@@ -35,6 +35,10 @@ With Utreexo, you’re pruning the UTXO set. Instead of throwing away transactio
 
 To put it another way, normally, when somebody sends you a transaction, the transaction says, “I’m spending this input, and you, the person running a node, have the responsibility to check whether that input exists in your own database.” And here, you’re flipping this around and telling the other node, “I have no idea which coins exist, because I don’t have enough RAM to track all that. You prove to me that this coin actually existed.” So the burden of evidence is reversed, which begs the question of how.
 
+![Merkle tree. To prove the existence of Coin 3 you need to provide a merkle proof consisting of the three marked items.^[Modified from: <https://commons.wikimedia.org/wiki/File:Hash_Tree.svg>]](resources/tree.svg)
+
+The figure illustrates how you prove the existence of coin 3 using a merkle proof, given a verifier who only knows the merkle root (top). First you reveal the coin itself, which is just a transaction output with an amount and `scriptPubKey`. The verifier hashes this to obtain Hash 1-0 (directly above Coin 3 in the figure). You then provide Hash 1-1. Even though you probably don't own Coin 4 and you may not even its amount and `scriptPubKey`, you do know it's hash, because your wallet kept track of such relevant information. With that the verifier can calculate Hash 1. You then provide Hash 0 and now the verifier can see that your proof results in the same merkle root hash they knew about. You have now demonstrated ownership of Coin 3, without the need for the verifier to know the entire UTXO set. 
+
 ### Seeing the Forest for the Trees
 
 Usually, if someone sends a transaction to you, you check inside your node and the database with your UTXO set to see if the transaction is spending valid UTXOs. But now, the sender will have to provide you with the proof that their transaction is spending existing UTXOs. However, you still need something to make sure the proof is valid. And that’s Utreexo, which is a Merkle tree — or several trees — of hashes.
