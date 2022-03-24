@@ -71,6 +71,7 @@ https://en.wikipedia.org/wiki/Botnet
 https://en.wikipedia.org/wiki/Cargo_cult_science
 https://en.wikipedia.org/wiki/Hexadecimal
 https://en.wikipedia.org/wiki/IPv4
+https://en.wikipedia.org/wiki/Moore%27s_law
 https://en.wikipedia.org/wiki/Mt._Gox#Withdrawals_halted;_trading_suspended;_bitcoin_missing_(2014)
 https://en.wikipedia.org/wiki/SHA-2
 https://en.wikipedia.org/wiki/Systemd
