@@ -181,6 +181,7 @@ https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/
 https://www.coindesk.com/business/2021/09/21/leaked-slides-show-how-chainalysis-flags-crypto-suspects-for-cops/
 https://www.coindesk.com/markets/2019/03/05/coinbase-pushes-out-ex-hacking-team-employees-following-uproar/
 https://www.coindesk.com/markets/2020/08/07/ethereum-classic-attacker-successfully-double-spends-168m-in-second-attack-report/
+https://www.freecodecamp.org/news/big-o-notation-why-it-matters-and-why-it-doesnt-1674cfa8a23c/
 https://www.manning.com/books/grokking-bitcoin
 https://www.merriam-webster.com/dictionary/mitigate
 https://www.oreilly.com/library/view/mastering-bitcoin/9781491902639/
