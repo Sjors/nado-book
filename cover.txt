@@ -7,7 +7,7 @@ With thousands of “crypto” projects out there, they say Bitcoin is old and b
 
 You'll learn about the latest soft fork known as Taproot, the challenges of keeping open source software free of money-stealing bugs and malware, new ways to protect nodes against evildoers on the internet, how to deal with the ever-growing blockchain, and more!
 
-Each chapter links to a corresponding episode of the Bitcoin, Explained podcast. The book also links to more than a hundred articles, videos, podcasts, and even the source code. And thanks to a tiny QR code next to every link, you'll never have to type long URLs.
+Each chapter links to a corresponding episode of the Bitcoin, Explained podcast. The book also links to more than two hundred articles, videos, podcasts, and even the source code. And thanks to a tiny QR code next to every link, you'll never have to type long URLs.
 
 ------
 Author
