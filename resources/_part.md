@@ -1,4 +1,4 @@
-# Resource usage
+# Resource Usage
 
 ## Overview {.unlisted .unnumbered}
 

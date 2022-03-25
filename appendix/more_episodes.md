@@ -3,7 +3,7 @@
 \pagestyle{headings}
 # Appendix {.unnumbered}
 
-## More episodes {#sec:more_eps}
+## More Episodes {#sec:more_eps}
 
 Not all episodes of _Bitcoin, Explained_ made it into this book. Here are some other episodes you could listen to.
 
