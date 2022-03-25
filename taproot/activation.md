@@ -263,3 +263,15 @@ The accompanying episode goes into further detail about what, once Taproot activ
 Because Speedy Trial was successful, it’s possible we can use it as a template for soft fork activation moving forward. Or, we could interpret the lack of drama as an argument to just stick with BIP 9 or a `LOT=false` version of BIP 8. Perhaps some aspects of `LOT=true` deployment can be made safer.
 
 Even if it’s inherently unsafe, it could make sense to continue developing it further, having the code already in place in case it’s ever needed. Perhaps the Bitcoin Core software could have generic support for it, even if the project itself recommends against using it. The best time to think about such matters is when they’re not yet needed.
+
+### Burying Soft Forks
+
+![Ep. 54 {l0pt}](qr/ep/54.png)
+
+After all is said and done and soft fork has activated, what do you do with the activation code? Is it merely a scaffold that can removed once the new rules are active? Or is the activation mechanism itself a permanent part of the rules.
+
+As was done with previous soft forks, it looks like a future Bitcoin Core release will “bury” the Taproot activation. This means the node will treat the Taproot rules as if they've been active since Bitcoin’s very beginning. This is possible because, when applying these rules retroactively, only one historical block does not conform to them. This block can be grandfathered in.^[<https://github.com/bitcoin/bitcoin/pull/23536>]
+
+The episode explains what the benefits are of burying a soft fork, in particular pointing out how it helps developers when they review the Bitcoin Core codebase or when they perform tests on it.
+
+After that, Aaron and Sjors outline a potential edge case scenario where burying soft forks could, in a worst-case scenario, split the Bitcoin blockchain between upgraded and non-upgraded nodes. Bitcoin Core developers generally don’t consider this edge case — a very long block re-org — to be a realistic problem and/or believe that this would be such a big problem that a buried soft fork would be a minor concern comparatively. However, they explain, not everyone agrees with this assessment entirely.
