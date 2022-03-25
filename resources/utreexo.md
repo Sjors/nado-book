@@ -1,454 +1,86 @@
----
-comment: guest Ruben
-...
 \newpage
 ## Utreexo {#sec:utreexo}
 
 
 ![Ep. 15 {l0pt}](qr/ep/15.png)
 
-they dive into a concept by Tadge Dryja called Utreexo.
+Whenever a new Bitcoin transaction is made, Bitcoin nodes use a UTXO set to determine that the coins being spent really exist (see chapter @sec:assume). This UTXO set is currently several gigabytes in size and continues to grow over time, and there’s no upper limit to how big it can potentially get.
 
-Whenever a new Bitcoin transaction is made, Bitcoin nodes use a UTXO set (the overview of all bitcoin in existence at any given time) to determine that the coins that are being spent really exist. This UTXO set is currently several gigabytes in size and continues to grow over time and there is no upper limit to how big it can potentially get.
+Because Bitcoin nodes perform best if the UTXO set is kept in RAM, and because RAM is a relatively scarce resource for computers, it would benefit a node’s performance if the UTXO set could be stored in a more compact format. This is the promise of Utreexo.^[Pronounced U Tree X O. See also: <https://bitcoinmagazine.com/articles/bitcoins-growing-utxo-problem-and-how-utreexo-can-help-solve-it>]
 
-Because Bitcoin nodes perform best and fastest if the UTXO set is kept in RAM (in particular when syncing a new node), and RAM is usually a relatively scarce resource for most computers, it would benefits a node’s performance if the UTXO set could be stored in a more compact format. This is the promise of Utreexo.
+Utreexo would take all the UTXOs in existence and include them in a Merkle tree, which is a data structure consisting only of hashes. This chapter explains how the compact Utreexo structure could suffice in proving that a particular UTXO is included when a new transaction is made. It also covers the potential benefits that could surface if this solution were to be used, along with some of the potential tradeoffs.
 
-Utreexo would take all the UTXOs in existence and include them in a Merkle Tree, a data-structure consisting only of hashes. Aaron, Sjors and Ruben explain how the compact Utreexo structure could suffice in proving that a particular UTXO is included when a new transaction is made, and they discuss the potential benefits that could surface if this solution becomes available, as well as some of its potential tradeoffs.
 
-Timestamps:
+### The Challenge
 
-1:16 - 3:35: Ruben explains the difference between assume utxo and assume valid.
-4:40 - Utreexo
-8:16 - 10:11 the problem with a limitless UTXO set.
-10:44 - 11:55 How Utreexo works.
-12:55 - 13:58 The Cryptographic Technicals to Utreexo
-21:00 - 21:49 the boostrapping issue with utreexo and why bridge nodes are needed.
-22:00 - 23:20: how Utreexo could be implemented with a soft fork.
-25:33 - 27:07 the benefits of Utreexo
-27:08 - 28:34 parallel validation with utreexo
-29:50 - 30:37 Risks if utreexo
+When syncing a new Bitcoin node, one of the challenges is the amount of random-access memory (RAM) you have. In general, you don’t need a lot of RAM on your computer, but if you want to sync fast, you do.
 
+The reason this is necessary is due to the UTXO set, which is a list of all coins in existence, including the ones you own. Every time a new block comes in, for every transaction in it, you check that it spends coins that actually exist. You also remember which new coins the transaction created, so that you’re aware of this when it gets spent in a later block. This information is held in a database, and if it’s located on your hard disk, this checking and updating is a slow process. However, if the database is located in your RAM, it’s extremely fast.
 
-Helpful links:
-<https://www.youtube.com/watch?v=6Y6n88DmkjU>
+The time it take varies, but say you had a newer MacBook Pro with 32GB RAM, and you allowed the node to use half of this; it’d take maybe seven hours to sync the entire chain.^[In late 2020, former Bitcoin Core maintainer Jonas Schnelli synced the chain on an Apple M1 in five hours. It would’ve been faster if he allocated more than 5GB of RAM (using `-dbcache`). In the meantime, the chain has grown, hence the more conservative estimate. <https://twitter.com/_jonasschnelli_/status/1333303029370675201>] However, let’s say you had a Raspberry Pi with only 2GB of RAM and a small hard drive. In this case, it could take several weeks.^[There are two bottlenecks. First, your node keeps as much as possible in RAM during sync, but once it fills up this memory, it has to write the UTXO database to disk, clear its memory, and start caching again. The second problem is that if the blockchain doesn’t fit on the hard drive, then your node has to delete old blocks to make room for new ones. A side effect of this is that the coin database in RAM must be written to disk, further slowing down the sync process.]
 
-<https://bitcoinmagazine.com/articles/bitcoins-growing-utxo-problem-and-how-utreexo-can-help-solve-it>
+The key point here is that if you can keep more of the UTXO set in RAM, you’ll sync faster. It’d be nice if the size of the UTXO set could be decreased, but that’s not necessarily possible. Of course, if you’re spending more coins than you’re creating, then the number of UTXOs and the RAM usage both go down. However, there’s a lot of junk in the UTXO set, because in the past, people created transactions to multi-sig addresses that were fake just to e.g. put pictures of Obama in the blockchain. And those are all sitting in your RAM because your node has no idea they’re nonsense.
 
-<!-- I already edited a few things out of the conversation below to keep it focussed -->
+However, if we expect everybody in the world to eventually use Bitcoin and to have at least one or two UTXOs each, that would take terabytes of RAM, and Moore’s Law^[<https://en.wikipedia.org/wiki/Moore%27s_law>] isn’t going to catch up to this anytime soon. But even without the entire world using Bitcoin, it could get to the point where fewer and fewer people have enough RAM to sync it quickly, which is a problem. If fewer people run their own node, the system becomes less decentralized.
 
-<!--
+### Utreexo
 
-Aaron:
-And the proposal we’re discussing this week is Utreexo.
+One way to address this issue is with Tadge Dryja’s proposal, the Utreexo.^[<https://dci.mit.edu/utreexo>, <https://www.youtube.com/watch?v=6Y6n88DmkjU>] Dryja is a research scientist at the MIT Digital Currency Initiative.
 
-Ruben:
-That is correct. Yeah.
+Currently with Bitcoin, you can prune the archival block storage to save disk space. After your node downloads a block, processes it, and updates the UTXO set, it no longer has any use for the block. Your node knows exactly which coins exist in the UTXO set, which is all the information it needs to validate future transactions.
 
-Sjors:
-Utreexo, and the tree is for tree. The thing that grows in the forest.
+When pruning is enabled, your node holds on to the block for a few more days and then deletes it. This way, you need less than a gigabyte of storage, even though the blockchain itself is hundreds of gigabytes. The downside is that you don’t have the blocks, so you can’t share them with other nodes. This is acceptable as long as enough other nodes still have the full archive.
 
-Aaron:
-Okay. So Sjors, what problem are we solving?
+With Utreexo, you’re pruning the UTXO set. Instead of throwing away transactions (along with the blocks they’re in), you throw away the list of coins that exist. The only thing you keep is a Merkle root, i.e. a hash that represents all the coins in existence. Every leaf of the Merkle tree represents a single UTXO, and the Merkle root commits to all of them. For each coin that you care about, e.g. because it’s in your wallet, your node keeps a Merkle proof. When spending a coin, you need to attach this proof to your transaction so that other nodes can verify that the coin exists.
 
-Sjors:
-Problem, problem. Challenge. No, so one of the constraints when you’re syncing a new Bitcoin node, we talked about sync a couple times, is the amount of RAM memory you have. Now, it’s not a hard constraint. You don’t need a lot of RAM, but if you want to sync it fast, you do. And the reason is this thing called the UTXO set. The UTXO set is a list of coins that you own, and we talked about that last time, I guess. But every time the new block comes in, what you do is, for every transaction in the block, you check if it’s spending something that exists, namely, one UTXO. And so in order to check if something exists, well, it has to be somewhere. It has to be in a database of sorts. And where is that database? Well, if that database is sitting in your RAM memory, that’s extremely fast. If on the other hand, that database is sitting on your hard disk, if it’s an SSD drive, it’s meh.
+To put it another way, normally, when somebody sends you a transaction, the transaction says, “I’m spending this input, and you, the person running a node, have the responsibility to check whether that input exists in your own database.” And here, you’re flipping this around and telling the other node, “I have no idea which coins exist, because I don’t have enough RAM to track all that. You prove to me that this coin actually existed.” So the burden of proof is reversed, which begs the question of how.
 
-Aaron:
-What you mean is, it’s much faster to look up if it’s in there. If it’s in your RAM, then your computer will be able to look it up within… Well, I don’t know how fast, but faster than if it’s on your drive, at least.
+The following figure illustrates how you can prove the existence of Coin 3 using a Merkle proof, given a verifier that only knows the Merkle root (top). First, you reveal the coin itself, which is just a transaction output with an amount and `scriptPubKey`. The verifier hashes this to obtain Hash 1-0 (directly above Coin 3 in the figure). You then provide Hash 1-1. Even though you probably don’t own Coin 4 and you may not even know its amount and `scriptPubKey`, you do know its hash, because your wallet kept track of this information. With that, the verifier can calculate Hash 1. You then provide Hash 0, and now the verifier can see that your proof results in the same Merkle root hash they knew about. You’ve now demonstrated ownership of Coin 3 without the need for the verifier to know the entire UTXO set.
 
-Sjors:
-It’s probably at least 10 times faster than if it’s on your SSD drive, and if you’re using a magnetic drive, it’s even worse. And then the other side of it is, once you create this new coin, which the transaction does on the output side, it has to store that. So it has to write it somewhere on the disc, which is also slow. And if you have a magnetic spin disc, then it has to move to read somewhere and it has to move somewhere else to write again and these are gigabytes apart, so that’s horrible.
+We’ll revisit Merkle trees in chapter @sec:miniscript and chapter @sec:taproot_basics.
 
-Aaron:
-So to make it very concrete, I guess the biggest difference you would notice when you’re syncing a new node, and if you would somehow be able to keep the UTXO set in RAM, it will only take, I don’t know, couple hours?
+![Merkle tree. To prove the existence of Coin 3, you need to provide a Merkle proof consisting of the three marked items.^[Modified from: <https://commons.wikimedia.org/wiki/File:Hash_Tree.svg>]](resources/tree.svg)
 
-Sjors:
-But it depends on your computer. I have a somewhat recent MacBook Pro and I think I can sync the whole chain in five hours-
+### Seeing the Forest for the Trees
 
-Aaron:
-If you keep it in RAM.
+Currently, if someone sends a transaction to you, you check inside your node and the database with your UTXO set to see if the transaction is spending valid UTXOs. With Utreexo, the sender will have to provide you with the proof that their transaction is spending existing UTXOs. Although you no longer have to hold on to several gigabytes of UTXO data, you do still need to keep track of a few things, namely a Merkle tree — or several trees — of hashes.
 
-Sjors:
-But that takes about 11 gigabytes of RAM. But if you do it on, say, a typical Raspberry Pi, you might have two gigabytes these days, maybe four. So that means you’re going to sync the chain and you’re going to keep as much as possible in RAM, but at some point it overflows, the UTXO set, and then usually what it does is it writes everything to disk, clears everything, and then it starts caching again, and this takes a long time. It can take days on these machines.
+All the UTXOs in existence would be put into this tree and everybody can construct this tree if they replay the whole blockchain. Basically what the tree would look like is you have the first and second UTXO next to each other. Then, you take the hash of those two — basically combined — which is one new hash. You can do that again for another two UTXOs that exist and combine their hashes. So, for example, you have four UTXOs. Two of them are shared, and then those two are shared again, and you end up with one hash.
 
-Aaron:
-So the point being, as you can keep more of the UTXO set in RAM, you’ll sync faster, or your node will just work faster, operate faster in general. So it would be good if we could somehow decrease the size of the UTXO set.
+Utreexo uses perfect trees, which means the number of leaves in each must be a power of two. Because the UTXO set contains an arbitrary number of coins, you end up with a forest of trees. For example, if there are six coins, your forest would have a tree with 2^2^=4 leaves and a tree with two leaves. All your node needs to store is the Merkle root hash of each tree. There are currently a little under 100 million coins in existence.^[<https://txstats.com/dashboard/db/utxo-set-repartition-by-output-type>] Because this is less than 2^27^, it’d take 27 trees to represent them all. Each SHA256 hash^[<https://qvault.io/cryptography/how-sha-2-works-step-by-step-sha-256/>] is 32 bytes, so your node needs to store 27 * 32 = 864 bytes. If every human owns multiple coins, it’d only grow to one kilobyte.
 
-Sjors:
-Well, we can’t decrease the size of the UTXO set. That’s the problem.
+How do we update the tree for every block as leaves are removed and added, i.e. coins are spent and created? You can actually take the UTXO that’s being spent out of the tree and put the new one into the tree. To do that, you need to recalculate the tree, and that’s done by knowing its neighbors. We already illustrated how to prove that something exists in the tree, and it turns out that’s exactly the same information you need to put something else at the bottom of the tree and then provide the root hash.
 
-Aaron:
-That’s a bummer.
+When you’re syncing the blockchain, you could keep track of the entire tree, but then you’d need a lot of RAM, just like in the original scenario. This is why you only store the root of each tree. Then, when somebody has a new transaction that you want to verify, they need to give you the Merkle proofs for all the inputs they’re spending to prove that they exist. They’ll also tell you which outputs are there — these will be swapped in at the same places where those inputs were — and they’ll tell you about any new trees being made.
 
-Sjors:
-There is a limit on the size of blocks.
+### Bridge Nodes
 
-Aaron:
-Well, it can decrease-
+There are two ways you can learn about a transaction. Someone can send it to you via the network, in which case you add it to your mempool. Or, it can be part of a block you receive.
 
-Sjors:
-For megabytes.
+How would you validate the transaction in the first scenario? With Utreexo, you have the top of the trees in your RAM. The sender is responsible for sending the transaction, as well as the proof that the transaction is valid, which also includes information for you so you know where to find it in the forest. If the sender doesn’t support Utreexo and doesn’t provide the proof, your node could simply ignore the transaction.
 
-Aaron:
-It can decrease, it’s just not something we can do.
+But what about the second scenario? If a miner mines a block and a transaction is in there, the block doesn’t contain the proof. To get this proof, you need the help of a bridge node. This is a node that has the actual UTXO set, the old-fashioned way, so it has lots of RAM or it’s just slow. And it produces all these proofs and it sends them around to whoever wants them.
 
-Sjors:
-Yeah, it decreases when people spend-
+When a bridge node receives a transaction that doesn’t have a Merkle proof, it takes the proof it has, attaches it to the transaction, and sends it to other Utreexo nodes. The same goes for entire blocks. You don’t have to be directly connected to such a bridge node, as other Utreexo-aware nodes can relay blocks with the proofs attached. From the perspective of the Utreexo node, the bridge node is just a Utreexo node, and from the perspective of the old-fashioned nodes, it’s just an old-fashioned node.
 
-Aaron:
-I don’t know how much UTXOs you own, Sjors. I bet a lot, so maybe you could play a part in decreasing the UTXO.
+There’s nothing magical about bridge nodes. Any node that has the original UTXO set can construct the proof for any transaction. But doing so would defeat the purpose of Utreexo, because keeping track of both the regular UTXO set and these proofs takes a lot of memory.
 
-Sjors:
-I have millions of UTXOs on testnet. No, so the idea is that if you’re spending more coins than you’re creating, then obviously the number of UTXOs goes down and the RAM usage goes down. But there’s a lot of junk in the UTXO set, because there were people in the old days that created transactions to multi-sig addresses that were fake just in order to put pictures of Obama in the blockchain. And those are all sitting in your RAM because you node has no idea that they’re nonsense.
+So these bridge nodes do the translation between the current world of nodes that track the UTXO set in memory and these new Utreexo-enabled nodes that don’t have to. As long as one bridge node exists, it can bootstrap the network. However, this relies on these bridge nodes being backed by people with good intentions. But these nodes could change, or disappear, or run out of battery.
 
-Sjors:
-But the other thing is, if we expect everybody in the world eventually to use Bitcoin and everybody to have at least one or two UTXOs, well, that’s a lot of RAM. That’s like seven billion people. And there’s really no limit to how big that can get, there’s no constraint. It might take a while because it takes a lot of fees to create all these transactions, but eventually it could take as much RAM as… There’s no limit, and we don’t like things that don’t have a limit. Unbounded stuff, it’s a bit bad.
+Looking at the long-term picture, if people like Utreexo given the advantages — or even if they don’t like it — if the UTXO set gets too big and takes too long to sync on any normal computer, then you could basically make a soft fork that requires all proofs to be in the block.^[You’d include the hash of the proofs somewhere in the coinbase transaction. As we explained in chapter @sec:segwit for SegWit, the proofs themselves would go in a special place inside the block that old nodes don’t see.] By including proofs in the blocks, they’re guaranteed to be available to all nodes.
 
-Aaron:
-Yeah, you mean the UTXO set can get as big as it will get until the point where not everyone can use it and sync it from RAM?
+The tradeoff there is that bigger blocks require more bandwidth and storage, but less RAM is used. At the moment, bandwidth is probably a bigger constraint than RAM, so a soft fork isn’t likely to happen, but this could change in the decades ahead.
 
-Sjors:
-Fewer and fewer people will have enough RAM to sync it quickly and that could become a problem.
+### Cool Things
 
-Aaron:
-Okay, so you agree, it’s a problem. Not just a challenge. It a problem, Sjors. Now how do we solve it?
+With this solution, because you wouldn’t need a lot of RAM, you could start doing things in specialized hardware. For example, smartphones tend to have very little RAM, so they could get a big performance boost from Utreexo. Or, you could even have a specialized chip — like a GPU — with a tiny on-board memory that validates Bitcoin blocks.^[Then you have the protocol literally set in stone, or at least set in silicon. If somebody wants to do a hard fork, you’d have to break all the node hardware, and not just all the mining hardware. So, that’s a nice extra barrier to not do hard forks. Unfortunately, this also makes soft forks less attractive, as nodes can’t verify the new rules with the accelerated hardware — so your computer would have to slow down to check all the new rules whenever it encounters transactions that fall under the new rules.]
 
-Sjors:
-Yeah, it’s a challenge. Well, one way to solve it is Tadge Dryja’s proposal, the Utreexo.
+But even without specialized hardware, there’s a potential speedup if the CPU can do most of the block validation work. A 1KB Merkle forest can easily be kept in a typical CPU cache.^[<https://en.wikipedia.org/wiki/CPU_cache>] This avoids having to ferry UTXO set information between the CPU and RAM. Just like using RAM to avoid physical disk reads speeds things up, so does using the CPU cache to avoid using RAM.
 
-Ruben:
-That’s right, yep.
+In chapter @sec:assume, we described how the source code contains a hash that represents the UTXO set a given snapshot height. The node still needs to obtain that UTXO set, which is several gigabytes in size, and it’d probably download it from its peers. With Utreexo, the UTXO set is so small that it can be put in the source code, thus removing the need to download the UTXO set for the snapshot.
 
-Sjors:
-And the idea there, I guess that’s what we’ll need to explain, right? How that works.
+### A Couple Tradeoffs
 
-Aaron:
-Well, Ruben wanted to explain it to us, so let’s hear it.
+Although Utreexo has the potential to be cool, there are some tradeoffs. The most apparent is that if you start using it, and then later, somebody finds a better accumulator,^[The general term for what Utreexo uses for its coin accounting is called an accumulator. It’s something you can use to add stuff to, and in this case, to also remove stuff from. But there are all sorts of mathematical tricks you can deploy to do this. The Merkle tree is conceptually very simple, as we hopefully illustrated, but there have been other proposals, like an RSA accumulator. There’s all sorts of cool cryptographic math you can do to just add things to a set and remove them from a set, essentially. It’s too early to set any particular accumulator in stone with a soft fork.] you’d have to switch. Such a switch is easy in a scenario with bridge nodes — multiple solutions could exist in parallel, each with their own bridge nodes. But once the proofs are added into blocks with a soft fork, there’s no easy way back.
 
-Ruben:
-Well, I first wanted to say that I thought, Aaron, your analogy with basically saying that it’s pruning for the UTXO set, I thought that was a very good analogy, where currently we have pruning in Bitcoin-
-
-Aaron:
-This was an off-record analogy. But now it’s an on-record analogy.
-
-Ruben:
-Now’s it’s on record, yes. I’m repeating something that you had told me before the show. So with Bitcoin, currently you have pruning in the sense that you take a block, you process it, you extract the UTXO set out, basically from all the blocks, and then that’s all that you keep. You only keep the UTXO set and then you can throw everything else away and that’s called pruning.
-
-Ruben:
-There is a downside, which is that then you don’t have the blocks. So if you want to prove to another person that the UTXO set is valid, you can’t actually give them the blocks, but the assumption is that somebody else will have the block so it’s fine.
-
-Ruben:
-And here, what you’re pruning is something else. You’re pruning UTXO sets and your essentially throwing away all the transactions and you’re just keeping a Merkle roots. And inside of that Merkle roots is basically a commitment. Every single UTXO is committed in there and you only keep the Merkle proofs of the UTXOs that you care about, that you own.
-
-Aaron:
-What is a Merkle root?
-
-Sjors:
-Maybe to put it another way, normally when somebody sends you a transaction, the transaction says, ‘I’m spending this input and you, as the person running a node, has the responsibility to check whether that input exists in your own database.’ And you’re flipping this around and you’re telling the other node, ‘I have no idea which coins exist, because I don’t have RAM. You prove to me that this coin actually existed.’ And that’s what you use this Merkle proof for. So the burden of evidence is reversed here. You need to prove that a transaction exists. And then the question is how are we going to do that?
-
-Aaron:
-Okay, so we’re reversing the burden of proof. Usually when you’re sending a transaction… When I send a transaction to you, Sjors, then you check inside your node and the database with your UTXO set, whether the transaction is spending valid UTXOs.
-
-Sjors:
-Yes.
-
-Aaron:
-Now I’m actually going to have to provide you with the proof that my transaction is spending existing UTXOs. However, you still need something in order to make sure that my proof is valid, and that’s this Utreexo, which is a hash tree.
-
-Sjors:
-Yes, a Merkel tree of hashes.
-
-Aaron:
-A Merkel tree, right. So what is this and how does it work?
-
-Sjors:
-It’s kind of nice. All the UTXOs that are in existence would be put into this tree and everybody can construct this tree if you replay the whole blockchain. But the question is-
-
-Aaron:
-It’s not an actual tree though, is it, Sjors?
-
-Sjors:
-It is not an actual tree.
-
-Ruben:
-Do you give it water?
-
-Sjors:
-No, basically what the tree would look like is you have the first UTXO, and then the second UTXO right next to each other, and then you take the hash of those two, basically combined, and that is one new hash. So, you see this little pyramid shape and you can do that again for another two UTXOs that exist. They have their own little mini tree, but now you see, oh, there’s two trees. Let me just combine those two trees.
-
-Aaron:
-Two hashes, and you’re combining these two hashes, yes.
-
-Sjors:
-So now you have four UTXOs. Two of them are shared and then those two are shared again.
-
-Aaron:
-Yeah, so you end up with one hash?
-
-Sjors:
-You end up with one hash. Now, the key here is that these things are so called, I believe, perfect trees, which means that they are always a multiple of two.
-
-Aaron:
-Right, yeah. And so now the challenge is that for every new block, this tree needs to be updated, right? Because we have one big tree for all of the UTXOs. Now a new block is found, it includes all sorts of new transactions, so new UTXOs exist and old UTXOs are destroyed, so now we need a new tree.
-
-Sjors:
-Yeah. Well, it’s even more than one tree, right? It is a forest. Every tree has to be a multiple of two, so there can be four things at the bottom or eight things at the bottom or 16 things at the bottom. When you have a number of transactions that doesn’t fit that way, you’ll have multiple trees that look like that. So you have a collection of trees for which you really only need to remember the top hashes. And now the question is, how do you add something to that tree?
-
-Aaron:
-So you might have one tree with 16 at the bottom, one tree with eight at the bottom, one tree with two UTXOs at the bottom.
-
-Sjors:
-One at the bottom.
-
-Aaron:
-Yeah, exactly. So you have multiple trees.
-
-Sjors:
-Yeah, right. And now in order to prove that something is in this tree and also to replace it with, say, the output… Because basically you destroy one UTXO so that you’re spending and you create a new UTXO you’re creating.
-
-Sjors:
-So you can actually take the UTXO that you’re spending out of the tree and then put the new one into the tree. And in order to do that, you need to recalculate the tree and you do that by knowing its neighbors. So, the way you prove that something is inside a Merkle tree is to say, well, at the bottom of the tree, there’s these two pairs and I’m going to give you the other side. And then at the next level, again, there’s a pair and I’m going to give you the other side. And again and again and again, and that proves that something is actually in the tree. And that’s exactly the same information that you need to put something else at the bottom of the tree, and then provide the new hash.
-
-Aaron:
-So by putting something else at the bottom of the tree, to be clear, the entire tree changes, or at least the one hash you end up with changes. You’re just computing a whole new tree, but you’re able to do that because you have all the data you need. So you can add things to the forest and you can remove things from the forest. It’s actually possible. It’s actually easier than I thought it would be when I saw Tadge explain it. I don’t know if it’s going to be easy when people hear us explain this.
-
-Sjors:
-I recommend looking at Tadge explain it after you hear us explain it, because you need to see it-
-
-Aaron:
-Yeah, visuals really help.
-
-Ruben:
-Exactly. I think his presentations are great. He’s very good at explaining it and he has slides so that’s a lot easier than what we are doing. We’re trying to explain it in words. Especially in Merkle trees, I think, it’s great if you have an actual picture there.
-
-Sjors:
-But now the idea is that you’re not tracking everything. So you could, when you’re syncing the blockchain, keep track of the entire tree, but then you need a lot of RAM, just like in the original scenario. But what you’ll actually do is you’re going to remember the top of every tree and there might be 10 or 20 or whatever trees, and that’s all you’re going to remember, and when somebody has a new transaction that you want to verify, they need to give you the Merkle proofs for all the inputs that they’re spending, so they prove that they exist. And then they also tell you which outputs are there, which are going to be swapped in at the same places where those inputs were. Plus new trees if it’s making more.
-
-Ruben:
-The outputs are under blocks, right?
-
-Sjors:
-Yeah.
-
-Ruben:
-Yeah, so that’s really, I think, the very elegant side of Utreexo, where the same proofs that are proving that these UTXOs are in the UTXO set, are also exactly what you need to remove them from the set, update your root hash and add the new UTXOs from the latest block, so that works out quite elegantly.
-
-Aaron:
-Okay, so in an ideal scenario… What we’ve been explaining so far is the ultimate version of Utreexo, so let’s stick with that for a minute. So I wanted to send a transaction to the network and you, Sjors, you had a node and you wanted to validate the transaction. You have this tree in your RAM apparently. That’s what’s nice about it.
-
-Sjors:
-I have the top of the trees in my RAM.
-
-Aaron:
-Yeah, exactly. So now I want to send this transaction, so now it’s my responsibility to send to you the transaction, as well as the proof that the transaction is valid, which also includes information for you so you know where to find it in the forest, right?
-
-Sjors:
-Exactly. You need to prove to me that the things you are spending are in the forest, because I forgot what the forest looked like.
-
-Aaron:
-Right. All right, so that’s me sending the transaction with the proof. Now, the other way you could get a transaction is if it’s already in the block. So if a miner mines a block and the transaction is in there, you still have your Utreexo thing on your node. But how do you now get the proof?
-
-Sjors:
-Right, because if you spend the transaction, you’re not going to talk to every node that ever downloaded a block to send that proof around. So how does that proof get to the node?
-
-Aaron:
-That wouldn’t scale very well, at least.
-
-Sjors:
-No. Well, what you would probably want to have is something called a bridge node.
-
-Aaron:
-A bridge node.
-
-Sjors:
-A bridge node would be a node that has the actual UTXO set, the old-fashioned way, so it has lots of RAM or it’s just slow. And it produces all these proofs and it sends them around to whoever wants them.
-
-Ruben:
-Yeah, so what essentially happens is that when this bridge node receives a transaction and this transaction does not have a Merkle proof, proving the inclusion in the Utreexo root, this bridge node basically just takes the proof that they have and they attach it to the transaction and now they send it on to other Utreexo nodes. It’s a bridge between Utreexo nodes and non-Utreexo nodes.
-
-Aaron:
-But they could also construct the proof themselves, right? If they see a certain transaction is included in a block, they can just figure-
-
-Sjors:
-That’s right, there’s nothing secret here. So if you have the original UTXO set in memory somewhere, you can construct the proof for any transaction.
-
-Ruben:
-And they have the entire tree, essentially. So the entire UTXO tree that you create and then prune, they just don’t prune it essentially. So they just have the full UTXO set. Basically, the UTXO set with all the Merkle proofs connecting to it, so then they can just take any UTXO in there and create a proof from it and just send it on, or for an entire block or whatever.
-
-Aaron:
-Right, so what would happen in practice? Sjors, your node would see a transaction in a block and it would wonder, ‘Hmm, is there actually proof for that? I never saw the transaction before.’ And you would request it from a bridge node.
-
-Sjors:
-Yeah. My guess is, when you get the whole block, you’re going to call a bridge node and say, ‘Give me the proofs for that entire block.’
-
-Aaron:
-Just all of them?
-
-Sjors:
-Yeah.
-
-Aaron:
-Why not just the ones you need, the ones you haven’t seen before?
-
-Sjors:
-My guess is that’s too much back and forth because if you have to call a node for every single individual transaction, and that’s a lot of overhead, whereas just downloading a couple hundred kilobytes is easier.
-
-Aaron:
-Anyways, that’s an implementation detail.
-
-Ruben:
-Yeah, but I think this is just an automated process, where you just connect to the network. But the problem is, when you’re the first Utreexo node, and you’re pruning all the data and then everybody else on the network is an old-fashioned node, like the way we run it today, nobody’s going to give you the proofs, right?
-
-Ruben:
-So what you need is at least a single bridge node, so at least you can connect to that one. And then other people are connecting to the bridge node because the bridge node basically speaks both languages. They speak the Utreexo language and they speak the old-fashioned language. So they translate for you, and as long as one bridge node exists, it can bootstrap the network essentially, but they don’t have to have special rules. From the perspective of the Utreexo node, the bridge node is just also Utreexo node, and from the perspective of the old-fashioned nodes, it’s just an old-fashioned node.
-
-Sjors:
-Right, that’s another point. So, you don’t need everybody to do this translation, only one person needs to do it or a couple. The other nodes know how to relay that information even if they can’t produce it, so that’s good news. But of course-
-
-Aaron:
-Can we have a future without bridge nodes?
-
-Sjors:
-Well, we should point out what the problem is with these bridge nodes, because they are nice people. We don’t want to rely on nice people. That’s not how we roll, because nice people can stop being nice.
-
-Aaron:
-Or they can be forced to stop being nice.
-
-Sjors:
-Or they can just disappear or run out of battery. Then you can look at the longer-term picture, if people like this given the advantages, or even if they don’t like it, if the UTXO set just becomes insane and it just takes too long to sync on any normal computer, then you could basically make a soft fork which contains the proofs. So the proofs become part of the blockchain, just like SegWit added the whole bunch of data to blocks. You could then add these proofs to the blocks, making the blocks even bigger. But the trade-off there is, you have more bandwidth, but you have less RAM need.
-
-Aaron:
-Yeah, the reason this could be done as a soft fork, same with SegWit, is because you’d include the hash of the proofs somewhere in the coinbase transaction or something like that. Old nodes just won’t notice anything interesting, but upgraded nodes will see a whole tree, which they share with each other, which does make the blocks a bit bigger for them.
-
-Sjors:
-Yeah, so old nodes keep doing what they’re doing. They get blocks, they can verify those blocks, because nothing changes about the transactions in the blocks. New nodes will save some RAM memory. They’ll use that extra data. They’ll download that extra data and they’ll use it. That’s generally the idea.
-
-Ruben:
-Yeah, so personally at least, I think this is not likely to happen until we really get a UTXO set bloating issue where the UTXO set becomes so big that people start liking this trade-off to the point where it’s preferable. I think as long as we’re not at that point, I don’t think we’ll see this as a soft fork, but that’s my personal view.
-
-Sjors:
-I do want to point out some cool things you can do with it.
-
-Aaron:
-Yes, tell us the bullish part, Sjors.
-
-Sjors:
-I’m all just copy pasting from what Tadge said, we like to do that. Basically because you don’t need a lot of RAM, you can start doing things in specialized hardware like in ASIC, because one of the things that’s hard to do in an ASIC is lots of memory. And having specialized hardware, maybe it’s a part of your chip, so maybe Bitcoin becomes the standard and every phone that you buy has a CPU, has a little mini processor right next to it that just checks all the Bitcoin validation rules. And because it’s custom silicon, it might be able to validate the entire blockchain at the speed that it can download it, which is pretty cool.
-
-Aaron:
-An ASIC for regular nodes?
-
-Sjors:
-Exactly, yeah. So not to mine coins, but to verify coins, which would be cool. And then you have the protocol literally set in stone or at least set in silicon. And of course soft forks can still happen under that circumstance, but if somebody wants to do a hard fork, you’d have to break all the node hardware, and not just all the mining hardware. So, that’s a nice extra barrier to not do hard forks.
-
-Ruben:
-It’s ossification-
-
-Aaron:
-It’s also not perfect for soft fork. Is that what you just said, Ruben?
-
-Ruben:
-No, no. That’s what Sjors just said.
-
-Sjors:
-I think its hard to verify soft forks. You don’t have to verify the soft fork, but you can’t verify the soft fork, at least not with the accelerated hardware, so your computer would have to slow down to check all the new rules whenever it encounters it.
-
-Aaron:
-Yeah, or you would have to buy a new phone because the soft fork happened.
-
-Sjors:
-Exactly.
-
-Ruben:
-Your phone is too old, maybe it’s possible, right? That’s that’s what happens now. People buy new phones every couple of years, so maybe it’s not too much to ask.
-
-Aaron:
-True.
-
-Sjors:
-The other thing we talked last week about is Assume UTXO thing, where one of the problems is, now when you start, you still need to get that three gigabyte thing from somewhere. And if this thing becomes a hundred gigabytes, you have to get that from somewhere. But now, with this proposal, we just have a kilobyte. So you can put the entire UTXO set, you can represent it in a kilobyte which can just be inside the source code. So, you don’t need a hash and then go and fetch something, you just put the thing itself in there and know it’s going to start instantly at that height and then do the same thing that we described last week. So, sync all the way to the tip and then start the genesis and make sure everything is what it should be.
-
-Ruben:
-Yeah, that’s a really nice feature that you have the entire UTXO set in essentially a single hash or a forest.
-
-Sjors:
-Yeah, a small little forest-
-
-Ruben:
-One kilobyte, yeah.
-
-Aaron:
-Are there more benefits?
-
-Sjors:
-Yeah, so the last one would be, you could sync with a phone node. So right now, if you have a node on your phone, it might be very slow. Maybe with this proposal, it wouldn’t be slow, but let’s say it’s still slow. What you would do is you sync your node on your desktop or whatever it is, you scan a QR code which can be pretty long, and now your little phone has the recent UTXO set and that doesn’t even require any kind of commitments, because your phone trusts your laptop. So that’s a feature you could use right now.
-
-Aaron:
-Are there any downsides or risks? Ruben, you thought about this?
-
-Ruben:
-Sure, but I want to add one more interesting feature that we haven’t discussed yet.
-
-Sjors:
-Before we burn it all down.
-
-Ruben:
-Before we burn it down, yeah. It’s a good question though. And that’s parallel validation. So what you can do is, you can theoretically take two computers and just take a Utreexo hash off the middle state of the blockchain. So, if we’re at block 2000, you just take block 1000 and you take the Utreexo hash from that moment in time, and then you start validating 1000 to 2000. And on the other computer, you start validating 0 to 1000. And if they match up after you validated both, then you validate the entire blockchain while splitting up the work. And that’s interesting and can be very useful, I think, maybe in the future also when you have more and more CPUs on a single chip.
-
-Sjors:
-Right, so it wouldn’t be necessarily multiple computers doing this, but just multiple chips doing it, because we see that clock speed is not going up much. But you get more and more parallel stuff, and the problem with the Bitcoin chain is, you can verify signatures in parallel and a Bitcoin node does that, but some things are intrinsically serial, so you cannot verify block 10 before you’ve verified block 9, and it’s nice if you can get rid of that.
-
-Ruben:
-Yeah, so now you can essentially.
-
-Sjors:
-You can too with the Assume UTXO but you need multiple, very large snapshots.
-
-Ruben:
-Yeah, exactly. Yeah.
-
-Sjors:
-So, very cool stuff. So let’s burn it down.
-
-Aaron:
-Go for the kill, Ruben.
-
-Ruben:
-One more thing to add is apparently you can also do a backwards validation. I’m not sure exactly how it works, but apparently you can go from block 1000 to 999, so that’s possible too.
-
-Sjors:
-Well, you need to, because you need to be able to roll back.
-
-Ruben:
-That too, yeah. I just haven’t looked into that sufficiently to fully grasp it-
-
-Sjors:
-You just explained that in order to prove that something is in a Merkle tree, that’s the same thing you can do to change something in a Merkle tree. So you can change the old thing with the new thing that way, or you can change the new thing with the old thing.
-
-Ruben:
-Right, so it makes sense. I agree with that, I just haven’t sat down and just gone through it.
-
-Sjors:
-One other thing we can also mention is that this tree that we just described, the general name for it is an accumulator. It’s something that you can use to add stuff to, and in this case also remove stuff from. But there are all sorts of mathematical tricks you can deploy to do this. This is just something that’s conceptually simple. If other people than us explain it and you see it in front of you, it’s very simple with the Merkle trees, but there’s been other proposals, like an RSA accumulator. There’s all sorts of cool cryptographic math you can do to just add things to a set and remove them from a set, essentially. Perhaps another mechanism would be used eventually.
-
-Ruben:
-Right, and that’s maybe also one of the downsides that we can talk about now, where if you start using this and then later somebody finds a better accumulator, then you have to, yet again, switch to that next proposal, which is okay as long as you don’t commit it into a block. But once you make this an actual soft fork and then you find, ‘Oh, there is this even better accumulator that we should have been using,’ now you’re stuck because you can’t undo a soft fork, at least not unless you put in some kind of sunset date or something. But that’s generally not really done, at least hasn’t been done so far.
-
-Sjors:
-No, so that’s another reason why you wouldn’t expect this to be a soft fork, unless the world is burning or it’s been used for so and so long that people think, ‘Okay, this is mature.’ But we’re nowhere near that. It’s pretty experimental, as many of the things we discuss here.
-
-Ruben:
-And I guess the second thing that I consider a downside is that bandwidth seems to be pretty much the bottleneck right now for Bitcoin. And this is something that makes that bottleneck worse. So for that reason, I personally see this as more of an option that people can opt into if, in their case, bandwidth isn’t a problem, but they’re CPU, or Disk I/O restricted or RAM restricted, or maybe they want to use an ASIC or something like that. So from that perspective, I don’t expect everybody to use this, but I also think Sjors pointed out correctly that if the UTXO set grows to a significant degree where it does become a burden and it slows down validation, then maybe this becomes more appealing.
-
-Sjors:
-Yeah, so keep an eye on it.
-
-Aaron:
-Yeah, and I guess the increased block size in one of the variants could be considered a downside. Although I think that-
-
-Sjors:
-Well, that’s what we meant, with more bandwidth basically.
-
-Ruben:
-Exactly
--->
+Another downside is that bandwidth seems to be the bottleneck for Bitcoin right now, and this could make it worse. For that reason, Utreexo is more of an option that people can opt into if, in their case, bandwidth isn’t a problem. However, if the UTXO set grows to a significant degree where it does become a burden and slows down validation, then this might be more appealing.

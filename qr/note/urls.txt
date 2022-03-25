@@ -59,6 +59,7 @@ https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31876
 https://datatracker.ietf.org/doc/html/rfc4193
 https://datatracker.ietf.org/doc/html/rfc7282
 https://dcgco.medium.com/bitcoin-scaling-agreement-at-consensus-2017-133521fe9a77
+https://dci.mit.edu/utreexo
 https://developer.bitcoin.org/reference/p2p_networking.html#addr
 https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-02-26-taproot-activation-lockinontimeout/
 https://dlt-repo.net/storage-vs-memory-vs-stack-in-solidity-ethereum/
@@ -87,9 +88,11 @@ https://en.bitcoin.it/wiki/Secp256k1
 https://en.bitcoin.it/wiki/Signet
 https://en.wikipedia.org/wiki/%22Hello,_World!%22_program
 https://en.wikipedia.org/wiki/Botnet
+https://en.wikipedia.org/wiki/CPU_cache
 https://en.wikipedia.org/wiki/Cargo_cult_science
 https://en.wikipedia.org/wiki/Hexadecimal
 https://en.wikipedia.org/wiki/IPv4
+https://en.wikipedia.org/wiki/Moore%27s_law
 https://en.wikipedia.org/wiki/Mt._Gox#Withdrawals_halted;_trading_suspended;_bitcoin_missing_(2014)
 https://en.wikipedia.org/wiki/SHA-2
 https://en.wikipedia.org/wiki/Systemd
@@ -163,6 +166,7 @@ https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-sma
 https://podcast.chaincode.com/2020/02/12/james-obeirne-4.html
 https://podcast.chaincode.com/2021/10/26/pieter-wuille-amiti-uttarwar-p2p.html
 https://podcastaddict.com/episode/94276066
+https://qvault.io/cryptography/how-sha-2-works-step-by-step-sha-256/
 https://redmonk.com/jgovernor/2017/05/26/just-how-many-darned-developers-are-there-in-the-world-github-is-puzzled/
 https://satoshi.nakamotoinstitute.org/code/
 https://security.stackexchange.com/a/18198/209204
@@ -173,8 +177,10 @@ https://sprovoost.nl/2018/12/28/a-crime-on-testnet-6d95ede8da03/
 https://stackoverflow.com/questions/41673073/how-does-the-bitcoin-client-determine-the-first-ip-address-to-connect
 https://stephanlivera.com/episode/277/
 https://tools.ietf.org/id/draft-msporny-base58-01.html
+https://twitter.com/_jonasschnelli_/status/1333303029370675201
 https://twitter.com/carl_dong
 https://twitter.com/pwuille/status/1108085284862713856
+https://txstats.com/dashboard/db/utxo-set-repartition-by-output-type
 https://ubuntu.com/download/server
 https://whale-alert.medium.com/the-satoshi-fortune-e49cf73f9a9b
 https://www.amazon.com/Blocksize-War-controls-Bitcoins-protocol/dp/B08YQMC2WM
