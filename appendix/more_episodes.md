@@ -5,7 +5,7 @@
 
 ## More Episodes {#sec:more_eps}
 
-Not all episodes of _Bitcoin, Explained_ made it into this book. Here are some other episodes you could listen to.
+Not all episodes of _Bitcoin, Explained_ made it into this book. Here are some other episodes you could listen to. The descriptions below are mostly based on the shownotes written by co-host Aaron van Wirdum.
 
 ### Basics
 
@@ -13,7 +13,9 @@ Not all episodes of _Bitcoin, Explained_ made it into this book. Here are some o
 
 ![Ep. 07 {l0pt}](qr/ep/07.png)
 
-In this episode, we explain what an extended public key (xpub) is and how it’s used by Bitcoin wallets. Extended keys were first introduced in BIP 32 in order to create so called hierarchical deterministic wallets.^[<https://en.bitcoin.it/wiki/BIP_0032>] Such wallets create a fresh address each time the user wants to receive coins. Unlike earlier wallets that required a fresh backup for every address, these new wallets only require a single backup, usually in the form of the familiar 12-24 word BIP 39 mnemonic.^[<https://en.bitcoin.it/wiki/BIP_0032>]
+In this episode, we explain what an extended public key (xpub) is and how it’s used by Bitcoin wallets. Extended keys were first introduced in BIP 32 in order to create so called hierarchical deterministic wallets.^[<https://en.bitcoin.it/wiki/BIP_0032>] Such wallets create a fresh address each time the user wants to receive coins. Unlike earlier wallets that required a fresh backup for every address, these new wallets only require a single backup, usually in the form of the familiar 12-24 word mnemonic.^[BIP 39 <https://en.bitcoin.it/wiki/BIP_0039>]
+
+<!-- The BIP 39 footnote is intentionally inconsistent with BIP 32, so the QR codes aren't directly adjacent -->
 
 \newpage
 
@@ -59,6 +61,18 @@ However, mempools can get full, at which point transactions that pay the lowest 
 
 In this episode, we go into detail about how package relay could enable CPFP — even in cases where low-fee transactions are dropped from mempools — by bundling transactions into packets. We also explore why this may be easier said than done.
 
+#### Death To The Mempool, Long Live The Mempool
+
+![Ep. 50 {l0pt}](qr/ep/50.png)
+
+hosts Aaron van Wirdum and Sjors Provoost discuss a recent thread on the Bitcoin development mailing list, titled “Death to the Mempool, Long Live the Mempool”.^[<https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-October/019572.html>]
+
+In the thread, Blockstream engineer Lisa “niftynei” Neigut proposes to get rid of the memory pool (mempool): the collection of unconfirmed transactions that Bitcoin nodes use to share transactions over the network, and that Bitcoin miners use to create new blocks from. She argues that the Bitcoin system could be drastically simplified if users instead just send their transactions directly to miners (or mining pools).
+
+In the episode, Aaron and Sjors explain how this would work, and why this is not as simple as it may sound. Based on the responses in the thread, they go over the reasons why getting rid of the mempool is in fact not a very good solution for a system like Bitcoin. Specifically, they discuss the implications on mining privacy and decentralization, while also exploring some other tradeoffs that would need to be made in order to make the Bitcoin system work without a mempool.
+
+Finally, Sjors considers an idea that Aaron doesn’t understand.
+
 \newpage
 
 #### Bitcoin Improvement Proposal (BIP) Process
@@ -87,6 +101,18 @@ Some types of light clients — Simplified Payment Verification (SPV) clients �
 Compact Client Side Filtering is a newer solution to accomplish similar goals as SPV, but without the loss of privacy. This works, in short, by having full node operators create a cryptographic data-structure that tells the light client user whether a block could have contained activity pertaining to its addresses, so the user can keep track of its funds by downloading only a small subset of all Bitcoin blocks.
 
 We explain how this works in more detail, and discuss some of the tradeoffs of this solution.
+
+#### Compact Blocks
+
+![Ep. 51 {l0pt}](qr/ep/51.png)
+
+We explain how Bitcoin’s peer-to-peer network is made more efficient and fast with Compact Blocks.^[<https://bitcoincore.org/en/2016/06/07/compact-blocks-faq/>]
+
+Compact blocks are — as the name suggests — compact versions of Bitcoin blocks, that have been used by Bitcoin Core nodes since version 0.13. Compact Blocks contain the minimal amount of data required for Bitcoin nodes to reconstruct entire blocks. Most notably, Compact Blocks exclude most transaction data, to instead include short transaction identifiers. Bitcoin nodes can use these short identifiers to figure out which transactions from their mempools should be included in the blocks.
+
+We explain how and why Compact Blocks benefit the Bitcoin network, and specifically how they help counter mining centralization. The hosts also cover some edge cases that can result from the use of Compact Blocks — like the possibility that different valid transactions can have an identical identifier — and how Bitcoin nodes handle such occurrences.
+
+You may also want to watch Greg Maxwell's presentation about advances in block propagation, or read the transcript.^[<https://btctranscripts.com/greg-maxwell/gmaxwell-2017-11-27-advances-in-block-propagation/>]
 
 #### Erlay
 
@@ -351,6 +377,21 @@ Todd offered an interesting showcase of Open Timestamps earlier this week, as he
 Aaron and Sjors also discuss some of the other possibilities that a time-stamping system like Open Timestamps offers, as well as its limitations. Finally, Aaron provides a little bit of context for the history of cryptographic time stamping, which was itself referenced in the Bitcoin white paper.
 
 \newpage
+
+#### Discreet Log Contracts
+
+![Ep. 53 {l0pt}](qr/ep/53.png)
+
+In this episode we are joined by resident sidechain and Layer Two expert Ruben Somsen again, this time to discuss Discreet Log Contracts (DLCs).
+
+Discreet Log Contracts are a type of smart contracts for Bitcoin, first proposed by Lightning Network white paper coauthor Tadge Dryja.^[<https://adiabat.github.io/dlc.pdf>] In essence, DLCs are a way to perform bets— but this means that they can ultimately be leveraged for all sorts of financial instruments, including futures markets, insurances and stablecoins.
+
+At the start of the episode, we discuss what can be considered a type of proto-DLC, namely a multi-signature setup for sports betting where two participants add a neutral third party (an “oracle”) that can resolve the bet one way or the other if needed. The trio explains, however, how this solution comes with a number of downsides, like the difficulty of scaling it.
+
+From there, we go on to explain how DLCs solved these problems using a setup that resembles payment channels as used on the Lightning Network. When structured like this, they explain, oracles merely need to publish a cryptographically signed message about the outcome of an event, which can be used by the winning participant of the bet to create a withdrawal transaction from the payment channel.
+
+Finally, we explain how the original DLC concept could be streamlined by using adaptor signatures,^[<https://bitcoinops.org/en/topics/adaptor-signatures/>] a sort of “incomplete signatures” that can be made complete using the signed message from the oracle. With adaptor signatures, DLCs no longer require a separate withdrawal transaction, as the winner can claim funds from the payment channel directly.
+
 #### RGB
 
 ![Ep. 33 {l0pt}](qr/ep/33.png)
@@ -391,3 +432,15 @@ The third upgrade discussed in the episode is Taproot support. While Taproot act
 The fourth upgrade that Aaron and Sjors discuss is an update to the `testmempoolaccept` logic, which paves the way to a bigger package relay upgrade. This could in a future release allow transactions to be transmitted over the Bitcoin network in packages including several transactions at the same time.
 
 Additionally, Aaron and Sjors briefly discuss an extension to create multisig and add multisig address, the new NAT-PMP option, and more.
+
+\newpage
+
+#### Syncing Old Bitcoin Nodes
+
+![Ep. 55 {l0pt}](qr/ep/55.png)
+
+We discuss research done by CasaHODL co-founder and CTO Jameson Lopp as well as the author himself on syncing old Bitcoin nodes.^[<https://blog.lopp.net/bitcoin-core-performance-evolution/>]
+
+Whenever a new Bitcoin node comes online, it must first sync with the rest of the Bitcoin network: it needs to download and verify the entire blockchain up until the most recent block in order to be up to date on the state of bitcoin ownership. This can take quite a while, however, and should take longer over time as the blockchain keeps growing. To offset this, and to improve user experience more generally, Bitcoin Core developers seek to improve performance of the Bitcoin Core code so that newer releases sync faster than their predecessors.
+
+In the episode, we outline the performance improvements of Bitcoin Core clients over time, as analyzed most recently in two blog posts by Lopp. They first explain why some very old Bitcoin clients have trouble syncing to the current state of the blockchain at all, pointing out some bugs in this early software, as well as issues relating to dependencies and the challenge of using such old clients today (some of which we coved in chapter @sec:libsecp). We then go on to sum up some of the most important performance improvements that have been included in new Bitcoin Core releases over time.

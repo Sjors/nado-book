@@ -268,10 +268,10 @@ Even if it’s inherently unsafe, it could make sense to continue developing it 
 
 ![Ep. 54 {l0pt}](qr/ep/54.png)
 
-After all is said and done and soft fork has activated, what do you do with the activation code? Is it merely a scaffold that can removed once the new rules are active? Or is the activation mechanism itself a permanent part of the rules.
+After all is said and done and a soft fork has activated, what do you do with the activation code? Is it merely a scaffold that can removed once the new rules are active? Or is the activation mechanism itself a permanent part of the rules?
 
 As was done with previous soft forks, it looks like a future Bitcoin Core release will “bury” the Taproot activation. This means the node will treat the Taproot rules as if they've been active since Bitcoin’s very beginning. This is possible because, when applying these rules retroactively, only one historical block does not conform to them. This block can be grandfathered in.^[<https://github.com/bitcoin/bitcoin/pull/23536>]
 
-The episode explains what the benefits are of burying a soft fork, in particular pointing out how it helps developers when they review the Bitcoin Core codebase or when they perform tests on it.
+In the episode we explain what the benefits are of burying a soft fork, in particular pointing out how it helps developers when they review the Bitcoin Core codebase or when they perform tests on it.
 
-After that, Aaron and Sjors outline a potential edge case scenario where burying soft forks could, in a worst-case scenario, split the Bitcoin blockchain between upgraded and non-upgraded nodes. Bitcoin Core developers generally don’t consider this edge case — a very long block re-org — to be a realistic problem and/or believe that this would be such a big problem that a buried soft fork would be a minor concern comparatively. However, they explain, not everyone agrees with this assessment entirely.
+After that, we outline a potential edge case scenario where burying soft forks could, in a worst-case scenario, split the Bitcoin blockchain between upgraded and non-upgraded nodes. Bitcoin Core developers generally don’t consider this edge case — a very long block re-org — to be a realistic problem and/or believe that this would be such a big problem that a buried soft fork would be a minor concern comparatively. However, as we explain, not everyone agrees with this assessment entirely.

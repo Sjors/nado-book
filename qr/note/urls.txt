@@ -2,6 +2,7 @@ http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion/
 http://bitcoin.sipa.be/miniscript
 http://www.hashcash.org/papers/hashcash.pdf
 http://www.weidai.com/bmoney.txt
+https://adiabat.github.io/dlc.pdf
 https://arxiv.org/abs/2107.05322
 https://arxiv.org/abs/2108.00815
 https://arxiv.org/pdf/1804.10848.pdf
@@ -13,6 +14,7 @@ https://bitcoin.stackexchange.com/a/10666/4948
 https://bitcoin.stackexchange.com/a/1992/4948
 https://bitcoin.stackexchange.com/questions/56485/can-someone-please-explain-fibre-to-me-like-im-5-and-why-is-it-useful
 https://bitcoincore.org
+https://bitcoincore.org/en/2016/06/07/compact-blocks-faq/
 https://bitcoincore.org/en/2018/09/20/notice/
 https://bitcoincore.org/en/2021/05/01/release-0.21.1/
 https://bitcoincore.org/en/segwit_wallet_dev/
@@ -29,6 +31,7 @@ https://bitcoinmagazine.com/technical/miniscript-how-blockstream-engineers-are-m
 https://bitcoinmagazine.com/technical/satoshis-genius-unexpected-ways-in-which-bitcoin-dodged-some-cryptographic-bullet-1382996984
 https://bitcoinmagazine.com/technical/security-researcher-found-bug-knocked-out-bitcoin-unlimited
 https://bitcoinmagazine.com/technical/what-happened-when-bitcoin-creator-satoshi-nakamoto-disappeared
+https://bitcoinops.org/en/topics/adaptor-signatures/
 https://bitcoinops.org/en/topics/cpfp/
 https://bitcoinops.org/en/topics/cve-2018-17144/
 https://bitcoinops.org/en/topics/mast/
@@ -45,11 +48,13 @@ https://blockstream.com/satellite/
 https://blog.bitmex.com/bitcoins-consensus-forks/
 https://blog.bitmex.com/call-to-action-testing-and-improving-asmap/
 https://blog.bitmex.com/the-blocksize-war-chapter-14-asicboost/
+https://blog.lopp.net/bitcoin-core-performance-evolution/
 https://blog.lopp.net/running-bitcoin-core-v0-7-and-earlier/
 https://blog.lopp.net/who-controls-bitcoin-core-/
 https://blog.torproject.org/v3-onion-services-usage
 https://blogs.scientificamerican.com/roots-of-unity/ancient-babylonian-number-system-had-no-zero/
 https://brink.dev/programs
+https://btctranscripts.com/greg-maxwell/gmaxwell-2017-11-27-advances-in-block-propagation/
 https://chaincode.com/
 https://coinmarketcap.com/alexandria/glossary/chain-split
 https://commons.wikimedia.org/wiki/File:Hash_Tree.svg
@@ -69,6 +74,7 @@ https://en.bitcoin.it/wiki/BIP_0009
 https://en.bitcoin.it/wiki/BIP_0016
 https://en.bitcoin.it/wiki/BIP_0032
 https://en.bitcoin.it/wiki/BIP_0034
+https://en.bitcoin.it/wiki/BIP_0039
 https://en.bitcoin.it/wiki/BIP_0062
 https://en.bitcoin.it/wiki/BIP_0066
 https://en.bitcoin.it/wiki/BIP_0114
@@ -155,6 +161,7 @@ https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-May/014380.html
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-February/018498.html
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018583.html
 https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018594.html
+https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-October/019572.html
 https://media.ccc.de/v/36c3-10690-open_source_is_insufficient_to_solve_trust_problems_in_hardware
 https://medium.com/@MeshCollider/some-of-the-math-behind-bech32-addresses-cf03c7496285
 https://medium.com/@RubenSomsen/21-million-bitcoins-to-rule-all-sidechains-the-perpetual-one-way-peg-96cb2f8ac302
