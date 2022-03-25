@@ -1,12 +1,11 @@
 \newpage
-## Open Source Matters - Guix {#sec:guix}
-
+## Why Open Source Matters - Guix {#sec:guix short=“Open Source Matters - Guix”}
 
 ![Ep. 21 {l0pt}](qr/ep/21.png)
 
 This chapter discusses open source software in the context of why it matters that Bitcoin software is open source. But it also delves into the reason why even open source software doesn’t necessarily solve all software-specific trust issues.
 
-In theory, the fact that most Bitcoin nodes, wallets, and applications are open source should ensure that developers can’t include malicious code in the programs, because anyone can inspect the source code for malware. In practice, however, the number of people with enough expertise to do this is limited, while the reliance of some Bitcoin projects on external code libraries, or dependencies, makes it even harder.
+In theory, the fact that most Bitcoin nodes, wallets, and applications are open source should ensure that developers can’t include malicious code in the programs, because anyone can inspect the source code for malware. In practice, however, the number of people with enough expertise to do this is limited, while the reliance by software in general on external code libraries, or dependencies, makes it even harder.
 
 Furthermore, even if the open source code is sound, this doesn’t guarantee that the binaries (computer code) really correspond with the open source code. The first attempt at mitigating this risk in Bitcoin involved a process called Gitian building. This is where several Bitcoin Core developers sign the binaries if, and only if, they all produce the exact same binaries from the same source code. This requires special compiler software.
 
@@ -18,9 +17,9 @@ Before getting into the details of Gitian and Guix, this section serves as a bri
 
 The idea behind the free software movement is that if software is closed source, it results in a power relationship between developers and users, because users don’t know what software they’re running.
 
-The reason for this is that the actual software you’re running on your computer that it can read is made up of binaries, which are ones and zeros. Meanwhile when humans write software, they write computer code, and the two aren’t the same thing. So when you’re running closed software, you’re just running the binaries, which results in not being exactly sure what your computer’s doing.
+The actual software as it’s read by your computer is written in a language no human can understand, a binary format made up of ones and zeros. But when humans wrote that software, they used a programming language, such as C++. These two aren’t the same thing, even if most mortals can’t read either. So when you’re running closed software, all you have access to is this binary, not the programming language used to produce it. As a result, you have no idea what your computer is doing.
 
-So, for example, if a developer puts malware into the closed software, your computer could spy on you or do something you don’t actually want the software to do, and you wouldn’t be able to see it. In that sense, you have to trust that the developer didn’t include malware or tamper with anything.
+So, for example, if a developer puts malware into the closed software, your computer could spy on you or do something you don’t actually want the software to do, and you wouldn’t be able to see it.
 
 A programmer by the name of Richard Stallman didn’t like the idea of closed software, so he started the free software movement, which specified that source code had to be available so people could actually check what they were running on their computers. This in turn eliminated the power dynamic. So, free in that context means freedom; it doesn’t mean free as in free beer.
 
@@ -30,9 +29,11 @@ Because of this pragmatic reasoning about code quality, the people at the Netsca
 
 ### Bitcoin, an Open Source Project
 
-Now, the question is how all of this is connected to Bitcoin. So just imagine you’re trying to use Bitcoin. You install a computer program and it gives you an address, and then it turns out there’s some code in there that steals your Bitcoin. That would obviously be bad. It’s an extreme example, but it makes it very clear why you really need the maximum transparency of what exactly is running on your machine.
+Now, the question is how all of this is connected to Bitcoin. Here’s an example. When you run a piece of wallet software, it will display an address. What if it turns out that address doesn’t belong to you, but instead it’s controlled by the developer? Then every time someone pays you, the coins don’t go to you. This is why you really need maximum transparency of what exactly is running on your machine.
 
-One thing you can do, if you have the skill, is to compile Bitcoin Core yourself, thereby avoiding the need to download an untrusted binary. That doesn’t solve the problem for the vast majority of users though. It also doesn’t entirely solve the problem for you, because in reality, it’s very hard to verify that the code on your computer is actually doing what you want it to do. That’s why you want whatever Bitcoin code is running to be open source — so as many people as possible can see what it is.
+One thing you can do, if you have the skill, is to compile the wallet software yourself, thereby avoiding the need to download an untrusted binary. That doesn’t solve the problem for the vast majority of users though. It also doesn’t entirely solve the problem for you, because even if you can see the code in its original programming language, it’s hard to understand exactly what it’s going to do once it runs on your computer. For one thing, it’s simply too much code for one person to understand.
+
+That’s why you want whatever Bitcoin code is running to be open source — so as many people as possible can see what it is. Remember that given enough eyeballs, all bugs are shallow, and the same goes for detecting malicious pieces of code.
 
 Bitcoin code is open source and it’s hosted on GitHub in a repository. This means anyone with the know-how can look at the source code and check that it does what it’s supposed to do. But in reality, the number of people who can actually do that and understand it is limited.^[The number of people who can read this code depends on what you mean by actually read. How many people are computer literate in general? How many can roughly read what a C++ program is doing? Probably tens of millions (<https://redmonk.com/jgovernor/2017/05/26/just-how-many-darned-developers-are-there-in-the-world-github-is-puzzled/>). But of those, perhaps only a few thousand have ever worked on cryptocurrency or similar software. There are dozens of active developers on any given day who all look at the code. But none of them can oversee all the changes in the entire project, because that requires specialization: One developer might know everything about peer-to-peer networking code and absolutely nothing about wallet code.] Though occasionally, they even get some help from developers who work on altcoins.^[For example, the very serious CVE-2018-17144 was found by Bitcoin Cash developer Awemany (<https://bitcoinops.org/en/topics/cve-2018-17144/>). Many altcoin projects started by copy-pasting the Bitcoin source code and then changing a few things to differentiate themselves. For example, Dogecoin changed the inflation schedule, decreased the time between blocks, and used a different proof-of-work algorithm. But that still left 99% of its codebase identical to Bitcoin Core: Digital signatures are checked the same way, transactions and blocks are verified the same way, the peer-to-peer network works the same way, etc. So when altcoin developers are working on their projects, they may discover bugs in that 99% of the codebase they share with Bitcoin Core. This adds to the security of Bitcoin.]
 
@@ -49,7 +50,7 @@ Also, as of recently, multiple developers sign the release checksum.] of Bitcoin
 
 Why trust him? Well, he knows the binaries reflect the open source code because he took the source code, ran a command, and got the binary. In other words, he put the code through some other piece of software that produces binaries from the open source software.
 
-Here’s where it gets a little bit more complicated. Ideally, what you do is you run the same command and you also compile it, and then hopefully, you get the same result.
+But how do you know he actually did that? Here’s where it gets a little bit more complicated. Ideally, what you do is you run the same command and you also compile it, and then hopefully, you get the same result.
 
 Sometimes that works with a specific project, but as the project gets complicated, it often doesn’t work, because what the exact binary file is going to be depends on some very specific details on your computer system.
 
@@ -77,7 +78,7 @@ But because it’s so difficult to check if the source code matches the download
 
 ### Fixing the Problem with Gitian
 
-If your goal is to verify that nothing went wrong, you need to somehow make sure the same source code compiles into the exact same binaries. This phenomena is called reproducible builds, or deterministic builds.
+In order to verify no shenanigans happened in the process of converting source code to a compiled binary, you need something called reproducible builds, or deterministic builds.
 
 What deterministic implies is that, given a source, you’re going to get the same binary. And if you change one letter in the source, you’re going to get a different binary, but everybody will get the same result if they make the same change.
 
@@ -115,7 +116,7 @@ A more recent example of casual dependency usage gone horribly wrong is the Log4
 
 ### The Solution
 
-This begs the questions of what the solution is, and unfortunately, it’s to not depend on dependencies. If necessary, it’s important to use as few as possible, and you especially want to stay away from things that have nested dependencies.
+This begs the questions of what the solution is, and unfortunately, it’s to not depend on dependencies. If unavoidable, it’s important to use as few as possible, and you especially want to stay away from things that have nested dependencies.
 
 In the case of Bitcoin Core, it’s not too bad, because it doesn’t have many dependencies, and those dependencies don’t have a lot of nested ones. So, it’s not a big tree. It’s relatively shallow, and you’d have to go after those specific dependencies directly to attack.
 
@@ -125,7 +126,7 @@ Earlier in this chapter, we discussed how Gitian helps create deterministic buil
 
 For example, since Gitian uses Ubuntu, somebody might say, “Hey, this Bitcoin project’s pretty cool. This Ubuntu project’s pretty cool. Let me contribute some source to Ubuntu.” Their “contribution” could be a small change to the compiler that’s shipped with Ubuntu. They could modify that compiler, so that whenever it compiles Bitcoin, it sneaks in some code to steal coins, but when it compiles any other software, it behaves normally.
 
-This example is a bit contrived, and someone attempting this is very likely to get caught long before they do any damage; there’s much more scrutiny on compiler software and on Ubuntu than there is in the Node.js ecosystem we described above. But the general attack strategy would be the same. And with a trillion dollars at stake, attackers can be very sophisticated and very patient.
+This example is a bit contrived, and someone attempting this is very likely to get caught long before they do any damage; there’s much more scrutiny on compiler software and on Ubuntu than there is in for example the Node.js ecosystem we mentioned above. But the general attack strategy would be the same. And with a trillion dollars at stake, attackers can be very sophisticated and very patient.
 
 Now let’s say everybody runs their Gitian builder, which includes this hypothetical compromised Ubuntu compiler. It would be very, very scary, because it’d still have deterministic builds, because everybody is using the exact same malware to build it.
 
@@ -137,6 +138,7 @@ The hope is that the people who are maintaining all these compilers and all the 
 
 So can we do better?
 
+\newpage
 ### Enter Guix
 
 The key is to make everything open source and everything a deterministic build. Every library, every printer driver, every compiler — everything. For Bitcoin Core to truly be a deterministic build, each of its dependencies needs to be a deterministic build, as does every tool that’s used to build it, including the compiler. Ideally the hardware is as well, but that’s a whole other can of worms.^[<https://media.ccc.de/v/36c3-10690-open_source_is_insufficient_to_solve_trust_problems_in_hardware>]
@@ -145,7 +147,7 @@ This is where Guix^[<https://guix.gnu.org/>] enters the picture. This GNU projec
 
 The ambition of Guix is roughly as follows:^[See also Carl Dong’s presentation: <https://www.youtube.com/watch?v=I2iShmUTEl8>] You start with a few hundred bytes of actual machine code. That’s the binary code that you must trust.^[Even binary code can be seen as source code. It’s simply a series of instructions for the CPU. And this particular machine code is well documented: <https://git.savannah.nongnu.org/cgit/stage0.git/tree/README.org>] From there on, all it does is read source code and compile it. But how do you do that when there isn’t a compiler?
 
-Well, this first binary blob performs a bootstrap.^[That is, in theory. We’re not there yet. In 2020, the Guix project came with 60 MB worth of binary stuff you have to trust. That’s already a huge improvement over the 1+ GB Ubuntu download used by Gitian: <https://guix.gnu.org/en/blog/2020/guix-further-reduces-bootstrap-seed-to-25/>] It’s able to read some machine code that’s typed by a human, or entered some other way, and then run that program.
+Well, this first binary blob performs a bootstrap.^[In theory, but we’re not there yet. In 2020 Guix project came with 60 MB worth of binary stuff you have to trust. That’s a big improvement over the 1+ GB Ubuntu download used by Gitian: <https://guix.gnu.org/en/blog/2020/guix-further-reduces-bootstrap-seed-to-25/>] It’s able to read some machine code that’s typed by a human, or entered some other way, and then run that program.
 
 The first program you feed it is an extremely simple compiler.^[A compiler turns human-readable code into a binary that the computer can read. This implies that the first compiler is written in binary, which would have to be as small and well documented as possible.] And once it has the rudimentary compiler, this new compiler reads another piece of source code, which then builds a slightly more complicated compiler. And then that slightly more complicated compiler builds another compiler. And this goes on for quite a while, until eventually, you have the modern C compiler that we all know and love, which is itself, of course, open source.
 
@@ -153,4 +155,4 @@ This compiler then builds a bunch of tools from source, ultimately producing a s
 
 This solves two things. First, it has no untrusted dependencies, so it’s not using random libraries. And second, it’s always using the same versions of libraries, which means that everybody can produce the same result.
 
-However, when you look at the big picture, Guix doesn’t solve the problem of dependencies much better than Gitian. It’s still critical to keep the number of dependencies small. Rather, Guix mainly solves the problem of trusting the build system.
+Note that Guix doesn’t solve the problem of dependencies entirely. It’s a significant improvement over Gitian, but it’s still critical to keep the number of dependencies small. Where Guix really shines is in mitigating the problem of trusting the build system.
