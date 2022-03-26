@@ -61,6 +61,7 @@ However, mempools can get full, at which point transactions that pay the lowest 
 
 In this episode, we go into detail about how package relay could enable CPFP — even in cases where low-fee transactions are dropped from mempools — by bundling transactions into packets. We also explore why this may be easier said than done.
 
+\newpage
 #### Death To The Mempool, Long Live The Mempool
 
 ![Ep. 50 {l0pt}](qr/ep/50.png)
@@ -114,6 +115,7 @@ We explain how and why Compact Blocks benefit the Bitcoin network, and specifica
 
 You may also want to watch Greg Maxwell's presentation about advances in block propagation, or read the transcript.^[<https://btctranscripts.com/greg-maxwell/gmaxwell-2017-11-27-advances-in-block-propagation/>]
 
+\newpage
 #### Erlay
 
 ![Ep. 34 {l0pt}](qr/ep/34.png)
@@ -212,6 +214,10 @@ In this episode we explain what payment pools are, and why they need Taproot. We
 
 See also Aaron’s article.^[<https://bitcoinmagazine.com/articles/building-on-taproot-payment-pools-could-be-bitcoins-next-layer-two-protocol>]
 
+\
+
+\
+
 \newpage
 ### Lightning
 
@@ -291,6 +297,7 @@ BOLT 12, which has been implemented in c-lightning, is a way to essentially refe
 
 Finally, we discuss how the new BOLT 12 messages are communicated over the Lightning Network through an update to the BOLT 7 specification for message relay.
 
+\newpage
 ### Sidechains and more
 
 Lightning is not the only path forward for scaling Bitcoin, though it is the most actively developed one at the moment. Sidechains are another approach, optionally combined with Lightning.
@@ -312,8 +319,6 @@ The first is blind merged mining, which lets Bitcoin miners secure the drivechai
 The second is hashrate escrows, which lets miners “move” coins from the Bitcoin blockchain to the sidechain and back.
 
 We also discuss some of the benefits as well as complications with Drivechain, most notably the security implications of letting miners control the pegging out process. They consider the arguments why this process is incentive compatible (in other words: secure) — or why it might not be.
-
-\newpage
 
 #### Perpetual One-Way Peg
 
