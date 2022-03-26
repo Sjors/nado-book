@@ -266,7 +266,7 @@ In this episode, we interview another expert on Lightning routing, René Pickhar
 
 #### Eltoo and SIGHASH_ANYPREVOUT
 
-We covered this topic twice, so there are two epidodes to choose from. In episode 35, we explain what this is, and in episode 48, one of the authors, c-lightning developer Christian, joins us to explain it in his words.
+We covered this topic twice, so there are two episodes to choose from. In episode 35, we explain what this is, and in episode 48, one of the authors, c-lightning developer Christian, joins us to explain it in his words.
 
 ![Ep. 35 {l0pt}](qr/ep/35.png)
 
