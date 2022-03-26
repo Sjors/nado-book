@@ -119,7 +119,6 @@ https://github.com/bitcoin/bitcoin/blob/7740ebcb023089d03cd2373da16305a4e501cfad
 https://github.com/bitcoin/bitcoin/blob/master/SECURITY.md
 https://github.com/bitcoin/bitcoin/blob/master/doc/tor.md
 https://github.com/bitcoin/bitcoin/blob/v22.0/contrib/seeds/nodes_main.txt
-https://github.com/bitcoin/bitcoin/commit/3caee16946575e71e90ead9ac531f5a3a1259307
 https://github.com/bitcoin/bitcoin/commit/a30b56ebe76ffff9f9cc8a6667186179413c6349
 https://github.com/bitcoin/bitcoin/commit/f1e1fb4bdef878c8fc1564fa418d44e7541a7e83
 https://github.com/bitcoin/bitcoin/issues/15605
@@ -131,6 +130,7 @@ https://github.com/bitcoin/bitcoin/pull/17265
 https://github.com/bitcoin/bitcoin/pull/17428
 https://github.com/bitcoin/bitcoin/pull/1889#issuecomment-9638527
 https://github.com/bitcoin/bitcoin/pull/19573
+https://github.com/bitcoin/bitcoin/pull/19953
 https://github.com/bitcoin/bitcoin/pull/19954
 https://github.com/bitcoin/bitcoin/pull/21377
 https://github.com/bitcoin/bitcoin/pull/21392

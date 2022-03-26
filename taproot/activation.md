@@ -3,7 +3,7 @@
 
 ![Ep. 03 {l0pt}](qr/ep/03.png)
 
-The Taproot soft fork was activated on November 13, 2021, approximately one year after the finalized code was merged.^[<https://github.com/bitcoin/bitcoin/commit/3caee16946575e71e90ead9ac531f5a3a1259307>] It happened much more quickly than SegWit did, and with far less drama, but it wasn’t an uneventful year. This chapter discusses how soft forks were activated in the past, what options were considered for Taproot, and how Taproot was finally activated.
+The Taproot soft fork was activated on November 13, 2021, approximately one year after the finalized code was merged.^[<https://github.com/bitcoin/bitcoin/pull/19953>] It happened much more quickly than SegWit did, and with far less drama, but it wasn’t an uneventful year. This chapter discusses how soft forks were activated in the past, what options were considered for Taproot, and how Taproot was finally activated.
 
 We dedicated five episodes to this topic, and the QR codes are placed at various points in this chapter. However, it’s far from a one-to-one mapping; they’re not even in chronological order.
 
@@ -25,7 +25,7 @@ But perhaps what matters more than the mechanics of activation is how a decision
 
 ### The Earliest Soft Forks
 
-Although the term didn’t yet exist in the early days, there were many soft forks, mostly related to closing security holes in the early prototype.^[For a long list, see: <https://blog.bitmex.com/bitcoins-consensus-forks/>] In 2013, there was even an accidental soft fork, and in 2015, there was a near-miss accidental soft fork due to OpenSSL changes (which we covered in chapter @sec:libsecp).
+Although the term didn’t yet exist in the early days, there were many soft forks, mostly related to closing security holes in the early prototype.^[<https://blog.bitmex.com/bitcoins-consensus-forks/>] In 2013, there was even an accidental soft fork, and in 2015, there was a near-miss accidental soft fork due to OpenSSL changes (which we covered in chapter @sec:libsecp).
 
 The earliest soft forks mostly used a block height as their method of activation — in other words, “as of this future block, the new rule shall apply.” Ideally this is announced well in advance, giving people plenty of time to upgrade. For a “secret” soft fork, developers might simply insist that people upgrade and then explain the reason afterward.
 
