@@ -452,3 +452,8 @@ We discuss research done by CasaHODL co-founder and CTO Jameson Lopp, as well as
 Whenever a new Bitcoin node comes online, it must first sync with the rest of the Bitcoin network: It needs to download and verify the entire blockchain up until the most recent block, in order to be up to date on the state of bitcoin ownership. This can take quite a while, however, and it should take longer over time as the blockchain keeps growing. To offset this, and to improve user experience more generally, Bitcoin Core developers seek to improve performance of the Bitcoin Core code so that newer releases sync faster than their predecessors.
 
 In the episode, we outline the performance improvements of Bitcoin Core clients over time, as analyzed most recently in two blog posts by Lopp. They first explain why some very old Bitcoin clients have trouble syncing to the current state of the blockchain at all, pointing out some bugs in this early software, as well as issues relating to dependencies and the challenge of using such old clients today (some of which we covered in chapter @sec:libsecp). We then go on to sum up some of the most important performance improvements that have been included in new Bitcoin Core releases over time.
+
+<!-- Add blank page to open on left side -->
+\newpage
+\null
+\newpage

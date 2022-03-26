@@ -1,18 +1,24 @@
 digraph {
   rankdir=TD;
 
-  node [style="rounded,filled,bold", shape=box, fixedsize=true, width=1.5, fontname="Arial"];
+  node [fontname="lmtt", fontsize=11, fixedsize=true, width=1.3, shape=box, style="rounded,filled,bold"];
+
+  edge [fontname="lmtt", fontsize=11];
 
   edge [weight = 100];
-  "DEFINED" -> "STARTED" [label="height >= start_height"];
-  "STARTED" -> "MUST_SIGNAL" [label="height + 2016 >= timeoutheight AND lockinontimeout"];
-  "STARTED" -> "FAILED" [label="height >= timeoutheight\nAND\nNOT lockinontimeout"];
-  "LOCKED_IN" -> "ACTIVE" [label="height >= minimum_activation_height"];
-  "LOCKED_IN":se -> "LOCKED_IN":ne [label="height < minimum_activation_height"];
-  "MUST_SIGNAL" -> "LOCKED_IN" [label="always"];
+  "DEFINED" -> "STARTED" [label=" height >= start_height"];
+  "STARTED" -> "MUST_SIGNAL" [label="height + 2016 >= timeout\nAND lockinontimeout"];
+  "STARTED" -> "FAILED" [label=" height >= timeout\nAND\nNOT lockinontimeout"];
+  "LOCKED_IN" -> "ACTIVE" [
+    headlabel="height >= min_activation_height"
+    labeldistance=8.5
+    labelangle=75
+  ];
+  "MUST_SIGNAL" -> "LOCKED_IN" [label=" always"];
 
   edge [weight = 1];
   "STARTED" -> "LOCKED_IN" [label="height < timeoutheight\nAND\nthreshold reached"];
+  "LOCKED_IN":sw -> "LOCKED_IN":nw [label="height <\nmin_activation_height"];
 
   "FAILED" -> "LOCKED_IN" [style=invis];
 

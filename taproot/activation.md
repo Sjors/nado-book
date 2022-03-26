@@ -29,7 +29,9 @@ Although the term didn’t yet exist in the early days, there were many soft for
 
 The earliest soft forks mostly used a block height as their method of activation — in other words, “as of this future block, the new rule shall apply.” Ideally this is announced well in advance, giving people plenty of time to upgrade. For a “secret” soft fork, developers might simply insist that people upgrade and then explain the reason afterward.
 
-![Informal diagram of a flag height-activated soft fork](taproot/flag.svg){ width=60% }
+![Informal diagram of a flag height-activated soft fork](taproot/flag.svg){ width=50% }
+
+<!-- Manually adjust width to font size roughly matches-->
 
 Probably the most infamous soft fork of all time is the one-megabyte block size limit introduced by Satoshi in 2010.^[Since the very first release of version 0.1.0 on January 9, 2009, there has been a 32MB limit (`MAX_SIZE`) that applies to various things. This includes the block size, which was checked in `CheckBlock()`. See <https://satoshi.nakamotoinstitute.org/code/>. Then, on July 15, 2010, Satoshi introduced `MAX_BLOCK_SIZE=1000000` and changed the miner software to not produce blocks larger than that in <https://github.com/bitcoin/bitcoin/commit/a30b56ebe76ffff9f9cc8a6667186179413c6349>. So far, no soft fork. It was just a change to the software used by miners, which they could’ve reverted without producing invalid blocks. Months later, on September 7, he modified a related function, `AcceptBlock()`, to enforce `MAX_BLOCK_SIZE` <https://github.com/bitcoin/bitcoin/commit/f1e1fb4bdef878c8fc1564fa418d44e7541a7e83>. This was the actual soft fork, and it was released the same day in v0.3.12. Both commits pretended to do completely unrelated things. Nowadays, code reviewers frown upon commits that touch anything outside the area they claim to change — even if just removing a blank line.] The soft fork was released on September 7, 2010, and its `activation_height` was set to 79,400, which occurred just a week later.^[<https://bitcointalk.org/index.php?topic=999.msg12181>].
 
@@ -69,7 +71,7 @@ So if a flag day or block height isn’t the best way to activate soft forks, ho
 
 The mechanism was improved and further formalized in BIP 9.^[<https://en.bitcoin.it/wiki/BIP_0009>] As part of the signaling mechanism embedded in the code, there’s a starting date (`starttime`) when miners begin signaling, and a deadline (`timeout`) at which point they give up if the `threshold` wasn’t reached. Tallying happens in rounds of 2,016 blocks, or about two weeks. If the threshold is reached in any round that ends before `timeout`, the new rules are active. This is easy for every node in the network to verify.
 
- ![BIP 9 flow](taproot/bip9.svg){ width=75% }
+ ![BIP 9 flow](taproot/bip9.svg){ width=80% }
 
 The significance of 2,016 is that it’s the number of blocks in a single difficulty adjustment period, or retarget period.^[<https://en.bitcoin.it/wiki/Difficulty>] In the diagram above, each arrow represents one signaling period. The looping arrows indicate when the state stays the same — for example, when a soft fork is `DEFINED` (meaning the node knows about it, but there’s no signaling yet), it’ll stay that way if the MTP^[MTP stands for Median Time Past, and it refers to the middle block of the last 11 blocks. This is a mechanism used to discourage miners from gaming the timestamp in each block.] is still below `starttime`. When it’s at or after `starttime`, the state jumps to `STARTED`. It stays there pending signaling. For each period — say every two weeks — we check if enough blocks are signaling. If so, we move to the next phase, which is `LOCKED_IN`. If not, and if `timeout` is reached, we move to `FAILED`. `LOCKED_IN` is a grace period where the new rules don’t yet apply, but after two weeks, the soft fork is `ACTIVE` and the rules do apply.
 
@@ -145,7 +147,6 @@ On the other hand, _if you run a node without this feature_, or for that matter,
 
 In any scenario where two alternative chains exist, it’s unsafe for users whose node follows one branch to transact with users whose node follows the other branch. In fact, it’s unsafe for _anyone_ to use the blockchain at that point. On the other hand, as long as the only chain in existence complies with mandatory signaling, there’s nothing to worry about. This might remind some readers of the game theory around mutual assured destruction (MAD).
 
-\newpage <!-- Temporary page break so QR doesn’t drop off the bottom -->
 ### To Argue a LOT
 
 ![Ep. 29 {l0pt}](qr/ep/29.png)
@@ -160,7 +161,7 @@ Initially, in early 2021, there wasn’t yet a Bitcoin Core release that would a
 
 The switch from BIP 9 to BIP 8 wasn’t very controversial, as long as it stuck to the more conservative `LOT=false` incarnation. But it’s not a no-brainer, because there’s always a risk when making _any_ change, especially to something as critical as the code that decides which rules apply to blocks. So it still raised the question: Is a switch to BIP 8 with `LOT=false` worth it?
 
-It might be worth it to remain compatible with software from an independent group that insists on `LOT=true` (compatibility shouldn’t be construed as endorsement). But this debate was never settled.^[There was pull request that implemented a transition from BIP 9 to BIP 8 in Bitcoin Core. This is a generic transition and not Taproot specific. However, it contained `LOT=true` code, which added complexity and triggered objections. A pure `LOT=false` version might have made it through review. See <https://github.com/bitcoin/bitcoin/pull/19573>]
+It might be worth it to remain compatible with software from an independent group that insists on `LOT=true` (compatibility shouldn’t be construed as endorsement). But this debate was never settled.^[There was pull request that implemented a transition from BIP 9 to BIP 8 in Bitcoin Core. This is a generic transition and not Taproot specific. However, it contained `LOT=true` code, which added complexity and triggered objections. A pure `LOT=false` version might have made it through review. <https://github.com/bitcoin/bitcoin/pull/19573>]
 
 The real controversy revolved around `LOT=true`.
 
@@ -178,7 +179,7 @@ But some people went beyond a mere preference for `LOT=true`. They claimed `LOT=
 
 The main objection to `LOT=true` was the same as the one raised against UASF: It could cause a chain split. Remember the reference above to MAD. An often-heard argument _for_ `LOT=true` is that a chain split is so terrible — especially for miners who wouldn’t be able to sell their new coins, it won’t happen. They believe this is sufficient deterrence for miners to simply signal. Such game theory is beyond the scope of this book, but we can clarify what such a chain split would be like and why it’s bad.
 
-The following is one such example of how parts of the network running `LOT=true` and `LOT=false` and neither could potentially be bad and result in a chain split.
+The following is one such example of how, if one part of the network runs `LOT=true` and another part runs `LOT=false` or an older version of the software, bad things could happen in the form of a chain split.
 
 Let’s say you’re running the `LOT=true` version of Bitcoin Core and you want Taproot to activate. But the scenario here is that the rest of the world — meaning the miners — isn’t doing this. The day arrives and you see a block that isn’t signaling correctly but you want it to signal correctly, so you say “This block is now invalid, so I’m not going to accept this block. Instead, I’m just going to wait until another miner comes with a block that does meet my criteria.” Maybe that happens once in every 10 blocks, so you’re seeing new blocks, but they’re coming in very, very slowly.
 
@@ -214,6 +215,7 @@ Again translated to the RFC 7282 rough consensus process: Is it really enough to
 
 Finally, it’s worth pointing out that all the problems that `LOT=false` users are subjected to in world with `LOT=true` clients are also encountered by users who don’t upgrade at all. Avoiding mandatory upgrades is also something to consider.
 
+\newpage
 ### LOT=true Client, Rogue?
 
 ![Ep. 36 {l0pt}](qr/ep/36.png)
