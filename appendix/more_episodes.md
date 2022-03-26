@@ -101,6 +101,7 @@ Compact Client-Side Filtering is a newer solution to accomplish goals similar to
 
 We explain how this works in more detail, and we discuss some of the tradeoffs of this solution.
 
+\newpage
 #### Compact Blocks
 
 ![Ep. 51 {l0pt}](qr/ep/51.png)
@@ -206,6 +207,7 @@ Aaron also wrote an article covering Easypaysy for Bitcoin Magazine.^[<https://b
 
 \
 
+\newpage
 #### Payment Pools
 
 ![Ep. 06 {l0pt}](qr/ep/06.png)
@@ -268,6 +270,8 @@ Finally, we discuss some (potential) optimizations to benefit Lightning Network 
 
 In this episode, we interview another expert on Lightning routing, René Pickhardt. We discuss his paper _Optimally Reliable & Cheap Payment Flows on the Lightning Network_.^[<https://arxiv.org/abs/2107.05322>] To cite the abstract:
 
+\
+
 > Today, payment paths in Bitcoin’s Lightning Network are found by searching for shortest paths on the fee graph. We enhance this approach in two dimensions. Firstly, we take into account the probability of a payment actually being possible due to the unknown balance distributions in the channels. Secondly, we use minimum cost flows as a proper generalization of shortest paths to multi-part payments (MPP). In particular we show that under plausible assumptions about the balance distributions we can find the most likely MPP for any given set of senders, recipients and amounts by solving for a (generalized) integer minimum cost flow with a separable and convex cost function. Polynomial time exact algorithms as well as approximations are known for this optimization problem. We present a round-based algorithm of min-cost flow computations for delivering large payment amounts over the Lightning Network. This algorithm works by updating the probability distributions with the information gained from both successful and unsuccessful paths on prior rounds. In all our experiments a single digit number of rounds sufficed to deliver payments of sizes that were close to the total local balance of the sender. Early experiments indicate that our approach increases the size of payments that can be reliably delivered by several orders of magnitude compared to the current state of the art. We observe that finding the cheapest multi-part payments is an NP-hard problem considering the current fee structure and propose dropping the base fee to make it a linear min-cost flow problem. Finally, we discuss possibilities for maximizing the probability while at the same time minimizing the fees of a flow. While this turns out to be a hard problem in general as well - even in the single path case - it appears to be surprisingly tractable in practice.
 
 #### Eltoo and SIGHASH_ANYPREVOUT
@@ -284,7 +288,6 @@ This can be (almost) the entire transaction or specific parts of it. Signing onl
 
 `SIGHASH_ANYPREVOUT` would be especially useful in context of Eltoo, a proposed Layer Two protocol that would enable a new version of the Lightning Network. Where Lightning users currently need to store old channel data for security reasons and could also be punished severely if they accidentally broadcast some of this data at the wrong time, we discuss how `SIGHASH_ANYPREVOUT` would do away with this requirement.
 
-\newpage
 #### Bolt 12 — Recurring Payments, etc.
 
 ![Ep. 44 {l0pt}](qr/ep/44.png)
