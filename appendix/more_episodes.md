@@ -377,7 +377,7 @@ In this episode, we discuss Open Timestamps, a Bitcoin-based time stamping proje
 
 We explain that virtually any amount of data can, in fact, be timestamped in the Bitcoin blockchain at minimal cost because Open Timestamps leverages Merkle trees, the cryptographic trick to aggregate data into a single, compact hash. This hash is then included in a Bitcoin transaction, making all of the data aggregated into the hash as immutable as any other Bitcoin transaction.
 
-Todd offered an interesting showcase of Open Timestamps earlier this week, as he proved that the public key used by Google to sign “the email” to Hunter Biden indeed existed in 2016.
+Around the time the episode was recorded, Todd offered an interesting showcase of Open Timestamps, as he proved that the public key used by Google to sign a controversial email to Hunter Biden existed as early as 2016.^[<https://github.com/robertdavidgraham/hunter-dkim/tree/main/ots-timestamp>]
 
 We also discuss some of the other possibilities that a time-stamping system like Open Timestamps offers, as well as its limitations. Finally, Aaron provides a little bit of context for the history of cryptographic time stamping, which was itself referenced in the Bitcoin white paper.
 
