@@ -41,7 +41,7 @@ https://bitcoinops.org/en/topics/vaults/
 https://bitcointalk.org/index.php?topic=155054.0
 https://bitcointalk.org/index.php?topic=2161699.0
 https://bitcointalk.org/index.php?topic=5348856.0
-https://bitcointalk.org/index.php?topic=999.msg12181#msg12181
+https://bitcointalk.org/index.php?topic=999.msg12181
 https://bitcoinvisuals.com/chain-block-reward
 https://blockstream.com/2018/11/28/en-simplicity-github/
 https://blockstream.com/satellite/
