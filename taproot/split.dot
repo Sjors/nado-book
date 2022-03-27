@@ -9,6 +9,8 @@ digraph {
              <tr><td>3 sat/byte</td></tr>
            </table>>]
 
+    tx2 [shape=box style="rounded" label="Transaction"]
+
     node [fixedsize=true width=1 shape=box style="bold"]
     edge [fontname="lmodern" fontsize=11];
 
@@ -17,7 +19,7 @@ digraph {
     1  [label=<
            <table border="0" cellborder="0" cellspacing="1">
              <tr><td>     Block 1     </td></tr><hr/>
-             <tr><td>&gt;1 sat/byte</td></tr>
+             <tr><td> </td></tr>
            </table>>]
 
     a2  [label=<
@@ -28,17 +30,17 @@ digraph {
     a10  [label=<
           <table border="0" cellborder="0" cellspacing="1">
             <tr><td>    Block 10    </td></tr><hr/>
-            <tr><td>&gt;1 sat/byte</td></tr>
+            <tr><td> </td></tr>
           </table>>]
     a11  [label=<
           <table border="0" cellborder="0" cellspacing="1">
             <tr><td>    Block 11    </td></tr><hr/>
-            <tr><td>&gt;1 sat/byte</td></tr>
+            <tr><td>coinbase</td></tr>
           </table>>]
     a20  [label=<
           <table border="0" cellborder="0" cellspacing="1">
             <tr><td>    Block 20    </td></tr><hr/>
-            <tr><td>&gt;1 sat/byte</td></tr>
+            <tr><td> </td></tr>
           </table>>]
 
     b_dummy [style=invis]
@@ -68,11 +70,12 @@ digraph {
         b2 -> b3
 
         { rank=same a10 b2 }
-        { rank=same a20 b3 }
+        { rank=same a20 b3 tx2 }
         { rank=same a2 tx b_dummy }
 
         tx -> a2 [arrowhead=none style=dashed]
-        /* tx -> b2 */
+        tx2 -> a20 [arrowhead=none style=dashed]
+        tx2 -> a11
 
     }
 
