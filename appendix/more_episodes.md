@@ -17,8 +17,6 @@ In this episode, we explain what an extended public key (xpub) is and how it’s
 
 <!-- The BIP 39 footnote is intentionally inconsistent with BIP 32, so the QR codes aren't directly adjacent -->
 
-\newpage
-
 #### Replace-by-Fee (RBF)
 
 ![Ep. 26 {l0pt}](qr/ep/26.png)
@@ -29,25 +27,14 @@ With RBF, users can essentially bump a transaction fee to incentivize miners to 
 
 The main disadvantage of RBF is that it makes it slightly easier to double-spend unconfirmed transactions, which was also at the root of a “double-spend” controversy that dominated headlines in early 2021.^[<https://insights.deribit.com/market-research/was-there-a-bitcoin-double-spend-on-jan-20-2021/>] We discuss some solutions to diminish this risk, including “opt-in RBF,” which is currently implemented in Bitcoin Core.
 
-Finally, we explain in some detail how opt-in RBF works in Bitcoin Core and which conditions must be met before a transaction is considered replaceable. In the process, we note some complications with this version of RBF — for example, in the context of the Lightning Network.
+Finally, we explain in some detail how opt-in RBF works and which conditions must be met before a transaction is considered replaceable. In the process, we note some complications with this version of RBF — for example, in the context of the Lightning Network.
 
 \newpage
-
 #### Signet
 
 ![Ep. 10 {l0pt}](qr/ep/10.png)
 
 A signet is a new type of testnet for Bitcoin. In this episode, we discuss the original version of the public testing blockchain (testnet) and outline its problems. We then explain how signets are similar in nature to testnet, but more reliable and centrally controlled. A signet — there can be more than one — achieves this by adding an additional signature requirement to block validation (hence “sig”).^[Read more about signet(s), or try it for yourself: <https://en.bitcoin.it/wiki/Signet>]
-
-#### PSBT and RBF Attacks
-
-![Ep. 01 {l0pt}](qr/ep/01.png)
-
-In this episode, we break down and explain Partially Signed Bitcoin Transactions (PSBT) and Replace-by-Fee (RBF), along with some really tricky attacks that were recently discovered in Bitcoin.
-
-PSBT is a data format that allows wallets and other tools to exchange information about a Bitcoin transaction and the signatures necessary to complete it.^[<https://bitcoinops.org/en/topics/psbt/>]
-
-\newpage
 
 #### Mempools, Child Pays for Parent, and Package Relay
 
@@ -61,7 +48,6 @@ However, mempools can get full, at which point transactions that pay the lowest 
 
 In this episode, we go into detail about how package relay could enable CPFP — even in cases where low-fee transactions are dropped from mempools — by bundling transactions into packets. We also explore why this may be easier said than done.
 
-\newpage
 #### Death to The Mempool, Long Live the Mempool
 
 ![Ep. 50 {l0pt}](qr/ep/50.png)
@@ -73,7 +59,6 @@ In the thread, Blockstream engineer Lisa “niftynei” Neigut proposes getting 
 In the episode, we explain how this would work and why this isn’t as simple as it may sound. We address the responses in the thread, going over the reasons why getting rid of the mempool is in fact not a very good solution for a system like Bitcoin. There’s a specific focus on the implications this would have on mining privacy and decentralization. It also explores some other tradeoffs that would need to be made to make the Bitcoin system work without a mempool.
 
 \newpage
-
 #### Bitcoin Improvement Proposal (BIP) Process
 
 ![Ep. 39 {l0pt}](qr/ep/39.png)
@@ -139,6 +124,14 @@ In this episode, we explain the “time-warp attack” on Bitcoin. A potential f
 
 \
 
+#### PSBT and RBF Attacks
+
+![Ep. 01 {l0pt}](qr/ep/01.png)
+
+In this episode, we break down and explain Partially Signed Bitcoin Transactions (PSBT) and Replace-by-Fee (RBF), along with some really tricky attacks that were recently discovered in Bitcoin.
+
+PSBT is a data format that allows wallets and other tools to exchange information about a Bitcoin transaction and the signatures necessary to complete it.^[<https://bitcoinops.org/en/topics/psbt/>]
+
 #### Mining Pool Censorship
 
 ![Ep. 37 {l0pt}](qr/ep/37.png)
@@ -166,13 +159,13 @@ Hardware wallets are a popular solution for storing private keys offline to mini
 
 ![Ep. 43 {l0pt}](qr/ep/43.png)
 
-This episode sees co-host Aaron joined by Blockstream’s Lawrence Nahum, one of the developers of the Jade wallet, and Ben Kaufman, one of the developers of the Spectre wallet, the latter of which is specifically designed to work with hardware wallets.
+This episode sees co-host Aaron joined by Blockstream’s Lawrence Nahum, one of the developers of the Jade hardware wallet, and Ben Kaufman, one of the developers of the Spectre Desktop - a software tool for hardware wallets.
 
 They talk about what hardware wallets are and discuss the design tradeoffs that different hardware wallets have taken by focusing on the Trezor, Ledger, and ColdCard specifically. In this light, Lawrence and Ben explain what secure elements and secure chips are and why some hardware wallets choose to rely on using such chips more than others.
 
 Then, Lawrence explains which tradeoffs the Jade wallet makes. He also details how an additional server-based security step is used to further secure the Jade wallet, and he briefly outlines some additional differences in hardware wallet designs— for example, those focused on usability.
 
-Finally, they discuss whether the concept of hardware wallets is a good idea in the first place, or if it’d perhaps be better to use dedicated smartphones to store your bitcoin.
+Finally, they discuss whether hardware wallets are overrated, or if you might as well use a dedicated smartphone to store your bitcoin.
 
 #### Bitcoin Beach
 
@@ -186,7 +179,6 @@ They go on to discuss some of the design decisions and tradeoffs that the Bitcoi
 
 Finally, there’s discussion of some of the subtle incompatibilities between different Lightning wallets that use different techniques for routing payments, privacy considerations versus user experience in a community like El Zonte’s, and more.
 
-\newpage
 #### Chivo
 
 ![Ep. 46 {l0pt}](qr/ep/46.png)
@@ -195,17 +187,6 @@ In this episode, we discuss discuss the Chivo application, the Bitcoin wallet, a
 
 The episode opens with some general information about the Chivo Wallet, like why it was developed and who developed it (insofar anything is known about that). We discuss Aaron’s experiences with the wallet and speculate what that means for the design. After that, we discuss the design of the payment terminal that’s included in the application, and we also briefly touch on the Chivo ATMs that have been deployed across the country. Finally, we discuss the difference in philosophy between the design of the Chivo application and Bitcoin’s free and open source software culture.
 
-#### Accounts with Easypaysy
-
-![Ep. 11 {l0pt}](qr/ep/11.png)
-
-We discuss Jose Femenias’ Easypaysy proposal, an account system for Bitcoin, on Bitcoin. One feature it supports is stealth address identities. We discuss several use cases. Finally, we explain what non repudiation is.
-
-Aaron also wrote an article covering Easypaysy for Bitcoin Magazine.^[<https://bitcoinmagazine.com/articles/bitcoin-need-accounts-one-developer-thinks-figured>]
-
-\
-
-\newpage
 #### Payment Pools
 
 ![Ep. 06 {l0pt}](qr/ep/06.png)
@@ -216,12 +197,18 @@ For more information, see Aaron’s article.^[<https://bitcoinmagazine.com/artic
 
 \
 
-\
+#### Accounts with Easypaysy
+
+![Ep. 11 {l0pt}](qr/ep/11.png)
+
+We discuss Jose Femenias’ Easypaysy proposal, an account system for Bitcoin, on Bitcoin. One feature it supports is stealth address identities. We discuss several use cases. Finally, we explain what non repudiation is.
+
+Aaron also wrote an article covering Easypaysy for Bitcoin Magazine.^[<https://bitcoinmagazine.com/articles/bitcoin-need-accounts-one-developer-thinks-figured>]
 
 \newpage
 ### Lightning
 
-One could write a entire book about lightning. And in fact, others have, see e.g. _Mastering the Lightning Network: A Second Layer Blockchain Protocol for Instant Bitcoin Payments_ by Andreas Antonopoulos and Olaoluwa Osuntokun (aka Roasbeef).
+One could write an entire book about lightning. And in fact, others have, see e.g. _Mastering the Lightning Network: A Second Layer Blockchain Protocol for Instant Bitcoin Payments_ by Andreas Antonopoulos and Olaoluwa Osuntokun (aka Roasbeef).^[<https://www.oreilly.com/library/view/mastering-the-lightning/9781492054856/>]
 
 This book does not cover Lightning, but several _Bitcoin, Explained_ episodes did.
 
@@ -311,7 +298,7 @@ We discussed several of these ideas in the podcast, often with the help of Utrec
 
 ![Ep. 23 {l0pt}](qr/ep/23.png)
 
-Drivechain is a sidechain project spearheaded by Paul Sztorc.
+Drivechain is a sidechain project spearheaded by Paul Sztorc.^[<https://www.drivechain.info>]
 
 This should make the sidechain coins interchangeable with bitcoin and therefore carry an equal value. In a way, sidechains let users “move” bitcoin across blockchains, where they are subject to different protocol rules, allowing for greater transaction capacity, more privacy, and other benefits. We explain that Drivechain consists of two main innovations.
 
@@ -319,7 +306,7 @@ The first is Blind Merged Mining (BMM), which lets Bitcoin miners secure the dri
 
 The second is Hashrate Escrows, which lets miners “move” coins from the Bitcoin blockchain to the sidechain and back.
 
-We also discuss some of the benefits and complications with Drivechain — most notably the security implications of letting miners control the pegging out process. We consider the arguments of why this process is incentive compatible (in other words: secure) — or why it might not be.
+We also discuss some of the benefits and complications with Drivechain — most notably the security implications of letting miners control the pegging out process. We consider the arguments of why this process is incentive compatible (which is important for security) — or why it might not be.
 
 #### Perpetual One-Way Peg
 
@@ -335,7 +322,7 @@ A blog post by Ruben also explains the concept.^[<https://medium.com/@RubenSomse
 
 ![Ep. 27 {l0pt}](qr/ep/27.png)
 
-This time, we discuss one of Ruben’s own proposals: Softchains.
+This time, we discuss one of Ruben’s own proposals: Softchains.^[<https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2020-December/018331.html>]
 
 Softchains are a type of two-way peg sidechains that utilize a new type of consensus mechanism: proof-of-work fraud proofs (or as Sjors prefers to call them, proof-of-work fraud indicators). Using this consensus mechanism, users don’t validate the content of each block, but instead only check the proof-of-work header, like Simplified Payment Verification (SPV) clients do. But using proof-of-work fraud proofs, users do validate the entire content of blocks any time a blockchain fork occurs. This offers a security model in between full node security and SPV security.
 
@@ -450,3 +437,8 @@ We discuss research done by CasaHODL co-founder and CTO Jameson Lopp, as well as
 Whenever a new Bitcoin node comes online, it must first sync with the rest of the Bitcoin network: It needs to download and verify the entire blockchain up until the most recent block, in order to be up to date on the state of bitcoin ownership. This can take quite a while, however, and it should take longer over time as the blockchain keeps growing. To offset this, and to improve user experience more generally, Bitcoin Core developers seek to improve performance of the Bitcoin Core code so that newer releases sync faster than their predecessors.
 
 In the episode, we outline the performance improvements of Bitcoin Core clients over time, as analyzed most recently in two blog posts by Lopp. They first explain why some very old Bitcoin clients have trouble syncing to the current state of the blockchain at all, pointing out some bugs in this early software, as well as issues relating to dependencies and the challenge of using such old clients today (some of which we covered in chapter @sec:libsecp). We then go on to sum up some of the most important performance improvements that have been included in new Bitcoin Core releases over time.
+
+<!-- Add blank page to open on left side -->
+\newpage
+\null
+\newpage
