@@ -273,7 +273,7 @@ Even if it’s inherently unsafe, it could make sense to continue developing it 
 
 ![Ep. 54 {l0pt}](qr/ep/54.png)
 
-After all is said and done and a soft fork has activated, what do you do with the activation code? Is it merely a scaffold that can removed once the new rules are active? Or is the activation mechanism itself a permanent part of the rules?
+After all is said and done and a soft fork has activated, what do you do with the activation code? Is it merely a scaffold that can be removed once the new rules are active? Or is the activation mechanism itself a permanent part of the rules?
 
 As was done with previous soft forks, it looks like a future Bitcoin Core release will “bury” the Taproot activation. This means the node will treat the Taproot rules as if they've been active since Bitcoin’s very beginning. This is possible because, when applying these rules retroactively, only one historical block does not conform to them. This block can be grandfathered in.^[<https://github.com/bitcoin/bitcoin/pull/23536>]
 
