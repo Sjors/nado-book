@@ -8,7 +8,11 @@ digraph {
   edge [weight = 100];
   "DEFINED" -> "STARTED" [label=" height >= start_height"];
   "STARTED" -> "MUST_SIGNAL" [label="height + 2016 >= timeout\nAND lockinontimeout"];
-  "STARTED" -> "FAILED" [label=" height >= timeout\nAND\nNOT lockinontimeout"];
+  "STARTED" -> "FAILED" [
+    headlabel=" height >= timeout AND\nNOT lockinontimeout"
+    labeldistance=8.5
+    labelangle=75
+  ];
   "LOCKED_IN" -> "ACTIVE" [
     headlabel="height >= min_activation_height"
     labeldistance=8.5
@@ -17,7 +21,7 @@ digraph {
   "MUST_SIGNAL" -> "LOCKED_IN" [label=" always"];
 
   edge [weight = 1];
-  "STARTED" -> "LOCKED_IN" [label="height < timeoutheight\nAND\nthreshold reached"];
+  "STARTED" -> "LOCKED_IN" [label="height < timeoutheight AND\nthreshold reached"];
   "LOCKED_IN":sw -> "LOCKED_IN":nw [label="height <\nmin_activation_height"];
 
   "FAILED" -> "LOCKED_IN" [style=invis];
@@ -34,6 +38,6 @@ digraph {
   "FAILED" [fillcolor="#ffa0a0"];
 
   { rank=same; "STARTED" "MUST_SIGNAL" }
-  { rank=same; "FAILED" "LOCKED_IN" }
-  { rank=sink; "ACTIVE" }
+  { rank=same; "FAILED" "ACTIVE" }
+  { rank=sink; "FAILED" }
 }

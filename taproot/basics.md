@@ -109,7 +109,7 @@ However, there are downsides to both of these earlier MAST proposals:
 
 By tapping the MAST root onto a Schnorr public key, so to speak, you fix these issues, as explained above.
 
-#### But Wait, There’s More…
+### But Wait, There’s More…
 
 While it’s true that some of the things you can do with Taproot were already technically possible (but more complicated), there are also some things Taproot unlocks.
 
