@@ -110,7 +110,7 @@ In addition to the many suggestions from the paper, there are other things that 
 
 You may be wondering: Why wouldn’t you just have as many connections as possible from the get-go? But the problem is that it requires a lot of data exchange — especially for the transactions in a mempool — and that’s extremely data intensive, so you can’t just add more connections without also increasing bandwidth use.
 
-Erlay (see Appendix @sec:more_eps) is a proposal for reducing the bandwidth needed for these mempool synchronizations. It reduces the main cost (bandwidth) _per connection_. A lower cost per connection allows nodes to have more connections. Having more connections makes any eclipse attack scheme more difficult.
+Erlay (see appendix @sec:more_eps) is a proposal for reducing the bandwidth needed for these mempool synchronizations. It reduces the main cost (bandwidth) _per connection_. A lower cost per connection allows nodes to have more connections. Having more connections makes any eclipse attack scheme more difficult.
 
 Another way to have more connections without increasing bandwidth too much is to constrain some connections to blocks only, and to not sync the mempool with those peers. This was implemented in 2019.^[<https://github.com/bitcoin/bitcoin/pull/15759>]
 
