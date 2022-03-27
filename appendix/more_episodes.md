@@ -371,7 +371,12 @@ We also discuss some of the other possibilities that a time-stamping system like
 
 I timestamped the source code for this book^[<https://github.com/Sjors/nado-book>], so you can verify that a draft version existed as early as March 2022.
 
-\newpage
+```
+c=86a7cd200acb1812b6b2f8be27c8380ea44c9470
+git verify-commit $c
+git cat-file -p $c > appendix/commit
+ots verify appendix/commit.ots
+```
 
 #### Discreet Log Contracts
 
