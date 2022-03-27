@@ -357,6 +357,16 @@ We explain how this works exactly, and we discuss some of Powpeg’s security tr
 \newpage
 ### More Stuff on the Chain
 
+#### RGB
+
+![Ep. 33 {l0pt}](qr/ep/33.png)
+
+We’re joined by Ruben Somsen to discuss RGB tokens, a Layer Two protocol for Bitcoin to support alternative currency and token schemes (like the currently popular non-fungible tokens, or NFTs).
+
+We explain that the Bitcoin blockchain has been (ab)used by users to host data since the project’s early days. This was initially done through otherwise-useless transaction outputs, which meant that all Bitcoin users had to store this data locally. A feature called `OP_RETURN` later limited this burden. We also explain that people have been using the Bitcoin blockchain to host alternative currency and token schemes for a long time.
+
+A few years ago, Sjors also gave a presentation about RGB and earlier attempts at using the Bitcoin blockchain to store non-money things.^[<https://www.youtube.com/watch?v=PgeqT6ruBWU>]
+
 #### OpenTimestamps
 
 ![Ep. 16 {l0pt}](qr/ep/16.png)
@@ -391,16 +401,6 @@ At the start of the episode, we discuss what can be considered a type of proto-D
 From there, we go on to explain how DLCs solved these problems using a setup that resembles payment channels as used on the Lightning network. When structured like this, oracles merely need to publish a cryptographically signed message about the outcome of an event, which can be used by the winning participant of the bet to create a withdrawal transaction from the payment channel.
 
 Finally, we explain how the original DLC concept could be streamlined by using adaptor signatures,^[<https://bitcoinops.org/en/topics/adaptor-signatures/>] a sort of “incomplete signature” that can be made complete using the signed message from the oracle. With adaptor signatures, DLCs no longer require a separate withdrawal transaction, as the winner can claim funds from the payment channel directly.
-
-#### RGB
-
-![Ep. 33 {l0pt}](qr/ep/33.png)
-
-We’re joined by Ruben Somsen to discuss RGB tokens, a Layer Two protocol for Bitcoin to support alternative currency and token schemes (like the currently popular non-fungible tokens, or NFTs).
-
-We explain that the Bitcoin blockchain has been (ab)used by users to host data since the project’s early days. This was initially done through otherwise-useless transaction outputs, which meant that all Bitcoin users had to store this data locally. A feature called `OP_RETURN` later limited this burden. We also explain that people have been using the Bitcoin blockchain to host alternative currency and token schemes for a long time.
-
-A few years ago, Sjors also gave a presentation about RGB and earlier attempts at using the Bitcoin blockchain to store non-money things: <https://www.youtube.com/watch?v=PgeqT6ruBWU>
 
 \newpage
 
