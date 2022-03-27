@@ -56,10 +56,9 @@ if [ "$SKIP_QR" -eq "0" ]; then
 fi
 
 # Process figures:
-dot -Tsvg taproot/bip8.dot > taproot/bip8.svg
-dot -Tsvg taproot/bip9.dot > taproot/bip9.svg
-dot -Tsvg taproot/flag.dot > taproot/flag.svg
-dot -Tsvg taproot/speedy_trial.dot > taproot/speedy_trial.svg
+for file in taproot/*.dot; do
+    dot -Tsvg $file > ${file%.dot}.svg
+done
 
 # Generate document
 pandoc --table-of-contents --top-level-division=part\
