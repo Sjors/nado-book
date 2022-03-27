@@ -12,6 +12,7 @@ https://bitcoin.org/en/releases/22.0/
 https://bitcoin.sipa.be
 https://bitcoin.stackexchange.com/a/10666/4948
 https://bitcoin.stackexchange.com/a/1992/4948
+https://bitcoin.stackexchange.com/a/89418/4948
 https://bitcoin.stackexchange.com/questions/56485/can-someone-please-explain-fibre-to-me-like-im-5-and-why-is-it-useful
 https://bitcoincore.org
 https://bitcoincore.org/en/2016/06/07/compact-blocks-faq/

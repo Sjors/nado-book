@@ -185,7 +185,7 @@ Let’s say you’re running the `LOT=true` version of Bitcoin Core and you want
 
 So far, you might think this is merely annoying. But now let’s put some money on the line. What if you’re trying to receive a payment?
 
-![In this example, blocks on the fast moving side of the chain split require a fee of at least 1 satoshi per (virtual) byte (sat/vbyte). Due to congestion on the slower moving side, its minimum fee rate is 50 sat/vbyte. A transaction paying 3 sat/vbyte only confirms on one side of the split.](taproot/split.svg)
+![In this example, blocks on the fast moving side of the chain split require a fee of at least 1 satoshi per vbyte.^[<https://bitcoin.stackexchange.com/a/89418/4948>] Due to congestion on the slower moving side, its minimum fee rate is 50 sat/vbyte. A transaction paying 3 sat/vbyte only confirms on one side of the split.](taproot/split.svg)
 
 Let’s say somebody who runs a node with `LOT=false` sends you 1 BTC. So in this scenario, they’re on a branch that’s growing 10 times faster than the branch your node is seeing. Let’s also say their blocks aren’t completely full, so the sender uses a low fee rate. The transaction confirms quickly in their branch. But you’re on this shorter, slower-moving branch, and all those transactions have to be squeezed into fewer blocks. Those blocks are completely full. In your branch, the transaction doesn’t confirm. It’s just sitting there in the mempool.
 
