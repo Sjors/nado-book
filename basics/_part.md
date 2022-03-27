@@ -12,6 +12,8 @@ Chapter @sec:segwit explains the 2017 SegWit soft fork and talks about how it in
 
 Finally, chapter @sec:libsecp explains what libraries are, how they cause problems, and what happened with OpenSSL in particular.
 
+### Reading Hints
+
 Each chapter contains a QR code which takes you to the corresponding podcast episode and its shownotes. The episode number is shown below the QR. You can also find the episode in your favorite podcasting application by searching for “Bitcoin Explained”. Or play them in your browser from here^[<https://nadobtc.libsyn.com>].
 
 The paper version of this book displays a tiny QR code next to each URL. These go through bit.ly. Although the author can’t track which URL’s you follow - because the short URL’s were generated without an account - bit.ly might be able to, with some effort.
