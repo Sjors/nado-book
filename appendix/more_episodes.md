@@ -42,7 +42,7 @@ A signet is a new type of testnet for Bitcoin. In this episode, we discuss the o
 
 In this episode, we discuss Bitcoin memory pools (mempools), Child Pays For Parent (CPFP), and package relay.
 
-Package relay is the project Gloria Zhao is working on as part of her Brink fellowship.^[<https://brink.dev/programs>]. It would make the Lightning network more robust (among other benefits). Mempools are the collections of unconfirmed transactions stored by nodes, from which they forward transactions to peers. Miners usually select the transactions from their mempools that include the highest fees to include these in the blocks they mine.
+Package relay is the project Gloria Zhao is working on as part of her Brink fellowship.^[<https://brink.dev/programs>]. It would make the Lightning network more robust (among other benefits). Mempools are the collections of unconfirmed transactions stored by nodes. Nodes then forward these unconfirmed transactions from their mempool to peers. Miners usually select the transactions from their mempool that include the highest fees to include these in the blocks they mine.
 
 However, mempools can get full, at which point transactions that pay the lowest fees are ejected. This is actually a problem in the context of CPFP, which is a trick that lets users speed up low-fee transactions by spending the coins from those transactions in a new transaction with a high fee to compensate.^[<https://bitcoinops.org/en/topics/cpfp/>] Tricks like these can be particularly important in the context of time-sensitive protocols like the Lightning network.
 
@@ -80,7 +80,7 @@ In this episode, we discuss Compact Client-Side Filtering, also known as Neutrin
 
 Downloading and validating the entire Bitcoin blockchain can take a couple of days even on a standard laptop, and it takes much longer on smartphones and other limited-performance computers. This is why many people prefer to use light clients. These aren’t quite as secure as full Bitcoin nodes, but they do require fewer computational resources to operate.
 
-Some types of light clients — Simplified Payment Verification (SPV) clients — essentially ask nodes on the Bitcoin network about the particular Bitcoin addresses they’re interested in to check how much funds they own. This is bad for privacy, since the full node operator learns which addresses belong to the SPV user.
+Some types of light clients — Simplified Payment Verification (SPV) clients — essentially ask nodes on the Bitcoin network about the particular Bitcoin addresses they’re interested in to check how much bitcoin they own. This is bad for privacy, since the full node operator learns which addresses belong to the SPV user.
 
 Compact Client-Side Filtering is a newer solution to accomplish goals similar to SPV, but without the loss of privacy. This works, in short, by having full node operators create a cryptographic data structure that tells the light client user whether a block could’ve contained activity pertaining to its addresses, so the user can keep track of its funds by downloading only a small subset of all Bitcoin blocks.
 
@@ -128,9 +128,9 @@ In this episode, we explain the “time-warp attack” on Bitcoin. A potential f
 
 ![Ep. 01 {l0pt}](qr/ep/01.png)
 
-In this episode, we break down and explain Partially Signed Bitcoin Transactions (PSBT) and Replace-By-Fee (RBF), along with some really tricky attacks that were recently discovered in Bitcoin.
+In this episode, we break down and explain Partially Signed Bitcoin Transactions (PSBT) and Replace-By-Fee (RBF), along with some really tricky attacks that were discovered.^[<https://blog.trezor.io/latest-firmware-updates-correct-possible-segwit-transaction-vulnerability-266df0d2860> and ]
 
-PSBT is a data format that allows wallets and other tools to exchange information about a Bitcoin transaction and the signatures necessary to complete it.^[<https://bitcoinops.org/en/topics/psbt/>]
+PSBT is a data format that allows wallets and other tools to exchange information about a Bitcoin transaction and the signatures necessary to complete it.^[PSBT Attack Vector <https://bitcoinops.org/en/topics/psbt/> and RBF Attack Vector <https://zengo.com/bigspender-double-spend-vulnerability-in-bitcoin-wallets/>]
 
 #### Mining Pool Censorship
 
@@ -227,7 +227,7 @@ Finally, we briefly touch on some of the challenges presented by the Lightning n
 
 ![Ep. 38 {l0pt}](qr/ep/38.png)
 
-We discuss CVE-2021-31876, a bug in the Bitcoin Core code that affects Replace-By-Fee (RBF) child transactions.^[<https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31876>] The Common Vulnerabilities and Exposures (CVE) system offers an overview of publicly known software bugs. A new bug in the Bitcoin Core code was recently discovered and disclosed by Antoine Riard, and it was added to the CVE overview.
+We discuss CVE-2021-31876, a bug in the Bitcoin Core code that affects Replace-By-Fee (RBF) child transactions.^[<https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31876>] The Common Vulnerabilities and Exposures (CVE) system offers an overview of publicly known software bugs. A new bug in the Bitcoin Core code was discovered and disclosed by Antoine Riard, and it was added to the CVE overview.
 
 We explain that the bug affects how RBF logic is handled by the Bitcoin Core software. When one unconfirmed transaction includes an RBF flag (which means it should be considered replaceable if a conflicting transaction with a higher fee is broadcast over the network), any following transaction that spends coins from the original transaction should also be considered replaceable — even if the second transaction doesn’t itself have an RBF flag. Bitcoin Core software wouldn’t do this, however, which means the second transaction would in fact not be considered replaceable.
 
@@ -259,7 +259,7 @@ In this episode, we interview another expert on Lightning routing, René Pickhar
 
 > Today, payment paths in Bitcoin’s Lightning Network are found by searching for shortest paths on the fee graph. We enhance this approach in two dimensions. Firstly, we take into account the probability of a payment actually being possible due to the unknown balance distributions in the channels. Secondly, we use minimum cost flows as a proper generalization of shortest paths to multi-part payments (MPP). In particular we show that under plausible assumptions about the balance distributions we can find the most likely MPP for any given set of senders, recipients and amounts by solving for a (generalized) integer minimum cost flow with a separable and convex cost function. Polynomial time exact algorithms as well as approximations are known for this optimization problem. We present a round-based algorithm of min-cost flow computations for delivering large payment amounts over the Lightning Network. This algorithm works by updating the probability distributions with the information gained from both successful and unsuccessful paths on prior rounds. In all our experiments a single digit number of rounds sufficed to deliver payments of sizes that were close to the total local balance of the sender. Early experiments indicate that our approach increases the size of payments that can be reliably delivered by several orders of magnitude compared to the current state of the art. We observe that finding the cheapest multi-part payments is an NP-hard problem considering the current fee structure and propose dropping the base fee to make it a linear min-cost flow problem. Finally, we discuss possibilities for maximizing the probability while at the same time minimizing the fees of a flow. While this turns out to be a hard problem in general as well - even in the single path case - it appears to be surprisingly tractable in practice.
 
-#### Eltoo and SIGHASH_ANYPREVOUT
+#### Eltoo and `SIGHASH_ANYPREVOUT`
 
 We covered this topic twice, so there are two episodes to choose from. In episode 35, we explain what this is, and in episode 48, one of the authors, c-lightning developer Christian Decker, joins us to explain it in his words.
 
@@ -403,20 +403,18 @@ A few years ago, Sjors also gave a presentation about RGB and earlier attempts a
 
 ![Ep. 24 {l0pt}](qr/ep/24.png)
 
-In this episode, we discuss Bitcoin Core 0.21.0, the 21st major release of the Bitcoin Core software, the oldest and most important Bitcoin node implementation, which is often also regarded as the reference implementation for the Bitcoin protocol.
+In this episode, we discuss Bitcoin Core 0.21.0, the 21st major release of the Bitcoin Core software.^[<https://bitcoinmagazine.com/technical/bitcoin-core-0-21-0-released-whats-new>] Bitcoin Core is the oldest and most important Bitcoin node implementation, which is often also regarded as the reference implementation for the Bitcoin protocol.
 
 Guided by the Bitcoin Core 0.21.0 release notes, we discuss this release’s most important changes. These include the new mempool policy for rebroadcasting transactions, Tor v3 support, peer anchors for when the node restarts, BIP 157 (Neutrino) for light clients, the new testnet called Signet, BIP 339 (wtxid relay), Taproot code, RPC changes including a new send RPC, ZeroMQ, descriptor wallets, the new SQLite database system, and the satoshi-per-byte fee denomination.
 
-For each of the new features, we discuss what the features are, how they’ll change using Bitcoin (Core) and — where applicable — what the end goal is. (In Bitcoin Core development, new features are often part of a bigger process.) For any feature we discussed on a previous episode of _The Van Wirdum Sjorsnado_, we also mention the relevant episode number.
-
-https://bitcoinmagazine.com/technical/bitcoin-core-0-21-0-released-whats-new
+For each of the new features, we discuss what the features are, how they’ll change using Bitcoin (Core) and — where applicable — what the end goal is. (In Bitcoin Core development, new features are often part of a bigger process.) For any feature we discussed on a previous episode of _Bitcoin, Explained_, we also mention the relevant episode number.
 
 \newpage
 #### Bitcoin Core v22.0
 
 ![Ep. 45 {l0pt}](qr/ep/45.png)
 
-In this episode, we discuss Bitcoin Core 22.0, the latest major release of the Bitcoin Core software client, currently the de facto reference implementation of the Bitcoin protocol. We highlight several improvements to the Bitcoin Core software.
+In this episode, we discuss Bitcoin Core 22.0, the next major release of the Bitcoin Core software client.^[<https://bitcoincore.org/en/releases/22.0/>]
 
 The first of these is hardware wallet support in the graphical user interface (GUI). While hardware wallet support has been rolling out across several previous Bitcoin Core releases, it’s now fully available in the GUI. The second highlighted upgrade is support for the Invisible Internet Project (I2P), a Tor-like internet privacy layer. We also briefly touch on the differences between I2P and Tor.
 
@@ -424,7 +422,7 @@ The third upgrade discussed in the episode is Taproot support. While Taproot act
 
 The fourth upgrade we discuss is an update to the `testmempoolaccept` logic, which paves the way toward a bigger package relay upgrade. This could, in a future release, allow transactions to be transmitted over the Bitcoin network in packages including several transactions at the same time.
 
-Additionally, we briefly discuss an extension to create multisig and add multisig address, the new NAT-PMP option, and more.
+Additionally, we briefly discuss an extension to multisig address creation, the new NAT-PMP option, and more.
 
 \newpage
 

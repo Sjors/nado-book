@@ -18,6 +18,7 @@ https://bitcoincore.org
 https://bitcoincore.org/en/2016/06/07/compact-blocks-faq/
 https://bitcoincore.org/en/2018/09/20/notice/
 https://bitcoincore.org/en/2021/05/01/release-0.21.1/
+https://bitcoincore.org/en/releases/22.0/
 https://bitcoincore.org/en/segwit_wallet_dev/
 https://bitcoinmagazine.com/articles/bitcoin-need-accounts-one-developer-thinks-figured
 https://bitcoinmagazine.com/articles/bitcoins-growing-utxo-problem-and-how-utreexo-can-help-solve-it
@@ -27,6 +28,7 @@ https://bitcoinmagazine.com/articles/taproot-coming-what-it-and-how-it-will-bene
 https://bitcoinmagazine.com/articles/the-power-of-schnorr-the-signature-algorithm-to-increase-bitcoin-s-scale-and-privacy-1460642496
 https://bitcoinmagazine.com/culture/the-man-behind-bitcoin-pizza-day-is-more-than-a-meme-hes-a-mining-pioneer
 https://bitcoinmagazine.com/technical/bip-91-has-activated-heres-what-means-and-what-it-does-not
+https://bitcoinmagazine.com/technical/bitcoin-core-0-21-0-released-whats-new
 https://bitcoinmagazine.com/technical/bitcoin-network-shaken-by-blockchain-fork-1363144448
 https://bitcoinmagazine.com/technical/miniscript-how-blockstream-engineers-are-making-bitcoin-programming-easyer
 https://bitcoinmagazine.com/technical/satoshis-genius-unexpected-ways-in-which-bitcoin-dodged-some-cryptographic-bullet-1382996984
@@ -53,6 +55,7 @@ https://blog.lopp.net/bitcoin-core-performance-evolution/
 https://blog.lopp.net/running-bitcoin-core-v0-7-and-earlier/
 https://blog.lopp.net/who-controls-bitcoin-core-/
 https://blog.torproject.org/v3-onion-services-usage
+https://blog.trezor.io/latest-firmware-updates-correct-possible-segwit-transaction-vulnerability-266df0d2860
 https://blogs.scientificamerican.com/roots-of-unity/ancient-babylonian-number-system-had-no-zero/
 https://brink.dev/programs
 https://btctranscripts.com/greg-maxwell/gmaxwell-2017-11-27-advances-in-block-propagation/
@@ -225,3 +228,4 @@ https://www.youtube.com/watch?v=NqiN9VFE4CU
 https://www.youtube.com/watch?v=PgeqT6ruBWU
 https://www.youtube.com/watch?v=_v1lECxNDiM
 https://youtu.be/CKx6eULIC3A
+https://zengo.com/bigspender-double-spend-vulnerability-in-bitcoin-wallets/
