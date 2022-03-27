@@ -139,17 +139,15 @@ In this episode, we explain the “time-warp attack” on Bitcoin. A potential f
 
 \
 
-\
-
 #### Mining Pool Censorship
 
 ![Ep. 37 {l0pt}](qr/ep/37.png)
 
-In this episode, we discuss the emergence of Mara Pool, the American Bitcoin mining pool operated by Marathon Digital Holdings, which — at the time — claimed to be fully compliant with US regulations. This means that it applies anti-money laundering (AML) checks and adheres to the sanction list of the Office of Foreign Asset Control (OFAC). While details haven’t been made explicit, this presumably means that this pool won’t include transactions in blocks if these transactions send coin to or from Bitcoin addresses that have been included on an OFAC blacklist.
+In this episode, we discuss the emergence of Mara Pool, the American Bitcoin mining pool, which — at the time — claimed to be fully compliant with US regulations. This means that it applies anti-money laundering (AML) checks and adheres to the sanction list of the Office of Foreign Asset Control (OFAC). While details haven’t been made explicit, this presumably means that this pool won’t include transactions in blocks if these transactions send coin to or from Bitcoin addresses that have been included on an OFAC blacklist.
 
 Some time after recording, it changed course and announced it wouldn’t be censoring transactions.
 
-In the episode, we discuss the prospects of mining censorship, what that would mean for Bitcoin, and what can be done about it. We discuss what it means that a mining pool is now censoring certain transactions, and we go on to expand upon what it could look like if this practice is adopted more widely. We consider what censoring mining pools could accomplish if they ever get close to controlling a majority of hash power and what Bitcoin users could potentially do in such a scenario (if anything).
+In the episode, we discuss the prospects of mining censorship, what that would mean for Bitcoin, and what can be done about it. We expand upon what it could look like if this practice is adopted more widely. We consider what censoring mining pools could accomplish if they ever get close to controlling a majority of hash power and what Bitcoin users could potentially do in such a scenario (if anything).
 
 \newpage
 ### Wallets

@@ -217,7 +217,6 @@ Again translated to the RFC 7282 rough consensus process: Is it really enough to
 
 Finally, it’s worth pointing out that all the problems that `LOT=false` users are subjected to in world with `LOT=true` clients are also encountered by users who don’t upgrade at all. Avoiding mandatory upgrades is also something to consider.
 
-\newpage
 ### LOT=true Client, Rogue?
 
 ![Ep. 36 {l0pt}](qr/ep/36.png)
