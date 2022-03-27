@@ -369,6 +369,8 @@ Around the time the episode was recorded, Peter offered an interesting showcase 
 
 We also discuss some of the other possibilities that a time-stamping system like OpenTimestamps offers, as well as its limitations. Finally, Aaron provides a little bit of context for the history of cryptographic time stamping, which was itself referenced in the Bitcoin white paper.
 
+I timestamped the source code for this book^[<https://github.com/Sjors/nado-book>], so you can verify that a draft version existed as early as March 2022.
+
 \newpage
 
 #### Discreet Log Contracts
