@@ -2,7 +2,7 @@
 
 ## Overview {.unlisted .unnumbered}
 
-An important philosophy of Bitcoin — and safety engineering in general — is to be honest about the ways in which it’s potentially vulnerable. The following chapters should cause the reader to be paralyzed with fear — or at least slightly worried.
+An important design philosophy of Bitcoin — and safety engineering in general — is to be honest about the ways in which it’s potentially vulnerable. The following chapters should cause the reader to be paralyzed with fear — or at least slightly worried.
 
 Several of the potential attacks described have never even happened in practice. Nonetheless, we want to prevent them, and this effort has led to several cool innovations.
 
