@@ -13,7 +13,7 @@ done
 
 # Generate .processed.md files:
 find **/*processed* -exec rm -rf {} \;
-find intro.md **/*.md -exec cp {} {}.processed \;
+find **/*.md -exec cp {} {}.processed \;
 find . -name "*.md.processed" -exec sh -c 'mv "$1" "${1%.md.processed}.processed.md"' _ {} \;
 
 if [ "$SKIP_QR" -eq "0" ]; then
@@ -27,7 +27,7 @@ if [ "$SKIP_QR" -eq "0" ]; then
 
     # Process footnote QR codes:
     # Collect URL's:
-    find intro.md **/*.md -print0 | xargs -0 perl -ne 'print "$1\n" while /<(http.*?)>/g' | sort | uniq > qr/note/urls.txt
+    find **/*.md -print0 | xargs -0 perl -ne 'print "$1\n" while /<(http.*?)>/g' | sort | uniq > qr/note/urls.txt
     if ! git diff --quiet qr/note/urls.txt; then
         echo "Please update bit.ly links for URLs:"
         git diff qr/note/urls.txt
@@ -51,7 +51,7 @@ if [ "$SKIP_QR" -eq "0" ]; then
             echo "s*<$url>*<$url> \\\qrcode[height=0.45cm,level=M]{$short_url}*g;" >> qr/sed
         fi
     done
-    find intro.processed.md **/*.processed.md -exec sed -i '' -f qr/sed {} \;
+    find **/*.processed.md -exec sed -i '' -f qr/sed {} \;
 
 fi
 
@@ -69,7 +69,6 @@ pandoc --table-of-contents --top-level-division=part\
         --lua-filter filters/center.lua\
         $EXTRA_OPTIONS\
         $HEADER_INCLUDES\
-        intro.processed.md\
         basics/_part.processed.md\
         basics/address.processed.md\
         basics/dns_and_tor.processed.md\
