@@ -178,6 +178,7 @@ https://nadobtc.libsyn.com/federated-ecash-episode-52
 https://news.ycombinator.com/item?id=11230394
 https://nvd.nist.gov/vuln/detail/CVE-2014-8275
 https://ogucluturk.medium.com/the-dao-hack-explained-unfortunate-take-off-of-smart-contracts-2bd8c8db3562
+https://opentimestamps.org
 https://podcast.chaincode.com/2020/02/12/james-obeirne-4.html
 https://podcast.chaincode.com/2021/10/26/pieter-wuille-amiti-uttarwar-p2p.html
 https://podcastaddict.com/episode/94276066

@@ -361,7 +361,7 @@ We explain how this works exactly, and we discuss some of Powpeg’s security tr
 
 ![Ep. 16 {l0pt}](qr/ep/16.png)
 
-In this episode, we discuss OpenTimestamps, a Bitcoin-based time stamping project by applied cryptography consultant and former Bitcoin Core contributor Peter Todd. OpenTimestamps leverages the security of the Bitcoin blockchain to timestamp any type of data, allowing for irrefutable proof that that data existed at a particular point in time.
+In this episode, we discuss OpenTimestamps,^[<https://opentimestamps.org>] a Bitcoin-based time stamping project by applied cryptography consultant and former Bitcoin Core contributor Peter Todd. OpenTimestamps leverages the security of the Bitcoin blockchain to timestamp any type of data, allowing for irrefutable proof that that data existed at a particular point in time.
 
 We explain that virtually any amount of data can, in fact, be timestamped in the Bitcoin blockchain at minimal cost because OpenTimestamps leverages Merkle trees, the cryptographic trick to aggregate data into a single, compact hash. This hash is then included in a Bitcoin transaction, making all of the data aggregated into the hash as immutable as any other Bitcoin transaction.
 
