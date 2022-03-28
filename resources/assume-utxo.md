@@ -10,7 +10,7 @@ This chapter will cover some of the ways sync time has been sped up over time. I
 
 It’ll also discuss how the security assumptions underpinning Assume Valid could be extended to allow for a potential future upgrade, AssumeUTXO, to offer new Bitcoin Core users a speedy solution to get up to speed with the Bitcoin network by syncing the most recent blocks first and checking historical blocks in the background later.
 
-In addition to the accompanying _Bitcoin, Explained_ episode, you can also listen to an episode of _The Chaincode Podcast_ with AssumeUTXO author James O’Beirne, which covers the same topics as this chapter.^[<https://podcast.chaincode.com/2020/02/12/james-obeirne-4.html>].
+In addition to the accompanying _Bitcoin, Explained_ episode, you can also listen to an episode of _The Chaincode Podcast_ with AssumeUTXO author James O’Beirne, which covers the same topics as this chapter.^[<https://podcast.chaincode.com/2020/02/12/james-obeirne-4.html>]
 
 ### Downloading the Blockchain
 
@@ -18,7 +18,7 @@ When you turn on your Bitcoin node it finds and connects to other peers, as we e
 
 The most naive way of downloading the blockchain would be to just ask your peers to send you everything they’ve got. That’s not a good idea, because if any of your peers are malicious, they could trick you into downloading terabytes of fake blocks, until you run out of disk space and your node crashes.
 
-To prevent such abuse the initial version of Bitcoin would first ask nodes for a block header. This header includes the proof-of-work, which — as the term suggests — proves that some work went into creating the block. By checking the proof in this header before fetching the block itself, it makes it more expensive for an attacker to produce enough fake blocks to overflow your hard disk. Once the block is fetched and checked, your node asks for the next header, and so forth, processing headers and blocks sequentially.^[In reality, it was slightly more complicated than this. When a node received a block that didn’t directly build on the tip of its chain, it would, as Satoshi put it in a source code comment, “shunt it off to [a] holding area.” From there, it could be appended to the chain tip later. These blocks were called _orphan blocks_, a term often mixed up with _stale blocks_.]
+To prevent such abuse the initial version of Bitcoin would first ask nodes for a block header. This header includes the proof-of-work, which — as the term suggests — proves that some work went into creating the block. By checking the proof in this header before fetching the block itself, it makes it more expensive for an attacker to produce enough fake blocks to overflow your hard disk. Once the block is fetched and checked, your node asks for the next header, and so forth, processing headers and blocks sequentially.^[It was slightly more complicated. When a node received a block that didn’t directly build on the tip of its chain, it would, as Satoshi put it in a source code comment, “shunt it off to [a] holding area.” From there, it could be appended to the chain tip later. These blocks were called _orphan blocks_, a term often mixed up with _stale blocks_.]
 
 Although this protects against the most trivial form of block spam, we’re not out of the woods. The approach is still very myopic, in that your node only checks the blocks right in front of it, without seeing the big picture.
 
