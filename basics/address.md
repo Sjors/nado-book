@@ -99,7 +99,7 @@ However, conciseness isn’t the only benefit here. Another is error correction,
 
 If there’s a typo in an address, then in the worst case scenario, you’re sending coins to the wrong hash of a public key. When the recipient tries to spend the coin, they reveal the public key, but due to the typo, its hash won’t match what the blockchain demands. The coins are forever lost.
 
-Fortunately, base58 addresses contain a checksum at the end. That way, if you make a typo, the checksum at the end of the address won’t work. Your wallet will alert you to this, and it’ll refuse to send the transaction (the blockchain won’t protect you, only your wallet, hopefully). But if you’re really unlucky, a typo can be such that it produces a correct checksum by sheer coincidence.
+Fortunately, base58 addresses contain a checksum at the end. That way, if you make a typo, the checksum at the end of the address won’t work. Your wallet will alert you to this, and it’ll refuse to send the transaction (the blockchain won’t protect you; only your wallet will, hopefully). But if you’re really unlucky, a typo can be such that it produces a correct checksum by sheer coincidence.
 
 Bech32 was designed in such a way to make such a disastrous coincidence extremely unlikely. In addition, it won’t just tell you that there _is_ a typo; it can tell you _where_ the typo is. This is determined by taking all the bytes from the address and then hashing it using some sophisticated mathematical magic.^[Math behind bech32 addresses: <https://medium.com/@MeshCollider/some-of-the-math-behind-bech32-addresses-cf03c7496285>] You can make about four typos and it’ll still know where the typo is and what the real value is. If you do more than that, it won’t.
 
