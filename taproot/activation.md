@@ -147,7 +147,7 @@ On the other hand, _if you run a node without this feature_, or for that matter,
 
 In any scenario where two alternative chains exist, it’s unsafe for users whose node follows one branch to transact with users whose node follows the other branch. In fact, it’s unsafe for _anyone_ to use the blockchain at that point. On the other hand, as long as the only chain in existence complies with mandatory signaling, there’s nothing to worry about. This might remind some readers of the game theory around mutual assured destruction (MAD).
 
-### To Argue a LOT
+### To Argue a `LOT`
 
 ![Ep. 29 {l0pt}](qr/ep/29.png)
 
@@ -217,7 +217,7 @@ Again translated to the RFC 7282 rough consensus process: Is it really enough to
 
 Finally, it’s worth pointing out that all the problems that `LOT=false` users are subjected to in world with `LOT=true` clients are also encountered by users who don’t upgrade at all. Avoiding mandatory upgrades is also something to consider.
 
-### LOT=true Client, Rogue?
+### `LOT=true` Client, Rogue?
 
 ![Ep. 36 {l0pt}](qr/ep/36.png)
 
@@ -249,7 +249,7 @@ Speedy Trial seemed to sufficiently address the objections to BIP 9. From the ob
 
 With the controversy (temporarily) out of the way, more developers came out of the woodwork and started writing code that could actually get Speedy Trial done.^[Mainly <https://github.com/bitcoin/bitcoin/pull/21377>, <https://github.com/bitcoin/bitcoin/pull/21686>, and a BIP 8-based alternative that was briefly considered: <https://github.com/bitcoin/bitcoin/pull/21392>] In turn, because there were more developers from different angles cooperating on it and getting things done a little bit more quickly, it demonstrated that Speedy Trial was a good idea. When you have some disagreement, then people start procrastinating, not reviewing things, or not writing things. But if people begin working on something quickly and it’s making progress, that’s a vague indicator that it was a good choice.
 
-### We Have Taproot LOCKED_IN!
+### We Have Taproot `LOCKED_IN`!
 
 ![Ep. 40 {l0pt}](qr/ep/40.png)
 
