@@ -24,7 +24,7 @@ But even when libraries are included in a download, things can go wrong when a s
 
 Someone out there is maintaining the library. They don’t have time to test each of their changes in every single software package out there that uses their library. So if you’re not paying attention to what the library maintainer is doing — either by looking at changes in the release notes or by checking out the code itself — they might break something.
 
-Then, when you download the library along with the rest of Bitcoin Core from its website, your computer now uses that changed part of the library. But what if the Bitcoin Core developers didn’t notice this particular change that happened to the library? Then, all of a sudden, the stuff they wanted Bitcoin Core to do isn’t actually happening.
+Then, when you download the library along with the rest of Bitcoin Core, your computer now uses that changed part of the library. But what if the Bitcoin Core developers didn’t notice this particular change that happened to the library? Then, all of a sudden, the stuff they wanted Bitcoin Core to do isn’t actually happening.
 
 Most breaking changes in libraries are accidents, but not all. Chapter @sec:guix goes deeper into the process of checking dependencies and attacks from rogue dependency maintainers.
 
