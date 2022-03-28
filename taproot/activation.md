@@ -35,7 +35,7 @@ The earliest soft forks mostly used a block height as their method of activation
 
 Probably the most infamous soft fork of all time is the one-megabyte block size limit introduced by Satoshi in 2010.^[Since the very first release of version 0.1.0 on January 9, 2009, there has been a 32MB limit (`MAX_SIZE`) that applies to various things. This includes the block size, which was checked in `CheckBlock()`. See <https://satoshi.nakamotoinstitute.org/code/>. Then, on July 15, 2010, Satoshi introduced `MAX_BLOCK_SIZE=1000000` and changed the miner software to not produce blocks larger than that in <https://github.com/bitcoin/bitcoin/commit/a30b56ebe76ffff9f9cc8a6667186179413c6349>. So far, no soft fork. It was just a change to the software used by miners, which they could’ve reverted without producing invalid blocks. Months later, on September 7, he modified a related function, `AcceptBlock()`, to enforce `MAX_BLOCK_SIZE` <https://github.com/bitcoin/bitcoin/commit/f1e1fb4bdef878c8fc1564fa418d44e7541a7e83>. This was the actual soft fork, and it was released the same day in v0.3.12. Both commits pretended to do completely unrelated things. Nowadays, code reviewers frown upon commits that touch anything outside the area they claim to change — even if just removing a blank line.] The soft fork was released on September 7, 2010, and its `activation_height` was set to 79,400, which occurred just a week later.^[<https://bitcointalk.org/index.php?topic=999.msg12181>].
 
-Not only was Satoshi's decision to impose this limit a unilateral one, but he did it secretly. He probably found it safer to keep this change under wraps because he didn’t want to alert potential attackers to a gaping security hole, wherein massive blocks could have ground the network to a halt.^[Back in 2017, I ran an experiment where I took older versions of Bitcoin Core and measured how long it took them to catch up to the present-day blockchain. Modern nodes did this many times faster, thanks to various improvements over the years (see e.g. chapter @sec:assume). But more importantly, Bitcoin Core v0.5, released in 2012, was completely unable to keep up with the chain. It would just crash or grind to a halt for weeks. Without the block size limit introduced by Satoshi, anyone back in 2012 could’ve produced huge blocks that then would’ve overwhelmed the available node software: <https://sprovoost.nl/2017/07/22/historical-bitcoin-core-client-performance-c5f16e1f8ccb/>]
+Not only was Satoshi’s decision to impose this limit a unilateral one, but he did it secretly. He probably found it safer to keep this change under wraps because he didn’t want to alert potential attackers to a gaping security hole, wherein massive blocks could have ground the network to a halt.^[Back in 2017, I ran an experiment where I took older versions of Bitcoin Core and measured how long it took them to catch up to the present-day blockchain. Modern nodes did this many times faster, thanks to various improvements over the years (see e.g. chapter @sec:assume). But more importantly, Bitcoin Core v0.5, released in 2012, was completely unable to keep up with the chain. It would just crash or grind to a halt for weeks. Without the block size limit introduced by Satoshi, anyone back in 2012 could’ve produced huge blocks that then would’ve overwhelmed the available node software: <https://sprovoost.nl/2017/07/22/historical-bitcoin-core-client-performance-c5f16e1f8ccb/>]
 
 It’s not that nobody looked at the source code changes, because in the forum where Satoshi announced this new release, there was discussion of _another_ soft fork at that same height. In any case, nobody paid much attention to it until many years later, when this reduced limit became a practical issue in the form of increasing fees for scarce block space.
 
@@ -147,7 +147,7 @@ On the other hand, _if you run a node without this feature_, or for that matter,
 
 In any scenario where two alternative chains exist, it’s unsafe for users whose node follows one branch to transact with users whose node follows the other branch. In fact, it’s unsafe for _anyone_ to use the blockchain at that point. On the other hand, as long as the only chain in existence complies with mandatory signaling, there’s nothing to worry about. This might remind some readers of the game theory around mutual assured destruction (MAD).
 
-### To Argue a LOT
+### To Argue a `LOT`
 
 ![Ep. 29 {l0pt}](qr/ep/29.png)
 
@@ -217,7 +217,7 @@ Again translated to the RFC 7282 rough consensus process: Is it really enough to
 
 Finally, it’s worth pointing out that all the problems that `LOT=false` users are subjected to in world with `LOT=true` clients are also encountered by users who don’t upgrade at all. Avoiding mandatory upgrades is also something to consider.
 
-### LOT=true Client, Rogue?
+### `LOT=true` Client, Rogue?
 
 ![Ep. 36 {l0pt}](qr/ep/36.png)
 
@@ -249,7 +249,7 @@ Speedy Trial seemed to sufficiently address the objections to BIP 9. From the ob
 
 With the controversy (temporarily) out of the way, more developers came out of the woodwork and started writing code that could actually get Speedy Trial done.^[Mainly <https://github.com/bitcoin/bitcoin/pull/21377>, <https://github.com/bitcoin/bitcoin/pull/21686>, and a BIP 8-based alternative that was briefly considered: <https://github.com/bitcoin/bitcoin/pull/21392>] In turn, because there were more developers from different angles cooperating on it and getting things done a little bit more quickly, it demonstrated that Speedy Trial was a good idea. When you have some disagreement, then people start procrastinating, not reviewing things, or not writing things. But if people begin working on something quickly and it’s making progress, that’s a vague indicator that it was a good choice.
 
-### We Have Taproot LOCKED_IN!
+### We Have Taproot `LOCKED_IN`!
 
 ![Ep. 40 {l0pt}](qr/ep/40.png)
 
@@ -275,7 +275,7 @@ Even if it’s inherently unsafe, it could make sense to continue developing it 
 
 After all is said and done and a soft fork has activated, what do you do with the activation code? Is it merely a scaffold that can be removed once the new rules are active? Or is the activation mechanism itself a permanent part of the rules?
 
-As was done with previous soft forks, it looks like a future Bitcoin Core release will “bury” the Taproot activation. This means the node will treat the Taproot rules as if they've been active since Bitcoin’s very beginning. This is possible because, when applying these rules retroactively, only one historical block does not conform to them. This block can be grandfathered in.^[<https://github.com/bitcoin/bitcoin/pull/23536>]
+As was done with previous soft forks, it looks like a future Bitcoin Core release will “bury” the Taproot activation. This means the node will treat the Taproot rules as if they’ve been active since Bitcoin’s very beginning. This is possible because, when applying these rules retroactively, only one historical block does not conform to them. This block can be grandfathered in.^[<https://github.com/bitcoin/bitcoin/pull/23536>]
 
 In the episode we explain what the benefits are of burying a soft fork, in particular pointing out how it helps developers when they review the Bitcoin Core codebase or when they perform tests on it.
 
