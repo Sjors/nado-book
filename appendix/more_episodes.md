@@ -444,7 +444,10 @@ Whenever a new Bitcoin node comes online, it must first sync with the rest of th
 
 In the episode, we outline the performance improvements of Bitcoin Core clients over time, as analyzed most recently in two blog posts by Jameson. We first explain why some very old Bitcoin clients have trouble syncing to the current state of the blockchain at all, pointing out some bugs in this early software, as well as issues relating to dependencies and the challenge of using such old clients today (some of which we covered in chapter @sec:libsecp). We then go on to sum up some of the most important performance improvements that have been included in new Bitcoin Core releases over time.
 
-<!-- Add blank page to open on left side -->
+The figure on the next page shows the result of the analysis from 2017.^[<https://sprovoost.nl/2017/07/22/historical-bitcoin-core-client-performance-c5f16e1f8ccb/>]
+
 \newpage
-\null
+
+![IBD on EC2 (~474K blocks, t2.xlarge, 4 cores, 16 GiB, GP2 200 GiB SSD). We explained Assume Valid in chapter @sec:assume.](appendix/performance.svg)
+
 \newpage
