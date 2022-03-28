@@ -128,9 +128,9 @@ In this episode, we explain the “time-warp attack” on Bitcoin. A potential f
 
 ![Ep. 01 {l0pt}](qr/ep/01.png)
 
-In this episode, we break down and explain Partially Signed Bitcoin Transactions (PSBT) and Replace-By-Fee (RBF), along with some really tricky attacks that were discovered.^[<https://blog.trezor.io/latest-firmware-updates-correct-possible-segwit-transaction-vulnerability-266df0d2860> and ]
+In this episode, we break down and explain Partially Signed Bitcoin Transactions (PSBT) and Replace-By-Fee (RBF), along with some really tricky attacks that were discovered.^[PSBT Attack Vector <https://blog.trezor.io/latest-firmware-updates-correct-possible-segwit-transaction-vulnerability-266df0d2860> and RBF Attack Vector <https://zengo.com/bigspender-double-spend-vulnerability-in-bitcoin-wallets/>]
 
-PSBT is a data format that allows wallets and other tools to exchange information about a Bitcoin transaction and the signatures necessary to complete it.^[PSBT Attack Vector <https://bitcoinops.org/en/topics/psbt/> and RBF Attack Vector <https://zengo.com/bigspender-double-spend-vulnerability-in-bitcoin-wallets/>]
+PSBT is a data format that allows wallets and other tools to exchange information about a Bitcoin transaction and the signatures necessary to complete it.^[<https://bitcoinops.org/en/topics/psbt/>]
 
 #### Mining Pool Censorship
 
