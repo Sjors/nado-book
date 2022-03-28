@@ -122,7 +122,7 @@ To fix this bug, a new standard called bech32m was proposed.^[Bech32m spec (BIP 
 
 The new standard is only used for Taproot and future addresses. For SegWit, nothing changes, because it’s already protected by the 20- or 32-byte length constraint. At the time of writing, most wallet software supports the new bech32m standard.
 
-### How We Learned to Stop Worrying and Love Quantum
+### How I Learned to Stop Worrying and Love Quantum
 
 As an aside, Pay-to-Public-Key-Hash (P2PKH) was thought to be safer against quantum attacks, because you didn’t have to say which public key you had. The downside was that the hash consumed more block space — but this wasn’t an issue back then, because blocks were nowhere near full.
 
