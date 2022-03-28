@@ -132,6 +132,7 @@ In this episode, we break down and explain Partially Signed Bitcoin Transactions
 
 PSBT is a data format that allows wallets and other tools to exchange information about a Bitcoin transaction and the signatures necessary to complete it.^[<https://bitcoinops.org/en/topics/psbt/>]
 
+\newpage
 #### Mining Pool Censorship
 
 ![Ep. 37 {l0pt}](qr/ep/37.png)
