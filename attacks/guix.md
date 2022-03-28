@@ -1,5 +1,5 @@
 \newpage
-## Open Source Matters - Guix {#sec:guix}
+## Open Source Matters — Guix {#sec:guix}
 
 ![Ep. 21 {l0pt}](qr/ep/21.png)
 
@@ -143,7 +143,7 @@ So can we do better?
 
 The key is to make everything open source and everything a deterministic build. Every library, every printer driver, every compiler — everything. For Bitcoin Core to truly be a deterministic build, each of its dependencies needs to be a deterministic build, as does every tool that’s used to build it, including the compiler. Ideally the hardware is as well, but that’s a whole other can of worms.^[<https://media.ccc.de/v/36c3-10690-open_source_is_insufficient_to_solve_trust_problems_in_hardware>]
 
-This is where Guix^[<https://guix.gnu.org/>] enters the picture. This GNU project has been around for a decade, but a few years ago, Carl Dong^[<https://twitter.com/carl_dong>] from Chaincode Labs^[<https://chaincode.com/>] began work on replacing Gitian with Guix, which finally happened in Bitcoin Core version 22^[<https://bitcoin.org/en/releases/22.0/>]. This involved making changes on both the Bitcoin Core and the Guix side of things.
+This is where Guix^[<https://guix.gnu.org/>] enters the picture. This GNU project has been around for a decade, but a few years ago, Carl Dong^[<https://twitter.com/carl_dong>] from Chaincode Labs^[<https://chaincode.com/>] began work on replacing Gitian with Guix, which finally happened in Bitcoin Core version 22.^[<https://bitcoin.org/en/releases/22.0/>] This involved making changes on both the Bitcoin Core and the Guix side of things.
 
 The ambition of Guix is roughly as follows:^[See also Carl Dong’s presentation: <https://www.youtube.com/watch?v=I2iShmUTEl8>] You start with a few hundred bytes of actual machine code. That’s the binary code that you must trust.^[Even binary code can be seen as source code. It’s simply a series of instructions for the CPU. And this particular machine code is well documented: <https://git.savannah.nongnu.org/cgit/stage0.git/tree/README.org>] From there on, all it does is read source code and compile it. But how do you do that when there isn’t a compiler?
 
