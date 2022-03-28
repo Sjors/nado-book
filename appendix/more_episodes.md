@@ -65,7 +65,7 @@ In the episode, we explain how this would work and why this isn’t as simple as
 
 In this episode, we explain what Bitcoin Improvement Proposals (BIPs) are and how the BIP process works. We discuss why the BIP process is a useful yet non-binding convention within Bitcoin’s technical community.
 
-First, we explain what a BIP is exactly— and what it isn’t. We also explain that only improvements to Bitcoin software that affect other projects require a BIP. We then dive into the history of the BIP process a little bit, noting that the format was introduced by Libbitcoin developer Amir Taaki, and later updated by Bitcoin Knots maintainer Luke-Jr.
+First, we explain what a BIP is exactly— and what it isn’t. We also explain that only improvements to Bitcoin software that affect other projects require a BIP. We then dive into the history of the BIP process a little bit, noting that the format was introduced by Libbitcoin developer Amir Taaki, and later updated by Bitcoin Knots maintainer Luke Dashjr.
 
 Finally, we explain how the BIP process itself works — that is, how a proposal can be turned into a BIP and eventually be implemented in software. We also briefly explain how the BIP process could become corrupted and why that wouldn’t be a very big deal.
 
@@ -192,7 +192,7 @@ The episode opens with some general information about the Chivo Wallet, like why
 
 ![Ep. 06 {l0pt}](qr/ep/06.png)
 
-In this episode, we explain what payment pools are and why they need Taproot. We discuss the user experience of sharing UTXOs and how payment pools can work with Lightning.
+In this episode, we explain what payment pools are and why they need Taproot. We discuss the user experience of sharing UTXOs and how payment pools can work with the Lightning network.
 
 For more information, see Aaron’s article.^[<https://bitcoinmagazine.com/articles/building-on-taproot-payment-pools-could-be-bitcoins-next-layer-two-protocol>]
 
@@ -209,7 +209,7 @@ Aaron also wrote an article covering easypaysy for Bitcoin Magazine.^[<https://b
 \newpage
 ### Lightning
 
-One could write an entire book about lightning. And in fact, others have, see e.g. _Mastering the Lightning Network: A Second Layer Blockchain Protocol for Instant Bitcoin Payments_ by Andreas M. Antonopoulos and Olaoluwa Osuntokun (aka Roasbeef).^[<https://www.oreilly.com/library/view/mastering-the-lightning/9781492054856/>]
+One could write an entire book about the Lightning network. And in fact, others have, see e.g. _Mastering the Lightning Network: A Second Layer Blockchain Protocol for Instant Bitcoin Payments_ by Andreas M. Antonopoulos and Olaoluwa Osuntokun (aka Roasbeef).^[<https://www.oreilly.com/library/view/mastering-the-lightning/9781492054856/>]
 
 This book doesn’t cover Lightning, but several _Bitcoin, Explained_ episodes did.
 
@@ -217,7 +217,7 @@ This book doesn’t cover Lightning, but several _Bitcoin, Explained_ episodes d
 
 ![Ep. 22 {l0pt}](qr/ep/22.png)
 
-We discuss the basics of the Lightning network, Bitcoin’s Layer Two protocol for cheaper, faster, and potentially more private transactions. We explain that the Lightning network works as a scaling layer because it lets users make off-chain transactions through bidirectional payment channels: Two users can pay one another an arbitrary number of times without these transactions being recorded on the blockchain. We went on to explain how, in the Lightning protocol, these off-chain transactions are secure — that is, how each of the participants is at any point guaranteed to claim their respective funds from the payment channel.
+We discuss the basics of the Lightning network, Bitcoin’s Layer 2 protocol for cheaper, faster, and potentially more private transactions. We explain that the Lightning network works as a scaling layer because it lets users make off-chain transactions through bidirectional payment channels: Two users can pay one another an arbitrary number of times without these transactions being recorded on the blockchain. We went on to explain how, in the Lightning protocol, these off-chain transactions are secure — that is, how each of the participants is at any point guaranteed to claim their respective funds from the payment channel.
 
 Then we explain how bidirectional payment channels can be linked across a network of users to extend the potential of off-chain transactions so any Lightning user can pay any other Lightning user, even if they haven’t set up a payment channel between the two of them specifically.
 
@@ -266,13 +266,13 @@ We covered this topic twice, so there are two episodes to choose from. In episod
 
 ![Ep. 35 {l0pt}](qr/ep/35.png)
 
-First, we discuss `SIGHASH_ANYPREVOUT`, a proposed new sighash flag that would enable a cleaner version of the Lightning network and other Layer Two protocols. Sighash flags are included in Bitcoin transactions to indicate which part of the transaction is signed by the required private keys.
+First, we discuss `SIGHASH_ANYPREVOUT`, a proposed new sighash flag that would enable a cleaner version of the Lightning network and other Layer 2 protocols. Sighash flags are included in Bitcoin transactions to indicate which part of the transaction is signed by the required private keys.
 
 This can be (almost) the entire transaction or specific parts of it. Signing only specific parts allows for some flexibility to adjust the transaction even after it’s signed, which can sometimes be useful. We explain that `SIGHASH_ANYPREVOUT` is a new type of sighash flag that would sign most of the transaction, but not the inputs. This means that the inputs could be swapped, as long as the new inputs would still be compatible with the signature.
 
 ![Ep. 48 {l0pt}](qr/ep/48.png)
 
-`SIGHASH_ANYPREVOUT` would be especially useful in context of Eltoo, a proposed Layer Two protocol that would enable a new version of the Lightning network. Where Lightning users currently need to store old channel data for security reasons and could also be punished severely if they accidentally broadcast some of this data at the wrong time, we discuss how `SIGHASH_ANYPREVOUT` would do away with this requirement.
+`SIGHASH_ANYPREVOUT` would be especially useful in context of Eltoo, a proposed Layer 2 protocol that would enable a new version of the Lightning network. Where Lightning users currently need to store old channel data for security reasons and could also be punished severely if they accidentally broadcast some of this data at the wrong time, we discuss how `SIGHASH_ANYPREVOUT` would do away with this requirement.
 
 #### Bolt 12 — Recurring Payments, Etc.
 
@@ -362,7 +362,7 @@ We explain how this works exactly, and we discuss some of Powpeg’s security tr
 
 ![Ep. 33 {l0pt}](qr/ep/33.png)
 
-We’re joined by Ruben Somsen to discuss RGB tokens, a Layer Two protocol for Bitcoin to support alternative currency and token schemes (like the currently popular non-fungible tokens, or NFTs).
+We’re joined by Ruben Somsen to discuss RGB tokens, a Layer 2 protocol for Bitcoin to support alternative currency and token schemes (like the currently popular non-fungible tokens, or NFTs).
 
 We explain that the Bitcoin blockchain has been (ab)used by users to host data since the project’s early days. This was initially done through otherwise-useless transaction outputs, which meant that all Bitcoin users had to store this data locally. A feature called `OP_RETURN` later limited this burden. We also explain that people have been using the Bitcoin blockchain to host alternative currency and token schemes for a long time.
 
@@ -393,7 +393,7 @@ ots verify appendix/commit.ots
 
 ![Ep. 53 {l0pt}](qr/ep/53.png)
 
-In this episode, we’re again joined by resident sidechain and Layer Two expert Ruben Somsen, this time to discuss Discreet Log Contracts (DLCs).
+In this episode, we’re again joined by resident sidechain and Layer 2 expert Ruben Somsen, this time to discuss Discreet Log Contracts (DLCs).
 
 Discreet Log Contracts are a type of smart contracts for Bitcoin, first proposed by Lightning network white paper coauthor Tadge Dryja.^[<https://adiabat.github.io/dlc.pdf>] In essence, DLCs are a way to perform bets — but this means they can ultimately be leveraged for all sorts of financial instruments, including futures markets, insurances, and stablecoins.
 

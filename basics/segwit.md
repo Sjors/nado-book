@@ -19,7 +19,7 @@ When you broadcast a transaction, it goes from your node to another, and onwards
 
 So you may ask yourself, “Why is this a problem?” It’s not necessarily a problem in this scenario, but imagine you sent a transaction (A) to a super secure vault in the Arctic located thousands of meters underground. And then you went to the Arctic and created a redeem transaction (B) back to your hot wallet, and you signed it, but you didn’t yet broadcast it. Then, once you broadcast the first transaction (A) to send some money to the vault and somebody messes with it, suddenly the second transaction (B) is no longer valid, since it refers to the unaltered one (A). Now you have to go back to the Arctic to create a new transaction (B) that refers to the altered version (A) — a scenario that’s complicated at best.^[This example may seem contrived, but vault designs have to take malleability into account. <https://bitcoinops.org/en/topics/vaults/>]
 
-Another, perhaps more down to earth, example of how this becomes a problem is with Lightning,^[The book doesn’t cover Lightning, but see appendix @sec:more_eps.] which is where you’re building unconfirmed transactions on top of each other. So if one of the underlying transactions is tweaked, the transactions that follow up on that one are no longer valid.
+Another, perhaps more down to earth, example of how this becomes a problem is with the Lightning network,^[The book doesn’t cover Lightning, but see appendix @sec:more_eps.] which is where you’re building unconfirmed transactions on top of each other. So if one of the underlying transactions is tweaked, the transactions that follow up on that one are no longer valid.
 
 In the Lightning protocol two people send money to a shared address, and the only way to get money out of that address is by using a special transaction that both parties signed _before_ they sent money into the shared address. You don’t want somebody messing with the transaction that goes into the address, because then you can’t spend from it anymore — or rather, you can, but you both have to sign it again. That potentially gives one party the power to blackmail the other to get their fair share of the coins back.
 
@@ -37,7 +37,7 @@ The solution was to append the signature to the end of a transaction. This new t
 To be more precise: The `scriptSig` is empty, where before it would’ve put a public key and signature on the stack. In turn, the `scriptPubKey` is a `0` followed by a public key hash. To old nodes, this combination results in a non-zero item on the stack, i.e. `True`, which is a valid spend. On the other hand, SegWit-enabled nodes will interpret the `scriptPubKey` as a SegWit v0 program and use the new `witness` field when evaluating. See <https://en.bitcoin.it/wiki/BIP_0141>
 ] Because the new signature part isn’t included in the transaction hash, its identifier doesn’t change when the signature changes. Both new nodes, which have the signature, and old nodes which don’t, can calculate the transaction ID and it’s identical for both.
 
-In short, SegWit solved the transaction malleability issue, where transaction IDs could be altered without invalidating the transactions themselves. In turn, solving the transaction malleability issue enabled second-layer protocols like the Lightning Network.
+In short, SegWit solved the transaction malleability issue, where transaction IDs could be altered without invalidating the transactions themselves. In turn, solving the transaction malleability issue enabled second-layer protocols like the Lightning network.
 
 ### SegWit as a Soft Fork
 
@@ -89,7 +89,7 @@ Note that nothing is stopping your computer from crafting a fake transaction wit
 
 ### Recap
 
-The main benefit of SegWit is that it fixes malleability, which enables things like Lightning, resulting in a pretty big increase in potential transaction throughput.
+The main benefit of SegWit is that it fixes malleability, which enables things like the Lightning network, resulting in a pretty big increase in potential transaction throughput.
 
 The second benefit is an increase in block size, even though this is dwarfed by the capacity increase Lightning could achieve. The third is versioning, which makes it easier to deploy future upgrades. And the fourth is improved hardware wallet support.
 

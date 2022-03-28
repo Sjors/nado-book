@@ -8,7 +8,7 @@ In chapter @sec:address, we explain how a Bitcoin address isn’t something that
 
 In chapter @sec:dns, we explain how, the very first time your Bitcoin node starts up, it finds peers to communicate with. You’ll also get a primer on Tor.
 
-Chapter @sec:segwit explains the 2017 SegWit soft fork and talks about how it increased the block size and paved the way toward Lightning by solving transaction malleability.
+Chapter @sec:segwit explains the 2017 SegWit soft fork and talks about how it increased the block size and paved the way toward the Lightning network by solving transaction malleability.
 
 Finally, chapter @sec:libsecp explains what libraries are, how they cause problems, and what happened with OpenSSL in particular.
 
