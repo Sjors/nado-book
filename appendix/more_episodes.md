@@ -159,7 +159,7 @@ Hardware wallets are a popular solution for storing private keys offline to mini
 
 ![Ep. 43 {l0pt}](qr/ep/43.png)
 
-Co-host Aaron is joined by Blockstream’s Lawrence Nahum, one of the developers of the Jade hardware wallet, and Ben Kaufman, one of the developers of Spectre Desktop - a software tool for hardware wallets.
+Co-host Aaron is joined by Blockstream’s Lawrence Nahum, one of the developers of the Jade hardware wallet, and Ben Kaufman, one of the developers of Spectre Desktop — a software tool for hardware wallets.
 
 They talk about what hardware wallets are and discuss the design tradeoffs that different hardware wallets have taken by focusing on the Trezor, Ledger, and Coldcard devices specifically. In this light, Lawrence and Ben explain what secure elements and secure chips are and why some hardware wallets choose to rely on using such chips more than others.
 
@@ -379,7 +379,7 @@ Around the time the episode was recorded, Peter offered an interesting showcase 
 
 We also discuss some of the other possibilities that a time-stamping system like OpenTimestamps offers, as well as its limitations. Finally, Aaron provides a little bit of context for the history of cryptographic time stamping, which was itself referenced in the Bitcoin white paper.
 
-I timestamped the source code for this book^[<https://github.com/Sjors/nado-book>], so you can verify that a draft version existed as early as March 2022.
+We timestamped the source code for this book,^[<https://github.com/Sjors/nado-book>] so you can verify that a draft version existed as early as March 2022:
 
 ```
 c=86a7cd200acb1812b6b2f8be27c8380ea44c9470
@@ -414,7 +414,7 @@ In this episode, we discuss Bitcoin Core 0.21.0, the 21st major release of the B
 
 Guided by the Bitcoin Core 0.21.0 release notes, we discuss this release’s most important changes. These include the new mempool policy for rebroadcasting transactions, Tor v3 support, peer anchors for when the node restarts, BIP 157 (Neutrino) for light clients, the new testnet called Signet, BIP 339 (wtxid relay), Taproot code, RPC changes including a new send RPC, ZeroMQ, descriptor wallets, the new SQLite database system, and the satoshi-per-byte fee denomination.
 
-For each of the new features, we discuss what the features are, how they’ll change using Bitcoin (Core) and — where applicable — what the end goal is. (In Bitcoin Core development, new features are often part of a bigger process.) For any feature we discussed on a previous episode of _Bitcoin, Explained_, we also mention the relevant episode number.
+For each of the new features, we discuss what the features are, how they’ll change using Bitcoin (Core), and — where applicable — what the end goal is. (In Bitcoin Core development, new features are often part of a bigger process.) For any feature we discussed on a previous episode of _Bitcoin, Explained_, we also mention the relevant episode number.
 
 \newpage
 #### Bitcoin Core v22.0
