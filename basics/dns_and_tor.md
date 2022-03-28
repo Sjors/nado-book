@@ -10,7 +10,7 @@ Bitcoin Core 0.21 added support for Tor V3 addresses in 2020.^[<https://github.c
 
 ### How Does Tor Work?
 
-When you see a Tor address,^[e.g. <https://bitcoincore.org> can also be reached using a Tor browser at <http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion/>] it looks quite weird. That's because it’s not a human readable name like a domain, but rather a public key that refers to a hidden service somewhere on the internet. The way you communicate to that hidden service isn’t directly — because you don’t know its IP address — but rather indirectly, through the Tor network.
+When you see a Tor address,^[e.g. <https://bitcoincore.org> can also be reached using a Tor browser at <http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion/>] it looks quite weird. That’s because it’s not a human readable name like a domain, but rather a public key that refers to a hidden service somewhere on the internet. The way you communicate to that hidden service isn’t directly — because you don’t know its IP address — but rather indirectly, through the Tor network.
 
 Tor (short for The Onion Router) is an onion network, in which messages are passed around the network through multiple hops (or servers), with each hop peeling off one encrypted layer, like an onion. The last hop sends a message to the final destination, which peels off the final encryption layer that reveals the actual message. This makes it easy to maintain anonymity and security.
 
@@ -24,7 +24,7 @@ To support this, all of these Tor nodes have their own sort of IP address — th
 
 For various reasons you might not want the rest of the world to know that your IP address is running a Bitcoin node. In particular, you may not want your Bitcoin addresses associated with your IP address, since the former says how much money you have, and the latter can often be tied directly to your name and address — not just by governments, but also by someone with access to e.g. a hacked e-commerce database with the IP addresses and home addresses of its customers. This can lead to bad outcomes.^[<https://github.com/jlopp/physical-bitcoin-attacks>]
 
-Bitcoin nodes already try to behave in ways that make them look indistinguishable from other nodes. Ideally, a node doesn’t reveal to other nodes which coins it controls. A node downloads the entire blockchain and keeps track of all transactions in the mempool^[The mempool is a queue of transactions that have not yet been confirmed in a block. For a _Bitcoin, Explained_ episode about the mempool, see appendix @sec:more_eps. When the mempool contains many transactions, fees tend to go up. See e.g. <https://mempool.space/>], as opposed to only fetching the information about its own coins.
+Bitcoin nodes already try to behave in ways that make them look indistinguishable from other nodes. Ideally, a node doesn’t reveal to other nodes which coins it controls. A node downloads the entire blockchain and keeps track of all transactions in the mempool,^[The mempool is a queue of transactions that have not yet been confirmed in a block. For a _Bitcoin, Explained_ episode about the mempool, see appendix @sec:more_eps. When the mempool contains many transactions, fees tend to go up. See e.g. <https://mempool.space/>] as opposed to only fetching the information about its own coins.
 
 Unfortunately the system isn’t perfect. Especially when you’re sending and receiving transactions from your IP address, careful network analysis by an adversary can sometimes reveal where those transactions originated. This type of analysis is a billion-dollar business, where companies don’t always behave ethically.^[<https://www.coindesk.com/business/2021/09/21/leaked-slides-show-how-chainalysis-flags-crypto-suspects-for-cops/>, <https://www.coindesk.com/markets/2019/03/05/coinbase-pushes-out-ex-hacking-team-employees-following-uproar/>]
 
@@ -40,7 +40,7 @@ IPv6 addresses were formalized in 1998 with the intention of replacing IPv4, bec
 
 Bitcoin nodes keep lists of other Bitcoin nodes and their IP addresses, both IPv4 and IPv6. Now the way they communicate a Tor address is to piggyback on IPv6. If an “address” starts with fd87::d87e::eb43, then Bitcoin Core knows that what follows should be interpreted as a Tor address. RFC-4193 ensures that such addresses won’t clash with any computer in the real world.^[<https://datatracker.ietf.org/doc/html/rfc4193>]
 
-The problem with Tor V3 addresses is they’re 32 bytes, which is twice as long as an IPv6 address. That doesn't fit in the RFC-4193 piggyback mechanism, so nodes had no way to communicate those addresses.
+The problem with Tor V3 addresses is they’re 32 bytes, which is twice as long as an IPv6 address. That doesn’t fit in the RFC-4193 piggyback mechanism, so nodes had no way to communicate those addresses.
 
 Fortunately in 2019, Wladimir van der Laan wrote a new standard — BIP155 — for how to communicate addresses.^[<https://github.com/bitcoin/bips/blob/master/bip-0155.mediawiki#Specification>] It introduces the new ADDRv2 message, which nodes can use to gossip those new Tor addresses (among other things). A major improvement is that each message specifies the type of address along with the address itself. This removes the need to piggyback. There are various address types, including the new Tor one, and each address type can have a different length. So, in the future, if a new address format comes along, it’s not going to be a problem.^[For example, I2P (Invisible Internet Project, an alternative to Tor) support was added in 2021: <https://github.com/bitcoin/bitcoin/blob/7740ebcb023089d03cd2373da16305a4e501cfad/doc/i2p.md>]
 
@@ -66,9 +66,9 @@ Bitcoin kind of abuses this system, because Bitcoin nodes aren’t websites. The
 
 A DNS seed is just a simple crawler.^[<https://github.com/sipa/bitcoin-seeder>] It calls a random Bitcoin node, asks it for all the nodes it knows, keeps a list, goes through the list, and pings them all. Then, once it’s done pinging them all, it’s just going to ping them all again.
 
-This means that the standard infrastructure of the internet — including all the ISPs in the world — is caching a huge list of Bitcoin nodes that you can connect to, because it thinks they're just websites. It also allows Bitcoin to piggyback on any protections against censorship built into DNS.^[Matt Corallo tried to take things even further by publishing block headers via DNS: <https://github.com/bitcoin/bitcoin/pull/16834>]
+This means that the standard infrastructure of the internet — including all the ISPs in the world — is caching a huge list of Bitcoin nodes that you can connect to, because it thinks they’re just websites. It also allows Bitcoin to piggyback on any protections against censorship built into DNS.^[Matt Corallo tried to take things even further by publishing block headers via DNS: <https://github.com/bitcoin/bitcoin/pull/16834>]
 
-###  So We Trust These Developers?
+### So We Trust These Developers?
 
 What if one of the DNS seed operators were to lie and provide a list of fake or somehow malicious nodes? Perhaps as part of an elaborate eclipse attack (see chapter @sec:eclipse). Nothing would stop them, but it would be very visible. Anyone can request IP addresses from the DNS seed and then check if they actually lead to Bitcoin nodes or not, and if these nodes are behaving in suspicious ways. This visibility discourages cheating.
 
@@ -80,4 +80,4 @@ Both DNS seeds and the baked-in fallback addresses are, ideally, only used once 
 
 Whenever a node connects to you for the first time, one of the first things it asks is: “Who else do you know?” Your node can even send IP addresses to its peers unsolicited. In particular, it announces its own IP address to them. As your IP addresses is gossiped further around the network, you start getting inbound connections.
 
-And with that, you node is up and running!
+And with that, your node is up and running!
