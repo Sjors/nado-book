@@ -15,7 +15,7 @@ Soft forks, if you recall, are changes to the protocol that are backward compati
 
 In addition to introducing new features, a soft fork can be used to get rid of bugs and potential vulnerabilities — at least, some of them. The way this is done is by making the rules stricter, but without suddenly freezing anybody’s coins.
 
-A simple example of such stricter rules is BIP 66,^[<https://en.bitcoin.it/wiki/BIP_0066>] which mandated that any new signatures had to conform to a strict standard, whereas there was previously some (unintended) flexibility in how to encode signatures.
+A simple example of such stricter rules is BIP 66,^[<https://en.bitcoin.it/wiki/BIP_0066>] which mandated that any new signatures had to conform to a strict standard, whereas there was previously some (unintended) flexibility in how to encode signatures.^[<https://technicaldifficulties.io/2020/07/22/bip-66-unpacking-der-signatures/>]
 
 It may seem paradoxical that strict rules allow for _more_ features, but in chapter @sec:segwit, under the future SegWit versions section, we explained why this works. In this chapter, we’re less concerned with how soft forks work, and instead we focus on how they’re activated.
 
