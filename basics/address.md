@@ -111,7 +111,7 @@ In the case of bech32, instead of a two-dimensional wall, you have to somehow im
 
 ### But… There’s a Problem
 
-In 2019 it was discovered that, if a bech32 address ends with a P, then you can add an arbitrary number of Qs to it, and it still will match the checksum, and you won’t be told there’s a typo. In turn, your software would think it’s correct, you’d be sending money to the wrong address, and it would be unspendable, as we explained above.
+In 2019 it was discovered that, if a bech32 address ends with a P, then if you accidentally add one or more Qs to it, it still will match the checksum, and you won’t be told there’s a typo. In turn, your software would think it’s correct, you’d be sending money to the wrong address, and it would be unspendable, as we explained above.
 
 The good news is that bech32 was only used for SegWit, and SegWit addresses were constrained — they had to be either 20 bytes or 32 bytes. So luckily, if you add another Q to a 20- or 32-byte address, then its length would be invalid. Your wallet would detect this and refuse to send coins. A similar size constraint was considered for Taproot, but thanks to the solution below, it wasn’t needed. A flexible length makes future improvements to Taproot easier.
 
