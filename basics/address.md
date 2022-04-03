@@ -87,7 +87,7 @@ The first part is intentionally human readable, e.g. “bc” (Bitcoin) or “ln
 
 The 1 is just a separator with no value. And if you look at the 32 numbers, 1 isn’t included — it means “skip this.”
 
-The second part starts with the SegWit version number. Version zero is represented with Q (bc1q…) — see chapter @sec:segwit. Version 1 is what we call Taproot (see part @sec:taproot), as it’s represented with “P” (bc1p…). For version 0 SegWit, the version number is followed by either 20 bytes or 32 bytes, which means it’s either the public key hash or the script hash, respectively. And they’re different lengths now, because SegWit uses the SHA-256 hash (32 bytes) of the script, rather than the RIPEMD160 hash (20 bytes) of the script.
+The second part starts with the SegWit version number. Version 0 is represented with Q (bc1q…) — see chapter @sec:segwit. Version 1 is what we call Taproot (see part @sec:taproot), as it’s represented with “P” (bc1p…). For version 0 SegWit, the version number is followed by either 20 bytes or 32 bytes, which means it’s either the public key hash or the script hash, respectively. And they’re different lengths now, because SegWit uses the SHA-256 hash (32 bytes) of the script, rather than the RIPEMD160 hash (20 bytes) of the script.
 
 In base58, the script hash is the same length as the public key hash. But in SegWit, they’re not the same length. So by looking at how long the address is, you immediately know whether you’re paying to a script or you’re paying to a public key hash. As an aside, Taproot removes this length distinction, thereby slightly improving privacy.
 
