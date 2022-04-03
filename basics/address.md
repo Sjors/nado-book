@@ -128,8 +128,11 @@ As an aside, Pay-to-Public-Key-Hash (P2PKH) was thought to be safer against quan
 
 Many people are worried that quantum computers will eventually break the security offered by Bitcoin’s cryptography, allowing future quantum hackers to steal coins, potentially crashing the market if they steal millions.
 
-The problem is that, despite widespread P2PKH use, there’s 5 to 10 million BTC out there for which the public key is already known.^[<https://twitter.com/pwuille/status/1108085284862713856>] The irony is that because so much BTC is already vulnerable to quantum theft, there’s no use trying to protect the rest. Even if your coins won’t be stolen, they’ll be worthless from the price crash.
+The problem is that, despite widespread P2PKH use, there’s 5 to 10 million BTC out there for which the public key is already known. The irony is that because so much BTC is already vulnerable to quantum theft, there’s no use trying to protect the rest. Even if your coins won’t be stolen, they’ll be worthless from the price crash.
 
 The (un)likeliness of such quantum troubles in the near future, as well as possible countermeasures, is explained in two _What Bitcoin Did_ podcast episodes — with physicist Stepan Snigirev^[<https://www.whatbitcoindid.com/podcast/the-quantum-threat-to-bitcoin-with-quantum-physicist-dr-stepan-snigirev>] and mathematician Andrew Poelstra.^[<https://www.whatbitcoindid.com/podcast/andrew-poelstra-on-schnorr-taproot-graft-root-coming-to-bitcoin>]
 
-Block space is much scarcer now, so not having to put public key hashes on precious block space would save users fees. This is why in the new Taproot soft fork (see part @sec:taproot), Bitcoin addresses are P2PK again.^[Full rationale in BIP 341: <https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki#cite_note-2>] Note that the use of Taproot addresses isn’t mandatory, so if you don’t agree with the above reasoning, you can simply choose to not use Taproot.
+Block space is much scarcer now, so not having to put public key hashes on precious block space would save users fees. This is why in the new Taproot soft fork (see part @sec:taproot), Bitcoin addresses are P2PK again.[^rationale][^tweet] Note that the use of Taproot addresses isn’t mandatory, so if you don’t agree with the above reasoning, you can simply choose to not use Taproot.
+
+[^rationale]: Full rationale in BIP 341: <https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki#cite_note-2>
+[^tweet]: <https://twitter.com/pwuille/status/1409560741489778688>

@@ -197,7 +197,7 @@ https://technicaldifficulties.io/2020/07/22/bip-66-unpacking-der-signatures/
 https://tools.ietf.org/id/draft-msporny-base58-01.html
 https://twitter.com/_jonasschnelli_/status/1333303029370675201
 https://twitter.com/carl_dong
-https://twitter.com/pwuille/status/1108085284862713856
+https://twitter.com/pwuille/status/1409560741489778688
 https://txstats.com/dashboard/db/utxo-set-repartition-by-output-type
 https://ubuntu.com/download/server
 https://whale-alert.medium.com/the-satoshi-fortune-e49cf73f9a9b
