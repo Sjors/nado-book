@@ -61,6 +61,8 @@ for file in taproot/*.dot; do
 done
 
 # Generate document
+# The short-title-for-toc filter ensures that the page
+# header of appendix C fits on one line. 
 pandoc --table-of-contents --top-level-division=part\
         --strip-comments\
         --filter pandoc-secnos\
