@@ -31,6 +31,9 @@ $endfor$
 % Load early to prevent option clash
 \usepackage[fleqn]{amsmath}
 \usepackage{mathtools}
+% Start Part on right page
+\let\oldpart\part
+\def\part{\cleardoublepage\oldpart}
 $if(beamer)$
 $if(background-image)$
 \usebackgroundtemplate{%
