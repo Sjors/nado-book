@@ -27,29 +27,24 @@ if [ "$SKIP_QR" -eq "0" ]; then
 
     # Process footnote QR codes:
     # Collect URL's:
-    find **/*.md -print0 | xargs -0 perl -ne 'print "$1\n" while /<(http.*?)>/g' | sort | uniq > qr/note/urls.txt
-    if ! git diff --quiet qr/note/urls.txt; then
+    find **/*.md -print0 | xargs -0 perl -ne 'print "$1\n" while /<(http.*?)>/g' | sort | uniq > qr/note/urls.csv
+    if ! git diff --quiet qr/note/urls.csv; then
         echo "Please update bit.ly links for URLs:"
-        git diff qr/note/urls.txt
+        git diff qr/note/urls.csv
         exit 1
     fi
 
-    if ! [ "$(wc -l < qr/note/urls.txt)" -eq "$(wc -l < qr/note/shorts.txt)" ]; then
-        echo "shorts.txt should have the same number of entries as urls.txt"
+    if ! [ "$(wc -l < qr/note/urls.csv)" -eq "$(wc -l < qr/note/shorts.txt)" ]; then
+        echo "shorts.txt should have the same number of entries as urls.csv"
         exit 1
     fi
 
-    count=`wc -l < qr/note/urls.txt`
+    count=`wc -l < qr/note/urls.csv`
     echo -n "" > qr/sed
     for i in $(seq $count); do
-        url=`sed -n ${i}p qr/note/urls.txt`
+        url=`sed -n ${i}p qr/note/urls.csv`
         short_url=`sed -n ${i}p qr/note/shorts.txt`
-        # Skip URL's that haven't been shortened
-        # Some domains are so short, they don't need shortening (unless we deep link to them)
-        if echo $short_url | grep -q 'bit.ly\|nus.edu\|amzn.to\|gitian.org\|yhoo.it'; then
-            # Add to processed markdown (might be macOS specific):
-            echo "s*<$url>*<$url> \\\qrcode[height=0.45cm,level=M]{$short_url}*g;" >> qr/sed
-        fi
+        echo "s*<$url>*<$url> \\\qrcode[height=0.45cm,level=M]{$short_url}*g;" >> qr/sed
     done
     find **/*.processed.md -exec sed -i '' -f qr/sed {} \;
 
@@ -62,7 +57,7 @@ done
 
 # Generate document
 # The short-title-for-toc filter ensures that the page
-# header of appendix C fits on one line. 
+# header of appendix C fits on one line.
 pandoc --table-of-contents --top-level-division=part\
         --strip-comments\
         --filter pandoc-secnos\
