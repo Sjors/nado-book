@@ -29,7 +29,7 @@ Although the term didn’t yet exist in the early days, there were many soft for
 
 The earliest soft forks mostly used a block height as their method of activation — in other words, “as of this future block, the new rule shall apply.” Ideally this is announced well in advance, giving people plenty of time to upgrade. For a “secret” soft fork, developers might simply insist that people upgrade and then explain the reason afterward.
 
-![Informal diagram of a flag height-activated soft fork](taproot/flag.svg){ width=50% }
+![Informal diagram of a flag height-activated soft fork](taproot/flag-temp.svg){ width=50% }
 
 <!-- Manually adjust width to font size roughly matches-->
 
@@ -71,7 +71,7 @@ So if a flag day or block height isn’t the best way to activate soft forks, ho
 
 The mechanism was improved and further formalized in BIP 9.^[<https://en.bitcoin.it/wiki/BIP_0009>] As part of the signaling mechanism embedded in the code, there’s a starting date (`starttime`) when miners begin signaling, and a deadline (`timeout`) at which point they give up if the `threshold` wasn’t reached. Tallying happens in rounds of 2,016 blocks, or about two weeks. If the threshold is reached in any round that ends before `timeout`, the new rules are active. This is easy for every node in the network to verify.
 
- ![BIP 9 flow](taproot/bip9.svg){ width=80% }
+ ![BIP 9 flow](taproot/bip9-temp.svg){ width=80% }
 
 The significance of 2,016 is that it’s the number of blocks in a single difficulty adjustment period, or retarget period.^[<https://en.bitcoin.it/wiki/Difficulty>] In the diagram above, each arrow represents one signaling period. The looping arrows indicate when the state stays the same — for example, when a soft fork is `DEFINED` (meaning the node knows about it, but there’s no signaling yet), it’ll stay that way if the MTP^[MTP stands for Median Time Past, and it refers to the middle block of the last 11 blocks. This is a mechanism used to discourage miners from gaming the timestamp in each block.] is still below `starttime`. When it’s at or after `starttime`, the state jumps to `STARTED`. It stays there pending signaling. For each period — say every two weeks — we check if enough blocks are signaling. If so, we move to the next phase, which is `LOCKED_IN`. If not, and if `timeout` is reached, we move to `FAILED`. `LOCKED_IN` is a grace period where the new rules don’t yet apply, but after two weeks, the soft fork is `ACTIVE` and the rules do apply.
 
@@ -127,7 +127,7 @@ Inspired by UASF, as well seeing the need to clean up BIP 9, BIP 8^[<https://en.
 
 The downside of using a block height is that you can’t predict on which date the `timeout` is going to happen, because it depends on how fast blocks are produced.^[This is mainly a problem for developers who use the testnet to test e.g. wallet software ahead of the real activation. On the testnet, blocks don’t arrive in semi-regular 10-minute intervals, but can instead arrive in huge numbers. This makes it impossible to pick reasonable activation heights. For a more thorough explanation and solution, see appendix @sec:more_eps for the episode about Signet.]
 
-![BIP 8 flow](taproot/bip8.svg)
+![BIP 8 flow](taproot/bip8-temp.svg)
 
 So far, BIP 8 would just be a nice drop-in replacement for BIP 9. But where it really differentiates itself is in the UASF-style flag date for forced signaling. This is indicated by the `MUST_SIGNAL` phase in the diagram, which otherwise doesn’t differ much from what you saw above with BIP 9.
 
@@ -187,7 +187,7 @@ So far, you might think this is merely annoying. But now let’s put some money 
 
 Let’s say somebody who runs a node with `LOT=false` sends you 1 BTC. So in this scenario, they’re on a branch that’s growing 10 times faster than the branch your node is seeing. Let’s also say their blocks aren’t completely full, so the sender uses a low fee rate. The transaction confirms quickly in their branch. But you’re on this shorter, slower-moving branch, and all those transactions have to be squeezed into fewer blocks. Those blocks are completely full. In your branch, the transaction doesn’t confirm. It’s just sitting there in the mempool.
 
-![In this example, blocks on the fast moving side of the chain split require a fee of at least 1 satoshi per vbyte.^[<https://bitcoin.stackexchange.com/a/89418/4948>] Due to congestion on the slower moving side, its minimum fee rate is 50 sat/vbyte. A transaction paying 3 sat/vbyte only confirms on one side of the split.](taproot/split.svg)
+![In this example, blocks on the fast moving side of the chain split require a fee of at least 1 satoshi per vbyte.^[<https://bitcoin.stackexchange.com/a/89418/4948>] Due to congestion on the slower moving side, its minimum fee rate is 50 sat/vbyte. A transaction paying 3 sat/vbyte only confirms on one side of the split.](taproot/split-temp.svg)
 
 That’s actually a relatively benevolent scenario. You’ve learned that you shouldn’t accept unconfirmed transactions. You’ll have a disagreement with your counterparty, you’ll say, “It hasn’t confirmed,” and they’ll say, “It has confirmed.” Assuming you’re aware of this chain split, you might realize what’s going on.
 
@@ -233,7 +233,7 @@ To get out of this stalemate, Speedy Trial came to the rescue. It proposed^[<htt
 
 Spoiler: As we mentioned at the beginning of the chapter, Taproot indeed activated on November 13, 2021.
 
-![Speedy trial flow.](taproot/speedy_trial.svg)
+![Speedy trial flow.](taproot/speedy_trial-temp.svg)
 
 The diagram above is quite simple to understand. Compared to BIP 9 above, it only introduces one new concept: a minimum activation height. This adds a delay in the transition from `LOCKED_IN` to `ACTIVE`.
 
