@@ -65,11 +65,12 @@ done
 # Generate document
 # The short-title-for-toc filter ensures that the page
 # header of appendix C fits on one line.
+# short-title-for-toc must be run before secnos.
 pandoc --table-of-contents --top-level-division=part\
         --strip-comments\
+        --filter filters/short-title-for-toc.py\
         --filter pandoc-secnos\
         --filter filters/wrapfig.py\
-        --filter filters/short-title-for-toc.py\
         --lua-filter filters/center.lua\
         $EXTRA_OPTIONS\
         $HEADER_INCLUDES\

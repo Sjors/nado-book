@@ -1,5 +1,5 @@
 \newpage
-## libsecp256k1 (Software Libraries) {short="libsecp256k1" #sec:libsecp}
+## libsecp256k1 (Software Libraries) {short="libsecp256k1" link="sec:libsecp"}
 
 
 ![Ep. 09 {l0pt}](qr/ep/09.png)
