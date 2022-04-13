@@ -53,6 +53,8 @@ fi
 # Process figures:
 for file in taproot/*.dot; do
     dot -Tsvg $file > ${file%.dot}.svg
+    # https://gitlab.com/graphviz/graphviz/-/issues/1863
+    sed -i '' 's/transparent/none/' ${file%.dot}.svg
 done
 
 # Generate document
