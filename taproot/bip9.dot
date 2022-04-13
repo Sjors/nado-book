@@ -1,7 +1,7 @@
 digraph {
   rankdir=TD;
 
-  node [fontname="lmtt", fontsize=11, fixedsize=true, width=1.3, shape=box, style="rounded,filled,bold"];
+  node [fontname="lmtt", fontsize=11, fixedsize=true, width=1.3, shape=box, style="rounded,bold"];
 
   edge [fontname="lmtt", fontsize=11];
 
@@ -20,10 +20,10 @@ digraph {
   "ACTIVE" -> "ACTIVE";
   "FAILED" -> "FAILED";
 
-  "STARTED" [fillcolor="#a0a0ff"];
-  "LOCKED_IN" [fillcolor="#ffffa0"];
-  "ACTIVE" [fillcolor="#a0ffa0"];
-  "FAILED" [fillcolor="#ffa0a0"];
+  "STARTED";
+  "LOCKED_IN";
+  "ACTIVE";
+  "FAILED";
 
   { rank=same; "FAILED" "LOCKED_IN" }
   { rank=sink; "ACTIVE" }
