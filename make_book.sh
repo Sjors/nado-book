@@ -1,8 +1,9 @@
 #!/bin/bash
 SKIP_QR="0"
+PAPERBACK="0"
 while [[ "$#" -gt 0 ]]; do
     case $1 in
-        -b|--paperback) EXTRA_OPTIONS="-o nado-paperback.pdf --metadata-file meta-paperback.yaml --include-before-body copyright_paperback.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-paperback.tex" ;;
+        -b|--paperback) PAPERBACK="1" EXTRA_OPTIONS="-o nado-paperback.pdf --metadata-file meta-paperback.yaml --include-before-body copyright_paperback.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-paperback.tex" ;;
         -k|--kindle) EXTRA_OPTIONS="-o nado-kindle.pdf --metadata-file meta-kindle.yaml --include-before-body copyright_kindle.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-kindle.tex" ;;
         -e|--epub) EXTRA_OPTIONS="-t epub3 -o nado-book.epub --css epub.css --metadata-file meta-ebook.yaml --toc-depth=2" ;;
         -q|--skipqr) SKIP_QR="1"; shift ;;
@@ -22,6 +23,10 @@ if [ "$SKIP_QR" -eq "0" ]; then
     pushd qr/ep
         for f in *.txt; do
             qrencode -o ${f%.txt}.png -r $f --level=M -d 300 -s 4
+            if [ "$PAPERBACK" -eq "1" ]; then
+                # Drop alpha to prevent any transparent elements in the PDF
+                mogrify ${f%.txt}.png -background white -alpha remove
+            fi
         done
     popd
 
