@@ -1,19 +1,11 @@
+documentclass: memoir
+classoption:
+  - oneside
+  - a6paper
+  - 12pt
 title: "Bitcoin: A Work in Progress"
 subtitle: "Technical innovations from the trenches"
 author: Sjors Provoost
-rights: |
-    © 2022 Purple Dunes, CC BY-SA 4.0
-
-    Email: sjors@sprovoost.nl\
-    Blog: https://sprovoost.nl/\
-    Twitter: @provoost\
-    Mastodon: https://m.sprovoost.nl/@sjors\
-    Github: https://github.com/Sjors\
-    Book source: https://github.com/Sjors/nado-book\
-
-    PGP fingerprint:\
-    ED9B DF7A D6A5 5E23 2E84\
-    5242 57FF 9BDB CC30 1009
-
-    Kindle First Edition: April 2022
 language: en-US
+include-before:
+  - '`\newpage{}`{=latex}'
