@@ -4,7 +4,7 @@ PAPERBACK="0"
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         -b|--paperback) PAPERBACK="1" EXTRA_OPTIONS="-o nado-paperback.pdf --metadata-file meta-paperback.yaml --include-before-body copyright_paperback.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-paperback.tex" ;;
-        -k|--ebook) EXTRA_OPTIONS="-o nado-ebook.pdf --metadata-file meta-ebook.yaml --include-before-body copyright_ebook.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-ebook.tex" ;;
+        -k|--ebook) EXTRA_OPTIONS="-o nado-ebook.pdf -V ebook --metadata-file meta-ebook.yaml --include-before-body copyright_ebook.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-ebook.tex" ;;
         -q|--skipqr) SKIP_QR="1"; shift ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
     esac

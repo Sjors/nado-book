@@ -457,6 +457,9 @@ $endif$
   }%
 }
 \begin{document}
+$if(ebook)$
+\includepdf[pages=1, width=\paperwidth]{cover-ebook.pdf}
+$endif$
 $if(has-frontmatter)$
 \frontmatter
 $endif$
