@@ -1,4 +1,15 @@
 \usepackage{pdfpages}
-\setulmarginsandblock{2cm}{*}{1}
+% Roughly size of a Kindle Paperwhite
+\setstocksize{14cm}{10.5cm}
+\settrimmedsize{\stockheight}{\stockwidth}{*}
+\setulmarginsandblock{1.2cm}{*}{1}
 \setlrmarginsandblock{0.5cm}{0.5cm}{*}
 \checkandfixthelayout
+% Trim marks to prevent Kindle from resizing
+\renewcommand*{\trimmark}{%
+  \begin{picture}(0,0)
+    \unitlength 1mm
+    \thinlines
+    \put(-1,0){\line(1,0){2}}
+    \put(0,-1){\line(0,1){2}}
+  \end{picture}}
