@@ -60,6 +60,7 @@ btcwip.com/W
 btcwip.com/X
 btcwip.com/Y
 btcwip.com/Z
+btcwip.com/ots
 btcwip.com/10
 btcwip.com/11
 btcwip.com/12
@@ -114,7 +115,6 @@ btcwip.com/1N
 btcwip.com/1O
 btcwip.com/1P
 btcwip.com/1Q
-btcwip.com/1R
 btcwip.com/1S
 btcwip.com/1T
 btcwip.com/1U

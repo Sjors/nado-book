@@ -380,14 +380,16 @@ Around the time the episode was recorded, Peter offered an interesting showcase 
 
 We also discuss some of the other possibilities that a time-stamping system like OpenTimestamps offers, as well as its limitations. Finally, Aaron provides a little bit of context for the history of cryptographic time stamping, which was itself referenced in the Bitcoin white paper.
 
-We timestamped the source code for this book,^[<https://github.com/Sjors/nado-book>] so you can verify that a draft version existed as early as March 2022:
+We timestamped the source code for this book, so you can verify that a draft version existed as early as March 2022:
 
 ```
 c=86a7cd200acb1812b6b2f8be27c8380ea44c9470
 git verify-commit $c
-git cat-file -p $c > appendix/commit
-ots verify appendix/commit.ots
+git cat-file -p $c > meta/commit
+ots verify meta/commit.ots
 ```
+
+The above verification script is also in the source code repository, along with the `.ots` timestamp file that you need to verify it: <https://btcwip.com/ots>
 
 #### Discreet Log Contracts
 
