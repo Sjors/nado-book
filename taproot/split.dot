@@ -1,5 +1,5 @@
 digraph {
-    node [fontname="lmodern" fontsize=11 ]
+    node [fontsize=11 ]
 
     splines=ortho
 
@@ -12,34 +12,34 @@ digraph {
     tx2 [shape=box style="rounded" label="Transaction"]
 
     node [fixedsize=true width=1 shape=box style="bold"]
-    edge [fontname="lmodern" fontsize=11];
+    edge [fontsize=11];
 
     rankdir="LR";
 
     1  [label=<
            <table border="0" cellborder="0" cellspacing="1">
-             <tr><td>     Block 1     </td></tr><hr/>
+             <tr><td width="70">Block 1</td></tr><hr/>
              <tr><td> </td></tr>
            </table>>]
 
     a2  [label=<
           <table border="0" cellborder="0" cellspacing="1">
-            <tr><td>     Block 2     </td></tr><hr/>
+            <tr><td width="70">Block 2</td></tr><hr/>
             <tr><td>&gt;1 sat/byte</td></tr>
           </table>>]
     a10  [label=<
           <table border="0" cellborder="0" cellspacing="1">
-            <tr><td>    Block 10    </td></tr><hr/>
+            <tr><td width="70">Block 10</td></tr><hr/>
             <tr><td> </td></tr>
           </table>>]
     a11  [label=<
           <table border="0" cellborder="0" cellspacing="1">
-            <tr><td>    Block 11    </td></tr><hr/>
+            <tr><td width="70">Block 11</td></tr><hr/>
             <tr><td>coinbase</td></tr>
           </table>>]
     a20  [label=<
           <table border="0" cellborder="0" cellspacing="1">
-            <tr><td>    Block 20    </td></tr><hr/>
+            <tr><td width="70">Block 20</td></tr><hr/>
             <tr><td> </td></tr>
           </table>>]
 
@@ -47,12 +47,12 @@ digraph {
 
     b2  [label=<
           <table border="0" cellborder="0" cellspacing="1">
-            <tr><td>     Block 2     </td></tr><hr/>
+            <tr><td width="70">Block 2</td></tr><hr/>
             <tr><td>&gt;50 sat/byte</td></tr>
           </table>>]
     b3  [label=<
           <table border="0" cellborder="0" cellspacing="1">
-            <tr><td>     Block 3     </td></tr><hr/>
+            <tr><td width="70">Block 3</td></tr><hr/>
             <tr><td>&gt;50 sat/byte</td></tr>
           </table>>]
 
