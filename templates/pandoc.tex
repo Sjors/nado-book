@@ -98,6 +98,7 @@ $if(linestretch)$
 $endif$
 \usepackage{iftex}
 \ifPDFTeX
+  \pdfminorversion=6
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
