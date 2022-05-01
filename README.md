@@ -25,3 +25,9 @@ Use Apple Books, [Kindle Previewer](https://kdp.amazon.com/en_US/help/topic/G202
 ## Contribute
 
 See [STYLE.md](STYLE.md) for the markdown style used, e.g. how to add links and footnotes.
+
+To preview documentation:
+
+```sh
+bundle exec jekyll server --incremental --source docs
+```

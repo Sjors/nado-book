@@ -5,3 +5,7 @@ qr/**/*.png
 .DS_Store
 qr/sed
 nado-*.tex
+
+## Jekyll
+_site
+docs/.jekyll-metadata
