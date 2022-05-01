@@ -2,3 +2,8 @@ theme: jekyll-theme-minimal
 title: "Bitcoin: A Work in Progress"
 description: Technical innovations from the trenches
 logo: front.jpg
+plugins:
+  - jekyll-seo-tag
+social:
+    name: Sjors provoost
+    links: https://twitter.com/provoost
