@@ -27,6 +27,7 @@ The author is a software developer based in Utrecht, The Netherlands. He has bee
 Find the book at your favorite online retailer, order it from your local book store, or try one of the links below.
 
 * Netherlands and Belgium: [bol.com](https://www.bol.com/nl/nl/p/bitcoin-a-work-in-progress/9300000097695614/)
+* USA: [Barnes & Noble](https://www.barnesandnoble.com/w/bitcoin-sjors-provoost/1141408481)
 * Australia and New Zealand: [Booktopia](https://www.booktopia.com.au/bitcoin-sjors-provoost/book/9789090360423.html)
 
 # Preview
