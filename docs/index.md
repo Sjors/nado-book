@@ -1,7 +1,7 @@
 ---
 image: front.jpg
 title: "Bitcoin: A Work in Progress"
-description: "Learn about the latest Taproot soft fork, the challenges of keeping open source software free of money-stealing bugs and malware, new ways to protect nodes against evildoers on the internet, and more!"
+description: "A book about soft forks, challenges of keeping open source software free of money-stealing bugs, new ways to protect Bitcoin nodes against evildoers, and more!"
 ---
 
 # Bitcoin: A Work in Progress
