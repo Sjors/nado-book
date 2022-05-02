@@ -28,13 +28,19 @@ Find the book at your favorite online retailer, order it from your local book st
 
 * Netherlands and Belgium: [bol.com](https://www.bol.com/nl/nl/p/bitcoin-a-work-in-progress/9300000097695614/)
 * USA: [Barnes & Noble](https://www.barnesandnoble.com/w/bitcoin-sjors-provoost/1141408481)
-* Australia and New Zealand: [Booktopia](https://www.booktopia.com.au/bitcoin-sjors-provoost/book/9789090360423.html)
+
+It's also available on [Amazon.com](https://www.amazon.com/dp/9090360425) which ships to many places, but you may be better off waiting a few days for a web shop closer to your location. This is especially true for mainland Europe, Australia and some countries in Asia. I'll keep updating this page.
 
 # Preview
 
 Here's the [table of contents and Chapter 1](preview.pdf){:target="_blank"}.
 
 # Buy Soon(tm)
+
+Sales pages have cropped up in more countries, but the book showed as unavailable last time I checked:
+
+* Australia and New Zealand: [Booktopia](https://www.booktopia.com.au/bitcoin-sjors-provoost/book/9789090360423.html)
+* Germany: [Amazon.de](https://www.amazon.de/-/de/dp/9090360425)
 
 The book should be available soon(tm) in the UK, USA, Canada, most of the EU and various places in Asia. Try searching for the ISBN number `978-90-9036042-3`.
 
