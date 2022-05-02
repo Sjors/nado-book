@@ -31,6 +31,9 @@ Find the book at your favorite online retailer, order it from your local book st
 
 It's also available on [Amazon.com](https://www.amazon.com/dp/9090360425) which ships to many places, but you may be better off waiting a few days for a web shop closer to your location. This is especially true for mainland Europe, Australia and some countries in Asia. I'll keep updating this page.
 
+It's also available through the [Espresso Book Machine](https://net.ondemandbooks.com/odb/lsi/9789090360423) at various locations.
+
+
 # Preview
 
 Here's the [table of contents and Chapter 1](preview.pdf){:target="_blank"}.
