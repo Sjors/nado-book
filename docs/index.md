@@ -28,13 +28,13 @@ Find the book at your favorite online retailer, order it from your local book st
 
 * Netherlands and Belgium: [bol.com](https://www.bol.com/nl/nl/p/bitcoin-a-work-in-progress/9300000097695614/)
 * USA: [Barnes & Noble](https://www.barnesandnoble.com/w/bitcoin-sjors-provoost/1141408481), [Amazon](https://www.amazon.com/dp/9090360425)
-* UK: [Amazon UK](https://www.amazon.co.uk/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425/), [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423)
+* UK: [Amazon.co.uk](https://www.amazon.co.uk/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425/), [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423)
 * [Norway](https://www.adlibris.com/no/bok/bitcoin-technical-innovations-from-the-trenches-9789090360423), [Sweden](https://www.adlibris.com/se/bok/bitcoin-technical-innovations-from-the-trenches-9789090360423), [Finland](https://www.adlibris.com/fi/kirja/bitcoin-technical-innovations-from-the-trenches-9789090360423) at Adlibris
 * Denmark: [Saxo](https://www.saxo.com/dk/bitcoin-technical-innovations-from-the-trenches_bog_9789090360423)
-* France: [Amazon France](https://www.amazon.fr/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425) (Amazon Germany may be cheaper)
+* France: [Amazon.fr](https://www.amazon.fr/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425) (Amazon Germany may be cheaper)
 * Spain: [Amazon.es](https://www.amazon.es/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
-* India: [Amazon India](https://www.amazon.in/dp/9090360425)
-* Brazil: [Amazon Brazil](https://www.amazon.com.br/s?k=9789090360423)
+* India: [Amazon.in](https://www.amazon.in/dp/9090360425)
+* Brazil: [Amazon.com.br](https://www.amazon.com.br/s?k=9789090360423)
 * Hong Kong: [Ubuy](https://www.ubuy.hk/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches) and [Amazon.com](https://www.amazon.com/dp/9090360425) both ship from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) ships from UK and Australia
 * Taiwan: [Amazon.com](https://www.amazon.com/dp/9090360425) ships from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) from UK and Australia
 
