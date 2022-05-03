@@ -28,6 +28,7 @@ Find the book at your favorite online retailer, order it from your local book st
 
 * Netherlands and Belgium: [bol.com](https://www.bol.com/nl/nl/p/bitcoin-a-work-in-progress/9300000097695614/)
 * USA: [Barnes & Noble](https://www.barnesandnoble.com/w/bitcoin-sjors-provoost/1141408481), [Amazon](https://www.amazon.com/dp/9090360425)
+* Canada: [Amazon.ca](https://www.amazon.ca/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
 * UK: [Amazon.co.uk](https://www.amazon.co.uk/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425/), [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423)
 * [Norway](https://www.adlibris.com/no/bok/bitcoin-technical-innovations-from-the-trenches-9789090360423), [Sweden](https://www.adlibris.com/se/bok/bitcoin-technical-innovations-from-the-trenches-9789090360423), [Finland](https://www.adlibris.com/fi/kirja/bitcoin-technical-innovations-from-the-trenches-9789090360423) at Adlibris
 * Denmark: [Saxo](https://www.saxo.com/dk/bitcoin-technical-innovations-from-the-trenches_bog_9789090360423)
