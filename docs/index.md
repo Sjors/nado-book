@@ -35,6 +35,8 @@ Find the book at your favorite online retailer, order it from your local book st
 * Spain: [Amazon.es](https://www.amazon.es/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
 * India: [Amazon India](https://www.amazon.in/dp/9090360425)
 * Brazil: [Amazon Brazil](https://www.amazon.com.br/s?k=9789090360423)
+* Hong Kong: [Ubuy](https://www.ubuy.hk/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches) and [Amazon.com](https://www.amazon.com/dp/9090360425) both ship from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) ships from UK and Australia
+* Taiwan: [Amazon.com](https://www.amazon.com/dp/9090360425) ships from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) from UK and Australia
 
 It's also available on [Amazon.com](https://www.amazon.com/dp/9090360425) which ships to many places, but you may be better off waiting a few days for a web shop closer to your location. This is especially true for mainland Europe, Australia and some countries in Asia. I'll keep updating this page.
 
