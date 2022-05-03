@@ -32,6 +32,7 @@ Find the book at your favorite online retailer, order it from your local book st
 * [Norway](https://www.adlibris.com/no/bok/bitcoin-technical-innovations-from-the-trenches-9789090360423), [Sweden](https://www.adlibris.com/se/bok/bitcoin-technical-innovations-from-the-trenches-9789090360423), [Finland](https://www.adlibris.com/fi/kirja/bitcoin-technical-innovations-from-the-trenches-9789090360423) at Adlibris
 * Denmark: [Saxo](https://www.saxo.com/dk/bitcoin-technical-innovations-from-the-trenches_bog_9789090360423)
 * France: [Amazon France](https://www.amazon.fr/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425) (Amazon Germany may be cheaper)
+* Spain: [Amazon.es](https://www.amazon.es/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
 * India: [Amazon India](https://www.amazon.in/dp/9090360425)
 * Brazil: [Amazon Brazil](https://www.amazon.com.br/s?k=9789090360423)
 
