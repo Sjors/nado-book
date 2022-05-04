@@ -39,16 +39,16 @@ Find the book at your favorite online retailer, order it from your local book st
 * India: [Amazon.in](https://www.amazon.in/dp/9090360425)
 * Brazil: [Amazon.com.br](https://www.amazon.com.br/s?k=9789090360423)
 * Korea: [Yes24](http://www.yes24.com/product/goods/109180444), [Kyobo](https://www.kyobobook.co.kr/product/detailViewEng.laf?ejkGb=BNT&mallGb=ENG&barcode=9789090360423), [Aladin](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=294118397)
-* Hong Kong: [Ubuy](https://www.ubuy.hk/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches) and [Amazon.com](https://www.amazon.com/dp/9090360425) both ship from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) ships from UK and Australia
-* Taiwan: [Amazon.com](https://www.amazon.com/dp/9090360425) ships from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) from UK and Australia
+* Hong Kong: [Ubuy](https://www.ubuy.hk/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches) and [Amazon.com](https://www.amazon.com/dp/9090360425) both ship from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) ships from UK
+* Taiwan: [Amazon.com](https://www.amazon.com/dp/9090360425) ships from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) from UK
 * Vietnam: [Ubuy](https://www.ubuy.vn/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches)  ships from USA
+* Australia: [Booko.com.au](https://booko.com.au/9789090360423) various options, including [Amazon.com.au](https://www.amazon.com.au/dp/9090360425), but tends to ship from UK
 
 For other countries try [Amazon.com](https://www.amazon.com/dp/9090360425) or [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423); they ship to many places. However, it may be better to wait a few days for a web shop closer to your location. This is especially true for mainland Europe, Australia and some countries in Asia. I'll keep updating this page.
 
 [Let me know](mailto:sjors@sprovoost.nl) if you find better options than the ones suggested above.
 
 The book is also available through the [Espresso Book Machine](https://net.ondemandbooks.com/odb/lsi/9789090360423) at various locations.
-
 
 # Preview
 
@@ -58,7 +58,6 @@ Here's the [table of contents and Chapter 1](preview.pdf){:target="_blank"}.
 
 Sales pages have cropped up in more countries, but the book showed as unavailable last time I checked:
 
-* Australia and New Zealand: [Booktopia](https://www.booktopia.com.au/bitcoin-sjors-provoost/book/9789090360423.html)
 * Germany: [Amazon.de](https://www.amazon.de/-/de/dp/9090360425)
 * Japan: [Amazon.co.jp](https://www.amazon.co.jp/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
 
