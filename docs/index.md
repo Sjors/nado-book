@@ -67,3 +67,7 @@ The book should be available soon(tm) in the UK, USA, Canada, most of the EU and
 # When E-Book?
 
 I'd like to get more physical copies safely distributed across the globe before selling an electronic version. You can make one yourself though: just clone the Github repository and run: `./make-book.sh --paperback` (see [README](https://github.com/sjors/nado-book#readme) for more details)
+
+# Media appearances
+
+* BNR Cryptocast 218 B: [Hoe kwetsbaar is bitcoin?](https://www.bnr.nl/podcast/cryptocast/10474959/218-b-hoe-kwetsbaar-is-bitcoin) (2022-05-03, Dutch)
