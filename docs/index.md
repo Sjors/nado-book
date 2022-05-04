@@ -38,6 +38,7 @@ Find the book at your favorite online retailer, order it from your local book st
 * Turkey: [Ubuy](https://www.ubuy.com.tr/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches)
 * India: [Amazon.in](https://www.amazon.in/dp/9090360425)
 * Brazil: [Amazon.com.br](https://www.amazon.com.br/s?k=9789090360423)
+* Korea: [Kyobo](https://www.kyobobook.co.kr/product/detailViewEng.laf?ejkGb=BNT&mallGb=ENG&barcode=9789090360423), [Aladin](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=294118397)
 * Hong Kong: [Ubuy](https://www.ubuy.hk/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches) and [Amazon.com](https://www.amazon.com/dp/9090360425) both ship from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) ships from UK and Australia
 * Taiwan: [Amazon.com](https://www.amazon.com/dp/9090360425) ships from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) from UK and Australia
 * Vietnam: [Ubuy](https://www.ubuy.vn/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches)  ships from USA
