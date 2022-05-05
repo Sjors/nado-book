@@ -71,3 +71,12 @@ I'd like to get more physical copies safely distributed across the globe before 
 # Media appearances
 
 * BNR Cryptocast 218 B: [Hoe kwetsbaar is bitcoin?](https://www.bnr.nl/podcast/cryptocast/10474959/218-b-hoe-kwetsbaar-is-bitcoin) (2022-05-03, Dutch)
+
+# Tip jar
+
+## Bolt 12
+
+The [Bolt 12](https://bolt12.org) draft standard is currently only supported by [c-lightning](https://github.com/ElementsProject/lightning#core-lightning-cln-a-specification-compliant-lightning-network-implementation-in-c). Add a line `experimental-offers` to `~/.lightning/config` and then use `lightning-cli pay ln01p... 42sat`.
+
+<pre  style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 300px;">lno1pg34g6tsypnx7u3qgf5hgcm0d9hr5gzpyptk7untyp5kugzswfhkwun9wde3grjndfhhyueq2pex7an0daehg83qxalcjym827wseh7zsvauxgap6q23fm4yp4yve6rdx83esg37pjelqsqk0mxa75uwy2j8qpyce7vet0xn8vfq4yjq02r4rly6agvhy0jvqp2r0cdl6fsl3qu72jf5wvlr3hgkmzlgg5ezut4q9z50saxvnaqtq</pre>
+<img src="bolt12.png" width="100"/>
