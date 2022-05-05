@@ -76,11 +76,15 @@ I'd like to get more physical copies safely distributed across the globe before 
 
 ## Lightning Address
 
-Just copy `sjors@bitrefill.me` and paste it into a [compatible wallet](https://github.com/andrerfneves/lightning-address/blob/master/README.md#wallets-supported). Learn more at [lightningaddress.com](https://lightningaddress.com).
+<p><img src="ln-email.png" width="50" align="left"/>
+Scan the QR or copy <code>sjors@bitrefill.me</code> and paste it into a <a href="https://github.com/andrerfneves/lightning-address/blob/master/README.md#wallets-supported">compatible wallet</a>. Learn more at <a href="https://lightningaddress.com">lightningaddress.com</a>.</p>
+
 
 ## Bolt 12
 
-The [Bolt 12](https://bolt12.org) draft standard is currently only supported by [c-lightning](https://github.com/ElementsProject/lightning#core-lightning-cln-a-specification-compliant-lightning-network-implementation-in-c). Add a line `experimental-offers` to `~/.lightning/config` and then use `lightning-cli pay ln01p... 42sat`.
+<p>
+<img src="bolt12.png" width="90" align="right"/>
+The <a href="https://bolt12.org">Bolt 12</a> draft standard is currently only supported by <a href="https://github.com/ElementsProject/lightning#core-lightning-cln-a-specification-compliant-lightning-network-implementation-in-c">c-lightning</a>. Add a line <code>experimental-offers</code> to <code>~/.lightning/config</code> and then use <code>lightning-cli pay ln01p... 42sat</code>.
+</p>
 
-<pre  style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 300px;">lno1pg34g6tsypnx7u3qgf5hgcm0d9hr5gzpyptk7untyp5kugzswfhkwun9wde3grjndfhhyueq2pex7an0daehg83qxalcjym827wseh7zsvauxgap6q23fm4yp4yve6rdx83esg37pjelqsqk0mxa75uwy2j8qpyce7vet0xn8vfq4yjq02r4rly6agvhy0jvqp2r0cdl6fsl3qu72jf5wvlr3hgkmzlgg5ezut4q9z50saxvnaqtq</pre>
-<img src="bolt12.png" width="100"/>
+<pre  style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 450px;">lno1pg34g6tsypnx7u3qgf5hgcm0d9hr5gzpyptk7untyp5kugzswfhkwun9wde3grjndfhhyueq2pex7an0daehg83qxalcjym827wseh7zsvauxgap6q23fm4yp4yve6rdx83esg37pjelqsqk0mxa75uwy2j8qpyce7vet0xn8vfq4yjq02r4rly6agvhy0jvqp2r0cdl6fsl3qu72jf5wvlr3hgkmzlgg5ezut4q9z50saxvnaqtq</pre>
