@@ -74,6 +74,10 @@ I'd like to get more physical copies safely distributed across the globe before 
 
 # Tip jar
 
+## Lightning Address
+
+Just copy `sjors@bitrefill.me` and paste it into a [compatible wallet](https://github.com/andrerfneves/lightning-address/blob/master/README.md#wallets-supported). Learn more at [lightningaddress.com](https://lightningaddress.com).
+
 ## Bolt 12
 
 The [Bolt 12](https://bolt12.org) draft standard is currently only supported by [c-lightning](https://github.com/ElementsProject/lightning#core-lightning-cln-a-specification-compliant-lightning-network-implementation-in-c). Add a line `experimental-offers` to `~/.lightning/config` and then use `lightning-cli pay ln01p... 42sat`.
