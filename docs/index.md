@@ -44,7 +44,7 @@ Find the book at your favorite online retailer, order it from your local book st
 * Singapore: [Amazon.sg](https://www.amazon.sg/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
 * Taiwan: [Amazon.com](https://www.amazon.com/dp/9090360425) ships from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) from UK
 * Vietnam: [Ubuy](https://www.ubuy.vn/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches)  ships from USA
-* Australia: [Booko.com.au](https://booko.com.au/9789090360423) various options, including [Amazon.com.au](https://www.amazon.com.au/dp/9090360425), but tends to ship from UK
+* Australia: [Buy with Bitcoin](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress/) from me, [Booko.com.au](https://booko.com.au/9789090360423) various options, including [Amazon.com.au](https://www.amazon.com.au/dp/9090360425), but tends to ship from UK
 
 For other countries try [Amazon.com](https://www.amazon.com/dp/9090360425) or [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423); they ship to many places. However, it may be better to wait a few days for a web shop closer to your location. This is especially true for mainland Europe, Australia and some countries in Asia. I'll keep updating this page.
 
