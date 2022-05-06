@@ -46,23 +46,15 @@ Find the book at your favorite online retailer, order it from your local book st
 * Vietnam: [Ubuy](https://www.ubuy.vn/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches)  ships from USA
 * Australia: [Buy with Bitcoin](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress/) from me, shipped from Australia. For fiat, [Booko.com.au](https://booko.com.au/9789090360423) has various options, including [Amazon.com.au](https://www.amazon.com.au/dp/9090360425), but they tend to ship from UK.
 
-For other countries try [Amazon.com](https://www.amazon.com/dp/9090360425) or [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423); they ship to many places. However, it may be better to wait a few days for a web shop closer to your location. This is especially true for mainland Europe, Australia and some countries in Asia. I'll keep updating this page.
-
-[Let me know](mailto:sjors@sprovoost.nl) if you find better options than the ones suggested above.
+For other countries try [Amazon.com](https://www.amazon.com/dp/9090360425) or [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423); they ship to many places. If you can't find the title, try searching the ISBN: `9789090360423`
 
 The book is also available through the [Espresso Book Machine](https://net.ondemandbooks.com/odb/lsi/9789090360423) at various locations.
+
+[Let me know](mailto:sjors@sprovoost.nl) if you find better options than the ones suggested above.
 
 # Preview
 
 Here's the [table of contents and Chapter 1](preview.pdf){:target="_blank"}.
-
-# Buy Soon(tm)
-
-Sales pages have cropped up in more countries, but the book showed as unavailable last time I checked:
-
-* Japan: [Amazon.co.jp](https://www.amazon.co.jp/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
-
-The book should be available soon(tm) in the UK, USA, Canada, most of the EU and various places in Asia. Try searching for the ISBN number `9789090360423`.
 
 # When E-Book?
 
@@ -79,11 +71,9 @@ I'd like to get more physical copies safely distributed across the globe before 
 <p><img src="ln-email.png" width="50" align="left"/>
 Scan the QR or copy <code>sjors@bitrefill.me</code> and paste it into a <a href="https://github.com/andrerfneves/lightning-address/blob/master/README.md#wallets-supported">compatible wallet</a>. Learn more at <a href="https://lightningaddress.com">lightningaddress.com</a>.</p>
 
-
 ## Bolt 12
 
 <p>
-<img src="bolt12.png" width="90" align="right"/>
 The <a href="https://bolt12.org">Bolt 12</a> draft standard is currently only supported by <a href="https://github.com/ElementsProject/lightning#core-lightning-cln-a-specification-compliant-lightning-network-implementation-in-c">c-lightning</a>. Add a line <code>experimental-offers</code> to <code>~/.lightning/config</code> and then use <code>lightning-cli pay ln01p... 42sat</code>.
 </p>
 
