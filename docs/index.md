@@ -37,6 +37,7 @@ Find the book at your favorite online retailer, order it from your local book st
 * USA: [Barnes & Noble](https://www.barnesandnoble.com/w/bitcoin-sjors-provoost/1141408481), [Amazon](https://www.amazon.com/dp/9090360425)
 * Canada: [Amazon.ca](https://www.amazon.ca/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425) (click on "More buying choices" for a pre-order that ships directly from Amazon.ca, rather than from the UK)
 * Turkey: [Ubuy](https://www.ubuy.com.tr/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches)
+* United Arab Emirates: [Amazon.ae](https://www.amazon.ae/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
 * India: [Amazon.in](https://www.amazon.in/dp/9090360425)
 * Brazil: [Amazon.com.br](https://www.amazon.com.br/s?k=9789090360423)
 * Korea: [Yes24](http://www.yes24.com/product/goods/109180444), [Kyobo](https://www.kyobobook.co.kr/product/detailViewEng.laf?ejkGb=BNT&mallGb=ENG&barcode=9789090360423), [Aladin](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=294118397)
