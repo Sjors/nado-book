@@ -50,7 +50,7 @@ Find the book at your favorite online retailer, order it from your local book st
 
 For other countries try [Amazon.com](https://www.amazon.com/dp/9090360425) or [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423); they ship to many places. If you can't find the title, try searching the ISBN: `9789090360423`
 
-The book is also available through the [Espresso Book Machine](https://net.ondemandbooks.com/odb/lsi/9789090360423) at various locations.
+The book _may_ also be available through the [Espresso Book Machine](https://net.ondemandbooks.com/odb/lsi/9789090360423) at various locations. The one in La Canada, CA is gone though.
 
 [Let me know](mailto:sjors@sprovoost.nl) if you find better options than the ones suggested above.
 
