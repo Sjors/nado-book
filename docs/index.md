@@ -24,6 +24,8 @@ The author is a software developer based in Utrecht, The Netherlands. He has bee
 
 # Buy Now
 
+## Online
+
 Find the book at your favorite online retailer, order it from your local book store, or try one of the links below.
 
 * EU try [Amazon.de](https://www.amazon.de/-/de/dp/9090360425) except:
@@ -50,9 +52,13 @@ Find the book at your favorite online retailer, order it from your local book st
 
 For other countries try [Amazon.com](https://www.amazon.com/dp/9090360425) or [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423); they ship to many places. If you can't find the title, try searching the ISBN: `9789090360423`
 
-The book _may_ also be available through the [Espresso Book Machine](https://net.ondemandbooks.com/odb/lsi/9789090360423) at various locations. The one in La Canada, CA is gone though.
-
 [Let me know](mailto:sjors@sprovoost.nl) if you find better options than the ones suggested above.
+
+## Physical shops
+
+I'm not aware of any physical book store that has the book on a shelf, but in many countries they can order it for you. ISBN: `9789090360423`
+
+The book _may_ be available through the [Espresso Book Machine](https://net.ondemandbooks.com/odb/lsi/9789090360423) at various locations. They'll print a fresh copy while you wait. The one in La Canada, CA is [gone](https://twitter.com/jurvistan/status/1523008386215800832) though.
 
 # Preview
 
