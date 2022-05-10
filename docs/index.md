@@ -78,7 +78,7 @@ I'd like to get more physical copies safely distributed across the globe before 
 ## Lightning Address
 
 <p><img src="ln-email.png" width="50" align="left"/>
-Scan the QR or copy <code>sjors@bitrefill.me</code> and paste it into a <a href="https://github.com/andrerfneves/lightning-address/blob/master/README.md#wallets-supported">compatible wallet</a>. Learn more at <a href="https://lightningaddress.com">lightningaddress.com</a>.</p>
+Scan the QR or copy <code>sjors@sprovoost.nl</code> and paste it into a <a href="https://github.com/andrerfneves/lightning-address/blob/master/README.md#wallets-supported">compatible wallet</a>. Learn more at <a href="https://lightningaddress.com">lightningaddress.com</a>.</p>
 
 ## Bolt 12
 
