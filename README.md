@@ -21,7 +21,8 @@ The paperback uses PDF, the Kindle version uses epub.
 To render a single chapter as  PDF, move the title and QR to a separate file and then:
 
 ```sh
-pandoc -o guix.pdf attacks/guix.md -V title="Why Open Source Matters — GUIX" --template=templates/chapter.tex --top-level-division=chapter
+./make_book.sh --process
+export PAPER=a4; pandoc -o "Chapter 9 - Guix ($PAPER).pdf" attacks/guix.processed.md -V paper=$PAPER -V title="Why Open Source Matters — GUIX" --template=templates/chapter.tex --top-level-division=chapter
 ```
 
 If the chapter refers to other chapters, you have manually edit the document to undo that.

@@ -1,6 +1,7 @@
-\documentclass[a4paper,twocolumn]{article}
+\documentclass[$paper$paper,twocolumn,11pt]{article}
+\usepackage[margin=2cm,nohead]{geometry}
 \usepackage[font=footnotesize]{caption}
-\usepackage{qrcode}
+\usepackage[nolinks]{qrcode}
 \usepackage{wrapfig}
 \usepackage{mwe}
 \usepackage[multiple]{footmisc}
@@ -8,17 +9,18 @@
 \usepackage[colorlinks]{hyperref}
 \captionsetup[figure]{labelformat=empty}
 \setlength{\belowcaptionskip}{-6pt}
+\setlength\columnsep{1cm}
 
 % Don't number sections
 \setcounter{secnumdepth}{0}
 
 \title{$title$}
-\author{Sjors Provoost}
+\author{Sjors Provoost — \href{mailto:sjors@sprovoost.nl}{sjors@sprovoost.nl}}
 
 \begin{document}
 \maketitle
 
-This chapter originally appeared in the book \emph{Bitcoin: A Work In Progress} by Sjors Provoost. Learn more at \url{https://btcwip.com/}.
+This chapter originally appeared in the book \emph{Bitcoin: A Work In Progress} (\href{https://btcwip.com/}{btcwip.com}).
 
 \bigskip
 
