@@ -1,8 +1,3 @@
-\newpage
-## Why Open Source Matters — Guix {short="Guix" link="sec:guix"}
-
-![Ep. 21 {l0pt}](qr/ep/21.png)
-
 This chapter discusses open source software in the context of why it matters that Bitcoin software is open source. But it also delves into the reason why even open source software doesn’t necessarily solve all software-specific trust issues.
 
 In theory, the fact that most Bitcoin nodes, wallets, and applications are open source should ensure that developers can’t include malicious code in the programs, because anyone can inspect the source code for malware. In practice, however, the number of people with enough expertise to do this is limited, while the reliance by software in general on external code libraries, or dependencies, makes it even harder.

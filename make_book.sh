@@ -85,6 +85,7 @@ pandoc --table-of-contents --top-level-division=part\
         attacks/_part.processed.md\
         attacks/eclipse.processed.md\
         attacks/fake_nodes.processed.md\
+        attacks/guix_title.processed.md\
         attacks/guix.processed.md\
         wallets/_part.processed.md\
         wallets/miniscript.processed.md\

@@ -18,6 +18,14 @@ In addition you need [Graphviz](https://www.graphviz.org).
 
 The paperback uses PDF, the Kindle version uses epub.
 
+To render a single chapter as  PDF, move the title and QR to a separate file and then:
+
+```sh
+pandoc -o guix.pdf attacks/guix.md -V title="Why Open Source Matters — GUIX" --template=templates/chapter.tex --top-level-division=chapter
+```
+
+If the chapter refers to other chapters, you have manually edit the document to undo that.
+
 ## Preview
 
 Use Apple Books, [Kindle Previewer](https://kdp.amazon.com/en_US/help/topic/G202131170), etc to view the epub.

@@ -1,0 +1,26 @@
+\documentclass[a4paper,twocolumn]{article}
+\usepackage[font=footnotesize]{caption}
+\usepackage{qrcode}
+\usepackage{wrapfig}
+\usepackage{mwe}
+\usepackage[multiple]{footmisc}
+\usepackage{xurl} % add URL line breaks
+\usepackage[colorlinks]{hyperref}
+\captionsetup[figure]{labelformat=empty}
+\setlength{\belowcaptionskip}{-6pt}
+
+% Don't number sections
+\setcounter{secnumdepth}{0}
+
+\title{$title$}
+\author{Sjors Provoost}
+
+\begin{document}
+\maketitle
+
+This chapter originally appeared in the book \emph{Bitcoin: A Work In Progress} by Sjors Provoost. Learn more at \url{https://btcwip.com/}.
+
+\bigskip
+
+$body$
+\end{document}
