@@ -1,8 +1,3 @@
-\newpage
-## Eclipse Attacks {#sec:eclipse}
-
-\EpisodeQR{17}
-
 An eclipse attack is a type of attack that isolates a Bitcoin node by occupying all of its connection slots to block the node from receiving any transactions and blocks, other than those sent to it by the attacker. This prevents the node from seeing what’s going on in the Bitcoin network, and it potentially even tricks the node into accepting an alternative branch of the Bitcoin blockchain. Although nodes will never accept an invalid transaction or block, an eclipse attack can still cause harm, as we’ll see.
 
 This chapter discusses how this type of attack could be used to dupe users and miners. It also talks about solutions to counter this type of attack, some of which were outlined in the 2015 paper “Eclipse Attacks on Bitcoin’s Peer-to-Peer Network,” which was written by Ethan Heilman, Alison Kendler, Aviv Zohar, and Sharon Goldberg from Boston University and Hebrew University/MSR Israel.^[<https://cs-people.bu.edu/heilman/eclipse/>] Many of the solutions proposed by this paper have gradually been implemented in Bitcoin Core software in the past few years. This chapter also discusses some solutions that weren’t in the paper.
@@ -37,7 +32,7 @@ If you wait for two confirmations, the odds for your attacker drop to 1 percent.
 
 Producing a block costs money, mainly for equipment and electricity. An honest miner recoups this by selling or borrowing against the coins created in the coinbase transaction. This is the first transaction in every block, and it has special rules. The first rule is that, unlike regular transactions, a coinbase transaction doesn’t have inputs. It creates money out of nowhere, but the amount is capped by the sum of the block subsidy (currently 6.25 BTC and halving every four years) and all the fees paid by transactions included in the block. The output side of the transaction sends this to wherever the miner wants, but usually an address managed by a mining pool, which then redistributes it.
 
-Normally, a miner produces a block that builds on top of the most recently mined block that they’re aware of. And the coinbase transaction has a second special rule,^[As an aside, as we explained in chapter @sec:segwit, SegWit imposes a third special rule on the coinbase transaction: It needs to contain an `OP_RETURN` output with a hash of the witness data for the block.] enforced by all nodes, which says that it can’t be spent until it has 101 confirmations, i.e. until there are 101 blocks built on top of it. This is called coinbase maturity.^[<https://bitcoin.stackexchange.com/a/1992/4948>]
+Normally, a miner produces a block that builds on top of the most recently mined block that they’re aware of. And the coinbase transaction has a second special rule,^[As an aside, as we explained in chapter 3, SegWit imposes a third special rule on the coinbase transaction: It needs to contain an `OP_RETURN` output with a hash of the witness data for the block.] enforced by all nodes, which says that it can’t be spent until it has 101 confirmations, i.e. until there are 101 blocks built on top of it. This is called coinbase maturity.^[<https://bitcoin.stackexchange.com/a/1992/4948>]
 
 The attacker doesn’t care about the coinbase reward, because they stand to make more from scamming you (hypothetically). Instead of building on top of the most recent block out there, they create a block on top of the last block _you_ know of. And they don’t broadcast this block to the world, so no other miners will mine on top of it. This means their coinbase transaction never reaches maturity, so the costs of producing the block can’t be recouped directly. It makes no economic sense for a miner to do this, unless they directly benefit from the attack… or unless they’re duped, as we explain below.
 
@@ -51,7 +46,7 @@ So far we’ve assumed that an eclipse attack can be done, in order to explain h
 
 Recall from above that, in order to eclipse your node, the attacker needs to take over all eight of your outbound connections and whatever number of inbound connections your node has. This is a cat and mouse game, and even before the above-mentioned paper was written, the Bitcoin Core software was hardened to prevent eclipse attacks. But let’s see how the paper proposed overcoming the existing defenses.
 
-There are a couple of ingredients. First, as mentioned in chapter @sec:dns, when a node starts, it tries to find other peers, and once it’s been running for a while, it has a list of addresses it learned from other peers and it stores them in a file. Then, whenever a node loses one of its eight outbound connections, or when it restarts, it looks at this file with all the addresses it’s ever heard of, and it starts randomly connecting to them.
+There are a couple of ingredients. First, as mentioned in chapter 2, when a node starts, it tries to find other peers, and once it’s been running for a while, it has a list of addresses it learned from other peers and it stores them in a file. Then, whenever a node loses one of its eight outbound connections, or when it restarts, it looks at this file with all the addresses it’s ever heard of, and it starts randomly connecting to them.
 
 As an attacker, the idea is to pollute this file by giving your node a bunch of addresses that either don’t exist or that they (the attacker) control. This way, whatever address your node picks, every time it makes a connection, it either fails because there’s nothing there, or it connects to the attacker — and eventually all connections are to the attacker.
 
@@ -77,7 +72,7 @@ The paper estimated that a botnet with less than 5,000 computers can successfull
 
 In addition to attacking your node from many different directions, thereby defeating the bucket system, the hypothetical attacker in the paper also exploited other weaknesses.
 
-First, they would flood your node with IP addresses that are known to be fake. This would flush all buckets with fake nodes. Remember that when your node needs a new peer, it’ll toss a coin to either connect to familiar node or try a new one. Well, there wouldn’t be any new ones to try.^[We’ll revisit the problem of fake nodes in chapter @sec:fake_nodes.]
+First, they would flood your node with IP addresses that are known to be fake. This would flush all buckets with fake nodes. Remember that when your node needs a new peer, it’ll toss a coin to either connect to familiar node or try a new one. Well, there wouldn’t be any new ones to try.^[We’ll revisit the problem of fake nodes in chapter 8.]
 
 For the other side of the coin flip — connecting to a familiar node — the attackers exploited another weakness. It turns out your node considers any node it ever connected to “familiar.” That includes botnet nodes that connected _to_ it, even if only briefly.^[Fixed in 2016: <https://github.com/bitcoin/bitcoin/pull/8594>] There’s a separate 64-bucket system for these familiar nodes, and over time, they get filled up by botnet IPs.
 
@@ -110,7 +105,7 @@ In addition to the many suggestions from the paper, there are other things that 
 
 You may be wondering: Why wouldn’t you just have as many connections as possible from the get-go? But the problem is that it requires a lot of data exchange — especially for the transactions in a mempool — and that’s extremely data intensive, so you can’t just add more connections without also increasing bandwidth use.
 
-Erlay (see appendix @sec:more_eps) is a proposal for reducing the bandwidth needed for these mempool synchronizations. It reduces the main cost (bandwidth) _per connection_. A lower cost per connection allows nodes to have more connections. Having more connections makes any eclipse attack scheme more difficult.
+Erlay is a proposal for reducing the bandwidth needed for these mempool synchronizations. It reduces the main cost (bandwidth) _per connection_. A lower cost per connection allows nodes to have more connections. Having more connections makes any eclipse attack scheme more difficult.
 
 Another way to have more connections without increasing bandwidth too much is to constrain some connections to blocks only, and to not sync the mempool with those peers. This was implemented in 2019.^[<https://github.com/bitcoin/bitcoin/pull/15759>]
 
@@ -122,9 +117,7 @@ The Bitcoin Core development wiki also contains an overview of eclipse attacks a
 
 ### Erebus Attack
 
-\EpisodeQR{18}
-
-If you want to learn more about eclipse attacks, you might be interested in the Erebus attack^[<https://erebus-attack.comp.nus.edu.sg>]: an eclipse attack where an attacker essentially spoofs an entire part of the internet.
+If you want to learn more about eclipse attacks, you might be interested in the _Bitoin, Explained_ podcast episode^[<https://btcwip.com/nado18>] about the Erebus attack^[<https://erebus-attack.comp.nus.edu.sg>]: an eclipse attack where an attacker essentially spoofs an entire part of the internet.
 
 How this works is the internet is made up of Autonomous Systems (AS), which are basically clusters of IP addresses owned by the same entity, like an ISP.^[<https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/>]
 
