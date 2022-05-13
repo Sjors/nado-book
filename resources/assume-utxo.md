@@ -1,8 +1,3 @@
-\newpage
-## Sync Time and AssumeUTXO {#sec:assume}
-
-\EpisodeQR{14}
-
 One of the biggest bottlenecks — if not the biggest one — for scaling Bitcoin is initial block download. This is the time it takes for a Bitcoin node to synchronize with the Bitcoin network, as it needs to process all historic transactions and blocks to construct the latest unspent transaction output (UTXO) set, i.e. the current state of Bitcoin ownership.
 
 This chapter will cover some of the ways sync time has been sped up over time. It was first improved through Headers First synchronization, which ensures that new Bitcoin nodes don’t waste time validating (potentially) weaker blockchains. One of several recent improvements to synchronizing time is called Assume Valid, a default shortcut that lets nodes skip signature verification of older transactions, instead trusting that the Bitcoin Core development process — in combination with the resource-expensive nature of mining — offers a reliable version of transaction history.
@@ -13,7 +8,7 @@ In addition to the accompanying _Bitcoin, Explained_ episode, you can also liste
 
 ### Downloading the Blockchain
 
-When you turn on your Bitcoin node it finds and connects to other peers, as we explained in chapter @sec:dns. It then proceeds to download the blockchain.
+When you turn on your Bitcoin node it finds and connects to other peers, as we explained in chapter 2. It then proceeds to download the blockchain.
 
 The most naive way of downloading the blockchain would be to just ask your peers to send you everything they’ve got. That’s not a good idea, because if any of your peers are malicious, they could trick you into downloading terabytes of fake blocks, until you run out of disk space and your node crashes.
 
@@ -25,7 +20,7 @@ The problem with this is you don’t know if you’re following a dead end, and 
 
 So an attacker can create a chain of very low difficulty blocks that branch off from some old block. If your node is new in town, when it sees two — or even thousands of — possible branches, it doesn’t know which is the real one. If it picks the branch from the attacker first, it can end up wasting lots of time and computer resources to verify the blocks. Even though the proof-of-work difficulty of these blocks is low, it’s not any easier for a node to verify the transactions; these dead-end branches may be filled to their one megabyte maximum with specially crafted transactions that are verified extra slowly.
 
-In addition to bogging down nodes with dead-end branches of low difficulty blocks, there’s also the issue of eclipse attacks, which we’ll cover in chapter @sec:eclipse.
+In addition to bogging down nodes with dead-end branches of low difficulty blocks, there’s also the issue of eclipse attacks, which we’ll cover in chapter 7.
 
 ### Checkpoints
 
@@ -65,7 +60,7 @@ So, what if developers colluded with miners in the theft? If a majority of miner
 
 But what if developers, miners, _and_ all existing users conspire to trick new users? Such a conspiracy seems impossible to coordinate secretly. But if you do worry the world is out to get you, rest assured that you can turn the Assume Valid feature off by starting your node with `-assumevalid=0`. Your node would then notice the invalid stealing block, you would yourself see its hash in the source code, and you could run to streets protesting the situation.
 
-What’s important to understand here is that developers can already collude against you and sneak bad things into the code — we’ll talk more about that in chapter @sec:guix. Developers could also put in a backdoor that gives them access to your private keys. This actually happened with an altcoin called Lucky7Coin.^[<https://github.com/alerj78/lucky7coin/issues/1>] These backdoors could be very carefully hidden in the code in a way that only very skilled developers could detect. The Assume Valid hash, on the other hand, is very clearly visible, and it requires very little skill to verify, as explained above. This is why the Bitcoin Core developers believe that this feature is safe against abuse.
+What’s important to understand here is that developers can already collude against you and sneak bad things into the code — we’ll talk more about that in chapter 9. Developers could also put in a backdoor that gives them access to your private keys. This actually happened with an altcoin called Lucky7Coin.^[<https://github.com/alerj78/lucky7coin/issues/1>] These backdoors could be very carefully hidden in the code in a way that only very skilled developers could detect. The Assume Valid hash, on the other hand, is very clearly visible, and it requires very little skill to verify, as explained above. This is why the Bitcoin Core developers believe that this feature is safe against abuse.
 
 Assume Valid has been in Bitcoin Core since v0.14 (2017), and now there’s a new proposal: AssumeUTXO.
 
@@ -103,7 +98,7 @@ Developers could be very patient though. Instead of immediately trying to spend 
 
 So as before, this attack requires much of the world to conspire against you, but as far as global conspiracies go, it may be ever so slightly less difficult to get away with.
 
-One way to mitigate this attack is for every block to include a hash of the current UTXO snapshot. This would be a soft fork (see chapter @sec:taproot_activation). That way, every node verifies the snapshot, and it wouldn’t have to be included in the software.
+One way to mitigate this attack is for every block to include a hash of the current UTXO snapshot. This would be a soft fork (see chapter 12). That way, every node verifies the snapshot, and it wouldn’t have to be included in the software.
 
 However, as things stand today, producing such a hash would increase the verification time for a block from a few seconds to more than a minute. So a different type of hash has been proposed.^[MuHash: <https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-May/014337.html>]
 
