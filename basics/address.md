@@ -1,9 +1,3 @@
-\newpage
-
-## Bitcoin Addresses {#sec:address}
-
-\EpisodeQR{28}
-
 Bitcoin addresses aren’t part of the Bitcoin blockchain; rather, they’re conventions used by Bitcoin (wallet) software to communicate where coins must be sent to: either a public key (P2PK), a public key hash (P2PKH), a script hash (P2SH), a witness public key hash (P2WPKH), or a witness script hash (P2WSH). Addresses also include some metadata about the address type itself.
 
 Bitcoin addresses communicate these payment options using their own numeric systems, and this chapter will break down what these different systems mean. It’ll also delve into some of the benefits of using Bitcoin addresses in general and bech32 addresses specifically. We explain how the first version of bech32 addresses included a (relatively harmless) bug, and how it was fixed. We finish the chapter with some quantum talk.
@@ -16,7 +10,7 @@ The most trivial encumbrance is that anybody can spend the coin. That’s not a 
 
 Back then, it was possible to send bitcoin to people’s IP addresses,^[<https://en.bitcoin.it/wiki/IP_transaction>] but this feature was dropped in 2012. When this was possible, you could connect to someone’s IP address and ask for a public key, and the person would give you their public key.^[For the curious code archaeologist: On the sender node there was a UI dialog that prompted for an amount and IP address. The function `StartTransfer()` created a blank cheque transaction, into which `checkorder` on the recipient node would insert a P2PK script (as the `scriptPubKey`). `OnReply2()` would then insert the amount, sign the transaction, return it to the recipient and also broadcast it. <https://github.com/bitcoin/bitcoin/blob/v0.1.5/main.cpp#L2004-L2042>] Your wallet would then create a new coin encumbered with a P2PK script.
 
-Today, this workflow might seem strange,^[And unsafe, as Satoshi acknowledged: <https://bitcointalk.org/index.php?topic=158.msg1322#msg1322>] but it matches the then-common pattern of peer-to-peer apps like Napster or Kazaa, where you’d connect directly to other people and download things from them. Nowadays, you probably don’t know the IP addresses of your friends, and they might even change all the time when they’re on mobile devices. Although you can instruct your Bitcoin node to specifically connect to a friend’s node, it typically just connects to random peers (see chapter @sec:dns).
+Today, this workflow might seem strange,^[And unsafe, as Satoshi acknowledged: <https://bitcointalk.org/index.php?topic=158.msg1322#msg1322>] but it matches the then-common pattern of peer-to-peer apps like Napster or Kazaa, where you’d connect directly to other people and download things from them. Nowadays, you probably don’t know the IP addresses of your friends, and they might even change all the time when they’re on mobile devices. Although you can instruct your Bitcoin node to specifically connect to a friend’s node, it typically just connects to random peers (see chapter 2).
 
 The more common way of doing transactions is similar to how bank transfers work. Someone provides you with an address and you send coins to it, just as you’d send money to a bank account number. This initially always used P2PKH, as we’ll explain below.
 
@@ -26,9 +20,9 @@ A third way of doing transactions is to mine bitcoin, which involves sending the
 
 ### So What Is an Address?
 
-An address is a convenient way to communicate which script needs to go on the blockchain. As we said above, the purpose of this script is to constrain the coin so that only the recipient can spend it.^[So far, the analogy to bank accounts holds, but we’ll learn in chapter @sec:miniscript that scripts can be far more powerful than just functioning as buckets to hold money for their owners.] The address itself doesn’t exist on the blockchain. It doesn’t even contain the full script.
+An address is a convenient way to communicate which script needs to go on the blockchain. As we said above, the purpose of this script is to constrain the coin so that only the recipient can spend it.^[So far, the analogy to bank accounts holds, but we’ll learn in chapter 10 that scripts can be far more powerful than just functioning as buckets to hold money for their owners.] The address itself doesn’t exist on the blockchain. It doesn’t even contain the full script.
 
-Of the two main types of scripts in use back in the day, addresses were only used for Pay-to-Public-Key-Hash (P2PKH). When a wallet sees this address, it produces a script for the Bitcoin blockchain, which requires that the person spending it has the public key belonging to the hash (chapter @sec:miniscript contains the actual script). Only the hash is published, so the public key remains secret until the recipient spends the coins.
+Of the two main types of scripts in use back in the day, addresses were only used for Pay-to-Public-Key-Hash (P2PKH). When a wallet sees this address, it produces a script for the Bitcoin blockchain, which requires that the person spending it has the public key belonging to the hash (chapter 10 contains the actual script). Only the hash is published, so the public key remains secret until the recipient spends the coins.
 
 An address starts with the number 1, followed by the hash of the public key. It’s encoded using something called base58. Here’s an example:
 `1HLoFgMiDL3hvACAfbkDUjcP9r9veUcqAF`
@@ -51,7 +45,7 @@ So how does this relate to P2PKH? Well, the address is expressed as a 1, followe
 
 That’s the information you send to somebody else when you want them to send you bitcoin. You could also just send them 0x00,^[A pair of hexadecimal digits, prefixed by 0x, is often used to denote bytes, which contain 16 × 16 = 256 bits, so this represents one byte with the value 0.] and then the public key. And maybe they’d be able to interpret that, but probably not.
 
-In theory, you could send somebody the Bitcoin script in hexadecimal, which is the format used on the blockchain, because that’s just binary information. The blockchain has this script that says, “If the person has the right public key hash and the public key belonging to this public key hash, then you can spend it.” To learn more about how Bitcoin scripts work, refer to chapter @sec:miniscript.
+In theory, you could send somebody the Bitcoin script in hexadecimal, which is the format used on the blockchain, because that’s just binary information. The blockchain has this script that says, “If the person has the right public key hash and the public key belonging to this public key hash, then you can spend it.” To learn more about how Bitcoin scripts work, refer to chapter 10.
 
 But even with all these options, the convention is that you use this standardized address format, which explains why all traditional Bitcoin addresses start with a 1, and why they’re all roughly the same length.
 
@@ -59,7 +53,7 @@ In addition to using base58 for sending a Bitcoin address, you can also use it t
 
 In the past, users had paper wallets they could print. And if they were generated securely without a back door, then on one side of the piece of paper would be something starting with a 1, and on the other side of the paper would be something starting with a 5. And then it specified that only the Bitcoin address should be shown, but the private key shouldn’t be shared.
 
-There are also addresses that begin with a 3, which is for coins encumbered by the hash of a script, rather than the hash of a public key. We’ll cover Pay-to-Script-Hash (P2SH) in chapter @sec:miniscript. Usually these are multi-signature addresses, but they could also be SegWit addresses.^[As explained in chapter @sec:segwit, SegWit typically uses bech32 addresses. But it took a long time for all wallets and exchanges to support sending to bech32 addresses. To still take advantage of some of SegWit’s benefits, an address type that looks like regular P2SH to the sender was introduced, but it contains SegWit magic under the hood. This is called a P2SH-P2WPKH address: <https://bitcoincore.org/en/segwit_wallet_dev/>]
+There are also addresses that begin with a 3, which is for coins encumbered by the hash of a script, rather than the hash of a public key. We’ll cover Pay-to-Script-Hash (P2SH) in chapter 10. Usually these are multi-signature addresses, but they could also be SegWit addresses.^[As explained in chapter 3, SegWit typically uses bech32 addresses. But it took a long time for all wallets and exchanges to support sending to bech32 addresses. To still take advantage of some of SegWit’s benefits, an address type that looks like regular P2SH to the sender was introduced, but it contains SegWit magic under the hood. This is called a P2SH-P2WPKH address: <https://bitcoincore.org/en/segwit_wallet_dev/>]
 
 Although base58 addresses worked fine, there was room for improvement. And this came in the form of bech32.
 
@@ -87,7 +81,7 @@ The first part is intentionally human readable, e.g. “bc” (Bitcoin) or “ln
 
 The 1 is just a separator with no value. And if you look at the 32 numbers, 1 isn’t included — it means “skip this.”
 
-The second part starts with the SegWit version number. Version 0 is represented with Q (bc1q…) — see chapter @sec:segwit. Version 1 is what we call Taproot (see part @sec:taproot), as it’s represented with “P” (bc1p…). For version 0 SegWit, the version number is followed by either 20 bytes or 32 bytes, which means it’s either the public key hash or the script hash, respectively. And they’re different lengths now, because SegWit uses the SHA-256 hash (32 bytes) of the script, rather than the RIPEMD160 hash (20 bytes) of the script.
+The second part starts with the SegWit version number. Version 0 is represented with Q (bc1q…) — see chapter 3. Version 1 is what we call Taproot (see chapter 11), as it’s represented with “P” (bc1p…). For version 0 SegWit, the version number is followed by either 20 bytes or 32 bytes, which means it’s either the public key hash or the script hash, respectively. And they’re different lengths now, because SegWit uses the SHA-256 hash (32 bytes) of the script, rather than the RIPEMD160 hash (20 bytes) of the script.
 
 In base58, the script hash is the same length as the public key hash. But in SegWit, they’re not the same length. So by looking at how long the address is, you immediately know whether you’re paying to a script or you’re paying to a public key hash. As an aside, Taproot removes this length distinction, thereby slightly improving privacy.
 
@@ -132,7 +126,7 @@ The problem is that, despite widespread P2PKH use, there’s 5 to 10 million BTC
 
 The (un)likeliness of such quantum troubles in the near future, as well as possible countermeasures, is explained in two _What Bitcoin Did_ podcast episodes — with physicist Stepan Snigirev^[<https://www.whatbitcoindid.com/podcast/the-quantum-threat-to-bitcoin-with-quantum-physicist-dr-stepan-snigirev>] and mathematician Andrew Poelstra.^[<https://www.whatbitcoindid.com/podcast/andrew-poelstra-on-schnorr-taproot-graft-root-coming-to-bitcoin>]
 
-Block space is much scarcer now, so not having to put public key hashes on precious block space would save users fees. This is why in the new Taproot soft fork (see part @sec:taproot), Bitcoin addresses are P2PK again.[^rationale][^tweet] Note that the use of Taproot addresses isn’t mandatory, so if you don’t agree with the above reasoning, you can simply choose to not use Taproot.
+Block space is much scarcer now, so not having to put public key hashes on precious block space would save users fees. This is why in the new Taproot soft fork (see chapter 11), Bitcoin addresses are P2PK again.[^rationale][^tweet] Note that the use of Taproot addresses isn’t mandatory, so if you don’t agree with the above reasoning, you can simply choose to not use Taproot.
 
 [^rationale]: Full rationale in BIP 341: <https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki#cite_note-2>
 [^tweet]: <https://twitter.com/pwuille/status/1409560741489778688>
