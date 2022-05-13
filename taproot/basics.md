@@ -1,13 +1,8 @@
-\newpage
-## Taproot and Schnorr {#sec:taproot_basics}
-
-\EpisodeQR{2}
-
 In this chapter, we first introduce a Merkle tree that hides all the different spending conditions until they’re used. This is called MAST. Next, we explain how Schnorr signatures allow us to hide the MAST itself, which improves privacy further. We cover earlier proposals for MAST, which didn’t have the benefit of Schnorr, which in turn illustrates the power of Taproot. Finally, we point out some cool things Taproot enables.
 
 ### Merklized Abstract Syntax Trees
 
-Chapter @sec:miniscript covered how the Pay-to-Script-Hash (P2SH) soft fork from 2012 made it possible to hide the contents of a script until it’s spent. From a privacy point of view, this is much better than immediately putting the script on the chain. However, what’s unfortunate about this is that when you do spend, all the constraints that were placed on the transaction are then visible to everyone.
+Chapter 10 covered how the Pay-to-Script-Hash (P2SH) soft fork from 2012 made it possible to hide the contents of a script until it’s spent. From a privacy point of view, this is much better than immediately putting the script on the chain. However, what’s unfortunate about this is that when you do spend, all the constraints that were placed on the transaction are then visible to everyone.
 
 The example from that chapter outlines a scenario where you need to either have your mom cosign a transaction or else wait two years to spend the coins on your own. One potential downside of showing the contents of the entire script, including the fallback condition, is that an attacker learns that they only need to steal _your_ keys and are then free to spend the coins after two years. The very first time you add coins to this particular wallet, the attacker won’t know anything about how to spend it (thanks to P2SH). And if you only use that wallet once in your lifetime and spend all of it at once, then the attacker won’t learn about the fallback until it’s too late. However, if you use the wallet more than once, then as soon as you make your first spend from it, you’ll have revealed that the fallback condition exists. From then on, you’re in trouble.
 
@@ -17,7 +12,7 @@ This is where Merklized Abstract Syntax Trees (MAST^[<https://bitcoinops.org/en/
 
 A Merkle tree^[Not to be confused with Merkel’s tree: <https://www.reddit.com/r/ProgrammerHumor/comments/qzwjm3/please_dont_confuse_these_two/>] is a tree of hashes of scripts, and it specifies the different ways to spend Bitcoin. Picture it upside down, with the root at the top and the leaves at the bottom. So, if you have a list of four conditions, you build up the tree by starting with those four conditions (or hashes) at the bottom. Then, you bundle them into pairs, resulting in two groups of hashes. They’d again be hashed, up and up the tree, until there’s one hash left at the top, the root, which is the one you share: It’s used to generate the address where coins are sent to.
 
-Later, when you want to spend it, you say, “This is the part of the tree I want to spend,” and then you use that script. You also give the neighbor’s script hash, because scripts come in pairs, and you give a hash of every other point in the tree. By revealing the script and its neighbor leaf hash, you prove you didn’t change the script. This is called a Merkle proof, which we explained in more detail in chapter @sec:utreexo.
+Later, when you want to spend it, you say, “This is the part of the tree I want to spend,” and then you use that script. You also give the neighbor’s script hash, because scripts come in pairs, and you give a hash of every other point in the tree. By revealing the script and its neighbor leaf hash, you prove you didn’t change the script. This is called a Merkle proof, which we explained in more detail in chapter 6.
 
 ![Merkle tree for MAST. To prove the existence of Script 1, you need to provide a Merkle proof consisting of the three marked items.](taproot/mast.svg)
 
@@ -41,7 +36,7 @@ This tweaking of keys is slightly more complicated than literally adding them, o
 
 ### Schnorr {#sec:schnorr}
 
-Chapter @sec:libsecp talks about libsecp256k1, and in May 2021, BIP 340^[Schnorr: <https://en.bitcoin.it/wiki/BIP_0340>] support was merged into libsecp256k1. This added Schnorr signatures to Bitcoin Core.
+Chapter 4 talks about libsecp256k1, and in May 2021, BIP 340^[Schnorr: <https://en.bitcoin.it/wiki/BIP_0340>] support was merged into libsecp256k1. This added Schnorr signatures to Bitcoin Core.
 
 Schnorr digital signatures were first created by Claus-Peter Schnorr, a German mathematician. He created the Schnorr signature algorithm, which he then patented. It would’ve been great for Bitcoin, as well as many other open source projects that came before it, but because of the patent, people had to find another way to reap the benefits of these signatures.
 
