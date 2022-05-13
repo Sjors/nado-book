@@ -1,16 +1,8 @@
-\newpage
-## Fake Nodes {#sec:fake_nodes}
-
-\EpisodeQR{49}
-
 This chapter talks about an attack that took place in the summer of 2021. It discusses what happened, speculates why it may have happened, and shares the fix that will prevent it from happening again.
-
-<!-- Blank line to move the next section header below the QR code -->
-\
 
 ### Random Connections
 
-In mid 2021, people who run nodes started noticing that random people were connecting to them.^[To read the thread where people mention noticing this attack, see <https://bitcointalk.org/index.php?topic=5348856.0>] This, on its own, is perfectly normal. As we explained in chapter @sec:dns, it’s part of how nodes bootstrap to the network. They randomly connect to nodes and ask for addresses of more nodes to connect to. They also announce their own IP, which gets gossiped around, so soon enough, the node will receive inbound connections.
+In mid 2021, people who run nodes started noticing that random people were connecting to them.^[To read the thread where people mention noticing this attack, see <https://bitcointalk.org/index.php?topic=5348856.0>] This, on its own, is perfectly normal. As we explained in chapter 2, it’s part of how nodes bootstrap to the network. They randomly connect to nodes and ask for addresses of more nodes to connect to. They also announce their own IP, which gets gossiped around, so soon enough, the node will receive inbound connections.
 
 However, what was unusual in this instance was these random people would connect to them and then send 500 messages,^[<https://developer.bitcoin.org/reference/p2p_networking.html#addr>] and each of those 500 messages would contain 10 IP addresses that were supposed to represent other nodes in the network. After that, they’d just disconnect. It certainly didn’t seem dangerous, but it wasn’t the usual behavior.
 
@@ -34,7 +26,7 @@ If the attacker also connects to you using a regular (not spamming) node, it’l
 
 There are some existing defense mechanisms in nodes that make it more difficult to use this information. For example, if you’re telling a node a bunch of IP addresses, it’s not going to immediately connect to all of them — not only because that would make it too easy to invite a node into connecting to a trap, but also because, most of the time, a node already has sufficient connections. It also doesn’t relay all of them, and for those addresses that are relayed, there’s a random time delay. So, it makes it very difficult to say specifically which node connects to which node connects to which node.
 
-These defense mechanisms are added to Bitcoin Core incrementally, often as a defense against eclipse attacks, as we explained in chapter @sec:eclipse. Essentially, when people do these types of attacks — probing the network in weird ways — experienced developers and security researchers will look at them and see how they can add something against them.
+These defense mechanisms are added to Bitcoin Core incrementally, often as a defense against eclipse attacks, as we explained in chapter 7. Essentially, when people do these types of attacks — probing the network in weird ways — experienced developers and security researchers will look at them and see how they can add something against them.
 
 In this instance, they added a counter measure.^[<https://github.com/bitcoin/bitcoin/pull/22387>] Normally, when people are acting nice, they’ll connect to you and send you one IP address — namely their own. Occasionally, they’ll send you some other IP addresses, but not very frequently — the average node will share an IP address with a peer maybe once every 20 seconds.
 
@@ -52,7 +44,7 @@ For more on this attack and related issues, there’s also a great Chaincode Lab
 
 There have been other examples of a situation where publishing a fix may itself have caused the attack. Back in the day, there was an alternative node implementation Bitcoin Unlimited. It had a bug that was fixed, but before the fix was deployed, the bug was exploited by somebody. That attack brought down all the Bitcoin Unlimited nodes at that time.^[<https://bitcoinmagazine.com/technical/security-researcher-found-bug-knocked-out-bitcoin-unlimited>]
 
-Additionally, around 2013, something similar didn’t happen, but could’ve happened, on Bitcoin, which we covered in chapter @sec:libsecp. This is because the OpenSSL library was made stricter in its software by imposing constraints on signatures. Had it been discovered only a few months later, after a Bitcoin Core release was already out there with the bug in it, then it would’ve been a zero-day situation. Perhaps in that case, the fix would’ve been disguised as nice cleanup software, rather than a patch for a security vulnerability. If someone had found out, they could’ve posted a slightly different kind of signature and caused a fork because some nodes would accept it and other nodes wouldn’t accept it.
+Additionally, around 2013, something similar didn’t happen, but could’ve happened, on Bitcoin, which we covered in chapter 4. This is because the OpenSSL library was made stricter in its software by imposing constraints on signatures. Had it been discovered only a few months later, after a Bitcoin Core release was already out there with the bug in it, then it would’ve been a zero-day situation. Perhaps in that case, the fix would’ve been disguised as nice cleanup software, rather than a patch for a security vulnerability. If someone had found out, they could’ve posted a slightly different kind of signature and caused a fork because some nodes would accept it and other nodes wouldn’t accept it.
 
 A final example is that of an inflation bug in 2018.^[<https://bitcoincore.org/en/2018/09/20/notice/>] It was presented as a fix to a bug that will crash your node. And that was true — it could crash your node — but it could also create inflation. The latter fact was a bit more important, and it was of course not announced, because somebody could’ve exploited it in that window of opportunity.
 
