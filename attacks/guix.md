@@ -63,7 +63,7 @@ Say you compile this on a Mac and it produces a 16,536-byte program. When you re
 
 All it takes is one changed letter in a computer program, or in its compiled binary, and boom, your checksum doesn’t work anymore.
 
-If the compiled program includes a library (see chapter @sec:libsecp), then the end result depends on the exact library version that happened to be on the developer machine when they created the binary.
+If the compiled program includes a library (see chapter 2), then the end result depends on the exact library version that happened to be on the developer machine when they created the binary.
 
 So when you download the latest Bitcoin Core from its website and you compare it to what you compiled yourself, it’s going to have a different checksum. Perhaps the difference is due to you having a more recent version of some library, or perhaps it’s due to a subtle difference between your system and Wladimir’s.
 
@@ -93,7 +93,7 @@ However, this isn’t the only problem.
 
 Let’s say you just read the Facebook terms and conditions, but it turns out those terms and conditions point to some other document — perhaps the entirety of US copyright law. So now you have to read that too.
 
-Similarly, just reviewing the Bitcoin Core code isn’t enough, because like most computer programs, it uses all sorts of other things, known as dependencies, mostly in the form of libraries (see chapter @sec:libsecp). And each library might in turn use some other library, and so forth and so on. So you need to inspect all of those too.
+Similarly, just reviewing the Bitcoin Core code isn’t enough, because like most computer programs, it uses all sorts of other things, known as dependencies, mostly in the form of libraries (see chapter 4). And each library might in turn use some other library, and so forth and so on. So you need to inspect all of those too.
 
 One of the constraints Bitcoin Core developers work with is to keep the number of dependencies as small as possible, and also to not update them all the time. Such updates require extra review work. And of course, the people who maintain those dependencies know Bitcoin Core is using them; all the more reason to be somewhat on your toes to make sure that those projects are being scrutinized, too.
 
@@ -133,7 +133,6 @@ The hope is that the people who are maintaining all these compilers and all the 
 
 So can we do better?
 
-\newpage
 ### Enter Guix
 
 The key is to make everything open source and everything a deterministic build. Every library, every printer driver, every compiler — everything. For Bitcoin Core to truly be a deterministic build, each of its dependencies needs to be a deterministic build, as does every tool that’s used to build it, including the compiler. Ideally the hardware is as well, but that’s a whole other can of worms.^[<https://media.ccc.de/v/36c3-10690-open_source_is_insufficient_to_solve_trust_problems_in_hardware>]
