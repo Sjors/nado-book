@@ -1,15 +1,10 @@
-\newpage
-## libsecp256k1 (Software Libraries) {short="libsecp256k1" link="sec:libsecp"}
-
-\EpisodeQR{9}
-
 libsecp256k1^[<https://github.com/bitcoin-core/secp256k1>] is a library that some people might have heard about in passing, but many don’t really understand it in depth, nor do they grasp its importance. This chapter will discuss what it is and why it matters for Bitcoin. But before tackling that, an overview of libraries in general would be helpful.
 
 A library is a reusable piece of software. According to Techopedia,^[<https://www.techopedia.com/definition/3828/software-library>] “A software library is a suite of data and programming code that is used to develop software programs and applications.” An example of this in the cryptography world is OpenSSL: It’s a piece of software that lets you perform a variety of cryptographic operations — from creating random numbers, to signing stuff with every curve under the sun. A library isn’t an actual program itself, in that it doesn’t do anything independently. However, other programs can use a library like OpenSSL — or a subset of it — to accomplish desired actions without having to write all the code themselves.
 
 In the case of OpenSSL, users download Bitcoin Core, which is the most popular software used to connect to the Bitcoin network. Its binary file contains Bitcoin Core-specific items, along with a lot of relevant libraries. One of those libraries is OpenSSL. Or rather, _was_, as we’ll explain later.
 
-From the beginning, OpenSSL was in Bitcoin for everything cryptography related, such as signing transactions and generating secure random private keys. Satoshi had to pick one of the cryptographic curves offered by the library. For various reasons about which we can only speculate,^[See the “Choosing The Right Elliptic Curve” section in this article by (pre-Ethereum) Vitalik Buterin: <https://bitcoinmagazine.com/technical/satoshis-genius-unexpected-ways-in-which-bitcoin-dodged-some-cryptographic-bullet-1382996984>] he picked the secp256k1 curve. As a result, he didn’t have to write the necessary cryptographic functionality himself — which you never want to do yourself, because it’s dangerous.^[<https://security.stackexchange.com/a/18198/209204>] Additionally, Satoshi didn’t pick the superior Schnorr signature scheme, a topic that will be covered in chapter @sec:schnorr, because OpenSSL didn’t support it and there was no other library for it either.
+From the beginning, OpenSSL was in Bitcoin for everything cryptography related, such as signing transactions and generating secure random private keys. Satoshi had to pick one of the cryptographic curves offered by the library. For various reasons about which we can only speculate,^[See the “Choosing The Right Elliptic Curve” section in this article by (pre-Ethereum) Vitalik Buterin: <https://bitcoinmagazine.com/technical/satoshis-genius-unexpected-ways-in-which-bitcoin-dodged-some-cryptographic-bullet-1382996984>] he picked the secp256k1 curve. As a result, he didn’t have to write the necessary cryptographic functionality himself — which you never want to do yourself, because it’s dangerous.^[<https://security.stackexchange.com/a/18198/209204>] Additionally, Satoshi didn’t pick the superior Schnorr signature scheme, a topic that will be covered in chapter 11, because OpenSSL didn’t support it and there was no other library for it either.
 
 With every Bitcoin Core release, the necessary library is included in the file you can download. Not all software includes all its libraries. The alternative is to make use of libraries that are already present on your computer, which makes the download smaller, as the library doesn’t have to be redownloaded. However, this can create problems.
 
@@ -25,7 +20,7 @@ Someone out there is maintaining the library. They don’t have time to test eac
 
 Then, when you download the library along with the rest of Bitcoin Core, your computer now uses that changed part of the library. But what if the Bitcoin Core developers didn’t notice this particular change that happened to the library? Then, all of a sudden, the stuff they wanted Bitcoin Core to do isn’t actually happening.
 
-Most breaking changes in libraries are accidents, but not all. Chapter @sec:guix goes deeper into the process of checking dependencies and attacks from rogue dependency maintainers.
+Most breaking changes in libraries are accidents, but not all. Chapter 9 goes deeper into the process of checking dependencies and attacks from rogue dependency maintainers.
 
 A breaking change in how a library behaves is particularly problematic when it causes a change in the interpretation of the rules of the blockchain: Bitcoin Core would consider a particular block valid in one version of the library, and in another version, it’d consider that same block invalid. This leads to a chain split.^[<https://coinmarketcap.com/alexandria/glossary/chain-split>]
 
@@ -41,7 +36,7 @@ First, users could still download the Bitcoin Core binary as usual, since it cam
 
 Second, those who prefer to compile their own software from source were offered two possible workarounds.^[<https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-January/007097.html>] They could either hold off on updating OpenSSL, or use a sufficiently recent version of the source code, which now contained a patch that worked around the issue.
 
-Third, the BIP 66 soft fork was proposed,^[<https://en.bitcoin.it/wiki/BIP_0066>] and it was indeed successfully activated (read more on soft fork activation in chapter @sec:taproot_activation). This fork required that future signatures all abide by the stricter standard, so that both old and new versions of OpenSSL would accept them.
+Third, the BIP 66 soft fork was proposed,^[<https://en.bitcoin.it/wiki/BIP_0066>] and it was indeed successfully activated (read more on soft fork activation in chapter 12). This fork required that future signatures all abide by the stricter standard, so that both old and new versions of OpenSSL would accept them.
 
 This incident wasn’t necessarily surprising, as OpenSSL is famous for its vulnerabilities. The main reason for this is because these libraries have been used by everyone for decades, but they’re only maintained by a tiny number of volunteers on a shoestring budget.
 
