@@ -1,9 +1,4 @@
-\newpage
-## Utreexo {#sec:utreexo}
-
-\EpisodeQR{15}
-
-Whenever a new Bitcoin transaction is made, Bitcoin nodes use a UTXO set to determine that the coins being spent really exist (see chapter @sec:assume). This UTXO set is currently several gigabytes in size and continues to grow over time, and there’s no upper limit to how big it can potentially get.
+Whenever a new Bitcoin transaction is made, Bitcoin nodes use a UTXO set to determine that the coins being spent really exist (see chapter 5). This UTXO set is currently several gigabytes in size and continues to grow over time, and there’s no upper limit to how big it can potentially get.
 
 Because Bitcoin nodes perform best if the UTXO set is kept in RAM, and because RAM is a relatively scarce resource for computers, it would benefit a node’s performance if the UTXO set could be stored in a more compact format. This is the promise of Utreexo.^[Pronounced U Tree X O. See also: <https://bitcoinmagazine.com/articles/bitcoins-growing-utxo-problem-and-how-utreexo-can-help-solve-it>]
 
@@ -41,7 +36,7 @@ To put it another way, normally, when somebody sends you a transaction, the tran
 
 The figure above illustrates how you can prove the existence of Coin 3 using a Merkle proof, given a verifier that only knows the Merkle root (top). First, you reveal the coin itself, which is just a transaction output with an amount and `scriptPubKey`. The verifier hashes this to obtain Hash 1-0 (directly above Coin 3 in the figure). You then provide Hash 1-1. Even though you probably don’t own Coin 4 and you may not even know its amount and `scriptPubKey`, you do know its hash, because your wallet kept track of this information. With that, the verifier can calculate Hash 1. You then provide Hash 0, and now the verifier can see that your proof results in the same Merkle root hash they knew about. You’ve now demonstrated ownership of Coin 3 without the need for the verifier to know the entire UTXO set.
 
-We’ll revisit Merkle trees in chapter @sec:miniscript and chapter @sec:taproot_basics.
+We’ll revisit Merkle trees in chapter 10 and chapter 11.
 
 ### Seeing the Forest for the Trees
 
@@ -69,7 +64,7 @@ There’s nothing magical about bridge nodes. Any node that has the original UTX
 
 So these bridge nodes do the translation between the current world of nodes that track the UTXO set in memory and these new Utreexo-enabled nodes that don’t have to. As long as one bridge node exists, it can bootstrap the network. However, this relies on these bridge nodes being backed by people with good intentions. But these nodes could change, or disappear, or run out of battery.
 
-Looking at the longterm picture, if people like Utreexo given the advantages — or even if they don’t like it — if the UTXO set gets too big and takes too long to sync on any normal computer, then you could basically make a soft fork that requires all proofs to be in the block.^[You’d include the hash of the proofs somewhere in the coinbase transaction. As we explained in chapter @sec:segwit for SegWit, the proofs themselves would go in a special place inside the block that old nodes don’t see.] By including proofs in the blocks, they’re guaranteed to be available to all nodes.
+Looking at the longterm picture, if people like Utreexo given the advantages — or even if they don’t like it — if the UTXO set gets too big and takes too long to sync on any normal computer, then you could basically make a soft fork that requires all proofs to be in the block.^[You’d include the hash of the proofs somewhere in the coinbase transaction. As we explained in chapter 3 for SegWit, the proofs themselves would go in a special place inside the block that old nodes don’t see.] By including proofs in the blocks, they’re guaranteed to be available to all nodes.
 
 The tradeoff there is that bigger blocks require more bandwidth and storage, but less RAM is used. At the moment, bandwidth is probably a bigger constraint than RAM, so a soft fork isn’t likely to happen, but this could change in the decades ahead.
 
@@ -79,7 +74,7 @@ With this solution, because you wouldn’t need a lot of RAM, you could start do
 
 But even without specialized hardware, there’s a potential speedup if the CPU can do most of the block validation work. A 1KB Merkle forest can easily be kept in a typical CPU cache.^[<https://en.wikipedia.org/wiki/CPU_cache>] This avoids having to ferry UTXO set information between the CPU and RAM. Just like using RAM to avoid physical disk reads speeds things up, so does using the CPU cache to avoid using RAM.
 
-In chapter @sec:assume, we described how the source code contains a hash that represents the UTXO set a given snapshot height. The node still needs to obtain that UTXO set, which is several gigabytes in size, and it’d probably download it from its peers. With Utreexo, the UTXO set is so small that it can be put in the source code, thus removing the need to download the UTXO set for the snapshot.
+In chapter 5, we described how the source code contains a hash that represents the UTXO set a given snapshot height. The node still needs to obtain that UTXO set, which is several gigabytes in size, and it’d probably download it from its peers. With Utreexo, the UTXO set is so small that it can be put in the source code, thus removing the need to download the UTXO set for the snapshot.
 
 ### A Couple Tradeoffs
 
