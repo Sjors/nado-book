@@ -3,12 +3,14 @@ SKIP_QR="0"
 PAPERBACK="0"
 EBOOK="0"
 ONLY_PROCESS="0"
+CHAPTERS="0"
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         -b|--paperback) PAPERBACK="1" EXTRA_OPTIONS="-o nado-paperback.pdf --metadata-file meta-paperback.yaml --include-before-body copyright_paperback.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-paperback.tex" ;;
         -k|--ebook) EBOOK="1" EXTRA_OPTIONS="-o nado-ebook.pdf -V ebook --metadata-file meta-ebook.yaml --include-before-body copyright_ebook.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-ebook.tex" ;;
         -q|--skipqr) SKIP_QR="1"; shift ;;
         -p|--process) ONLY_PROCESS="1"; shift ;;
+        -c|--chapters) CHAPTERS="1"; shift ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
     esac
     shift
@@ -65,6 +67,62 @@ for file in taproot/*.dot; do
 done
 
 if [ "$ONLY_PROCESS" -eq "1" ]; then
+    exit 0
+fi
+
+if [ "$CHAPTERS" -eq "1" ]; then
+    # For now this is best done by rebasing the 2022/05/pdf-tweaks branch
+    # TODO to get rid of the seperate branch:
+    # * wrap chapter title and if $chapter$
+    # * make episode QR optional
+    # * put link under episode QR, like in History of Soft Fork Activation
+    # * script to hardcode chapter numbers (maybe with a manual mapping)
+    echo "Render chapter PDFs"
+    rm -f Chapter*.pdf
+    declare -a paper_sizes=(a4 letter)
+    declare -a chapter_numbers=(1 2 3 4 5 6 7 8 9 10 11 12)
+    declare -a chapter_slugs=(
+        basics/address
+        basics/dns_and_tor
+        basics/segwit
+        basics/libsecp256k1
+        resources/assume-utxo
+        resources/utreexo
+        attacks/eclipse
+        attacks/fake_nodes
+        attacks/guix
+        wallets/miniscript
+        taproot/basics
+        taproot/activation
+    )
+    # TODO: Get title from document metadata
+    declare -a titles=(
+        "Bitcoin Addresses"
+        "DNS Bootstrap and Tor V3"
+        "SegWit"
+        "libsecp256k1"
+        "Sync Time and AssumeUTXO"
+        "Utreexo"
+        "Eclipse Attacks"
+        "Fake Nodes"
+        "Why Open Source Matters — GUIX"
+        "Script, P2SH, and Miniscript"
+        "Taproot and Schnorr"
+        "A Short History of Soft Fork Activation"
+    )
+
+    for (( i=0; i<${#chapter_numbers[@]}; i++ ));
+    do
+        echo "Chapter ${chapter_numbers[i]} - ${titles[i]}"
+        for p in "${paper_sizes[@]}"
+        do
+            # https://stackoverflow.com/a/12487465
+            # In bash 4 you can simply do: paper_size="${p^}", but this works in bash 3:
+            paper_size="$(tr '[:lower:]' '[:upper:]' <<< ${p:0:1})${p:1}"
+            echo "$paper_size..."
+            pandoc -o "Chapter ${chapter_numbers[i]} - ${titles[i]} ($paper_size).pdf" "${chapter_slugs[i]}.processed.md" -V chapter=${chapter_numbers[i]} -V paper=$p -V title="${titles[i]}" --template=templates/chapter.tex --top-level-division=chapter
+        done
+    done
     exit 0
 fi
 

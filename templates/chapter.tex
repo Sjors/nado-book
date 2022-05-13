@@ -6,10 +6,53 @@
 \usepackage{mwe}
 \usepackage[multiple]{footmisc}
 \usepackage{xurl} % add URL line breaks
+\usepackage{longtable,booktabs}
 \usepackage[colorlinks]{hyperref}
 \captionsetup[figure]{labelformat=empty}
 \setlength{\belowcaptionskip}{-6pt}
 \setlength\columnsep{1cm}
+
+% ---------------------------------------
+% Stuff from the default Pandoc template:
+\providecommand{\tightlist}{%
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+% ---------------------------------------
+
+% https://github.com/jgm/pandoc/issues/1023#issuecomment-1095733244
+% This workaround requires the booktabs package
+\makeatletter
+\let\oldlt\longtable
+\let\endoldlt\endlongtable
+\def\longtable{\@ifnextchar[\longtable@i \longtable@ii}
+\def\longtable@i[#1]{\begin{figure}[t]
+\onecolumn
+\begin{minipage}{0.5\textwidth}
+\oldlt[#1]
+}
+\def\longtable@ii{\begin{figure}[t]
+\onecolumn
+\begin{minipage}{0.5\textwidth}
+\oldlt
+}
+\def\endlongtable{\endoldlt
+\end{minipage}
+\twocolumn
+\end{figure}}
+\makeatother
 
 % Don't number sections
 \setcounter{secnumdepth}{0}
@@ -20,7 +63,7 @@
 \begin{document}
 \maketitle
 
-This chapter originally appeared in the book \emph{Bitcoin: A Work In Progress} (\href{https://btcwip.com/}{btcwip.com}).
+This originally appeared as chapter $chapter$ in the book \emph{Bitcoin: A Work In Progress} (\href{https://btcwip.com/}{btcwip.com}).
 
 \bigskip
 
