@@ -1,8 +1,3 @@
-\newpage
-## DNS Bootstrap and Tor V3 {#sec:dns}
-
-\EpisodeQR{13}
-
 Bitcoin Core 0.21 added support for Tor V3 addresses in 2020.^[<https://github.com/bitcoin/bitcoin/pull/19954>] This chapter will explain what this means and why it matters. It’ll also discuss how new Bitcoin nodes find existing Bitcoin nodes when they bootstrap to the network.
 
 ### How Does Tor Work?
@@ -21,7 +16,7 @@ To support this, all of these Tor nodes have their own sort of IP address — th
 
 For various reasons you might not want the rest of the world to know that your IP address is running a Bitcoin node. In particular, you may not want your Bitcoin addresses associated with your IP address, since the former says how much money you have, and the latter can often be tied directly to your name and address — not just by governments, but also by someone with access to e.g. a hacked e-commerce database with the IP addresses and home addresses of its customers. This can lead to bad outcomes.^[<https://github.com/jlopp/physical-bitcoin-attacks>]
 
-Bitcoin nodes already try to behave in ways that make them look indistinguishable from other nodes. Ideally, a node doesn’t reveal to other nodes which coins it controls. A node downloads the entire blockchain and keeps track of all transactions in the mempool,^[The mempool is a queue of transactions that have not yet been confirmed in a block. For a _Bitcoin, Explained_ episode about the mempool, see appendix @sec:more_eps. When the mempool contains many transactions, fees tend to go up. See e.g. <https://mempool.space/>] as opposed to only fetching the information about its own coins.
+Bitcoin nodes already try to behave in ways that make them look indistinguishable from other nodes. Ideally, a node doesn’t reveal to other nodes which coins it controls. A node downloads the entire blockchain and keeps track of all transactions in the mempool,^[The mempool is a queue of transactions that have not yet been confirmed in a block. For a _Bitcoin, Explained_ episode about the mempool, see appendix A. When the mempool contains many transactions, fees tend to go up. See e.g. <https://mempool.space/>] as opposed to only fetching the information about its own coins.
 
 Unfortunately the system isn’t perfect. Especially when you’re sending and receiving transactions from your IP address, careful network analysis by an adversary can sometimes reveal where those transactions originated. This type of analysis is a billion-dollar business, where companies don’t always behave ethically.^[<https://www.coindesk.com/business/2021/09/21/leaked-slides-show-how-chainalysis-flags-crypto-suspects-for-cops/>, <https://www.coindesk.com/markets/2019/03/05/coinbase-pushes-out-ex-hacking-team-employees-following-uproar/>]
 
@@ -67,7 +62,7 @@ This means that the standard infrastructure of the internet — including all th
 
 ### So We Trust These Developers?
 
-What if one of the DNS seed operators were to lie and provide a list of fake or somehow malicious nodes? Perhaps as part of an elaborate eclipse attack (see chapter @sec:eclipse). Nothing would stop them, but it would be very visible. Anyone can request IP addresses from the DNS seed and then check if they actually lead to Bitcoin nodes or not, and if these nodes are behaving in suspicious ways. This visibility discourages cheating.
+What if one of the DNS seed operators were to lie and provide a list of fake or somehow malicious nodes? Perhaps as part of an elaborate eclipse attack (see chapter 7). Nothing would stop them, but it would be very visible. Anyone can request IP addresses from the DNS seed and then check if they actually lead to Bitcoin nodes or not, and if these nodes are behaving in suspicious ways. This visibility discourages cheating.
 
 Another potential problem would be if none of the DNS seeds are reachable because, for example, they’re offline. For that scenario inside the Bitcoin Core source code (and thus also the binary you download) is a list of IP addresses, as well as some hidden services.
 
