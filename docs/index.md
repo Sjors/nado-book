@@ -58,6 +58,8 @@ For other countries try [Amazon.com](https://amzn.to/3PbclPz) or [Book Depositor
 
 ## Physical shops
 
+* Amsterdam: The American Book Center ([Spui 12](https://goo.gl/maps/TzoYnznXgWTMgVRY7)) can print the book (while you wait?)
+
 I'm not aware of any physical book store that has the book on a shelf, but in many countries they can order it for you. ISBN: `9789090360423`
 
 The book _may_ be available through the [Espresso Book Machine](https://net.ondemandbooks.com/odb/lsi/9789090360423) at various locations. They'll print a fresh copy while you wait. The one in La Canada, CA is [gone](https://twitter.com/jurvistan/status/1523008386215800832) though.
