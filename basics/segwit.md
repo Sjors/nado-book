@@ -1,8 +1,3 @@
-\newpage
-## SegWit {#sec:segwit}
-
-\EpisodeQR{32}
-
 Segregated Witness, also known as SegWit, was a soft fork activated on the Bitcoin network in the summer of 2017. It was the last soft fork before Taproot activated in the fall of 2021, and it’s arguably still the biggest Bitcoin protocol upgrade to date.
 
 In short, SegWit allowed transaction data and signature data to be separated within Bitcoin blocks. This chapter will explain how it works and go into detail about the benefits of it.
@@ -21,7 +16,7 @@ So you may ask yourself, “Why is this a problem?” It’s not necessarily a p
 
 But imagine you sent a transaction (A) to a super secure vault in the Arctic located thousands of meters underground. And then you went to the Arctic and created a redeem transaction (B) back to your hot wallet, and you signed it, but you didn’t yet broadcast it. Then, once you broadcast the first transaction (A) to send some money to the vault and somebody messes with it, suddenly the second transaction (B) is no longer valid, since it refers to the unaltered one (A). Now you have to go back to the Arctic to create a new transaction (B) that refers to the altered version (A) — a scenario that’s complicated at best.^[This example may seem contrived, but vault designs have to take malleability into account. <https://bitcoinops.org/en/topics/vaults/>]
 
-Another, perhaps more down to earth, example of how this becomes a problem is with the Lightning network,^[The book doesn’t cover Lightning, but see appendix @sec:more_eps.] which is where you’re building unconfirmed transactions on top of each other. So if one of the underlying transactions is tweaked, the transactions that follow up on that one are no longer valid.
+Another, perhaps more down to earth, example of how this becomes a problem is with the Lightning network,^[The book doesn’t cover Lightning, but see appendix A.] which is where you’re building unconfirmed transactions on top of each other. So if one of the underlying transactions is tweaked, the transactions that follow up on that one are no longer valid.
 
 In the Lightning protocol two people send money to a shared address, and the only way to get money out of that address is by using a special transaction that both parties signed _before_ they sent money into the shared address. You don’t want somebody messing with the transaction that goes into the address, because then you can’t spend from it anymore — or rather, you can, but you both have to sign it again. That potentially gives one party the power to blackmail the other to get their fair share of the coins back.
 
@@ -41,7 +36,7 @@ In short, SegWit solved the transaction malleability issue, where transaction ID
 
 ### SegWit as a Soft Fork
 
-How could SegWit be deployed as a soft fork (backward-compatible upgrade)? We’ll dive more deeply into how soft forks work in chapter @sec:taproot_activation, but the basic idea is that upgraded nodes are aware of the new rules, while un-upgraded nodes don’t perceive a violation of the rules.
+How could SegWit be deployed as a soft fork (backward-compatible upgrade)? We’ll dive more deeply into how soft forks work in chapter 12, but the basic idea is that upgraded nodes are aware of the new rules, while un-upgraded nodes don’t perceive a violation of the rules.
 
 With SegWit this is achieved by appending data to the end of a block, kind of like a subblock, and not sending that data to legacy nodes. A hash of this data is added to the coinbase transaction^[The company Coinbase was named after this first transaction in a block, which creates coins out of nowhere and pays the miner their reward.] in an `OP_RETURN` statement.
 
@@ -57,11 +52,11 @@ However the increase isn’t unlimited. SegWit nodes use a new way of calculatin
 
 ### Future SegWit Versions, e.g. Taproot
 
-The topic of Taproot is covered in depth in chapter @sec:taproot_basics. But what’s important to know here is SegWit’s script versioning allows for easier upgrades to new transaction types, and the recent Taproot upgrade is the first example of this feature.
+The topic of Taproot is covered in depth in chapter 11. But what’s important to know here is SegWit’s script versioning allows for easier upgrades to new transaction types, and the recent Taproot upgrade is the first example of this feature.
 
-The versioning works as follows, and is also touched on in chapter @sec:address, which covers addresses. The output of each transaction contains the amount and something called the `scriptPubKey`. The latter is a piece of Bitcoin script that constrains how to spend this coin, as we briefly mentioned in chapter @sec:address and will explain in more detail in chapter @sec:miniscript. With SegWit, the `scriptPubKey` always starts with a number, which is interpreted as the SegWit version. The rules for interpreting SegWit version 0 are set in stone, as are those for interpreting SegWit version 1, aka Taproot. But anything following a 2 or higher is up for grabs: Those rules may be written later.
+The versioning works as follows, and is also touched on in chapter 1, which covers addresses. The output of each transaction contains the amount and something called the `scriptPubKey`. The latter is a piece of Bitcoin script that constrains how to spend this coin, as we briefly mentioned in chapter 1 and will explain in more detail in chapter 10. With SegWit, the `scriptPubKey` always starts with a number, which is interpreted as the SegWit version. The rules for interpreting SegWit version 0 are set in stone, as are those for interpreting SegWit version 1, aka Taproot. But anything following a 2 or higher is up for grabs: Those rules may be written later.
 
-Before a new soft fork activates, anything following an unknown version number is ignored, thus it’s anyone-can-spend. As we’ll explain in chapter @sec:taproot_activation one of the things that could go wrong with soft fork activation is that a majority of miners aren’t actually enforcing the new rules. But as long as most miners do enforce the new rules, they’ll ensure that these anyone-can-spend outputs, from the perspective of old nodes, won’t actually get spent.
+Before a new soft fork activates, anything following an unknown version number is ignored, thus it’s anyone-can-spend. As we’ll explain in chapter 12 one of the things that could go wrong with soft fork activation is that a majority of miners aren’t actually enforcing the new rules. But as long as most miners do enforce the new rules, they’ll ensure that these anyone-can-spend outputs, from the perspective of old nodes, won’t actually get spent.
 
 Miners that run updated node software consider blocks that spend these coins invalid. And as long as they’re in the majority, they’ll also create the longest chain. So now the new nodes are happy because all the new rules are being followed, and the old nodes are happy because no rules are being broken from their perspective and they just follow the longest chain. So the network stays in consensus.
 
