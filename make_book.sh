@@ -11,6 +11,7 @@ while [[ "$#" -gt 0 ]]; do
         -q|--skipqr) SKIP_QR="1"; shift ;;
         -p|--process) ONLY_PROCESS="1"; shift ;;
         -c|--chapters) CHAPTERS="1"; shift ;;
+        -v|--verbose) EXTRA_OPTIONS="$EXTRA_OPTIONS --verbose"; shift ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
     esac
     shift
@@ -53,7 +54,12 @@ if [ "$SKIP_QR" -eq "0" ]; then
     for i in $(seq $count); do
         url=`sed -n ${i}p qr/note/urls.csv`
         short_url=`sed -n ${i}p qr/note/shorts.txt`
-        echo "s*<$url>*<$url> \\\qrcode[height=0.45cm,level=M]{$short_url}*g;" >> qr/sed
+        # echo "s*<$url>*<$url> \\\qrcode[height=0.45cm,level=L]{$short_url}*g;" >> qr/sed
+        # width and height are 0.45cm in inches
+        # version is hardcoded to 1. For any QR code where this doesn't fiat,
+        # it will throw "GPL Ghostscript: Unrecoverable error"
+        # pspicture ensures any text following the QR is moved aside
+        echo "s*<$url>*<$url> \\\raisebox{-1.5mm}{\\\begin{pspicture}(0.45cm,0.45cm)\\\psbarcode{$short_url}{version=1 eclevel=L width=0.177 height=0.177}{qrcode}\\\end{pspicture}}*g;" >> qr/sed
     done
     find **/*.processed.md -exec sed -i '' -f qr/sed {} \;
 
