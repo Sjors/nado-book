@@ -58,7 +58,7 @@ For other countries try [Amazon.com](https://amzn.to/3PbclPz) or [Book Depositor
 
 ## Physical shops
 
-* Amsterdam: The American Book Center ([Spui 12](https://goo.gl/maps/TzoYnznXgWTMgVRY7)) can print the book (while you wait?)
+* Amsterdam: The American Book Center ([Spui 12](https://goo.gl/maps/TzoYnznXgWTMgVRY7)) can print [the book](https://abc.nl/book-details/bitcoin/$9789090360423), sometimes even while you wait!
 
 I'm not aware of any physical book store that has the book on a shelf, but in many countries they can order it for you. ISBN: `9789090360423`
 
