@@ -1,8 +1,7 @@
 \newpage
 ## Script, P2SH, and Miniscript {#sec:miniscript}
 
-
-![Ep. 04 {l0pt}](qr/ep/04.png)
+\EpisodeQR{4}
 
 This chapter will talk about Miniscript and how it makes using Bitcoin Script much easier. It’ll break down how Script works, how you can do more complicated and even absurd things with it, and how Miniscript emerged to make transactions less complicated and more secure. Additionally, it’ll cover what policy language is and how it can make it easier to create scripts.
 

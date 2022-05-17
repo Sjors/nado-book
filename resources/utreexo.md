@@ -1,8 +1,7 @@
 \newpage
 ## Utreexo {#sec:utreexo}
 
-
-![Ep. 15 {l0pt}](qr/ep/15.png)
+\EpisodeQR{15}
 
 Whenever a new Bitcoin transaction is made, Bitcoin nodes use a UTXO set to determine that the coins being spent really exist (see chapter @sec:assume). This UTXO set is currently several gigabytes in size and continues to grow over time, and there’s no upper limit to how big it can potentially get.
 

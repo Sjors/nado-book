@@ -1,8 +1,7 @@
 \newpage
 ## libsecp256k1 (Software Libraries) {short="libsecp256k1" link="sec:libsecp"}
 
-
-![Ep. 09 {l0pt}](qr/ep/09.png)
+\EpisodeQR{9}
 
 libsecp256k1^[<https://github.com/bitcoin-core/secp256k1>] is a library that some people might have heard about in passing, but many don’t really understand it in depth, nor do they grasp its importance. This chapter will discuss what it is and why it matters for Bitcoin. But before tackling that, an overview of libraries in general would be helpful.
 

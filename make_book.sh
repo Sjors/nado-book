@@ -24,17 +24,6 @@ find . -name "*.md.processed" -exec sh -c 'mv "$1" "${1%.md.processed}.processed
 
 if [ "$SKIP_QR" -eq "0" ]; then
 
-    # Process episode QR codes:
-    pushd qr/ep
-        for f in *.txt; do
-            qrencode -o ${f%.txt}.png -r $f --level=M -d 300 -s 4
-            if [ "$PAPERBACK" -eq "1" ]; then
-                # Drop alpha to prevent any transparent elements in the PDF
-                mogrify ${f%.txt}.png -background white -alpha remove
-            fi
-        done
-    popd
-
     # Process footnote QR codes:
     # Collect URL's:
     find **/*.md -print0 | xargs -0 perl -ne 'print "$1\n" while /<(http.*?)>/g' | sort | uniq > qr/note/urls.csv

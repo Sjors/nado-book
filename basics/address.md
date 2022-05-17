@@ -2,7 +2,7 @@
 
 ## Bitcoin Addresses {#sec:address}
 
-![Ep. 28 {l0pt}](qr/ep/28.png)
+\EpisodeQR{28}
 
 Bitcoin addresses aren’t part of the Bitcoin blockchain; rather, they’re conventions used by Bitcoin (wallet) software to communicate where coins must be sent to: either a public key (P2PK), a public key hash (P2PKH), a script hash (P2SH), a witness public key hash (P2WPKH), or a witness script hash (P2WSH). Addresses also include some metadata about the address type itself.
 

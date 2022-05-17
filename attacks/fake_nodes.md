@@ -1,8 +1,7 @@
 \newpage
 ## Fake Nodes {#sec:fake_nodes}
 
-
-![Ep. 49 {l0pt}](qr/ep/49.png)
+\EpisodeQR{49}
 
 This chapter talks about an attack that took place in the summer of 2021. It discusses what happened, speculates why it may have happened, and shares the fix that will prevent it from happening again.
 

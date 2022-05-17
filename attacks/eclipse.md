@@ -1,7 +1,7 @@
 \newpage
 ## Eclipse Attacks {#sec:eclipse}
 
-![Ep. 17 {l0pt}](qr/ep/17.png)
+\EpisodeQR{17}
 
 An eclipse attack is a type of attack that isolates a Bitcoin node by occupying all of its connection slots to block the node from receiving any transactions and blocks, other than those sent to it by the attacker. This prevents the node from seeing what’s going on in the Bitcoin network, and it potentially even tricks the node into accepting an alternative branch of the Bitcoin blockchain. Although nodes will never accept an invalid transaction or block, an eclipse attack can still cause harm, as we’ll see.
 
@@ -123,7 +123,7 @@ The Bitcoin Core development wiki also contains an overview of eclipse attacks a
 \newpage
 ### Erebus Attack
 
-![Ep. 18 {l0pt}](qr/ep/18.png)
+\EpisodeQR{18}
 
 If you want to learn more about eclipse attacks, you might be interested in the Erebus attack^[<https://erebus-attack.comp.nus.edu.sg>]: an eclipse attack where an attacker essentially spoofs an entire part of the internet.
 

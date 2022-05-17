@@ -1,7 +1,7 @@
 \newpage
 ## Activation Options {#sec:taproot_activation}
 
-![Ep. 03 {l0pt}](qr/ep/03.png)
+\EpisodeQR{3}
 
 The Taproot soft fork was activated on November 13, 2021, approximately one year after the finalized code was merged.^[<https://github.com/bitcoin/bitcoin/pull/19953>] It happened much more quickly than SegWit did, and with far less drama, but it wasn’t an uneventful year. This chapter discusses how soft forks were activated in the past, what options were considered for Taproot, and how Taproot was finally activated.
 
@@ -149,7 +149,7 @@ In any scenario where two alternative chains exist, it’s unsafe for users whos
 
 ### To Argue a `LOT`
 
-![Ep. 29 {l0pt}](qr/ep/29.png)
+\EpisodeQR{29}
 
 This setting to require mandatory signaling became known as `LOT`. We dedicated several episodes to the debate around it, not all of which made into this book. The transcript for the accompanying episode can be found here.^[This transcript was written by Michael Folkson. The site contains many other transcripts from technical Bitcoin podcasts, conference talks, and even group conversations. Many of them are written by Bryan Bishop aka Kanzure, who is quite possibly one of the fastest typists on Earth. <https://diyhpl.us/wiki/transcripts/bitcoin-magazine/2021-02-26-taproot-activation-lockinontimeout/>]
 
@@ -219,15 +219,16 @@ Finally, it’s worth pointing out that all the problems that `LOT=false` users 
 
 ### `LOT=true` Client, Rogue?
 
-![Ep. 36 {l0pt}](qr/ep/36.png)
+\EpisodeQR{36}
 
 This time around, the first software download release with the Taproot activation code wasn’t Bitcoin Core. Instead, two developers decided to independently release a modified version of Bitcoin Core, which included BIP 8 and the `LOT=true` behavior.^[<https://www.reddit.com/r/Bitcoin/comments/mruopv/bitcoincorebased_bip8_lottrue_taproot_activation/>]
 
+\noindent
 With open source software, anyone is free to release any variation of the software they want. Similarly, everyone is free to download whichever variation they want. However, in addition to the general objections to `LOT=true` above, there are other practical matters to think about when downloading such an alternative implementation. We cover these in the episode above. In particular, it’s important to make sure you’re not accidentally downloading malware (see chapter @sec:guix).
 
 ### The Speedy Trial Proposal
 
-![Ep. 31 {l0pt}](qr/ep/31.png)
+\EpisodeQR{31}
 
 To get out of this stalemate, Speedy Trial came to the rescue. It proposed^[<https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018583.html>] the following: “Rather than discussing whether or not there’s going to be signaling and having lots of arguments about it, let’s just try it quickly.” The proposed timeline^[<https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018594.html>] suggested the signaling would start in early May, last three months (until August), and then be activated three months later, in November.
 
@@ -251,10 +252,11 @@ With the controversy (temporarily) out of the way, more developers came out of t
 
 ### We Have Taproot `LOCKED_IN`!
 
-![Ep. 40 {l0pt}](qr/ep/40.png)
+\EpisodeQR{40}
 
 Bitcoin Core v0.21.1 with the Speedy Trial code was released on May 1, 2021.^[<https://bitcoincore.org/en/2021/05/01/release-0.21.1/>]
 
+\noindent
 The first retargeting period started a week before that release on April 24, 2021, and the threshold wasn’t reached. The second retargeting period also didn’t reach the threshold, but the third time was a charm. The 90 percent signaling threshold was reached on June 12, 2021, with `LOCKED_IN` happening a few days later.^[<https://sports.yahoo.com/locked-bitcoin-taproot-upgrade-gets-120837972.html>] It lasted until the November activation.
 
 Remember that the signal for a soft fork (BIP 9, BIP 8, or Speedy Trial) is just a bit flag in the block header. Miners can and do use custom software to set this bit. At the same time, miners run full nodes that actually enforce the consensus rules. But if they don’t upgrade their own nodes, then their outdated nodes will simply ignore the flag, and their nodes won’t enforce the new rules. For that to happen, they need to actually upgrade their node software.
@@ -271,10 +273,11 @@ Even if it’s inherently unsafe, it could make sense to continue developing it 
 
 ### Burying Soft Forks
 
-![Ep. 54 {l0pt}](qr/ep/54.png)
+\EpisodeQR{54}
 
 After all is said and done and a soft fork has activated, what do you do with the activation code? Is it merely a scaffold that can be removed once the new rules are active? Or is the activation mechanism itself a permanent part of the rules?
 
+\noindent
 As was done with previous soft forks, it looks like a future Bitcoin Core release will “bury” the Taproot activation. This means the node will treat the Taproot rules as if they’ve been active since Bitcoin’s very beginning. This is possible because, when applying these rules retroactively, only one historical block does not conform to them. This block can be grandfathered in.^[<https://github.com/bitcoin/bitcoin/pull/23536>]
 
 In the episode we explain what the benefits are of burying a soft fork, in particular pointing out how it helps developers when they review the Bitcoin Core codebase or when they perform tests on it.

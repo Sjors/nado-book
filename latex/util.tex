@@ -19,3 +19,13 @@
         \end{pspicture}%
     }%
 }
+
+\newcommand{\EpisodeQR}[1]{%
+\begin{wrapfigure}{l}{0.38in}
+    \begin{pspicture}(0.38in,0.38in)
+        \psbarcode{https://btcwip.com/nado#1}{eclevel=M width=0.38 height=0.38}{qrcode}
+    \end{pspicture}%
+    \caption{Ep. #1}%
+\end{wrapfigure}
+\par
+}

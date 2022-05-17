@@ -1,1 +1,0 @@
-https://bitcoinmagazine.com/technical/bitcoin-core-cve-2021-31876-bug

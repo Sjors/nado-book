@@ -1,8 +1,7 @@
 \newpage
 ## Sync Time and AssumeUTXO {#sec:assume}
 
-
-![Ep. 14 {l0pt}](qr/ep/14.png)
+\EpisodeQR{14}
 
 One of the biggest bottlenecks — if not the biggest one — for scaling Bitcoin is initial block download. This is the time it takes for a Bitcoin node to synchronize with the Bitcoin network, as it needs to process all historic transactions and blocks to construct the latest unspent transaction output (UTXO) set, i.e. the current state of Bitcoin ownership.
 
