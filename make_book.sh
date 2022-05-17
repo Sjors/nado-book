@@ -130,7 +130,8 @@ fi
 # The short-title-for-toc filter ensures that the page
 # header of appendix C fits on one line.
 # short-title-for-toc must be run before secnos.
-pandoc --table-of-contents --top-level-division=part\
+pandoc  --pdf-engine=xelatex\
+        --table-of-contents --top-level-division=part\
         --strip-comments\
         --filter filters/short-title-for-toc.py\
         --filter pandoc-secnos\
