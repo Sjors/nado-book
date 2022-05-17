@@ -6,6 +6,9 @@ qr/**/*.png
 qr/sed
 nado-*.tex
 
+# Design
+**/*.idlk
+
 ## Jekyll
 _site
 docs/.jekyll-metadata
