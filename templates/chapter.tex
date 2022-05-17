@@ -15,6 +15,16 @@
 \setlength{\belowcaptionskip}{-6pt}
 \setlength\columnsep{1cm}
 
+% https://tex.stackexchange.com/a/62091
+\let\oldFootnote\footnote
+\newcommand\nextToken\relax
+
+\renewcommand\footnote[1]{%
+    \oldFootnote{#1}\futurelet\nextToken\isFootnote}
+
+\newcommand\isFootnote{%
+    \ifx\footnote\nextToken\textsuperscript{,}\fi}
+
 % ---------------------------------------
 % Stuff from the default Pandoc template:
 \providecommand{\tightlist}{%
