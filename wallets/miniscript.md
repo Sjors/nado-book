@@ -100,7 +100,7 @@ So that’s the long^[If you can’t get enough of this, watch Andrew Poelstra�
 
 ### Enter Miniscript
 
-Miniscript^[<https://medium.com/blockstream/miniscript-bitcoin-scripting-3aeff3853620>] is a project that was designed by a few Blockstream engineers: Pieter Wuille, Andrew Poelstra, and Sanket Kanjalkar. It’s “a language for writing (a subset of) Bitcoin Scripts in a structured way, enabling analysis, composition, generic signing and more.” You can see examples and try it yourself at <http://bitcoin.sipa.be/miniscript>.
+Miniscript^[<https://medium.com/blockstream/miniscript-bitcoin-scripting-3aeff3853620>] is a project that was designed by a few Blockstream engineers: Pieter Wuille, Andrew Poelstra, and Sanket Kanjalkar. It’s “a language for writing (a subset of) Bitcoin Scripts in a structured way, enabling analysis, composition, generic signing and more.” You can see examples and try it yourself at <https://bitcoin.sipa.be/miniscript>.
 
 Miniscript consists of a few dozen script fragments, each a sequence of op codes. These fragments can be combined. If individual script op codes are like an alphabet then Miniscript fragments are like words. By building a script that only uses these words, rather than just any combination of letters from the alphabet, you lose some Script features, but you gain certain guarantees about safety and correct behavior.
 
