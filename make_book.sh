@@ -126,7 +126,7 @@ if [ "$CHAPTERS" -eq "1" ]; then
             # In bash 4 you can simply do: paper_size="${p^}", but this works in bash 3:
             paper_size="$(tr '[:lower:]' '[:upper:]' <<< ${p:0:1})${p:1}"
             echo "$paper_size..."
-            pandoc -o "Chapter ${chapter_numbers[i]} - ${titles[i]} ($paper_size).pdf" "${chapter_slugs[i]}.processed.md" -V chapter=${chapter_numbers[i]} -V paper=$p -V title="${titles[i]}" --template=templates/chapter.tex --top-level-division=chapter
+            pandoc --pdf-engine=xelatex -o "Chapter ${chapter_numbers[i]} - ${titles[i]} ($paper_size).pdf" "${chapter_slugs[i]}.processed.md" -V chapter=${chapter_numbers[i]} -V paper=$p -V title="${titles[i]}" --template=templates/chapter.tex --top-level-division=chapter
         done
     done
     exit 0
