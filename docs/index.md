@@ -48,7 +48,7 @@ Find the book at your favorite online retailer, order it from your local book st
 * Korea: [Yes24](http://www.yes24.com/product/goods/109180444), [Kyobo](https://www.kyobobook.co.kr/product/detailViewEng.laf?ejkGb=BNT&mallGb=ENG&barcode=9789090360423), [Aladin](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=294118397)
 * Hong Kong: [Ubuy](https://www.ubuy.hk/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches) and [Amazon.com](https://amzn.to/3PbclPz) both ship from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) ships from UK
 * Singapore: [Amazon.sg](https://www.amazon.sg/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
-* Taiwan: [Amazon.com](https://amzn.to/3PbclPz) ships from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) from UK
+* Taiwan: [Books.com.tw](https://www.books.com.tw/products/F019028697) (imported), [Amazon.com](https://amzn.to/3PbclPz) ships from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) from UK
 * Vietnam: [Ubuy](https://www.ubuy.vn/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches)  ships from USA
 * Australia: [Buy from me](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress/), pay with Bitcoin or fiat, free shipping
 
