@@ -1,0 +1,11 @@
+% width and height are 0.45cm in inches
+% version is hardcoded to 1. For any QR code where this doesn't fiat,
+% it will throw "GPL Ghostscript: Unrecoverable error"
+% pspicture ensures any text following the QR is moved aside
+\newcommand{\MiniQR}[1]{%
+    \raisebox{-1.5mm}{%
+        \begin{pspicture}(0.45cm,0.45cm)
+            \psbarcode{#1}{version=1 eclevel=L width=0.177 height=0.177}{qrcode}
+        \end{pspicture}%
+    }%
+}
