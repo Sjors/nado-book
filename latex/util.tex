@@ -1,11 +1,21 @@
-% width and height are 0.45cm in inches
+% Allow variable math inside command
+% https://tex.stackexchange.com/a/115568
+\usepackage{expl3}
+\ExplSyntaxOn
+\cs_new_eq:NN \fpeval \fp_eval:n
+\ExplSyntaxOff
+
+% width and height are
 % version is hardcoded to 1. For any QR code where this doesn't fiat,
 % it will throw "GPL Ghostscript: Unrecoverable error"
 % pspicture ensures any text following the QR is moved aside
-\newcommand{\MiniQR}[1]{%
+\newcommand{\MiniQR}[2][1]{%
+    \def\scale{(17 + #1 * 4) / 21}%
+    \def\picsize{\fpeval{\scale * 0.45}cm}%
+    \def\qrsize{\scale * 0.177}% 0.45cm in inches for version 1
     \raisebox{-1.5mm}{%
-        \begin{pspicture}(0.45cm,0.45cm)
-            \psbarcode{#1}{version=1 eclevel=L width=0.177 height=0.177}{qrcode}
+        \begin{pspicture}(\picsize,\picsize)
+            \psbarcode{#2}{version=#1 eclevel=L width=\fpeval{\qrsize} height=\fpeval{\qrsize}}{qrcode}
         \end{pspicture}%
     }%
 }
