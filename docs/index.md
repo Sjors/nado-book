@@ -36,6 +36,7 @@ Find the book at your favorite online retailer, order it from your local book st
   * Spain: [Amazon.es](https://www.amazon.es/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425), [Agapea](https://www.agapea.com/buscar/buscador.php?texto=9789090360423)
   * [Sweden](https://www.adlibris.com/se/bok/bitcoin-technical-innovations-from-the-trenches-9789090360423), [Finland](https://www.adlibris.com/fi/kirja/bitcoin-technical-innovations-from-the-trenches-9789090360423) and [Norway](https://www.adlibris.com/no/bok/bitcoin-technical-innovations-from-the-trenches-9789090360423) at Adlibris
   * Poland: [Amazon.pl](https://www.amazon.pl/Bitcoin-Progress-Technical-innovations-trenches/dp/9090360425)
+  * Romania: [Books Express](https://www.books-express.ro/bitcoin/p/u,9789090360423)
 * UK: [Amazon.co.uk](https://amzn.to/3M5OZck)
 * USA: [Bookshop.org](https://bookshop.org/a/83709/9789090360423), [Amazon](https://amzn.to/3PbclPz)
 * Canada: [Amazon.ca](https://www.amazon.ca/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425) (click on "More buying choices" for a pre-order that ships directly from Amazon.ca, rather than from the UK)
