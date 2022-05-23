@@ -84,9 +84,8 @@ Scan the QR or copy <code>sjors@sprovoost.nl</code> and paste it into a <a href=
 
 ## Bolt 12
 
-<p>
-The <a href="https://bolt12.org">Bolt 12</a> draft standard is currently only supported by <a href="https://github.com/ElementsProject/lightning#core-lightning-cln-a-specification-compliant-lightning-network-implementation-in-c">c-lightning</a>. Add a line <code>experimental-offers</code> to <code>~/.lightning/config</code> and then use <code>lightning-cli pay ln01p... 42sat</code>.
-</p>
+<p><p><img src="bolt12.png" width="50" align="left"/>
+The <a href="https://bolt12.org">Bolt 12</a> draft standard is currently only supported by <a href="https://github.com/ElementsProject/lightning#core-lightning-cln-a-specification-compliant-lightning-network-implementation-in-c">c-lightning</a>.</p>
 
 <div class="source-block">
     <div class="src-container">
@@ -94,5 +93,9 @@ The <a href="https://bolt12.org">Bolt 12</a> draft standard is currently only su
     </div>
     <button class='copy-code-button'>copy</button>
 </div>
+
+<p>
+Add a line <code>experimental-offers</code> to <code>~/.lightning/config</code> and then use <code>lightning-cli pay ln01p... 42sat</code>.
+</p>
 
 <script src="/assets/scripts/copy.js"></script>
