@@ -1,0 +1,40 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* changed CSS */
+.source-block {
+  display: flex;
+  align-items: center;
+  align-content:flex-start;
+}
+
+// https://stackoverflow.com/a/62424341
+pre {
+    padding: 8pt;
+    overflow: auto;
+    margin: 1.2em;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+}
+
+pre.bolt12 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:
+    ellipsis;
+    width: 100px;
+}
+
+/* misc styling */
+.copy-code-button {
+  margin-top: 2px;
+}
