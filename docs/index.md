@@ -85,17 +85,14 @@ Scan the QR or copy <a href="lightning://sjors@sprovoost.nl">sjors@sprovoost.nl<
 ## Bolt 12
 
 <p><p><img src="bolt12.png" width="50" align="left"/>
-The <a href="https://bolt12.org">Bolt 12</a> draft standard is currently only supported by <a href="https://github.com/ElementsProject/lightning#core-lightning-cln-a-specification-compliant-lightning-network-implementation-in-c">c-lightning</a>.</p>
+The <a href="https://bolt12.org">Bolt 12</a> draft standard is currently only supported by <a href="https://github.com/ElementsProject/lightning#core-lightning-cln-a-specification-compliant-lightning-network-implementation-in-c">c-lightning</a>. Add a line <code>experimental-offers</code> to <code>~/.lightning/config</code> and then use <code>lightning-cli pay ln01p... 42sat</code>.
+</p>
 
 <div class="source-block">
     <div class="src-container">
         <pre class="copy-target bolt12">lno1pg34g6tsypnx7u3qgf5hgcm0d9hr5gzpyptk7untyp5kugzswfhkwun9wde3grjndfhhyueq2pex7an0daehg83qxalcjym827wseh7zsvauxgap6q23fm4yp4yve6rdx83esg37pjelqsqk0mxa75uwy2j8qpyce7vet0xn8vfq4yjq02r4rly6agvhy0jvqp2r0cdl6fsl3qu72jf5wvlr3hgkmzlgg5ezut4q9z50saxvnaqtq</pre>
     </div>
-    <button class='copy-code-button'>copy</button>
+    <button class='copy-code-button' />
 </div>
-
-<p>
-Add a line <code>experimental-offers</code> to <code>~/.lightning/config</code> and then use <code>lightning-cli pay ln01p... 42sat</code>.
-</p>
 
 <script src="/assets/scripts/copy.js"></script>

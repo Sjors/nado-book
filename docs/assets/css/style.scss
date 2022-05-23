@@ -15,6 +15,7 @@ pre {
     padding: 8pt;
     overflow: auto;
     margin: 1.2em;
+    margin-right: 0;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
@@ -31,7 +32,30 @@ pre.bolt12 {
     overflow: hidden;
     text-overflow:
     ellipsis;
-    width: 100px;
+    width: 150px;
+}
+
+.copy-code-button {
+    background-color: white;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    grid-column-gap: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px 8px;
+
+    &::after {
+        font-size: 1.5rem;
+        content: "📋";
+        display: block;
+    }
+
+    // This class will be toggled via JavaScript
+    &.copied {
+        &::after { content: "✔️"; }
+    }
 }
 
 /* misc styling */
