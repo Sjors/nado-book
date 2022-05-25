@@ -8,6 +8,7 @@ nado-*.tex
 
 # Design
 **/*.idlk
+**/*_autosave*.sla
 
 ## Jekyll
 _site
