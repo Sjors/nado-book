@@ -278,6 +278,7 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   jekyll-seo-tag
+  nokogiri (>= 1.13.6)
   webrick (~> 1.7)
 
 BUNDLED WITH
