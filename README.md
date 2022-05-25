@@ -27,6 +27,17 @@ export PAPER=a4; pandoc -o "Chapter 9 - Guix ($PAPER).pdf" attacks/guix.processe
 
 If the chapter refers to other chapters, you have manually edit the document to undo that.
 
+To generate the jpeg cover images:
+
+```sh
+cd meta
+convert -density 180 -define pdf:use-trimbox=true nado-cover.pdf -crop 52.25x100% +repage \( -clone 0 -crop 92x100% +repage -reverse \) -delete 0 -reverse slice.jpg
+mv slice-2.jpg ../docs/front.jpg
+mv slice-0.jpg ../docs/back.jpg
+mv slice-1.jpg spine.jpg
+
+```
+
 ## Preview
 
 Use Apple Books, [Kindle Previewer](https://kdp.amazon.com/en_US/help/topic/G202131170), etc to view the epub.
