@@ -112,6 +112,8 @@ if [ "$CHAPTERS" -eq "1" ]; then
             echo "$paper_size..."
             pandoc --pdf-engine=xelatex -o "Chapter ${chapter_numbers[i]} - ${titles[i]} ($paper_size).pdf" "${chapter_slugs[i]}.processed.md" -V chapter=${chapter_numbers[i]} -V paper=$p -V title="${titles[i]}" --template=templates/chapter.tex --top-level-division=chapter
         done
+        echo "Render thumbnail..."
+        convert -density 600 -flatten -resize 1000x1000^ -gravity North -extent 1000x1000 "Chapter ${chapter_numbers[i]} - ${titles[i]} (Letter).pdf"\[0\] "thumb-nado-chapter-${chapter_numbers[i]}.png"
     done
     exit 0
 fi

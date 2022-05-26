@@ -6,6 +6,8 @@ qr/**/*.png
 qr/sed
 nado-*.tex
 
+thumb-*.png
+
 # Design
 **/*.idlk
 **/*_autosave*.sla
