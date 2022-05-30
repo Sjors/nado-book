@@ -1,15 +1,12 @@
 #!/bin/bash
-SKIP_QR="0"
 PAPERBACK="0"
 EBOOK="0"
-ONLY_PROCESS="0"
+PDF_KINDLE="0"
 CHAPTERS="0"
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         -b|--paperback) PAPERBACK="1" EXTRA_OPTIONS="-o nado-paperback.pdf --metadata-file meta-paperback.yaml --include-before-body copyright_paperback.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-paperback.tex" ;;
-        -k|--ebook) EBOOK="1" EXTRA_OPTIONS="-o nado-ebook.pdf -V ebook --metadata-file meta-ebook.yaml --include-before-body copyright_ebook.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-ebook.tex" ;;
-        -q|--skipqr) SKIP_QR="1"; shift ;;
-        -p|--process) ONLY_PROCESS="1"; shift ;;
+        -p|--pdfkindle) EBOOK="1" PDF_KINDLE="1" EXTRA_OPTIONS="-o nado-kindle.pdf -V ebook --metadata-file meta-ebook.yaml --include-before-body copyright_ebook.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-pdf-kindle.tex" ;;
         -c|--chapters) CHAPTERS="1"; shift ;;
         -v|--verbose) EXTRA_OPTIONS="$EXTRA_OPTIONS --verbose"; shift ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
@@ -17,37 +14,39 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
+mkdir -p tmp
+
+if [ "$EBOOK" -eq "1" ]; then
+  convert -density 180 -define pdf:use-trimbox=true meta/nado-cover.pdf -crop 52.25x100% +repage -delete 0  -reverse tmp/front.pdf
+fi
+
 # Generate .processed.md files:
 find **/*processed* -exec rm -rf {} \;
 find **/*.md -exec cp {} {}.processed \;
 find . -name "*.md.processed" -exec sh -c 'mv "$1" "${1%.md.processed}.processed.md"' _ {} \;
 
-if [ "$SKIP_QR" -eq "0" ]; then
-
-    # Process footnote QR codes:
-    # Collect URL's:
-    find **/*.md -print0 | xargs -0 perl -ne 'print "$1\n" while /<(http.*?)>/g' | sort | uniq > qr/note/urls.csv
-    if ! git diff --quiet qr/note/urls.csv; then
-        echo "Please update bit.ly links for URLs:"
-        git diff qr/note/urls.csv
-        exit 1
-    fi
-
-    if ! [ "$(wc -l < qr/note/urls.csv)" -eq "$(wc -l < qr/note/shorts.txt)" ]; then
-        echo "shorts.txt should have the same number of entries as urls.csv"
-        exit 1
-    fi
-
-    count=`wc -l < qr/note/urls.csv`
-    echo -n "" > qr/sed
-    for i in $(seq $count); do
-        url=`sed -n ${i}p qr/note/urls.csv`
-        short_url=`sed -n ${i}p qr/note/shorts.txt`
-        echo "s*<$url>*<$url> \\\MiniQR{$short_url}*g;" >> qr/sed
-    done
-    find **/*.processed.md -exec sed -i '' -f qr/sed {} \;
-
+# Process footnote QR codes:
+# Collect URL's:
+find **/*.md -print0 | xargs -0 perl -ne 'print "$1\n" while /<(http.*?)>/g' | sort | uniq > qr/note/urls.csv
+if ! git diff --quiet qr/note/urls.csv; then
+    echo "Please update bit.ly links for URLs:"
+    git diff qr/note/urls.csv
+    exit 1
 fi
+
+if ! [ "$(wc -l < qr/note/urls.csv)" -eq "$(wc -l < qr/note/shorts.txt)" ]; then
+    echo "shorts.txt should have the same number of entries as urls.csv"
+    exit 1
+fi
+
+count=`wc -l < qr/note/urls.csv`
+echo -n "" > qr/sed
+for i in $(seq $count); do
+    url=`sed -n ${i}p qr/note/urls.csv`
+    short_url=`sed -n ${i}p qr/note/shorts.txt`
+    echo "s*<$url>*<$url> \\\MiniQR{$short_url}*g;" >> qr/sed
+done
+find **/*.processed.md -exec sed -i '' -f qr/sed {} \;
 
 # Process figures:
 for file in taproot/*.dot; do
@@ -55,10 +54,6 @@ for file in taproot/*.dot; do
     # https://gitlab.com/graphviz/graphviz/-/issues/1863
     sed -i '' 's/transparent/none/' ${file%.dot}.svg
 done
-
-if [ "$ONLY_PROCESS" -eq "1" ]; then
-    exit 0
-fi
 
 if [ "$CHAPTERS" -eq "1" ]; then
     # For now this is best done by rebasing the 2022/05/pdf-tweaks branch
@@ -154,7 +149,7 @@ pandoc  --pdf-engine=xelatex\
         appendix/whitepaper.processed.md\
         whitepaper/bitcoin.processed.md\
 
-if [ "$EBOOK" -eq "1" ]; then
+if [ "$PDF_KINDLE" -eq "1" ]; then
     # Use - in title for Windows compatibility.
-    mv nado-ebook.pdf "Bitcoin - A Work in Progress.pdf"
+    mv nado-kindle.pdf "Bitcoin - A Work in Progress (Kindle).pdf"
 fi

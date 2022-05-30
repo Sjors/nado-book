@@ -10,22 +10,17 @@ The following Pandoc filters are used:
 
 In addition you need [Graphviz](https://www.graphviz.org).
 
+To build the paperback version:
+
 ```sh
-./make_book.sh --epub
-./make_book.sh --pdf
 ./make_book.sh --paperback
 ```
 
-The paperback uses PDF, the Kindle version uses epub.
-
-To render a single chapter as  PDF, move the title and QR to a separate file and then:
+To build a PDF that roughly fits a Kindle:
 
 ```sh
-./make_book.sh --process
-export PAPER=a4; pandoc -o "Chapter 9 - Guix ($PAPER).pdf" attacks/guix.processed.md -V paper=$PAPER -V title="Why Open Source Matters — GUIX" --template=templates/chapter.tex --top-level-division=chapter
+./make_book.sh --pdfkindle
 ```
-
-If the chapter refers to other chapters, you have manually edit the document to undo that.
 
 To generate the jpeg cover images:
 
