@@ -22,6 +22,14 @@ To build a PDF that roughly fits a Kindle:
 ./make_book.sh --pdfkindle
 ```
 
+
+To build a PDF that roughly fits an iPad:
+
+```sh
+./make_book.sh --pdfbig
+```
+
+
 To generate the jpeg cover images:
 
 ```sh

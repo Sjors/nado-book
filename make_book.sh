@@ -2,11 +2,13 @@
 PAPERBACK="0"
 EBOOK="0"
 PDF_KINDLE="0"
+PDF_BIG="0"
 CHAPTERS="0"
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         -b|--paperback) PAPERBACK="1" EXTRA_OPTIONS="-o nado-paperback.pdf --metadata-file meta-paperback.yaml --include-before-body copyright_paperback.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-paperback.tex" ;;
-        -p|--pdfkindle) EBOOK="1" PDF_KINDLE="1" EXTRA_OPTIONS="-o nado-kindle.pdf -V ebook --metadata-file meta-ebook.yaml --include-before-body copyright_ebook.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-pdf-kindle.tex" ;;
+        -p|--pdfkindle) EBOOK="1" PDF_KINDLE="1" EXTRA_OPTIONS="-o nado-kindle.pdf -V ebook -M fontsize=12pt --metadata-file meta-ebook.yaml --include-before-body copyright_ebook.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-pdf-kindle.tex" ;;
+        -b|--pdfbig) EBOOK="1" PDF_BIG="1" EXTRA_OPTIONS="-o nado-kindle.pdf -V ebook -M papersize=a4 -M fontsize=14pt --metadata-file meta-ebook.yaml --include-before-body copyright_ebook.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-pdf-big.tex" ;;
         -c|--chapters) CHAPTERS="1"; shift ;;
         -v|--verbose) EXTRA_OPTIONS="$EXTRA_OPTIONS --verbose"; shift ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
@@ -149,7 +151,11 @@ pandoc  --pdf-engine=xelatex\
         appendix/whitepaper.processed.md\
         whitepaper/bitcoin.processed.md\
 
+# Use - in title for Windows compatibility.
 if [ "$PDF_KINDLE" -eq "1" ]; then
-    # Use - in title for Windows compatibility.
     mv nado-kindle.pdf "Bitcoin - A Work in Progress (Kindle).pdf"
+fi
+
+if [ "$PDF_BIG" -eq "1" ]; then
+    mv nado-kindle.pdf "Bitcoin - A Work in Progress (A4).pdf"
 fi

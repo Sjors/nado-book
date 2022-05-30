@@ -1,7 +1,6 @@
 documentclass: memoir
 classoption:
   - oneside
-  - 12pt
   - showtrims
 title: "Bitcoin: A Work in Progress"
 subtitle: "Technical innovations from the trenches"
