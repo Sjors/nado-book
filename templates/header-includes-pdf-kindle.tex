@@ -6,10 +6,12 @@
 \setlrmarginsandblock{0.5cm}{0.5cm}{*}
 \checkandfixthelayout
 % Trim marks to prevent Kindle from resizing
+\usepackage{xcolor}
+\definecolor{super-light-gray}{gray}{0.95}
 \renewcommand*{\trimmark}{%
   \begin{picture}(0,0)
     \unitlength 1mm
     \thinlines
-    \put(-1,0){\line(1,0){2}}
-    \put(0,-1){\line(0,1){2}}
+    \put(-1,0){\color{super-light-gray}\line(1,0){2}}
+    \put(0,-1){\color{super-light-gray}\line(0,1){2}}
   \end{picture}}
