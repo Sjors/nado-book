@@ -8,7 +8,7 @@ CHAPTERS="0"
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         -b|--paperback) PAPERBACK="1" EXTRA_OPTIONS="-o nado-paperback.pdf --metadata-file meta-paperback.yaml --include-before-body copyright_paperback.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-paperback.tex" ;;
-        -e|--epub) EBOOK="1" EPUB="1" EXTRA_OPTIONS="-o nado-kindle.epub -t epub3 --css epub.css -V ebook -V epub --metadata-file meta-ebook.yaml --toc-depth=2 --top-level-division=part --epub-cover-image=docs/front.jpg";;
+        -e|--epub) EBOOK="1" EPUB="1" EXTRA_OPTIONS="-o nado-kindle.epub -t epub3 --css epub.css -V ebook -V epub --metadata-file meta-epub.yaml --toc-depth=2 --top-level-division=part --epub-cover-image=docs/front.jpg";;
         -p|--pdfkindle) EBOOK="1" PDF_KINDLE="1" EXTRA_OPTIONS="-o nado-kindle.pdf -V ebook -M fontsize=12pt --metadata-file meta-ebook.yaml --include-before-body copyright_ebook.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-pdf-kindle.tex" ;;
         -b|--pdfbig) EBOOK="1" PDF_BIG="1" EXTRA_OPTIONS="-o nado-kindle.pdf -V ebook -M papersize=a4 -M fontsize=14pt --metadata-file meta-ebook.yaml --include-before-body copyright_ebook.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-pdf-big.tex" ;;
         -c|--chapters) CHAPTERS="1"; shift ;;
