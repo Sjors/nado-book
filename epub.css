@@ -13,9 +13,10 @@ h4 { text-align: left; }
 h5 { text-align: left; }
 h6 { text-align: left; }
 /* For title, author, and date on the cover page */
-h1.title { }
-p.author { }
-p.date { }
+h1.title { text-align: center; }
+p.subtitle { text-align: center; }
+p.author { text-align: center; }
+p.date { text-align: center; }
 nav#toc ol,
 nav#landmarks ol { padding: 0; margin-left: 1em; }
 nav#toc ol li,

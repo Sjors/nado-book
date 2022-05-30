@@ -1,8 +1,3 @@
-<!-- \backmatter -->
-\appendix
-\pagestyle{headings}
-# Appendix {.unnumbered}
-
 ## More Episodes {#sec:more_eps}
 
 Not all episodes of _Bitcoin, Explained_ made it into this book. Here are some other episodes you could listen to. The descriptions below are mostly based on the show notes written by co-host Aaron van Wirdum.

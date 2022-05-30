@@ -1,12 +1,14 @@
 #!/bin/bash
 PAPERBACK="0"
 EBOOK="0"
+EPUB="0"
 PDF_KINDLE="0"
 PDF_BIG="0"
 CHAPTERS="0"
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         -b|--paperback) PAPERBACK="1" EXTRA_OPTIONS="-o nado-paperback.pdf --metadata-file meta-paperback.yaml --include-before-body copyright_paperback.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-paperback.tex" ;;
+        -e|--epub) EBOOK="1" EPUB="1" EXTRA_OPTIONS="-o nado-kindle.epub -t epub3 --css epub.css -V ebook -V epub --metadata-file meta-ebook.yaml --toc-depth=2 --top-level-division=part --epub-cover-image=docs/front.jpg";;
         -p|--pdfkindle) EBOOK="1" PDF_KINDLE="1" EXTRA_OPTIONS="-o nado-kindle.pdf -V ebook -M fontsize=12pt --metadata-file meta-ebook.yaml --include-before-body copyright_ebook.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-pdf-kindle.tex" ;;
         -b|--pdfbig) EBOOK="1" PDF_BIG="1" EXTRA_OPTIONS="-o nado-kindle.pdf -V ebook -M papersize=a4 -M fontsize=14pt --metadata-file meta-ebook.yaml --include-before-body copyright_ebook.tex --template=templates/pandoc.tex --toc-depth=1"; HEADER_INCLUDES="--include-in-header templates/header-includes.tex --include-in-header templates/header-includes-pdf-big.tex" ;;
         -c|--chapters) CHAPTERS="1"; shift ;;
@@ -49,6 +51,15 @@ for i in $(seq $count); do
     echo "s*<$url>*<$url> \\\MiniQR{$short_url}*g;" >> qr/sed
 done
 find **/*.processed.md -exec sed -i '' -f qr/sed {} \;
+
+if [ "$EPUB" -eq "1" ]; then
+    # Drop unlisted header (not supported for ePub)
+    find **/*.processed.md -exec sed -i '' '/\.unlisted/d' {} \;
+    # Don't use short titles
+    find **/*.processed.md -exec sed -i '' 's/{short=".*" link="sec:\(.*\)"}/{#sec:\1}/' {} \;
+
+    sed -i '' 's/\.unnumbered //' appendix/appendix.processed.md
+fi
 
 # Process figures:
 for file in taproot/*.dot; do
@@ -146,6 +157,7 @@ pandoc  --pdf-engine=xelatex\
         taproot/_part.processed.md\
         taproot/basics.processed.md\
         taproot/activation.processed.md\
+        appendix/appendix.processed.md\
         appendix/more_episodes.processed.md\
         appendix/crime-on-testnet.processed.md\
         appendix/whitepaper.processed.md\
@@ -158,4 +170,8 @@ fi
 
 if [ "$PDF_BIG" -eq "1" ]; then
     mv nado-kindle.pdf "Bitcoin - A Work in Progress (A4).pdf"
+fi
+
+if [ "$EPUB" -eq "1" ]; then
+    mv nado-kindle.epub "Bitcoin - A Work in Progress.epub"
 fi

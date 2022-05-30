@@ -16,6 +16,13 @@ To build the paperback version:
 ./make_book.sh --paperback
 ```
 
+To build an ePub version:
+
+```sh
+./make_book.sh --epub
+```
+
+
 To build a PDF that roughly fits a Kindle:
 
 ```sh
