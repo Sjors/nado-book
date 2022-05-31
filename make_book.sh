@@ -66,6 +66,15 @@ if [ "$EPUB" -eq "1" ]; then
     find **/*.processed.md -exec sed -i '' 's/{short=".*" link="sec:\(.*\)"}/{#sec:\1}/' {} \;
 
     sed -i '' 's/\.unnumbered //' appendix/appendix.processed.md
+
+    # Fix episode QRs:
+    mkdir -p qr/ep
+    rm -f qr/ep/*.png
+    # Just assume 60 episodes
+    for i in $(seq 60); do
+        qrencode -m 0 -s 3 -o qr/ep/$i.png HTTPS://BTCWIP.COM/nado$i
+    done
+    find **/*.processed.md -exec sed -i '' 's/\\EpisodeQR{\(.*\)}/![[Ep. \1](https:\/\/btcwip.com\/nado\1)](qr\/ep\/\1.png){.ep-qr}/' {} \;
 fi
 
 # Process figures:

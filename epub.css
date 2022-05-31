@@ -39,3 +39,5 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 .center { text-indent: 0; text-align: center; }
 table { width: 80%; align: center; text-align: center; }
 img.qr { height: 1.4em; width: auto; vertical-align:middle; padding-left: 0.2em; padding-right: 0.3em; }
+
+img.ep-qr { height: 2em; width: auto; }
