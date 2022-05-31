@@ -45,10 +45,17 @@ fi
 
 count=`wc -l < qr/note/urls.csv`
 echo -n "" > qr/sed
+rm -f qr/note/*.png
 for i in $(seq $count); do
     url=`sed -n ${i}p qr/note/urls.csv`
     short_url=`sed -n ${i}p qr/note/shorts.txt`
-    echo "s*<$url>*<$url> \\\MiniQR{$short_url}*g;" >> qr/sed
+    if [ "$EPUB" -eq "1" ]; then
+        # Number QR code files, because we can't rely on case-sensitive file system.
+        qrencode -m 0 -s 3 -o qr/note/$i.png $short_url
+        echo "s*<$url>*<$url> ![](qr/note/$i.png){.qr}*g;" >> qr/sed
+    else
+        echo "s*<$url>*<$url> \\\MiniQR{$short_url}*g;" >> qr/sed
+    fi
 done
 find **/*.processed.md -exec sed -i '' -f qr/sed {} \;
 
