@@ -59,6 +59,13 @@ for i in $(seq $count); do
 done
 find **/*.processed.md -exec sed -i '' -f qr/sed {} \;
 
+# Process figures:
+for file in taproot/*.dot; do
+    dot -Tsvg $file > ${file%.dot}.svg
+    # https://gitlab.com/graphviz/graphviz/-/issues/1863
+    sed -i '' 's/transparent/none/' ${file%.dot}.svg
+done
+
 if [ "$EPUB" -eq "1" ]; then
     # Drop unlisted header (not supported for ePub)
     find **/*.processed.md -exec sed -i '' '/\.unlisted/d' {} \;
@@ -75,14 +82,11 @@ if [ "$EPUB" -eq "1" ]; then
         qrencode -m 0 -s 3 -o qr/ep/$i.png HTTPS://BTCWIP.COM/nado$i
     done
     find **/*.processed.md -exec sed -i '' 's/\\EpisodeQR{\(.*\)}/![[Ep. \1](https:\/\/btcwip.com\/nado\1)](qr\/ep\/\1.png){.ep-qr}/' {} \;
-fi
 
-# Process figures:
-for file in taproot/*.dot; do
-    dot -Tsvg $file > ${file%.dot}.svg
-    # https://gitlab.com/graphviz/graphviz/-/issues/1863
-    sed -i '' 's/transparent/none/' ${file%.dot}.svg
-done
+    # Replace SVG images with PNG (Kindle devices don't render SVG well, especially the whitepaper)
+    mogrify -density 300 -format png -path tmp [^_]**/*.svg
+    find **/*.processed.md -exec sed -i '' 's/([a-zA-Z0-9_-]*\/\([a-zA-Z0-9_-]*\)\.svg)/(tmp\/\1.png)/' {} \;
+fi
 
 if [ "$CHAPTERS" -eq "1" ]; then
     # For now this is best done by rebasing the 2022/05/pdf-tweaks branch
