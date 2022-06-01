@@ -108,9 +108,10 @@ The race between the honest chain and an attacker chain can be characterized as 
 The probability of an attacker catching up from a given deficit is analogous to a Gambler's Ruin problem. Suppose a gambler with unlimited credit starts at a deficit and plays potentially an infinite number of trials to try to reach breakeven. We can calculate the probability he ever reaches breakeven, or that an attacker ever catches up with the honest chain, as follows [8]:
 
 \
-\indent $p=$ probability an honest node finds the next block\newline
-\indent $q=$ probability the attacker finds the next block\newline
-\indent $q_{z}=$ probability the attacker will ever catch up from z blocks behind
+\indent _p_ = probability an honest node finds the next block\
+\indent _q_ = probability the attacker finds the next block\
+\indent _q~z~_ = probability the attacker will ever catch up from z blocks behind
+\
 $$
 q_{z}=\left\{\begin{array}{cc}
 1 & \text { if } p \leq q \\

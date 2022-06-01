@@ -16,7 +16,7 @@ To build the paperback version:
 ./make_book.sh --paperback
 ```
 
-To build an ePub version:
+To build an ePub version (Latex math is rendered via [Codecogs](https://www.codecogs.com) - check section 11 of the whitepaper to ensure you didn't get rate limited):
 
 ```sh
 ./make_book.sh --epub

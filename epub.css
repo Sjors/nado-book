@@ -41,3 +41,9 @@ table { width: 80%; align: center; text-align: left; }
 img.qr { height: 1.4em; width: auto; vertical-align:middle; padding-left: 0.2em; padding-right: 0.3em; }
 
 img.ep-qr { height: 2em; width: auto; }
+
+.math {
+  display:block;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+}
