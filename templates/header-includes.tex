@@ -1,3 +1,9 @@
+% Cloudprinter requires PDF version 1.6 or 1.7
+% CB requires PDF/x-1a (pdf 1.3) or PDF/x-4 (pdf 1.6)
+% IngramSpark is unclear, older docs suggest PDF/X3:2002 so 1.3 - 1.4,
+% but 1.5 worked fine as of May 2022.
+\special{pdf:minorversion 6}
+
 \usepackage[font=footnotesize]{caption}
 \usepackage{pstricks}
 \usepackage{pst-barcode}
