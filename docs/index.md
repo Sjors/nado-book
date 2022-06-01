@@ -62,15 +62,15 @@ For other countries try [Amazon.com](https://amzn.to/3PbclPz) or [Book Depositor
 
 I'm not aware of any physical book store that has the book on a shelf, but in many countries they can order it for you. ISBN: `9789090360423`
 
+## eBook
+
+Don't like dead trees? You can [buy the e-book](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-ebook/) from me in `.epub` or `.pdf` format (pay with Bitcoin).
+
 # Preview
 
 Here's the [table of contents and Chapter 1](preview.pdf){:target="_blank"}.
 
 You can also [buy a printer friendly PDF](https://shop.purpledunes.com/product-category/chapters/) for an individual chapter (⚡ only).
-
-# When E-Book?
-
-I'd like to get more physical copies safely distributed across the globe before selling an electronic version. You can make one yourself though: just clone the Github repository and run: `./make-book.sh --paperback` (see [README](https://github.com/sjors/nado-book#readme) for more details)
 
 # Media appearances
 
