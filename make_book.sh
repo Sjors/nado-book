@@ -21,7 +21,7 @@ done
 mkdir -p tmp
 
 if [ "$EBOOK" -eq "1" ]; then
-  convert -density 180 -define pdf:use-trimbox=true meta/nado-cover.pdf -crop 52.25x100% +repage -delete 0  -reverse tmp/front.pdf
+  convert -density 180 -define pdf:use-trimbox=true meta/nado-cover-rgb.pdf -crop 52.25x100% +repage -delete 0  -reverse tmp/front.pdf
 fi
 
 # Generate .processed.md files:

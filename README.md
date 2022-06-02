@@ -37,11 +37,11 @@ To build a PDF that roughly fits an iPad:
 ```
 
 
-To generate the jpeg cover images:
+To generate the jpeg cover images, export to PDF but override color profile to RGB:
 
 ```sh
 cd meta
-convert -density 180 -define pdf:use-trimbox=true nado-cover.pdf -crop 52.25x100% +repage \( -clone 0 -crop 92x100% +repage -reverse \) -delete 0 -reverse slice.jpg
+convert -density 180 -define pdf:use-trimbox=true nado-cover-rgb.pdf -crop 52.25x100% +repage \( -clone 0 -crop 92x100% +repage -reverse \) -delete 0 -reverse slice.jpg
 mv slice-2.jpg ../docs/front.jpg
 mv slice-0.jpg ../docs/back.jpg
 mv slice-1.jpg spine.jpg
