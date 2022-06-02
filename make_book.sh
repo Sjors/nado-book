@@ -84,8 +84,15 @@ if [ "$EPUB" -eq "1" ]; then
     find **/*.processed.md -exec sed -i '' 's/\\EpisodeQR{\(.*\)}/![[Ep. \1](https:\/\/btcwip.com\/nado\1)](qr\/ep\/\1.png){.ep-qr}/' {} \;
 
     # Replace SVG images with PNG (Kindle devices don't render SVG well, especially the whitepaper)
-    mogrify -density 300 -format png -path tmp [^_]**/*.svg
     find **/*.processed.md -exec sed -i '' 's/([a-zA-Z0-9_-]*\/\([a-zA-Z0-9_-]*\)\.svg)/(tmp\/\1.png)/' {} \;
+    mogrify -density 300 -format png -path tmp [^_]**/*.svg
+    # Shrink huge images to below the iBook 400K pixel limit:
+    convert -density 300 taproot/mast.svg -resize 2500 tmp/mast.png
+    convert -density 300 resources/tree.svg -resize 2500 tmp/tree.png
+    convert -density 300 appendix/performance.svg -resize x2500 tmp/performance.png
+
+
+    # Rename ref
 fi
 
 if [ "$CHAPTERS" -eq "1" ]; then
