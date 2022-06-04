@@ -64,7 +64,7 @@ I'm not aware of any physical book store that has the book on a shelf, but in ma
 
 ## eBook
 
-Don't like dead trees? You can [buy the e-book](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-ebook/) from me in `.epub` or `.pdf` format (pay with Bitcoin).
+Don't like dead trees? You can [buy the e-book](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-ebook/) from me in `.epub` or `.pdf` format (pay with Bitcoin). It's also for sale in the [Kobo](https://www.kobo.com/nl/nl/ebook/bitcoin-a-work-in-progress) store and [Apple Books](http://books.apple.com/us/book/id6442926150), but not in the Kindle store due to [absurdly low royalties](https://sprovoost.nl/2022/06/01/amazon-and-the-dystopian-future-of-book-censorship/#kindle-royalties).
 
 # Preview
 
