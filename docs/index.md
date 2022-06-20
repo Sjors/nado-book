@@ -30,6 +30,7 @@ Find the book at your favorite online retailer, order it from your local book st
 Pay with Bitcoin:
 * EU: [shopinbit.com](https://shopinbit.com/books/english-books/computing-internet/investing-and-finance-online/515003/bitcoin-technical-innovations-from-the-trenches-sjors-provoost)
 * Australia: [Buy from me](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-oz/)
+* Singapore and South Africa: [Buy from me](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-paperback/)
 
 Pay with fiat:
 * EU try [Amazon.de](https://amzn.to/39Q5s6h) except:
