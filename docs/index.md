@@ -45,6 +45,7 @@ Pay with fiat:
   * Romania: [Books Express](https://www.books-express.ro/bitcoin/p/u,9789090360423)
 * UK: [Amazon.co.uk](https://amzn.to/3M5OZck)
 * USA: [Bookshop.org](https://bookshop.org/a/83709/9789090360423), [Amazon](https://amzn.to/3PbclPz)
+* Mexico: [Amazon.com.mx](https://www.amazon.com.mx/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
 * Canada: [Amazon.ca](https://www.amazon.ca/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
 * Turkey: [Ubuy](https://www.ubuy.com.tr/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches)
 * United Arab Emirates: [Amazon.ae](https://www.amazon.ae/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
