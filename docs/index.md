@@ -30,7 +30,7 @@ Find the book at your favorite online retailer, order it from your local book st
 Pay with Bitcoin:
 * EU: [shopinbit.com](https://shopinbit.com/books/english-books/computing-internet/investing-and-finance-online/515003/bitcoin-technical-innovations-from-the-trenches-sjors-provoost)
 * Australia: [Buy from me](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-oz/)
-* Singapore and South Africa: [Buy from me](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-paperback/)
+* Canada, Colombia, Singapore and South Africa: [Buy from me](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-paperback/)
 
 Pay with fiat:
 * EU try [Amazon.de](https://amzn.to/39Q5s6h) except:
@@ -46,7 +46,6 @@ Pay with fiat:
 * UK: [Amazon.co.uk](https://amzn.to/3M5OZck)
 * USA: [Bookshop.org](https://bookshop.org/a/83709/9789090360423), [Amazon](https://amzn.to/3PbclPz)
 * Mexico: [Amazon.com.mx](https://www.amazon.com.mx/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
-* Canada: [Amazon.ca](https://www.amazon.ca/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
 * Turkey: [Ubuy](https://www.ubuy.com.tr/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches)
 * United Arab Emirates: [Amazon.ae](https://www.amazon.ae/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
 * Brazil: [Amazon.com.br](https://www.amazon.com.br/s?k=9789090360423)
