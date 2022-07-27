@@ -49,13 +49,13 @@ Have you ever seen email source code for an attachment or similar? There are a l
 
 So how does this relate to P2PKH? Well, the address is expressed as a 1, followed by the public key hash, which is expressed in base58.
 
-That’s the information you send to somebody else when you want them to send you bitcoin. You could also just send them 0x00,^[A pair of hexadecimal digits, prefixed by 0x, is often used to denote bytes, which contain 16 × 16 = 256 bits, so this represents one byte with the value 0.] and then the public key. And maybe they’d be able to interpret that, but probably not.
+That’s the information you send to somebody else when you want them to send you bitcoin. You could also just send them 0x00,^[A pair of hexadecimal digits, prefixed by 0x, is often used to denote bytes, which contain 16 × 16 = 256 different values, so this represents one byte with the value 0.] and then the public key. And maybe they’d be able to interpret that, but probably not.
 
 In theory, you could send somebody the Bitcoin script in hexadecimal, which is the format used on the blockchain, because that’s just binary information. The blockchain has this script that says, “If the person has the right public key hash and the public key belonging to this public key hash, then you can spend it.” To learn more about how Bitcoin scripts work, refer to chapter @sec:miniscript.
 
 But even with all these options, the convention is that you use this standardized address format, which explains why all traditional Bitcoin addresses start with a 1, and why they’re all roughly the same length.
 
-In addition to using base58 for sending a Bitcoin address, you can also use it to communicate a private key. In such a scenario, the leading symbol is a 5, which represents 128. That’s then followed by the private key.
+In addition to using base58 for sending a Bitcoin address, you can also use it to communicate a private key. In such a scenario, the leading symbol is a 5, which represents 128 when interpreted as a version byte. That’s then followed by the private key.
 
 In the past, users had paper wallets they could print. And if they were generated securely without a back door, then on one side of the piece of paper would be something starting with a 1, and on the other side of the paper would be something starting with a 5. And then it specified that only the Bitcoin address should be shown, but the private key shouldn’t be shared.
 
@@ -67,7 +67,7 @@ Although base58 addresses worked fine, there was room for improvement. And this 
 
 In March of 2017, Pieter Wuille spoke about a new address format,^[<https://www.youtube.com/watch?v=NqiN9VFE4CU>] bech32, and it’s been used since SegWit arrived on the scene. As the name suggests, it’s a base32 system, which means you have almost all the letters, and almost all the numbers, minus some ambiguous characters that you don’t want to have because they look too much like other numbers or letters.
 
-One of the biggest differences between bech32 and base58 is that there isn’t a mixture of uppercase and lowercase letters. Instead, each letter is only in there once — either in all uppercase or all lowercase — which makes reading things out loud much easier. The precise mapping of which letter or number corresponds to which value is, like in base58, fixed but arbitrary: The fact that P means 0 and Q means 1 has no deeper meaning.
+One of the biggest differences between bech32 and base58 is that there isn’t a mixture of uppercase and lowercase letters. Instead, each letter is only in there once — either in all uppercase or all lowercase — which makes reading things out loud much easier. The precise mapping of which letter or number corresponds to which value is, like in base58, fixed but arbitrary: The fact that Q means 0 and P means 1 has no deeper meaning.
 
      0  1  2  3  4  5  6  7
 --- -- -- -- -- -- -- -- --
@@ -91,7 +91,7 @@ The second part starts with the SegWit version number. Version 0 is represented 
 
 In base58, the script hash is the same length as the public key hash. But in SegWit, they’re not the same length. So by looking at how long the address is, you immediately know whether you’re paying to a script or you’re paying to a public key hash. As an aside, Taproot removes this length distinction, thereby slightly improving privacy.
 
-So the new part is that there’s a set of 32 characters, but otherwise, things are very similar to base58. It’s again saying, “OK, here’s a P2PK address.” In this case, it’s a Pay-to-Witness-Public-Key-Hash (P2WPKH), where witness refers to SegWit, but it’s the same idea. There’s a short prefix that tells both humans and the computer what the address is about, and this is followed by the hash of the public key or script.
+So the new part is that there’s a set of 32 characters, but otherwise, things are very similar to base58. It’s again saying, “OK, here’s a P2PKH address.” In this case, it’s a Pay-to-Witness-Public-Key-Hash (P2WPKH), where witness refers to SegWit, but it’s the same idea. There’s a short prefix that tells both humans and the computer what the address is about, and this is followed by the hash of the public key or script.
 
 ### Thirty-Two Dimensional Darts
 
