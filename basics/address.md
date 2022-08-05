@@ -49,13 +49,13 @@ Have you ever seen email source code for an attachment or similar? There are a l
 
 So how does this relate to P2PKH? Well, the address is expressed as a 1, followed by the public key hash, which is expressed in base58.
 
-That’s the information you send to somebody else when you want them to send you bitcoin. You could also just send them 0x00,^[A pair of hexadecimal digits, prefixed by 0x, is often used to denote bytes, which contain 16 × 16 = 256 different values, so this represents one byte with the value 0.] and then the public key. And maybe they’d be able to interpret that, but probably not.
+That’s the information you send to somebody else when you want them to send you bitcoin. You could also just send them 0x00,^[A pair of hexadecimal digits, prefixed by 0x, is often used to denote bytes, which can take on one of 16 × 16 = 256 different values, so this represents one byte with the value 0.] and then the public key. And maybe they’d be able to interpret that, but probably not.
 
 In theory, you could send somebody the Bitcoin script in hexadecimal, which is the format used on the blockchain, because that’s just binary information. The blockchain has this script that says, “If the person has the right public key hash and the public key belonging to this public key hash, then you can spend it.” To learn more about how Bitcoin scripts work, refer to chapter @sec:miniscript.
 
 But even with all these options, the convention is that you use this standardized address format, which explains why all traditional Bitcoin addresses start with a 1, and why they’re all roughly the same length.
 
-In addition to using base58 for sending a Bitcoin address, you can also use it to communicate a private key. In such a scenario, the leading symbol is a 5, which represents 128 when interpreted as a version byte. That’s then followed by the private key.
+In addition to using base58 for sending a Bitcoin address, you can also use it to communicate a private key. In such a scenario, the leading symbol is a 5, which represents 128 and is interpreted as a version byte. That’s then followed by the private key.
 
 In the past, users had paper wallets they could print. And if they were generated securely without a back door, then on one side of the piece of paper would be something starting with a 1, and on the other side of the paper would be something starting with a 5. And then it specified that only the Bitcoin address should be shown, but the private key shouldn’t be shared.
 
