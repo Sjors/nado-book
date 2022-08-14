@@ -45,7 +45,7 @@ Chapter @sec:libsecp talks about libsecp256k1, and in May 2021, BIP 340^[Schnorr
 
 Schnorr digital signatures were first created by Claus-Peter Schnorr, a German mathematician. He created the Schnorr signature algorithm, which he then patented. It would’ve been great for Bitcoin, as well as many other open source projects that came before it, but because of the patent, people had to find another way to reap the benefits of these signatures.
 
-So a bunch of lawyers, engineers, and cryptographers joined forces and tried to figure out if there was a way to maim Schnorr’s algorithm so far that it would legally not fall under the patent, but still work. The result was a signature algorithm called Elliptic Curve Digital Signature Algorithm (ECDSA), which is the elliptic curve algorithm that Bitcoin currently uses and that the libsecp library implements. Although both Schnorr and ECSDA use public and private keys to create digital signatures, the latter involves a slightly more complicated process.
+So a bunch of lawyers, engineers, and cryptographers joined forces and tried to figure out if there was a way to maim Schnorr’s algorithm so far that it would legally not fall under the patent, but still work. The result was a signature algorithm called Elliptic Curve Digital Signature Algorithm (ECDSA), which is the elliptic curve algorithm that Bitcoin currently uses and that the libsecp library implements. Although both Schnorr and ECDSA use public and private keys to create digital signatures, the latter involves a slightly more complicated process.
 
 Although ECDSA is a convoluted version of Schnorr, it was standardized in 2005, and at least a dozen cryptographic libraries implemented it, including OpenSSL. And so, when Satoshi had to pick a cryptographic curve for Bitcoin, he chose ECDSA namely because it wasn’t patented and it’s already in OpenSSL.
 
@@ -63,7 +63,7 @@ On top of that, because Schnorr is added as a soft fork, using it is entirely op
 
 Simplicity is great, but all the hard work for the more complicated ECDSA had already been done. Why bother changing things? Even before Taproot, people wanted to add Schnorr because of all the things it enabled. But at some point, Bitcoin Core contributor and former Blockstream CTO Gregory Maxwell came up with a clever way of using Schnorr in combination with MAST.
 
-Basically, because you can add anything to a public key, you can also add a script to a public key, because a script is essentially just a number and a private key is essentially just a number, and numbers can be added. Converting an elliptic curve private key to a public key also happens to be commutative. That let’s you do this:
+Basically, because you can add anything to a public key, you can also add a script to a public key, because a script is essentially just a number and a private key is essentially just a number, and numbers can be added. Converting an elliptic curve private key to a public key also happens to be homomorphic. That lets you do this:
 
 ```
 public_key(private key + hash) ==
