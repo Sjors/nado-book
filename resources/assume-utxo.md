@@ -71,7 +71,7 @@ Assume Valid has been in Bitcoin Core since v0.14 (2017), and now there’s a ne
 
 ### AssumeUTXO
 
-In early 2019, Chaincode Labs alumni James O’Beirne introduced a proposal^[<https://github.com/bitcoin/bitcoin/issues/15605>] for AssumeUTXO that would allow users to get started more quickly. As mentioned earlier in the chapter, the UTXO set is the collection of coins that exists right now. Every time you send someone money, it creates an UTXO, and it destroys the UTXO you sent from. It’s like you have a bank account that’s closed down when you use it, and you get a fresh bank account for the change.
+In early 2019, Chaincode Labs alumnus James O’Beirne introduced a proposal^[<https://github.com/bitcoin/bitcoin/issues/15605>] for AssumeUTXO that would allow users to get started more quickly. As mentioned earlier in the chapter, the UTXO set is the collection of coins that exists right now. Every time you send someone money, it creates an UTXO, and it destroys the UTXO you sent from. It’s like you have a bank account that’s closed down when you use it, and you get a fresh bank account for the change.
 
 Today, the only way to reconstruct the UTXO set and find out which coins exist right now is to replay all Bitcoin transactions starting from the 2009 genesis block.^[Due to a bug or great benevolence by Satoshi, nodes actually don’t process the genesis block in this manner, so the very first 50 BTC ever created can’t be spent. <https://en.bitcoin.it/wiki/Genesis_block>] You take the first block and see which coins it creates and which coins it destroys. Then you take the second block and do the same. You have to start at the beginning and do it until the end, and you can only do it sequentially — all of which takes a long time.
 
