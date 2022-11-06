@@ -13,6 +13,21 @@ You'll learn about the latest soft fork known as Taproot, the challenges of keep
 
 Each chapter links to a corresponding episode of the [_Bitcoin, Explained_](https://podcastindex.org/podcast/3307835) podcast. The book also links to more than two hundred articles, videos, podcasts, and even the source code. And thanks to a tiny QR code next to every link, you'll never have to type long URLs.
 
+# Mailinglist
+
+Join the Bitcoin Work in Progress mailinglist to receive content from the book in small bites, with some added thoughts from the author.
+
+<form method="post" action="https://list.btcwip.com/subscription/form" class="listmonk-form">
+    <div>
+        <input type="hidden" name="nonce" />
+        <p>
+          <input type="email" name="email" required placeholder="E-mail" />
+          <input id="476d7" type="checkbox" hidden name="l" checked value="476d7a6f-fffb-4196-ba7d-5d93095f4210" />
+          <input type="submit" value="Subscribe" />
+        </p>
+    </div>
+</form>
+
 # The Author
 
 <!-- This text is also used on the back cover -->
