@@ -21,6 +21,13 @@ Each chapter links to a corresponding episode of the [_Bitcoin, Explained_](http
 
 The author is a software developer based in Utrecht, The Netherlands. He has been working in the Bitcoin industry since 2014 and became a Bitcoin Core contributor in 2017, giving him a front row seat to all the latest and most exciting technical developments. He is a co-host on the _Bitcoin Magazine_ podcast _Bitcoin, Explained_.
 
+## Contact
+
+* Email: [sjors@sprovoost.nl](mailto:sjors@sprovoost.nl)
+* Mastodon: [@sjors@m.sprovoost.nl](http://m.sprovoost.nl/@sjors){:rel="me"}
+* Twitter: [@provoost](https://twitter.com/provoost)
+* Blog: [sprovoost.nl](https://sprovoost.nl)
+
 # Buy Now
 
 ## Online
