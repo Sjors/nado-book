@@ -28,6 +28,8 @@ Join the Bitcoin Work in Progress mailinglist to receive content from the book i
     </div>
 </form>
 
+You can also [read the archive](https://list.btcwip.com/archive) or subscribe via [RSS](https://list.btcwip.com/archive.xml).
+
 # The Author
 
 <!-- This text is also used on the back cover -->
