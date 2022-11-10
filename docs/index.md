@@ -47,40 +47,12 @@ The author is a software developer based in Utrecht, The Netherlands. He has bee
 
 ## Online
 
-Find the book at your favorite online retailer, order it from your local book store, or try one of the links below.
+Find the book at your favorite online retailer, probably Amazon or the [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423).
 
 Pay with Bitcoin:
 * EU: [shopinbit.com](https://shopinbit.com/books/english-books/computing-internet/investing-and-finance-online/515003/bitcoin-technical-innovations-from-the-trenches-sjors-provoost)
 * Australia: [Buy from me](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-oz/)
 * Canada, Colombia, Singapore and South Africa: [Buy from me](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-paperback/)
-
-Pay with fiat:
-* EU try [Amazon.de](https://amzn.to/39Q5s6h) except:
-  * Netherlands: [Libris](https://libris.nl/boeken/?tt=33780_12_425527_&r=%2Fboek%3Fauthortitle%3Dsjors-provoost%2Fbitcoin-a-work-in-progress--9789090360423)
-  * Belgium: [bol.com](https://www.bol.com/be/nl/p/bitcoin-technical-innovations-from-the-trenches/9300000097695614/)
-  * Denmark: [Saxo](https://www.saxo.com/dk/bitcoin-technical-innovations-from-the-trenches_bog_9789090360423)
-  * France: [Amazon.fr](https://www.amazon.fr/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
-  * Italy: [Amazon.it](https://www.amazon.it/Bitcoin-Progress-Technical-innovations-trenches/dp/9090360425/)  ([Amazon.de](https://amzn.to/39Q5s6h) may be cheaper)
-  * Spain: [Amazon.es](https://www.amazon.es/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425), [Agapea](https://www.agapea.com/buscar/buscador.php?texto=9789090360423)
-  * [Sweden](https://www.adlibris.com/se/bok/bitcoin-technical-innovations-from-the-trenches-9789090360423), [Finland](https://www.adlibris.com/fi/kirja/bitcoin-technical-innovations-from-the-trenches-9789090360423) and [Norway](https://www.adlibris.com/no/bok/bitcoin-technical-innovations-from-the-trenches-9789090360423) at Adlibris
-  * Poland: [Amazon.pl](https://www.amazon.pl/Bitcoin-Progress-Technical-innovations-trenches/dp/9090360425)
-  * Romania: [Books Express](https://www.books-express.ro/bitcoin/p/u,9789090360423)
-* UK: [Amazon.co.uk](https://amzn.to/3M5OZck)
-* USA: [Bookshop.org](https://bookshop.org/a/83709/9789090360423), [Amazon](https://amzn.to/3PbclPz)
-* Mexico: [Amazon.com.mx](https://www.amazon.com.mx/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
-* Turkey: [Ubuy](https://www.ubuy.com.tr/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches)
-* United Arab Emirates: [Amazon.ae](https://www.amazon.ae/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425)
-* Brazil: [Amazon.com.br](https://www.amazon.com.br/s?k=9789090360423)
-* India: [Amazon.in](https://www.amazon.in/dp/9090360425)
-* Japan: [Amazon.co.jp](https://www.amazon.co.jp/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425/)
-* Korea: [Yes24](http://www.yes24.com/product/goods/109180444), [Kyobo](https://www.kyobobook.co.kr/product/detailViewEng.laf?ejkGb=BNT&mallGb=ENG&barcode=9789090360423), [Aladin](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=294118397)
-* Hong Kong: [Ubuy](https://www.ubuy.hk/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches) and [Amazon.com](https://amzn.to/3PbclPz) both ship from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) ships from UK
-* Taiwan: [Books.com.tw](https://www.books.com.tw/products/F019028697) (imported), [Amazon.com](https://amzn.to/3PbclPz) ships from USA, [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423) from UK
-* Vietnam: [Ubuy](https://www.ubuy.vn/en/product/4XF8KHKA8-bitcoin-technical-innovations-from-the-trenches)  ships from USA
-
-For other countries try [Amazon.com](https://amzn.to/3PbclPz) or [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423); they ship to many places. If you can't find the title, try searching the ISBN: `9789090360423`
-
-[Let me know](mailto:sjors@sprovoost.nl) if you find better options than the ones suggested above.
 
 ## Physical shops
 
