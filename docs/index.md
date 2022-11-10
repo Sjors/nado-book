@@ -36,12 +36,22 @@ Join the Bitcoin Work in Progress mailinglist to receive content from the book i
 
 The author is a software developer based in Utrecht, The Netherlands. He has been working in the Bitcoin industry since 2014 and became a Bitcoin Core contributor in 2017, giving him a front row seat to all the latest and most exciting technical developments. He is a co-host on the _Bitcoin Magazine_ podcast _Bitcoin, Explained_.
 
-## Contact
+# Table of Contents
 
-* Email: [sjors@sprovoost.nl](mailto:sjors@sprovoost.nl)
-* Mastodon: [@sjors@m.sprovoost.nl](http://m.sprovoost.nl/@sjors){:rel="me"}
-* Twitter: [@provoost](https://twitter.com/provoost)
-* Blog: [sprovoost.nl](https://sprovoost.nl)
+A few chapters can be read online for free, others can be purchased as a printer friendly PDF (⚡ only).
+
+1. Bitcoin Addresses: [Blog Post](https://sprovoost.nl/2022/11/10/what-is-a-bitcoin-address/) \| [Buy PDF](https://shop.purpledunes.com/product/btcwip-chapter-1-bitcoin-addresses/)
+2. DNS Bootstrap and Tor V3: [Buy PDF](https://shop.purpledunes.com/product/chapter-2-dns-bootstrap/)
+3. SegWit: [Buy PDF](https://shop.purpledunes.com/product/btcwip-chapter-3-segwit/)
+4. libsecp256k1: [Buy PDF](https://shop.purpledunes.com/product/chapter-4-libsecp256k1/)
+5. Sync Time and AssumeUTXO: [Buy PDF](https://shop.purpledunes.com/product/btcwip-chapter-5-blockchain-sync-assumeutxo/)
+6. Utreexo: [Buy PDF](https://shop.purpledunes.com/product/btcwip-chapter-6-utreexo/)
+7. Eclipse Attacks: [Blog Post](https://sprovoost.nl/2022/05/12/attacking-bitcoin-eclipse-attacks/) \| [Buy PDF](https://shop.purpledunes.com/product/btcwip-chapter-7-eclipse-attacks/)
+8. Fake Nodes: [Buy PDF](https://shop.purpledunes.com/product/btcwip-chapter-8-fake-nodes/)
+9. Guix - Why Open Source Matters: [BitMEX Research blog](https://blog.bitmex.com/why-open-source-matters-guix/) \| [Buy PDF](https://shop.purpledunes.com/product/btcwip-chapter-9-guix/)
+10. Script, P2SH, and Miniscript: [Buy PDF](https://shop.purpledunes.com/product/btcwip-chapter-10-miniscript/)
+11. Taproot and Schnorr
+12. Soft Fork Activation Options
 
 # Buy Now
 
@@ -64,11 +74,13 @@ I'm not aware of any physical book store that has the book on a shelf, but in ma
 
 Don't like dead trees? You can [buy the e-book](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-ebook/) from me in `.epub` or `.pdf` format (pay with Bitcoin). It's also for sale in the [Kobo](https://www.kobo.com/nl/nl/ebook/bitcoin-a-work-in-progress) store, [Barnes & Noble](https://www.barnesandnoble.com/w/bitcoin-sjors-provoost/1141629678?ean=2940186716105) (NOOK), [Apple Books](http://books.apple.com/us/book/id6442926150) and [Google Books](https://play.google.com/store/books/details?id=mHlzEAAAQBAJ), but not in the Kindle store due to [absurdly low royalties](https://sprovoost.nl/2022/06/01/amazon-and-the-dystopian-future-of-book-censorship/#kindle-royalties).
 
-# Preview
 
-Here's the [table of contents and Chapter 1](preview.pdf){:target="_blank"}.
+## Contact
 
-You can also [buy a printer friendly PDF](https://shop.purpledunes.com/product-category/chapters/) for an individual chapter (⚡ only).
+* Email: [sjors@sprovoost.nl](mailto:sjors@sprovoost.nl)
+* Mastodon: [@sjors@m.sprovoost.nl](http://m.sprovoost.nl/@sjors){:rel="me"}
+* Twitter: [@provoost](https://twitter.com/provoost)
+* Blog: [sprovoost.nl](https://sprovoost.nl)
 
 # Media appearances
 
