@@ -80,7 +80,7 @@ Don't like dead trees? You can [buy the e-book](https://shop.purpledunes.com/pro
 ## Contact
 
 * Email: [sjors@sprovoost.nl](mailto:sjors@sprovoost.nl)
-* Mastodon: [@sjors@m.sprovoost.nl](http://m.sprovoost.nl/@sjors){:rel="me"}
+* Mastodon: [@sjors@sprovoost.nl](https://mastodon.sprovoost.nl/@sjors){:rel="me"}
 * Twitter: [@provoost](https://twitter.com/provoost)
 * Blog: [sprovoost.nl](https://sprovoost.nl)
 
