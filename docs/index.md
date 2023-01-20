@@ -11,7 +11,7 @@ With thousands of “crypto” projects out there, they say Bitcoin is old and b
 
 You'll learn about the latest soft fork known as Taproot, the challenges of keeping open source software free of money-stealing bugs and malware, new ways to protect nodes against evildoers on the internet, how to deal with the ever-growing blockchain, and more!
 
-Each chapter links to a corresponding episode of the [_Bitcoin, Explained_](https://podcastindex.org/podcast/3307835) podcast. The book also links to more than two hundred articles, videos, podcasts, and even the source code. And thanks to a tiny QR code next to every link, you'll never have to type long URLs.
+The book links to more than two hundred articles, videos, podcasts, and even the source code. And thanks to a tiny QR code next to every link, you'll never have to type long URLs.
 
 # Mailinglist
 
@@ -29,6 +29,10 @@ Join the Bitcoin Work in Progress mailinglist to receive content from the book i
 </form>
 
 You can also [read the archive](https://list.btcwip.com/archive) or subscribe via [RSS](https://list.btcwip.com/archive.xml).
+
+# Podcast
+
+The book is based on the [_Bitcoin, Explained_](https://podcast.sprovoost.nl/@nado/episodes) podcast, where you'll learn something new about Bitcoin every couple of weeks.
 
 # The Author
 
