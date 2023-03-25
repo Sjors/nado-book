@@ -68,7 +68,6 @@ Find the book at your favorite online retailer, probably Amazon or the [Book Dep
 Pay with Bitcoin:
 * EU: [shopinbit.com](https://shopinbit.com/books/english-books/computing-internet/investing-and-finance-online/515003/bitcoin-technical-innovations-from-the-trenches-sjors-provoost)
 * Australia: [Buy from me](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-oz/)
-* Canada, Colombia, Singapore and South Africa: [Buy from me](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-paperback/)
 
 ## Physical shops
 
