@@ -25,6 +25,10 @@ Join the Bitcoin Work in Progress mailinglist to receive content from the book i
           <input id="476d7" type="checkbox" hidden name="l" checked value="476d7a6f-fffb-4196-ba7d-5d93095f4210" />
           <input type="submit" value="Subscribe" />
         </p>
+        <div class="captcha">
+            <div class="h-captcha" data-sitekey="84125e86-1589-4d14-97ad-cce27da9a852"></div>
+            <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+        </div>
     </div>
 </form>
 
