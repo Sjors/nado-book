@@ -67,7 +67,7 @@ A few chapters can be read online for free, others can be purchased as a printer
 
 ## Online
 
-Find the book at your favorite online retailer, probably Amazon or the [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423).
+Find the book at your favorite online retailer, probably [Amazon](https://www.amazon.com/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425) or the [Book Depository](https://www.bookdepository.com/Bitcoin-Sjors-Provoost/9789090360423).
 
 Pay with Bitcoin:
 * EU: [shopinbit.com](https://shopinbit.com/books/english-books/computing-internet/investing-and-finance-online/515003/bitcoin-technical-innovations-from-the-trenches-sjors-provoost)
