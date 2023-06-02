@@ -38,6 +38,11 @@ You can also [read the archive](https://list.btcwip.com/archive) or subscribe vi
 
 The book is based on the [_Bitcoin, Explained_](https://podcast.sprovoost.nl/@nado/episodes) podcast, where you'll learn something new about Bitcoin every couple of weeks.
 
+# Endorsements
+
+![](jack.png)
+
+"Great read, wish I read this earlier." - [Jack Dorsey](https://iris.to/note19pkjwhnu2w8ekssxn2nrd38pj0ekhx07nu2j2mwl4u7nqm34lsjqs3jtcd)
 # The Author
 
 <!-- This text is also used on the back cover -->
