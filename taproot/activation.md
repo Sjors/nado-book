@@ -226,6 +226,8 @@ This time around, the first software download release with the Taproot activatio
 \noindent
 With open source software, anyone is free to release any variation of the software they want. Similarly, everyone is free to download whichever variation they want. However, in addition to the general objections to `LOT=true` above, there are other practical matters to think about when downloading such an alternative implementation. We cover these in the episode above. In particular, it’s important to make sure you’re not accidentally downloading malware (see chapter @sec:guix).
 
+\newpage
+
 ### The Speedy Trial Proposal
 
 \EpisodeQR{31}
@@ -249,6 +251,8 @@ This process made it so Taproot would activate six months after the initial rele
 Speedy Trial seemed to sufficiently address the objections to BIP 9. From the objectors’ point of view, because it was so fast, their own plans for BIP 8 wouldn’t be delayed.
 
 With the controversy (temporarily) out of the way, more developers came out of the woodwork and started writing code that could actually get Speedy Trial done.^[Mainly <https://github.com/bitcoin/bitcoin/pull/21377>, <https://github.com/bitcoin/bitcoin/pull/21686>, and a BIP 8-based alternative that was briefly considered: <https://github.com/bitcoin/bitcoin/pull/21392>] In turn, because there were more developers from different angles cooperating on it and getting things done a little bit more quickly, it demonstrated that Speedy Trial was a good idea. When you have some disagreement, then people start procrastinating, not reviewing things, or not writing things. But if people begin working on something quickly and it’s making progress, that’s a vague indicator that it was a good choice.
+
+
 
 ### We Have Taproot `LOCKED_IN`!
 
