@@ -47,7 +47,7 @@ The book is based on the [_Bitcoin, Explained_](https://podcast.sprovoost.nl/@na
 
 <!-- This text is also used on the back cover -->
 
-![Sjors Provoost](sjors.png){: width="150" : style="float: right"}
+![Sjors Provoost](sjors.jpg){: width="150" : style="float: right"}
 
 The author is a software developer based in Utrecht, The Netherlands. He has been working in the Bitcoin industry since 2014 and became a Bitcoin Core contributor in 2017, giving him a front row seat to all the latest and most exciting technical developments. He is a co-host on the _Bitcoin Magazine_ podcast _Bitcoin, Explained_.
 
