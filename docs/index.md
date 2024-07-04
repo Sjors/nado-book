@@ -114,7 +114,7 @@ The <a href="https://bolt12.org">Bolt 12</a> draft standard is currently only su
 
 <div class="source-block">
     <div class="src-container">
-        <pre class="copy-target bolt12">lno1pg34g6tsypnx7u3qgf5hgcm0d9hr5gzpyptk7untyp5kugzswfhkwun9wde3grjndfhhyueq2pex7an0daehg83qxalcjym827wseh7zsvauxgap6q23fm4yp4yve6rdx83esg37pjelqsqk0mxa75uwy2j8qpyce7vet0xn8vfq4yjq02r4rly6agvhy0jvqp2r0cdl6fsl3qu72jf5wvlr3hgkmzlgg5ezut4q9z50saxvnaqtq</pre>
+        <pre class="copy-target bolt12">lno1pg5ygmmwv96xjmmwypnx7u3qgf5hgcm0d9hr5gzpyptk7untyp5kugzswfhkwun9wde3yrjndfhhyueq2pex7an0daehg93pqvmhlzgnvate6rxlc2pnhser58gp298w5sx53n8gd5c78xpz8cxtx</pre>
     </div>
     <button class='copy-code-button' />
 </div>
