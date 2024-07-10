@@ -74,9 +74,6 @@ A few chapters can be read online for free, others can be purchased as a printer
 
 Find the book at your favorite online retailer, probably [Amazon](https://www.amazon.com/Bitcoin-Technical-innovations-Sjors-Provoost/dp/9090360425).
 
-Pay with Bitcoin:
-* EU: [shopinbit.com](https://shopinbit.com/books/english-books/computing-internet/investing-and-finance-online/515003/bitcoin-technical-innovations-from-the-trenches-sjors-provoost)
-
 ## Physical shops
 
 * Amsterdam: The American Book Center ([Spui 12](https://goo.gl/maps/TzoYnznXgWTMgVRY7)) can print [the book](https://abc.nl/book-details/bitcoin/$9789090360423), sometimes even while you wait!
