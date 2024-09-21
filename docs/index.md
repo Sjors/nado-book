@@ -82,14 +82,13 @@ I'm not aware of any physical book store that has the book on a shelf, but in ma
 
 ## eBook
 
-Don't like dead trees? You can [buy the e-book](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-ebook/) from me in `.epub` or `.pdf` format (pay with Bitcoin). It's also for sale in the [Kobo](https://www.kobo.com/nl/nl/ebook/bitcoin-a-work-in-progress) store, [Barnes & Noble](https://www.barnesandnoble.com/w/bitcoin-sjors-provoost/1141629678?ean=2940186716105) (NOOK), [Apple Books](http://books.apple.com/us/book/id6442926150) and [Google Books](https://play.google.com/store/books/details?id=mHlzEAAAQBAJ), but not in the Kindle store due to [absurdly low royalties](https://sprovoost.nl/2022/06/01/amazon-and-the-dystopian-future-of-book-censorship/#kindle-royalties).
+Don't like dead trees? You can [buy the e-book](https://shop.purpledunes.com/product/bitcoin-a-work-in-progress-ebook/) from me in `.epub` or `.pdf` format (pay with Bitcoin).
 
 
 ## Contact
 
 * Email: [sjors@sprovoost.nl](mailto:sjors@sprovoost.nl)
 * Nostr: [npub1s6z...](https://njump.me/npub1s6z7hmmx2vud66f3utxd70qem8cwtggx0jgc7gh8pqwz2k8cltuqrdwk4c)
-* Twitter: [@provoost](https://twitter.com/provoost)
 * Blog: [sprovoost.nl](https://sprovoost.nl)
 
 # Media appearances
@@ -105,9 +104,7 @@ Scan the QR or copy <a href="lightning://sjors@sprovoost.nl">sjors@sprovoost.nl<
 
 ## Bolt 12
 
-<p><p><img src="bolt12.png" width="50" align="left"/>
-The <a href="https://bolt12.org">Bolt 12</a> draft standard is currently only supported by <a href="https://github.com/ElementsProject/lightning#core-lightning-cln-a-specification-compliant-lightning-network-implementation-in-c">c-lightning</a>. Add a line <code>experimental-offers</code> to <code>~/.lightning/config</code> and then use <code>lightning-cli pay ln01p... 42sat</code>.
-</p>
+<p><p><img src="bolt12.png" width="50" align="left"/></p>
 
 <div class="source-block">
     <div class="src-container">
