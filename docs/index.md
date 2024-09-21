@@ -104,7 +104,7 @@ Scan the QR or copy <a href="lightning://sjors@sprovoost.nl">sjors@sprovoost.nl<
 
 ## Bolt 12
 
-<p><p><img src="bolt12.png" width="50" align="left"/></p>
+<p><p><a href="bitcoin:?lno=lno1pg5ygmmwv96xjmmwypnx7u3qgf5hgcm0d9hr5gzpyptk7untyp5kugzswfhkwun9wde3yrjndfhhyueq2pex7an0daehg93pqvmhlzgnvate6rxlc2pnhser58gp298w5sx53n8gd5c78xpz8cxtx"><img src="bolt12.png" width="50" align="left"/></a></p>
 
 <div class="source-block">
     <div class="src-container">
