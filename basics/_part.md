@@ -14,7 +14,7 @@ Finally, chapter @sec:libsecp explains what libraries are, how they cause proble
 
 ### Reading Hints
 
-Each chapter contains a QR code that takes you to the corresponding podcast episode and its show notes. The episode number is shown below the QR code. You can also find the episode in your favorite podcasting application by searching for _Bitcoin, Explained_. Or, play it in your browser.^[<https://nadobtc.libsyn.com>]
+Each chapter contains a QR code that takes you to the corresponding podcast episode and its show notes. The episode number is shown below the QR code. You can also find the episode in your favorite podcasting application by searching for _Bitcoin, Explained_. Or, play it in your browser.^[<https://bitcoinexplainedpodcast.com>]
 
 There is a tiny QR code displayed next to each URL. These go through btcwip.com in order to keep them small. We won't track you.
 
