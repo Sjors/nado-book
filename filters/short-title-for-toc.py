@@ -50,7 +50,7 @@ def f(key, value, format, meta):
         latextitle = '\\%s{%s}' % (tag, stringify(value))
 
     if link:
-        latextitle = '\hypertarget{%s}{%s\label{%s}}' % (link, latextitle, link)
+        latextitle = '\\hypertarget{%s}{%s\\label{%s}}' % (link, latextitle, link)
 
     # return
 
