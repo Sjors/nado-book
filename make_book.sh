@@ -33,7 +33,7 @@ find . -name "*.md.processed" -exec sh -c 'mv "$1" "${1%.md.processed}.processed
 # Collect URL's:
 find **/*.md -print0 | xargs -0 perl -ne 'print "$1\n" while /<(http.*?)>/g' | sort | uniq > qr/note/urls.csv
 if ! git diff --quiet qr/note/urls.csv; then
-    echo "Please update bit.ly links for URLs:"
+    echo "Please update short links for URLs:"
     git diff qr/note/urls.csv
     exit 1
 fi
