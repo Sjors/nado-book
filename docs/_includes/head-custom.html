@@ -1,0 +1,23 @@
+{% if page.url == "/" or page.url == "/index.html" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "Bitcoin: A Work in Progress",
+  "author": {
+    "@type": "Person",
+    "name": "Sjors Provoost",
+    "url": "https://sprovoost.nl"
+  },
+  "description": "A book about soft forks, challenges of keeping open source software free of money-stealing bugs, new ways to protect Bitcoin nodes against evildoers, and more.",
+  "image": "https://www.btcwip.com/og-book-cover.jpg",
+  "url": "https://www.btcwip.com/",
+  "inLanguage": "en",
+  "bookFormat": "https://schema.org/EBook",
+  "publisher": {
+    "@type": "Person",
+    "name": "Sjors Provoost"
+  }
+}
+</script>
+{% endif %}

@@ -1,5 +1,5 @@
 ---
-image: front.jpg
+image: og-book-cover.jpg
 title: "Bitcoin: A Work in Progress"
 description: "A book about soft forks, challenges of keeping open source software free of money-stealing bugs, new ways to protect Bitcoin nodes against evildoers, and more!"
 ---
@@ -37,7 +37,7 @@ The author is a software developer based in Utrecht, The Netherlands. He has bee
 
 ## Table of Contents
 
-A few chapters can be read online for free, others can be purchased as a printer friendly PDF for &euro;0.99 (&#9889; only).
+A few chapters can be read online for free, others can be purchased as a printer-friendly PDF for &euro;0.99 each (&#9889; only, A4 or US letter format).
 
 <ol class="chapter-list">
   <li>

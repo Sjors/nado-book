@@ -1,10 +1,14 @@
 theme: jekyll-theme-minimal
+lang: en
+url: https://www.btcwip.com
 title: "Bitcoin: A Work in Progress"
 description: Technical innovations from the trenches
 logo: front.jpg
 plugins:
   - jekyll-seo-tag
 social:
-    name: Sjors provoost
-    links: https://twitter.com/provoost
+    name: Sjors Provoost
+    links:
+      - https://njump.me/npub1v25jqj332n630klwtqeqxgyrjl4alw4phmluhu2x6lcxzwy9m03suqexw3
+      - https://github.com/sjors
 production_url: https://www.btcwip.com
