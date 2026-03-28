@@ -1,0 +1,21 @@
+<div class="chapter-buy">
+  <form method="POST" action="https://pay.sprovoost.nl/api/v1/invoices" class="btcpay-form chapter-pay-form">
+    <input type="hidden" name="storeId" value="Dbx9mDK6MySo2jXiZ3eyz7X7LBA3MEm2tGCmu3Feh6bw" />
+    <input type="hidden" name="jsonResponse" value="true" />
+    <input type="hidden" name="checkoutDesc" value="Bitcoin: A Work in Progress — {{ include.title }} (A4)" />
+    <input type="hidden" name="browserRedirect" value="https://www.btcwip.com/chapters/{{ include.a4_file }}" />
+    <input type="hidden" name="price" value="0.99" />
+    <input type="hidden" name="currency" value="EUR" />
+    <button type="submit" class="chapter-pay-link">A4 &#9889;</button>
+  </form>
+  <span class="chapter-buy-separator">/</span>
+  <form method="POST" action="https://pay.sprovoost.nl/api/v1/invoices" class="btcpay-form chapter-pay-form">
+    <input type="hidden" name="storeId" value="Dbx9mDK6MySo2jXiZ3eyz7X7LBA3MEm2tGCmu3Feh6bw" />
+    <input type="hidden" name="jsonResponse" value="true" />
+    <input type="hidden" name="checkoutDesc" value="Bitcoin: A Work in Progress — {{ include.title }} (Letter)" />
+    <input type="hidden" name="browserRedirect" value="https://www.btcwip.com/chapters/{{ include.letter_file }}" />
+    <input type="hidden" name="price" value="0.99" />
+    <input type="hidden" name="currency" value="EUR" />
+    <button type="submit" class="chapter-pay-link">Letter &#9889;</button>
+  </form>
+</div>

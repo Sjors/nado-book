@@ -1,0 +1,55 @@
+<div class="buy-now-hero">
+  <form method="POST" action="https://pay.sprovoost.nl/api/v1/invoices" class="btcpay-form btcpay-form--block">
+    <input type="hidden" name="storeId" value="Dbx9mDK6MySo2jXiZ3eyz7X7LBA3MEm2tGCmu3Feh6bw" />
+    <input type="hidden" name="jsonResponse" value="true" />
+    <input type="hidden" name="checkoutDesc" value="Bitcoin: A Work in Progress — eBook" />
+    <!-- Yes, I know this is unsafe, don't bother me with security reports :-) -->
+    <input type="hidden" name="browserRedirect" value="https://sprovoost.nl/Bitcoin-A-Work-in-Progress.zip" />
+    <input type="hidden" name="price" value="11.99" />
+    <input type="hidden" name="currency" value="EUR" />
+    <input type="image" class="submit" name="submit" src="https://pay.sprovoost.nl/img/paybutton/pay.svg" style="width:209px" alt="Pay with BTCPay Server, a Self-Hosted Bitcoin Payment Processor">
+  </form>
+
+  <p class="buy-now-price"><strong>&euro; 11.99</strong></p>
+</div>
+
+<p>This is the e-book edition of <em>Bitcoin: A Work in Progress</em>.</p>
+
+<p>Your download includes:</p>
+
+<ul>
+  <li><code>.epub</code></li>
+  <li><code>.pdf</code> in a Kindle-sized format</li>
+  <li><code>.pdf</code> in A4 format</li>
+</ul>
+
+<p>If the download does not work after payment, <a href="#contact">email me</a> and I will help sort it out.</p>
+
+<script>
+  if (!window.btcpay) {
+    var script = document.createElement('script');
+    script.src = "https://pay.sprovoost.nl/modal/btcpay.js";
+    document.getElementsByTagName('head')[0].append(script);
+  }
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200 && this.responseText) {
+        window.btcpay.appendInvoiceFrame(JSON.parse(this.responseText).invoiceId);
+      }
+    };
+    xhttp.open('POST', event.target.getAttribute('action'), true);
+    xhttp.send(new FormData(event.target));
+  }
+
+  if (!window.btcpayFormHandlerInitialized) {
+    document.addEventListener('submit', function(event) {
+      if (event.target.matches('.btcpay-form')) {
+        handleFormSubmit(event);
+      }
+    });
+    window.btcpayFormHandlerInitialized = true;
+  }
+</script>
