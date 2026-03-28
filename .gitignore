@@ -17,3 +17,6 @@ thumb-*.png
 ## Jekyll
 _site
 docs/.jekyll-metadata
+
+## Misc
+.env
