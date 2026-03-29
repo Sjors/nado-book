@@ -5,7 +5,42 @@ local center_for = {
   }
 }
 
+local function latex_width(attrs)
+  local width = attrs.width
+  if not width then
+    return nil
+  end
+
+  local pct = width:match('^(%d+)%%$')
+  if pct then
+    return string.format('%.3f\\linewidth', tonumber(pct) / 100.0)
+  end
+
+  return width
+end
+
 function Div (div)
+  if div.classes:includes('tightimg') and FORMAT == 'latex' then
+    if #div.content == 1 and div.content[1].t == 'Para' and #div.content[1].content == 1 then
+      local img = div.content[1].content[1]
+      if img.t == 'Image' then
+        local src = img.src
+        local options = { 'height=\\textheight', 'keepaspectratio' }
+        local width = latex_width(img.attributes)
+        table.insert(options, 1, 'width=' .. (width or '\\maxwidth'))
+
+        return {
+          pandoc.RawBlock('latex', '\\begin{center}'),
+          pandoc.RawBlock(
+            'latex',
+            '\\includegraphics[' .. table.concat(options, ',') .. ']{' .. src .. '}'
+          ),
+          pandoc.RawBlock('latex', '\\end{center}')
+        }
+      end
+    end
+  end
+
   if div.classes:includes('center') then
     if center_for[FORMAT] then
       local rv = {}

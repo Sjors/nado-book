@@ -66,6 +66,18 @@ for file in taproot/*.dot; do
     sed -i '' 's/transparent/none/' ${file%.dot}.svg
 done
 
+if [ "$EPUB" -ne "1" ]; then
+    # Newer pandoc emits \includesvg for LaTeX output. Pre-convert to PDF so
+    # xelatex can include stable assets without depending on extra TeX helpers.
+    find resources taproot appendix whitepaper -name '*.svg' | while read -r file; do
+        output="tmp/$(basename "${file%.svg}").pdf"
+        rsvg-convert --format=pdf --output "$output" "$file"
+        while IFS= read -r -d '' processed; do
+            FILE="$file" OUTPUT="$output" perl -0pi -e 's/\Q($ENV{FILE})\E/($ENV{OUTPUT})/g' "$processed"
+        done < <(find . -name '*.processed.md' -print0)
+    done
+fi
+
 if [ "$EPUB" -eq "1" ]; then
     # Drop unlisted header (not supported for ePub)
     find **/*.processed.md -exec sed -i '' '/\.unlisted/d' {} \;
@@ -161,7 +173,7 @@ pandoc  --pdf-engine=xelatex\
         --table-of-contents --top-level-division=part\
         --strip-comments\
         --filter filters/short-title-for-toc.py\
-        --filter pandoc-secnos\
+        --filter filters/pandoc-secnos-wrapper.py\
         --filter filters/wrapfig.py\
         --lua-filter filters/center.lua\
         $EXTRA_OPTIONS\

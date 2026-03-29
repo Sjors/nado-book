@@ -11,11 +11,15 @@ Fortunately I know a guy, and he charges 0.002,000,-- bitcoin. I spin up my Bitc
 \newpage
 First I need to buy some Bitcoin. Bitcoin in Europe is a bit like guns in the USA. A lot of people don’t like it, others love it, but it’s perfectly legal. So I surf to bitonic.nl to buy a little more than I need:
 
+::: {.center}
 ![](appendix/buy.png){ width=40% }
+:::
 
 I pay with iDEAL, which is used for all online (fiat) shopping. They need a Bitcoin address to send it to, which I obtain from my Bitcoin Core wallet:
 
+::: {.center}
 ![](appendix/core-2.png){ width=100% }
+:::
 
 \newpage
 I click Request payment and get an address:
@@ -52,21 +56,29 @@ Anyway, why doesn’t Dmitry just use Bitonic to sell his coins? Well, because h
 
 So Dmitry now has an empty wallet and Kees received just a little under 0.006,000,-- BTC in his wallet (miners take a small fee to process each transaction):
 
-![](appendix/core-8.png){ width=100% }
+::: {.tightimg}
+![](appendix/core-8.png)
+:::
 
 Kees has a problem. He’s being watched. Soon after the trade with Dmitry an undercover cop offers to sell 0.001,000,-- BTC. Kees offers him cash at 10% below the market price and gives the address tb1q3nf… Now his wallet looks like this:
 
-![](appendix/core-9.png){ width=100% }
+::: {.tightimg}
+![](appendix/core-9.png)
+:::
 
 Unbeknownst to Kees, Dmitry was caught on camera selling coffee that day, he was arrested on his way out of the supermarket. His (empty) Bitcoin wallet was confiscated, as was his now empty fiat wallet and what was left in the liquor bottle. The wallet contained transactions and notes as you can see above. The timing of each transaction coincided with the camera footage, the amount matched the well known price of fraps, and the notes even said it was fraps. The wallet also shows the destination address where Dmitry sent the BTC (tb1qja…), which the police suspect belongs to Kees. They suspect Dmitry sold the coins in exchange for cash, though they were too late to find the cash.
 
 Kees is not arrested yet and so nobody knows what his Bitcoin addresses are. A privacy activist approaches him, because he wants to buy Bitcoin and doesn’t want the kind of surveillance that comes with buying coins online with iDeal. He has no intention of committing any crime whatsoever, not even tax evasion. He withdraws some of his hard and legally earned cash from an ATM. He then endures the long phone interrogation by his bank that always follows such behavior. He then negotiates a nice 3% fee above market rate. Kees sends him the coins, so Kees’ wallet now looks like this (2 buys, 1 sell):
 
-![](appendix/core-10.png){ width=100% }
+::: {.tightimg}
+![](appendix/core-10.png)
+:::
 
 Meanwhile our police officer, let’s call him Donald, goes online and looks up the address used in his trade with Kees (tb1q3nf…). Bitcoin Core doesn’t support address lookups, because it doesn’t scale well and as Wladimir van der Laan put it “bitcoin core is not meant as a chain analysis platform”. His favorite block explorer blockchain.com doesn’t support bech32 address lookups, so he goes to a competitor.
 
-![](appendix/explorer.png){ width=100% }
+::: {.tightimg}
+![](appendix/explorer.png)
+:::
 
 The figure on the next page describes transactions related to the tb1q3nf… address. He suspects this address belongs to Kees, because it’s the address Kees gave him to send coins to.
 

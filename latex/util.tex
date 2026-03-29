@@ -2,7 +2,10 @@
 % https://tex.stackexchange.com/a/115568
 \usepackage{expl3}
 \ExplSyntaxOn
-\cs_new_eq:NN \fpeval \fp_eval:n
+\cs_if_exist:NF \fpeval
+  {
+    \cs_new_eq:NN \fpeval \fp_eval:n
+  }
 \ExplSyntaxOff
 
 % width and height are

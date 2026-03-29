@@ -2,13 +2,34 @@
 
 ## Build
 
-Install [Pandoc](https://pandoc.org) to generate an epub file.
+Install [Pandoc](https://pandoc.org) version 3 to generate an epub file.
 For PDF a LaTeX engine is required, see Pandoc documentation.
 
 The following Pandoc filters are used:
 * [pandoc-secnos](https://github.com/tomduck/pandoc-xnos)
 
-In addition you need [Graphviz](https://www.graphviz.org).
+In addition you need [Graphviz](https://www.graphviz.org), ImageMagick, and Ghostscript.
+
+The paperback build also expects the following LaTeX packages to be available:
+`pstricks`, `pst-barcode`, `pst-tools`, `marginnote`, `wrapfig`, `mwe`, and `footmisc`.
+
+On macOS, the following worked:
+
+```sh
+brew install imagemagick ghostscript
+brew install --cask basictex
+pip3 install --user pandoc-secnos
+eval "$(/usr/libexec/path_helper)"
+sudo tlmgr install pstricks pst-barcode pst-tools marginnote wrapfig mwe footmisc
+sudo texhash
+```
+
+If `tlmgr install` fails with a checksum mismatch from a bad mirror, reset it to the CTAN redirector and retry:
+
+```sh
+sudo tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
+sudo tlmgr update --self
+```
 
 To build the paperback version:
 
@@ -35,6 +56,8 @@ To build a PDF that roughly fits an iPad:
 ```sh
 ./make_book.sh --pdfbig
 ```
+
+Note that `make_book.sh` builds the book interior. The cover PDF is still a separate manual export flow from the source files in `meta/`.
 
 
 To generate the jpeg cover images, export to PDF but set to PDF 1.6 and change
