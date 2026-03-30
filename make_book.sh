@@ -46,12 +46,15 @@ find . -name "*.md.processed" -exec sh -c 'mv "$1" "${1%.md.processed}.processed
 
 # Process footnote QR codes:
 # Collect URL's:
-find **/*.md -print0 | xargs -0 perl -ne 'print "$1\n" while /<(http.*?)>/g' | sort | uniq > qr/note/urls.csv
-if ! git diff --quiet qr/note/urls.csv; then
+generated_urls_file="tmp/generated-urls.csv"
+find **/*.md -print0 | xargs -0 perl -ne 'print "$1\n" while /<(http.*?)>/g' | LC_ALL=C sort | uniq > "$generated_urls_file"
+if ! cmp -s "$generated_urls_file" qr/note/urls.csv; then
     echo "Please update short links for URLs:"
-    git diff qr/note/urls.csv
+    git --no-pager diff --no-index -- qr/note/urls.csv "$generated_urls_file" || true
+    rm -f "$generated_urls_file"
     exit 1
 fi
+rm -f "$generated_urls_file"
 
 if ! [ "$(wc -l < qr/note/urls.csv)" -eq "$(wc -l < qr/note/shorts.txt)" ]; then
     echo "shorts.txt should have the same number of entries as urls.csv"
