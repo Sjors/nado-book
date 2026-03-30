@@ -33,6 +33,47 @@ sedi() {
     "$SED_BIN" "${SED_INPLACE[@]}" "$@"
 }
 
+check_pdf_page_size() {
+    local pdf="$1"
+    local expected_width_mm="$2"
+    local expected_height_mm="$3"
+    local actual_width_pts actual_height_pts
+
+    if ! command -v pdfinfo >/dev/null 2>&1; then
+        echo "pdfinfo is required to verify PDF dimensions. Install it with: brew install poppler" >&2
+        exit 1
+    fi
+
+    read -r actual_width_pts actual_height_pts < <(pdfinfo "$pdf" | awk '/Page size:/ {print $3, $5}')
+
+    if [ -z "$actual_width_pts" ] || [ -z "$actual_height_pts" ]; then
+        echo "Unable to read page size from $pdf" >&2
+        exit 1
+    fi
+
+    if ! awk \
+        -v actual_width_pts="$actual_width_pts" \
+        -v actual_height_pts="$actual_height_pts" \
+        -v expected_width_mm="$expected_width_mm" \
+        -v expected_height_mm="$expected_height_mm" \
+        'BEGIN {
+            expected_width_pts = expected_width_mm * 72 / 25.4
+            expected_height_pts = expected_height_mm * 72 / 25.4
+            tolerance_pts = 0.2
+            width_diff = actual_width_pts - expected_width_pts
+            height_diff = actual_height_pts - expected_height_pts
+            if (width_diff < 0) width_diff = -width_diff
+            if (height_diff < 0) height_diff = -height_diff
+            exit !((width_diff <= tolerance_pts) && (height_diff <= tolerance_pts))
+        }'
+    then
+        echo "Unexpected page size for $pdf: got ${actual_width_pts} x ${actual_height_pts} pt, expected ${expected_width_mm} x ${expected_height_mm} mm" >&2
+        exit 1
+    fi
+
+    echo "Verified $pdf page size: ${expected_width_mm} x ${expected_height_mm} mm"
+}
+
 mkdir -p tmp
 
 if [ "$EBOOK" -eq "1" ]; then
@@ -241,4 +282,9 @@ fi
 
 if [ "$EPUB" -eq "1" ]; then
     mv nado-kindle.epub "Bitcoin - A Work in Progress.epub"
+fi
+
+if [ "$PAPERBACK" -eq "1" ]; then
+    # A5 without bleed
+    check_pdf_page_size nado-paperback.pdf 148 210
 fi
