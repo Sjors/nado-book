@@ -1,4 +1,15 @@
 #!/bin/bash
+if sed --version >/dev/null 2>&1; then
+    SED_BIN=sed
+elif command -v gsed >/dev/null 2>&1 && gsed --version >/dev/null 2>&1; then
+    SED_BIN=gsed
+else
+    echo "GNU sed is required. Use a GNU 'sed' or make it available as 'gsed' in PATH."
+    exit 1
+fi
+
+SED_INPLACE=(-i)
+
 PAPERBACK="0"
 EBOOK="0"
 EPUB="0"
@@ -17,6 +28,10 @@ while [[ "$#" -gt 0 ]]; do
     esac
     shift
 done
+
+sedi() {
+    "$SED_BIN" "${SED_INPLACE[@]}" "$@"
+}
 
 mkdir -p tmp
 
@@ -57,13 +72,15 @@ for i in $(seq $count); do
         echo "s*<$url>*<$url> \\\MiniQR{$short_url}*g;" >> qr/sed
     fi
 done
-find **/*.processed.md -exec sed -i '' -f qr/sed {} \;
+find **/*.processed.md -print0 | while IFS= read -r -d '' file; do
+    sedi -f qr/sed "$file"
+done
 
 # Process figures:
 for file in taproot/*.dot; do
     dot -Tsvg $file > ${file%.dot}.svg
     # https://gitlab.com/graphviz/graphviz/-/issues/1863
-    sed -i '' 's/transparent/none/' ${file%.dot}.svg
+    sedi 's/transparent/none/' "${file%.dot}.svg"
 done
 
 if [ "$EPUB" -ne "1" ]; then
@@ -80,11 +97,15 @@ fi
 
 if [ "$EPUB" -eq "1" ]; then
     # Drop unlisted header (not supported for ePub)
-    find **/*.processed.md -exec sed -i '' '/\.unlisted/d' {} \;
+    find **/*.processed.md -print0 | while IFS= read -r -d '' file; do
+        sedi '/\.unlisted/d' "$file"
+    done
     # Don't use short titles
-    find **/*.processed.md -exec sed -i '' 's/{short=".*" link="sec:\(.*\)"}/{#sec:\1}/' {} \;
+    find **/*.processed.md -print0 | while IFS= read -r -d '' file; do
+        sedi 's/{short=".*" link="sec:\(.*\)"}/{#sec:\1}/' "$file"
+    done
 
-    sed -i '' 's/\.unnumbered //' appendix/appendix.processed.md
+    sedi 's/\.unnumbered //' appendix/appendix.processed.md
 
     # Fix episode QRs:
     mkdir -p qr/ep
@@ -93,10 +114,14 @@ if [ "$EPUB" -eq "1" ]; then
     for i in $(seq 60); do
         qrencode -m 0 -s 3 -o qr/ep/$i.png HTTPS://BTCWIP.COM/nado$i
     done
-    find **/*.processed.md -exec sed -i '' 's/\\EpisodeQR{\(.*\)}/![[Ep. \1](https:\/\/btcwip.com\/nado\1)](qr\/ep\/\1.png){.ep-qr}/' {} \;
+    find **/*.processed.md -print0 | while IFS= read -r -d '' file; do
+        sedi 's/\\EpisodeQR{\(.*\)}/![[Ep. \1](https:\/\/btcwip.com\/nado\1)](qr\/ep\/\1.png){.ep-qr}/' "$file"
+    done
 
     # Replace SVG images with PNG (Kindle devices don't render SVG well, especially the whitepaper)
-    find **/*.processed.md -exec sed -i '' 's/([a-zA-Z0-9_-]*\/\([a-zA-Z0-9_-]*\)\.svg)/(tmp\/\1.png)/' {} \;
+    find **/*.processed.md -print0 | while IFS= read -r -d '' file; do
+        sedi 's/([a-zA-Z0-9_-]*\/\([a-zA-Z0-9_-]*\)\.svg)/(tmp\/\1.png)/' "$file"
+    done
     mogrify -density 300 -format png -path tmp [^_]**/*.svg
     # Shrink huge images to below the iBook 400K pixel limit:
     convert -density 300 taproot/mast.svg -resize 2500 tmp/mast.png
