@@ -74,6 +74,51 @@ check_pdf_page_size() {
     echo "Verified $pdf page size: ${expected_width_mm} x ${expected_height_mm} mm"
 }
 
+check_pdf_trimbox() {
+    local pdf="$1"
+    local expected_left_pts="$2"
+    local expected_bottom_pts="$3"
+    local expected_right_pts="$4"
+    local expected_top_pts="$5"
+    local actual_left_pts actual_bottom_pts actual_right_pts actual_top_pts
+
+    if ! command -v pdfinfo >/dev/null 2>&1; then
+        echo "pdfinfo is required to verify PDF trim boxes. Install it with: brew install poppler" >&2
+        exit 1
+    fi
+
+    read -r actual_left_pts actual_bottom_pts actual_right_pts actual_top_pts < <(pdfinfo -box "$pdf" | awk '/TrimBox:/ {print $2, $3, $4, $5; exit}')
+
+    if [ -z "$actual_left_pts" ] || [ -z "$actual_top_pts" ]; then
+        echo "Unable to read TrimBox from $pdf" >&2
+        exit 1
+    fi
+
+    if ! awk \
+        -v al="$actual_left_pts" \
+        -v ab="$actual_bottom_pts" \
+        -v ar="$actual_right_pts" \
+        -v at="$actual_top_pts" \
+        -v el="$expected_left_pts" \
+        -v eb="$expected_bottom_pts" \
+        -v er="$expected_right_pts" \
+        -v et="$expected_top_pts" \
+        'BEGIN {
+            tolerance_pts = 0.2
+            dl = al - el; if (dl < 0) dl = -dl
+            db = ab - eb; if (db < 0) db = -db
+            dr = ar - er; if (dr < 0) dr = -dr
+            dt = at - et; if (dt < 0) dt = -dt
+            exit !((dl <= tolerance_pts) && (db <= tolerance_pts) && (dr <= tolerance_pts) && (dt <= tolerance_pts))
+        }'
+    then
+        echo "Unexpected TrimBox for $pdf: got [$actual_left_pts $actual_bottom_pts $actual_right_pts $actual_top_pts]" >&2
+        exit 1
+    fi
+
+    echo "Verified $pdf TrimBox: [$expected_left_pts $expected_bottom_pts $expected_right_pts $expected_top_pts]"
+}
+
 mkdir -p tmp
 
 if [ "$EBOOK" -eq "1" ]; then
@@ -287,4 +332,7 @@ fi
 if [ "$PAPERBACK" -eq "1" ]; then
     # A5 without bleed
     check_pdf_page_size nado-paperback.pdf 148 210
+    python3 scripts/add_paperback_bleed.py nado-paperback.pdf nado-paperback-bleed.pdf
+    check_pdf_page_size nado-paperback-bleed.pdf 154 216
+    check_pdf_trimbox nado-paperback-bleed.pdf 8.5 8.5 428.03 603.78
 fi

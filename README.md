@@ -8,7 +8,7 @@ For PDF a LaTeX engine is required, see Pandoc documentation.
 The following Pandoc filters are used:
 * [pandoc-secnos](https://github.com/tomduck/pandoc-xnos)
 
-In addition you need [Graphviz](https://www.graphviz.org), ImageMagick, and Ghostscript.
+In addition you need [Graphviz](https://www.graphviz.org), ImageMagick, Ghostscript, and Poppler.
 
 The paperback build also expects the following LaTeX packages to be available:
 `pstricks`, `pst-barcode`, `pst-tools`, `marginnote`, `wrapfig`, `mwe`, and `footmisc`.
@@ -16,9 +16,9 @@ The paperback build also expects the following LaTeX packages to be available:
 On macOS, the following worked:
 
 ```sh
-brew install imagemagick ghostscript
+brew install imagemagick ghostscript poppler
 brew install --cask basictex
-pip3 install --user pandoc-secnos
+pip3 install --user pandoc-secnos pikepdf
 eval "$(/usr/libexec/path_helper)"
 sudo tlmgr install pstricks pst-barcode pst-tools marginnote wrapfig mwe footmisc
 sudo texhash
@@ -36,6 +36,12 @@ To build the paperback version:
 ```sh
 ./make_book.sh --paperback
 ```
+
+This produces:
+- `nado-paperback.pdf`: A5 interior (`148 x 210 mm`)
+- `nado-paperback-bleed.pdf`: `3 mm` bleed on all sides (`154 x 216 mm`) with an explicit A5 `TrimBox`
+
+The paperback build verifies both output sizes with `pdfinfo`.
 
 To build an ePub version (Latex math is rendered via [Codecogs](https://www.codecogs.com) - check section 11 of the whitepaper to ensure you didn't get rate limited):
 
