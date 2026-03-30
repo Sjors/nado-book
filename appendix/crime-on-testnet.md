@@ -80,7 +80,7 @@ Meanwhile our police officer, let’s call him Donald, goes online and looks up 
 ![](appendix/explorer.png)
 :::
 
-The figure on the next page describes transactions related to the tb1q3nf… address. He suspects this address belongs to Kees, because it’s the address Kees gave him to send coins to.
+The figure above describes transactions related to the tb1q3nf… address. He suspects this address belongs to Kees, because it’s the address Kees gave him to send coins to.
 
 Reading from bottom to top, at 13:51:15 officer Donald sees coins from his own address (tb1qjy4…, blue) go to this address (again: tb1q3nf…, yellow, the address Kees gave him). He also sees coins going back to his own wallet as change (tb1q80q…, also blue).
 
