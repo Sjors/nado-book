@@ -226,8 +226,6 @@ This time around, the first software download release with the Taproot activatio
 \noindent
 With open source software, anyone is free to release any variation of the software they want. Similarly, everyone is free to download whichever variation they want. However, in addition to the general objections to `LOT=true` above, there are other practical matters to think about when downloading such an alternative implementation. We cover these in the episode above. In particular, it’s important to make sure you’re not accidentally downloading malware (see chapter @sec:guix).
 
-\newpage
-
 ### The Speedy Trial Proposal
 
 \EpisodeQR{31}
