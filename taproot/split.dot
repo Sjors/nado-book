@@ -11,7 +11,7 @@ digraph {
 
     tx2 [shape=box style="rounded" label="Transaction"]
 
-    node [fixedsize=true width=1 shape=box style="bold"]
+    node [width=1.2 shape=box style="bold"]
     edge [fontsize=11];
 
     rankdir="LR";
