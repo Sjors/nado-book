@@ -12,13 +12,13 @@ Fortunately I know a guy, and he charges 0.002,000,-- bitcoin. I spin up my Bitc
 First I need to buy some Bitcoin. Bitcoin in Europe is a bit like guns in the USA. A lot of people don’t like it, others love it, but it’s perfectly legal. So I surf to bitonic.nl to buy a little more than I need:
 
 ::: {.center}
-![](appendix/buy.png){ width=40% }
+![](appendix/buy.png){ width=30% }
 :::
 
 I pay with iDEAL, which is used for all online (fiat) shopping. They need a Bitcoin address to send it to, which I obtain from my Bitcoin Core wallet:
 
 ::: {.center}
-![](appendix/core-2.png){ width=100% }
+![](appendix/core-2.png){ width=90% }
 :::
 
 \newpage
@@ -28,25 +28,25 @@ I click Request payment and get an address:
 
 I copy the address into the Bitonic form under “Your bitcoinaddress”, ignore all the warnings my banking app gives, and finish the €10 payment. A few moments later Bitcoin Core tells me that I received 0.003,247,40 BTC on the address that I labeled “Buy Bitcoin” and that I gave to Bitonic (tb1q9jdtps…):
 
-![](appendix/core-4.png){ width=100% }
+![](appendix/core-4.png){ width=90% }
 
 While I wait for the transaction to confirm on the blockchain, I walk to my guy, let’s call him Dmitry even though that’s racist. He opens his own wallet and gives me an address (tb1qnm…), which I enter into my wallet in order to send him 0.0002,000,-- BTC.
 
 \newpage
 
-![](appendix/core-5.png){ width=100% }
+![](appendix/core-5.png){ width=90% }
 
 Dmitry knows where I live, so he doesn’t wait for confirmation and just gives me the frap. We could have used Lightning to make the payment go through instantly without having to wait for confirmation. Lightning also doesn’t leave the same traces on the blockchain, so it could have prevented the pain soon to come. But we didn’t.
 
 So now my wallet looks like this and that should be where the story ends for me:
 
-![](appendix/core-6.png){ width=100% }
+![](appendix/core-6.png){ width=90% }
 
 \newpage
 
 Dmitry in the mean time sells a bunch of fraps to different customers, giving each one a unique address. Their wallets will look exactly the same as mine. At the end of the day, Dmitry’s wallet looks like this:
 
-![](appendix/core-7.png){ width=100% }
+![](appendix/core-7.png){ width=90% }
 
 Dmitry wants to buy some alcohol, the only drug that’s still legal, despite the violence, broken families, destroyed careers, crime, disease and mass road casualties it caused, especially after AI cars were banned. This was partially because AI cars enriched the big corporations that leased them out to the poor - who previously couldn’t afford a car - but what really broke the camels back was the ISIS hack that killed 15 million people during their work commute.
 
@@ -77,7 +77,7 @@ Kees is not arrested yet and so nobody knows what his Bitcoin addresses are. A p
 Meanwhile our police officer, let’s call him Donald, goes online and looks up the address used in his trade with Kees (tb1q3nf…). Bitcoin Core doesn’t support address lookups, because it doesn’t scale well and as Wladimir van der Laan put it “bitcoin core is not meant as a chain analysis platform”. His favorite block explorer blockchain.com doesn’t support bech32 address lookups, so he goes to a competitor.
 
 ::: {.tightimg}
-![](appendix/explorer.png)
+![](appendix/explorer.png){ width=90% }
 :::
 
 The figure above describes transactions related to the tb1q3nf… address. He suspects this address belongs to Kees, because it’s the address Kees gave him to send coins to.

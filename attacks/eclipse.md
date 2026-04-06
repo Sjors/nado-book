@@ -120,6 +120,7 @@ Note, however, that you shouldn’t blindly trust the satellite either, for _it_
 
 The Bitcoin Core development wiki also contains an overview of eclipse attacks and various counter measures.^[<https://github.com/bitcoin-core/bitcoin-devwiki/wiki/Addrman-and-eclipse-attacks>]
 
+\newpage
 ### Erebus Attack
 
 \EpisodeQR{18}

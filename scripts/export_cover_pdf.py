@@ -42,6 +42,7 @@ def main() -> int:
     pdf.compressmtd = 0
     pdf.quality = 0
     pdf.fontEmbedding = 0
+    # The Scribus document is trim-sized; use its 3 mm bleed settings on export.
     pdf.useDocBleeds = 1
     pdf.outdst = 1
     pdf.info = "nado-cover.sla"

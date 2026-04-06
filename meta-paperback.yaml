@@ -3,7 +3,7 @@ identifier:
 documentclass: memoir
 classoption:
   - twoside
-  - statementpaper
+  - a5paper
   - 11pt
   - openany
 title: "Bitcoin: A Work in Progress"

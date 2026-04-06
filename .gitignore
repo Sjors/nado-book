@@ -20,3 +20,4 @@ docs/.jekyll-metadata
 
 ## Misc
 .env
+scripts/__pycache__/

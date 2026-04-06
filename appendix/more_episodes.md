@@ -465,6 +465,6 @@ The figure on the next page shows the result of the analysis from 2017.^[<https:
 
 \newpage
 
-![IBD on EC2 (~474K blocks, t2.xlarge, 4 cores, 16 GiB, GP2 200 GiB SSD). We explained Assume Valid in chapter @sec:assume.](appendix/performance.svg)
+![IBD on EC2 (~474K blocks, t2.xlarge, 4 cores, 16 GiB, GP2 200 GiB SSD). We explained Assume Valid in chapter @sec:assume.](appendix/performance.svg){ height=95% }
 
 \newpage
