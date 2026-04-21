@@ -6,6 +6,10 @@ Run via Scribus, for example:
   /Applications/Scribus.app/Contents/MacOS/Scribus \
     --no-splash \
     --python-script scripts/export_cover_pdf.py
+
+Then refresh the JPEG previews and docs logo with:
+
+  scripts/export_cover_jpegs.sh
 """
 
 from __future__ import annotations

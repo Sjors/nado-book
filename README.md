@@ -66,16 +66,14 @@ To build a PDF that roughly fits an iPad:
 Note that `make_book.sh` builds the book interior. The cover PDF is still a separate manual export flow from the source files in `meta/`.
 
 
-To generate the jpeg cover images, export to PDF but set to PDF 1.6 and change
-Output Intended For to Screen / Web. Then do:
+To generate the jpeg cover images, first export the cover PDF from Scribus. Then run:
 
 ```sh
-cd meta
-convert -density 180 -define pdf:use-trimbox=true nado-cover-rgb.pdf -crop 52.25x100% +repage \( -clone 0 -crop 92x100% +repage -reverse \) -delete 0 -reverse slice.jpg
-mv slice-2.jpg ../docs/front.jpg
-mv slice-0.jpg ../docs/back.jpg
-mv slice-1.jpg spine.jpg
+scripts/export_cover_jpegs.sh
 ```
+
+This regenerates `meta/front.jpg`, `meta/back.jpg`, and `meta/spine.jpg`, and
+syncs `docs/front.jpg` for the website.
 
 ## Preview
 
