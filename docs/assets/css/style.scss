@@ -3,6 +3,14 @@
 
 @import "{{ site.theme }}";
 
+.buy-now-section {
+  margin-bottom: 1.4rem;
+}
+
+.buy-now-section-title {
+  margin: 0 0 0.6rem;
+}
+
 .buy-now-hero {
   display: flex;
   align-items: center;
@@ -22,6 +30,15 @@
   margin: -0.3rem 0 1rem;
   font-size: 0.95rem;
   color: #555;
+}
+
+.buy-now-physical {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.buy-now-physical a {
+  font-weight: 600;
 }
 
 .chapter-list {
